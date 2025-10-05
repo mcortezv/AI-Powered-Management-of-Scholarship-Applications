@@ -8,8 +8,8 @@ class InputData(BaseModel):
 
 def main():
     app = FastAPI()
-    resolution_model = joblib.load('saved/resolution_model.pk1')
-    reason_model = joblib.load('saved/reason_model.pk1')
+    resolution_model = joblib.load('saved/resolution_model.pkl')
+    reason_model = joblib.load('saved/reason_model.pkl')
 
     @app.post('/predict')
     def predict(data: InputData):
