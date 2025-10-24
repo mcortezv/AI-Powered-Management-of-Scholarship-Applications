@@ -10,17 +10,19 @@ package objetosNegocio;
  * @author Cortez, Manuel;
  */
 public class Estudiante {
-    private int matricula;
+    
+    
+    private Long matricula;
     private String nombre;
     private Tutor tutor;
     private String password;
     private String telefono;
-    private String direccion;
+    private Direccion direccion;
     private String correo;
 
     public Estudiante() {}
 
-    public Estudiante(String nombre, Tutor tutor, String password, String telefono, String direccion, String correo) {
+    public Estudiante(String nombre, Tutor tutor, String password, String telefono, Direccion direccion, String correo) {
         this.nombre = nombre;
         this.tutor = tutor;
         this.password = password;
@@ -29,7 +31,7 @@ public class Estudiante {
         this.correo = correo;
     }
 
-    public Estudiante(int matricula, String nombre, Tutor tutor, String password, String telefono, String direccion, String correo) {
+    public Estudiante(Long matricula, String nombre, Tutor tutor, String password, String telefono, Direccion direccion, String correo) {
         this.matricula = matricula;
         this.nombre = nombre;
         this.tutor = tutor;
@@ -38,12 +40,14 @@ public class Estudiante {
         this.direccion = direccion;
         this.correo = correo;
     }
+    
+    
 
-    public int getMatricula() {
+    public Long getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(int matricula) {
+    public void setMatricula(Long matricula) {
         this.matricula = matricula;
     }
 
@@ -79,11 +83,11 @@ public class Estudiante {
         this.telefono = telefono;
     }
 
-    public String getDireccion() {
+    public Direccion getDireccion() {
         return direccion;
     }
 
-    public void setDireccion(String direccion) {
+    public void setDireccion(Direccion direccion) {
         this.direccion = direccion;
     }
 
