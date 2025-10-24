@@ -15,12 +15,12 @@ public class Tutor {
     private String nombre;
     private Parentesco parentesco;
     private String telefono;
-    private String direccion;
+    private Direccion direccion;
     private String correo;
 
     public Tutor() {}
 
-    public Tutor(String nombre, Parentesco parentesco, String telefono, String direccion, String correo) {
+    public Tutor(String nombre, Parentesco parentesco, String telefono, Direccion direccion, String correo) {
         this.nombre = nombre;
         this.parentesco = parentesco;
         this.telefono = telefono;
@@ -52,11 +52,11 @@ public class Tutor {
         this.telefono = telefono;
     }
 
-    public String getDireccion() {
+    public Direccion getDireccion() {
         return direccion;
     }
 
-    public void setDireccion(String direccion) {
+    public void setDireccion(Direccion direccion) {
         this.direccion = direccion;
     }
 
