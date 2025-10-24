@@ -12,6 +12,7 @@ import objetosNegocio.enums.Parentesco;
  * @author Cortez, Manuel;
  */
 public class Tutor {
+    private Long id;
     private String nombre;
     private Parentesco parentesco;
     private String telefono;
@@ -27,6 +28,17 @@ public class Tutor {
         this.direccion = direccion;
         this.correo = correo;
     }
+
+    public Tutor(Long id, String nombre, Parentesco parentesco, String telefono, Direccion direccion, String correo) {
+        this.id = id;
+        this.nombre = nombre;
+        this.parentesco = parentesco;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.correo = correo;
+    }
+    
+    
 
     public String getNombre() {
         return nombre;
