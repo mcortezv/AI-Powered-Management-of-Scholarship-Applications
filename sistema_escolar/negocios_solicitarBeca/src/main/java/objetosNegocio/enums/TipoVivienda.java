@@ -8,6 +8,6 @@ package objetosNegocio.enums;
  *
  * @author mdjes
  */
-public enum TipoDocumento {
-    CURP, INE, KARDEX, COMPROBANTE_INSCIRPCION, COMPROBANTE_INGRESOS;
+public enum TipoVivienda {
+    CASA, DEPARTAMENTO, RESIDENCIA, VIVIENDA_IMPROVISADA;
 }

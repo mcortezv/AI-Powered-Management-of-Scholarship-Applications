@@ -4,11 +4,26 @@
  */
 
 package objetosNegocio;
+import java.util.List;
 
 /**
  *
  * @author Cortez, Manuel;
  */
 public class BecasFiltradas {
+    private List<Beca> becas;
 
+    public BecasFiltradas() {}
+
+    public BecasFiltradas(List<Beca> becas) {
+        this.becas = becas;
+    }
+
+    public List<Beca> getBecas() {
+        return becas;
+    }
+
+    public void setBecas(List<Beca> becas) {
+        this.becas = becas;
+    }
 }
