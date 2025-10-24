@@ -30,7 +30,7 @@ El diseño de interfaces se encuentra disponible en **Figma**:
 
 ---
 
-## 🛠 Tecnologías utilizadas
+## Tecnologías utilizadas
 
 | Tecnología   | Propósito                                 |
 | ------------ | ----------------------------------------- |
@@ -42,7 +42,7 @@ El diseño de interfaces se encuentra disponible en **Figma**:
 
 ---
 
-# 🧠 Entrenamiento Supervisado del Modelo de Becas
+# Entrenamiento Supervisado del Modelo de Becas
 
 El entrenamiento del modelo toma como base las siguientes variables, de las cuales para cada categoría se define un rango y un peso distinto para controlar el comportamiento de las predicciones.  
 Estos valores se han establecido a criterio propio para otorgar mayor flexibilidad y capacidad de generalización a los resultados.
