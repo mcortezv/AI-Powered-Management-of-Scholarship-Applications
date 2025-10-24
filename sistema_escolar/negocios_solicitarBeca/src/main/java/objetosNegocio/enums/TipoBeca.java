@@ -8,6 +8,7 @@ package objetosNegocio.enums;
  *
  * @author mdjes
  */
-public enum EstadoSolicitud {
-    ACTIVA, ACEPTADA, RECHAZADA, DEVUELTA;
+public enum TipoBeca {
+    EXCELENCIA_ACADEMICA, ESCASOS_RECURSOS,
+    CONSTANCIA, ESTUDIANTE_TRABAJO
 }

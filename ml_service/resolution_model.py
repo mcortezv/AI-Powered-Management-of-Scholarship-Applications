@@ -6,12 +6,12 @@ import joblib
 def resolution_model(X_train_resolution_smote, X_val_s, X_test_s, Y_train_resolution_smote, Y_val_s, Y_test_s):
 
     parameters = {
-        'n_estimators': [50, 100, 200],
-        'max_depth': [None, 10, 20, 30],
-        'min_samples_split': [2, 5, 10]
+        'n_estimators': [25, 50, 100],
+        'max_depth': [None, 6, 3, 3],
+        'min_samples_split': [2, 2, 1]
     }
 
-    parameters_search = GridSearchCV(RandomForestClassifier(random_state=42), parameters, cv=5, scoring = 'f1_macro')
+    parameters_search = GridSearchCV(RandomForestClassifier(random_state=42), parameters, cv=4, scoring = 'f1_macro')
     parameters_search.fit(X_train_resolution_smote, Y_train_resolution_smote)
 
     model = parameters_search.best_estimator_

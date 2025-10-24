@@ -6,6 +6,7 @@
 package objetosNegocio;
 import java.time.LocalDate;
 import java.time.Period;
+import objetosNegocio.enums.TipoBeca;
 
 /**
  *
@@ -13,6 +14,7 @@ import java.time.Period;
  */
 public class Beca {
     private int codigo;
+    private TipoBeca tipo;
     private String nombre;
     private Period periodo;
     private int becasDisponibles;
