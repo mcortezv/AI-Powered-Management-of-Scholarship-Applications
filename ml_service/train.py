@@ -7,29 +7,24 @@ from reason_model import reason_model
 
 
 def train():
-    lb = LabelBinarizer()
     le = LabelEncoder()
     scaler = StandardScaler()
 
-    data = pd.concat([
-        pd.read_csv('data/academic_history.csv', ),
-        pd.read_csv('data/socioeconomic_information.csv'),
-        pd.read_csv('data/scholarship_data.csv'),
-        pd.read_csv('data/resolutions.csv'),])
+    data = pd.read_csv('data/data.csv')
 
     X = data[['Student GPA', 'Dropout Rate', 'Failure Rate', 'Semester',
-              'Degree Program', 'Course Load', 'Total Household Income',
+              'Degree Program', 'Course Load', 'Total Household Income', 'Housing Type',
               'Employment', 'Debts', 'Category', 'Number of Scholarships Awarded']]
 
 
-    X.loc[:, 'Employment'] = lb.fit_transform(X['Employment'])
-    X.loc[:, 'Debts'] = lb.fit_transform(X['Debts'])
-    X.loc[:, 'Category'] = lb.fit_transform(X['Category'])
     X.loc[:, 'Degree Program'] = le.fit_transform(X['Degree Program'])
-
+    X.loc[:, 'Housing Type'] = le.fit_transform(X['Housing Type'])
+    X.loc[:, 'Category'] = le.fit_transform(X['Category'])
 
     Y_resolution = data['Resolution']
     Y_reason = data['Reason']
+
+    #Queda pediente el balanceo y estratificacion de datos por falta de datos
 
 
     X_tran, X_temp, Y_train_resolution, Y_temp_resolution, Y_train_reason, Y_temp_reason = (
@@ -40,13 +35,7 @@ def train():
                          random_state=42, stratify=Y_temp_resolution))
 
 
-    X_tran_s = scaler.fit_transform(X_tran)
-    X_val_s = scaler.transform(X_val)
-    X_test_s = scaler.transform(X_test)
 
-    smote = SMOTE(random_state=42)
-    X_train_resolution_smote, Y_train_resolution_smote = smote.fit_resample(X_tran_s, Y_train_resolution)
-    X_train_reason_smote, Y_train_reason_smote = smote.fit_resample(X_tran_s, Y_train_reason)
 
-    resolution_model(X_train_resolution_smote, X_val_s, X_test_s, Y_train_resolution_smote, Y_val_resolution, Y_test_resolution)
-    reason_model(X_train_reason_smote, X_val_s, X_test_s, Y_train_reason_smote, Y_val_reason, Y_test_reason)
+    resolution_model(X_tran, X_val, X_test, Y_train_resolution, Y_val_resolution, Y_test_resolution)
+    reason_model(X_tran, X_val, X_test, Y_train_reason, Y_val_reason, Y_test_reason)

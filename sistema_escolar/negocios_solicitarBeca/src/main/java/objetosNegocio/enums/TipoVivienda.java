@@ -9,5 +9,5 @@ package objetosNegocio.enums;
  * @author mdjes
  */
 public enum TipoVivienda {
-    CASA, DEPARTAMENTO, RESIDENCIA, VIVIENDA_IMPROVISADA;
+    CASA_PROPIA, DEPARTAMENTO, RESIDENCIA, VIVIENDA_IMPROVISADA;
 }
