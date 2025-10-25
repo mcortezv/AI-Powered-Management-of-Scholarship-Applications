@@ -26,7 +26,7 @@ public class EstudianteMock {
     }
     
     private void cargarEstudiantes(){
-        Estudiante estudiante1= new Estudiante(258329L, "Luisa Perez", tutor.getTutores().get(0L), "khGfs7", "687378444", new Direccion("Luar", "Villas del Rey", "Ciudad Obregon"), "luisa@gmail.com");
+        Estudiante estudiante1 = new Estudiante(258329L, "Luisa Perez", tutor.getTutores().get(0L), "khGfs7", "687378444", new Direccion("Luar", "Villas del Rey", "Ciudad Obregon"), "luisa@gmail.com");
         estudiantes.put(estudiante1.getMatricula(), estudiante1);        
     }
 

@@ -23,21 +23,14 @@ public class Beca {
 
     public Beca() {}
 
-    public Beca(String nombre, Period periodo, int becasDisponibles,  Requisitos requisitos, LocalDate fechaResultados) {
-        this.becasDisponibles = becasDisponibles;
-        this.fechaResultados = fechaResultados;
-        this.nombre = nombre;
-        this.periodo = periodo;
-        this.requisitos = requisitos;
-    }
-
-    public Beca(int codigo, String nombre, Period periodo, int becasDisponibles,  Requisitos requisitos, LocalDate fechaResultados) {
+    public Beca(int codigo, TipoBeca tipo, String nombre, Period periodo, int becasDisponibles, Requisitos requisitos, LocalDate fechaResultados) {
         this.codigo = codigo;
-        this.becasDisponibles = becasDisponibles;
-        this.fechaResultados = fechaResultados;
+        this.tipo = tipo;
         this.nombre = nombre;
         this.periodo = periodo;
+        this.becasDisponibles = becasDisponibles;
         this.requisitos = requisitos;
+        this.fechaResultados = fechaResultados;
     }
 
     public int getBecasDisponibles() {
@@ -82,6 +75,15 @@ public class Beca {
 
     public Requisitos getRequisitos() {
         return requisitos;
+    }
+
+
+    public TipoBeca getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoBeca tipo) {
+        this.tipo = tipo;
     }
 
     public void setRequisitos(Requisitos requisitos) {
