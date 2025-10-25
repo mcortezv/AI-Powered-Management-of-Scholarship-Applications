@@ -1,49 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-package objetosNegocio;
+package dto;
 
 import objetosNegocio.enums.Parentesco;
-
 /**
- *
- * @author Cortez, Manuel;
+ * @author Escalante, Sebastian.
  */
-public class Tutor {
-    private Long id;
+public class TutorDTO {
     private String nombre;
     private Parentesco parentesco;
     private String telefono;
-    private Direccion direccion;
+    private String direccion;
     private String correo;
 
-    public Tutor() {}
+    public TutorDTO() {
+    }
 
-    public Tutor(String nombre, Parentesco parentesco, String telefono, Direccion direccion, String correo) {
+    public TutorDTO(String nombre, Parentesco parentesco, String telefono, String direccion, String correo) {
         this.nombre = nombre;
         this.parentesco = parentesco;
         this.telefono = telefono;
         this.direccion = direccion;
         this.correo = correo;
-    }
-
-    public Tutor(Long id, String nombre, Parentesco parentesco, String telefono, Direccion direccion, String correo) {
-        this.id = id;
-        this.nombre = nombre;
-        this.parentesco = parentesco;
-        this.telefono = telefono;
-        this.direccion = direccion;
-        this.correo = correo;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getNombre() {
@@ -70,11 +46,11 @@ public class Tutor {
         this.telefono = telefono;
     }
 
-    public Direccion getDireccion() {
+    public String getDireccion() {
         return direccion;
     }
 
-    public void setDireccion(Direccion direccion) {
+    public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
 
@@ -85,4 +61,6 @@ public class Tutor {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+
+
 }
