@@ -4,7 +4,7 @@
  */
 package controlNavegacion;
 
-import presentacion.InfoGeneral;
+
 
 /**
  *
@@ -12,7 +12,5 @@ import presentacion.InfoGeneral;
  */
 public class ControlNavegacion {
     
-    public void openFormInfoGeneral(){
-        new InfoGeneral().setVisible(true);
-    }
+    
 }

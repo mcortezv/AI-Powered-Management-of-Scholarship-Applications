@@ -15,9 +15,7 @@ import objetosNegocio.enums.Parentesco;
  * @author janethcristinagalvanquinonez
  */
 public class TutorMock {
-    Tutor tutor;
-    Parentesco parentesco; 
-    Direccion direccion;
+
     Map<Long, Tutor> tutores= new HashMap<>();
     
     public TutorMock(){
@@ -25,12 +23,17 @@ public class TutorMock {
     }
     
     private void cargarTutores(){
-        Tutor tutor1= new Tutor(0L, "Juan Fernandez", parentesco.PADRE, "6871616433", new Direccion("Antonio Caso", "Villa Itson", "Ciudad Obregon"), "juanfernandez@gmail.com");
+        Tutor tutor1= new Tutor(0L, "Juan Fernandez", Parentesco.PADRE, "6871616433", new Direccion("Antonio Caso", "Villa Itson", "Ciudad Obregon"), "juanfernandez@gmail.com");
         tutores.put(tutor1.getId(), tutor1);        
     }
+
     public Map<Long, Tutor> getTutores() {
         return tutores;
     }
+
+    
+    
+
     
     
 }
