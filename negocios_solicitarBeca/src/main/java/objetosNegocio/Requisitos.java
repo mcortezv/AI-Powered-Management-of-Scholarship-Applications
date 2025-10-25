@@ -5,6 +5,9 @@
 
 package objetosNegocio;
 
+import objetosNegocio.enums.Carrera;
+import objetosNegocio.enums.TipoVivienda;
+
 import java.time.LocalDateTime;
 
 /**
@@ -13,19 +16,24 @@ import java.time.LocalDateTime;
  */
 public class Requisitos {
     private double promedioMinimo;
-    private int semestreMinimo;
     private double ingresoFamiliarMaximo;
-    private LocalDateTime fechaLimiteSolicitud;
-
+    private double procentajeBajas;
+    private double cargaAcademica;
+    private double indiceReprobacion;
+    private boolean trabajo;
+    private boolean deudas;
 
     public Requisitos() {
     }
 
-    public Requisitos(double promedioMinimo, int semestreMinimo, double ingresoFamiliarMaximo, LocalDateTime fechaLimiteSolicitud) {
+    public Requisitos(double promedioMinimo, double ingresoFamiliarMaximo, double procentajeBajas, double cargaAcademica, double indiceReprobacion, boolean trabajo, boolean deudas) {
         this.promedioMinimo = promedioMinimo;
-        this.semestreMinimo = semestreMinimo;
         this.ingresoFamiliarMaximo = ingresoFamiliarMaximo;
-        this.fechaLimiteSolicitud = fechaLimiteSolicitud;
+        this.procentajeBajas = procentajeBajas;
+        this.cargaAcademica = cargaAcademica;
+        this.indiceReprobacion = indiceReprobacion;
+        this.trabajo = trabajo;
+        this.deudas = deudas;
     }
 
     public double getPromedioMinimo() {
@@ -36,14 +44,6 @@ public class Requisitos {
         this.promedioMinimo = promedioMinimo;
     }
 
-    public int getSemestreMinimo() {
-        return semestreMinimo;
-    }
-
-    public void setSemestreMinimo(int semestreMinimo) {
-        this.semestreMinimo = semestreMinimo;
-    }
-
     public double getIngresoFamiliarMaximo() {
         return ingresoFamiliarMaximo;
     }
@@ -52,11 +52,43 @@ public class Requisitos {
         this.ingresoFamiliarMaximo = ingresoFamiliarMaximo;
     }
 
-    public LocalDateTime getFechaLimiteSolicitud() {
-        return fechaLimiteSolicitud;
+    public double getProcentajeBajas() {
+        return procentajeBajas;
     }
 
-    public void setFechaLimiteSolicitud(LocalDateTime fechaLimiteSolicitud) {
-        this.fechaLimiteSolicitud = fechaLimiteSolicitud;
+    public void setProcentajeBajas(double procentajeBajas) {
+        this.procentajeBajas = procentajeBajas;
+    }
+
+    public double getCargaAcademica() {
+        return cargaAcademica;
+    }
+
+    public void setCargaAcademica(double cargaAcademica) {
+        this.cargaAcademica = cargaAcademica;
+    }
+
+    public double getIndiceReprobacion() {
+        return indiceReprobacion;
+    }
+
+    public void setIndiceReprobacion(double indiceReprobacion) {
+        this.indiceReprobacion = indiceReprobacion;
+    }
+
+    public boolean isTrabajo() {
+        return trabajo;
+    }
+
+    public void setTrabajo(boolean trabajo) {
+        this.trabajo = trabajo;
+    }
+
+    public boolean isDeudas() {
+        return deudas;
+    }
+
+    public void setDeudas(boolean deudas) {
+        this.deudas = deudas;
     }
 }
