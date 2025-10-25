@@ -1,5 +1,7 @@
 package dto;
-
+/**
+ * @author Escalante, Sebastian.
+ */
 public class DocumentoDTO {
     private String nombreArchivo;
     private String tipoDocumento;

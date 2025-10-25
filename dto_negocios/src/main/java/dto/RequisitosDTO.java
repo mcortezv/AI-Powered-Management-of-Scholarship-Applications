@@ -1,5 +1,7 @@
 package dto;
-
+/**
+ * @author Escalante, Sebastian.
+ */
 public class RequisitosDTO {
     private double promedioMinimo;
     private double ingresoFamiliarMaximo;
