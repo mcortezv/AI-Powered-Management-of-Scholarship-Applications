@@ -1,5 +1,7 @@
 package dto;
-
+/**
+ * @author Escalante, Sebastian.
+ */
 public class SolicitudBecasDisponiblesDTO {
    private String promedioActual;
    private String cargaAcademica;
