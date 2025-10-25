@@ -10,8 +10,6 @@ package objetosNegocio;
  * @author Cortez, Manuel;
  */
 public class Estudiante {
-    
-    
     private Long matricula;
     private String nombre;
     private Tutor tutor;

@@ -12,10 +12,10 @@ import java.math.BigDecimal;
  * @author Cortez, Manuel;
  */
 public class InformacionSocioeconomica {
-    public BigDecimal ingresoTotalFamilarMensual;
-    public TipoVivienda tipoVivienda;
-    boolean trabajo;
-    boolean deudas;
+    private  BigDecimal ingresoTotalFamilarMensual;
+    private TipoVivienda tipoVivienda;
+    private boolean trabajo;
+    private boolean deudas;
 
     public InformacionSocioeconomica() {}
 
