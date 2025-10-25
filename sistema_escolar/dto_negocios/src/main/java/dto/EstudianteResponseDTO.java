@@ -1,6 +1,6 @@
 package dto;
 
-public class EstudianteDTO {
+public class EstudianteResponseDTO {
     private int matricula;
     private String nombre;
     private String carrera;
@@ -10,10 +10,10 @@ public class EstudianteDTO {
     private double promedio;
     private String estatus;
 
-    public EstudianteDTO() {
+    public EstudianteResponseDTO() {
     }
 
-    public EstudianteDTO(String estatus, double promedio, String correo, String direccion, String telefono, String carrera, String nombre, int matricula) {
+    public EstudianteResponseDTO(String estatus, double promedio, String correo, String direccion, String telefono, String carrera, String nombre, int matricula) {
         this.estatus = estatus;
         this.promedio = promedio;
         this.correo = correo;

@@ -1,11 +1,7 @@
 package dto;
 
 import java.time.LocalDate;
-import java.time.Period;
 
-/**
- *
- */
 public class BecaDTO {
     private int codigo;
     private String tipo;
