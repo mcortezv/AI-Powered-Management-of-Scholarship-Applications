@@ -1,7 +1,9 @@
 package dto;
 
 import objetosNegocio.enums.Parentesco;
-
+/**
+ * @author Escalante, Sebastian.
+ */
 public class TutorDTO {
     private String nombre;
     private Parentesco parentesco;

@@ -28,6 +28,9 @@ public class TutorMock {
         Tutor tutor1= new Tutor(0L, "Juan Fernandez", parentesco.PADRE, "6871616433", new Direccion("Antonio Caso", "Villa Itson", "Ciudad Obregon"), "juanfernandez@gmail.com");
         tutores.put(tutor1.getId(), tutor1);        
     }
+    public Map<Long, Tutor> getTutores() {
+        return tutores;
+    }
     
     
 }

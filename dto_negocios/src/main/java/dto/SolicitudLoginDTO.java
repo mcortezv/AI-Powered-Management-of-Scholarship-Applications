@@ -1,5 +1,8 @@
 package dto;
 
+/**
+ * @author Escalante, Sebastian.
+ */
 public class SolicitudLoginDTO {
     private String usuario;
     private String contrasenia;

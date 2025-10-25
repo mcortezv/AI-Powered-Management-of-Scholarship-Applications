@@ -1,7 +1,8 @@
 package dto;
 
-import objetosNegocio.Tutor;
-
+/**
+ * @author Escalante, Sebastian.
+ */
 public class EstudianteSolicitudDTO {
     private int matricula;
     private String nombre;

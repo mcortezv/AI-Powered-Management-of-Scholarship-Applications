@@ -1,5 +1,8 @@
 package dto;
 
+/**
+ * @author Escalante, Sebastian.
+ */
 public class HistorialAcademicoDTO {
     private String carrera;
     private double promedio;
