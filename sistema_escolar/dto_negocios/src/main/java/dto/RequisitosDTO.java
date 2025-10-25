@@ -1,20 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-package objetosNegocio;
-
-import objetosNegocio.enums.Carrera;
-import objetosNegocio.enums.TipoVivienda;
-
-import java.time.LocalDateTime;
-
+package dto;
 /**
- *
- * @author Cortez, Manuel;
+ * @author Escalante, Sebastian.
  */
-public class Requisitos {
+public class RequisitosDTO {
     private double promedioMinimo;
     private double ingresoFamiliarMaximo;
     private double procentajeBajas;
@@ -23,10 +11,10 @@ public class Requisitos {
     private boolean trabajo;
     private boolean deudas;
 
-    public Requisitos() {
+    public RequisitosDTO() {
     }
 
-    public Requisitos(double promedioMinimo, double ingresoFamiliarMaximo, double procentajeBajas, double cargaAcademica, double indiceReprobacion, boolean trabajo, boolean deudas) {
+    public RequisitosDTO(double promedioMinimo, double ingresoFamiliarMaximo, double procentajeBajas, double cargaAcademica, double indiceReprobacion, boolean trabajo, boolean deudas) {
         this.promedioMinimo = promedioMinimo;
         this.ingresoFamiliarMaximo = ingresoFamiliarMaximo;
         this.procentajeBajas = procentajeBajas;

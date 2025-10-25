@@ -12,6 +12,7 @@ import java.util.List;
  * @author Cortez, Manuel;
  */
 public class Solicitud {
+    private long id;
     private Beca beca;
     private Estudiante estudiante;
     private EstadoSolicitud estado;
