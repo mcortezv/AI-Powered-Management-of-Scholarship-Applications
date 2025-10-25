@@ -3,6 +3,9 @@ package dto;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * @author Escalante, Sebastian.
+ */
 public class SolicitudDTO {
     private long id;
     private String estado;

@@ -1,7 +1,9 @@
 package dto;
 
 import java.util.List;
-
+/**
+ * @author Escalante, Sebastian.
+ */
 public class SolicitudBecasDisponiblesResponseDTO {
     public List<BecaDTO> becas;
 

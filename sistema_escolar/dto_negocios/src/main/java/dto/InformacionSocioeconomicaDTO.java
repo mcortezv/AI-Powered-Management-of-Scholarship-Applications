@@ -1,5 +1,7 @@
 package dto;
-
+/**
+ * @author Escalante, Sebastian.
+ */
 public class InformacionSocioeconomicaDTO {
     private double ingresoTotalFamilarMensual;
     private String tipoVivienda;
