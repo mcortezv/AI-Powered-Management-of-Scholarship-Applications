@@ -37,6 +37,10 @@ public class Tutor {
         this.direccion = direccion;
         this.correo = correo;
     }
+
+    public Long getId() {
+        return id;
+    }
     
     
 
