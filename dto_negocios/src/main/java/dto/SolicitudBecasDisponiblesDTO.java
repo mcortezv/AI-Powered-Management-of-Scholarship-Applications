@@ -3,32 +3,38 @@ package dto;
  * @author Escalante, Sebastian.
  */
 public class SolicitudBecasDisponiblesDTO {
-   private String promedioActual;
-   private String cargaAcademica;
+
+
+
+   private double promedioActual;
+   private int cargaAcademica;
    private double ingresoMensualFamilia;
 
     public SolicitudBecasDisponiblesDTO() {
     }
 
-    public SolicitudBecasDisponiblesDTO(String promedioActual, String cargaAcademica, double ingresoMensualFamilia) {
+    public SolicitudBecasDisponiblesDTO(double promedioActual, int cargaAcademica, double ingresoMensualFamilia) {
+
         this.promedioActual = promedioActual;
         this.cargaAcademica = cargaAcademica;
         this.ingresoMensualFamilia = ingresoMensualFamilia;
     }
 
-    public String getPromedioActual() {
+
+
+    public double getPromedioActual() {
         return promedioActual;
     }
 
-    public void setPromedioActual(String promedioActual) {
+    public void setPromedioActual(double promedioActual) {
         this.promedioActual = promedioActual;
     }
 
-    public String getCargaAcademica() {
+    public int getCargaAcademica() {
         return cargaAcademica;
     }
 
-    public void setCargaAcademica(String cargaAcademica) {
+    public void setCargaAcademica(int cargaAcademica) {
         this.cargaAcademica = cargaAcademica;
     }
 
