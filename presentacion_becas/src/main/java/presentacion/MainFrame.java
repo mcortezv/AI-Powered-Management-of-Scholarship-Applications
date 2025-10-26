@@ -6,33 +6,50 @@ package presentacion;
 import java.awt.BorderLayout;
 import javax.swing.*;
 
-import presentacion.panels.InformGeneral;
-import presentacion.panels.NorthPanel;
+import presentacion.panels.*;
+import presentacion.panels.uitls.Img;
+import presentacion.panels.uitls.NorthPanel;
 
 /**
  *
  * @author Cortez, Manuel;
  */
 public final class MainFrame extends JFrame {
-    private InformGeneral panelInformGeneral;
+    private NorthPanel northPanel;
+    private JPanel centralPanel;
+    private Img mainPanel;
+    private InformacionGeneralPanel informacionGeneralPanel;
+    private HistorialAcademicoPanel historialAcademicoPanel;
+    private ConfirmacionPanel confirmacionPanel;
     
     
     public MainFrame() {
-        
-        setTitle("info general");
-        setSize(1700,1000);
+        setTitle("Sistema de Aplicaciones Escolares");
+        setSize(1700,956);
+        setLocationRelativeTo(null);
         setLayout(new BorderLayout());
-        
-        NorthPanel northPanel= new NorthPanel();
-        panelInformGeneral= new InformGeneral(this, northPanel);
-        
-        
+        northPanel= new NorthPanel();
+        centralPanel = new JPanel();
+
+
+        informacionGeneralPanel = new InformacionGeneralPanel(this, northPanel);
+        historialAcademicoPanel= new HistorialAcademicoPanel(this, northPanel);
+        confirmacionPanel= new ConfirmacionPanel(this, northPanel);
 
         add(northPanel, BorderLayout.NORTH);
-        add(panelInformGeneral, BorderLayout.CENTER);
-        
-        
+        add(centralPanel, BorderLayout.CENTER);
+
+        showPanel(confirmacionPanel);
     }
 
-    public void showMainPanel() {}
+    private void showPanel(JPanel nuevoPanel) {
+        centralPanel.removeAll();
+        centralPanel.add(nuevoPanel, BorderLayout.CENTER);
+        centralPanel.revalidate();
+        centralPanel.repaint();
+    }
+
+    public void showMainPanel() {
+        showPanel(mainPanel);
+    }
 }
