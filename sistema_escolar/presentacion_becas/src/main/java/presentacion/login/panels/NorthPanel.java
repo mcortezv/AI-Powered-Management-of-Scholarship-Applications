@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package presentacion.panels.uitls;
+package presentacion.login.panels;
 import presentacion.styles.Style;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

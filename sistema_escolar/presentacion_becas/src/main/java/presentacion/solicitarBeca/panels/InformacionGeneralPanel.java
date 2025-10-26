@@ -2,12 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package presentacion.panels;
+package presentacion.solicitarBeca.panels;
 import controlNavegacion.ControlNavegacion;
 import java.awt.Component;
 import javax.swing.Box;
-import presentacion.MainFrame;
-import presentacion.panels.uitls.NorthPanel;
+
+import presentacion.login.panels.NorthPanel;
+import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.*;
 import dto.SolicitudBecasDisponiblesDTO;
 import presentacion.styles.ComboBox;
@@ -16,7 +17,7 @@ import presentacion.styles.ComboBox;
  *
  * @author janethcristinagalvanquinonez
  */
-public class InformacionGeneralPanel extends Panel {
+public class InformacionGeneralPanel extends PanelSolicitarBeca {
     private SolicitudBecasDisponiblesDTO solicitudDTO;
     private ControlNavegacion control;
     private Button btnContinuar;
@@ -25,7 +26,7 @@ public class InformacionGeneralPanel extends Panel {
     private TextField campoIngreso;
 
 
-    public InformacionGeneralPanel(MainFrame frame, NorthPanel northPanel) {
+    public InformacionGeneralPanel(SolicitarBeca frame, NorthPanel northPanel) {
         super(frame, northPanel);
     }
 
@@ -68,6 +69,7 @@ public class InformacionGeneralPanel extends Panel {
         btnContinuar = new Button("Aceptar");
         btnContinuar.setAlignmentX(Component.CENTER_ALIGNMENT);
         centralPanel.add(btnContinuar);
+
 
     }
 

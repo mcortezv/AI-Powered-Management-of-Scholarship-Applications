@@ -3,14 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package presentacion.panels;
-import presentacion.MainFrame;
-import presentacion.panels.uitls.Img;
-import presentacion.panels.uitls.NorthPanel;
+package presentacion.solicitarBeca.panels;
+import presentacion.login.panels.ImgPanel;
+import presentacion.login.panels.NorthPanel;
+import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.*;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
-import presentacion.styles.Panel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,13 +18,13 @@ import java.awt.*;
  *
  * @author Cortez, Manuel;
  */
-public class ConfirmacionPanel extends Panel {
+public class ConfirmacionPanel extends PanelSolicitarBeca {
     private Label titulo;
-    private Img img;
+    private ImgPanel img;
     private Label subTitulo;
     private Button btnAceptar;
 
-    public ConfirmacionPanel(MainFrame frame, NorthPanel northPanel) {
+    public ConfirmacionPanel(SolicitarBeca frame, NorthPanel northPanel) {
         super(frame, northPanel);
     }
 
@@ -39,7 +38,7 @@ public class ConfirmacionPanel extends Panel {
         centralPanel.add(titulo);
         centralPanel.add(Box.createVerticalStrut(Style.TITULO_ESPACIO));
 
-        img = new Img("/assets/check.png");
+        img = new ImgPanel("/assets/check.png");
         img.setMaximumSize(new Dimension(300, 300));
         img.setAlignmentY(CENTER_ALIGNMENT);
         centralPanel.add(img);

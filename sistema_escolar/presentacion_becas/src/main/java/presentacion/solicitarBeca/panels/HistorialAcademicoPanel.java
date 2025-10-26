@@ -3,22 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package presentacion.panels;
-import presentacion.MainFrame;
-import presentacion.panels.uitls.NorthPanel;
+package presentacion.solicitarBeca.panels;
+import presentacion.login.panels.NorthPanel;
+import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.*;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
-import presentacion.styles.Panel;
 
 import javax.swing.*;
-import java.awt.*;
 
 /**
  *
  * @author Cortez, Manuel;
  */
-public class HistorialAcademicoPanel extends Panel {
+public class HistorialAcademicoPanel extends PanelSolicitarBeca {
     private Label titulo;
     private Label carrera;
     private ComboBox<String> comboCarrera;
@@ -28,7 +26,7 @@ public class HistorialAcademicoPanel extends Panel {
     private ComboBox<Integer> comboSemestre;
     private Button botonSiguiente;
 
-    public HistorialAcademicoPanel(MainFrame mainFrame, NorthPanel northPanel) {
+    public HistorialAcademicoPanel(SolicitarBeca mainFrame, NorthPanel northPanel) {
         super(mainFrame, northPanel);
     }
 
