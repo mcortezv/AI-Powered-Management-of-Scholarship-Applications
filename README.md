@@ -1,8 +1,5 @@
 # Managing School Applications and Scholarships with Artificial Intelligence
 
-[![](https://img.shields.io/badge/language-Java-blue)](https://www.java.com/)
-[![Python](https://img.shields.io/badge/python-3.11-green)](https://www.python.org/)
-
 ---
 
 ## Descripción del proyecto
