@@ -39,7 +39,8 @@ public class ConfirmacionPanel extends Panel {
         centralPanel.add(titulo);
         centralPanel.add(Box.createVerticalStrut(Style.TITULO_ESPACIO));
 
-        img = new Img();
+        img = new Img("/assets/check.png");
+        img.setMaximumSize(new Dimension(300, 300));
         img.setAlignmentY(CENTER_ALIGNMENT);
         centralPanel.add(img);
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
