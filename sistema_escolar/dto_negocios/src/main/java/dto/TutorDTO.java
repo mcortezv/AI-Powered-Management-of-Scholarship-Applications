@@ -1,5 +1,4 @@
 package dto;
-
 import objetosNegocio.enums.Parentesco;
 /**
  * @author Escalante, Sebastian.
@@ -14,9 +13,8 @@ public class TutorDTO {
     public TutorDTO() {
     }
 
-    public TutorDTO(String nombre, Parentesco parentesco, String telefono, String direccion, String correo) {
+    public TutorDTO(String nombre, String telefono, String direccion, String correo) {
         this.nombre = nombre;
-        this.parentesco = parentesco;
         this.telefono = telefono;
         this.direccion = direccion;
         this.correo = correo;

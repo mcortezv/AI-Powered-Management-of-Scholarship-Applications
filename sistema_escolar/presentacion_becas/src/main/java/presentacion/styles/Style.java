@@ -18,8 +18,13 @@ public class Style {
     public static final Color TEXT_COLOR = DARK_MODE ? new Color(235, 235, 235) : new Color(33, 33, 33);
     public static final Color INPUT_COLOR = DARK_MODE ? new Color(55, 55, 58) : new Color(255, 255, 255);
 
-    public static final Font TITLE_FONT = new Font("Segoe UI", Font.BOLD, 16);
-    public static final Font LABEL_FONT = new Font("Segoe UI", Font.PLAIN, 11);
-    public static final Font INPUT_FONT = new Font("Segoe UI", Font.PLAIN, 14);
-    public static final Font BUTTON_FONT = new Font("Segoe UI", Font.BOLD, 14);
+    public static final Font TITLE_FONT = new Font("Segoe UI", Font.BOLD, 70);
+    public static final Font LABEL_FONT = new Font("Segoe UI", Font.PLAIN, 25);
+    public static final Font INPUT_FONT = new Font("Segoe UI", Font.PLAIN, 18);
+    public static final Font BUTTON_FONT = new Font("Segoe UI", Font.BOLD, 18);
+
+    public static final int TOP_ESPACIO = 20;
+    public static final int TITULO_ESPACIO = 50;
+    public static final int LBL_ESPACIO = 30;
+    public static final int BLOQUE_ESPACIO = 40;
 }
