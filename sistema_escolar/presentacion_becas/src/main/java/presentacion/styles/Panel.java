@@ -10,29 +10,27 @@ import java.awt.*;
 
 /**
  *
- * @author david
+ * @author Cortez, Manuel;
  */
 public abstract class Panel extends JPanel {
     protected MainFrame mainFrame;
     protected JPanel centralPanel;
     protected JPanel southPanel;
-    protected java.awt.Button btnBack;
+    protected Button btnBack;
     protected NorthPanel northPanel;
 
     public Panel(MainFrame frame, NorthPanel northPanel) {
-        setBackground(Style.BACKGROUND_COLOR);
         mainFrame = frame;
         this.northPanel = northPanel;
-        btnBack = new java.awt.Button("Volver");
+        btnBack = new Button("Volver");
         setLayout(new BorderLayout());
         centralPanel = new JPanel();
         southPanel = new JPanel();
-        centralPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        centralPanel.setPreferredSize(new Dimension(600, 500));
-        centralPanel.setBorder(BorderFactory.createEmptyBorder(40, 170, 0, 150));
+        centralPanel.setPreferredSize(new Dimension(1700, 800));
+        centralPanel.setBackground(Color.RED);
         southPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        southPanel.setPreferredSize(new Dimension(500, 50));
-        southPanel.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 0));
+        southPanel.setPreferredSize(new Dimension(1700, 100));
+        southPanel.setBorder(BorderFactory.createEmptyBorder(0, 30, 0, 0));
         centralPanel.setBackground(Color.WHITE);
         southPanel.setBackground(Color.WHITE);
 
