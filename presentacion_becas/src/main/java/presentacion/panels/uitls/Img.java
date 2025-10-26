@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package presentacion.panels.uitls;
+import presentacion.styles.Style;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -13,16 +15,21 @@ import java.awt.*;
 public class Img extends JPanel {
     private final Image imagen;
 
-    public Img() {
-        setSize(new Dimension(300, 300));
-        setMaximumSize(new Dimension(300, 300));
-        this.imagen = new ImageIcon("src/main/java/presentacion/assets/check.png").getImage();
+    public Img(String path) {
+        this.imagen = new ImageIcon(
+                getClass().getResource(path)
+        ).getImage();
     }
 
     @Override
     protected void paintComponent(Graphics g) {
+        setBackground(Style.PANEL_COLOR);
         super.paintComponent(g);
-        g.setColor(Color.LIGHT_GRAY);
-        g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
+        Graphics2D g2d = (Graphics2D) g.create();
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        g2d.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
+        g2d.dispose();
     }
 }

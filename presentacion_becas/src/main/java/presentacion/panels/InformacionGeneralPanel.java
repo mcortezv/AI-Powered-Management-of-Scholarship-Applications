@@ -68,7 +68,6 @@ public class InformacionGeneralPanel extends Panel {
         btnContinuar = new Button("Aceptar");
         btnContinuar.setAlignmentX(Component.CENTER_ALIGNMENT);
         centralPanel.add(btnContinuar);
-        centralPanel.setOpaque(false);
 
     }
 
