@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package presentacion.panels;
-
 import controlNavegacion.ControlNavegacion;
 import java.awt.Color;
 import java.awt.Component;
@@ -11,87 +10,85 @@ import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.BoxLayout;
 import javax.swing.Box;
-import javax.swing.JPanel;
-
 import presentacion.MainFrame;
-import presentacion.styles.Button;
-import presentacion.styles.Label;
-import presentacion.styles.Panel;
-import presentacion.styles.TextField;
+import presentacion.styles.*;
 import dto.SolicitudBecasDisponiblesDTO;
-import javax.swing.JComboBox;
+import presentacion.styles.ComboBox;
 
 /**
  *
  * @author janethcristinagalvanquinonez
  */
 public class InformGeneral extends Panel {
-    
-    SolicitudBecasDisponiblesDTO solicitudDTO;
-    ControlNavegacion control;
-
+    private SolicitudBecasDisponiblesDTO solicitudDTO;
+    private ControlNavegacion control;
     private static final float fontTitulo = 70f;
     private static final float fontLabel = 25f;
     private static final int espacioTitulo = 30;
     private static final int espacioLabelCampo = 20;
     private static final int espacioEntreBloques = 30;
     private static final int espacioFormTop = 100;
-    private static final int espacioFormBottom = 100;
-    Button botonSiguiente;
-    TextField campoPromedio;
-    JComboBox<String> campoCarga;
-    TextField campoIngreso;
-    private static final Dimension dimensionCampo = new Dimension(2000, 60);
-    private static final Dimension dimensionCombo= new Dimension(200,40);
+    private static final int espacioFormBottom = 50;
+    private Button botonSiguiente;
+    private TextField campoPromedio;
+    private ComboBox<String> campoCarga;
+    private TextField campoIngreso;
+    private static final Dimension dimensionCampo = new Dimension(700, 60);
+    private static final Dimension dimensionCombo = new Dimension(200, 40);
+
 
     public InformGeneral(MainFrame frame, NorthPanel northPanel) {
         super(frame, northPanel);
     }
 
     public void startComponents() {
-        central();
-        south();
-    }
-
-    private void central() {
-
         centralPanel.setLayout(new BoxLayout(centralPanel, BoxLayout.Y_AXIS));
+        centralPanel.add(Box.createVerticalStrut(espacioFormBottom));
 
         Label lblTitulo = new Label("Informacion General");
         lblTitulo.setAlignmentX(Component.CENTER_ALIGNMENT);
         lblTitulo.setFont(lblTitulo.getFont().deriveFont(Font.BOLD, fontTitulo));
-
         centralPanel.add(lblTitulo);
-        centralPanel.add(Box.createVerticalStrut(espacioTitulo));
-
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        panel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        centralPanel.add(Box.createVerticalStrut(espacioFormTop));
 
         Label lblPromedio = crearLabel("Qué promedio llevas actualmente?");
-        campoPromedio = crearCampo();
-        agregarAlPanel(panel, lblPromedio, campoPromedio, espacioEntreBloques);
+        lblPromedio.setAlignmentX(Component.CENTER_ALIGNMENT);
+        campoPromedio = new TextField(1);
+        campoPromedio.setMaximumSize(dimensionCampo);
+        campoPromedio.setCaretColor(Color.BLACK);
+        campoPromedio.setAlignmentX(Component.CENTER_ALIGNMENT);
+        centralPanel.add(lblPromedio);
+        centralPanel.add(Box.createVerticalStrut(espacioEntreBloques));
+        centralPanel.add(campoPromedio);
+        centralPanel.add(Box.createVerticalStrut(espacioEntreBloques));
+
+
         Label lblCarga = crearLabel("Estás cursando la carga completa?");
-        String[] opciones= {"Si", "No"};
-        campoCarga= new JComboBox<>(opciones);
+        lblCarga.setAlignmentX(Component.CENTER_ALIGNMENT);
+        String[] opciones = {"Si", "No"};
+        campoCarga = new ComboBox<>(opciones);
         campoCarga.setMaximumSize(dimensionCombo);
         campoCarga.setFont(campoCarga.getFont().deriveFont(fontLabel));
-        panel.add(lblCarga);
-        panel.add(Box.createVerticalStrut(espacioLabelCampo));
-        panel.add(campoCarga);
-        panel.add(Box.createVerticalStrut(espacioEntreBloques));
-        
-        
-                
-        Label lblIngreso = crearLabel("Cuál es el ingreso mensual total de tu familia?");
-        campoIngreso = crearCampo();
-        agregarAlPanel(panel, lblIngreso, campoIngreso, espacioFormBottom);
-       
-     
+        centralPanel.add(lblCarga);
+        centralPanel.add(Box.createVerticalStrut(espacioLabelCampo));
+        centralPanel.add(campoCarga);
+        centralPanel.add(Box.createVerticalStrut(espacioEntreBloques));
 
-        panel.setOpaque(false);
-        centralPanel.add(Box.createVerticalStrut(espacioFormTop));
-        centralPanel.add(panel);
+        Label lblIngreso = crearLabel("Cuál es el ingreso mensual total de tu familia?");
+        campoIngreso = new TextField(1);
+        campoIngreso.setMaximumSize(dimensionCampo);
+        campoIngreso.setCaretColor(Color.BLACK);
+        lblIngreso.setAlignmentX(Component.CENTER_ALIGNMENT);
+        centralPanel.add(lblIngreso);
+        centralPanel.add(Box.createVerticalStrut(espacioLabelCampo));
+        centralPanel.add(campoIngreso);
+        centralPanel.add(Box.createVerticalStrut(espacioEntreBloques));
+
+        botonSiguiente = new Button("Aceptar");
+        botonSiguiente.setAlignmentX(Component.CENTER_ALIGNMENT);
+        centralPanel.add(botonSiguiente);
+        centralPanel.setOpaque(false);
+        centralPanel.add(Box.createVerticalStrut(espacioFormBottom));
 
     }
 
@@ -101,43 +98,18 @@ public class InformGeneral extends Panel {
         return label;
     }
 
-    private TextField crearCampo() {
-        TextField campoTexto = new TextField(1);
-        campoTexto.setMaximumSize(dimensionCampo);
-        campoTexto.setCaretColor(Color.BLACK);
-        return campoTexto;
-    }
-
-    private void agregarAlPanel(JPanel panel, Label label, TextField textField, int espacio) {
-        panel.add(label);
-        panel.add(Box.createVerticalStrut(espacioLabelCampo));
-        panel.add(textField);
-        panel.add(Box.createVerticalStrut(espacio));
-    }
-
-    private void south() {
-        botonSiguiente = new Button("Aceptar");
-        southPanel.add(botonSiguiente);
-    }
-
     private void events() {
-        botonSiguiente.addActionListener(e ->{
-            Double promedio= Double.parseDouble((campoPromedio.getText()));
-            boolean carga;
-            if(campoCarga.getSelectedItem().equals("Si")){
-                carga= true;
+        botonSiguiente.addActionListener(e -> {
+                Double promedio = Double.parseDouble((campoPromedio.getText()));
+                boolean carga;
+                if (campoCarga.getSelectedItem().equals("Si")) {
+                    carga = true;
+                } else {
+                    carga = false;
+                }
+                Double ingreso = Double.parseDouble(campoIngreso.getText());
+                solicitudDTO = new SolicitudBecasDisponiblesDTO(promedio, carga, ingreso);
             }
-            else{
-                carga= false;
-            }
-            Double ingreso= Double.parseDouble(campoIngreso.getText());
-            solicitudDTO= new SolicitudBecasDisponiblesDTO(promedio, carga, ingreso);
-           
-       
-            
-        }
         );
-
     }
-
 }
