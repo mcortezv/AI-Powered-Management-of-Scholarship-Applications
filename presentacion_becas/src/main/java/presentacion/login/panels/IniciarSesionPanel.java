@@ -1,7 +1,5 @@
-package presentacion.panels;
-import presentacion.MainFrame;
-import presentacion.panels.uitls.Img;
-import presentacion.panels.uitls.NorthPanel;
+package presentacion.login.panels;
+import presentacion.login.MainFrame;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
 import presentacion.styles.Panel;
@@ -16,7 +14,7 @@ import java.awt.*;
  */
 public class IniciarSesionPanel extends Panel {
     private Label titulo;
-    private Img img;
+    private ImgPanel img;
     private Label lblUsuario;
     private TextField txtUsuario;
     private Label lblPassword;
@@ -37,8 +35,8 @@ public class IniciarSesionPanel extends Panel {
         centralPanel.add(titulo);
         centralPanel.add(Box.createVerticalStrut(Style.TITULO_ESPACIO));
 
-        img = new Img("/assets/usuario.png");
-        img.setMaximumSize(new Dimension(200, 250));
+        img = new ImgPanel("/assets/usuario.png");
+        img.setMaximumSize(new Dimension(215, 300));
         img.setAlignmentY(CENTER_ALIGNMENT);
         centralPanel.add(img);
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
@@ -48,20 +46,27 @@ public class IniciarSesionPanel extends Panel {
         lblUsuario.setAlignmentX(Component.CENTER_ALIGNMENT);
         centralPanel.add(lblUsuario);
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
+        txtUsuario.setMaximumSize(new Dimension(400, 60));
         centralPanel.add(txtUsuario);
-        centralPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
+        centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
 
         lblPassword = new Label("Contraseña");
         txtPassword = new TextField(1);
         lblPassword.setAlignmentX(Component.CENTER_ALIGNMENT);
         centralPanel.add(lblPassword);
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
+        txtPassword.setMaximumSize(new Dimension(400, 60));
         centralPanel.add(txtPassword);
-        centralPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
+        centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
 
         btnIniciarSesion = new Button("Iniciar Sesión");
         btnIniciarSesion.setAlignmentX(CENTER_ALIGNMENT);
         centralPanel.add(btnIniciarSesion);
 
+
+        btnIniciarSesion.addActionListener(e -> {
+            mainFrame.showPanel(mainFrame.hubPanel);
+            mainFrame.setMenuVisible(true);
+        });
     }
 }

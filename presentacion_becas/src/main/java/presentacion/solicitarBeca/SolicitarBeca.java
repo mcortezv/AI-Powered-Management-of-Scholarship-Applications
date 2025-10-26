@@ -2,30 +2,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package presentacion;
-import java.awt.BorderLayout;
-import javax.swing.*;
+package presentacion.solicitarBeca;
+import presentacion.login.panels.HubPanel;
+import presentacion.login.panels.ImgPanel;
+import presentacion.login.panels.NorthPanel;
+import presentacion.solicitarBeca.panels.InformacionGeneralPanel;
 
-import presentacion.panels.*;
-import presentacion.panels.uitls.Img;
-import presentacion.panels.uitls.NorthPanel;
+import javax.swing.*;
+import java.awt.*;
 
 /**
  *
  * @author Cortez, Manuel;
  */
-public final class MainFrame extends JFrame {
+public final class SolicitarBeca extends JFrame {
     private NorthPanel northPanel;
     private JPanel centralPanel;
-    private Img mainPanel;
-    private IniciarSesionPanel iniciarSesionPanel;
+    private ImgPanel mainPanel;
     private InformacionGeneralPanel informacionGeneralPanel;
-    private HistorialAcademicoPanel historialAcademicoPanel;
-    private ConfirmacionPanel confirmacionPanel;
-    
-    
-    public MainFrame() {
-        setTitle("Sistema de Aplicaciones Escolares");
+    public HubPanel hubPanel;
+
+
+
+    public SolicitarBeca() {
+        setTitle("Solicitar Beca");
         setResizable(false);
         setSize(1500,900);
         setLocationRelativeTo(null);
@@ -33,19 +33,17 @@ public final class MainFrame extends JFrame {
         northPanel= new NorthPanel();
         centralPanel = new JPanel();
 
-
         informacionGeneralPanel = new InformacionGeneralPanel(this, northPanel);
-        historialAcademicoPanel= new HistorialAcademicoPanel(this, northPanel);
-        confirmacionPanel= new ConfirmacionPanel(this, northPanel);
-        iniciarSesionPanel = new IniciarSesionPanel(this, northPanel);
+        hubPanel = new HubPanel();
 
         add(northPanel, BorderLayout.NORTH);
         add(centralPanel, BorderLayout.CENTER);
 
-        showPanel(iniciarSesionPanel);
+        showPanel(informacionGeneralPanel);
+        northPanel.setVisible(false);
     }
 
-    private void showPanel(JPanel nuevoPanel) {
+    public void showPanel(JPanel nuevoPanel) {
         centralPanel.removeAll();
         centralPanel.add(nuevoPanel, BorderLayout.CENTER);
         centralPanel.revalidate();
@@ -54,5 +52,9 @@ public final class MainFrame extends JFrame {
 
     public void showMainPanel() {
         showPanel(mainPanel);
+    }
+
+    public void setMenuVisible(boolean visible) {
+        northPanel.setVisible(visible);
     }
 }

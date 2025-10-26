@@ -2,9 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package presentacion.styles;
-import presentacion.login.MainFrame;
+package presentacion.solicitarBeca.panels;
+
 import presentacion.login.panels.NorthPanel;
+import presentacion.solicitarBeca.SolicitarBeca;
+import presentacion.styles.Button;
+import presentacion.styles.Style;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,16 +16,14 @@ import java.awt.*;
  *
  * @author Cortez, Manuel;
  */
-public abstract class Panel extends JPanel {
-    protected MainFrame mainFrame;
+public abstract class PanelSolicitarBeca extends JPanel {
+    protected SolicitarBeca mainFrame;
     protected JPanel centralPanel;
     protected JPanel southPanel;
-    protected Button btnBack;
-    protected NorthPanel northPanel;
+    protected presentacion.styles.Button btnBack;
 
-    public Panel(MainFrame frame, NorthPanel northPanel) {
+    public PanelSolicitarBeca(SolicitarBeca frame, NorthPanel northPanel) {
         mainFrame = frame;
-        this.northPanel = northPanel;
         btnBack = new Button("Volver");
         setLayout(new BorderLayout());
         centralPanel = new JPanel();
@@ -41,9 +42,6 @@ public abstract class Panel extends JPanel {
         southPanel.add(btnBack);
 
         btnBack.addActionListener(e -> frame.showMainPanel());
-        btnBack.addActionListener(e -> {
-           this.northPanel.erraseRectangle();
-        });
 
     }
 
