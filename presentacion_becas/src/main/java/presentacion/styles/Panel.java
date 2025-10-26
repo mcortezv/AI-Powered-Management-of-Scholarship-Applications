@@ -4,7 +4,7 @@
  */
 package presentacion.styles;
 import presentacion.MainFrame;
-import presentacion.panels.NorthPanel;
+import presentacion.panels.uitls.NorthPanel;
 import javax.swing.*;
 import java.awt.*;
 
@@ -27,7 +27,8 @@ public abstract class Panel extends JPanel {
         centralPanel = new JPanel();
         southPanel = new JPanel();
         centralPanel.setPreferredSize(new Dimension(1700, 800));
-        centralPanel.setBackground(Color.RED);
+        centralPanel.setLayout(new BoxLayout(centralPanel, BoxLayout.Y_AXIS));
+        centralPanel.add(Box.createVerticalStrut(50));
         southPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         southPanel.setPreferredSize(new Dimension(1700, 100));
         southPanel.setBorder(BorderFactory.createEmptyBorder(0, 30, 0, 0));

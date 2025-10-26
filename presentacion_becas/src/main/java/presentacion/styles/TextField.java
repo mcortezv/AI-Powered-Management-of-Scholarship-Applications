@@ -17,7 +17,9 @@ public class TextField extends JTextField {
         setFont(Style.INPUT_FONT);
         setBackground(Style.INPUT_COLOR);
         setForeground(Style.TEXT_COLOR);
+        setCaretColor(Color.BLACK);
         setCaretColor(Color.WHITE);
+        setMaximumSize(new Dimension(700, 60));
         setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(new Color(90, 90, 90)),
                 BorderFactory.createEmptyBorder(8, 10, 8, 10)

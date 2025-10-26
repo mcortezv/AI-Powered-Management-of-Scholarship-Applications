@@ -7,6 +7,8 @@ import java.awt.BorderLayout;
 import javax.swing.*;
 
 import presentacion.panels.*;
+import presentacion.panels.uitls.Img;
+import presentacion.panels.uitls.NorthPanel;
 
 /**
  *
@@ -15,10 +17,10 @@ import presentacion.panels.*;
 public final class MainFrame extends JFrame {
     private NorthPanel northPanel;
     private JPanel centralPanel;
-    private MainPanel mainPanel;
-    private InformGeneral panelInformGeneral;
-    private FrmHistorialAcademico frmHistorialAcademico;
-    private Confirmacion confirmacion;
+    private Img mainPanel;
+    private InformacionGeneralPanel informacionGeneralPanel;
+    private HistorialAcademicoPanel historialAcademicoPanel;
+    private ConfirmacionPanel confirmacionPanel;
     
     
     public MainFrame() {
@@ -26,19 +28,18 @@ public final class MainFrame extends JFrame {
         setSize(1700,956);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
-
         northPanel= new NorthPanel();
         centralPanel = new JPanel();
 
-        mainPanel = new MainPanel();
-        panelInformGeneral = new InformGeneral(this, northPanel);
-        frmHistorialAcademico= new FrmHistorialAcademico(this, northPanel);
-        confirmacion= new Confirmacion(this, northPanel);
 
+        informacionGeneralPanel = new InformacionGeneralPanel(this, northPanel);
+        historialAcademicoPanel= new HistorialAcademicoPanel(this, northPanel);
+        confirmacionPanel= new ConfirmacionPanel(this, northPanel);
 
         add(northPanel, BorderLayout.NORTH);
         add(centralPanel, BorderLayout.CENTER);
-        showPanel(panelInformGeneral);
+
+        showPanel(confirmacionPanel);
     }
 
     private void showPanel(JPanel nuevoPanel) {
@@ -51,5 +52,4 @@ public final class MainFrame extends JFrame {
     public void showMainPanel() {
         showPanel(mainPanel);
     }
-
 }
