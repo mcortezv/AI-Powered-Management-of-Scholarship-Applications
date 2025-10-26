@@ -6,19 +6,10 @@
         <artifactId>Managing-School-Applications-and-Scholarships-with-Artificial-Intelligence</artifactId>
         <version>1.0</version>
     </parent>
-    <artifactId>dto_negocios</artifactId>
+    <artifactId>objetos_negocio</artifactId>
     <packaging>jar</packaging>
-
     <properties>
         <maven.compiler.release>23</maven.compiler.release>
-        <exec.mainClass>dto_negocios.Dto_negocios</exec.mainClass>
+        <exec.mainClass>Objetos_negocio</exec.mainClass>
     </properties>
-    <dependencies>
-        <dependency>
-            <groupId>mcortezv</groupId>
-            <artifactId>negocios_solicitarBeca</artifactId>
-            <version>1.0</version>
-            <scope>compile</scope>
-        </dependency>
-    </dependencies>
 </project>

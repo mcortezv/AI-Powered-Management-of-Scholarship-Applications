@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package presentacion;
+package presentacion.panels;
 
 import controlNavegacion.ControlNavegacion;
 import java.awt.Color;
@@ -11,9 +11,9 @@ import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.BoxLayout;
 import javax.swing.Box;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import presentacion.panels.NorthPanel;
+
+import presentacion.MainFrame;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
 import presentacion.styles.Panel;

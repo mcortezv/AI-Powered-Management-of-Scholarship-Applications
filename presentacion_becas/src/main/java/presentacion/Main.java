@@ -8,7 +8,7 @@ package presentacion;
  *
  * @author mdjes
  */
-public class Presentacion_becas {
+public class Main {
 
     public static void main(String[] args) {
         
