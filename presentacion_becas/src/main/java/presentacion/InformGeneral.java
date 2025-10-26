@@ -4,6 +4,7 @@
  */
 package presentacion;
 
+import controlNavegacion.ControlNavegacion;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -17,12 +18,17 @@ import presentacion.styles.Button;
 import presentacion.styles.Label;
 import presentacion.styles.Panel;
 import presentacion.styles.TextField;
+import dto.SolicitudBecasDisponiblesDTO;
+import javax.swing.JComboBox;
 
 /**
  *
  * @author janethcristinagalvanquinonez
  */
 public class InformGeneral extends Panel {
+    
+    SolicitudBecasDisponiblesDTO solicitudDTO;
+    ControlNavegacion control;
 
     private static final float fontTitulo = 70f;
     private static final float fontLabel = 25f;
@@ -33,9 +39,10 @@ public class InformGeneral extends Panel {
     private static final int espacioFormBottom = 100;
     Button botonSiguiente;
     TextField campoPromedio;
-    TextField campoCarga;
+    JComboBox<String> campoCarga;
     TextField campoIngreso;
     private static final Dimension dimensionCampo = new Dimension(2000, 60);
+    private static final Dimension dimensionCombo= new Dimension(200,40);
 
     public InformGeneral(MainFrame frame, NorthPanel northPanel) {
         super(frame, northPanel);
@@ -63,14 +70,25 @@ public class InformGeneral extends Panel {
 
         Label lblPromedio = crearLabel("Qué promedio llevas actualmente?");
         campoPromedio = crearCampo();
+        agregarAlPanel(panel, lblPromedio, campoPromedio, espacioEntreBloques);
         Label lblCarga = crearLabel("Estás cursando la carga completa?");
-        campoCarga = crearCampo();
+        String[] opciones= {"Si", "No"};
+        campoCarga= new JComboBox<>(opciones);
+        campoCarga.setMaximumSize(dimensionCombo);
+        campoCarga.setFont(campoCarga.getFont().deriveFont(fontLabel));
+        panel.add(lblCarga);
+        panel.add(Box.createVerticalStrut(espacioLabelCampo));
+        panel.add(campoCarga);
+        panel.add(Box.createVerticalStrut(espacioEntreBloques));
+        
+        
+                
         Label lblIngreso = crearLabel("Cuál es el ingreso mensual total de tu familia?");
         campoIngreso = crearCampo();
-
-        agregarAlPanel(panel, lblPromedio, campoPromedio, espacioEntreBloques);
-        agregarAlPanel(panel, lblCarga, campoCarga, espacioEntreBloques);
         agregarAlPanel(panel, lblIngreso, campoIngreso, espacioFormBottom);
+       
+     
+
         panel.setOpaque(false);
         centralPanel.add(Box.createVerticalStrut(espacioFormTop));
         centralPanel.add(panel);
@@ -104,9 +122,18 @@ public class InformGeneral extends Panel {
 
     private void events() {
         botonSiguiente.addActionListener(e ->{
-            String promedio= campoPromedio.getText();
-            String carga= campoCarga.getText();
-            String ingreso= campoIngreso.getText();
+            Double promedio= Double.parseDouble((campoPromedio.getText()));
+            boolean carga;
+            if(campoCarga.getSelectedItem().equals("Si")){
+                carga= true;
+            }
+            else{
+                carga= false;
+            }
+            Double ingreso= Double.parseDouble(campoIngreso.getText());
+            solicitudDTO= new SolicitudBecasDisponiblesDTO(promedio, carga, ingreso);
+           
+       
             
         }
         );
