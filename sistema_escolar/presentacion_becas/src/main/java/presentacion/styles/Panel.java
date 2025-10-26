@@ -26,14 +26,13 @@ public abstract class Panel extends JPanel {
         setLayout(new BorderLayout());
         centralPanel = new JPanel();
         southPanel = new JPanel();
-        centralPanel.setPreferredSize(new Dimension(1700, 800));
+        centralPanel.setPreferredSize(new Dimension(1500, 750));
         centralPanel.setLayout(new BoxLayout(centralPanel, BoxLayout.Y_AXIS));
-        centralPanel.add(Box.createVerticalStrut(50));
         southPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        southPanel.setPreferredSize(new Dimension(1700, 100));
+        southPanel.setPreferredSize(new Dimension(1500, 100));
         southPanel.setBorder(BorderFactory.createEmptyBorder(0, 30, 0, 0));
-        centralPanel.setBackground(Color.WHITE);
-        southPanel.setBackground(Color.WHITE);
+        centralPanel.setBackground(Style.PANEL_COLOR);
+        southPanel.setBackground(Style.PANEL_COLOR);
 
         startComponents();
         add(centralPanel, BorderLayout.CENTER);

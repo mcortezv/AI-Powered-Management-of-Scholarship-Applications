@@ -25,7 +25,8 @@ public final class MainFrame extends JFrame {
     
     public MainFrame() {
         setTitle("Sistema de Aplicaciones Escolares");
-        setSize(1700,956);
+        setResizable(false);
+        setSize(1500,900);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
         northPanel= new NorthPanel();
