@@ -66,8 +66,16 @@ public class IniciarSesionPanel extends Panel {
 
 
         btnIniciarSesion.addActionListener(e -> {
-            mainFrame.showPanel(mainFrame.hubPanel);
-            mainFrame.setMenuVisible(true);
+            String usuario = txtUsuario.getText();
+            char[] contraseña = txtPassword.getPassword();
+            try{
+                //aqui se debe validar
+                mainFrame.showPanel(mainFrame.hubPanel);
+                mainFrame.setMenuVisible(true);
+            } finally{
+                java.util.Arrays.fill(contraseña, '\0');
+            }
+            
         });
     }
 }
