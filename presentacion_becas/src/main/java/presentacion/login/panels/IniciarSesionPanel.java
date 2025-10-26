@@ -7,6 +7,7 @@ import presentacion.styles.Style;
 import presentacion.styles.TextField;
 import javax.swing.*;
 import java.awt.*;
+import presentacion.styles.PasswordField;
 
 /**
  *
@@ -18,7 +19,7 @@ public class IniciarSesionPanel extends Panel {
     private Label lblUsuario;
     private TextField txtUsuario;
     private Label lblPassword;
-    private TextField txtPassword;
+    private PasswordField txtPassword;
     private Button btnIniciarSesion;
 
     public IniciarSesionPanel(MainFrame frame, NorthPanel northPanel) {
@@ -51,7 +52,7 @@ public class IniciarSesionPanel extends Panel {
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
 
         lblPassword = new Label("Contraseña");
-        txtPassword = new TextField(1);
+        txtPassword = new PasswordField(1);
         lblPassword.setAlignmentX(Component.CENTER_ALIGNMENT);
         centralPanel.add(lblPassword);
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
