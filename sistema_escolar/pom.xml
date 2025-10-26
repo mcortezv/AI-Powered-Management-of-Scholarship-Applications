@@ -9,6 +9,7 @@
         <module>presentacion_becas</module>
         <module>dto_negocios</module>
         <module>negocios_solicitarBeca</module>
+        <module>objetos_negocio</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

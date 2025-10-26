@@ -5,7 +5,8 @@
 package presentacion;
 import java.awt.BorderLayout;
 import javax.swing.*;
-import presentacion.panels.MainPanel;
+
+import presentacion.panels.InformGeneral;
 import presentacion.panels.NorthPanel;
 
 /**
