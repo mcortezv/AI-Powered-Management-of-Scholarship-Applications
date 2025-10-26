@@ -18,6 +18,7 @@ public final class MainFrame extends JFrame {
     private NorthPanel northPanel;
     private JPanel centralPanel;
     private Img mainPanel;
+    private IniciarSesionPanel iniciarSesionPanel;
     private InformacionGeneralPanel informacionGeneralPanel;
     private HistorialAcademicoPanel historialAcademicoPanel;
     private ConfirmacionPanel confirmacionPanel;
@@ -36,11 +37,12 @@ public final class MainFrame extends JFrame {
         informacionGeneralPanel = new InformacionGeneralPanel(this, northPanel);
         historialAcademicoPanel= new HistorialAcademicoPanel(this, northPanel);
         confirmacionPanel= new ConfirmacionPanel(this, northPanel);
+        iniciarSesionPanel = new IniciarSesionPanel(this, northPanel);
 
         add(northPanel, BorderLayout.NORTH);
         add(centralPanel, BorderLayout.CENTER);
 
-        showPanel(confirmacionPanel);
+        showPanel(iniciarSesionPanel);
     }
 
     private void showPanel(JPanel nuevoPanel) {
