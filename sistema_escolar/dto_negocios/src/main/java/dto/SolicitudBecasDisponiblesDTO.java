@@ -7,13 +7,13 @@ public class SolicitudBecasDisponiblesDTO {
 
 
    private double promedioActual;
-   private int cargaAcademica;
+   private boolean cargaAcademica;
    private double ingresoMensualFamilia;
 
     public SolicitudBecasDisponiblesDTO() {
     }
 
-    public SolicitudBecasDisponiblesDTO(double promedioActual, int cargaAcademica, double ingresoMensualFamilia) {
+    public SolicitudBecasDisponiblesDTO(double promedioActual, boolean cargaAcademica, double ingresoMensualFamilia) {
 
         this.promedioActual = promedioActual;
         this.cargaAcademica = cargaAcademica;
@@ -30,11 +30,11 @@ public class SolicitudBecasDisponiblesDTO {
         this.promedioActual = promedioActual;
     }
 
-    public int getCargaAcademica() {
+    public boolean getCargaAcademica() {
         return cargaAcademica;
     }
 
-    public void setCargaAcademica(int cargaAcademica) {
+    public void setCargaAcademica(boolean cargaAcademica) {
         this.cargaAcademica = cargaAcademica;
     }
 
