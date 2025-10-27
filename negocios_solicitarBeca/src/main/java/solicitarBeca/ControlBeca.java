@@ -9,10 +9,11 @@ import objetosNegocio.interfaces.IControlBeca;
 public class ControlBeca implements IControlBeca {
 
     @Override
-    public void iniciarSesion(String usuario, String contrasenia) throws Exception {
+    public boolean iniciarSesion(String usuario, String contrasenia) throws Exception {
         if(usuario == null || usuario.trim().isEmpty()){
             throw new Exception("algo salio mal");
         }
+        return true;
 
     }
 
