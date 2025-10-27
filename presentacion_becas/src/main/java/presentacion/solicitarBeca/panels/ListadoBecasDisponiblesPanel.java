@@ -25,7 +25,6 @@ import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.Button;
 import presentacion.styles.ComboBox;
 import presentacion.styles.Label;
-import presentacion.styles.Panel;
 import presentacion.styles.Style;
 
 /**
@@ -35,7 +34,7 @@ import presentacion.styles.Style;
 public class ListadoBecasDisponiblesPanel extends PanelSolicitarBeca{
     private Label titulo;
     private JScrollPane scroll;
-    private Panel lista;
+    private JPanel lista;
     private ComboBox<BecaDTO> ddlBecas;
     private Button btnSeleccionar;
     
@@ -53,7 +52,7 @@ public class ListadoBecasDisponiblesPanel extends PanelSolicitarBeca{
         centralPanel.add(titulo);
         centralPanel.add(Box.createVerticalStrut(Style.TITULO_ESPACIO));
         
-        lista = (Panel) new JPanel();
+        lista = new JPanel();
         lista.setOpaque(false);
         lista.setLayout(new BoxLayout(lista, BoxLayout.Y_AXIS));
 
