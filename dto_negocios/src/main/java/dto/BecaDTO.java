@@ -81,4 +81,9 @@ public class BecaDTO {
     public void setFechaResultados(LocalDate fechaResultados) {
         this.fechaResultados = fechaResultados;
     }
+    
+    @Override
+    public String toString(){
+        return nombre;
+    }
 }

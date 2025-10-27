@@ -3,9 +3,6 @@ package dto;
  * @author Escalante, Sebastian.
  */
 public class SolicitudBecasDisponiblesDTO {
-
-
-
    private double promedioActual;
    private boolean cargaAcademica;
    private double ingresoMensualFamilia;

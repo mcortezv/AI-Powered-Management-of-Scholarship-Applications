@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package presentacion.solicitarBeca;
+import dto.BecaDTO;
 import presentacion.login.panels.HubPanel;
 import presentacion.login.panels.ImgPanel;
 import presentacion.login.panels.NorthPanel;
@@ -10,6 +11,8 @@ import presentacion.solicitarBeca.panels.InformacionGeneralPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import presentacion.solicitarBeca.panels.DetalleBeca;
+import presentacion.solicitarBeca.panels.ListadoBecasDisponiblesPanel;
 
 /**
  *
@@ -20,6 +23,9 @@ public final class SolicitarBeca extends JFrame {
     private JPanel centralPanel;
     private ImgPanel mainPanel;
     private InformacionGeneralPanel informacionGeneralPanel;
+    private ListadoBecasDisponiblesPanel becasDisponiblesPanel;
+    private BecaDTO becaSeleccionada;
+    private DetalleBeca detalleBeca;
     public HubPanel hubPanel;
 
 
@@ -31,10 +37,12 @@ public final class SolicitarBeca extends JFrame {
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
         northPanel= new NorthPanel();
-        centralPanel = new JPanel();
+        centralPanel = new JPanel(new BorderLayout());
 
         informacionGeneralPanel = new InformacionGeneralPanel(this, northPanel);
+        becasDisponiblesPanel = new ListadoBecasDisponiblesPanel(this, northPanel);
         hubPanel = new HubPanel();
+        detalleBeca = new DetalleBeca(this, northPanel);
 
         add(northPanel, BorderLayout.NORTH);
         add(centralPanel, BorderLayout.CENTER);
@@ -56,5 +64,36 @@ public final class SolicitarBeca extends JFrame {
 
     public void setMenuVisible(boolean visible) {
         northPanel.setVisible(visible);
+    }
+    
+    public void showBecasDisponibles(java.util.List<BecaDTO> becas) {
+        becasDisponiblesPanel.setBecas(becas);
+        showPanel(becasDisponiblesPanel);
+        northPanel.setVisible(true);
+    }
+    
+    public void setBecaSeleccionada(BecaDTO beca) { 
+        this.becaSeleccionada = beca;
+    }
+    
+    public BecaDTO getBecaSeleccionada(){
+        return becaSeleccionada;
+    }
+    
+    public void mostrarDetalleBeca(BecaDTO beca){
+        
+        
+        
+        
+        
+        JOptionPane.showMessageDialog(this,
+                "Seleccionaste: " + (beca != null ? beca.getNombre() : "(sin beca)"),
+                "Beca seleccionada",
+                JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public void showSiguiente() {
+        mostrarDetalleBeca(getBecaSeleccionada());
+        showPanel(detalleBeca);
     }
 }
