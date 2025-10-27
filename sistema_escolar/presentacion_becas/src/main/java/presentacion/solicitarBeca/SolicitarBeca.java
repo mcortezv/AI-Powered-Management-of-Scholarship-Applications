@@ -85,7 +85,8 @@ public final class SolicitarBeca extends JFrame {
         
         
         
-        
+        // ESTO ES NOMAS PARA Q CORRA, YA QUE ESTE LA DE DETALLES BECA SE
+        // DEBE DE QUITAR ESTO 
         JOptionPane.showMessageDialog(this,
                 "Seleccionaste: " + (beca != null ? beca.getNombre() : "(sin beca)"),
                 "Beca seleccionada",

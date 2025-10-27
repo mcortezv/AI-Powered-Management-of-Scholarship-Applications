@@ -72,7 +72,7 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
         btnContinuar.setAlignmentX(Component.CENTER_ALIGNMENT);
         centralPanel.add(btnContinuar);
 
-        
+        events();
     }
 
     private void events() {
