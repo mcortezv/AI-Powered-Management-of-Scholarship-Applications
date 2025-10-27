@@ -8,7 +8,6 @@
     <modules>
         <module>presentacion_becas</module>
         <module>dto_negocios</module>
-        <module>objetos_negocio</module>
         <module>negocios_solicitarBeca</module>
         <module>objetos_negocio</module>
     </modules>

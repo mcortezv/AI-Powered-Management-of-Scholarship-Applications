@@ -1,0 +1,27 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package implementacion;
+
+import dto.SolicitudBecasDisponiblesDTO;
+import dto.SolicitudBecasDisponiblesResponseDTO;
+import gestor.GestorSolicitud;
+import interfaz.IManejadorSolicitud;
+
+/**
+ *
+ * @author janethcristinagalvanquinonez
+ */
+public class ManejadorSolicitud implements IManejadorSolicitud {
+    private GestorSolicitud gestor;
+    
+    public ManejadorSolicitud(GestorSolicitud gestor){
+        this.gestor= gestor;
+    }
+    
+    public SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO){
+        return gestor.obtenerBecasDisponibles(solicitudDTO);
+        
+    }
+}

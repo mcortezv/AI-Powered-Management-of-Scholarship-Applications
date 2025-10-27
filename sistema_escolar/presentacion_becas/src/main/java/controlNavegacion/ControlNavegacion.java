@@ -4,6 +4,9 @@
  */
 package controlNavegacion;
 
+import dto.SolicitudBecasDisponiblesDTO;
+import dto.SolicitudBecasDisponiblesResponseDTO;
+import interfaz.IManejadorSolicitud;
 import presentacion.login.panels.IniciarSesionPanel;
 import presentacion.solicitarBeca.panels.ConfirmacionPanel;
 import presentacion.solicitarBeca.panels.HistorialAcademicoPanel;
@@ -16,6 +19,16 @@ import presentacion.solicitarBeca.panels.InformacionGeneralPanel;
  * @author janethcristinagalvanquinonez
  */
 public class ControlNavegacion {
+    
+    IManejadorSolicitud manejador;
+    
+    public ControlNavegacion(IManejadorSolicitud manejador){
+        this.manejador= manejador;
+    }
+    
+    public SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO){
+        return manejador.obtenerBecasDisponibles(solicitudDTO);
+    }
 //    private static ControlNavegacion instancia;
 //    
 //    private IniciarSesionPanel iniciarSesion;
