@@ -4,6 +4,8 @@
  */
 package presentacion.solicitarBeca.panels;
 import controlNavegacion.ControlNavegacion;
+import dto.BecaDTO;
+import dto.RequisitosDTO;
 import java.awt.Component;
 import javax.swing.Box;
 
@@ -70,7 +72,7 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
         btnContinuar.setAlignmentX(Component.CENTER_ALIGNMENT);
         centralPanel.add(btnContinuar);
 
-
+        
     }
 
     private void events() {
@@ -84,7 +86,27 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
                 }
                 Double ingreso = Double.parseDouble(campoIngreso.getText());
                 solicitudDTO = new SolicitudBecasDisponiblesDTO(promedio, carga, ingreso);
+                
+                java.util.List<BecaDTO> becasMock = crearMockBecas();
+                
+                mainFrame.showBecasDisponibles(becasMock);
+                mainFrame.setMenuVisible(true);
             }
         );
     }
+    
+    private java.util.List<BecaDTO> crearMockBecas() {
+        java.time.LocalDate ahora = java.time.LocalDate.now();
+        return java.util.List.of(
+            new BecaDTO(1,"Apoyo Económico","Moisés Vázquez Gudiño","2025-2",50,
+                new RequisitosDTO(7.0,12000,30,50,30,false,true), ahora.plusMonths(1)),
+            new BecaDTO(2,"Excelencia","Beca Ara","2025-2",20,
+                new RequisitosDTO(9.0,999999,10,70,10,false,false), ahora.plusMonths(1)),
+            new BecaDTO(3,"Promedio","Fundación Espinoza Rodríguez","2025-2",40,
+                new RequisitosDTO(8.0,15000,20,60,20,false,false), ahora.plusMonths(1)),
+            new BecaDTO(4,"Corporativa","Constellation Brands","2025-2",15,
+                new RequisitosDTO(8.5,20000,15,70,15,true,false), ahora.plusMonths(1))
+        );
+    }
 }
+    
