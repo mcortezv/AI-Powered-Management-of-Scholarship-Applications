@@ -4,15 +4,13 @@
  */
 package interfaz;
 
-import dto.SolicitudBecasDisponiblesDTO;
-import dto.SolicitudBecasDisponiblesResponseDTO;
+import dto.*;
 
 /**
  *
  * @author janethcristinagalvanquinonez
  */
 public interface IManejadorSolicitud {
-    
     public SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO);
     
 }

@@ -4,22 +4,23 @@
  */
 package controlNavegacion;
 
+import dto.SolicitudBecasDisponiblesDTO;
+import dto.SolicitudBecasDisponiblesResponseDTO;
+import dto.SolicitudDTO;
+import gestor.GestorSolicitud;
+import implementacion.ManejadorSolicitud;
+import interfaz.IManejadorSolicitud;
 import presentacion.login.MainFrame;
 import presentacion.login.panels.IniciarSesionPanel;
-import presentacion.login.panels.NorthPanel;
-import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.solicitarBeca.panels.*;
-
 
 /**
  *
  * @author janethcristinagalvanquinonez
  */
 public class ControlNavegacion {
-    private MainFrame mainFrame;
-    private NorthPanel northPanel;
-    private SolicitarBeca solicitarBeca;
-
+    IManejadorSolicitud manejador;
+    private SolicitudDTO solicitudEnCurso;
     private static ControlNavegacion instancia;
     private IniciarSesionPanel iniciarSesion;
     private InformacionGeneralPanel infoGeneral;
@@ -31,19 +32,18 @@ public class ControlNavegacion {
     // aquí irá lo de los BOs
     // aaa
 
-    private ControlNavegacion(MainFrame mainFrame, NorthPanel northPanel, SolicitarBeca solicitarBeca){
-        // inicializarBOs();
-        this.mainFrame = mainFrame;
-        this.northPanel = northPanel;
-        this.solicitarBeca = solicitarBeca;
-        inicializarPantallas();
+    public ControlNavegacion(IManejadorSolicitud manejador){
+        this.manejador= manejador;
     }
 
-    public static ControlNavegacion getInstancia(MainFrame mainFrame, NorthPanel northPanel, SolicitarBeca solicitarBeca) {
-        if (instancia == null){
-            instancia = new ControlNavegacion(mainFrame,northPanel,solicitarBeca);
-        }
-        return instancia;
+    public SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO){
+        return manejador.obtenerBecasDisponibles(solicitudDTO);
+    }
+
+    private void inicializarBOs(){
+        GestorSolicitud gestorSolicitud = new GestorSolicitud();
+        this.subsistemaSolicitud = new ManejadorSolicitud(gestorSolicitud);
+        this.solicitudEnCurso = new SolicitudDTO();
     }
 
     private void inicializarPantallas() {
