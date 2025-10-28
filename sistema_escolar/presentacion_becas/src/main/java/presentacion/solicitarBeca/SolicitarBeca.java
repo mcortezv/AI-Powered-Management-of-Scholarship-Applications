@@ -62,6 +62,10 @@ public final class SolicitarBeca extends JFrame {
     public NorthPanel getNorthPanel() {
         return northPanel;
     }
+    
+    public JPanel getPanel(String key){
+        return panels.get(key);
+    }
 }
 
 

@@ -3,11 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controlNavegacion;
+import dto.BecaDTO;
 import dto.SolicitudBecasDisponiblesDTO;
 import dto.SolicitudBecasDisponiblesResponseDTO;
+import gestor.GestorSolicitud;
+import implementacion.ManejadorSolicitud;
 import interfaz.IManejadorSolicitud;
 import presentacion.login.MainFrame;
 import presentacion.solicitarBeca.SolicitarBeca;
+import presentacion.solicitarBeca.panels.ListadoBecasDisponiblesPanel;
 
 /**
  *
@@ -20,6 +24,7 @@ public class ControlNavegacion {
 
 
     public ControlNavegacion(){
+        this.manejador = new ManejadorSolicitud(new GestorSolicitud());
         mainFrame = new MainFrame(this);
         mainFrame.setVisible(true);
     }
@@ -37,6 +42,13 @@ public class ControlNavegacion {
     
     public SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO){
         return manejador.obtenerBecasDisponibles(solicitudDTO);
+    }
+    
+    public void mostrarBecasDisponibles(java.util.List<BecaDTO> becas) {
+        ListadoBecasDisponiblesPanel pnl = (ListadoBecasDisponiblesPanel) solicitarBeca.getPanel("listadoBecasDisponiblesPanel");
+        pnl.setBecas(becas);
+        solicitarBeca.showPanel("listadoBecasDisponiblesPanel");
+        solicitarBeca.getNorthPanel().setVisible(true);
     }
     
     

@@ -18,6 +18,7 @@ public class ManejadorSolicitud implements IManejadorSolicitud {
         this.gestor= gestor;
     }
 
+    @Override
     public SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO){
         return gestor.obtenerBecasDisponibles(solicitudDTO);
         

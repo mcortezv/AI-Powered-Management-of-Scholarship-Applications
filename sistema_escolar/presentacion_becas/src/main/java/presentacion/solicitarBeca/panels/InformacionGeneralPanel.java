@@ -72,34 +72,51 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
             controlNavegacion.main();
         });
 
-        btnContinuar.addActionListener(e -> {
-            mainFrame.showPanel("listadoBecasDisponiblesPanel");
-        });
+//        btnContinuar.addActionListener(e -> {
+//            mainFrame.showPanel("listadoBecasDisponiblesPanel");
+//        });
 
+        btnContinuar.addActionListener(e -> {
+        try {
+            double promedio = Double.parseDouble(campoPromedio.getText().trim().replace(',', '.'));
+            boolean carga   = "Si".equals(campoCarga.getSelectedItem());
+            double ingreso  = Double.parseDouble(campoIngreso.getText().trim().replace(',', '.'));
+
+            var dto  = new SolicitudBecasDisponiblesDTO(promedio, carga, ingreso);
+            var resp = controlNavegacion.obtenerBecasDisponibles(dto);
+
+            controlNavegacion.mostrarBecasDisponibles(resp.getBecas());
+
+        } catch (NumberFormatException ex) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Ingresa un número válido.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Error al obtener becas: " + ex.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    });
         //events();
     }
 
 
 
-    private void events() {
-        btnContinuar.addActionListener(e -> {
-                Double promedio = Double.parseDouble((campoPromedio.getText()));
-                boolean carga;
-                if (campoCarga.getSelectedItem().equals("Si")) {
-                    carga = true;
-                } else {
-                    carga = false;
-                }
-                Double ingreso = Double.parseDouble(campoIngreso.getText());
-                solicitudDTO = new SolicitudBecasDisponiblesDTO(promedio, carga, ingreso);
-                
-             //   java.util.List<BecaDTO> becasMock = crearMockBecas();
-                
-              //  mainFrame.showBecasDisponibles(becasMock);
-
-            }
-        );
-    }
+//    private void events() {
+//        btnContinuar.addActionListener(e -> {
+//                Double promedio = Double.parseDouble((campoPromedio.getText()));
+//                boolean carga;
+//                if (campoCarga.getSelectedItem().equals("Si")) {
+//                    carga = true;
+//                } else {
+//                    carga = false;
+//                }
+//                Double ingreso = Double.parseDouble(campoIngreso.getText());
+//                solicitudDTO = new SolicitudBecasDisponiblesDTO(promedio, carga, ingreso);
+//                
+//             //   java.util.List<BecaDTO> becasMock = crearMockBecas();
+//                
+//              //  mainFrame.showBecasDisponibles(becasMock);
+//
+//            }
+//        );
+//    }
     
 //    private java.util.List<BecaDTO> crearMockBecas() {
 //        java.time.LocalDate ahora = java.time.LocalDate.now();
