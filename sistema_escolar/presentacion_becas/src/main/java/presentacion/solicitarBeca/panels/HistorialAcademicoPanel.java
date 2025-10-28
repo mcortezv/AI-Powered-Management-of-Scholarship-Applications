@@ -76,7 +76,7 @@ public class HistorialAcademicoPanel extends PanelSolicitarBeca {
         centralPanel.add(botonSiguiente);
 
         btnBack.addActionListener(e -> {
-            mainFrame.showPanel("datosSolicitantePanel");
+            mainFrame.showPanel("datosDelSolicitantePanel");
         });
 
         botonSiguiente.addActionListener(e -> {
