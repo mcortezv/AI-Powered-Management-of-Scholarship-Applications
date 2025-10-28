@@ -1,7 +1,7 @@
 package presentacion.control;
 
 import dto.DatosSolicitanteDTO;
-import presentacion.MainFrame;
+import presentacion.login.MainFrame;
 import objetosNegocio.interfaces.IControlBeca;
 import presentacion.interfaces.IControlPantalla;
 
