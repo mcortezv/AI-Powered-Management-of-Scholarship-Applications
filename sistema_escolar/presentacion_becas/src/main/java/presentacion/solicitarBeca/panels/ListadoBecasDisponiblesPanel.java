@@ -6,6 +6,7 @@ package presentacion.solicitarBeca.panels;
 import controlNavegacion.ControlNavegacion;
 import dto.BecaDTO;
 import dto.RequisitosDTO;
+import dto.SolicitudBecasDisponiblesResponseDTO;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -35,9 +36,13 @@ public class ListadoBecasDisponiblesPanel extends PanelSolicitarBeca{
     private JPanel lista;
     private ComboBox<BecaDTO> ddlBecas;
     private Button btnSeleccionar;
+    private SolicitudBecasDisponiblesResponseDTO solicitudResponsDTO;
     
-    public ListadoBecasDisponiblesPanel(SolicitarBeca frame, ControlNavegacion controlNavegacion) {
+    //aqui recibes este response que te lo mando de la pantalla anterior
+    
+    public ListadoBecasDisponiblesPanel(SolicitarBeca frame, ControlNavegacion controlNavegacion, SolicitudBecasDisponiblesResponseDTO solicitudResponseDTO) {
         super(frame, controlNavegacion);
+        this.solicitudResponsDTO= solicitudResponsDTO;
     }
 
     public void startComponents() {
