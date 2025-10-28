@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package implementacion;
-
 import dto.*;
 import gestor.GestorSolicitud;
 import interfaz.IManejadorSolicitud;

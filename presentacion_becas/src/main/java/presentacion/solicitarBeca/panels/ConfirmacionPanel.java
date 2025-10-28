@@ -55,6 +55,7 @@ public class ConfirmacionPanel extends PanelSolicitarBeca {
         btnAceptar.setAlignmentX(CENTER_ALIGNMENT);
         centralPanel.add(btnAceptar);
 
+        btnBack.setVisible(false);
         btnAceptar.addActionListener(e -> {
             controlNavegacion.main();
         });
