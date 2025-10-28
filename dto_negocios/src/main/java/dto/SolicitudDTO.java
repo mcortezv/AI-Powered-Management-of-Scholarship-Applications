@@ -10,7 +10,7 @@ public class SolicitudDTO {
     private long id;
     private String estado;
     private LocalDate fechaSolicitud;
-    private EstudianteResponseDTO estudiante;
+    private EstudianteSolicitudDTO estudiante;
     private BecaDTO beca;
     private InformacionSocioeconomicaDTO informacionSocioeconomica;
     private HistorialAcademicoDTO historialAcademico;
@@ -19,7 +19,7 @@ public class SolicitudDTO {
     public SolicitudDTO() {
     }
 
-    public SolicitudDTO(long id, String estado, LocalDate fechaSolicitud, EstudianteResponseDTO estudiante, BecaDTO beca, InformacionSocioeconomicaDTO informacionSocioeconomica, HistorialAcademicoDTO historialAcademico, List<DocumentoDTO> documentos) {
+    public SolicitudDTO(long id, String estado, LocalDate fechaSolicitud, EstudianteSolicitudDTO estudiante, BecaDTO beca, InformacionSocioeconomicaDTO informacionSocioeconomica, HistorialAcademicoDTO historialAcademico, List<DocumentoDTO> documentos) {
         this.id = id;
         this.estado = estado;
         this.fechaSolicitud = fechaSolicitud;
@@ -54,11 +54,11 @@ public class SolicitudDTO {
         this.fechaSolicitud = fechaSolicitud;
     }
 
-    public EstudianteResponseDTO getEstudiante() {
+    public EstudianteSolicitudDTO getEstudiante() {
         return estudiante;
     }
 
-    public void setEstudiante(EstudianteResponseDTO estudiante) {
+    public void setEstudiante(EstudianteSolicitudDTO estudiante) {
         this.estudiante = estudiante;
     }
 
