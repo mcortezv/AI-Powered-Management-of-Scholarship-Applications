@@ -1,39 +1,31 @@
 package presentacion.solicitarBeca.panels;
-
-import dto.EstudianteSolicitudDTO;
+import controlNavegacion.ControlNavegacion;
 import dto.InformacionSocioeconomicaDTO;
-import presentacion.login.panels.NorthPanel;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.*;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
 import presentacion.styles.TextField;
-
 import javax.swing.*;
 import java.awt.*;
 
 /**
  * @author Escalante, Sebastian.
  */
-public class DatosSocioeconomicosPanel extends PanelSolicitarBeca{
+public class InformacionSocioeconomicaPanel extends PanelSolicitarBeca{
     private Label titulo;
-
     private Label lbl_ingreso;
     private TextField field_ingreso;
-
     private Label lbl_familia_depende;
     private ComboBox<String> cbx_familia_depende;
-
     private Label lbl_genera_ingreso;
     private ComboBox<String> cbx_genera_ingreso;
-
     private Button btn_next;
 
-    public DatosSocioeconomicosPanel(SolicitarBeca mainFrame, NorthPanel northPanel){
-        super(mainFrame, northPanel);
+    public InformacionSocioeconomicaPanel(SolicitarBeca mainFrame, ControlNavegacion controlNavegacion){
+        super(mainFrame, controlNavegacion);
     }
 
-    @Override
     public void startComponents() {
         centralPanel.add(Box.createVerticalStrut(Style.TOP_ESPACIO));
         titulo = new Label("Información Socioeconómica");
@@ -50,7 +42,6 @@ public class DatosSocioeconomicosPanel extends PanelSolicitarBeca{
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
         centralPanel.add(field_ingreso);
         centralPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
-
 
         lbl_familia_depende = new Label("Tu familia depende económicamente de una sola persona?");
         lbl_familia_depende.setFont(Style.LABEL_FONT);
@@ -78,21 +69,22 @@ public class DatosSocioeconomicosPanel extends PanelSolicitarBeca{
         btn_next.setAlignmentX(CENTER_ALIGNMENT);
         centralPanel.add(btn_next);
 
-        btn_next.addActionListener(e -> {
-            if(field_ingreso.getText().trim().isBlank()){
-                JOptionPane.showMessageDialog(this, "Favor de seleccionar todos los campos", "Aviso", JOptionPane.WARNING_MESSAGE);
-                return;
-            }
-            InformacionSocioeconomicaDTO informacionSocioeconomicaDTO = mainFrame.getInformacionSocioeconomicaDTO();
-            String ingresoFamiliarMensual = field_ingreso.getText();
-            double ingresoFamiliarMensualDouble = Double.parseDouble(ingresoFamiliarMensual);
-            informacionSocioeconomicaDTO.setIngresoTotalFamilarMensual(ingresoFamiliarMensualDouble);
-
-            mainFrame.setInformacionSocioeconomicaDTO(informacionSocioeconomicaDTO);
-            mainFrame.showSiguiente();
+        btnBack.addActionListener(e -> {
+            mainFrame.showPanel("datosTutorPanel");
         });
 
-
+        btn_next.addActionListener(e -> {
+            //if(field_ingreso.getText().trim().isBlank()){
+                //JOptionPane.showMessageDialog(this, "Favor de seleccionar todos los campos", "Aviso", JOptionPane.WARNING_MESSAGE);
+                //return;
+            //}
+            //InformacionSocioeconomicaDTO informacionSocioeconomicaDTO = mainFrame.getInformacionSocioeconomicaDTO();
+            //String ingresoFamiliarMensual = field_ingreso.getText();
+            //double ingresoFamiliarMensualDouble = Double.parseDouble(ingresoFamiliarMensual);
+            //informacionSocioeconomicaDTO.setIngresoTotalFamilarMensual(ingresoFamiliarMensualDouble);
+           // mainFrame.setInformacionSocioeconomicaDTO(informacionSocioeconomicaDTO);
+          //  mainFrame.showSiguiente();
+            mainFrame.showPanel("subirDocumentosPanel");
+        });
     }
-
 }

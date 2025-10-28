@@ -4,9 +4,6 @@
 
 package presentacion;
 import controlNavegacion.ControlNavegacion;
-import presentacion.login.MainFrame;
-import presentacion.login.panels.NorthPanel;
-import presentacion.solicitarBeca.SolicitarBeca;
 
 /**
  *
@@ -15,12 +12,8 @@ import presentacion.solicitarBeca.SolicitarBeca;
 public class Main {
 
     public static void main(String[] args) {
-        MainFrame mainFrame= new MainFrame();
-        NorthPanel northPanel = new NorthPanel();
-        SolicitarBeca solicitarBeca = new SolicitarBeca();
-    //    ControlNavegacion navegador = ControlNavegacion.getInstancia(mainFrame,northPanel,solicitarBeca);
-      //  navegador.iniciar();
-        mainFrame.setVisible(true);
+
+        ControlNavegacion controlNavegacion = new ControlNavegacion();
         
     }
 }

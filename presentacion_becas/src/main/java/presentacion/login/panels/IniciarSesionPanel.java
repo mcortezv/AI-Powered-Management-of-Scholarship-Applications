@@ -1,4 +1,5 @@
 package presentacion.login.panels;
+import controlNavegacion.ControlNavegacion;
 import presentacion.login.MainFrame;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
@@ -21,9 +22,10 @@ public class IniciarSesionPanel extends Panel {
     private Label lblPassword;
     private PasswordField txtPassword;
     private Button btnIniciarSesion;
+    private ControlNavegacion controlNavegacion;
 
-    public IniciarSesionPanel(MainFrame frame, NorthPanel northPanel) {
-        super(frame, northPanel);
+    public IniciarSesionPanel(MainFrame frame, ControlNavegacion controlNavegacion) {
+        super(frame, controlNavegacion);
     }
 
     @Override
@@ -84,13 +86,12 @@ public class IniciarSesionPanel extends Panel {
             String usuario = txtUsuario.getText().trim();
             char[] contraseña = txtPassword.getPassword();
             try{
-                //aqui se debe validar
-                mainFrame.showPanel(mainFrame.hubPanel);
-                mainFrame.setMenuVisible(true);
+
             } finally{
                 java.util.Arrays.fill(contraseña, '\0');
             }
-            
+            mainFrame.showPanel("hubPanel");
+            mainFrame.getNorthPanel().setVisible(true);
         });
     }
 }

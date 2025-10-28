@@ -3,19 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package presentacion.solicitarBeca;
-import dto.BecaDTO;
-import dto.EstudianteSolicitudDTO;
-import dto.InformacionSocioeconomicaDTO;
-import dto.SolicitudDTO;
-import presentacion.login.panels.HubPanel;
+import controlNavegacion.ControlNavegacion;
 import presentacion.login.panels.ImgPanel;
 import presentacion.login.panels.NorthPanel;
-import presentacion.solicitarBeca.panels.InformacionGeneralPanel;
-
+import presentacion.solicitarBeca.panels.*;
 import javax.swing.*;
 import java.awt.*;
-import presentacion.solicitarBeca.panels.DetalleBeca;
-import presentacion.solicitarBeca.panels.ListadoBecasDisponiblesPanel;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -25,117 +20,50 @@ public final class SolicitarBeca extends JFrame {
     private NorthPanel northPanel;
     private JPanel centralPanel;
     private ImgPanel mainPanel;
-    private InformacionGeneralPanel informacionGeneralPanel;
-    private ListadoBecasDisponiblesPanel becasDisponiblesPanel;
-    private BecaDTO becaSeleccionada;
-    private DetalleBeca detalleBeca;
-    public HubPanel hubPanel;
+    private Map<String, JPanel> panels;
+    private ControlNavegacion controlNavegacion;
 
-    private SolicitudDTO solicitudDTO;
-    private EstudianteSolicitudDTO estudianteSolicitudDTO;
-    private InformacionSocioeconomicaDTO informacionSocioeconomicaDTO;
-
-
-
-    public SolicitarBeca() {
+    public SolicitarBeca(ControlNavegacion controlNavegacion) {
         setTitle("Solicitar Beca");
         setResizable(false);
         setSize(1500,900);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
-        northPanel= new NorthPanel();
-        centralPanel = new JPanel(new BorderLayout());
+        northPanel = new NorthPanel();
+        centralPanel = new JPanel();
+        this.controlNavegacion = controlNavegacion;
 
-        informacionGeneralPanel = new InformacionGeneralPanel(this, northPanel);
-        becasDisponiblesPanel = new ListadoBecasDisponiblesPanel(this, northPanel);
-        hubPanel = new HubPanel();
-        detalleBeca = new DetalleBeca(this, northPanel);
-
-        this.solicitudDTO = new SolicitudDTO();
-        this.estudianteSolicitudDTO = new EstudianteSolicitudDTO();
-        this.informacionSocioeconomicaDTO = new InformacionSocioeconomicaDTO();
+        panels = new HashMap<String, JPanel>();
+        panels.put("informacionGeneralPanel", new InformacionGeneralPanel(this, controlNavegacion));
+        panels.put("listadoBecasDisponiblesPanel", new ListadoBecasDisponiblesPanel(this, controlNavegacion));
+        panels.put("detalleBecaPanel", new DetalleBecaPanel(this, controlNavegacion));
+        panels.put("datosDelSolicitantePanel", new DatosDelSolicitantePanel(this, controlNavegacion));
+        panels.put("historialAcademicoPanel", new HistorialAcademicoPanel(this, controlNavegacion));
+        panels.put("datosTutorPanel", new DatosTutorPanel(this, controlNavegacion));
+        panels.put("informacionSocioeconomicaPanel", new InformacionSocioeconomicaPanel(this, controlNavegacion));
+        panels.put("subirDocumentosPanel", new SubirDocumentosPanel(this, controlNavegacion));
+        panels.put("resumenFinalPanel", new ResumenFinalPanel(this, controlNavegacion));
+        panels.put("confirmacionPanel", new ConfirmacionPanel(this, controlNavegacion));
 
         add(northPanel, BorderLayout.NORTH);
         add(centralPanel, BorderLayout.CENTER);
+            northPanel.setVisible(false);
+        showPanel("informacionGeneralPanel");
 
-        showPanel(informacionGeneralPanel);
-        northPanel.setVisible(false);
     }
 
-    public void showPanel(JPanel nuevoPanel) {
+    public void showPanel(String nuevoPanel) {
         centralPanel.removeAll();
-        centralPanel.add(nuevoPanel, BorderLayout.CENTER);
+        centralPanel.add(panels.get(nuevoPanel), BorderLayout.CENTER);
         centralPanel.revalidate();
         centralPanel.repaint();
     }
 
-    public void showMainPanel() {
-        showPanel(mainPanel);
-    }
-
-    public void setMenuVisible(boolean visible) {
-        northPanel.setVisible(visible);
-    }
-    
-    public void showBecasDisponibles(java.util.List<BecaDTO> becas) {
-        becasDisponiblesPanel.setBecas(becas);
-        showPanel(becasDisponiblesPanel);
-        northPanel.setVisible(true);
-    }
-    
-    public void setBecaSeleccionada(BecaDTO beca) { 
-        this.becaSeleccionada = beca;
-    }
-    
-    public BecaDTO getBecaSeleccionada(){
-        return becaSeleccionada;
-    }
-    
-    public void mostrarDetalleBeca(BecaDTO beca){
-        
-        
-        
-        
-        // ESTO ES NOMAS PARA Q CORRA, YA QUE ESTE LA DE DETALLES BECA SE
-        // DEBE DE QUITAR ESTO 
-        JOptionPane.showMessageDialog(this,
-                "Seleccionaste: " + (beca != null ? beca.getNombre() : "(sin beca)"),
-                "Beca seleccionada",
-                JOptionPane.INFORMATION_MESSAGE);
-    }
-
-    public SolicitudDTO getSolicitudDTO() {
-        return solicitudDTO;
-    }
-
-    public void setSolicitudDTO(SolicitudDTO solicitudDTO) {
-        this.solicitudDTO = solicitudDTO;
-    }
-
-    public EstudianteSolicitudDTO getEstudianteSolicitudDTO() {
-        return estudianteSolicitudDTO;
-    }
-
-    public void setEstudianteSolicitudDTO(EstudianteSolicitudDTO estudianteSolicitudDTO) {
-        this.estudianteSolicitudDTO = estudianteSolicitudDTO;
-    }
-
-    public InformacionSocioeconomicaDTO getInformacionSocioeconomicaDTO() {
-        return informacionSocioeconomicaDTO;
-    }
-
-    public void setInformacionSocioeconomicaDTO(InformacionSocioeconomicaDTO informacionSocioeconomicaDTO) {
-        this.informacionSocioeconomicaDTO = informacionSocioeconomicaDTO;
-    }
-
-    public SolicitudDTO ensamblarSolicitudFinal() {
-        solicitudDTO.setEstudiante(this.estudianteSolicitudDTO);
-        solicitudDTO.setInformacionSocioeconomica(this.informacionSocioeconomicaDTO);
-        return solicitudDTO;
-    }
-
-    public void showSiguiente() {
-        mostrarDetalleBeca(getBecaSeleccionada());
-        showPanel(detalleBeca);
+    public NorthPanel getNorthPanel() {
+        return northPanel;
     }
 }
+
+
+
+

@@ -3,12 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package presentacion.solicitarBeca.panels;
-
-import presentacion.login.panels.NorthPanel;
+import controlNavegacion.ControlNavegacion;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.Button;
 import presentacion.styles.Style;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -20,11 +18,13 @@ public abstract class PanelSolicitarBeca extends JPanel {
     protected SolicitarBeca mainFrame;
     protected JPanel centralPanel;
     protected JPanel southPanel;
-    protected presentacion.styles.Button btnBack;
+    protected Button btnBack;
+    protected ControlNavegacion controlNavegacion;
 
-    public PanelSolicitarBeca(SolicitarBeca frame, NorthPanel northPanel) {
+    public PanelSolicitarBeca(SolicitarBeca frame, ControlNavegacion controlNavegacion) {
         mainFrame = frame;
         btnBack = new Button("Volver");
+        this.controlNavegacion = controlNavegacion;
         setLayout(new BorderLayout());
         centralPanel = new JPanel();
         southPanel = new JPanel();
@@ -35,16 +35,14 @@ public abstract class PanelSolicitarBeca extends JPanel {
         southPanel.setBorder(BorderFactory.createEmptyBorder(0, 30, 0, 0));
         centralPanel.setBackground(Style.PANEL_COLOR);
         southPanel.setBackground(Style.PANEL_COLOR);
-
-        startComponents();
         add(centralPanel, BorderLayout.CENTER);
+        startComponents();
         add(southPanel, BorderLayout.SOUTH);
         southPanel.add(btnBack);
+        btnBack.addActionListener(e -> {
 
-        btnBack.addActionListener(e -> frame.showMainPanel());
-
+        });
     }
-
 
     public abstract void startComponents();
 }
