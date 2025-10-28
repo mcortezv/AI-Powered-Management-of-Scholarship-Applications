@@ -98,5 +98,4 @@ public class ControlNavegacion {
         datosSocioeconomicosPanel.setVisible(false);
     }
 
-
 }
