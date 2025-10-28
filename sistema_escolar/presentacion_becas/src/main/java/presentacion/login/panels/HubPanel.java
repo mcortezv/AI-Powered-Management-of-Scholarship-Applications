@@ -12,6 +12,6 @@ public class HubPanel extends Panel {
 
     @Override
     public void startComponents() {
-
+        btnBack.setVisible(false);
     }
 }

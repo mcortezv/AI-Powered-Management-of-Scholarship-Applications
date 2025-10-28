@@ -31,6 +31,7 @@ public class IniciarSesionPanel extends Panel {
     @Override
     public void startComponents() {
         centralPanel.add(Box.createVerticalStrut(Style.TOP_ESPACIO));
+        btnBack.setVisible(false);
 
         titulo = new Label("Iniciar Sesión");
         titulo.setFont(Style.TITLE_FONT);
