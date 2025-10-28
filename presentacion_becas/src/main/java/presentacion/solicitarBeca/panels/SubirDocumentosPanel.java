@@ -60,6 +60,7 @@ public class SubirDocumentosPanel extends PanelSolicitarBeca {
         centralPanel.add(panelBotones);
         centralPanel.add(Box.createVerticalGlue());
         btnContinuar = new Button("Continuar");
+        btnContinuar.setAlignmentX(Component.CENTER_ALIGNMENT);
         centralPanel.add(btnContinuar, BorderLayout.CENTER);
 
         btnBack.addActionListener(e -> {
