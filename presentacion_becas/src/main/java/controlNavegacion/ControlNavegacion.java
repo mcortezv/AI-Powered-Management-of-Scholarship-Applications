@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controlNavegacion;
+import gestor.GestorSolicitud;
+import implementacion.ManejadorSolicitud;
 import presentacion.login.MainFrame;
 import presentacion.solicitarBeca.SolicitarBeca;
 
@@ -13,9 +15,11 @@ import presentacion.solicitarBeca.SolicitarBeca;
 public class ControlNavegacion {
     private MainFrame mainFrame;
     private SolicitarBeca solicitarBeca;
+    private ManejadorSolicitud manejadorSolicitud;
 
 
     public ControlNavegacion(){
+        manejadorSolicitud = new ManejadorSolicitud(new GestorSolicitud());
         mainFrame = new MainFrame(this);
         mainFrame.setVisible(true);
     }
@@ -29,5 +33,9 @@ public class ControlNavegacion {
     public void main() {
         solicitarBeca.setVisible(false);
         mainFrame.setVisible(true);
+    }
+    
+    public ManejadorSolicitud getGestorSolicitud() {
+        return manejadorSolicitud;
     }
 }
