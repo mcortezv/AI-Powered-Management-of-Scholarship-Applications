@@ -1,6 +1,17 @@
 package presentacion.login.panels;
+import controlNavegacion.ControlNavegacion;
+import presentacion.login.MainFrame;
+import presentacion.styles.Panel;
 
-import javax.swing.*;
 
-public class HubPanel extends JPanel {
+public class HubPanel extends Panel {
+
+    public HubPanel(MainFrame mainFrame, ControlNavegacion controlNavegacion) {
+        super(mainFrame, controlNavegacion);
+    }
+
+    @Override
+    public void startComponents() {
+
+    }
 }

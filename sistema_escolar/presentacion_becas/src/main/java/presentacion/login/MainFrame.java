@@ -3,16 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package presentacion.login;
-
+import controlNavegacion.ControlNavegacion;
 import presentacion.login.panels.HubPanel;
 import presentacion.login.panels.IniciarSesionPanel;
-import presentacion.login.panels.ImgPanel;
 import presentacion.login.panels.NorthPanel;
-import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.Button;
-
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -28,20 +27,19 @@ public final class MainFrame extends JFrame {
     private Button btnExtracurriculares;
     private Button btnTutorias;
     private Button btnCarteras;
-    private ImgPanel mainPanel;
-    private IniciarSesionPanel iniciarSesionPanel;
-    public HubPanel hubPanel;
-
+    private Map<String, JPanel> panels;
+    private ControlNavegacion controlNavegacion;
     
     
-    public MainFrame() {
+    public MainFrame(ControlNavegacion controlNavegacion) {
         setTitle("Sistema de Aplicaciones Escolares");
         setResizable(false);
         setSize(1500,900);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
-        northPanel= new NorthPanel();
+        northPanel = new NorthPanel();
         centralPanel = new JPanel();
+        this.controlNavegacion = controlNavegacion;
 
         btnSolicitarBeca = new Button("Solicitar Beca");
         btnEvaluarSolicitudes = new Button("Evaluar Solicitudes");
@@ -59,33 +57,28 @@ public final class MainFrame extends JFrame {
         northPanel.add(btnTutorias);
         northPanel.add(btnCarteras);
 
-        iniciarSesionPanel = new IniciarSesionPanel(this, northPanel);
-        hubPanel = new HubPanel();
+        panels = new HashMap<String, JPanel>();
+        panels.put("iniciarSesionPanel", new IniciarSesionPanel(this, controlNavegacion));
+        panels.put("hubPanel", new HubPanel(this, controlNavegacion));
 
         add(northPanel, BorderLayout.NORTH);
         add(centralPanel, BorderLayout.CENTER);
-
-        showPanel(iniciarSesionPanel);
         northPanel.setVisible(false);
+        showPanel("iniciarSesionPanel");
 
         btnSolicitarBeca.addActionListener(e -> {
-            this.setVisible(false);
-            new SolicitarBeca().setVisible(true);
+            controlNavegacion.solicitarBeca();
         });
     }
 
-    public void showPanel(JPanel nuevoPanel) {
+    public void showPanel(String nuevoPanel) {
         centralPanel.removeAll();
-        centralPanel.add(nuevoPanel, BorderLayout.CENTER);
+        centralPanel.add(panels.get(nuevoPanel), BorderLayout.CENTER);
         centralPanel.revalidate();
         centralPanel.repaint();
     }
 
-    public void showMainPanel() {
-        showPanel(mainPanel);
-    }
-
-    public void setMenuVisible(boolean visible) {
-        northPanel.setVisible(visible);
+    public NorthPanel getNorthPanel() {
+        return northPanel;
     }
 }

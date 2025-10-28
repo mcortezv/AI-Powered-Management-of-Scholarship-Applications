@@ -2,14 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 package presentacion.solicitarBeca.panels;
-import presentacion.login.panels.NorthPanel;
+import controlNavegacion.ControlNavegacion;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.*;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
-
 import javax.swing.*;
 
 /**
@@ -26,8 +24,8 @@ public class HistorialAcademicoPanel extends PanelSolicitarBeca {
     private ComboBox<Integer> comboSemestre;
     private Button botonSiguiente;
 
-    public HistorialAcademicoPanel(SolicitarBeca mainFrame, NorthPanel northPanel) {
-        super(mainFrame, northPanel);
+    public HistorialAcademicoPanel(SolicitarBeca mainFrame, ControlNavegacion controlNavegacion) {
+        super(mainFrame, controlNavegacion);
     }
 
     @Override
@@ -76,5 +74,13 @@ public class HistorialAcademicoPanel extends PanelSolicitarBeca {
         botonSiguiente = new Button("Continuar");
         botonSiguiente.setAlignmentX(CENTER_ALIGNMENT);
         centralPanel.add(botonSiguiente);
+
+        btnBack.addActionListener(e -> {
+            mainFrame.showPanel("datosSolicitantePanel");
+        });
+
+        botonSiguiente.addActionListener(e -> {
+            mainFrame.showPanel("datosTutorPanel");
+        });
     }
 }

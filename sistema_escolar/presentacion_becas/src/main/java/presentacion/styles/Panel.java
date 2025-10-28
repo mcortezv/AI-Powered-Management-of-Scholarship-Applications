@@ -3,9 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package presentacion.styles;
+import controlNavegacion.ControlNavegacion;
 import presentacion.login.MainFrame;
-import presentacion.login.panels.NorthPanel;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -18,11 +17,11 @@ public abstract class Panel extends JPanel {
     protected JPanel centralPanel;
     protected JPanel southPanel;
     protected Button btnBack;
-    protected NorthPanel northPanel;
+    private ControlNavegacion controlNavegacion;
 
-    public Panel(MainFrame frame, NorthPanel northPanel) {
+    public Panel(MainFrame frame, ControlNavegacion controlNavegacion) {
         mainFrame = frame;
-        this.northPanel = northPanel;
+        this.controlNavegacion = controlNavegacion;
         btnBack = new Button("Volver");
         setLayout(new BorderLayout());
         centralPanel = new JPanel();
@@ -34,19 +33,11 @@ public abstract class Panel extends JPanel {
         southPanel.setBorder(BorderFactory.createEmptyBorder(0, 30, 0, 0));
         centralPanel.setBackground(Style.PANEL_COLOR);
         southPanel.setBackground(Style.PANEL_COLOR);
-
         startComponents();
         add(centralPanel, BorderLayout.CENTER);
         add(southPanel, BorderLayout.SOUTH);
         southPanel.add(btnBack);
-
-        btnBack.addActionListener(e -> frame.showMainPanel());
-        btnBack.addActionListener(e -> {
-           this.northPanel.erraseRectangle();
-        });
-
     }
-
 
     public abstract void startComponents();
 }

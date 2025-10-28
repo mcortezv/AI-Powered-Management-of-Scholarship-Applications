@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package presentacion.solicitarBeca.panels;
-
+import controlNavegacion.ControlNavegacion;
 import dto.BecaDTO;
 import dto.RequisitosDTO;
 import java.awt.BorderLayout;
@@ -20,7 +20,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import presentacion.login.panels.NorthPanel;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.Button;
 import presentacion.styles.ComboBox;
@@ -38,11 +37,10 @@ public class ListadoBecasDisponiblesPanel extends PanelSolicitarBeca{
     private ComboBox<BecaDTO> ddlBecas;
     private Button btnSeleccionar;
     
-    public ListadoBecasDisponiblesPanel(SolicitarBeca frame, NorthPanel northPanel) {
-        super(frame, northPanel);
+    public ListadoBecasDisponiblesPanel(SolicitarBeca frame, ControlNavegacion controlNavegacion) {
+        super(frame, controlNavegacion);
     }
 
-    @Override
     public void startComponents() {
         centralPanel.add(Box.createVerticalStrut(Style.TOP_ESPACIO));
         
@@ -74,16 +72,19 @@ public class ListadoBecasDisponiblesPanel extends PanelSolicitarBeca{
         btnSeleccionar.setAlignmentX(CENTER_ALIGNMENT);
         centralPanel.add(btnSeleccionar);
 
-        btnSeleccionar.addActionListener(e -> {
-            BecaDTO seleccionada = (BecaDTO) ddlBecas.getSelectedItem();
-            if (seleccionada == null) {
-                JOptionPane.showMessageDialog(this, "Selecciona una beca.", "Aviso", JOptionPane.WARNING_MESSAGE);
-                return;
-            }
-            // guardar en el frame y pasar a la siguiente pantalla
-            mainFrame.setBecaSeleccionada(seleccionada);
-            mainFrame.showSiguiente(); // metodo para avanzar
+        btnBack.addActionListener(e -> {
+            mainFrame.showPanel("informacionGeneralPanel");
         });
+
+        btnSeleccionar.addActionListener(e -> {
+            //BecaDTO seleccionada = (BecaDTO) ddlBecas.getSelectedItem();
+            //if (seleccionada == null) {
+                //JOptionPane.showMessageDialog(this, "Selecciona una beca.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                //return;
+           // }
+            mainFrame.showPanel("detalleBecaPanel");
+        });
+
     }
     
     public void setBecas(List<BecaDTO> becas) {

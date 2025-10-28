@@ -4,12 +4,8 @@
  */
 package presentacion.solicitarBeca.panels;
 import controlNavegacion.ControlNavegacion;
-import dto.BecaDTO;
-import dto.RequisitosDTO;
 import java.awt.Component;
 import javax.swing.Box;
-
-import presentacion.login.panels.NorthPanel;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.*;
 import dto.SolicitudBecasDisponiblesDTO;
@@ -28,8 +24,8 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
     private TextField campoIngreso;
 
 
-    public InformacionGeneralPanel(SolicitarBeca frame, NorthPanel northPanel) {
-        super(frame, northPanel);
+    public InformacionGeneralPanel(SolicitarBeca frame, ControlNavegacion controlNavegacion) {
+        super(frame, controlNavegacion);
     }
 
     public void startComponents() {
@@ -72,8 +68,18 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
         btnContinuar.setAlignmentX(Component.CENTER_ALIGNMENT);
         centralPanel.add(btnContinuar);
 
-        events();
+        btnBack.addActionListener(e -> {
+            controlNavegacion.main();
+        });
+
+        btnContinuar.addActionListener(e -> {
+            mainFrame.showPanel("listadoBecasDisponiblesPanel");
+        });
+
+        //events();
     }
+
+
 
     private void events() {
         btnContinuar.addActionListener(e -> {
@@ -87,11 +93,10 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
                 Double ingreso = Double.parseDouble(campoIngreso.getText());
                 solicitudDTO = new SolicitudBecasDisponiblesDTO(promedio, carga, ingreso);
                 
-                
              //   java.util.List<BecaDTO> becasMock = crearMockBecas();
                 
               //  mainFrame.showBecasDisponibles(becasMock);
-                mainFrame.setMenuVisible(true);
+
             }
         );
     }
