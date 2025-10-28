@@ -4,10 +4,8 @@
  */
 package gestor;
 
-import dto.BecaDTO;
-import dto.RequisitosDTO;
-import dto.SolicitudBecasDisponiblesDTO;
-import dto.SolicitudBecasDisponiblesResponseDTO;
+import dto.*;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,4 +32,5 @@ public class GestorSolicitud {
         return solicitudResponseDTO;
 
     }
+
 }

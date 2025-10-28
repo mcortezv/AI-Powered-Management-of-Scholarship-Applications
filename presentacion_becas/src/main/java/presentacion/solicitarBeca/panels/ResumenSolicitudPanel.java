@@ -1,27 +1,32 @@
 package presentacion.solicitarBeca.panels;
+
 import controlNavegacion.ControlNavegacion;
+import presentacion.login.MainFrame;
+import presentacion.login.panels.NorthPanel;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
 import presentacion.styles.Style;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
-
-public class ResumenFinalPanel extends PanelSolicitarBeca {
-    private presentacion.styles.Label titulo;
-    private presentacion.styles.Label lbl_beca_solicitada;
-    private presentacion.styles.Label lbl_datos_solicitante;
-    private presentacion.styles.Label lbl_datos_tutor;
-    private presentacion.styles.Label lbl_info_socioeconomica;
+/**
+ * @author Escalante, Sebastian.
+ */
+public class ResumenSolicitudPanel extends PanelSolicitarBeca{
+    private Label titulo;
+    private Label lbl_beca_solicitada;
+    private Label lbl_datos_solicitante;
+    private Label lbl_datos_tutor;
+    private Label lbl_info_socioeconomica;
     private Label lbl_documentos;
-    private Button btnContinuar;
+    private Button btnAceptar;
 
-    public ResumenFinalPanel(SolicitarBeca frame, ControlNavegacion controlNavegacion) {
+    public ResumenSolicitudPanel(SolicitarBeca frame, ControlNavegacion controlNavegacion) {
         super(frame, controlNavegacion);
-
+        this.southPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        this.southPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 50));
     }
 
     @Override
@@ -148,17 +153,9 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
 
         centralPanel.add(contentPanel);
         centralPanel.add(Box.createVerticalGlue());
-        btnContinuar = new Button("Continuar");
-        centralPanel.add(btnContinuar, BorderLayout.CENTER);
-
-        btnBack.addActionListener(e -> {
-            mainFrame.showPanel("subirDocumentosPanel");
-        });
-
-
-        btnContinuar.addActionListener(e -> {
-            mainFrame.showPanel("confirmacionPanel");
-        });
+        btnAceptar = new Button("Aceptar");
+        btnAceptar.setAlignmentX(CENTER_ALIGNMENT);
+        centralPanel.add(btnAceptar);
     }
     private Label createDocumentLabel(String text, Font font) {
         String checkMark = "\u2713  ";
