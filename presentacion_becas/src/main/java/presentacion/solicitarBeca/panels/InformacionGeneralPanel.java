@@ -9,6 +9,7 @@ import javax.swing.Box;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.*;
 import dto.SolicitudBecasDisponiblesDTO;
+import dto.SolicitudBecasDisponiblesResponseDTO;
 import presentacion.styles.ComboBox;
 
 /**
@@ -83,9 +84,9 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
             double ingreso  = Double.parseDouble(campoIngreso.getText().trim().replace(',', '.'));
 
             var dto  = new SolicitudBecasDisponiblesDTO(promedio, carga, ingreso);
-            var resp = controlNavegacion.obtenerBecasDisponibles(dto);
+            SolicitudBecasDisponiblesResponseDTO reponseDTO = controlNavegacion.obtenerBecasDisponibles(dto);
 
-            controlNavegacion.mostrarBecasDisponibles(resp.getBecas());
+            controlNavegacion.mostrarBecasDisponibles(reponseDTO.getBecas());
 
         } catch (NumberFormatException ex) {
             javax.swing.JOptionPane.showMessageDialog(this, "Ingresa un número válido.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);

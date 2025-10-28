@@ -11,6 +11,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.time.LocalDate;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -36,6 +37,7 @@ public class ListadoBecasDisponiblesPanel extends PanelSolicitarBeca{
     private JPanel lista;
     private ComboBox<BecaDTO> ddlBecas;
     private Button btnSeleccionar;
+    
    
      //aqui recibes este response que te lo mando de la pantalla anterior
     
@@ -80,12 +82,20 @@ public class ListadoBecasDisponiblesPanel extends PanelSolicitarBeca{
         });
 
         btnSeleccionar.addActionListener(e -> {
-            //BecaDTO seleccionada = (BecaDTO) ddlBecas.getSelectedItem();
+            BecaDTO seleccionada = (BecaDTO) ddlBecas.getSelectedItem();
+            controlNavegacion.setBecaSeleccionadaDTO(seleccionada);
+            controlNavegacion.mostrarBecaSeleccionada();
+            
+            
             //if (seleccionada == null) {
                 //JOptionPane.showMessageDialog(this, "Selecciona una beca.", "Aviso", JOptionPane.WARNING_MESSAGE);
                 //return;
            // }
-            mainFrame.showPanel("detalleBecaPanel");
+          
+           
+           
+           
+          //  mainFrame.showPanel("detalleBecaPanel");
         });
 
     }
