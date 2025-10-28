@@ -7,6 +7,9 @@ import controlNavegacion.ControlNavegacion;
 import presentacion.login.MainFrame;
 import presentacion.login.panels.NorthPanel;
 import presentacion.solicitarBeca.SolicitarBeca;
+import presentacion.solicitarBeca.panels.DatosDelSolicitantePanel;
+
+import javax.swing.*;
 
 /**
  *
@@ -21,6 +24,7 @@ public class Main {
     //    ControlNavegacion navegador = ControlNavegacion.getInstancia(mainFrame,northPanel,solicitarBeca);
       //  navegador.iniciar();
         mainFrame.setVisible(true);
-        
+
+
     }
 }
