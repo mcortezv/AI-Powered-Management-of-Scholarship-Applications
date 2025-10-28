@@ -187,6 +187,7 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
         centralPanel.add(contentPanel);
         centralPanel.add(Box.createVerticalGlue());
         btnContinuar = new Button("Continuar");
+        btnContinuar.setAlignmentX(Component.CENTER_ALIGNMENT);
         centralPanel.add(btnContinuar, BorderLayout.CENTER);
 
         btnBack.addActionListener(e -> {
