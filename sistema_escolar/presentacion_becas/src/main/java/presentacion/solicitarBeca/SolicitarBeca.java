@@ -4,6 +4,9 @@
  */
 package presentacion.solicitarBeca;
 import dto.BecaDTO;
+import dto.EstudianteSolicitudDTO;
+import dto.InformacionSocioeconomicaDTO;
+import dto.SolicitudDTO;
 import presentacion.login.panels.HubPanel;
 import presentacion.login.panels.ImgPanel;
 import presentacion.login.panels.NorthPanel;
@@ -28,6 +31,10 @@ public final class SolicitarBeca extends JFrame {
     private DetalleBeca detalleBeca;
     public HubPanel hubPanel;
 
+    private SolicitudDTO solicitudDTO;
+    private EstudianteSolicitudDTO estudianteSolicitudDTO;
+    private InformacionSocioeconomicaDTO informacionSocioeconomicaDTO;
+
 
 
     public SolicitarBeca() {
@@ -43,6 +50,10 @@ public final class SolicitarBeca extends JFrame {
         becasDisponiblesPanel = new ListadoBecasDisponiblesPanel(this, northPanel);
         hubPanel = new HubPanel();
         detalleBeca = new DetalleBeca(this, northPanel);
+
+        this.solicitudDTO = new SolicitudDTO();
+        this.estudianteSolicitudDTO = new EstudianteSolicitudDTO();
+        this.informacionSocioeconomicaDTO = new InformacionSocioeconomicaDTO();
 
         add(northPanel, BorderLayout.NORTH);
         add(centralPanel, BorderLayout.CENTER);
@@ -92,7 +103,37 @@ public final class SolicitarBeca extends JFrame {
                 "Beca seleccionada",
                 JOptionPane.INFORMATION_MESSAGE);
     }
-    
+
+    public SolicitudDTO getSolicitudDTO() {
+        return solicitudDTO;
+    }
+
+    public void setSolicitudDTO(SolicitudDTO solicitudDTO) {
+        this.solicitudDTO = solicitudDTO;
+    }
+
+    public EstudianteSolicitudDTO getEstudianteSolicitudDTO() {
+        return estudianteSolicitudDTO;
+    }
+
+    public void setEstudianteSolicitudDTO(EstudianteSolicitudDTO estudianteSolicitudDTO) {
+        this.estudianteSolicitudDTO = estudianteSolicitudDTO;
+    }
+
+    public InformacionSocioeconomicaDTO getInformacionSocioeconomicaDTO() {
+        return informacionSocioeconomicaDTO;
+    }
+
+    public void setInformacionSocioeconomicaDTO(InformacionSocioeconomicaDTO informacionSocioeconomicaDTO) {
+        this.informacionSocioeconomicaDTO = informacionSocioeconomicaDTO;
+    }
+
+    public SolicitudDTO ensamblarSolicitudFinal() {
+        solicitudDTO.setEstudiante(this.estudianteSolicitudDTO);
+        solicitudDTO.setInformacionSocioeconomica(this.informacionSocioeconomicaDTO);
+        return solicitudDTO;
+    }
+
     public void showSiguiente() {
         mostrarDetalleBeca(getBecaSeleccionada());
         showPanel(detalleBeca);
