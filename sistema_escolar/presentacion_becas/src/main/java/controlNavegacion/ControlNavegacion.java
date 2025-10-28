@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controlNavegacion;
+import dto.SolicitudBecasDisponiblesDTO;
+import dto.SolicitudBecasDisponiblesResponseDTO;
+import interfaz.IManejadorSolicitud;
 import presentacion.login.MainFrame;
 import presentacion.solicitarBeca.SolicitarBeca;
 
@@ -13,6 +16,7 @@ import presentacion.solicitarBeca.SolicitarBeca;
 public class ControlNavegacion {
     private MainFrame mainFrame;
     private SolicitarBeca solicitarBeca;
+    private IManejadorSolicitud manejador;
 
 
     public ControlNavegacion(){
@@ -30,4 +34,10 @@ public class ControlNavegacion {
         solicitarBeca.setVisible(false);
         mainFrame.setVisible(true);
     }
+    
+    public SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO){
+        return manejador.obtenerBecasDisponibles(solicitudDTO);
+    }
+    
+    
 }
