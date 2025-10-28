@@ -31,9 +31,6 @@ public final class MainFrame extends JFrame {
     private ImgPanel mainPanel;
     private IniciarSesionPanel iniciarSesionPanel;
     public HubPanel hubPanel;
-
-    
-    
     public MainFrame() {
         setTitle("Sistema de Aplicaciones Escolares");
         setResizable(false);
