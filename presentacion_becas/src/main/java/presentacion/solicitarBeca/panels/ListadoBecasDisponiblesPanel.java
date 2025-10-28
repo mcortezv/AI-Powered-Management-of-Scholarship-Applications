@@ -45,13 +45,13 @@ public class ListadoBecasDisponiblesPanel extends PanelSolicitarBeca{
     }
 
     public void startComponents() {
-        centralPanel.add(Box.createVerticalStrut(Style.TOP_ESPACIO));
+        //centralPanel.add(Box.createVerticalStrut(Style.TOP_ESPACIO));
         
         titulo = new Label("Becas Disponibles");
         titulo.setFont(Style.TITLE_FONT);
         titulo.setAlignmentX(CENTER_ALIGNMENT);
         centralPanel.add(titulo);
-        centralPanel.add(Box.createVerticalStrut(Style.TITULO_ESPACIO));
+        //centralPanel.add(Box.createVerticalStrut(Style.TITULO_ESPACIO));
         
         lista = new JPanel();
         lista.setOpaque(false);
@@ -63,13 +63,13 @@ public class ListadoBecasDisponiblesPanel extends PanelSolicitarBeca{
         scroll.setOpaque(false);
         scroll.setPreferredSize(new Dimension(980, 420));
         centralPanel.add(scroll);
-        centralPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
+        //centralPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
 
         ddlBecas = new ComboBox<>(new BecaDTO[]{}); // se va  a llenar con setBecas
         ddlBecas.setAlignmentX(CENTER_ALIGNMENT);
         ddlBecas.setMaximumSize(new Dimension(600, 60));
         centralPanel.add(ddlBecas);
-        centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
+        //centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
 
         btnSeleccionar = new Button("Seleccionar");
         btnSeleccionar.setAlignmentX(CENTER_ALIGNMENT);
