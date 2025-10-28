@@ -10,12 +10,10 @@ import dto.SolicitudDTO;
 import presentacion.login.panels.HubPanel;
 import presentacion.login.panels.ImgPanel;
 import presentacion.login.panels.NorthPanel;
-import presentacion.solicitarBeca.panels.InformacionGeneralPanel;
+import presentacion.solicitarBeca.panels.*;
 
 import javax.swing.*;
 import java.awt.*;
-import presentacion.solicitarBeca.panels.DetalleBeca;
-import presentacion.solicitarBeca.panels.ListadoBecasDisponiblesPanel;
 
 /**
  *
@@ -25,6 +23,14 @@ public final class SolicitarBeca extends JFrame {
     private NorthPanel northPanel;
     private JPanel centralPanel;
     private ImgPanel mainPanel;
+
+    private DatosDelSolicitantePanel datosDelSolicitantePanel;
+    private DatosSocioeconomicosPanel datosSocioeconomicosPanel;
+    private ResumenSolicitudPanel resumenSolicitudPanel;
+    private SubirDocumentosPanel subirDocumentosPanel;
+    private DatosTutorPanel datosTutorPanel;
+
+
     private InformacionGeneralPanel informacionGeneralPanel;
     private ListadoBecasDisponiblesPanel becasDisponiblesPanel;
     private BecaDTO becaSeleccionada;
@@ -46,6 +52,12 @@ public final class SolicitarBeca extends JFrame {
         northPanel= new NorthPanel();
         centralPanel = new JPanel(new BorderLayout());
 
+        datosDelSolicitantePanel = new DatosDelSolicitantePanel(this,northPanel);
+        datosSocioeconomicosPanel = new DatosSocioeconomicosPanel(this,northPanel);
+        resumenSolicitudPanel = new ResumenSolicitudPanel(this,northPanel);
+        subirDocumentosPanel = new SubirDocumentosPanel(this,northPanel);
+        datosTutorPanel = new DatosTutorPanel(this,northPanel);
+
         informacionGeneralPanel = new InformacionGeneralPanel(this, northPanel);
         becasDisponiblesPanel = new ListadoBecasDisponiblesPanel(this, northPanel);
         hubPanel = new HubPanel();
@@ -58,7 +70,7 @@ public final class SolicitarBeca extends JFrame {
         add(northPanel, BorderLayout.NORTH);
         add(centralPanel, BorderLayout.CENTER);
 
-        showPanel(informacionGeneralPanel);
+        showPanel(datosTutorPanel);
         northPanel.setVisible(false);
     }
 
