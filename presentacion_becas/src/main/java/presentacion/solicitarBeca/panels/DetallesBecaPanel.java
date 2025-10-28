@@ -88,6 +88,10 @@ public class DetallesBecaPanel extends PanelSolicitarBeca {
             mainFrame.showPanel("datosDelSolicitantePanel");
         });
         
+        btnBack.addActionListener(e ->{
+            mainFrame.showPanel("listadoBecasDisponiblesPanel");
+        });
+        
     
 
     
