@@ -4,8 +4,7 @@
  */
 package implementacion;
 
-import dto.SolicitudBecasDisponiblesDTO;
-import dto.SolicitudBecasDisponiblesResponseDTO;
+import dto.*;
 import gestor.GestorSolicitud;
 import interfaz.IManejadorSolicitud;
 
@@ -19,7 +18,7 @@ public class ManejadorSolicitud implements IManejadorSolicitud {
     public ManejadorSolicitud(GestorSolicitud gestor){
         this.gestor= gestor;
     }
-    
+
     public SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO){
         return gestor.obtenerBecasDisponibles(solicitudDTO);
         
