@@ -18,8 +18,8 @@ public class Main {
         MainFrame mainFrame= new MainFrame();
         NorthPanel northPanel = new NorthPanel();
         SolicitarBeca solicitarBeca = new SolicitarBeca();
-        ControlNavegacion navegador = ControlNavegacion.getInstancia(mainFrame,northPanel,solicitarBeca);
-        navegador.iniciar();
+    //    ControlNavegacion navegador = ControlNavegacion.getInstancia(mainFrame,northPanel,solicitarBeca);
+      //  navegador.iniciar();
         mainFrame.setVisible(true);
         
     }
