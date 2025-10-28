@@ -4,30 +4,21 @@ package dto;
  * @author Escalante, Sebastian.
  */
 public class EstudianteSolicitudDTO {
-    private int matricula;
     private String nombre;
-    private TutorDTO tutor;
-    private String telefono;
+    private String apellidos;
     private String direccion;
-    private String correo;
+    private String telefono;
+    private String email;
 
-    public EstudianteSolicitudDTO(){}
+    public EstudianteSolicitudDTO() {
+    }
 
-    public EstudianteSolicitudDTO(int matricula, String nombre, TutorDTO tutor, String telefono, String direccion, String correo) {
-        this.matricula = matricula;
+    public EstudianteSolicitudDTO(String nombre, String apellidos, String direccion, String telefono, String email) {
         this.nombre = nombre;
-        this.tutor = tutor;
-        this.telefono = telefono;
+        this.apellidos = apellidos;
         this.direccion = direccion;
-        this.correo = correo;
-    }
-
-    public int getMatricula() {
-        return matricula;
-    }
-
-    public void setMatricula(int matricula) {
-        this.matricula = matricula;
+        this.telefono = telefono;
+        this.email = email;
     }
 
     public String getNombre() {
@@ -38,20 +29,12 @@ public class EstudianteSolicitudDTO {
         this.nombre = nombre;
     }
 
-    public TutorDTO getTutor() {
-        return tutor;
+    public String getApellidos() {
+        return apellidos;
     }
 
-    public void setTutor(TutorDTO tutor) {
-        this.tutor = tutor;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     public String getDireccion() {
@@ -62,11 +45,19 @@ public class EstudianteSolicitudDTO {
         this.direccion = direccion;
     }
 
-    public String getCorreo() {
-        return correo;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
