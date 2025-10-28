@@ -36,13 +36,12 @@ public class ListadoBecasDisponiblesPanel extends PanelSolicitarBeca{
     private JPanel lista;
     private ComboBox<BecaDTO> ddlBecas;
     private Button btnSeleccionar;
-    private SolicitudBecasDisponiblesResponseDTO solicitudResponsDTO;
+   
+     //aqui recibes este response que te lo mando de la pantalla anterior
     
-    //aqui recibes este response que te lo mando de la pantalla anterior
-    
-    public ListadoBecasDisponiblesPanel(SolicitarBeca frame, ControlNavegacion controlNavegacion, SolicitudBecasDisponiblesResponseDTO solicitudResponseDTO) {
+    public ListadoBecasDisponiblesPanel(SolicitarBeca frame, ControlNavegacion controlNavegacion) {
         super(frame, controlNavegacion);
-        this.solicitudResponsDTO= solicitudResponsDTO;
+        
     }
 
     public void startComponents() {
