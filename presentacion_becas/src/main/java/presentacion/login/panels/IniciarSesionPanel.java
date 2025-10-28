@@ -62,11 +62,26 @@ public class IniciarSesionPanel extends Panel {
 
         btnIniciarSesion = new Button("Iniciar Sesión");
         btnIniciarSesion.setAlignmentX(CENTER_ALIGNMENT);
+        btnIniciarSesion.setEnabled(false);
         centralPanel.add(btnIniciarSesion);
-
-
+        
+        Runnable toggle = () -> btnIniciarSesion.setEnabled(
+            !txtUsuario.getText().trim().isEmpty() &&
+            txtPassword.getPassword().length > 0
+        );
+        
+        javax.swing.event.DocumentListener dl = new javax.swing.event.DocumentListener() {
+            public void insertUpdate(javax.swing.event.DocumentEvent e) { toggle.run(); }
+            public void removeUpdate(javax.swing.event.DocumentEvent e) { toggle.run(); }
+            public void changedUpdate(javax.swing.event.DocumentEvent e) { toggle.run(); }
+        };
+        txtUsuario.getDocument().addDocumentListener(dl);
+        txtPassword.getDocument().addDocumentListener(dl);
+        txtPassword.addActionListener(e -> btnIniciarSesion.doClick());
+        toggle.run();
+       
         btnIniciarSesion.addActionListener(e -> {
-            String usuario = txtUsuario.getText();
+            String usuario = txtUsuario.getText().trim();
             char[] contraseña = txtPassword.getPassword();
             try{
                 //aqui se debe validar
