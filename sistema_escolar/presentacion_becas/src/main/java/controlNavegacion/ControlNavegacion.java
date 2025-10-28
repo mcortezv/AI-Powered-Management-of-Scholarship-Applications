@@ -11,6 +11,7 @@ import implementacion.ManejadorSolicitud;
 import interfaz.IManejadorSolicitud;
 import presentacion.login.MainFrame;
 import presentacion.solicitarBeca.SolicitarBeca;
+import presentacion.solicitarBeca.panels.DetallesBecaPanel;
 import presentacion.solicitarBeca.panels.ListadoBecasDisponiblesPanel;
 
 /**
@@ -21,17 +22,22 @@ public class ControlNavegacion {
     private MainFrame mainFrame;
     private SolicitarBeca solicitarBeca;
     private IManejadorSolicitud manejador;
+    private BecaDTO becaDTO;
+    private BecaDTO becaSeleccionadaDTO;
+    private BecaDTO becaSeleccionada;
 
 
     public ControlNavegacion(){
         this.manejador = new ManejadorSolicitud(new GestorSolicitud());
+        this.becaDTO= becaDTO;
         mainFrame = new MainFrame(this);
         mainFrame.setVisible(true);
+        
     }
 
     public void solicitarBeca() {
         mainFrame.setVisible(false);
-        solicitarBeca = new SolicitarBeca(this);
+        solicitarBeca = new SolicitarBeca(this, becaDTO);
         solicitarBeca.setVisible(true);
     }
 
@@ -50,6 +56,27 @@ public class ControlNavegacion {
         solicitarBeca.showPanel("listadoBecasDisponiblesPanel");
         solicitarBeca.getNorthPanel().setVisible(true);
     }
+    
+    public void mostrarBecaSeleccionada(){
+        BecaDTO becaSeleccionada= getBecaSeleccionadaDTO();
+        DetallesBecaPanel detallesBeca= (DetallesBecaPanel) solicitarBeca.getPanel("detalleBecaPanel");
+        detallesBeca.cargarBeca(becaSeleccionada);
+        solicitarBeca.showPanel("detalleBecaPanel");
+    }
+
+    public BecaDTO getBecaSeleccionadaDTO() {
+        return becaSeleccionadaDTO;
+    }
+    
+    
+
+    public void setBecaSeleccionadaDTO(BecaDTO becaSeleccionadaDTO) {
+        this.becaSeleccionadaDTO = becaSeleccionadaDTO;
+    }
+    
+    
+    
+   
     
     
 }

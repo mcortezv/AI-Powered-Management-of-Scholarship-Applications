@@ -8,6 +8,7 @@ public class BecaDTO {
     private int codigo;
     private String tipo;
     private String nombre;
+    private String descripcion;
     private String periodo;
     private int becasDisponibles;
     private RequisitosDTO requisitos;
@@ -16,10 +17,11 @@ public class BecaDTO {
     public BecaDTO() {
     }
 
-    public BecaDTO(int codigo, String tipo, String nombre, String periodo, int becasDisponibles, RequisitosDTO requisitos, LocalDate fechaResultados) {
+    public BecaDTO(int codigo, String tipo, String nombre, String descripcion, String periodo, int becasDisponibles, RequisitosDTO requisitos, LocalDate fechaResultados) {
         this.codigo = codigo;
         this.tipo = tipo;
         this.nombre = nombre;
+        this.descripcion= descripcion;
         this.periodo = periodo;
         this.becasDisponibles = becasDisponibles;
         this.requisitos = requisitos;
@@ -81,6 +83,16 @@ public class BecaDTO {
     public void setFechaResultados(LocalDate fechaResultados) {
         this.fechaResultados = fechaResultados;
     }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+    
+    
     
     @Override
     public String toString(){

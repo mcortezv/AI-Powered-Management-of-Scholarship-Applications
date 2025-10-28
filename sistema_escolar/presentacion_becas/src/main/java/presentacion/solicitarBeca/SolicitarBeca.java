@@ -4,6 +4,7 @@
  */
 package presentacion.solicitarBeca;
 import controlNavegacion.ControlNavegacion;
+import dto.BecaDTO;
 import presentacion.login.panels.ImgPanel;
 import presentacion.login.panels.NorthPanel;
 import presentacion.solicitarBeca.panels.*;
@@ -22,8 +23,9 @@ public final class SolicitarBeca extends JFrame {
     private ImgPanel mainPanel;
     private Map<String, JPanel> panels;
     private ControlNavegacion controlNavegacion;
+    private BecaDTO becaDTO;
 
-    public SolicitarBeca(ControlNavegacion controlNavegacion) {
+    public SolicitarBeca(ControlNavegacion controlNavegacion, BecaDTO becaDTO) {
         setTitle("Solicitar Beca");
         setResizable(false);
         setSize(1500,900);
@@ -32,11 +34,12 @@ public final class SolicitarBeca extends JFrame {
         northPanel = new NorthPanel();
         centralPanel = new JPanel();
         this.controlNavegacion = controlNavegacion;
+        this.becaDTO= becaDTO;
 
         panels = new HashMap<String, JPanel>();
         panels.put("informacionGeneralPanel", new InformacionGeneralPanel(this, controlNavegacion));
         panels.put("listadoBecasDisponiblesPanel", new ListadoBecasDisponiblesPanel(this, controlNavegacion));
-        panels.put("detalleBecaPanel", new DetalleBecaPanel(this, controlNavegacion));
+        panels.put("detalleBecaPanel", new DetallesBecaPanel(this, controlNavegacion));
         panels.put("datosDelSolicitantePanel", new DatosDelSolicitantePanel(this, controlNavegacion));
         panels.put("historialAcademicoPanel", new HistorialAcademicoPanel(this, controlNavegacion));
         panels.put("datosTutorPanel", new DatosTutorPanel(this, controlNavegacion));
