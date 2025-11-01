@@ -83,8 +83,8 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
             boolean carga   = "Si".equals(campoCarga.getSelectedItem());
             double ingreso  = Double.parseDouble(campoIngreso.getText().trim().replace(',', '.'));
 
-            var dto  = new SolicitudBecasDisponiblesDTO(promedio, carga, ingreso);
-            SolicitudBecasDisponiblesResponseDTO reponseDTO = controlNavegacion.obtenerBecasDisponibles(dto);
+            SolicitudBecasDisponiblesDTO solictudDTO  = new SolicitudBecasDisponiblesDTO(promedio, carga, ingreso);
+            SolicitudBecasDisponiblesResponseDTO reponseDTO = controlNavegacion.obtenerBecasDisponibles(solictudDTO);
 
             controlNavegacion.mostrarBecasDisponibles(reponseDTO.getBecas());
 
