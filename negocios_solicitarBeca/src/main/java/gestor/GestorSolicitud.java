@@ -20,9 +20,7 @@ public class GestorSolicitud {
 
         java.time.LocalDate ahora = java.time.LocalDate.now();
         List<BecaDTO> listaBecas = new ArrayList<>();
-        BecaDTO beca1 = new BecaDTO(1, "Apoyo Economico", "Moisés Vázquez Gudiño", "La Beca Moisés Vázquez Gudiño está dirigida a estudiantes "
-                + "con escasos recursos económicos "
-                 + "que buscan apoyo para continuar sus estudios", "2025-2", 50, new RequisitosDTO(7.0, 12000.0, 30.0, 50.0, 30.0, false, true), ahora.plusMonths(1));
+        BecaDTO beca1 = new BecaDTO(1, "Apoyo Economico", "Moisés Vázquez Gudiño", "Dirigida a estudiantes con escasos recursos económicos ", "2025-2", 50, new RequisitosDTO(7.0, 12000.0, 30.0, 50.0, 30.0, false, true), ahora.plusMonths(1));
                 
         BecaDTO beca2 = new BecaDTO(2, "Excelencia", "Beca Ara", "Dirigida a alumnos con excelencia academica y regulares con su plan de estudios", "2025-2", 20, new RequisitosDTO(9.0, 999999.0, 10.0, 70.0, 10.0, false, false), ahora.plusMonths(1));
         
