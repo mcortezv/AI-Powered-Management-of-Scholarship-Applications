@@ -86,7 +86,7 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
             SolicitudBecasDisponiblesDTO solictudDTO  = new SolicitudBecasDisponiblesDTO(promedio, carga, ingreso);
             SolicitudBecasDisponiblesResponseDTO reponseDTO = controlNavegacion.obtenerBecasDisponibles(solictudDTO);
 
-            controlNavegacion.mostrarBecasDisponibles(reponseDTO.getBecas());
+            controlNavegacion.mostrarBecasDisponibles(reponseDTO);
 
         } catch (NumberFormatException ex) {
             javax.swing.JOptionPane.showMessageDialog(this, "Ingresa un número válido.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
