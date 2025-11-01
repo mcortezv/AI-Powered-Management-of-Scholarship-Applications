@@ -1,5 +1,6 @@
 package presentacion.solicitarBeca.panels;
 import controlNavegacion.ControlNavegacion;
+import dto.DatosSolicitanteDTO;
 import dto.EstudianteSolicitudDTO;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.*;
@@ -16,8 +17,10 @@ public class DatosDelSolicitantePanel extends PanelSolicitarBeca {
     private Label titulo;
     private Label lbl_nombre;
     private TextField field_nombre;
-    private Label lbl_apellidos;
-    private TextField field_apellidos;
+    private Label lbl_apellido_materno;
+    private Label lbl_apellido_paterno;
+    private TextField field_apellido_materno;
+    private TextField field_apellido_paterno;
     private Label lbl_direccion;
     private TextField field_direccion;
     private Label lbl_telefono;
@@ -25,9 +28,11 @@ public class DatosDelSolicitantePanel extends PanelSolicitarBeca {
     private Label lbl_email;
     private TextField field_email;
     private Button btn_next;
+    private ControlNavegacion control;
 
     public DatosDelSolicitantePanel(SolicitarBeca mainFrame, ControlNavegacion controlNavegacion) {
         super(mainFrame, controlNavegacion);
+        this.control= controlNavegacion;
     }
 
     @Override
@@ -47,14 +52,23 @@ public class DatosDelSolicitantePanel extends PanelSolicitarBeca {
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
         centralPanel.add(field_nombre);
 
-        lbl_apellidos = new Label("Apellidos:");
-        lbl_apellidos.setAlignmentX(Component.CENTER_ALIGNMENT);
-        field_apellidos = new TextField(1);
-        field_apellidos.setAlignmentX(Component.CENTER_ALIGNMENT);
-        centralPanel.add(lbl_apellidos);
+        lbl_apellido_materno = new Label("Apellido Materno:");
+        lbl_apellido_materno.setAlignmentX(Component.CENTER_ALIGNMENT);
+        field_apellido_materno = new TextField(1);
+        field_apellido_materno.setAlignmentX(Component.CENTER_ALIGNMENT);
+        centralPanel.add(lbl_apellido_materno);
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
-        centralPanel.add(field_apellidos);
-
+        centralPanel.add(field_apellido_materno);
+        
+        
+        lbl_apellido_paterno = new Label("Apellido Paterno:");
+        lbl_apellido_paterno.setAlignmentX(Component.CENTER_ALIGNMENT);
+        field_apellido_paterno= new TextField(1);
+        field_apellido_paterno.setAlignmentX(Component.CENTER_ALIGNMENT);
+        centralPanel.add(lbl_apellido_paterno);
+        centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
+        centralPanel.add(field_apellido_paterno);
+       
 
         lbl_direccion = new Label("Dirección:");
         lbl_direccion.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -96,6 +110,14 @@ public class DatosDelSolicitantePanel extends PanelSolicitarBeca {
                 JOptionPane.showMessageDialog(this, "Favor de seleccionar todos los campos", "Aviso", JOptionPane.WARNING_MESSAGE);
                 return;
             }
+            String nombre= field_nombre.getText();
+            String apellidoMaterno= field_apellido_materno.getText();
+            String apellidoPaterno= field_apellido_paterno.getText();
+            String direccion= field_direccion.getText();
+            String telefono= field_telefono.getText();
+            String email= field_email.getText();
+            DatosSolicitanteDTO datosSolicitanteDTO= new DatosSolicitanteDTO(nombre, apellidoMaterno, apellidoPaterno, direccion, telefono, email);
+            control.setDatosSolicitanteDTO(datosSolicitanteDTO);
             mainFrame.showPanel("historialAcademicoPanel");
         });
 
@@ -103,10 +125,12 @@ public class DatosDelSolicitantePanel extends PanelSolicitarBeca {
 
     public boolean algunCampoEstaVacio(){
         return field_nombre.getText().trim().isBlank() ||
-                field_apellidos.getText().trim().isBlank() ||
+                field_apellido_materno.getText().trim().isBlank() ||
                 field_direccion.getText().trim().isBlank() ||
                 field_telefono.getText().trim().isBlank() ||
                 field_email.getText().trim().isBlank();
     }
+    
+     
 
 }

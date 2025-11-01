@@ -4,6 +4,8 @@
  */
 package controlNavegacion;
 import dto.BecaDTO;
+import dto.DatosSolicitanteDTO;
+import dto.HistAcademicoDTO;
 import dto.SolicitudBecasDisponiblesDTO;
 import dto.SolicitudBecasDisponiblesResponseDTO;
 import gestor.GestorSolicitud;
@@ -25,6 +27,8 @@ public class ControlNavegacion {
     private BecaDTO becaDTO;
     private BecaDTO becaSeleccionadaDTO;
     private BecaDTO becaSeleccionada;
+    private DatosSolicitanteDTO datosSolicitanteDTO;
+    private HistAcademicoDTO historialAcademicoDTO;
 
 
     public ControlNavegacion(){
@@ -58,20 +62,31 @@ public class ControlNavegacion {
     }
     
     public void mostrarBecaSeleccionada(){
-        BecaDTO becaSeleccionada= getBecaSeleccionadaDTO();
+        BecaDTO becaSeleccionada= obtenerBecaSeleccionadaDTO();
         DetallesBecaPanel detallesBeca= (DetallesBecaPanel) solicitarBeca.getPanel("detalleBecaPanel");
         detallesBeca.cargarBeca(becaSeleccionada);
         solicitarBeca.showPanel("detalleBecaPanel");
     }
 
-    public BecaDTO getBecaSeleccionadaDTO() {
+    public BecaDTO obtenerBecaSeleccionadaDTO() {
         return becaSeleccionadaDTO;
+    }
+    
+    public DatosSolicitanteDTO obtenerDatosSolicitanteDTO(){
+        return datosSolicitanteDTO;
+    }
+    
+    public void setDatosSolicitanteDTO(DatosSolicitanteDTO datosSolicitanteDTO){
+        this.datosSolicitanteDTO= datosSolicitanteDTO;
     }
     
     
 
     public void setBecaSeleccionadaDTO(BecaDTO becaSeleccionadaDTO) {
         this.becaSeleccionadaDTO = becaSeleccionadaDTO;
+    }
+    public void setHistorialAcademicoDTO(HistAcademicoDTO historialAcademicoDTO){
+       this.historialAcademicoDTO= historialAcademicoDTO;
     }
     
     
