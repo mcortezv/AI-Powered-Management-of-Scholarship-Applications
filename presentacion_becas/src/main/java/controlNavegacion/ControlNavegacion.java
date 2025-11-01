@@ -50,9 +50,9 @@ public class ControlNavegacion {
         return manejador.obtenerBecasDisponibles(solicitudDTO);
     }
     
-    public void mostrarBecasDisponibles(java.util.List<BecaDTO> becas) {
+    public void mostrarBecasDisponibles(SolicitudBecasDisponiblesResponseDTO responseDTO) {
         ListadoBecasDisponiblesPanel pnl = (ListadoBecasDisponiblesPanel) solicitarBeca.getPanel("listadoBecasDisponiblesPanel");
-        pnl.setBecas(becas);
+        pnl.setBecas(responseDTO.getBecas());
         solicitarBeca.showPanel("listadoBecasDisponiblesPanel");
         solicitarBeca.getNorthPanel().setVisible(true);
     }
