@@ -1,5 +1,7 @@
 package dto;
-import objetosNegocio.enums.Parentesco;
+
+import enums.Parentesco;
+
 /**
  * @author Escalante, Sebastian.
  */
