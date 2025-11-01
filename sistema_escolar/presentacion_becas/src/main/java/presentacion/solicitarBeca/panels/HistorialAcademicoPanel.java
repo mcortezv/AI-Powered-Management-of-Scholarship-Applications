@@ -4,6 +4,8 @@
  */
 package presentacion.solicitarBeca.panels;
 import controlNavegacion.ControlNavegacion;
+import dto.HistAcademicoDTO;
+import dto.HistorialAcademicoDTO;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.*;
 import presentacion.styles.Button;
@@ -23,9 +25,11 @@ public class HistorialAcademicoPanel extends PanelSolicitarBeca {
     private Label semestre;
     private ComboBox<Integer> comboSemestre;
     private Button botonSiguiente;
+    private ControlNavegacion controlNavegacion;
 
     public HistorialAcademicoPanel(SolicitarBeca mainFrame, ControlNavegacion controlNavegacion) {
         super(mainFrame, controlNavegacion);
+        this.controlNavegacion= controlNavegacion;
     }
 
     @Override
@@ -80,6 +84,12 @@ public class HistorialAcademicoPanel extends PanelSolicitarBeca {
         });
 
         botonSiguiente.addActionListener(e -> {
+            String carrera= (String) comboCarrera.getSelectedItem();
+            String cargaAcademica= (String) comboCargaAcademica.getSelectedItem();
+            int semestre= (int) comboSemestre.getSelectedItem();
+            
+            HistAcademicoDTO historialAcademicoDTO= new HistAcademicoDTO(carrera, cargaAcademica, semestre);
+            controlNavegacion.setHistorialAcademicoDTO(historialAcademicoDTO);
             mainFrame.showPanel("datosTutorPanel");
         });
     }
