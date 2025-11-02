@@ -6,8 +6,11 @@ package objetosNegocio.mock;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import dto.EstudianteResponseDTO;
 import objetosNegocio.Direccion;
 import objetosNegocio.Estudiante;
+import objetosNegocio.enums.Carrera;
 
 /**
  *
@@ -16,13 +19,19 @@ import objetosNegocio.Estudiante;
 public class EstudianteMock {
     
     private Map<Long, Estudiante> estudiantes= new HashMap<>();
-
+    private static EstudianteMock instancia;
     TutorMock tutor= new TutorMock();
 
     
     public EstudianteMock(){
         cargarEstudiantes();
-        
+    }
+
+    public static EstudianteMock getInstance(){
+        if(instancia==null){
+            instancia= new EstudianteMock();
+        }
+        return instancia;
     }
     
     private void cargarEstudiantes(){
@@ -32,6 +41,11 @@ public class EstudianteMock {
 
     public Map<Long, Estudiante> getEstudiantes() {
         return estudiantes;
+    }
+
+    public EstudianteResponseDTO getEstudianteResponseDTO(){
+        EstudianteResponseDTO estudianteResponseDTO = new EstudianteResponseDTO("inscrito",9.8,"sebastian.potros@gmail","galeana 1477","6681118936", "ISW","sebastian escalante", 252321);
+        return estudianteResponseDTO;
     }
 
     
