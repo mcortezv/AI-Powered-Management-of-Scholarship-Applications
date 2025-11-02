@@ -37,11 +37,13 @@ public class ControlNavegacion {
     private TutorDTO tutorDTO;
     private InformacionSocioeconomicaDTO infoSocioeconomicaDTO;
     private SolicitudDTO solicitudDTO;
+  
 
 
     public ControlNavegacion(){
         this.manejador = new ManejadorSolicitud(new GestorSolicitud());
         this.becaDTO= becaDTO;
+       
         mainFrame = new MainFrame(this);
         mainFrame.setVisible(true);
         
@@ -77,8 +79,11 @@ public class ControlNavegacion {
     }
     public void mostrarResumen(){
         SolicitudDTO solicitudDTO= obtenerSolicitud();
+        
+        TutorDTO tutorDTO= obtenerTutor();
+       DatosSolicitanteDTO solicitanteDTO= obtenerDatosSolicitanteDTO();
         ResumenFinalPanel resumenFinal= (ResumenFinalPanel) solicitarBeca.getPanel("resumenFinalPanel");
-        resumenFinal.cargarResumen(solicitudDTO);
+        resumenFinal.cargarResumen(solicitudDTO, tutorDTO, solicitanteDTO);
         solicitarBeca.showPanel("resumenFinalPanel");
         
     }
@@ -92,8 +97,8 @@ public class ControlNavegacion {
         return datosSolicitanteDTO;
     }
     
-    public void setDatosSolicitanteDTO(DatosSolicitanteDTO datosSolicitanteDTO){
-        this.datosSolicitanteDTO= datosSolicitanteDTO;
+    public void setDatosSolicitanteDTO(DatosSolicitanteDTO datosSolicitante){
+        this.datosSolicitanteDTO= datosSolicitante;
     }
     
     
@@ -106,7 +111,10 @@ public class ControlNavegacion {
     }
     
     public void setTutor(TutorDTO tutor){
-        this.tutorDTO= tutorDTO;
+        this.tutorDTO= tutor;
+    }
+    public TutorDTO obtenerTutor(){
+        return tutorDTO;
     }
     
     public InformacionSocioeconomicaDTO obtenerInfoSocioeconomicaDTO(){
