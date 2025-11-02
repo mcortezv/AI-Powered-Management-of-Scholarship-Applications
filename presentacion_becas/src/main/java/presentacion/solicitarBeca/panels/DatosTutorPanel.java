@@ -115,6 +115,7 @@ public class DatosTutorPanel extends PanelSolicitarBeca {
              TutorDTO tutorDTO= new TutorDTO(nombre, parentesco, apellidoMaterno, apellidoPaterno, telefono, correo);
              controlNavegacion.setTutor(tutorDTO);
             mainFrame.showPanel("informacionSocioeconomicaPanel");
+            
         });
     }
 }
