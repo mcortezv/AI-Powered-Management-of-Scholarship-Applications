@@ -4,8 +4,6 @@ import dto.BecaDTO;
 import dto.HistAcademicoDTO;
 import dto.InformacionSocioeconomicaDTO;
 import dto.SolicitudDTO;
-import dto.TutorDTO;
-import enums.Parentesco;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
@@ -75,7 +73,6 @@ public class SubirDocumentosPanel extends PanelSolicitarBeca {
             
             
            SolicitudDTO solicitudDTO= new SolicitudDTO(becaDTO, infoSocioeconomicaDTO, historialAcademicoDTO);
-
            controlNavegacion.setSolicitud(solicitudDTO);
             controlNavegacion.mostrarResumen();
         });
