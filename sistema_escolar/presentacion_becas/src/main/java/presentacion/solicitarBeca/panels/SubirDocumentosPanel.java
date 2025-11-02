@@ -4,8 +4,6 @@ import dto.BecaDTO;
 import dto.HistAcademicoDTO;
 import dto.InformacionSocioeconomicaDTO;
 import dto.SolicitudDTO;
-import dto.TutorDTO;
-import enums.Parentesco;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
@@ -60,7 +58,6 @@ public class SubirDocumentosPanel extends PanelSolicitarBeca {
         centralPanel.add(panelBotones);
         centralPanel.add(Box.createVerticalGlue());
         btnContinuar = new Button("Continuar");
-        btnContinuar.setAlignmentX(Component.CENTER_ALIGNMENT);
         centralPanel.add(btnContinuar, BorderLayout.CENTER);
 
         btnBack.addActionListener(e -> {
@@ -75,7 +72,6 @@ public class SubirDocumentosPanel extends PanelSolicitarBeca {
             
             
            SolicitudDTO solicitudDTO= new SolicitudDTO(becaDTO, infoSocioeconomicaDTO, historialAcademicoDTO);
-
            controlNavegacion.setSolicitud(solicitudDTO);
             controlNavegacion.mostrarResumen();
         });
