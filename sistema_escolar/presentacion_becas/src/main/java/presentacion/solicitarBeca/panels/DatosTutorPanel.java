@@ -1,5 +1,6 @@
 package presentacion.solicitarBeca.panels;
 import controlNavegacion.ControlNavegacion;
+import dto.TutorDTO;
 import enums.Parentesco;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.*;
@@ -28,10 +29,12 @@ public class DatosTutorPanel extends PanelSolicitarBeca {
     private TextField field_apellido_paterno;   
     private Parentesco parentesco;
     private ComboBox<Parentesco> comboParentesco;
+    private ControlNavegacion controlNavegacion;
     
 
     public DatosTutorPanel(SolicitarBeca frame, ControlNavegacion controlNavegacion) {
         super(frame, controlNavegacion);
+        this.controlNavegacion= controlNavegacion;
     }
 
     @Override
@@ -104,8 +107,14 @@ public class DatosTutorPanel extends PanelSolicitarBeca {
         });
 
         btnContinuar.addActionListener(e -> {
-         //   Responsable responsable= 
-            
+            Parentesco parentesco= (Parentesco) comboParentesco.getSelectedItem();
+             String nombre= field_nombre.getText();
+             String apellidoMaterno= field_apellido_materno.getText();
+             String apellidoPaterno= field_apellido_paterno.getText();
+             String telefono= field_telefono.getText();
+             String correo= field_email.getText();
+             TutorDTO tutorDTO= new TutorDTO(nombre, parentesco, apellidoMaterno, apellidoPaterno, telefono, correo);
+             controlNavegacion.setTutor(tutorDTO);
             mainFrame.showPanel("informacionSocioeconomicaPanel");
         });
     }

@@ -24,6 +24,7 @@ public class InformacionSocioeconomicaPanel extends PanelSolicitarBeca{
 
     public InformacionSocioeconomicaPanel(SolicitarBeca mainFrame, ControlNavegacion controlNavegacion){
         super(mainFrame, controlNavegacion);
+        this.controlNavegacion= controlNavegacion;
     }
 
     public void startComponents() {
@@ -78,7 +79,14 @@ public class InformacionSocioeconomicaPanel extends PanelSolicitarBeca{
                 //JOptionPane.showMessageDialog(this, "Favor de seleccionar todos los campos", "Aviso", JOptionPane.WARNING_MESSAGE);
                 //return;
             //}
-            //InformacionSocioeconomicaDTO informacionSocioeconomicaDTO = mainFrame.getInformacionSocioeconomicaDTO();
+            Double ingreso= Double.parseDouble(field_ingreso.getText());
+            String seleccionDependEconomica= (String) cbx_familia_depende.getSelectedItem();
+            boolean dependenciaEconomica= seleccionDependEconomica.equals("SI");
+            String seleccionGeneraIngreso=   (String) cbx_genera_ingreso.getSelectedItem();
+            boolean generaIngreso= seleccionGeneraIngreso.equals("SI");
+            
+            InformacionSocioeconomicaDTO informacionSocioeconomicaDTO = new InformacionSocioeconomicaDTO(ingreso, dependenciaEconomica, generaIngreso);
+            controlNavegacion.setInfoSocioeconomica(informacionSocioeconomicaDTO);
             //String ingresoFamiliarMensual = field_ingreso.getText();
             //double ingresoFamiliarMensualDouble = Double.parseDouble(ingresoFamiliarMensual);
             //informacionSocioeconomicaDTO.setIngresoTotalFamilarMensual(ingresoFamiliarMensualDouble);

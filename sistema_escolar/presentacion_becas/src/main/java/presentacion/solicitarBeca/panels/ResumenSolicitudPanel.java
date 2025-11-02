@@ -1,6 +1,8 @@
 package presentacion.solicitarBeca.panels;
 
 import controlNavegacion.ControlNavegacion;
+import dto.BecaDTO;
+import dto.SolicitudDTO;
 import presentacion.login.MainFrame;
 import presentacion.login.panels.NorthPanel;
 import presentacion.solicitarBeca.SolicitarBeca;
@@ -22,11 +24,19 @@ public class ResumenSolicitudPanel extends PanelSolicitarBeca{
     private Label lbl_info_socioeconomica;
     private Label lbl_documentos;
     private Button btnAceptar;
+    Label lbl_beca_response;
+    Label lbl_tutor_1;
+    Label lbl_tutor_2;
+    Label lbl_tutor_3 ;
+    Label lbl_info_2;
+    Label lbl_info_3;
+    private ControlNavegacion control;
 
     public ResumenSolicitudPanel(SolicitarBeca frame, ControlNavegacion controlNavegacion) {
         super(frame, controlNavegacion);
         this.southPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
         this.southPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 50));
+        controlNavegacion= this.controlNavegacion;
     }
 
     @Override
@@ -54,7 +64,7 @@ public class ResumenSolicitudPanel extends PanelSolicitarBeca{
         lbl_beca_solicitada.setFont(sectionFont);
         lbl_beca_solicitada.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        Label lbl_beca_response = new Label("Moisés Vázquez Gudiño");
+         lbl_beca_response = new Label("Moisés Vázquez Gudiño");
         lbl_beca_response.setFont(dataFont);
         lbl_beca_response.setAlignmentX(Component.LEFT_ALIGNMENT);
 
@@ -85,15 +95,15 @@ public class ResumenSolicitudPanel extends PanelSolicitarBeca{
         lbl_datos_tutor.setFont(sectionFont);
         lbl_datos_tutor.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        Label lbl_tutor_1 = new Label("Juan López Vázquez");
+         lbl_tutor_1 = new Label("Juan López Vázquez");
         lbl_tutor_1.setFont(dataFont);
         lbl_tutor_1.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        Label lbl_tutor_2 = new Label("Padre");
+         lbl_tutor_2 = new Label("Padre");
         lbl_tutor_2.setFont(dataFont);
         lbl_tutor_2.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        Label lbl_tutor_3 = new Label("53 años");
+         lbl_tutor_3 = new Label("53 años");
         lbl_tutor_3.setFont(dataFont);
         lbl_tutor_3.setAlignmentX(Component.LEFT_ALIGNMENT);
 
@@ -118,11 +128,11 @@ public class ResumenSolicitudPanel extends PanelSolicitarBeca{
         lbl_info_1.setFont(dataFont);
         lbl_info_1.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        Label lbl_info_2 = new Label("Ingreso mensual familiar: Entre 8000 y 10000");
+         lbl_info_2 = new Label("Ingreso mensual familiar: Entre 8000 y 10000");
         lbl_info_2.setFont(dataFont);
         lbl_info_2.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        Label lbl_info_3 = new Label("Generas ingreso: No");
+         lbl_info_3 = new Label("Generas ingreso: No");
         lbl_info_3.setFont(dataFont);
         lbl_info_3.setAlignmentX(Component.LEFT_ALIGNMENT);
 
@@ -156,6 +166,22 @@ public class ResumenSolicitudPanel extends PanelSolicitarBeca{
         btnAceptar = new Button("Aceptar");
         btnAceptar.setAlignmentX(CENTER_ALIGNMENT);
         centralPanel.add(btnAceptar);
+    }
+    
+    private void cargarResumen(SolicitudDTO solicitudDTO){
+         lbl_beca_response.setText(solicitudDTO.getBeca().getNombre());
+     
+      lbl_info_2.setText(String.valueOf(solicitudDTO.getInformacionSocioeconomica().getIngresoTotalFamilarMensual()));
+      if(solicitudDTO.getInformacionSocioeconomica().isTrabajo()){
+          lbl_info_3.setText("Si");
+          
+      } else{
+          lbl_info_3.setText("No");
+      }
+     
+      
+      
+      
     }
     private Label createDocumentLabel(String text, Font font) {
         String checkMark = "\u2713  ";
