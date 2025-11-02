@@ -1,5 +1,7 @@
 package presentacion.solicitarBeca.panels;
 import controlNavegacion.ControlNavegacion;
+import dto.TutorDTO;
+import enums.Parentesco;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.*;
 import presentacion.styles.Button;
@@ -11,7 +13,7 @@ import java.awt.*;
 public class DatosTutorPanel extends PanelSolicitarBeca {
     private Label titulo;
     private Label lbl_responsable;
-    private ComboBox<String> comboResponsable;
+   // private ComboBox<String> comboResponsable;
     private Label lbl_nombre;
     private TextField field_nombre;
     private Label lbl_apellidos;
@@ -21,9 +23,18 @@ public class DatosTutorPanel extends PanelSolicitarBeca {
     private Label lbl_email;
     private TextField field_email;
     private Button btnContinuar;
+    private Label lbl_apellido_materno;
+    private Label lbl_apellido_paterno;
+    private TextField field_apellido_materno;
+    private TextField field_apellido_paterno;   
+    private Parentesco parentesco;
+    private ComboBox<Parentesco> comboParentesco;
+    private ControlNavegacion controlNavegacion;
+    
 
     public DatosTutorPanel(SolicitarBeca frame, ControlNavegacion controlNavegacion) {
         super(frame, controlNavegacion);
+        this.controlNavegacion= controlNavegacion;
     }
 
     @Override
@@ -34,15 +45,18 @@ public class DatosTutorPanel extends PanelSolicitarBeca {
         titulo.setAlignmentX(CENTER_ALIGNMENT);
         centralPanel.add(titulo);
 
-        lbl_responsable = new Label("Que carrera estas cursando?");
+        lbl_responsable = new Label("Quién es el responsable de pagar tus estudios?");
         lbl_responsable.setFont(Style.LABEL_FONT);
         lbl_responsable.setAlignmentX(CENTER_ALIGNMENT);
         centralPanel.add(lbl_responsable);
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
-        String[] responsable = new String[]{"PADRE", "MADRE", "ABUELO/A","HERMANO/A","TIO", "TIA", "PADRASTRO/A","TUTOR_OFICIAL"};
-        comboResponsable = new ComboBox<>(responsable);
-        comboResponsable.setAlignmentX(CENTER_ALIGNMENT);
-        centralPanel.add(comboResponsable);
+        
+       Parentesco[] opciones= Parentesco.values();
+       comboParentesco= new ComboBox<>(opciones);
+       
+        comboParentesco = new ComboBox<>(opciones);
+        comboParentesco.setAlignmentX(CENTER_ALIGNMENT);
+        centralPanel.add(comboParentesco);
 
         lbl_nombre = new Label("Nombres:");
         lbl_nombre.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -52,13 +66,22 @@ public class DatosTutorPanel extends PanelSolicitarBeca {
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
         centralPanel.add(field_nombre);
 
-        lbl_apellidos = new Label("Apellidos:");
-        lbl_apellidos.setAlignmentX(Component.CENTER_ALIGNMENT);
-        field_apellidos = new TextField(1);
-        field_apellidos.setAlignmentX(Component.CENTER_ALIGNMENT);
-        centralPanel.add(lbl_apellidos);
+        lbl_apellido_materno = new Label("Apellido Materno:");
+        lbl_apellido_materno.setAlignmentX(Component.CENTER_ALIGNMENT);
+        field_apellido_materno = new TextField(1);
+        field_apellido_materno.setAlignmentX(Component.CENTER_ALIGNMENT);
+        centralPanel.add(lbl_apellido_materno);
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
-        centralPanel.add(field_apellidos);
+        centralPanel.add(field_apellido_materno);
+        
+        
+        lbl_apellido_paterno = new Label("Apellido Paterno:");
+        lbl_apellido_paterno.setAlignmentX(Component.CENTER_ALIGNMENT);
+        field_apellido_paterno= new TextField(1);
+        field_apellido_paterno.setAlignmentX(Component.CENTER_ALIGNMENT);
+        centralPanel.add(lbl_apellido_paterno);
+        centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
+        centralPanel.add(field_apellido_paterno);
 
         lbl_telefono = new Label("Teléfono:");
         lbl_telefono.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -84,6 +107,14 @@ public class DatosTutorPanel extends PanelSolicitarBeca {
         });
 
         btnContinuar.addActionListener(e -> {
+            Parentesco parentesco= (Parentesco) comboParentesco.getSelectedItem();
+             String nombre= field_nombre.getText();
+             String apellidoMaterno= field_apellido_materno.getText();
+             String apellidoPaterno= field_apellido_paterno.getText();
+             String telefono= field_telefono.getText();
+             String correo= field_email.getText();
+             TutorDTO tutorDTO= new TutorDTO(nombre, parentesco, apellidoMaterno, apellidoPaterno, telefono, correo);
+             controlNavegacion.setTutor(tutorDTO);
             mainFrame.showPanel("informacionSocioeconomicaPanel");
         });
     }
