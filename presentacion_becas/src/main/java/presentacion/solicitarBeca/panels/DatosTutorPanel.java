@@ -96,6 +96,7 @@ public class DatosTutorPanel extends PanelSolicitarBeca {
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
         centralPanel.add(field_email);
         btnContinuar = new Button("Continuar");
+        btnContinuar.setAlignmentX(Component.CENTER_ALIGNMENT);
         centralPanel.add(btnContinuar, BorderLayout.CENTER);
 
         btnBack.addActionListener(e -> {
