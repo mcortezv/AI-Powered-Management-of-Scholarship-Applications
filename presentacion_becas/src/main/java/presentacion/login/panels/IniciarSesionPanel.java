@@ -1,5 +1,7 @@
 package presentacion.login.panels;
 import controlNavegacion.ControlNavegacion;
+import dto.EstudianteResponseDTO;
+import dto.SolicitudLoginDTO;
 import presentacion.login.MainFrame;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
@@ -8,6 +10,8 @@ import presentacion.styles.Style;
 import presentacion.styles.TextField;
 import javax.swing.*;
 import java.awt.*;
+import java.util.Arrays;
+
 import presentacion.styles.PasswordField;
 
 /**
@@ -86,11 +90,17 @@ public class IniciarSesionPanel extends Panel {
         btnIniciarSesion.addActionListener(e -> {
             String usuario = txtUsuario.getText().trim();
             char[] contraseña = txtPassword.getPassword();
+            String contraseniaString = Arrays.toString(contraseña);
             try{
+                SolicitudLoginDTO solicitudLoginDTO = new SolicitudLoginDTO(usuario,contraseniaString);
+                EstudianteResponseDTO estudiante = controlNavegacion.solicitarLogin(solicitudLoginDTO);
 
-            } finally{
-                java.util.Arrays.fill(contraseña, '\0');
+
+            }catch (Exception exception){
+                JOptionPane.showMessageDialog(this,"Error intentando iniciar sesion");
             }
+
+
             mainFrame.showPanel("hubPanel");
             mainFrame.getNorthPanel().setVisible(true);
         });
