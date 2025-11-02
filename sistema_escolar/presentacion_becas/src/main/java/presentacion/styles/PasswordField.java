@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package presentacion.styles;
-
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
