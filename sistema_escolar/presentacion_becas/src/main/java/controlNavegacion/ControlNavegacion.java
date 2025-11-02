@@ -3,15 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controlNavegacion;
-import dto.BecaDTO;
-import dto.DatosSolicitanteDTO;
-import dto.HistAcademicoDTO;
-import dto.HistorialAcademicoDTO;
-import dto.InformacionSocioeconomicaDTO;
-import dto.SolicitudBecasDisponiblesDTO;
-import dto.SolicitudBecasDisponiblesResponseDTO;
-import dto.SolicitudDTO;
-import dto.TutorDTO;
+import dto.*;
 import gestor.GestorSolicitud;
 import implementacion.ManejadorSolicitud;
 import interfaz.IManejadorSolicitud;
@@ -100,8 +92,6 @@ public class ControlNavegacion {
     public void setDatosSolicitanteDTO(DatosSolicitanteDTO datosSolicitante){
         this.datosSolicitanteDTO= datosSolicitante;
     }
-    
-    
 
     public void setBecaSeleccionadaDTO(BecaDTO becaSeleccionadaDTO) {
         this.becaSeleccionadaDTO = becaSeleccionadaDTO;
@@ -137,7 +127,15 @@ public class ControlNavegacion {
         return solicitudDTO;
     }
 
-    
+
+
+
+
+
+    public EstudianteResponseDTO solicitarLogin(SolicitudLoginDTO solicitudLoginDTO){
+        return manejador.validarInicioSesion(solicitudLoginDTO);
+    }
+
     
    
     

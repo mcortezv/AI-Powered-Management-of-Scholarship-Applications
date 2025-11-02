@@ -23,4 +23,10 @@ public class ManejadorSolicitud implements IManejadorSolicitud {
         return gestor.obtenerBecasDisponibles(solicitudDTO);
         
     }
+
+    @Override
+    public EstudianteResponseDTO validarInicioSesion(SolicitudLoginDTO solicitudLoginDTO) {
+        return gestor.validarInicioSesion(solicitudLoginDTO);
+    }
+
 }
