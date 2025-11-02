@@ -3,6 +3,7 @@ package presentacion.solicitarBeca.panels;
 import controlNavegacion.ControlNavegacion;
 import dto.BecaDTO;
 import dto.SolicitudDTO;
+import dto.TutorDTO;
 import presentacion.login.MainFrame;
 import presentacion.login.panels.NorthPanel;
 import presentacion.solicitarBeca.SolicitarBeca;
@@ -168,8 +169,8 @@ public class ResumenSolicitudPanel extends PanelSolicitarBeca{
         centralPanel.add(btnAceptar);
     }
     
-    private void cargarResumen(SolicitudDTO solicitudDTO){
-         lbl_beca_response.setText(solicitudDTO.getBeca().getNombre());
+    private void cargarResumen(SolicitudDTO solicitudDTO, TutorDTO tutorDTO){
+        lbl_beca_response.setText(solicitudDTO.getBeca().getNombre());
      
       lbl_info_2.setText(String.valueOf(solicitudDTO.getInformacionSocioeconomica().getIngresoTotalFamilarMensual()));
       if(solicitudDTO.getInformacionSocioeconomica().isTrabajo()){

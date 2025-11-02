@@ -1,7 +1,9 @@
 package presentacion.solicitarBeca.panels;
 import controlNavegacion.ControlNavegacion;
 import dto.BecaDTO;
+import dto.DatosSolicitanteDTO;
 import dto.SolicitudDTO;
+import dto.TutorDTO;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
@@ -24,6 +26,16 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
     private BecaDTO beca;
     private ControlNavegacion controlNavegacion;
     private SolicitudDTO solicitudDTO;
+    private TutorDTO tutorDTO;
+    Label lbl_tutor_1;
+    Label lbl_tutor_2;
+    Label lbl_info_2 ;
+    Label lbl_info_3;
+    Label lbl_info_5;
+    Label lblDependencia;
+    Label lblSolicitanteaNombre;
+    Label lblSolicitanteApPaterno;
+   
 
     public ResumenFinalPanel(SolicitarBeca frame, ControlNavegacion controlNavegacion) {
         super(frame, controlNavegacion);
@@ -69,9 +81,12 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
         lbl_datos_solicitante.setFont(sectionFont);
         lbl_datos_solicitante.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        Label lbl_solicitante_1 = new Label("Katia Ximena Álvarez Espinoza");
-        lbl_solicitante_1.setFont(dataFont);
-        lbl_solicitante_1.setAlignmentX(Component.LEFT_ALIGNMENT);
+         lblSolicitanteaNombre = new Label("Katia Ximena Álvarez Espinoza");
+        lblSolicitanteaNombre.setFont(dataFont);
+        lblSolicitanteaNombre.setAlignmentX(Component.LEFT_ALIGNMENT);
+        lblSolicitanteApPaterno= new Label("...");
+        lblSolicitanteApPaterno.setFont(dataFont);
+        lblSolicitanteApPaterno.setAlignmentX(Component.LEFT_ALIGNMENT);        
 
         Label lbl_solicitante_2 = new Label("21 años");
         lbl_solicitante_2.setFont(dataFont);
@@ -79,7 +94,8 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
 
         leftColumn.add(lbl_datos_solicitante);
         leftColumn.add(Box.createVerticalStrut(10));
-        leftColumn.add(lbl_solicitante_1);
+        leftColumn.add(lblSolicitanteaNombre);
+        leftColumn.add(lblSolicitanteApPaterno);
         leftColumn.add(lbl_solicitante_2);
         leftColumn.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
 
@@ -87,11 +103,11 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
         lbl_datos_tutor.setFont(sectionFont);
         lbl_datos_tutor.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        Label lbl_tutor_1 = new Label("Juan López Vázquez");
+         lbl_tutor_1 = new Label("Juan López Vázquez");
         lbl_tutor_1.setFont(dataFont);
         lbl_tutor_1.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        Label lbl_tutor_2 = new Label("Padre");
+         lbl_tutor_2 = new Label("Padre");
         lbl_tutor_2.setFont(dataFont);
         lbl_tutor_2.setAlignmentX(Component.LEFT_ALIGNMENT);
 
@@ -115,24 +131,39 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
         lbl_info_socioeconomica = new Label("Informacion Socioeconómica:");
         lbl_info_socioeconomica.setFont(sectionFont);
         lbl_info_socioeconomica.setAlignmentX(Component.LEFT_ALIGNMENT);
+        
 
-        Label lbl_info_1 = new Label("Personas en tu familia: 5");
+        Label lbl_info_1 = new Label("Dependencia Económica: ");
         lbl_info_1.setFont(dataFont);
         lbl_info_1.setAlignmentX(Component.LEFT_ALIGNMENT);
+        lblDependencia= new Label("...");
+        lblDependencia.setFont(dataFont);
+        lblDependencia.setAlignmentX(Component.LEFT_ALIGNMENT);        
 
-        Label lbl_info_2 = new Label("Ingreso mensual familiar: Entre 8000 y 10000");
+         lbl_info_2 = new Label("Ingreso mensual familiar:");
         lbl_info_2.setFont(dataFont);
         lbl_info_2.setAlignmentX(Component.LEFT_ALIGNMENT);
-
-        Label lbl_info_3 = new Label("Generas ingreso: No");
+        lbl_info_3= new Label("...");
         lbl_info_3.setFont(dataFont);
         lbl_info_3.setAlignmentX(Component.LEFT_ALIGNMENT);
+        
+
+        Label lbl_info_4 = new Label("Generas ingreso:");
+        lbl_info_4.setFont(dataFont);
+        lbl_info_4.setAlignmentX(Component.LEFT_ALIGNMENT);
+        lbl_info_5= new Label("...");
+        lbl_info_5.setFont(dataFont);
+        lbl_info_5.setAlignmentX(Component.LEFT_ALIGNMENT);
+        
 
         rightColumn.add(lbl_info_socioeconomica);
         rightColumn.add(Box.createVerticalStrut(10));
         rightColumn.add(lbl_info_1);
+        rightColumn.add(lblDependencia);
         rightColumn.add(lbl_info_2);
         rightColumn.add(lbl_info_3);
+        rightColumn.add(lbl_info_4);
+        rightColumn.add(lbl_info_5);
         rightColumn.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
 
         lbl_documentos = new Label("Documentos:");
@@ -169,9 +200,18 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
         });
     }
     
-    public void cargarResumen(SolicitudDTO solicitudDTO){
+    public void cargarResumen(SolicitudDTO solicitudDTO, TutorDTO tutor, DatosSolicitanteDTO solicitanteDTO){
         this.solicitudDTO= solicitudDTO;
+        this.tutorDTO= tutor;
         lbl_beca_response.setText(solicitudDTO.getBeca().getNombre());
+        lbl_info_3.setText(String.valueOf(solicitudDTO.getInformacionSocioeconomica().getIngresoTotalFamilarMensual()));
+        lbl_tutor_1.setText(tutorDTO.getNombre());
+        lbl_tutor_2.setText(String.valueOf(tutorDTO.getParentesco()));
+        lblDependencia.setText(solicitudDTO.getInformacionSocioeconomica().isDependenciaEconomica() ? "SI" : "NO");
+        lbl_info_5.setText(solicitudDTO.getInformacionSocioeconomica().isTrabajo() ? "SI" : "NO");
+       lblSolicitanteaNombre.setText(solicitanteDTO.getNombreField());
+       lblSolicitanteApPaterno.setText(solicitanteDTO.getPrimerApellidoField());
+       
         
         
     }
