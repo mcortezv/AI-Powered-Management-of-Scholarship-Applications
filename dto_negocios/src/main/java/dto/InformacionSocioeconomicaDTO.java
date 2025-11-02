@@ -4,18 +4,17 @@ package dto;
  */
 public class InformacionSocioeconomicaDTO {
     private double ingresoTotalFamilarMensual;
-    private String tipoVivienda;
+    private boolean dependenciaEconomica;
     private boolean trabajo;
-    private boolean deudas;
+   
 
     public InformacionSocioeconomicaDTO() {
     }
 
-    public InformacionSocioeconomicaDTO(boolean deudas, boolean trabajo, String tipoVivienda, double ingresoTotalFamilarMensual) {
-        this.deudas = deudas;
-        this.trabajo = trabajo;
-        this.tipoVivienda = tipoVivienda;
+    public InformacionSocioeconomicaDTO(double ingresoTotalFamilarMensual, boolean dependenciaEconomica, boolean trabajo) {
         this.ingresoTotalFamilarMensual = ingresoTotalFamilarMensual;
+        this.dependenciaEconomica = dependenciaEconomica;
+        this.trabajo = trabajo;
     }
 
     public double getIngresoTotalFamilarMensual() {
@@ -26,12 +25,12 @@ public class InformacionSocioeconomicaDTO {
         this.ingresoTotalFamilarMensual = ingresoTotalFamilarMensual;
     }
 
-    public String getTipoVivienda() {
-        return tipoVivienda;
+    public boolean isDependenciaEconomica() {
+        return dependenciaEconomica;
     }
 
-    public void setTipoVivienda(String tipoVivienda) {
-        this.tipoVivienda = tipoVivienda;
+    public void setDependenciaEconomica(boolean dependenciaEconomica) {
+        this.dependenciaEconomica = dependenciaEconomica;
     }
 
     public boolean isTrabajo() {
@@ -42,11 +41,5 @@ public class InformacionSocioeconomicaDTO {
         this.trabajo = trabajo;
     }
 
-    public boolean isDeudas() {
-        return deudas;
-    }
-
-    public void setDeudas(boolean deudas) {
-        this.deudas = deudas;
-    }
+    
 }
