@@ -9,7 +9,11 @@ import dto.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import objetosNegocio.Estudiante;
+import objetosNegocio.Solicitud;
 import objetosNegocio.mock.BecaBOMock;
+import objetosNegocio.mock.EstudianteMock;
 
 /**
  *
@@ -17,11 +21,15 @@ import objetosNegocio.mock.BecaBOMock;
  */
 public class GestorSolicitud {
     BecaBOMock becaBO;
+    EstudianteMock estudianteMock;
 
     public SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO) {
         return becaBO.getInstance().obtenerBecas();
-      
+    }
 
+
+    public EstudianteResponseDTO validarInicioSesion(SolicitudLoginDTO solicitudLoginDTO) {
+        return null;
     }
 
 }
