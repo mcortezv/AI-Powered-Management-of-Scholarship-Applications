@@ -10,6 +10,8 @@
         <module>dto_negocios</module>
         <module>negocios_solicitarBeca</module>
         <module>objetos_negocio</module>
+        <module>infraestructura_itson</module>
+        <module>infraestructura_gobierno</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

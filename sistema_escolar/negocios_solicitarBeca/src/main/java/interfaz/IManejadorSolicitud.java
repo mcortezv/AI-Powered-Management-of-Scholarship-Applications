@@ -12,5 +12,5 @@ import dto.*;
  */
 public interface IManejadorSolicitud {
     public SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO);
-    
+    public EstudianteResponseDTO validarInicioSesion(SolicitudLoginDTO solicitudLoginDTO);
 }
