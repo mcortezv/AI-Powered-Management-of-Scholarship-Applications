@@ -1,5 +1,9 @@
 package presentacion.solicitarBeca.panels;
 import controlNavegacion.ControlNavegacion;
+import dto.BecaDTO;
+import dto.HistAcademicoDTO;
+import dto.InformacionSocioeconomicaDTO;
+import dto.SolicitudDTO;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
@@ -8,6 +12,7 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.io.File;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -17,9 +22,12 @@ public class SubirDocumentosPanel extends PanelSolicitarBeca {
     private Button btnSiguiente;
     private Map<String, File> documentosCargados = new HashMap<>();
     private Button btnContinuar;
-
+    private ControlNavegacion controlNavegacion;
+    
     public SubirDocumentosPanel(SolicitarBeca frame, ControlNavegacion controlNavegacion) {
         super(frame, controlNavegacion);
+        this.controlNavegacion= controlNavegacion;
+        
     }
 
     @Override
@@ -57,7 +65,15 @@ public class SubirDocumentosPanel extends PanelSolicitarBeca {
         });
 
         btnContinuar.addActionListener(e -> {
-            mainFrame.showPanel("resumenFinalPanel");
+            BecaDTO becaDTO= controlNavegacion.obtenerBecaSeleccionadaDTO();
+            InformacionSocioeconomicaDTO infoSocioeconomicaDTO= controlNavegacion.obtenerInfoSocioeconomicaDTO();
+            HistAcademicoDTO historialAcademicoDTO = controlNavegacion.obtenerHistAcademico();
+            
+            
+            
+           SolicitudDTO solicitudDTO= new SolicitudDTO(becaDTO, infoSocioeconomicaDTO, historialAcademicoDTO);
+           controlNavegacion.setSolicitud(solicitudDTO);
+            controlNavegacion.mostrarResumen();
         });
     }
 
