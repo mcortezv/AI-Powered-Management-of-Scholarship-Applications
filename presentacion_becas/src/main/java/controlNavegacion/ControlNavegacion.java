@@ -6,8 +6,12 @@ package controlNavegacion;
 import dto.BecaDTO;
 import dto.DatosSolicitanteDTO;
 import dto.HistAcademicoDTO;
+import dto.HistorialAcademicoDTO;
+import dto.InformacionSocioeconomicaDTO;
 import dto.SolicitudBecasDisponiblesDTO;
 import dto.SolicitudBecasDisponiblesResponseDTO;
+import dto.SolicitudDTO;
+import dto.TutorDTO;
 import gestor.GestorSolicitud;
 import implementacion.ManejadorSolicitud;
 import interfaz.IManejadorSolicitud;
@@ -15,6 +19,7 @@ import presentacion.login.MainFrame;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.solicitarBeca.panels.DetallesBecaPanel;
 import presentacion.solicitarBeca.panels.ListadoBecasDisponiblesPanel;
+import presentacion.solicitarBeca.panels.ResumenFinalPanel;
 
 /**
  *
@@ -29,6 +34,9 @@ public class ControlNavegacion {
     private BecaDTO becaSeleccionada;
     private DatosSolicitanteDTO datosSolicitanteDTO;
     private HistAcademicoDTO historialAcademicoDTO;
+    private TutorDTO tutorDTO;
+    private InformacionSocioeconomicaDTO infoSocioeconomicaDTO;
+    private SolicitudDTO solicitudDTO;
 
 
     public ControlNavegacion(){
@@ -67,6 +75,14 @@ public class ControlNavegacion {
         detallesBeca.cargarBeca(becaSeleccionada);
         solicitarBeca.showPanel("detalleBecaPanel");
     }
+    public void mostrarResumen(){
+        SolicitudDTO solicitudDTO= obtenerSolicitud();
+        ResumenFinalPanel resumenFinal= (ResumenFinalPanel) solicitarBeca.getPanel("resumenFinalPanel");
+        resumenFinal.cargarResumen(solicitudDTO);
+        solicitarBeca.showPanel("resumenFinalPanel");
+        
+    }
+   
 
     public BecaDTO obtenerBecaSeleccionadaDTO() {
         return becaSeleccionadaDTO;
@@ -89,6 +105,30 @@ public class ControlNavegacion {
        this.historialAcademicoDTO= historialAcademicoDTO;
     }
     
+    public void setTutor(TutorDTO tutor){
+        this.tutorDTO= tutorDTO;
+    }
+    
+    public InformacionSocioeconomicaDTO obtenerInfoSocioeconomicaDTO(){
+        return infoSocioeconomicaDTO;
+    }    
+    
+    public void setInfoSocioeconomica(InformacionSocioeconomicaDTO infoSocioeconomicaDTO){
+        this.infoSocioeconomicaDTO= infoSocioeconomicaDTO;
+    }
+    
+    public HistAcademicoDTO obtenerHistAcademico(){
+        return historialAcademicoDTO;
+    }
+    
+    public void setSolicitud(SolicitudDTO solicitudDTO){
+       this.solicitudDTO= solicitudDTO;
+    }
+    
+    public SolicitudDTO obtenerSolicitud(){
+        return solicitudDTO;
+    }
+
     
     
    

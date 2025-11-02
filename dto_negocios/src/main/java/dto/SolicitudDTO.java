@@ -13,13 +13,19 @@ public class SolicitudDTO {
     private EstudianteSolicitudDTO estudiante;
     private BecaDTO beca;
     private InformacionSocioeconomicaDTO informacionSocioeconomica;
-    private HistorialAcademicoDTO historialAcademico;
+    private HistAcademicoDTO historialAcademico;
     private List<DocumentoDTO> documentos;
 
     public SolicitudDTO() {
     }
+    
+    public SolicitudDTO(BecaDTO beca, InformacionSocioeconomicaDTO informacionSocioeconomica, HistAcademicoDTO historialAcademico) {
+        this.beca = beca;
+        this.informacionSocioeconomica = informacionSocioeconomica;
+        this.historialAcademico = historialAcademico;
+    }    
 
-    public SolicitudDTO(long id, String estado, LocalDate fechaSolicitud, EstudianteSolicitudDTO estudiante, BecaDTO beca, InformacionSocioeconomicaDTO informacionSocioeconomica, HistorialAcademicoDTO historialAcademico, List<DocumentoDTO> documentos) {
+    public SolicitudDTO(long id, String estado, LocalDate fechaSolicitud, EstudianteSolicitudDTO estudiante, BecaDTO beca, InformacionSocioeconomicaDTO informacionSocioeconomica, HistAcademicoDTO historialAcademico, List<DocumentoDTO> documentos) {
         this.id = id;
         this.estado = estado;
         this.fechaSolicitud = fechaSolicitud;
@@ -29,6 +35,18 @@ public class SolicitudDTO {
         this.historialAcademico = historialAcademico;
         this.documentos = documentos;
     }
+
+
+
+    public SolicitudDTO(LocalDate fechaSolicitud, EstudianteSolicitudDTO estudiante, BecaDTO beca, InformacionSocioeconomicaDTO informacionSocioeconomica, HistAcademicoDTO historialAcademico) {
+        this.fechaSolicitud = fechaSolicitud;
+        this.estudiante = estudiante;
+        this.beca = beca;
+        this.informacionSocioeconomica = informacionSocioeconomica;
+        this.historialAcademico = historialAcademico;
+    }
+    
+    
 
     public long getId() {
         return id;
@@ -78,11 +96,11 @@ public class SolicitudDTO {
         this.informacionSocioeconomica = informacionSocioeconomica;
     }
 
-    public HistorialAcademicoDTO getHistorialAcademico() {
+    public HistAcademicoDTO getHistorialAcademico() {
         return historialAcademico;
     }
 
-    public void setHistorialAcademico(HistorialAcademicoDTO historialAcademico) {
+    public void setHistorialAcademico(HistAcademicoDTO historialAcademico) {
         this.historialAcademico = historialAcademico;
     }
 

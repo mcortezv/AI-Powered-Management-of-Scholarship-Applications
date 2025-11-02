@@ -1,5 +1,7 @@
 package presentacion.solicitarBeca.panels;
 import controlNavegacion.ControlNavegacion;
+import dto.BecaDTO;
+import dto.SolicitudDTO;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
@@ -18,9 +20,14 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
     private presentacion.styles.Label lbl_info_socioeconomica;
     private Label lbl_documentos;
     private Button btnContinuar;
+    private Label lbl_beca_response;
+    private BecaDTO beca;
+    private ControlNavegacion controlNavegacion;
+    private SolicitudDTO solicitudDTO;
 
     public ResumenFinalPanel(SolicitarBeca frame, ControlNavegacion controlNavegacion) {
         super(frame, controlNavegacion);
+        this.controlNavegacion= controlNavegacion;
 
     }
 
@@ -49,7 +56,7 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
         lbl_beca_solicitada.setFont(sectionFont);
         lbl_beca_solicitada.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        Label lbl_beca_response = new Label("Moisés Vázquez Gudiño");
+         lbl_beca_response = new Label("Moisés Vázquez Gudiño");
         lbl_beca_response.setFont(dataFont);
         lbl_beca_response.setAlignmentX(Component.LEFT_ALIGNMENT);
 
@@ -159,6 +166,13 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
         btnContinuar.addActionListener(e -> {
             mainFrame.showPanel("confirmacionPanel");
         });
+    }
+    
+    public void cargarResumen(SolicitudDTO solicitudDTO){
+        this.solicitudDTO= solicitudDTO;
+        lbl_beca_response.setText(solicitudDTO.getBeca().getNombre());
+        
+        
     }
     private Label createDocumentLabel(String text, Font font) {
         String checkMark = "\u2713  ";
