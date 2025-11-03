@@ -127,17 +127,9 @@ public class ControlNavegacion {
         return solicitudDTO;
     }
 
-
-
-
-
-
     public EstudianteResponseDTO solicitarLogin(SolicitudLoginDTO solicitudLoginDTO){
         return manejador.validarInicioSesion(solicitudLoginDTO);
     }
 
-    
-   
-    
     
 }
