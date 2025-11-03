@@ -22,6 +22,7 @@ public class EstudianteMock {
     private static EstudianteMock instancia;
     TutorMock tutor= new TutorMock();
 
+    private final EstudianteMock estudianteMock = EstudianteMock.getInstance();
     
     public EstudianteMock(){
         cargarEstudiantes();
@@ -48,8 +49,9 @@ public class EstudianteMock {
         return estudianteResponseDTO;
     }
 
-    
-    
-    
+    public boolean iniciarSesion(String correo, String password){
+        return estudianteMock.getEstudiantes().values().stream().anyMatch(e -> e.getCorreo().equalsIgnoreCase(correo)
+        && e.getPassword().equals(password));
+    }
     
 }
