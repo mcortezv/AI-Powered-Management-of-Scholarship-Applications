@@ -23,7 +23,6 @@ public class ControlNavegacion {
     private IManejadorSolicitud manejador;
     private BecaDTO becaDTO;
     private BecaDTO becaSeleccionadaDTO;
-    private BecaDTO becaSeleccionada;
     private DatosSolicitanteDTO datosSolicitanteDTO;
     private HistAcademicoDTO historialAcademicoDTO;
     private TutorDTO tutorDTO;

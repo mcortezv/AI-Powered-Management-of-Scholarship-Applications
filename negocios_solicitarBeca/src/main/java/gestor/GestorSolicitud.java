@@ -20,8 +20,9 @@ import objetosNegocio.mock.EstudianteMock;
  * @author janethcristinagalvanquinonez
  */
 public class GestorSolicitud {
+    
     BecaBOMock becaBO;
-    EstudianteMock estudianteMock;
+    private EstudianteMock estudianteMock = EstudianteMock.getInstance();
 
     public SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO) {
         return becaBO.getInstance().obtenerBecas();
@@ -29,6 +30,9 @@ public class GestorSolicitud {
 
 
     public EstudianteResponseDTO validarInicioSesion(SolicitudLoginDTO solicitudLoginDTO) {
+        String correo = solicitudLoginDTO.getUsuario();
+        String password = solicitudLoginDTO.getContrasenia();
+        
         return null;
     }
 
