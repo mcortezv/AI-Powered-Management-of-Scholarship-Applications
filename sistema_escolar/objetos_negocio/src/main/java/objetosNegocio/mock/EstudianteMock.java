@@ -22,7 +22,7 @@ public class EstudianteMock {
     private static EstudianteMock instancia;
     TutorMock tutor= new TutorMock();
 
-    private final EstudianteMock estudianteMock = EstudianteMock.getInstance();
+    //private final EstudianteMock estudianteMock = EstudianteMock.getInstance();
     
     public EstudianteMock(){
         cargarEstudiantes();
@@ -49,9 +49,48 @@ public class EstudianteMock {
         return estudianteResponseDTO;
     }
 
-    public boolean iniciarSesion(String correo, String password){
-        return estudianteMock.getEstudiantes().values().stream().anyMatch(e -> e.getCorreo().equalsIgnoreCase(correo)
-        && e.getPassword().equals(password));
+//    public boolean iniciarSesion(String matricula, String password){
+//        try{
+//            Long matri = Long.valueOf(matricula.trim());
+//            Estudiante e = estudiantes.get(matri);
+//            return e != null && e.getPassword().equals(password);
+//        } catch(NumberFormatException ex){
+//            return false;
+//        }
+//    }
+    
+    public boolean iniciarSesionPorMatricula(String matricula, String password) {
+        try {
+            Long mat = Long.valueOf(matricula.trim());
+            Estudiante est = estudiantes.get(mat);
+            return est != null && password.equals(est.getPassword());
+        } catch (NumberFormatException ex) {
+            return false;
+        }
+    }
+    
+    public boolean iniciarSesionPorCorreo(String correo, String password) {
+        return estudiantes.values().stream()
+                .anyMatch(est -> est.getCorreo().equalsIgnoreCase(correo)
+                             && password.equals(est.getPassword()));
+    }
+    
+    public Estudiante buscarPorMatriculaYPassword(String matriculaTexto, String password) {
+        try {
+            Long mat = Long.valueOf(matriculaTexto.trim());
+            Estudiante est = estudiantes.get(mat);
+            return (est != null && password.equals(est.getPassword())) ? est : null;
+        } catch (NumberFormatException ex) {
+            return null;
+        }
+    }
+    
+    public Estudiante buscarPorCorreoYPassword(String correo, String password) {
+        return estudiantes.values().stream()
+            .filter(est -> est.getCorreo().equalsIgnoreCase(correo)
+                      && password.equals(est.getPassword()))
+            .findFirst()
+            .orElse(null);
     }
     
 }
