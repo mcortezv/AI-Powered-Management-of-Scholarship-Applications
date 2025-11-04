@@ -30,10 +30,28 @@ public class GestorSolicitud {
 
 
     public EstudianteResponseDTO validarInicioSesion(SolicitudLoginDTO solicitudLoginDTO) {
-        String correo = solicitudLoginDTO.getUsuario();
+        String usuario = solicitudLoginDTO.getUsuario();       
         String password = solicitudLoginDTO.getContrasenia();
-        
-        return null;
+
+        Estudiante estudiante = null;
+        if (usuario != null && usuario.matches("\\d+")) {
+            estudiante = EstudianteMock.getInstance().buscarPorMatriculaYPassword(usuario, password);
+        } 
+        if (estudiante == null) {
+            estudiante = EstudianteMock.getInstance().buscarPorCorreoYPassword(usuario, password);
+        }
+        if (estudiante == null) return null;
+
+        return new EstudianteResponseDTO(
+            "inscrito",
+            9.8,
+            estudiante.getCorreo(),
+            estudiante.getDireccion() != null ? estudiante.getDireccion().getCalle() : "",
+            estudiante.getTelefono(),
+            "ISW",
+            estudiante.getNombre(),
+            estudiante.getMatricula() != null ? estudiante.getMatricula().intValue() : 0
+        );
     }
 
 }
