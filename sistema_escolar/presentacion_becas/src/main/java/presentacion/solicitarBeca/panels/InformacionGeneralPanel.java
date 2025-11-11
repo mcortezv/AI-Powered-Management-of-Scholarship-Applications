@@ -6,7 +6,9 @@ package presentacion.solicitarBeca.panels;
 import controlNavegacion.ControlNavegacion;
 import java.awt.Component;
 import javax.swing.Box;
+
 import presentacion.solicitarBeca.SolicitarBeca;
+import presentacion.solicitarBeca.validadores.Validadores;
 import presentacion.styles.*;
 import dto.SolicitudBecasDisponiblesDTO;
 import dto.SolicitudBecasDisponiblesResponseDTO;
@@ -82,6 +84,8 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
             double promedio = Double.parseDouble(campoPromedio.getText().trim().replace(',', '.'));
             boolean carga   = "Si".equals(campoCarga.getSelectedItem());
             double ingreso  = Double.parseDouble(campoIngreso.getText().trim().replace(',', '.'));
+            Validadores.validarPromedio(promedio);
+            Validadores.validarIngreso(ingreso);
 
             SolicitudBecasDisponiblesDTO solictudDTO  = new SolicitudBecasDisponiblesDTO(promedio, carga, ingreso);
             SolicitudBecasDisponiblesResponseDTO reponseDTO = controlNavegacion.obtenerBecasDisponibles(solictudDTO);
