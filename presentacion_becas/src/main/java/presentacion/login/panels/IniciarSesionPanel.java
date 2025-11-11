@@ -3,6 +3,9 @@ import controlNavegacion.ControlNavegacion;
 import dto.EstudianteResponseDTO;
 import dto.SolicitudLoginDTO;
 import presentacion.login.MainFrame;
+import presentacion.login.exceptions.ContraseniaInvalidaException;
+import presentacion.login.exceptions.CorreoInvalidoException;
+import presentacion.login.validadores.Validadores;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
 import presentacion.styles.Panel;
@@ -86,31 +89,37 @@ public class IniciarSesionPanel extends Panel {
         txtPassword.getDocument().addDocumentListener(dl);
         txtPassword.addActionListener(e -> btnIniciarSesion.doClick());
         toggle.run();
-       
+
         btnIniciarSesion.addActionListener(e -> {
-            String usuario = txtUsuario.getText().trim();
-            char[] contraseña = txtPassword.getPassword();
-            String contraseniaString = new String(contraseña);
-            Arrays.fill(contraseña, '\0');
-            try{
-                SolicitudLoginDTO solicitudLoginDTO = new SolicitudLoginDTO(usuario,contraseniaString);
+            try {
+                String usuario = txtUsuario.getText().trim();
+                String contrasenia = new String(txtPassword.getPassword());
+
+                Validadores.validarCorreo(usuario);
+                Validadores.validarContrasenia(contrasenia);
+
+                SolicitudLoginDTO solicitudLoginDTO = new SolicitudLoginDTO(usuario, contrasenia);
                 EstudianteResponseDTO estudiante = controlNavegacion.solicitarLogin(solicitudLoginDTO);
 
-                if (estudiante != null){
+                if (estudiante != null) {
                     mainFrame.showPanel("hubPanel");
                     mainFrame.getNorthPanel().setVisible(true);
-                } else{
-                   // JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecto.",
-                   //         "Inicio de sesión", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(
+                            mainFrame,
+                            "Usuario o contraseña incorrectos.",
+                            "Inicio de sesión",
+                            JOptionPane.WARNING_MESSAGE
+                    );
                 }
-
-            }catch (Exception exception){
-               // JOptionPane.showMessageDialog(this,"Error intentando iniciar sesión.",
-                //        "Inicio de sesión", JOptionPane.ERROR_MESSAGE);
+            } catch (CorreoInvalidoException | ContraseniaInvalidaException ex) {
+                JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE
+                );
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(mainFrame, "Error intentando iniciar sesión.", "Inicio de sesión", JOptionPane.ERROR_MESSAGE
+                );
+                ex.printStackTrace();
             }
-
-
-            // estos se van a quitar
             mainFrame.showPanel("hubPanel");
             mainFrame.getNorthPanel().setVisible(true);
         });
