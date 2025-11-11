@@ -12,8 +12,6 @@ import controlNavegacion.ControlNavegacion;
 public class Main {
 
     public static void main(String[] args) {
-
         ControlNavegacion controlNavegacion = new ControlNavegacion();
-        
     }
 }

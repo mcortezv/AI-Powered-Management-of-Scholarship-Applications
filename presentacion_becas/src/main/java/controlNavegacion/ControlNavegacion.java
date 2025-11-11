@@ -4,8 +4,8 @@
  */
 package controlNavegacion;
 import dto.*;
-import gestor.GestorSolicitud;
-import implementacion.ManejadorSolicitud;
+import gestor.ControlSolicitud;
+import implementacion.FachadaSolicitud;
 import interfaz.IManejadorSolicitud;
 import presentacion.login.MainFrame;
 import presentacion.solicitarBeca.SolicitarBeca;
@@ -32,7 +32,7 @@ public class ControlNavegacion {
 
 
     public ControlNavegacion(){
-        this.manejador = new ManejadorSolicitud(new GestorSolicitud());
+        this.manejador = new FachadaSolicitud(new ControlSolicitud());
         this.becaDTO= becaDTO;
        
         mainFrame = new MainFrame(this);

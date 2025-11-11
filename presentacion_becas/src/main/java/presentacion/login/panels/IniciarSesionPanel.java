@@ -100,13 +100,13 @@ public class IniciarSesionPanel extends Panel {
                     mainFrame.showPanel("hubPanel");
                     mainFrame.getNorthPanel().setVisible(true);
                 } else{
-                    JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecto.",
-                            "Inicio de sesión", JOptionPane.WARNING_MESSAGE);
+                   // JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecto.",
+                   //         "Inicio de sesión", JOptionPane.WARNING_MESSAGE);
                 }
 
             }catch (Exception exception){
-                JOptionPane.showMessageDialog(this,"Error intentando iniciar sesión.",
-                        "Inicio de sesión", JOptionPane.ERROR_MESSAGE);
+               // JOptionPane.showMessageDialog(this,"Error intentando iniciar sesión.",
+                //        "Inicio de sesión", JOptionPane.ERROR_MESSAGE);
             }
 
 
