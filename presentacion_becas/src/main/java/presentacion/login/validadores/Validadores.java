@@ -3,6 +3,10 @@ package presentacion.login.validadores;
 import presentacion.login.exceptions.ContraseniaInvalidaException;
 import presentacion.login.exceptions.CorreoInvalidoException;
 
+/**
+ *
+ * @author Escalante, Sebastian.
+ */
 public class Validadores {
 
     public static boolean validarCorreo(String correo){
