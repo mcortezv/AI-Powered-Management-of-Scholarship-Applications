@@ -90,17 +90,27 @@ public class IniciarSesionPanel extends Panel {
         btnIniciarSesion.addActionListener(e -> {
             String usuario = txtUsuario.getText().trim();
             char[] contraseña = txtPassword.getPassword();
-            String contraseniaString = Arrays.toString(contraseña);
+            String contraseniaString = new String(contraseña);
+            Arrays.fill(contraseña, '\0');
             try{
                 SolicitudLoginDTO solicitudLoginDTO = new SolicitudLoginDTO(usuario,contraseniaString);
                 EstudianteResponseDTO estudiante = controlNavegacion.solicitarLogin(solicitudLoginDTO);
 
+                if (estudiante != null){
+                    mainFrame.showPanel("hubPanel");
+                    mainFrame.getNorthPanel().setVisible(true);
+                } else{
+                   // JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecto.",
+                   //         "Inicio de sesión", JOptionPane.WARNING_MESSAGE);
+                }
 
             }catch (Exception exception){
-                JOptionPane.showMessageDialog(this,"Error intentando iniciar sesion");
+               // JOptionPane.showMessageDialog(this,"Error intentando iniciar sesión.",
+                //        "Inicio de sesión", JOptionPane.ERROR_MESSAGE);
             }
 
 
+            // estos se van a quitar
             mainFrame.showPanel("hubPanel");
             mainFrame.getNorthPanel().setVisible(true);
         });

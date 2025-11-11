@@ -4,8 +4,8 @@
  */
 package controlNavegacion;
 import dto.*;
-import gestor.GestorSolicitud;
-import implementacion.ManejadorSolicitud;
+import gestor.ControlSolicitud;
+import implementacion.FachadaSolicitud;
 import interfaz.IManejadorSolicitud;
 import presentacion.login.MainFrame;
 import presentacion.solicitarBeca.SolicitarBeca;
@@ -23,7 +23,6 @@ public class ControlNavegacion {
     private IManejadorSolicitud manejador;
     private BecaDTO becaDTO;
     private BecaDTO becaSeleccionadaDTO;
-    private BecaDTO becaSeleccionada;
     private DatosSolicitanteDTO datosSolicitanteDTO;
     private HistAcademicoDTO historialAcademicoDTO;
     private TutorDTO tutorDTO;
@@ -33,7 +32,7 @@ public class ControlNavegacion {
 
 
     public ControlNavegacion(){
-        this.manejador = new ManejadorSolicitud(new GestorSolicitud());
+        this.manejador = new FachadaSolicitud(new ControlSolicitud());
         this.becaDTO= becaDTO;
        
         mainFrame = new MainFrame(this);
@@ -127,17 +126,9 @@ public class ControlNavegacion {
         return solicitudDTO;
     }
 
-
-
-
-
-
     public EstudianteResponseDTO solicitarLogin(SolicitudLoginDTO solicitudLoginDTO){
         return manejador.validarInicioSesion(solicitudLoginDTO);
     }
 
-    
-   
-    
     
 }

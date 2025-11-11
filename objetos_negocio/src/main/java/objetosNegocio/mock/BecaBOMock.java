@@ -7,6 +7,7 @@ package objetosNegocio.mock;
 import dto.BecaDTO;
 import dto.RequisitosDTO;
 import dto.SolicitudBecasDisponiblesResponseDTO;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,10 +17,15 @@ import java.util.List;
  */
 public class BecaBOMock {
     private static BecaBOMock instancia;
+    //private final BecaBOMock becaMock = BecaBOMock.getInstance();
     
-    public BecaBOMock(){
-        obtenerBecas();
+    private BecaBOMock(){
+        
     }
+    
+//    public BecaBOMock(){
+//        obtenerBecas();
+//    }
     
     public static BecaBOMock getInstance(){
         if(instancia==null){
@@ -43,10 +49,16 @@ public class BecaBOMock {
         listaBecas.add(beca3);
         listaBecas.add(beca4);   
         
-        SolicitudBecasDisponiblesResponseDTO reponseDTO= new SolicitudBecasDisponiblesResponseDTO(listaBecas);
+        SolicitudBecasDisponiblesResponseDTO responseDTO= new SolicitudBecasDisponiblesResponseDTO(listaBecas);
         
-        return reponseDTO;
+        return responseDTO;
         
     }
+    
+//    public List<BecaDTO> obtenerBecasVigentes() {
+//        return obtenerBecas().getBecas().stream()
+//                .filter(b -> b.getFechaLimite().isAfter(LocalDate.now())).toList();
+//    }
+
     
 }
