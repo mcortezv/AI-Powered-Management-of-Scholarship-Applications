@@ -4,17 +4,17 @@
  */
 package implementacion;
 import dto.*;
-import gestor.GestorSolicitud;
+import gestor.ControlSolicitud;
 import interfaz.IManejadorSolicitud;
 
 /**
- *
+ *                          FACHADA
  * @author janethcristinagalvanquinonez
  */
-public class ManejadorSolicitud implements IManejadorSolicitud {
-    private final GestorSolicitud gestor;
+public class FachadaSolicitud implements IManejadorSolicitud {
+    private final ControlSolicitud gestor;
     
-    public ManejadorSolicitud(GestorSolicitud gestor){
+    public FachadaSolicitud(ControlSolicitud gestor){
         this.gestor= gestor;
     }
 
@@ -26,7 +26,8 @@ public class ManejadorSolicitud implements IManejadorSolicitud {
 
     @Override
     public EstudianteResponseDTO validarInicioSesion(SolicitudLoginDTO solicitudLoginDTO) {
-        return gestor.validarInicioSesion(solicitudLoginDTO);
+        return null;
     }
+
 
 }
