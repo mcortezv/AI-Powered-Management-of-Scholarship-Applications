@@ -12,7 +12,7 @@ import interfaz.IManejadorSolicitud;
  * @author janethcristinagalvanquinonez
  */
 public class ManejadorSolicitud implements IManejadorSolicitud {
-    private GestorSolicitud gestor;
+    private final GestorSolicitud gestor;
     
     public ManejadorSolicitud(GestorSolicitud gestor){
         this.gestor= gestor;

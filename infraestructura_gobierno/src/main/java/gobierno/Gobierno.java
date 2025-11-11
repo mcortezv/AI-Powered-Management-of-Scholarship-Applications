@@ -1,7 +1,9 @@
 package gobierno;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import dto.SolicitudBecasDisponiblesResponseDTO;
 import dto.SolicitudDTO;
+import dto.SolicitudLoginDTO;
 import interfaces.IGobierno;
 import java.io.IOException;
 import java.net.URI;
@@ -16,6 +18,11 @@ public class Gobierno implements IGobierno {
     private static final String SOLICITUD_ENDPOINT = "solicitudes/";
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final HttpClient client = HttpClient.newHttpClient();
+
+    @Override
+    public Optional<SolicitudBecasDisponiblesResponseDTO> solicitarBecas(SolicitudLoginDTO solicitudLoginDTO) {
+        return Optional.empty();
+    }
 
     @Override
     public Optional<Boolean> enviarSolicitud(SolicitudDTO solicitudDTO) {
