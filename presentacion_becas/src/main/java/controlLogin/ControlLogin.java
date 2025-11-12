@@ -7,12 +7,13 @@ import implementacion.FachadaSolicitud;
 import interfaz.IFachadaSolicitud;
 
 public class ControlLogin {
-    private IFachadaSolicitud manejador;
+
+    private final IFachadaSolicitud fachadaSolicitud;
     public ControlLogin(){
-        this.manejador = new FachadaSolicitud(new ControlSolicitud());
+        this.fachadaSolicitud = new FachadaSolicitud(new ControlSolicitud());
     }
 
     public EstudianteResponseDTO solicitarLogin(SolicitudLoginDTO solicitudLoginDTO){
-        return manejador.validarInicioSesion(solicitudLoginDTO);
+        return fachadaSolicitud.validarInicioSesion(solicitudLoginDTO);
     }
 }
