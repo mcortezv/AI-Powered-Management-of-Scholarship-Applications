@@ -27,9 +27,7 @@ public class DetallesBecaPanel extends PanelSolicitarBeca {
     private BecaDTO becaDTO= new BecaDTO();
     private BecaDTO beca;
     
-    
-    
-    
+
     public DetallesBecaPanel(SolicitarBeca mainFrame, ControlNavegacion controlNavegacion){
         super(mainFrame, controlNavegacion);
     }
@@ -41,24 +39,17 @@ public class DetallesBecaPanel extends PanelSolicitarBeca {
         titulo.setAlignmentX(CENTER_ALIGNMENT);
         centralPanel.add(titulo);
         centralPanel.add(Box.createVerticalStrut(Style.TITULO_ESPACIO));   
-        
 
-        
-     
         lblTituloTipo= new Label("TIPO");
         lblTituloTipo.setFont(Style.LABEL_FONT.deriveFont(BOLD));
         lblTituloTipo.setAlignmentX(Component.CENTER_ALIGNMENT);
         centralPanel.add(lblTituloTipo);
-        
-     
+
         lblTipo = new Label("Tipo Beca");
         lblTipo.setAlignmentX(Component.CENTER_ALIGNMENT);
         centralPanel.add(lblTipo);
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
-        centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));       
-        
-        
-        
+        centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
       
         lblTituloDescripcion= new Label("DESCRIPCIÓN");
         lblTituloDescripcion.setFont(Style.LABEL_FONT.deriveFont(BOLD));
@@ -71,23 +62,16 @@ public class DetallesBecaPanel extends PanelSolicitarBeca {
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
 
-        
-        
-     
         lblTituloPromedio= new Label("PROMEDIO MINIMO");
         lblTituloPromedio.setFont(Style.LABEL_FONT.deriveFont(BOLD));
         lblTituloPromedio.setAlignmentX(Component.CENTER_ALIGNMENT);
-        centralPanel.add(lblTituloPromedio);    
-        
+        centralPanel.add(lblTituloPromedio);
         
         lblPromedio = new Label("Promedio minimo");       
         lblPromedio.setAlignmentX(Component.CENTER_ALIGNMENT);
         centralPanel.add(lblPromedio);
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
-        
-        
-        
         
         lblTituloPeriodo= new Label("PERIODO");
         lblTituloPeriodo.setFont(Style.LABEL_FONT.deriveFont(BOLD));
@@ -103,9 +87,7 @@ public class DetallesBecaPanel extends PanelSolicitarBeca {
         botonSiguiente= new Button("Solicitar");
         botonSiguiente.setAlignmentX(CENTER_ALIGNMENT);
         centralPanel.add(botonSiguiente);     
-   
-        
-        
+
         botonSiguiente.addActionListener(e -> {
             mainFrame.showPanel("datosDelSolicitantePanel");
         });
@@ -113,28 +95,19 @@ public class DetallesBecaPanel extends PanelSolicitarBeca {
         btnBack.addActionListener(e ->{
             mainFrame.showPanel("listadoBecasDisponiblesPanel");
         });
-        
-    
 
-    
     }
     
     public void cargarBeca(BecaDTO becaDTO){
-        
         this.beca= becaDTO;
         titulo.setText(becaDTO.getNombre());
         lblDescripcion.setText(becaDTO.getDescripcion());
         lblPromedio.setText(String.valueOf(becaDTO.getRequisitos().getPromedioMinimo()));
         lblPeriodo.setText(becaDTO.getPeriodo());
         lblTipo.setText(becaDTO.getTipo());
-        
-        
-        
+
     }
-    
-    
-    
-    
+
             
 }
 

@@ -5,9 +5,11 @@
 package presentacion.solicitarBeca.panels;
 import controlNavegacion.ControlNavegacion;
 import java.awt.Component;
-import javax.swing.Box;
+import javax.swing.*;
 
 import presentacion.solicitarBeca.SolicitarBeca;
+import presentacion.solicitarBeca.exceptions.IngresoInvalidoException;
+import presentacion.solicitarBeca.exceptions.PromedioInvalidoException;
 import presentacion.solicitarBeca.validadores.Validadores;
 import presentacion.styles.*;
 import dto.SolicitudBecasDisponiblesDTO;
@@ -88,14 +90,13 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
             Validadores.validarIngreso(ingreso);
 
             SolicitudBecasDisponiblesDTO solictudDTO  = new SolicitudBecasDisponiblesDTO(promedio, carga, ingreso);
-            SolicitudBecasDisponiblesResponseDTO reponseDTO = controlNavegacion.obtenerBecasDisponibles(solictudDTO);
+            SolicitudBecasDisponiblesResponseDTO solicitudBecasDisponiblesResponseDTO = controlNavegacion.obtenerBecasDisponibles(solictudDTO);
+            controlNavegacion.mostrarBecasDisponibles(solicitudBecasDisponiblesResponseDTO);
 
-            controlNavegacion.mostrarBecasDisponibles(reponseDTO);
-
-        } catch (NumberFormatException ex) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Ingresa un número válido.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-        } catch (Exception ex) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Error al obtener becas: " + ex.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        } catch (PromedioInvalidoException | IngresoInvalidoException ex) {
+            JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
+        }catch (NumberFormatException ex){
+            JOptionPane.showMessageDialog(mainFrame,"Solo se aceptan números","Error de validación", JOptionPane.ERROR_MESSAGE);
         }
     });
         //events();
@@ -114,15 +115,15 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
 //                }
 //                Double ingreso = Double.parseDouble(campoIngreso.getText());
 //                solicitudDTO = new SolicitudBecasDisponiblesDTO(promedio, carga, ingreso);
-//                
+//
 //             //   java.util.List<BecaDTO> becasMock = crearMockBecas();
-//                
+//
 //              //  mainFrame.showBecasDisponibles(becasMock);
 //
 //            }
 //        );
 //    }
-    
+
 //    private java.util.List<BecaDTO> crearMockBecas() {
 //        java.time.LocalDate ahora = java.time.LocalDate.now();
 //        return java.util.List.of(
