@@ -38,9 +38,7 @@ public class ListadoBecasDisponiblesPanel extends PanelSolicitarBeca{
     private ComboBox<BecaDTO> ddlBecas;
     private Button btnSeleccionar;
     
-   
-     //aqui recibes este response que te lo mando de la pantalla anterior
-    
+       
     public ListadoBecasDisponiblesPanel(SolicitarBeca frame, ControlNavegacion controlNavegacion) {
         super(frame, controlNavegacion);
         
@@ -60,10 +58,14 @@ public class ListadoBecasDisponiblesPanel extends PanelSolicitarBeca{
         lista.setLayout(new BoxLayout(lista, BoxLayout.Y_AXIS));
 
         scroll = new JScrollPane(lista);
-        scroll.setBorder(BorderFactory.createEmptyBorder());
+        scroll.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 20));
+        //scroll.setBorder(BorderFactory.createEmptyBorder());
+        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scroll.getViewport().setOpaque(false);
         scroll.setOpaque(false);
-        scroll.setPreferredSize(new Dimension(980, 420));
+        scroll.setMaximumSize(new Dimension(Integer.MAX_VALUE, 420));
+        scroll.setAlignmentX(CENTER_ALIGNMENT);
+        
         centralPanel.add(scroll);
         //centralPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
 
@@ -123,6 +125,8 @@ public class ListadoBecasDisponiblesPanel extends PanelSolicitarBeca{
         card.setOpaque(false);
         card.setLayout(new BorderLayout());
         card.setMaximumSize(new Dimension(980, 100));
+        //card.setAlignmentX(CENTER_ALIGNMENT);
+        //card.setMaximumSize(new Dimension(Integer.MAX_VALUE, 100));
         card.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createMatteBorder(1,1,1,1,new Color(220,220,220)),
                 BorderFactory.createEmptyBorder(12, 12, 12, 12)
