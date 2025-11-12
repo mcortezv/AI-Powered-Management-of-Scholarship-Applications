@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package implementacion;
+package fachada;
 import dto.*;
-import gestor.ControlSolicitud;
+import implementacion.ControlSolicitud;
 import interfaz.IFachadaSolicitud;
 
 /**
@@ -12,21 +12,21 @@ import interfaz.IFachadaSolicitud;
  * @author janethcristinagalvanquinonez
  */
 public class FachadaSolicitud implements IFachadaSolicitud {
-    private final ControlSolicitud gestor;
+    private final ControlSolicitud controlSolicitud;
     
     public FachadaSolicitud(ControlSolicitud gestor){
-        this.gestor= gestor;
+        this.controlSolicitud= gestor;
     }
 
     @Override
     public SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO){
-        return gestor.obtenerBecasDisponibles(solicitudDTO);
+        return controlSolicitud.obtenerBecasDisponibles(solicitudDTO);
         
     }
 
     @Override
     public EstudianteResponseDTO validarInicioSesion(SolicitudLoginDTO solicitudLoginDTO) {
-        return gestor.obtenerEstudiante(solicitudLoginDTO);
+        return controlSolicitud.obtenerEstudiante(solicitudLoginDTO);
     }
 
 
