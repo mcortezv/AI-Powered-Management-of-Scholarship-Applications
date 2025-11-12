@@ -29,10 +29,11 @@ public class IniciarSesionPanel extends Panel {
     private Label lblPassword;
     private PasswordField txtPassword;
     private Button btnIniciarSesion;
-    private ControlNavegacion controlNavegacion;
+    private final ControlNavegacion controlNavegacion;
 
     public IniciarSesionPanel(MainFrame frame, ControlNavegacion controlNavegacion) {
         super(frame, controlNavegacion);
+        this.controlNavegacion = controlNavegacion;
     }
 
     @Override
@@ -120,8 +121,6 @@ public class IniciarSesionPanel extends Panel {
                 );
                 ex.printStackTrace();
             }
-            mainFrame.showPanel("hubPanel");
-            mainFrame.getNorthPanel().setVisible(true);
         });
     }
 }
