@@ -10,7 +10,7 @@ import dto.*;
  *
  * @author janethcristinagalvanquinonez
  */
-public interface IManejadorSolicitud {
+public interface IFachadaSolicitud {
     public SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO);
     public EstudianteResponseDTO validarInicioSesion(SolicitudLoginDTO solicitudLoginDTO);
 }
