@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package presentacion.login;
+import controlLogin.ControlLogin;
 import controlNavegacion.ControlNavegacion;
 import presentacion.login.panels.HubPanel;
 import presentacion.login.panels.IniciarSesionPanel;
@@ -58,7 +59,7 @@ public final class MainFrame extends JFrame {
         northPanel.add(btnCarteras);
 
         panels = new HashMap<String, JPanel>();
-        panels.put("iniciarSesionPanel", new IniciarSesionPanel(this, controlNavegacion));
+        panels.put("iniciarSesionPanel", new IniciarSesionPanel(this, controlNavegacion,new ControlLogin()));
         panels.put("hubPanel", new HubPanel(this, controlNavegacion));
 
         add(northPanel, BorderLayout.NORTH);

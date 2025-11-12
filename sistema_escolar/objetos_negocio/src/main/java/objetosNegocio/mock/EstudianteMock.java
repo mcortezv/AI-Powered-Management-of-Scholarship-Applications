@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import dto.EstudianteResponseDTO;
+import dto.SolicitudLoginDTO;
 import objetosNegocio.Direccion;
 import objetosNegocio.Estudiante;
 import objetosNegocio.enums.Carrera;
@@ -18,7 +19,7 @@ import objetosNegocio.enums.Carrera;
  */
 public class EstudianteMock {
     
-    private Map<Long, Estudiante> estudiantes= new HashMap<>();
+    private final Map<Long, Estudiante> estudiantes= new HashMap<>();
     private static EstudianteMock instancia;
     TutorMock tutor= new TutorMock();
 
@@ -44,10 +45,12 @@ public class EstudianteMock {
         return estudiantes;
     }
 
-    public EstudianteResponseDTO getEstudianteResponseDTO(){
+    public EstudianteResponseDTO getEstudianteResponseDTO(SolicitudLoginDTO solicitudLoginDTO){
         EstudianteResponseDTO estudianteResponseDTO = new EstudianteResponseDTO("inscrito",9.8,"sebastian.potros@gmail","galeana 1477","6681118936", "ISW","sebastian escalante", 252321);
         return estudianteResponseDTO;
     }
+
+
 
 //    public boolean iniciarSesion(String matricula, String password){
 //        try{

@@ -26,7 +26,7 @@ public class FachadaSolicitud implements IFachadaSolicitud {
 
     @Override
     public EstudianteResponseDTO validarInicioSesion(SolicitudLoginDTO solicitudLoginDTO) {
-        return null;
+        return gestor.obtenerEstudiante(solicitudLoginDTO);
     }
 
 

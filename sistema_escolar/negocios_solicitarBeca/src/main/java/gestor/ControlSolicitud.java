@@ -14,12 +14,15 @@ import objetosNegocio.mock.EstudianteMock;
  * @author janethcristinagalvanquinonez
  */
 public class ControlSolicitud {
-    
-    BecaBOMock becaBO;
-    private EstudianteMock estudianteMock = EstudianteMock.getInstance();
+    public EstudianteMock estudianteMock = new EstudianteMock();
+    public BecaBOMock becaBO;
 
     public SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO) {
         return becaBO.getInstance().obtenerBecas();
+    }
+
+    public EstudianteResponseDTO obtenerEstudiante(SolicitudLoginDTO solicitudLoginDTO){
+        return estudianteMock.getEstudianteResponseDTO(solicitudLoginDTO);
     }
 
 

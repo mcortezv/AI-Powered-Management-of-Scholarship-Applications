@@ -1,4 +1,5 @@
 package presentacion.login.panels;
+import controlLogin.ControlLogin;
 import controlNavegacion.ControlNavegacion;
 import dto.EstudianteResponseDTO;
 import dto.SolicitudLoginDTO;
@@ -30,10 +31,12 @@ public class IniciarSesionPanel extends Panel {
     private PasswordField txtPassword;
     private Button btnIniciarSesion;
     private final ControlNavegacion controlNavegacion;
+    private final ControlLogin controlLogin;
 
-    public IniciarSesionPanel(MainFrame frame, ControlNavegacion controlNavegacion) {
+    public IniciarSesionPanel(MainFrame frame, ControlNavegacion controlNavegacion, ControlLogin controlLogin) {
         super(frame, controlNavegacion);
         this.controlNavegacion = controlNavegacion;
+        this.controlLogin = controlLogin;
     }
 
     @Override
@@ -100,7 +103,7 @@ public class IniciarSesionPanel extends Panel {
                 Validadores.validarContrasenia(contrasenia);
 
                 SolicitudLoginDTO solicitudLoginDTO = new SolicitudLoginDTO(usuario, contrasenia);
-                EstudianteResponseDTO estudiante = controlNavegacion.solicitarLogin(solicitudLoginDTO);
+                EstudianteResponseDTO estudiante = controlLogin.solicitarLogin(solicitudLoginDTO);
 
                 if (estudiante != null) {
                     mainFrame.showPanel("hubPanel");
