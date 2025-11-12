@@ -4,7 +4,6 @@ import presentacion.login.exceptions.CorreoInvalidoException;
 import presentacion.solicitarBeca.exceptions.*;
 
 public class Validadores {
-    private static double ingreso;
 
     public static void validarNombres(String nombres){
         if(nombres == null || nombres.trim().isEmpty()){
@@ -43,6 +42,7 @@ public class Validadores {
             throw new CorreoInvalidoException("Favor de ingresar un correo con el formato correcto");
         }
     }
+
     public static void validarDireccion(String direccion){
         if(direccion == null || direccion.trim().isEmpty()){
             throw new DireccionInvalidaException("Favor de ingresar una dirección válida");
@@ -51,6 +51,7 @@ public class Validadores {
             throw new DireccionInvalidaException("Favor de ingresar una dirección con el formato correcto");
         }
     }
+
     public static void validarTelefono(String telefono){
         if(telefono == null || telefono.trim().isEmpty()){
             throw new TelefonoInvalidoException("Favor de ingresar un número de teléfono válido");
