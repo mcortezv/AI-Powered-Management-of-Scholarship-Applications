@@ -106,6 +106,8 @@ public class IniciarSesionPanel extends Panel {
                 EstudianteResponseDTO estudiante = controlLogin.solicitarLogin(solicitudLoginDTO);
 
                 if (estudiante != null) {
+                    txtUsuario.setText("");
+                    txtPassword.setText("");
                     mainFrame.showPanel("hubPanel");
                     mainFrame.getNorthPanel().setVisible(true);
                 } else {
