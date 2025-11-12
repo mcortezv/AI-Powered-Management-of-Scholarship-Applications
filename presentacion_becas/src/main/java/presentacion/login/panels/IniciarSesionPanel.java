@@ -5,7 +5,7 @@ import dto.EstudianteResponseDTO;
 import dto.SolicitudLoginDTO;
 import presentacion.login.MainFrame;
 import presentacion.login.exceptions.ContraseniaInvalidaException;
-import presentacion.login.exceptions.CorreoInvalidoException;
+import presentacion.login.exceptions.IDInvalidoException;
 import presentacion.login.validadores.Validadores;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
@@ -14,7 +14,6 @@ import presentacion.styles.Style;
 import presentacion.styles.TextField;
 import javax.swing.*;
 import java.awt.*;
-import java.util.Arrays;
 
 import presentacion.styles.PasswordField;
 
@@ -41,6 +40,7 @@ public class IniciarSesionPanel extends Panel {
 
     @Override
     public void startComponents() {
+        btnLogOut.setVisible(false);
         centralPanel.add(Box.createVerticalStrut(Style.TOP_ESPACIO));
         btnBack.setVisible(false);
 
@@ -99,7 +99,7 @@ public class IniciarSesionPanel extends Panel {
                 String usuario = txtUsuario.getText().trim();
                 String contrasenia = new String(txtPassword.getPassword());
 
-                Validadores.validarCorreo(usuario);
+                Validadores.validarID(usuario);
                 Validadores.validarContrasenia(contrasenia);
 
                 SolicitudLoginDTO solicitudLoginDTO = new SolicitudLoginDTO(usuario, contrasenia);
@@ -116,9 +116,8 @@ public class IniciarSesionPanel extends Panel {
                             JOptionPane.WARNING_MESSAGE
                     );
                 }
-            } catch (CorreoInvalidoException | ContraseniaInvalidaException ex) {
-                JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE
-                );
+            } catch (IDInvalidoException | ContraseniaInvalidaException ex) {
+                JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(mainFrame, "Error intentando iniciar sesión.", "Inicio de sesión", JOptionPane.ERROR_MESSAGE
                 );

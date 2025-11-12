@@ -1,7 +1,7 @@
 package presentacion.login.validadores;
 
 import presentacion.login.exceptions.ContraseniaInvalidaException;
-import presentacion.login.exceptions.CorreoInvalidoException;
+import presentacion.login.exceptions.IDInvalidoException;
 
 /**
  *
@@ -9,12 +9,12 @@ import presentacion.login.exceptions.CorreoInvalidoException;
  */
 public class Validadores {
 
-    public static void validarCorreo(String correo){
-        if(correo == null || correo.trim().isEmpty()){
-            throw new CorreoInvalidoException("Favor de ingresar un correo");
+    public static void validarID(String id){
+        if(id == null || id.trim().isEmpty()){
+            throw new IDInvalidoException("Favor de ingresar el id de usuario");
         }
-        if(!correo.matches("^[A-Za-z0-9._%+-]+@potros\\.itson\\.edu\\.mx$")){
-            throw new CorreoInvalidoException("Favor de ingresar un correo institucional @potros.itson.edu.mx");
+        if(!id.matches("^\\d{11}$")){
+            throw new IDInvalidoException("Favor de ingresar un id correcto");
         }
     }
 

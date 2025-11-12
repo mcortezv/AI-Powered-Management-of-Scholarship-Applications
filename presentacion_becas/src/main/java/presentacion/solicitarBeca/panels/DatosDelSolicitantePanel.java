@@ -1,7 +1,13 @@
 package presentacion.solicitarBeca.panels;
 import controlNavegacion.ControlNavegacion;
 import dto.DatosSolicitanteDTO;
+import presentacion.login.exceptions.IDInvalidoException;
 import presentacion.solicitarBeca.SolicitarBeca;
+import presentacion.solicitarBeca.exceptions.ApellidoInvalidoException;
+import presentacion.solicitarBeca.exceptions.DireccionInvalidaException;
+import presentacion.solicitarBeca.exceptions.NombresInvalidosException;
+import presentacion.solicitarBeca.exceptions.TelefonoInvalidoException;
+import presentacion.solicitarBeca.validadores.Validadores;
 import presentacion.styles.*;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
@@ -28,25 +34,19 @@ public class DatosDelSolicitantePanel extends PanelSolicitarBeca {
     }
 
     private JPanel crearDosColumnas(String labelText, TextField field) {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
 
-        JPanel panel = new JPanel(new BorderLayout(5, 0));
         panel.setBackground(Style.PANEL_COLOR);
-
-
         Label label = new Label(labelText);
         label.setHorizontalAlignment(SwingConstants.RIGHT);
-
         field.setColumns(20);
-
         Dimension maxDim = new Dimension(Integer.MAX_VALUE, field.getPreferredSize().height);
         field.setMaximumSize(maxDim);
 
-        panel.add(label, BorderLayout.WEST);
-
-        panel.add(field, BorderLayout.CENTER);
-
+        panel.add(label);
+        panel.add(field);
         panel.setMaximumSize(new Dimension(500, field.getPreferredSize().height));
-
         return panel;
     }
 
@@ -73,7 +73,7 @@ public class DatosDelSolicitantePanel extends PanelSolicitarBeca {
         fila1.setMaximumSize(new Dimension(800, 40));
 
         fila1.add(crearDosColumnas("Nombres:", field_nombre));
-        fila1.add(crearDosColumnas("Apellido Materno:", field_apellido_materno));
+        fila1.add(crearDosColumnas("Apellido Paterno:", field_apellido_paterno));
         centralPanel.add(fila1);
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO * 2));
 
@@ -81,7 +81,7 @@ public class DatosDelSolicitantePanel extends PanelSolicitarBeca {
         fila2.setBackground(Style.PANEL_COLOR);
         fila2.setMaximumSize(new Dimension(800, 40));
 
-        fila2.add(crearDosColumnas("Apellido Paterno:", field_apellido_paterno));
+        fila2.add(crearDosColumnas("Apellido Materno:", field_apellido_materno));
         fila2.add(crearDosColumnas("Dirección:", field_direccion));
         centralPanel.add(fila2);
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO * 2));
@@ -106,29 +106,31 @@ public class DatosDelSolicitantePanel extends PanelSolicitarBeca {
         });
 
         btn_next.addActionListener(e -> {
-            if(algunCampoEstaVacio()){
-                JOptionPane.showMessageDialog(this, "Favor de completar todos los campos", "Aviso", JOptionPane.WARNING_MESSAGE);
-                return;
-            }
-            String nombre= field_nombre.getText();
-            String apellidoMaterno= field_apellido_materno.getText();
-            String apellidoPaterno= field_apellido_paterno.getText();
-            String direccion= field_direccion.getText();
-            String telefono= field_telefono.getText();
-            String email= field_email.getText();
+            try{
+                String nombre= field_nombre.getText();
+                String apellidoMaterno= field_apellido_materno.getText();
+                String apellidoPaterno= field_apellido_paterno.getText();
+                String direccion= field_direccion.getText();
+                String telefono= field_telefono.getText();
+                String email= field_email.getText();
+                Validadores.validarNombres(nombre);
+                Validadores.validarApellido(apellidoPaterno);
+                Validadores.validarApellido(apellidoMaterno);
+                Validadores.validarDireccion(direccion);
+                Validadores.validarTelefono(telefono);
+                Validadores.validarCorreo(email);
 
-            DatosSolicitanteDTO datosSolicitanteDTO= new DatosSolicitanteDTO(nombre, apellidoMaterno, apellidoPaterno, direccion, telefono, email);
-            control.setDatosSolicitanteDTO(datosSolicitanteDTO);
-            mainFrame.showPanel("historialAcademicoPanel");
+                DatosSolicitanteDTO datosSolicitanteDTO= new DatosSolicitanteDTO(nombre, apellidoMaterno, apellidoPaterno, direccion, telefono, email);
+                control.setDatosSolicitanteDTO(datosSolicitanteDTO);
+                mainFrame.showPanel("historialAcademicoPanel");
+            } catch(NombresInvalidosException | ApellidoInvalidoException | DireccionInvalidaException | TelefonoInvalidoException |
+                    IDInvalidoException ex){
+                JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
+            } catch (NumberFormatException ex){
+                JOptionPane.showMessageDialog(mainFrame,"Solo se aceptan números","Error de validación", JOptionPane.ERROR_MESSAGE);
+            }
+
         });
     }
 
-    public boolean algunCampoEstaVacio(){
-        return field_nombre.getText().trim().isBlank() ||
-                field_apellido_materno.getText().trim().isBlank() ||
-                field_apellido_paterno.getText().trim().isBlank() ||
-                field_direccion.getText().trim().isBlank() ||
-                field_telefono.getText().trim().isBlank() ||
-                field_email.getText().trim().isBlank();
-    }
 }

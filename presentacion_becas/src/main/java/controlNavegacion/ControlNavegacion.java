@@ -4,8 +4,8 @@
  */
 package controlNavegacion;
 import dto.*;
-import gestor.ControlSolicitud;
-import implementacion.FachadaSolicitud;
+import implementacion.ControlSolicitud;
+import fachada.FachadaSolicitud;
 import interfaz.IFachadaSolicitud;
 import presentacion.login.MainFrame;
 import presentacion.solicitarBeca.SolicitarBeca;

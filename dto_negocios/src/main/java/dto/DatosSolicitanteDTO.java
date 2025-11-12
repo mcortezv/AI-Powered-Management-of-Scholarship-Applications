@@ -1,5 +1,7 @@
 package dto;
-
+/**
+ * @author Escalante, Sebastian.
+ */
 public class DatosSolicitanteDTO {
     private String nombreField;
     private String primerApellidoField;

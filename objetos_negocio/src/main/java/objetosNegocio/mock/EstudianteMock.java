@@ -23,8 +23,6 @@ public class EstudianteMock {
     private static EstudianteMock instancia;
     TutorMock tutor= new TutorMock();
 
-    //private final EstudianteMock estudianteMock = EstudianteMock.getInstance();
-    
     public EstudianteMock(){
         cargarEstudiantes();
     }
@@ -46,22 +44,9 @@ public class EstudianteMock {
     }
 
     public EstudianteResponseDTO getEstudianteResponseDTO(SolicitudLoginDTO solicitudLoginDTO){
-        EstudianteResponseDTO estudianteResponseDTO = new EstudianteResponseDTO("inscrito",9.8,"sebastian.potros@gmail","galeana 1477","6681118936", "ISW","sebastian escalante", 252321);
-        return estudianteResponseDTO;
+        return new EstudianteResponseDTO("inscrito",9.8,"sebastian.potros@gmail","galeana 1477","6681118936", "ISW","sebastian escalante", 252321);
     }
 
-
-
-//    public boolean iniciarSesion(String matricula, String password){
-//        try{
-//            Long matri = Long.valueOf(matricula.trim());
-//            Estudiante e = estudiantes.get(matri);
-//            return e != null && e.getPassword().equals(password);
-//        } catch(NumberFormatException ex){
-//            return false;
-//        }
-//    }
-    
     public boolean iniciarSesionPorMatricula(String matricula, String password) {
         try {
             Long mat = Long.valueOf(matricula.trim());
