@@ -33,11 +33,9 @@ public class ControlNavegacion {
 
     public ControlNavegacion(){
         this.manejador = new FachadaSolicitud(new ControlSolicitud());
-        this.becaDTO= becaDTO;
-       
         mainFrame = new MainFrame(this);
         mainFrame.setVisible(true);
-        
+
     }
 
     public void solicitarBeca() {
