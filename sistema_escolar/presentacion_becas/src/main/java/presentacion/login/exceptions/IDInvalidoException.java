@@ -5,8 +5,8 @@ package presentacion.login.exceptions;
  *
  * @author Escalante, Sebastian.
  */
-public class CorreoInvalidoException extends RuntimeException {
-    public CorreoInvalidoException(String message) {
+public class IDInvalidoException extends RuntimeException {
+    public IDInvalidoException(String message) {
         super(message);
     }
 }
