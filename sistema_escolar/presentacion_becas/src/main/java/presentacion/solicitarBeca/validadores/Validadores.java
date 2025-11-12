@@ -1,10 +1,9 @@
 package presentacion.solicitarBeca.validadores;
 
-import presentacion.login.exceptions.CorreoInvalidoException;
+import presentacion.login.exceptions.IDInvalidoException;
 import presentacion.solicitarBeca.exceptions.*;
 
 public class Validadores {
-    private static double ingreso;
 
     public static void validarNombres(String nombres){
         if(nombres == null || nombres.trim().isEmpty()){
@@ -35,14 +34,16 @@ public class Validadores {
         }
     }
 
+
     public static void validarCorreo(String correo){
         if(correo == null || correo.trim().isEmpty()){
-            throw new CorreoInvalidoException("Favor de ingresar un correo válido");
+            throw new IDInvalidoException("Favor de ingresar un correo válido");
         }
         if(!correo.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")){
-            throw new CorreoInvalidoException("Favor de ingresar un correo con el formato correcto");
+            throw new IDInvalidoException("Favor de ingresar un correo con el formato correcto");
         }
     }
+
     public static void validarDireccion(String direccion){
         if(direccion == null || direccion.trim().isEmpty()){
             throw new DireccionInvalidaException("Favor de ingresar una dirección válida");
@@ -51,11 +52,12 @@ public class Validadores {
             throw new DireccionInvalidaException("Favor de ingresar una dirección con el formato correcto");
         }
     }
+
     public static void validarTelefono(String telefono){
         if(telefono == null || telefono.trim().isEmpty()){
             throw new TelefonoInvalidoException("Favor de ingresar un número de teléfono válido");
         }
-        if(!telefono.matches("^\\d{10}$\n")){
+        if(!telefono.matches("^\\d{10}$")){
             throw new TelefonoInvalidoException("El número de teléfono ");
         }
     }

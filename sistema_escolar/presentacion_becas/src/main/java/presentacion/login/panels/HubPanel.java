@@ -3,6 +3,8 @@ import controlNavegacion.ControlNavegacion;
 import presentacion.login.MainFrame;
 import presentacion.styles.Panel;
 
+import java.awt.*;
+
 
 public class HubPanel extends Panel {
 
@@ -13,5 +15,6 @@ public class HubPanel extends Panel {
     @Override
     public void startComponents() {
         btnBack.setVisible(false);
+        btnLogOut.setVisible(true);
     }
 }
