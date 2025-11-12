@@ -1,11 +1,10 @@
 package presentacion.solicitarBeca.panels;
+
 import controlNavegacion.ControlNavegacion;
 import dto.BecaDTO;
 import dto.HistAcademicoDTO;
 import dto.InformacionSocioeconomicaDTO;
 import dto.SolicitudDTO;
-import dto.TutorDTO;
-import enums.Parentesco;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
@@ -14,26 +13,26 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.io.File;
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 public class SubirDocumentosPanel extends PanelSolicitarBeca {
     private Label titulo;
-    private Button btnSiguiente;
-    private Map<String, File> documentosCargados = new HashMap<>();
     private Button btnContinuar;
+    private final Map<String, File> documentosCargados = new HashMap<>();
     private ControlNavegacion controlNavegacion;
-    
+
     public SubirDocumentosPanel(SolicitarBeca frame, ControlNavegacion controlNavegacion) {
         super(frame, controlNavegacion);
-        this.controlNavegacion= controlNavegacion;
-        
+        this.controlNavegacion = controlNavegacion;
     }
 
     @Override
     public void startComponents() {
+        centralPanel.setBackground(Style.PANEL_COLOR);
+        centralPanel.setLayout(new BoxLayout(centralPanel, BoxLayout.Y_AXIS));
+
         titulo = new Label("Subir Documentos");
         titulo.setFont(Style.TITLE_FONT);
         titulo.setAlignmentX(CENTER_ALIGNMENT);
@@ -46,43 +45,70 @@ public class SubirDocumentosPanel extends PanelSolicitarBeca {
         panelBotones.setMaximumSize(new Dimension(600, 600));
         panelBotones.setAlignmentX(CENTER_ALIGNMENT);
 
-
-        panelBotones.add(createUploadButton("CURP"));
+        panelBotones.add(createUploadSection("CURP"));
         panelBotones.add(Box.createVerticalStrut(15));
-        panelBotones.add(createUploadButton("IDENTIFICACIÓN OFICIAL"));
+        panelBotones.add(createUploadSection("IDENTIFICACIÓN OFICIAL"));
         panelBotones.add(Box.createVerticalStrut(15));
-        panelBotones.add(createUploadButton("COMPROBANTE DE INSCRIPCIÓN"));
+        panelBotones.add(createUploadSection("COMPROBANTE DE INSCRIPCIÓN"));
         panelBotones.add(Box.createVerticalStrut(15));
-        panelBotones.add(createUploadButton("KÁRDEX"));
+        panelBotones.add(createUploadSection("KÁRDEX"));
         panelBotones.add(Box.createVerticalStrut(15));
-        panelBotones.add(createUploadButton("COMPROBANTE INGRESOS PADRE"));
+        panelBotones.add(createUploadSection("COMPROBANTE INGRESOS PADRE"));
 
         centralPanel.add(panelBotones);
         centralPanel.add(Box.createVerticalGlue());
+
         btnContinuar = new Button("Continuar");
         btnContinuar.setAlignmentX(Component.CENTER_ALIGNMENT);
-        centralPanel.add(btnContinuar, BorderLayout.CENTER);
+        centralPanel.add(Box.createVerticalStrut(30));
+        centralPanel.add(btnContinuar);
 
-        btnBack.addActionListener(e -> {
-            mainFrame.showPanel("informacionSocioeconomicaPanel");
-        });
+        btnBack.addActionListener(e -> mainFrame.showPanel("informacionSocioeconomicaPanel"));
 
         btnContinuar.addActionListener(e -> {
-            BecaDTO becaDTO= controlNavegacion.obtenerBecaSeleccionadaDTO();
-            InformacionSocioeconomicaDTO infoSocioeconomicaDTO= controlNavegacion.obtenerInfoSocioeconomicaDTO();
+            BecaDTO becaDTO = controlNavegacion.obtenerBecaSeleccionadaDTO();
+            InformacionSocioeconomicaDTO infoSocioeconomicaDTO = controlNavegacion.obtenerInfoSocioeconomicaDTO();
             HistAcademicoDTO historialAcademicoDTO = controlNavegacion.obtenerHistAcademico();
-            
-            
-            
-           SolicitudDTO solicitudDTO= new SolicitudDTO(becaDTO, infoSocioeconomicaDTO, historialAcademicoDTO);
 
-           controlNavegacion.setSolicitud(solicitudDTO);
+            SolicitudDTO solicitudDTO = new SolicitudDTO(becaDTO, infoSocioeconomicaDTO, historialAcademicoDTO);
+            controlNavegacion.setSolicitud(solicitudDTO);
             controlNavegacion.mostrarResumen();
         });
     }
+    private JPanel createUploadSection(String docName) {
+        JPanel sectionPanel = new JPanel();
+        sectionPanel.setLayout(new BoxLayout(sectionPanel, BoxLayout.X_AXIS));
+        sectionPanel.setBackground(Style.PANEL_COLOR);
+        sectionPanel.setMaximumSize(new Dimension(600, 50));
+
+        Button uploadButton = createUploadButton(docName);
+
+        Button deleteButton = new Button("X");
+        deleteButton.setFont(new Font("Segoe UI", Font.BOLD, 16));
+        deleteButton.setForeground(Color.WHITE);
+        deleteButton.setBackground(new Color(200, 50, 50));
+        deleteButton.setVisible(false);
+        deleteButton.setPreferredSize(new Dimension(50, 40));
+        deleteButton.setMaximumSize(new Dimension(50, 40));
+
+        deleteButton.addActionListener(e -> {
+            documentosCargados.remove(docName);
+            uploadButton.setText(docName);
+            uploadButton.setBackground(Style.BUTTON_COLOR);
+            uploadButton.setEnabled(true);
+            deleteButton.setVisible(false);
+        });
+
+        sectionPanel.add(uploadButton);
+        sectionPanel.add(Box.createHorizontalStrut(10));
+        sectionPanel.add(deleteButton);
+
+        uploadButton.addActionListener(e -> abrirFileChooser(uploadButton, deleteButton, docName));
+
+        return sectionPanel;
+    }
 
     private Button createUploadButton(String docName) {
-
         ImageIcon uploadIcon = null;
         try {
             uploadIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/assets/upload.png")));
@@ -97,39 +123,28 @@ public class SubirDocumentosPanel extends PanelSolicitarBeca {
             button.setIcon(uploadIcon);
         }
 
-        button.setFont(new Font("Segoe UI", Font.BOLD, 20));
+        button.setFont(new Font("Segoe UI", Font.BOLD, 18));
         button.setHorizontalAlignment(SwingConstants.LEFT);
-        button.setIconTextGap(20);
-
-        button.addActionListener(e -> {
-            abrirFileChooser(button, docName);
-        });
+        button.setIconTextGap(15);
 
         return button;
     }
 
-    private void abrirFileChooser(Button button, String docName) {
+    private void abrirFileChooser(Button uploadButton, Button deleteButton, String docName) {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Selecciona tu " + docName);
-
-        FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                "PDF", "pdf");
-        fileChooser.setFileFilter(filter);
+        fileChooser.setFileFilter(new FileNameExtensionFilter("Archivos PDF", "pdf"));
 
         int seleccion = fileChooser.showOpenDialog(this);
 
         if (seleccion == JFileChooser.APPROVE_OPTION) {
             File archivoSeleccionado = fileChooser.getSelectedFile();
-
             documentosCargados.put(docName, archivoSeleccionado);
 
-            button.setText(docName + " - " + archivoSeleccionado.getName() + " ✓");
-            button.setBackground(new Color(220, 255, 220));
-            button.setEnabled(false);
-
-            if (documentosCargados.size() == 5) {
-                btnSiguiente.setEnabled(true);
-            }
+            uploadButton.setText(docName + " - " + archivoSeleccionado.getName() + " ✓");
+            uploadButton.setBackground(new Color(220, 255, 220));
+            uploadButton.setEnabled(false);
+            deleteButton.setVisible(true);
         }
     }
 }
