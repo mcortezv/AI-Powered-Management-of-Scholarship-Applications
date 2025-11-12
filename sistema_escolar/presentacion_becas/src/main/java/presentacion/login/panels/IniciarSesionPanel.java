@@ -14,7 +14,6 @@ import presentacion.styles.Style;
 import presentacion.styles.TextField;
 import javax.swing.*;
 import java.awt.*;
-import java.util.Arrays;
 
 import presentacion.styles.PasswordField;
 
