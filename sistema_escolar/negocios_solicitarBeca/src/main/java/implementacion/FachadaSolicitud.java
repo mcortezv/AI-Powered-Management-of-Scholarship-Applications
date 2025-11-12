@@ -5,13 +5,13 @@
 package implementacion;
 import dto.*;
 import gestor.ControlSolicitud;
-import interfaz.IManejadorSolicitud;
+import interfaz.IFachadaSolicitud;
 
 /**
  *                          FACHADA
  * @author janethcristinagalvanquinonez
  */
-public class FachadaSolicitud implements IManejadorSolicitud {
+public class FachadaSolicitud implements IFachadaSolicitud {
     private final ControlSolicitud gestor;
     
     public FachadaSolicitud(ControlSolicitud gestor){

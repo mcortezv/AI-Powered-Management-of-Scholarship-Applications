@@ -6,7 +6,7 @@ package controlNavegacion;
 import dto.*;
 import gestor.ControlSolicitud;
 import implementacion.FachadaSolicitud;
-import interfaz.IManejadorSolicitud;
+import interfaz.IFachadaSolicitud;
 import presentacion.login.MainFrame;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.solicitarBeca.panels.DetallesBecaPanel;
@@ -20,7 +20,7 @@ import presentacion.solicitarBeca.panels.ResumenFinalPanel;
 public class ControlNavegacion {
     private MainFrame mainFrame;
     private SolicitarBeca solicitarBeca;
-    private IManejadorSolicitud manejador;
+    private IFachadaSolicitud manejador;
     private BecaDTO becaDTO;
     private BecaDTO becaSeleccionadaDTO;
     private DatosSolicitanteDTO datosSolicitanteDTO;

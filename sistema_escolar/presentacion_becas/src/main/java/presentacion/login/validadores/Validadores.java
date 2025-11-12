@@ -9,24 +9,24 @@ import presentacion.login.exceptions.CorreoInvalidoException;
  */
 public class Validadores {
 
-    public static boolean validarCorreo(String correo){
+    public static void validarCorreo(String correo){
         if(correo == null || correo.trim().isEmpty()){
             throw new CorreoInvalidoException("Favor de ingresar un correo");
         }
-        if(!correo.matches("^[A-Za-z0-9._%+-]+@potros\\.itson\\.edu\\.mx$\n")){
+        if(!correo.matches("^[A-Za-z0-9._%+-]+@potros\\.itson\\.edu\\.mx$")){
             throw new CorreoInvalidoException("Favor de ingresar un correo institucional @potros.itson.edu.mx");
         }
-        return true;
     }
 
-    public static boolean validarContrasenia(String contrasenia){
+    public static void validarContrasenia(String contrasenia){
         if(contrasenia == null || contrasenia.trim().isEmpty()){
             throw new ContraseniaInvalidaException("Favor de ingresar una contrasenia");
         }
-        if(!contrasenia.matches("^(?=.*[A-Z])(?=.*\\d).{8,}$\n")){
+        if(!contrasenia.matches("^(?=.*[A-Z])(?=.*\\d).{8,}$")){
             throw new ContraseniaInvalidaException("Favor de ingresar una contraseña válida.");
         }
-        return true;
     }
+
+
 
 }
