@@ -1,8 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package controlNavegacion;
+import fachada.FachadaInicioSesion;
+import implementacion.ControlInicioSesion;
+import interfaz.IFachadaInicioSesion;
 import dto.*;
 import implementacion.ControlSolicitud;
 import fachada.FachadaSolicitud;
@@ -18,9 +18,11 @@ import presentacion.solicitarBeca.panels.ResumenFinalPanel;
  * @author janethcristinagalvanquinonez
  */
 public class ControlNavegacion {
-    private MainFrame mainFrame;
+    private final MainFrame mainFrame;
     private SolicitarBeca solicitarBeca;
-    private IFachadaSolicitud manejador;
+    private final IFachadaSolicitud iFachadaSolicitud;
+    private final IFachadaInicioSesion iFachadaInicioSesion;
+
     private BecaDTO becaDTO;
     private BecaDTO becaSeleccionadaDTO;
     private DatosSolicitanteDTO datosSolicitanteDTO;
@@ -32,10 +34,16 @@ public class ControlNavegacion {
 
 
     public ControlNavegacion(){
-        this.manejador = new FachadaSolicitud(new ControlSolicitud());
+        this.iFachadaSolicitud = new FachadaSolicitud(new ControlSolicitud());
+        this.iFachadaInicioSesion = new FachadaInicioSesion(new ControlInicioSesion());
+
         mainFrame = new MainFrame(this);
         mainFrame.setVisible(true);
 
+    }
+
+    public EstudianteResponseDTO solicitarInicioSesion(SolicitudLoginDTO solicitudLoginDTO){
+        return iFachadaInicioSesion.solicitarLogin(solicitudLoginDTO);
     }
 
     public void solicitarBeca() {
@@ -50,7 +58,7 @@ public class ControlNavegacion {
     }
     
     public SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO){
-        return manejador.obtenerBecasDisponibles(solicitudDTO);
+        return iFachadaSolicitud.obtenerBecasDisponibles(solicitudDTO);
     }
     
     public void mostrarBecasDisponibles(SolicitudBecasDisponiblesResponseDTO responseDTO) {
@@ -124,5 +132,5 @@ public class ControlNavegacion {
         return solicitudDTO;
     }
 
-    
+
 }
