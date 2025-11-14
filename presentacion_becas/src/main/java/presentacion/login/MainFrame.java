@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package presentacion.login;
-import controlLogin.ControlLogin;
+
 import controlNavegacion.ControlNavegacion;
 import presentacion.login.panels.HubPanel;
 import presentacion.login.panels.IniciarSesionPanel;
@@ -19,19 +16,17 @@ import java.util.Map;
  * @author Cortez, Manuel;
  */
 public final class MainFrame extends JFrame {
-    private NorthPanel northPanel;
-    private JPanel centralPanel;
+    private final NorthPanel northPanel;
+    private final JPanel centralPanel;
     private Button btnSolicitarBeca;
-    private Button btnEvaluarSolicitudes;
     private Button btnApelacion;
     private Button btnPagoAdeudo;
     private Button btnExtracurriculares;
     private Button btnTutorias;
     private Button btnCarteras;
-    private Map<String, JPanel> panels;
+    private final Map<String, JPanel> panels;
     private ControlNavegacion controlNavegacion;
-    
-    
+
     public MainFrame(ControlNavegacion controlNavegacion) {
         setTitle("Sistema de Aplicaciones Escolares");
         setResizable(false);
@@ -43,7 +38,7 @@ public final class MainFrame extends JFrame {
         this.controlNavegacion = controlNavegacion;
 
         btnSolicitarBeca = new Button("Solicitar Beca");
-        btnEvaluarSolicitudes = new Button("Evaluar Solicitudes");
+        Button btnEvaluarSolicitudes = new Button("Evaluar Solicitudes");
         btnApelacion = new Button("Apelacion");
         btnPagoAdeudo = new Button("Pago Adeudo");
         btnExtracurriculares = new Button("Extracurriculares");
@@ -59,7 +54,7 @@ public final class MainFrame extends JFrame {
         northPanel.add(btnCarteras);
 
         panels = new HashMap<String, JPanel>();
-        panels.put("iniciarSesionPanel", new IniciarSesionPanel(this, controlNavegacion,new ControlLogin()));
+        panels.put("iniciarSesionPanel", new IniciarSesionPanel(this, controlNavegacion));
         panels.put("hubPanel", new HubPanel(this, controlNavegacion));
 
         add(northPanel, BorderLayout.NORTH);

@@ -12,5 +12,4 @@ import dto.*;
  */
 public interface IFachadaSolicitud {
     public SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO);
-    public EstudianteResponseDTO validarInicioSesion(SolicitudLoginDTO solicitudLoginDTO);
 }
