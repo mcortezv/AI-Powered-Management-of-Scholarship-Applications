@@ -1,9 +1,9 @@
-package itson;
+package implementacion;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dto.EstudianteResponseDTO;
 import dto.SolicitudLoginDTO;
-import interfaces.IITSON;
+import interfaz.IITSON;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -14,7 +14,7 @@ import java.util.Optional;
 /**
  * @author Escalante, Sebastian.
  */
-public class ITSON implements IITSON {
+public class ControlItson implements IITSON {
 
     private static final String ITSON_BASE_URL = "http://localhost:8080/api/";
     private static final String LOGIN_ENDPOINT = "login/";
