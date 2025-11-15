@@ -11,13 +11,13 @@ public class BecaDTO {
     private String descripcion;
     private String periodo;
     private int becasDisponibles;
-    private RequisitosDTO requisitos;
+    private RequisitosBecaDTO requisitos;
     private LocalDate fechaResultados;
 
     public BecaDTO() {
     }
 
-    public BecaDTO(int codigo, String tipo, String nombre, String descripcion, String periodo, int becasDisponibles, RequisitosDTO requisitos, LocalDate fechaResultados) {
+    public BecaDTO(int codigo, String tipo, String nombre, String descripcion, String periodo, int becasDisponibles, RequisitosBecaDTO requisitos, LocalDate fechaResultados) {
         this.codigo = codigo;
         this.tipo = tipo;
         this.nombre = nombre;
@@ -68,11 +68,11 @@ public class BecaDTO {
         this.becasDisponibles = becasDisponibles;
     }
 
-    public RequisitosDTO getRequisitos() {
+    public RequisitosBecaDTO getRequisitos() {
         return requisitos;
     }
 
-    public void setRequisitos(RequisitosDTO requisitos) {
+    public void setRequisitos(RequisitosBecaDTO requisitos) {
         this.requisitos = requisitos;
     }
 
