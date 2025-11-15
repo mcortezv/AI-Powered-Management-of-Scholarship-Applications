@@ -10,6 +10,7 @@ import dto.RequisitosDTO;
 import dto.SolicitudBecasDisponiblesDTO;
 import dto.SolicitudBecasDisponiblesResponseDTO;
 import dto.SolicitudDTO;
+import interfaces.IBecaBOMock;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.List;
  *
  * @author janethcristinagalvanquinonez
  */
-public class BecaBOMock {
+public class BecaBOMock implements IBecaBOMock {
     private static BecaBOMock instancia;
     //private final BecaBOMock becaMock = BecaBOMock.getInstance();
     

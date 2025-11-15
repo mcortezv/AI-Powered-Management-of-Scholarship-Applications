@@ -31,5 +31,9 @@ public class ControlSolicitud {
         return numBecas > 1;
 
     }
+    
+//    public boolean enviarSolicitudGobierno(SolicitudDTO solicitudDTO){
+//        
+//    }
 
 }

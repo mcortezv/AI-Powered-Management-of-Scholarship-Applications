@@ -89,8 +89,8 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
             Validadores.validarPromedio(promedio);
             Validadores.validarIngreso(ingreso);
 
-            SolicitudBecasDisponiblesDTO solictudDTO  = new SolicitudBecasDisponiblesDTO(promedio, carga, ingreso);
-            SolicitudBecasDisponiblesResponseDTO solicitudBecasDisponiblesResponseDTO = controlNavegacion.obtenerBecasDisponibles(solictudDTO);
+            SolicitudBecasDisponiblesDTO solictudBecasDisponiblesDTO  = new SolicitudBecasDisponiblesDTO(promedio, carga, ingreso);
+            SolicitudBecasDisponiblesResponseDTO solicitudBecasDisponiblesResponseDTO = controlNavegacion.obtenerBecasDisponibles(solictudBecasDisponiblesDTO);
             controlNavegacion.mostrarBecasDisponibles(solicitudBecasDisponiblesResponseDTO);
 
         } catch (PromedioInvalidoException | IngresoInvalidoException ex) {
