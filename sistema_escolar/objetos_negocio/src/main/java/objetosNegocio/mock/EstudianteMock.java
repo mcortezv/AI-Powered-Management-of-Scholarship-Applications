@@ -36,7 +36,9 @@ public class EstudianteMock {
     
     private void cargarEstudiantes(){
         Estudiante estudiante1 = new Estudiante(258329L, "Luisa Perez", tutor.getTutores().get(0L), "hola", "687378444", new Direccion("Luar", "Villas del Rey", "Ciudad Obregon"), "luisa@gmail.com");
-        estudiantes.put(estudiante1.getMatricula(), estudiante1);        
+        Estudiante estudiante2= new Estudiante(12345678901L, "Cristina Perez", tutor.getTutores().get(1L), "Password123", "6871678844", new Direccion("Luar", "Villa Itson", "Ciudad Obregon"), "cristina@gmail.com");
+        estudiantes.put(estudiante1.getMatricula(), estudiante1);   
+        estudiantes.put(estudiante2.getMatricula(), estudiante2);
     }
 
     public Map<Long, Estudiante> getEstudiantes() {
