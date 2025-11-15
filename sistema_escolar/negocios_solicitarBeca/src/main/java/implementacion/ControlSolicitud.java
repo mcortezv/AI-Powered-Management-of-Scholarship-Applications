@@ -14,10 +14,22 @@ import objetosNegocio.mock.EstudianteMock;
  * @author janethcristinagalvanquinonez
  */
 public class ControlSolicitud {
-    public BecaBOMock becaBO;
 
     public SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO) {
-        return becaBO.getInstance().obtenerBecas();
+        SolicitudBecasDisponiblesResponseDTO becas = BecaBOMock.getInstance().obtenerBecasDisponibles(solicitudDTO);
+        if (comprobarCriterioCantidad(becas)) {
+            return becas;
+        };
+        return null;
+    }
+
+    public boolean comprobarCriterioCantidad(SolicitudBecasDisponiblesResponseDTO becasDTO) {
+        if (becasDTO ==null || becasDTO.getBecas() == null) {
+            return false;
+        }
+        int numBecas = becasDTO.getBecas().size();
+        return numBecas > 1;
+
     }
 
 }

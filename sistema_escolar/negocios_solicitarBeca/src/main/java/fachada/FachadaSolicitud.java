@@ -20,7 +20,7 @@ public class FachadaSolicitud implements IFachadaSolicitud {
 
     @Override
     public SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO) {
-        return null;
+        return controlSolicitud.obtenerBecasDisponibles(solicitudDTO);
     }
 
 }
