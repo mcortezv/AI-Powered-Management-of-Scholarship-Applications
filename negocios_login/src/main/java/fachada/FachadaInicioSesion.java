@@ -13,6 +13,6 @@ public class FachadaInicioSesion implements IFachadaInicioSesion {
 
     @Override
     public EstudianteResponseDTO solicitarLogin(SolicitudLoginDTO solicitudLoginDTO) {
-        return null;
+        return controlInicioSesion.solicitarLogin(solicitudLoginDTO);
     }
 }

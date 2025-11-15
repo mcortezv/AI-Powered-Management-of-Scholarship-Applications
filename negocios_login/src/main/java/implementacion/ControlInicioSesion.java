@@ -5,7 +5,7 @@ import dto.SolicitudLoginDTO;
 import objetosNegocio.mock.EstudianteMock;
 
 public class ControlInicioSesion {
-    public EstudianteMock estudianteMock;
+    private EstudianteMock estudianteMock= EstudianteMock.getInstance();
 
     public EstudianteResponseDTO solicitarLogin(SolicitudLoginDTO solicitudLoginDTO){
         return estudianteMock.getEstudianteResponseDTO(solicitudLoginDTO);

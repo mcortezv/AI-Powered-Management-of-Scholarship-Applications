@@ -24,7 +24,9 @@ public class TutorMock {
     
     private void cargarTutores(){
         Tutor tutor1= new Tutor(0L, "Juan Fernandez", Parentesco.PADRE, "6871616433", new Direccion("Antonio Caso", "Villa Itson", "Ciudad Obregon"), "juanfernandez@gmail.com");
+        Tutor tutor2= new Tutor(1L, "Jorge Moreno", Parentesco.PADRE, "6871638833", new Direccion("Antonio Caso", "Villas del Rey", "Ciudad obregon"), "jorge@gmail.com");
         tutores.put(tutor1.getId(), tutor1);        
+        tutores.put(tutor2.getId(), tutor2);
     }
 
     public Map<Long, Tutor> getTutores() {
