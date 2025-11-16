@@ -17,12 +17,11 @@ import presentacion.solicitarBeca.panels.ResumenFinalPanel;
  *
  * @author janethcristinagalvanquinonez
  */
-public class ControlNavegacion {
+public class ControlNavegacion implements IControlNavegacion{
     private final MainFrame mainFrame;
     private SolicitarBeca solicitarBeca;
     private final IFachadaSolicitud iFachadaSolicitud;
     private final IFachadaInicioSesion iFachadaInicioSesion;
-
     private BecaDTO becaDTO;
     private BecaDTO becaSeleccionadaDTO;
     private DatosSolicitanteDTO datosSolicitanteDTO;
@@ -42,6 +41,7 @@ public class ControlNavegacion {
 
     }
 
+    @Override
     public EstudianteResponseDTO solicitarInicioSesion(SolicitudLoginDTO solicitudLoginDTO){
         return iFachadaInicioSesion.solicitarLogin(solicitudLoginDTO);
     }
@@ -56,11 +56,17 @@ public class ControlNavegacion {
         solicitarBeca.setVisible(false);
         mainFrame.setVisible(true);
     }
-    
+
+    @Override
     public SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO){
         return iFachadaSolicitud.obtenerBecasDisponibles(solicitudDTO);
     }
-    
+
+    @Override
+    public void SolicitarCerrarSesion() {
+
+    }
+
     public void mostrarBecasDisponibles(SolicitudBecasDisponiblesResponseDTO responseDTO) {
         ListadoBecasDisponiblesPanel pnl = (ListadoBecasDisponiblesPanel) solicitarBeca.getPanel("listadoBecasDisponiblesPanel");
         pnl.setBecas(responseDTO.getBecas());
@@ -78,7 +84,7 @@ public class ControlNavegacion {
         SolicitudDTO solicitudDTO= obtenerSolicitud();
         
         TutorDTO tutorDTO= obtenerTutor();
-       DatosSolicitanteDTO solicitanteDTO= obtenerDatosSolicitanteDTO();
+        DatosSolicitanteDTO solicitanteDTO= obtenerDatosSolicitanteDTO();
         ResumenFinalPanel resumenFinal= (ResumenFinalPanel) solicitarBeca.getPanel("resumenFinalPanel");
         resumenFinal.cargarResumen(solicitudDTO, tutorDTO, solicitanteDTO);
         solicitarBeca.showPanel("resumenFinalPanel");
