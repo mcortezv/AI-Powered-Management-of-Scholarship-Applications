@@ -27,8 +27,6 @@ public class RequisitosBeca {
         this.promedioMinimo = promedioMinimo;
         this.ingresoFamiliarMaximo = ingresoFamiliarMaximo;
     }
-    
-    
 
     public double getPromedioMinimo() {
         return promedioMinimo;
