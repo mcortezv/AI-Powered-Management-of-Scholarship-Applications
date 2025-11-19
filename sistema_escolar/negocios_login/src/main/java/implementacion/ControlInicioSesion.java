@@ -4,14 +4,17 @@ import dto.EstudianteResponseDTO;
 import dto.SolicitudLoginDTO;
 import objetosNegocio.mock.EstudianteMock;
 
-// todos los metodos para llevar a cabo las acciones
+import javax.swing.*;
+
 
 public class ControlInicioSesion {
-    private EstudianteMock estudianteMock= EstudianteMock.getInstance();
+    private final EstudianteMock estudianteMock= EstudianteMock.getInstance();
 
     public EstudianteResponseDTO solicitarLogin(SolicitudLoginDTO solicitudLoginDTO){
         return estudianteMock.getEstudianteResponseDTO(solicitudLoginDTO);
     }
 
-    // cerrrar sesion
+    public void cerrarSesion(){
+        System.out.println("Cerrrando sesion...");
+    }
 }

@@ -15,4 +15,9 @@ public class FachadaInicioSesion implements IFachadaInicioSesion {
     public EstudianteResponseDTO solicitarLogin(SolicitudLoginDTO solicitudLoginDTO) {
         return controlInicioSesion.solicitarLogin(solicitudLoginDTO);
     }
+
+    @Override
+    public void solicitarCerrarSesion() {
+        controlInicioSesion.cerrarSesion();
+    }
 }

@@ -1,20 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package presentacion.solicitarBeca.panels;
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import java.awt.Component;
 import javax.swing.*;
 
-import presentacion.coordinadorNegocio.CoordinadorNegocio;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.solicitarBeca.exceptions.IngresoInvalidoException;
 import presentacion.solicitarBeca.exceptions.PromedioInvalidoException;
-import presentacion.solicitarBeca.validadores.Validadores;
 import presentacion.styles.*;
-import dto.SolicitudBecasDisponiblesDTO;
-import dto.SolicitudBecasDisponiblesResponseDTO;
 import presentacion.styles.ComboBox;
 
 /**
@@ -22,9 +14,6 @@ import presentacion.styles.ComboBox;
  * @author janethcristinagalvanquinonez
  */
 public class InformacionGeneralPanel extends PanelSolicitarBeca {
-    private SolicitudBecasDisponiblesDTO solicitudDTO;
-    private CoordinadorAplicacion control;
-    private CoordinadorNegocio coordinadorNegocio;
     private Button btnContinuar;
     private TextField campoPromedio;
     private ComboBox<String> campoCarga;
@@ -79,65 +68,19 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
             coordinadorAplicacion.main();
         });
 
-//        btnContinuar.addActionListener(e -> {
-//            mainFrame.showPanel("listadoBecasDisponiblesPanel");
-//        });
 
         btnContinuar.addActionListener(e -> {
-        try {
-            double promedio = Double.parseDouble(campoPromedio.getText().trim().replace(',', '.'));
-            boolean carga   = "Si".equals(campoCarga.getSelectedItem());
-            double ingreso  = Double.parseDouble(campoIngreso.getText().trim().replace(',', '.'));
-            Validadores.validarPromedio(promedio);
-            Validadores.validarIngreso(ingreso);
+            try {
+                double promedio = Double.parseDouble(campoPromedio.getText().trim().replace(',', '.'));
+                boolean carga   = "Si".equals(campoCarga.getSelectedItem());
+                double ingreso  = Double.parseDouble(campoIngreso.getText().trim().replace(',', '.'));
+                coordinadorAplicacion.procesarInformacionGeneral(promedio, carga, ingreso);
 
-            SolicitudBecasDisponiblesDTO solictudBecasDisponiblesDTO  = new SolicitudBecasDisponiblesDTO(promedio, carga, ingreso);
-            SolicitudBecasDisponiblesResponseDTO solicitudBecasDisponiblesResponseDTO = coordinadorNegocio.obtenerBecasDisponibles(solictudBecasDisponiblesDTO);
-            coordinadorAplicacion.mostrarBecasDisponibles(solicitudBecasDisponiblesResponseDTO);
-
-        } catch (PromedioInvalidoException | IngresoInvalidoException ex) {
-            JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
-        }catch (NumberFormatException ex){
-            JOptionPane.showMessageDialog(mainFrame,"Solo se aceptan números","Error de validación", JOptionPane.ERROR_MESSAGE);
-        }
-    });
-        //events();
+            } catch (PromedioInvalidoException | IngresoInvalidoException ex) {
+                JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
+            }catch (NumberFormatException ex){
+                JOptionPane.showMessageDialog(mainFrame,"Solo se aceptan números","Error de validación", JOptionPane.ERROR_MESSAGE);
+            }
+        });
     }
-
-
-
-//    private void events() {
-//        btnContinuar.addActionListener(e -> {
-//                Double promedio = Double.parseDouble((campoPromedio.getText()));
-//                boolean carga;
-//                if (campoCarga.getSelectedItem().equals("Si")) {
-//                    carga = true;
-//                } else {
-//                    carga = false;
-//                }
-//                Double ingreso = Double.parseDouble(campoIngreso.getText());
-//                solicitudDTO = new SolicitudBecasDisponiblesDTO(promedio, carga, ingreso);
-//
-//             //   java.util.List<BecaDTO> becasMock = crearMockBecas();
-//
-//              //  mainFrame.showBecasDisponibles(becasMock);
-//
-//            }
-//        );
-//    }
-
-//    private java.util.List<BecaDTO> crearMockBecas() {
-//        java.time.LocalDate ahora = java.time.LocalDate.now();
-//        return java.util.List.of(
-//            new BecaDTO(1,"Apoyo Económico","Moisés Vázquez Gudiño","2025-2",50,
-//                new RequisitosDTO(7.0,12000,30,50,30,false,true), ahora.plusMonths(1)),
-//            new BecaDTO(2,"Excelencia","Beca Ara","2025-2",20,
-//                new RequisitosDTO(9.0,999999,10,70,10,false,false), ahora.plusMonths(1)),
-//            new BecaDTO(3,"Promedio","Fundación Espinoza Rodríguez","2025-2",40,
-//                new RequisitosDTO(8.0,15000,20,60,20,false,false), ahora.plusMonths(1)),
-//            new BecaDTO(4,"Corporativa","Constellation Brands","2025-2",15,
-//                new RequisitosDTO(8.5,20000,15,70,15,true,false), ahora.plusMonths(1))
-//        );
-//    }
 }
-    
