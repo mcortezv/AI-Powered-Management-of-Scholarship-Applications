@@ -6,18 +6,26 @@ package fachada;
 
 import dto.EstudianteResponseDTO;
 import dto.SolicitudLoginDTO;
-import interfaz.IITSON;
+import implementacion.ControlItson;
 import java.util.Optional;
+import interfaz.IFachadaITSON;
 
 /**
  *
  * @author janethcristinagalvanquinonez
  */
-public class FachadaItson implements IITSON{
+public class FachadaItson implements IFachadaITSON{
+    private ControlItson controlItson;
+
+    public FachadaItson(ControlItson controlItson) {
+        this.controlItson = controlItson;
+    }
+    
+    
 
     @Override
     public Optional<EstudianteResponseDTO> verificarLogin(SolicitudLoginDTO solicitudLoginDTO) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return controlItson.verificarLogin(solicitudLoginDTO);
     }
     
 }
