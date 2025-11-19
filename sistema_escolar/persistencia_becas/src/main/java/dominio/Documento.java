@@ -3,8 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package objetosNegocio.dominio;
-import objetosNegocio.enums.TipoDocumento;
+package dominio;
+
+import dominio.enums.TipoDocumento;
 
 /**
  *

@@ -3,50 +3,46 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package objetosNegocio.dominio;
+package dominio;
+import dominio.enums.Parentesco;
 
 /**
  *
  * @author Cortez, Manuel;
  */
-public class Estudiante {
-    private Long matricula;
+public class Tutor {
+    private Long id;
     private String nombre;
-    private Tutor tutor;
-    private String password;
+    private Parentesco parentesco;
     private String telefono;
     private Direccion direccion;
     private String correo;
 
-    public Estudiante() {}
+    public Tutor() {}
 
-    public Estudiante(String nombre, Tutor tutor, String password, String telefono, Direccion direccion, String correo) {
+    public Tutor(String nombre, Parentesco parentesco, String telefono, Direccion direccion, String correo) {
         this.nombre = nombre;
-        this.tutor = tutor;
-        this.password = password;
+        this.parentesco = parentesco;
         this.telefono = telefono;
         this.direccion = direccion;
         this.correo = correo;
     }
 
-    public Estudiante(Long matricula, String nombre, Tutor tutor, String password, String telefono, Direccion direccion, String correo) {
-        this.matricula = matricula;
+    public Tutor(Long id, String nombre, Parentesco parentesco, String telefono, Direccion direccion, String correo) {
+        this.id = id;
         this.nombre = nombre;
-        this.tutor = tutor;
-        this.password = password;
+        this.parentesco = parentesco;
         this.telefono = telefono;
         this.direccion = direccion;
         this.correo = correo;
     }
-    
-    
 
-    public Long getMatricula() {
-        return matricula;
+    public Long getId() {
+        return id;
     }
 
-    public void setMatricula(Long matricula) {
-        this.matricula = matricula;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -57,20 +53,12 @@ public class Estudiante {
         this.nombre = nombre;
     }
 
-    public Tutor getTutor() {
-        return tutor;
+    public Parentesco getParentesco() {
+        return parentesco;
     }
 
-    public void setTutor(Tutor tutor) {
-        this.tutor = tutor;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setParentesco(Parentesco parentesco) {
+        this.parentesco = parentesco;
     }
 
     public String getTelefono() {

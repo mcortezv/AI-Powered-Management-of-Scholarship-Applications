@@ -3,10 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package objetosNegocio.dominio;
+package dominio;
+import dominio.enums.TipoBeca;
+
 import java.time.LocalDate;
 import java.time.Period;
-import objetosNegocio.enums.TipoBeca;
+
 
 /**
  *
