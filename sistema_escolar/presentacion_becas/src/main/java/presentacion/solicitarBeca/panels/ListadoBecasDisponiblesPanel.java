@@ -3,16 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package presentacion.solicitarBeca.panels;
-import controlNavegacion.ControlNavegacion;
+import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import dto.BecaDTO;
 import dto.RequisitosBecaDTO;
-import dto.RequisitosDTO;
-import dto.SolicitudBecasDisponiblesResponseDTO;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.time.LocalDate;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -40,8 +38,8 @@ public class ListadoBecasDisponiblesPanel extends PanelSolicitarBeca{
     private Button btnSeleccionar;
     
        
-    public ListadoBecasDisponiblesPanel(SolicitarBeca frame, ControlNavegacion controlNavegacion) {
-        super(frame, controlNavegacion);
+    public ListadoBecasDisponiblesPanel(SolicitarBeca frame, CoordinadorAplicacion coordinadorAplicacion) {
+        super(frame, coordinadorAplicacion);
         
     }
 
@@ -86,8 +84,8 @@ public class ListadoBecasDisponiblesPanel extends PanelSolicitarBeca{
 
         btnSeleccionar.addActionListener(e -> {
             BecaDTO seleccionada = (BecaDTO) ddlBecas.getSelectedItem();
-            controlNavegacion.setBecaSeleccionadaDTO(seleccionada);
-            controlNavegacion.mostrarBecaSeleccionada();
+            coordinadorAplicacion.setBecaSeleccionadaDTO(seleccionada);
+            coordinadorAplicacion.mostrarBecaSeleccionada();
             
             
             //if (seleccionada == null) {

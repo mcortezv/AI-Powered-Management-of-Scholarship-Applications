@@ -1,11 +1,8 @@
 package presentacion.solicitarBeca.panels;
 
-import controlNavegacion.ControlNavegacion;
-import dto.BecaDTO;
+import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import dto.SolicitudDTO;
 import dto.TutorDTO;
-import presentacion.login.MainFrame;
-import presentacion.login.panels.NorthPanel;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
@@ -31,13 +28,13 @@ public class ResumenSolicitudPanel extends PanelSolicitarBeca{
     Label lbl_tutor_3 ;
     Label lbl_info_2;
     Label lbl_info_3;
-    private ControlNavegacion control;
+    private CoordinadorAplicacion control;
 
-    public ResumenSolicitudPanel(SolicitarBeca frame, ControlNavegacion controlNavegacion) {
-        super(frame, controlNavegacion);
+    public ResumenSolicitudPanel(SolicitarBeca frame, CoordinadorAplicacion coordinadorAplicacion) {
+        super(frame, coordinadorAplicacion);
         this.southPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
         this.southPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 50));
-        controlNavegacion= this.controlNavegacion;
+        coordinadorAplicacion = this.coordinadorAplicacion;
     }
 
     @Override

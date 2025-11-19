@@ -1,5 +1,5 @@
 package presentacion.solicitarBeca.panels;
-import controlNavegacion.ControlNavegacion;
+import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import dto.BecaDTO;
 import dto.DatosSolicitanteDTO;
 import dto.SolicitudDTO;
@@ -24,7 +24,7 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
     private Button btnContinuar;
     private Label lbl_beca_response;
     private BecaDTO beca;
-    private ControlNavegacion controlNavegacion;
+    private CoordinadorAplicacion coordinadorAplicacion;
     private SolicitudDTO solicitudDTO;
     private TutorDTO tutorDTO;
     Label lbl_tutor_1;
@@ -37,9 +37,9 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
     Label lblSolicitanteApPaterno;
    
 
-    public ResumenFinalPanel(SolicitarBeca frame, ControlNavegacion controlNavegacion) {
-        super(frame, controlNavegacion);
-        this.controlNavegacion= controlNavegacion;
+    public ResumenFinalPanel(SolicitarBeca frame, CoordinadorAplicacion coordinadorAplicacion) {
+        super(frame, coordinadorAplicacion);
+        this.coordinadorAplicacion = coordinadorAplicacion;
 
     }
 

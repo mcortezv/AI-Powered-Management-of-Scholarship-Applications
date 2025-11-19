@@ -4,9 +4,8 @@
  */
 
 package presentacion.solicitarBeca.panels;
-import controlNavegacion.ControlNavegacion;
+import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import presentacion.login.panels.ImgPanel;
-import presentacion.login.panels.NorthPanel;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.*;
 import presentacion.styles.Button;
@@ -25,8 +24,8 @@ public class ConfirmacionPanel extends PanelSolicitarBeca {
     private Label subTitulo;
     private Button btnAceptar;
 
-    public ConfirmacionPanel(SolicitarBeca frame, ControlNavegacion controlNavegacion) {
-        super(frame, controlNavegacion);
+    public ConfirmacionPanel(SolicitarBeca frame, CoordinadorAplicacion coordinadorAplicacion) {
+        super(frame, coordinadorAplicacion);
     }
 
     @Override
@@ -57,7 +56,7 @@ public class ConfirmacionPanel extends PanelSolicitarBeca {
 
         btnBack.setVisible(false);
         btnAceptar.addActionListener(e -> {
-            controlNavegacion.main();
+            coordinadorAplicacion.main();
         });
     }
 }

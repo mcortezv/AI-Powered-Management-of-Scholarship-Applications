@@ -3,7 +3,7 @@
  */
 
 package presentacion;
-import controlNavegacion.ControlNavegacion;
+import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 
 /**
  *
@@ -12,7 +12,7 @@ import controlNavegacion.ControlNavegacion;
 public class Main {
 
     public static void main(String[] args) {
-        ControlNavegacion controlNavegacion = new ControlNavegacion();
+        CoordinadorAplicacion coordinadorAplicacion = new CoordinadorAplicacion();
 
     }
 }
