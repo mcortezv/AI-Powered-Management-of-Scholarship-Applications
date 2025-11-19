@@ -25,8 +25,7 @@ public class FachadaSolicitud implements IFachadaSolicitud {
 
     @Override
     public boolean enviarSolicitudBeca(SolicitudDTO solicitudDTO) {
-        //return controlSolicitud.
-        return true;
+        return controlSolicitud.enviaSolicitudBeca(solicitudDTO);
     }
 
 }

@@ -41,10 +41,9 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
 
     }
 
-    public EstudianteResponseDTO intentarIniciarSesion(String usuario, String contrasenia)
-            throws IDInvalidoException, ContraseniaInvalidaException {
-        Validadores.validarID(usuario);
-        Validadores.validarContrasenia(contrasenia);
+    public EstudianteResponseDTO intentarIniciarSesion(String usuario, String contrasenia) throws IDInvalidoException, ContraseniaInvalidaException {
+        presentacion.login.validadores.Validadores.validarID(usuario);
+        presentacion.login.validadores.Validadores.validarContrasenia(contrasenia);
         SolicitudLoginDTO solicitudLoginDTO = new SolicitudLoginDTO(usuario, contrasenia);
         return coordinadorNegocio.solicitarInicioSesion(solicitudLoginDTO);
     }
@@ -57,7 +56,8 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         mostrarBecasDisponibles(solicitudBecasDisponiblesResponseDTO);
     }
 
-    public void procesarDatosSolicitante(String nombre, String apellidoMaterno, String apellidoPaterno, String direccion, String telefono, String email) throws NombresInvalidosException, ApellidoInvalidoException, DireccionInvalidaException, TelefonoInvalidoException, IDInvalidoException {
+    public void procesarDatosSolicitante(String nombre, String apellidoMaterno, String apellidoPaterno, String direccion, String telefono, String email)
+            throws NombresInvalidosException, DireccionInvalidaException, TelefonoInvalidoException, IDInvalidoException {
 
         presentacion.solicitarBeca.validadores.Validadores.validarNombres(nombre);
         presentacion.solicitarBeca.validadores.Validadores.validarApellido(apellidoPaterno);
@@ -123,13 +123,14 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         solicitarBeca.showPanel("informacionSocioeconomicaPanel");
     }
 
-    public void procesarInformacionSocioeconomica(String ingresoStr, String seleccionDependEconomica, String seleccionGeneraIngreso) throws NumberFormatException { // Se mantiene NumberFormatException porque la conversión ocurre aquí
+    public void procesarInformacionSocioeconomica(String ingresoStr, String seleccionDependEconomica, String seleccionGeneraIngreso) throws NumberFormatException, IngresoInvalidoException {
         double ingreso;
         try {
             ingreso = Double.parseDouble(ingresoStr);
         } catch (NumberFormatException e) {
             throw new NumberFormatException("El ingreso debe ser un número válido.");
         }
+        presentacion.solicitarBeca.validadores.Validadores.validarIngreso(ingreso);
         boolean dependenciaEconomica = "SI".equals(seleccionDependEconomica);
         boolean generaIngreso = "SI".equals(seleccionGeneraIngreso);
         InformacionSocioeconomicaDTO informacionSocioeconomicaDTO = new InformacionSocioeconomicaDTO(ingreso, dependenciaEconomica, generaIngreso);
