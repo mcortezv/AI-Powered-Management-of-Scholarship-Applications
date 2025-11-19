@@ -94,6 +94,7 @@ public class IniciarSesionPanel extends Panel {
             String contrasenia = new String(txtPassword.getPassword());
             try {
                EstudianteResponseDTO estudianteResponseDTo = coordinadorAplicacion.intentarIniciarSesion(usuario,contrasenia);
+
             } catch (IDInvalidoException | ContraseniaInvalidaException ex) {
                 JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
             } catch (Exception ex) {

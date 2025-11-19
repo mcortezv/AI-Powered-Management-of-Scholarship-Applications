@@ -1,17 +1,20 @@
 
 package presentacion.coordinadorAplicacion;
 import dto.*;
+import enums.Parentesco;
 import presentacion.coordinadorNegocio.CoordinadorNegocio;
 import presentacion.login.MainFrame;
 import presentacion.login.exceptions.ContraseniaInvalidaException;
 import presentacion.login.exceptions.IDInvalidoException;
 import presentacion.login.validadores.Validadores;
 import presentacion.solicitarBeca.SolicitarBeca;
-import presentacion.solicitarBeca.exceptions.IngresoInvalidoException;
-import presentacion.solicitarBeca.exceptions.PromedioInvalidoException;
+import presentacion.solicitarBeca.exceptions.*;
 import presentacion.solicitarBeca.panels.DetallesBecaPanel;
 import presentacion.solicitarBeca.panels.ListadoBecasDisponiblesPanel;
 import presentacion.solicitarBeca.panels.ResumenFinalPanel;
+
+import java.io.File;
+import java.util.Map;
 
 /**
  *
@@ -54,6 +57,21 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         mostrarBecasDisponibles(solicitudBecasDisponiblesResponseDTO);
     }
 
+    public void procesarDatosSolicitante(String nombre, String apellidoMaterno, String apellidoPaterno, String direccion, String telefono, String email) throws NombresInvalidosException, ApellidoInvalidoException, DireccionInvalidaException, TelefonoInvalidoException, IDInvalidoException {
+
+        presentacion.solicitarBeca.validadores.Validadores.validarNombres(nombre);
+        presentacion.solicitarBeca.validadores.Validadores.validarApellido(apellidoPaterno);
+        presentacion.solicitarBeca.validadores.Validadores.validarApellido(apellidoMaterno);
+        presentacion.solicitarBeca.validadores.Validadores.validarDireccion(direccion);
+        presentacion.solicitarBeca.validadores.Validadores.validarTelefono(telefono);
+        presentacion.solicitarBeca.validadores.Validadores.validarCorreo(email);
+
+        DatosSolicitanteDTO datosSolicitanteDTO = new DatosSolicitanteDTO(nombre, apellidoMaterno, apellidoPaterno, direccion, telefono, email);
+        setDatosSolicitanteDTO(datosSolicitanteDTO);
+
+        solicitarBeca.showPanel("historialAcademicoPanel");
+    }
+
     public void solicitarBeca() {
         mainFrame.setVisible(false);
         solicitarBeca = new SolicitarBeca(this, becaDTO);
@@ -80,13 +98,53 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     }
     public void mostrarResumen(){
         SolicitudDTO solicitudDTO= obtenerSolicitud();
-        
         TutorDTO tutorDTO= obtenerTutor();
         DatosSolicitanteDTO solicitanteDTO= obtenerDatosSolicitanteDTO();
         ResumenFinalPanel resumenFinal= (ResumenFinalPanel) solicitarBeca.getPanel("resumenFinalPanel");
         resumenFinal.cargarResumen(solicitudDTO, tutorDTO, solicitanteDTO);
         solicitarBeca.showPanel("resumenFinalPanel");
         
+    }
+
+    public void procesarHistorialAcademico(String carrera, String cargaAcademica, int semestre) {
+        HistAcademicoDTO historialAcademicoDTO = new HistAcademicoDTO(carrera, cargaAcademica, semestre);
+        setHistorialAcademicoDTO(historialAcademicoDTO);
+        solicitarBeca.showPanel("datosTutorPanel");
+    }
+
+    public void procesarDatosTutor(Parentesco parentesco, String nombre, String apPat, String apMat, String telefono, String correo) throws NombresInvalidosException, ApellidoInvalidoException, TelefonoInvalidoException, IDInvalidoException {
+        presentacion.solicitarBeca.validadores.Validadores.validarNombres(nombre);
+        presentacion.solicitarBeca.validadores.Validadores.validarApellido(apPat);
+        presentacion.solicitarBeca.validadores.Validadores.validarApellido(apMat);
+        presentacion.solicitarBeca.validadores.Validadores.validarTelefono(telefono);
+        presentacion.solicitarBeca.validadores.Validadores.validarCorreo(correo);
+        TutorDTO tutor = new TutorDTO(nombre, parentesco, apMat, apPat, telefono, correo);
+        setTutor(tutor);
+        solicitarBeca.showPanel("informacionSocioeconomicaPanel");
+    }
+
+    public void procesarInformacionSocioeconomica(String ingresoStr, String seleccionDependEconomica, String seleccionGeneraIngreso) throws NumberFormatException { // Se mantiene NumberFormatException porque la conversión ocurre aquí
+        double ingreso;
+        try {
+            ingreso = Double.parseDouble(ingresoStr);
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException("El ingreso debe ser un número válido.");
+        }
+        boolean dependenciaEconomica = "SI".equals(seleccionDependEconomica);
+        boolean generaIngreso = "SI".equals(seleccionGeneraIngreso);
+        InformacionSocioeconomicaDTO informacionSocioeconomicaDTO = new InformacionSocioeconomicaDTO(ingreso, dependenciaEconomica, generaIngreso);
+        setInfoSocioeconomica(informacionSocioeconomicaDTO);
+        solicitarBeca.showPanel("subirDocumentosPanel");
+    }
+
+    public void procesarDocumentosYSolicitud(Map<String, File> documentosCargados) {
+        BecaDTO becaDTO = obtenerBecaSeleccionadaDTO();
+        InformacionSocioeconomicaDTO infoSocioeconomicaDTO = obtenerInfoSocioeconomicaDTO();
+        HistAcademicoDTO historialAcademicoDTO = obtenerHistAcademico();
+
+        SolicitudDTO solicitudDTO = new SolicitudDTO(becaDTO, infoSocioeconomicaDTO, historialAcademicoDTO);
+        setSolicitud(solicitudDTO);
+        mostrarResumen();
     }
    
 
