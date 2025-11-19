@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package presentacion.solicitarBeca.panels;
-import controlNavegacion.ControlNavegacion;
+import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.Button;
 import presentacion.styles.Style;
@@ -19,12 +19,12 @@ public abstract class PanelSolicitarBeca extends JPanel {
     protected JPanel centralPanel;
     protected JPanel southPanel;
     protected Button btnBack;
-    protected ControlNavegacion controlNavegacion;
+    protected CoordinadorAplicacion coordinadorAplicacion;
 
-    public PanelSolicitarBeca(SolicitarBeca frame, ControlNavegacion controlNavegacion) {
+    public PanelSolicitarBeca(SolicitarBeca frame, CoordinadorAplicacion coordinadorAplicacion) {
         mainFrame = frame;
         btnBack = new Button("Volver");
-        this.controlNavegacion = controlNavegacion;
+        this.coordinadorAplicacion = coordinadorAplicacion;
         setLayout(new BorderLayout());
         centralPanel = new JPanel();
         southPanel = new JPanel();

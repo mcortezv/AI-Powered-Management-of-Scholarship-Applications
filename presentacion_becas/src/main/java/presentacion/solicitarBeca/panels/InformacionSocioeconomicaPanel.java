@@ -1,5 +1,5 @@
 package presentacion.solicitarBeca.panels;
-import controlNavegacion.ControlNavegacion;
+import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import dto.InformacionSocioeconomicaDTO;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.*;
@@ -22,9 +22,9 @@ public class InformacionSocioeconomicaPanel extends PanelSolicitarBeca{
     private ComboBox<String> cbx_genera_ingreso;
     private Button btn_next;
 
-    public InformacionSocioeconomicaPanel(SolicitarBeca mainFrame, ControlNavegacion controlNavegacion){
-        super(mainFrame, controlNavegacion);
-        this.controlNavegacion= controlNavegacion;
+    public InformacionSocioeconomicaPanel(SolicitarBeca mainFrame, CoordinadorAplicacion coordinadorAplicacion){
+        super(mainFrame, coordinadorAplicacion);
+        this.coordinadorAplicacion = coordinadorAplicacion;
     }
 
     public void startComponents() {
@@ -86,7 +86,7 @@ public class InformacionSocioeconomicaPanel extends PanelSolicitarBeca{
             boolean generaIngreso= seleccionGeneraIngreso.equals("SI");
             
             InformacionSocioeconomicaDTO informacionSocioeconomicaDTO = new InformacionSocioeconomicaDTO(ingreso, dependenciaEconomica, generaIngreso);
-            controlNavegacion.setInfoSocioeconomica(informacionSocioeconomicaDTO);
+            coordinadorAplicacion.setInfoSocioeconomica(informacionSocioeconomicaDTO);
             //String ingresoFamiliarMensual = field_ingreso.getText();
             //double ingresoFamiliarMensualDouble = Double.parseDouble(ingresoFamiliarMensual);
             //informacionSocioeconomicaDTO.setIngresoTotalFamilarMensual(ingresoFamiliarMensualDouble);

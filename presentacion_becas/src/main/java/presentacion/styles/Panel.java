@@ -3,11 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package presentacion.styles;
-import controlNavegacion.ControlNavegacion;
+import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import presentacion.login.MainFrame;
 import javax.swing.*;
 import java.awt.*;
-import java.util.logging.Logger;
 
 /**
  *
@@ -19,11 +18,11 @@ public abstract class Panel extends JPanel {
     protected JPanel southPanel;
     protected Button btnBack;
     protected Button btnLogOut;
-    private ControlNavegacion controlNavegacion;
+    private CoordinadorAplicacion coordinadorAplicacion;
 
-    public Panel(MainFrame frame, ControlNavegacion controlNavegacion) {
+    public Panel(MainFrame frame, CoordinadorAplicacion coordinadorAplicacion) {
         mainFrame = frame;
-        this.controlNavegacion = controlNavegacion;
+        this.coordinadorAplicacion = coordinadorAplicacion;
         btnBack = new Button("Volver");
         btnLogOut = new Button("Cerrar Sesión");
         setLayout(new BorderLayout());

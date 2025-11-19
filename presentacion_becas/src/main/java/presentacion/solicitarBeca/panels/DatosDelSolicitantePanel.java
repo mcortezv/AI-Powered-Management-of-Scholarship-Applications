@@ -1,5 +1,5 @@
 package presentacion.solicitarBeca.panels;
-import controlNavegacion.ControlNavegacion;
+import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import dto.DatosSolicitanteDTO;
 import presentacion.login.exceptions.IDInvalidoException;
 import presentacion.solicitarBeca.SolicitarBeca;
@@ -26,11 +26,11 @@ public class DatosDelSolicitantePanel extends PanelSolicitarBeca {
     private TextField field_direccion;
     private TextField field_telefono;
     private TextField field_email;
-    private final ControlNavegacion control;
+    private final CoordinadorAplicacion control;
 
-    public DatosDelSolicitantePanel(SolicitarBeca mainFrame, ControlNavegacion controlNavegacion) {
-        super(mainFrame, controlNavegacion);
-        this.control= controlNavegacion;
+    public DatosDelSolicitantePanel(SolicitarBeca mainFrame, CoordinadorAplicacion coordinadorAplicacion) {
+        super(mainFrame, coordinadorAplicacion);
+        this.control= coordinadorAplicacion;
     }
 
     private JPanel crearDosColumnas(String labelText, TextField field) {
