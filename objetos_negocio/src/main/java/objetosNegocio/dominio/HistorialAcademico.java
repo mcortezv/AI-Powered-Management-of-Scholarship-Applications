@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package objetosNegocio;
+package objetosNegocio.dominio;
 import objetosNegocio.enums.Carrera;
 
 /**

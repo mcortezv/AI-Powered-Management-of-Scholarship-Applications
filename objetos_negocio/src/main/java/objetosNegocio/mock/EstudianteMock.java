@@ -9,9 +9,8 @@ import java.util.Map;
 
 import dto.EstudianteResponseDTO;
 import dto.SolicitudLoginDTO;
-import objetosNegocio.Direccion;
-import objetosNegocio.Estudiante;
-import objetosNegocio.enums.Carrera;
+import objetosNegocio.dominio.Direccion;
+import objetosNegocio.dominio.Estudiante;
 
 /**
  *

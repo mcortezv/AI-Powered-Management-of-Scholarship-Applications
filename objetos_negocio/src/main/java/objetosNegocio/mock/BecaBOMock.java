@@ -6,12 +6,10 @@ package objetosNegocio.mock;
 
 import dto.BecaDTO;
 import dto.RequisitosBecaDTO;
-import dto.RequisitosDTO;
 import dto.SolicitudBecasDisponiblesDTO;
 import dto.SolicitudBecasDisponiblesResponseDTO;
-import dto.SolicitudDTO;
-import interfaces.IBecaBOMock;
-import java.time.LocalDate;
+import interfaces.mock.IBecaBOMock;
+
 import java.util.ArrayList;
 import java.util.List;
 
