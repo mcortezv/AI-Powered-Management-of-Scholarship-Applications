@@ -5,9 +5,6 @@ import excepciones.*;
 import java.math.BigDecimal;
 
 public interface IInformacionSocioeconomicaBO {
-    InformacionSocioeconomica crearInfo(BigDecimal ingreso,
-                                        TipoVivienda vivienda,
-                                        boolean trabajo,
-                                        boolean deudas)
+    InformacionSocioeconomica crearInfo(BigDecimal ingreso, TipoVivienda tipoVivienda)
             throws InformacionSocioeconomicaInvalidaException;
 }

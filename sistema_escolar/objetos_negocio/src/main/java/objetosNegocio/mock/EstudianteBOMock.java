@@ -44,7 +44,7 @@ public class EstudianteBOMock {
     }
 
     public EstudianteResponseDTO getEstudianteResponseDTO(SolicitudLoginDTO solicitudLoginDTO){
-        return new EstudianteResponseDTO("inscrito",9.8,"sebastian.potros@gmail","galeana 1477","6681118936", "ISW","sebastian escalante", 252321);
+        return new EstudianteResponseDTO("inscrito",9.8,"sebastian.potros@gmail","6681118936", "ISW","sebastian escalante", 252321);
     }
 
     public boolean iniciarSesionPorMatricula(String matricula, String password) {

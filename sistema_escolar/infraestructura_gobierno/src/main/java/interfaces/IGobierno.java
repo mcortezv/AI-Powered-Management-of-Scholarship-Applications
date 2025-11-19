@@ -1,6 +1,4 @@
 package interfaces;
-
-import dto.SolicitudBecasDisponiblesDTO;
 import dto.SolicitudBecasDisponiblesResponseDTO;
 import dto.SolicitudDTO;
 import dto.SolicitudLoginDTO;

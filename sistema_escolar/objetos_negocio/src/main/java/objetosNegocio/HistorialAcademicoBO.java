@@ -1,11 +1,13 @@
 package objetosNegocio;
 import dominio.HistorialAcademico;
+import dominio.enums.Carrera;
 import excepciones.HistorialInvalidoException;
+import interfaces.IHistorialAcademicoBO;
 
-public class HistorialAcademicoBO {
-    public HistorialAcademico crearHistorial(String carrera, Double promedio) {
-        if (carrera == null || promedio == null)
+public class HistorialAcademicoBO implements IHistorialAcademicoBO {
+    public HistorialAcademico crearHistorial(double cargaAcademica, Carrera carrera, double indiceReprobacion, double porcentajeBajas, double promedio, int semestre) {
+        if (carrera == null)
             throw new HistorialInvalidoException("Datos del historial incompletos");
-        return new HistorialAcademico(carrera, promedio);
+        return new HistorialAcademico(cargaAcademica, carrera, indiceReprobacion,  porcentajeBajas, promedio, semestre);
     }
 }

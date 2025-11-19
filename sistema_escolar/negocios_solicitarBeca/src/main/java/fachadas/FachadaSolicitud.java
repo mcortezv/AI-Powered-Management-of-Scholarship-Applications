@@ -3,16 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package fachadas;
-import dominio.BecasFiltradas;
-import dominio.Solicitud;
+import dominio.*;
 import dto.*;
 import controles.ControlSolicitud;
+import excepciones.SolicitudInvalidaException;
+import interfaces.IFachadaSolicitud;
+import java.util.List;
 
 /**
  *                          FACHADA
  * @author janethcristinagalvanquinonez
  */
-public class FachadaSolicitud  {
+public class FachadaSolicitud implements IFachadaSolicitud {
     private final ControlSolicitud controlSolicitud;
     private Solicitud solicitudActual;
     
@@ -20,87 +22,98 @@ public class FachadaSolicitud  {
         this.controlSolicitud= gestor;
     }
 
-
-
-    public FachadaSolicitarBeca(ControlSolicitarBeca control) {
-        this.control = Objects.requireNonNull(control);
-    }
-
-    /** Inicia la construcción de una nueva Solicitud y la devuelve. */
     public Solicitud iniciarNuevaSolicitud() throws SolicitudInvalidaException {
-        this.solicitudActual = control.iniciarSolicitud();
+        this.solicitudActual = controlSolicitud.iniciarSolicitud();
         return this.solicitudActual;
     }
 
-    /* Getter de la solicitud en curso (puede ser null si no iniciada) */
     public Solicitud obtenerSolicitudActual() {
         return this.solicitudActual;
     }
 
-    /* Cancela la solicitud en curso (elimina estado local) */
     public void cancelarSolicitud() {
         this.solicitudActual = null;
     }
 
-    /* Paso 1: agregar/crear estudiante */
     public void agregarEstudiante(Estudiante estudiante) throws SolicitudInvalidaException {
         assertSolicitudIniciada();
-        control.asignarEstudiante(solicitudActual, estudiante);
+        controlSolicitud.asignarEstudiante(solicitudActual, estudiante);
     }
 
-    /* Paso 2: agregar/seleccionar beca */
     public void agregarBeca(Beca beca) throws SolicitudInvalidaException {
         assertSolicitudIniciada();
-        control.asignarBeca(solicitudActual, beca);
+        controlSolicitud.asignarBeca(solicitudActual, beca);
     }
 
-    /* Paso 3: agregar documentos (lista completa) */
     public void agregarDocumentos(List<Documento> documentos) throws SolicitudInvalidaException {
         assertSolicitudIniciada();
-        control.asignarDocumentos(solicitudActual, documentos);
+        controlSolicitud.asignarDocumentos(solicitudActual, documentos);
     }
 
-    /* Paso 4: agregar historial */
     public void agregarHistorial(HistorialAcademico historial) throws SolicitudInvalidaException {
         assertSolicitudIniciada();
-        control.asignarHistorial(solicitudActual, historial);
+        controlSolicitud.asignarHistorial(solicitudActual, historial);
     }
 
-    /* Paso 5: agregar informacion socioeconomica */
     public void agregarInfoSocioeconomica(InformacionSocioeconomica info) throws SolicitudInvalidaException {
         assertSolicitudIniciada();
-        control.asignarSocioeconomico(solicitudActual, info);
+        controlSolicitud.asignarSocioeconomico(solicitudActual, info);
     }
 
-    /**
-     * Valida y finaliza la solicitud (cambia estado a ENVIADA).
-     * Devuelve la solicitud finalizada.
-     */
     public Solicitud validarYEnviarSolicitud() throws SolicitudInvalidaException {
         assertSolicitudIniciada();
-        control.validarYFinalizarSolicitud(solicitudActual);
-        // opcional: aquí podrías llamar a un adaptador externo para enviar la solicitud a gobierno/itson
+        controlSolicitud.validarYFinalizarSolicitud(solicitudActual);
         Solicitud finalizada = this.solicitudActual;
-        // dejar la fachada lista para una nueva solicitud (opcional)
         this.solicitudActual = null;
         return finalizada;
     }
 
-    /* ---------------- helpers ---------------- */
     private void assertSolicitudIniciada() throws SolicitudInvalidaException {
         if (this.solicitudActual == null) {
             throw new SolicitudInvalidaException("No hay una solicitud en curso. Llama a iniciarNuevaSolicitud() primero.");
         }
     }
 
-    @Override
-    public BecasFiltradas obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO) {
-        return controlSolicitud.obtenerBecasDisponibles(solicitudDTO);
+    public SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO) {
+        return null;
     }
 
     @Override
+    public boolean validarRequisitos(Requisitos requisitos) {
+        return false;
+    }
+
+    @Override
+    public boolean validarSolicitudNoExistente(int idEstudiante, int idSolicitud) {
+        return false;
+    }
+
+    @Override
+    public Beca recuperarBeca(int idBeca) {
+        return null;
+    }
+
+    @Override
+    public Estudiante solicitarDatosEstudiante(int idEstudiante) {
+        return null;
+    }
+
+    @Override
+    public Solicitud crearSolicitud() {
+        return null;
+    }
+
+    @Override
+    public boolean guardarSolicitud(Solicitud solicitud) {
+        return false;
+    }
+
+    @Override
+    public boolean enviarSolicitudGobierno(SolicitudDTO solicitudDTO) {
+        return false;
+    }
+
     public boolean enviarSolicituGobierno(SolicitudDTO solicitudDTO) {
-        //return controlSolicitud.
         return true;
     }
 
@@ -112,14 +125,7 @@ public class FachadaSolicitud  {
             Double ingreso, String tipoVivienda,
             List<String> documentos
     ) {
-        return control.procesarSolicitud(
-                estNombre, estCorreo, estTel, estDir,
-                tutorNombre, tutorParen, tutorTel,
-                becaNom, becaTipo, becaReq, becaFecha,
-                carrera, promedio,
-                ingreso, tipoVivienda,
-                documentos
-        );
+        return null;
     }
 
 }
