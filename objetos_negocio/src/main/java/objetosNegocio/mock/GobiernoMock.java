@@ -1,5 +1,7 @@
 package objetosNegocio.mock;
 
+import dto.SolicitudDTO;
+
 public class GobiernoMock {
 
     private static GobiernoMock instancia;
@@ -11,6 +13,10 @@ public class GobiernoMock {
             instancia= new GobiernoMock();
         }
         return instancia;
+    }
+
+    public static boolean enviarSolicitud(SolicitudDTO solicitudDTO){
+        return true;
     }
 
 }

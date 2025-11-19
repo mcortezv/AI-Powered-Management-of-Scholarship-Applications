@@ -1,9 +1,6 @@
 package presentacion.coordinadorNegocio;
 
-import dto.EstudianteResponseDTO;
-import dto.SolicitudBecasDisponiblesDTO;
-import dto.SolicitudBecasDisponiblesResponseDTO;
-import dto.SolicitudLoginDTO;
+import dto.*;
 import fachada.FachadaInicioSesion;
 import fachada.FachadaSolicitud;
 import implementacion.ControlInicioSesion;
@@ -39,4 +36,10 @@ public class CoordinadorNegocio implements ICoordinadorNegocio{
     public void SolicitarCerrarSesion() {
         iFachadaInicioSesion.solicitarCerrarSesion();
     }
+
+    @Override
+    public boolean enviarSolicitudAGobierno(SolicitudDTO solicitudDTO) {
+        return iFachadaSolicitud.guardarSolicitud(solicitudDTO);
+    }
+
 }

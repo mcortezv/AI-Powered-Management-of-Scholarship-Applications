@@ -6,8 +6,12 @@ package implementacion;
 
 import dto.*;
 
+import interfaces.IBecaBOMock;
 import objetosNegocio.mock.BecaBOMock;
 import objetosNegocio.mock.EstudianteMock;
+import objetosNegocio.mock.GobiernoMock;
+
+import java.util.ArrayList;
 
 /**
  *
@@ -16,15 +20,18 @@ import objetosNegocio.mock.EstudianteMock;
 public class ControlSolicitud {
 
     public SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO) {
-        SolicitudBecasDisponiblesResponseDTO becas = BecaBOMock.getInstance().obtenerBecasDisponibles(solicitudDTO);
-        if (comprobarCriterioCantidad(becas)) {
-            return becas;
-        };
-        return null;
+        SolicitudBecasDisponiblesResponseDTO responseDTO = BecaBOMock.getInstance().obtenerBecasDisponibles(solicitudDTO);
+        if (responseDTO == null || responseDTO.getBecas() == null) {
+            return new SolicitudBecasDisponiblesResponseDTO(new ArrayList<>());
+        }
+        if (comprobarCriterioCantidad(responseDTO)) {
+            return responseDTO;
+        }
+        return new SolicitudBecasDisponiblesResponseDTO(new ArrayList<>());
     }
 
     public boolean comprobarCriterioCantidad(SolicitudBecasDisponiblesResponseDTO becasDTO) {
-        if (becasDTO ==null || becasDTO.getBecas() == null) {
+        if (becasDTO == null || becasDTO.getBecas() == null) {
             return false;
         }
         int numBecas = becasDTO.getBecas().size();
@@ -32,12 +39,9 @@ public class ControlSolicitud {
 
     }
 
-//    public boolean enviaSolicitudBeca(SolicitudDTO solicitudDTO){
-//        boolean respuesta =
-//    }
-    
-//    public boolean enviarSolicitudGobierno(SolicitudDTO solicitudDTO){
-//        
-//    }
+    public boolean guardarSolicitud(SolicitudDTO solicitudDTO){
+        return GobiernoMock.enviarSolicitud(solicitudDTO);
+    }
+
 
 }
