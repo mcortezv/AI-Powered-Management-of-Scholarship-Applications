@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * The type Beca bo mock.
  *
  * @author janethcristinagalvanquinonez
  */
@@ -28,7 +29,12 @@ public class BecaBOMock implements IBecaBOMock {
 //    public BecaBOMock(){
 //        obtenerBecas();
 //    }
-    
+
+    /**
+     * Get instance beca bo mock.
+     *
+     * @return the beca bo mock
+     */
     public static BecaBOMock getInstance(){
         if(instancia==null){
             instancia= new BecaBOMock();

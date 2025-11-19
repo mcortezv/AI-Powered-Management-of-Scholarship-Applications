@@ -15,19 +15,19 @@ import dto.SolicitudLoginDTO;
  *
  * @author janethcristinagalvanquinonez
  */
-public class EstudianteMock {
+public class EstudianteBOMock {
     
     private final Map<Long, Estudiante> estudiantes= new HashMap<>();
-    private static EstudianteMock instancia;
-    TutorMock tutor= new TutorMock();
+    private static EstudianteBOMock instancia;
+    TutorBOMock tutor= new TutorBOMock();
 
-    public EstudianteMock(){
+    public EstudianteBOMock(){
         cargarEstudiantes();
     }
 
-    public static EstudianteMock getInstance(){
+    public static EstudianteBOMock getInstance(){
         if(instancia==null){
-            instancia= new EstudianteMock();
+            instancia= new EstudianteBOMock();
         }
         return instancia;
     }

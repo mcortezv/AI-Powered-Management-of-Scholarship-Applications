@@ -1,9 +1,9 @@
-package fachada;
-
-import implementacion.ControlInicioSesion;
-import interfaz.IFachadaInicioSesion;
+package fachadas;
+import controles.ControlInicioSesion;
+import interfaces.IFachadaInicioSesion;
 import dto.EstudianteResponseDTO;
 import dto.SolicitudLoginDTO;
+
 public class FachadaInicioSesion implements IFachadaInicioSesion {
     public ControlInicioSesion controlInicioSesion;
 
@@ -17,7 +17,7 @@ public class FachadaInicioSesion implements IFachadaInicioSesion {
     }
 
     @Override
-    public void solicitarCerrarSesion() {
+    public void solicitarLogOut() {
         controlInicioSesion.cerrarSesion();
     }
 }

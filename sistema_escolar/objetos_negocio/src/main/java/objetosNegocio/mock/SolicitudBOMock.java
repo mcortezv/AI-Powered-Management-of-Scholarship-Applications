@@ -8,6 +8,6 @@ package objetosNegocio.mock;
  *
  * @author janethcristinagalvanquinonez
  */
-public class SolicitudMock {
+public class SolicitudBOMock {
     
 }

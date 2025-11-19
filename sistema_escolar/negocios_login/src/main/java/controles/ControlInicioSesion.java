@@ -1,14 +1,11 @@
-package implementacion;
-
+package controles;
 import dto.EstudianteResponseDTO;
 import dto.SolicitudLoginDTO;
-import objetosNegocio.mock.EstudianteMock;
-
-import javax.swing.*;
+import objetosNegocio.mock.EstudianteBOMock;
 
 
 public class ControlInicioSesion {
-    private final EstudianteMock estudianteMock= EstudianteMock.getInstance();
+    private final EstudianteBOMock estudianteMock= EstudianteBOMock.getInstance();
 
     public EstudianteResponseDTO solicitarLogin(SolicitudLoginDTO solicitudLoginDTO){
         return estudianteMock.getEstudianteResponseDTO(solicitudLoginDTO);
