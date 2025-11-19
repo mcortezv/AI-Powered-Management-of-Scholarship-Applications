@@ -1,4 +1,4 @@
-package interfaz;
+package interfaces;
 
 import dto.EstudianteResponseDTO;
 import dto.SolicitudLoginDTO;

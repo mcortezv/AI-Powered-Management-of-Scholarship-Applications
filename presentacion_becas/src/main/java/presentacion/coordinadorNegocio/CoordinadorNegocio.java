@@ -4,13 +4,12 @@ import dto.EstudianteResponseDTO;
 import dto.SolicitudBecasDisponiblesDTO;
 import dto.SolicitudBecasDisponiblesResponseDTO;
 import dto.SolicitudLoginDTO;
-import fachada.FachadaInicioSesion;
-import fachada.FachadaSolicitud;
-import implementacion.ControlInicioSesion;
-import implementacion.ControlSolicitud;
-import interfaz.IFachadaInicioSesion;
-import interfaz.IFachadaSolicitud;
-import presentacion.login.MainFrame;
+import fachadas.FachadaInicioSesion;
+import fachadas.FachadaSolicitud;
+import controles.ControlInicioSesion;
+import controles.ControlSolicitud;
+import interfaces.IFachadaInicioSesion;
+import interfaces.IFachadaSolicitud;
 
 public class CoordinadorNegocio implements ICoordinadorNegocio{
 

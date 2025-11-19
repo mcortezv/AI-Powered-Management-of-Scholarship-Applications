@@ -13,11 +13,11 @@ import java.util.Map;
  *
  * @author janethcristinagalvanquinonez
  */
-public class TutorMock {
+public class TutorBOMock {
 
     Map<Long, Tutor> tutores= new HashMap<>();
     
-    public TutorMock(){
+    public TutorBOMock(){
         cargarTutores();
     }
     
