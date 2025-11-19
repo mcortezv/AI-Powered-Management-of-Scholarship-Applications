@@ -3,12 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package objetosNegocio;
-
-import objetosNegocio.enums.Carrera;
-import objetosNegocio.enums.TipoVivienda;
-
-import java.time.LocalDateTime;
+package objetosNegocio.dominio;
 
 /**
  *

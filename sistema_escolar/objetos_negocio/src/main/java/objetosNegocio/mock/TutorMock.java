@@ -6,8 +6,8 @@ package objetosNegocio.mock;
 
 import java.util.HashMap;
 import java.util.Map;
-import objetosNegocio.Direccion;
-import objetosNegocio.Tutor;
+import objetosNegocio.dominio.Direccion;
+import objetosNegocio.dominio.Tutor;
 import objetosNegocio.enums.Parentesco;
 
 /**
