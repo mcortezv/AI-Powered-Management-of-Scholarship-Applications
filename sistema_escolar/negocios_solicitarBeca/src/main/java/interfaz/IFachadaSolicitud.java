@@ -11,5 +11,6 @@ import dto.*;
  * @author janethcristinagalvanquinonez
  */
 public interface IFachadaSolicitud {
-    public SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO);
+    SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO);
+    boolean enviarSolicitudBeca(SolicitudDTO solicitudDTO);
 }

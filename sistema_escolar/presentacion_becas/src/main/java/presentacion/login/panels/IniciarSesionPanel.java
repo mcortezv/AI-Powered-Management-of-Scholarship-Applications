@@ -1,12 +1,9 @@
 package presentacion.login.panels;
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import dto.EstudianteResponseDTO;
-import dto.SolicitudLoginDTO;
-import presentacion.coordinadorNegocio.CoordinadorNegocio;
 import presentacion.login.MainFrame;
 import presentacion.login.exceptions.ContraseniaInvalidaException;
 import presentacion.login.exceptions.IDInvalidoException;
-import presentacion.login.validadores.Validadores;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
 import presentacion.styles.Panel;
@@ -30,12 +27,10 @@ public class IniciarSesionPanel extends Panel {
     private PasswordField txtPassword;
     private Button btnIniciarSesion;
     private final CoordinadorAplicacion coordinadorAplicacion;
-    private final CoordinadorNegocio coordinadorNegocio;
 
-    public IniciarSesionPanel(MainFrame frame, CoordinadorAplicacion coordinadorAplicacion, CoordinadorNegocio coordinadorNegocio) {
+    public IniciarSesionPanel(MainFrame frame, CoordinadorAplicacion coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
         this.coordinadorAplicacion = coordinadorAplicacion;
-        this.coordinadorNegocio = coordinadorNegocio;
     }
 
     @Override
@@ -95,29 +90,10 @@ public class IniciarSesionPanel extends Panel {
         toggle.run();
 
         btnIniciarSesion.addActionListener(e -> {
+            String usuario = txtUsuario.getText().trim();
+            String contrasenia = new String(txtPassword.getPassword());
             try {
-                String usuario = txtUsuario.getText().trim();
-                String contrasenia = new String(txtPassword.getPassword());
-
-                Validadores.validarID(usuario);
-                Validadores.validarContrasenia(contrasenia);
-
-                SolicitudLoginDTO solicitudLoginDTO = new SolicitudLoginDTO(usuario, contrasenia);
-                EstudianteResponseDTO estudiante = coordinadorNegocio.solicitarInicioSesion(solicitudLoginDTO);
-
-                if (estudiante != null) {
-                    txtUsuario.setText("");
-                    txtPassword.setText("");
-                    mainFrame.showPanel("hubPanel");
-                    mainFrame.getNorthPanel().setVisible(true);
-                } else {
-                    JOptionPane.showMessageDialog(
-                            mainFrame,
-                            "Usuario o contraseña incorrectos.",
-                            "Inicio de sesión",
-                            JOptionPane.WARNING_MESSAGE
-                    );
-                }
+               EstudianteResponseDTO estudianteResponseDTo = coordinadorAplicacion.intentarIniciarSesion(usuario,contrasenia);
             } catch (IDInvalidoException | ContraseniaInvalidaException ex) {
                 JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
             } catch (Exception ex) {
