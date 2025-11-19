@@ -19,7 +19,6 @@ public class SubirDocumentosPanel extends PanelSolicitarBeca {
     private final Map<String, File> documentosCargados = new HashMap<>();
     private final CoordinadorAplicacion coordinadorAplicacion;
     private final String[] DOCUMENTOS_REQUERIDOS = {"CURP", "IDENTIFICACIÓN OFICIAL", "COMPROBANTE DE INSCRIPCIÓN", "KÁRDEX", "COMPROBANTE INGRESOS PADRE"};
-
     public SubirDocumentosPanel(SolicitarBeca frame, CoordinadorAplicacion coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
         this.coordinadorAplicacion = coordinadorAplicacion;
