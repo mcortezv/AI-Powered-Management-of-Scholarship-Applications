@@ -1,15 +1,14 @@
 
 package presentacion.coordinadorAplicacion;
-import fachada.FachadaInicioSesion;
-import implementacion.ControlInicioSesion;
-import interfaz.IFachadaInicioSesion;
 import dto.*;
-import implementacion.ControlSolicitud;
-import fachada.FachadaSolicitud;
-import interfaz.IFachadaSolicitud;
 import presentacion.coordinadorNegocio.CoordinadorNegocio;
 import presentacion.login.MainFrame;
+import presentacion.login.exceptions.ContraseniaInvalidaException;
+import presentacion.login.exceptions.IDInvalidoException;
+import presentacion.login.validadores.Validadores;
 import presentacion.solicitarBeca.SolicitarBeca;
+import presentacion.solicitarBeca.exceptions.IngresoInvalidoException;
+import presentacion.solicitarBeca.exceptions.PromedioInvalidoException;
 import presentacion.solicitarBeca.panels.DetallesBecaPanel;
 import presentacion.solicitarBeca.panels.ListadoBecasDisponiblesPanel;
 import presentacion.solicitarBeca.panels.ResumenFinalPanel;
@@ -18,12 +17,11 @@ import presentacion.solicitarBeca.panels.ResumenFinalPanel;
  *
  * @author janethcristinagalvanquinonez
  */
+
 public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     private final MainFrame mainFrame;
     private final CoordinadorNegocio coordinadorNegocio;
     private SolicitarBeca solicitarBeca;
-    private final IFachadaSolicitud iFachadaSolicitud;
-    private final IFachadaInicioSesion iFachadaInicioSesion;
     private BecaDTO becaDTO;
     private BecaDTO becaSeleccionadaDTO;
     private DatosSolicitanteDTO datosSolicitanteDTO;
@@ -35,13 +33,26 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
 
     public CoordinadorAplicacion(){
         this.coordinadorNegocio = new CoordinadorNegocio();
-        this.iFachadaSolicitud = new FachadaSolicitud(new ControlSolicitud());
-        this.iFachadaInicioSesion = new FachadaInicioSesion(new ControlInicioSesion());
-        mainFrame = new MainFrame(this,this.coordinadorNegocio);
+        mainFrame = new MainFrame(this);
         mainFrame.setVisible(true);
 
     }
 
+    public EstudianteResponseDTO intentarIniciarSesion(String usuario, String contrasenia)
+            throws IDInvalidoException, ContraseniaInvalidaException {
+        Validadores.validarID(usuario);
+        Validadores.validarContrasenia(contrasenia);
+        SolicitudLoginDTO solicitudLoginDTO = new SolicitudLoginDTO(usuario, contrasenia);
+        return coordinadorNegocio.solicitarInicioSesion(solicitudLoginDTO);
+    }
+
+    public void procesarInformacionGeneral(double promedio, boolean carga, double ingreso) throws PromedioInvalidoException, IngresoInvalidoException {
+        presentacion.solicitarBeca.validadores.Validadores.validarPromedio(promedio);
+        presentacion.solicitarBeca.validadores.Validadores.validarIngreso(ingreso);
+        SolicitudBecasDisponiblesDTO solictudBecasDisponiblesDTO  = new SolicitudBecasDisponiblesDTO(promedio, carga, ingreso);
+        SolicitudBecasDisponiblesResponseDTO solicitudBecasDisponiblesResponseDTO = coordinadorNegocio.obtenerBecasDisponibles(solictudBecasDisponiblesDTO);
+        mostrarBecasDisponibles(solicitudBecasDisponiblesResponseDTO);
+    }
 
     public void solicitarBeca() {
         mainFrame.setVisible(false);
