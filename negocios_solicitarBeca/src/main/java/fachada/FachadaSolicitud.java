@@ -23,4 +23,10 @@ public class FachadaSolicitud implements IFachadaSolicitud {
         return controlSolicitud.obtenerBecasDisponibles(solicitudDTO);
     }
 
+    @Override
+    public boolean enviarSolicitudBeca(SolicitudDTO solicitudDTO) {
+        //return controlSolicitud.
+        return true;
+    }
+
 }

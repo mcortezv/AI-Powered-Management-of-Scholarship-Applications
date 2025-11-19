@@ -1,9 +1,6 @@
-
 package presentacion.login;
 
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
-import presentacion.coordinadorNegocio.CoordinadorNegocio;
-import presentacion.coordinadorNegocio.ICoordinadorNegocio;
 import presentacion.login.panels.HubPanel;
 import presentacion.login.panels.IniciarSesionPanel;
 import presentacion.login.panels.NorthPanel;
@@ -28,9 +25,8 @@ public final class MainFrame extends JFrame {
     private Button btnCarteras;
     private final Map<String, JPanel> panels;
     private CoordinadorAplicacion coordinadorAplicacion;
-    private CoordinadorNegocio coordinadorNegocio;
 
-    public MainFrame(CoordinadorAplicacion coordinadorAplicacion, CoordinadorNegocio coordinadorNegocio) {
+    public MainFrame(CoordinadorAplicacion coordinadorAplicacion) {
         setTitle("Sistema de Aplicaciones Escolares");
         setResizable(false);
         setSize(1500,900);
@@ -39,7 +35,6 @@ public final class MainFrame extends JFrame {
         northPanel = new NorthPanel();
         centralPanel = new JPanel();
         this.coordinadorAplicacion = coordinadorAplicacion;
-        this.coordinadorNegocio = coordinadorNegocio;
 
         btnSolicitarBeca = new Button("Solicitar Beca");
         Button btnEvaluarSolicitudes = new Button("Evaluar Solicitudes");
@@ -58,7 +53,8 @@ public final class MainFrame extends JFrame {
         northPanel.add(btnCarteras);
 
         panels = new HashMap<String, JPanel>();
-        panels.put("iniciarSesionPanel", new IniciarSesionPanel(this, coordinadorAplicacion, coordinadorNegocio));
+
+        panels.put("iniciarSesionPanel", new IniciarSesionPanel(this, coordinadorAplicacion));
         panels.put("hubPanel", new HubPanel(this, coordinadorAplicacion));
 
         add(northPanel, BorderLayout.NORTH);
