@@ -1,13 +1,11 @@
 package interfaces;
 
-import dto.SolicitudBecasDisponiblesDTO;
-import dto.SolicitudBecasDisponiblesResponseDTO;
-import dto.SolicitudDTO;
-import dto.SolicitudLoginDTO;
+import dto.*;
 
 import java.util.Optional;
 
 public interface IFachadaGobierno {
-    Optional<SolicitudBecasDisponiblesResponseDTO> solicitarBecas(SolicitudDTO solicitudDTO);
+    Optional<SolicitudBecasDisponiblesResponseDTO> obtenerBecas(SolicitudDTO solicitudDTO);
+    Optional<Boolean> validarDocumento(DocumentoDTO documentoDTO);
     Optional<Boolean> enviarSolicitud(SolicitudDTO solicitudDTO);
 }

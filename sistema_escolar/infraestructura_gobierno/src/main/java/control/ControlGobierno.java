@@ -1,6 +1,7 @@
 package control;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import dto.DocumentoDTO;
 import dto.SolicitudBecasDisponiblesResponseDTO;
 import dto.SolicitudDTO;
 import dto.SolicitudLoginDTO;
@@ -67,4 +68,9 @@ public class ControlGobierno {
             return Optional.empty();
         }
     }
+
+    public Optional<Boolean> validarDocumento(DocumentoDTO documentoDTO){
+        return Optional.of(true);
+    }
+
 }

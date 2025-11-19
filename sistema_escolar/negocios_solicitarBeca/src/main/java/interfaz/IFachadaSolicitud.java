@@ -12,5 +12,5 @@ import dto.*;
  */
 public interface IFachadaSolicitud {
     SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO);
-    boolean enviarSolicitudBeca(SolicitudDTO solicitudDTO);
+    boolean guardarSolicitud(SolicitudDTO solicitudDTO);
 }
