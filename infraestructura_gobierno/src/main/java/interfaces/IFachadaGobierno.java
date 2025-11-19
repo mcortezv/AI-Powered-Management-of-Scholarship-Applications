@@ -7,7 +7,7 @@ import dto.SolicitudLoginDTO;
 
 import java.util.Optional;
 
-public interface IGobierno {
-    Optional<SolicitudBecasDisponiblesResponseDTO> solicitarBecas(SolicitudLoginDTO solicitudLoginDTO);
+public interface IFachadaGobierno {
+    Optional<SolicitudBecasDisponiblesResponseDTO> solicitarBecas(SolicitudDTO solicitudDTO);
     Optional<Boolean> enviarSolicitud(SolicitudDTO solicitudDTO);
 }
