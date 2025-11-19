@@ -1,7 +1,9 @@
 
 package presentacion.login;
 
-import controlNavegacion.ControlNavegacion;
+import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
+import presentacion.coordinadorNegocio.CoordinadorNegocio;
+import presentacion.coordinadorNegocio.ICoordinadorNegocio;
 import presentacion.login.panels.HubPanel;
 import presentacion.login.panels.IniciarSesionPanel;
 import presentacion.login.panels.NorthPanel;
@@ -25,9 +27,10 @@ public final class MainFrame extends JFrame {
     private Button btnTutorias;
     private Button btnCarteras;
     private final Map<String, JPanel> panels;
-    private ControlNavegacion controlNavegacion;
+    private CoordinadorAplicacion coordinadorAplicacion;
+    private CoordinadorNegocio coordinadorNegocio;
 
-    public MainFrame(ControlNavegacion controlNavegacion) {
+    public MainFrame(CoordinadorAplicacion coordinadorAplicacion, CoordinadorNegocio coordinadorNegocio) {
         setTitle("Sistema de Aplicaciones Escolares");
         setResizable(false);
         setSize(1500,900);
@@ -35,7 +38,8 @@ public final class MainFrame extends JFrame {
         setLayout(new BorderLayout());
         northPanel = new NorthPanel();
         centralPanel = new JPanel();
-        this.controlNavegacion = controlNavegacion;
+        this.coordinadorAplicacion = coordinadorAplicacion;
+        this.coordinadorNegocio = coordinadorNegocio;
 
         btnSolicitarBeca = new Button("Solicitar Beca");
         Button btnEvaluarSolicitudes = new Button("Evaluar Solicitudes");
@@ -54,8 +58,8 @@ public final class MainFrame extends JFrame {
         northPanel.add(btnCarteras);
 
         panels = new HashMap<String, JPanel>();
-        panels.put("iniciarSesionPanel", new IniciarSesionPanel(this, controlNavegacion));
-        panels.put("hubPanel", new HubPanel(this, controlNavegacion));
+        panels.put("iniciarSesionPanel", new IniciarSesionPanel(this, coordinadorAplicacion, coordinadorNegocio));
+        panels.put("hubPanel", new HubPanel(this, coordinadorAplicacion));
 
         add(northPanel, BorderLayout.NORTH);
         add(centralPanel, BorderLayout.CENTER);
@@ -63,7 +67,7 @@ public final class MainFrame extends JFrame {
         showPanel("iniciarSesionPanel");
 
         btnSolicitarBeca.addActionListener(e -> {
-            controlNavegacion.solicitarBeca();
+            coordinadorAplicacion.solicitarBeca();
         });
     }
 

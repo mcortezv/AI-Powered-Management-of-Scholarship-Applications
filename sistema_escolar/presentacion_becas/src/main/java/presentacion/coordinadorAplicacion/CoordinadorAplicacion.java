@@ -1,5 +1,5 @@
 
-package controlNavegacion;
+package presentacion.coordinadorAplicacion;
 import fachada.FachadaInicioSesion;
 import implementacion.ControlInicioSesion;
 import interfaz.IFachadaInicioSesion;
@@ -7,6 +7,7 @@ import dto.*;
 import implementacion.ControlSolicitud;
 import fachada.FachadaSolicitud;
 import interfaz.IFachadaSolicitud;
+import presentacion.coordinadorNegocio.CoordinadorNegocio;
 import presentacion.login.MainFrame;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.solicitarBeca.panels.DetallesBecaPanel;
@@ -17,8 +18,9 @@ import presentacion.solicitarBeca.panels.ResumenFinalPanel;
  *
  * @author janethcristinagalvanquinonez
  */
-public class ControlNavegacion implements IControlNavegacion{
+public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     private final MainFrame mainFrame;
+    private final CoordinadorNegocio coordinadorNegocio;
     private SolicitarBeca solicitarBeca;
     private final IFachadaSolicitud iFachadaSolicitud;
     private final IFachadaInicioSesion iFachadaInicioSesion;
@@ -29,22 +31,17 @@ public class ControlNavegacion implements IControlNavegacion{
     private TutorDTO tutorDTO;
     private InformacionSocioeconomicaDTO infoSocioeconomicaDTO;
     private SolicitudDTO solicitudDTO;
-  
 
 
-    public ControlNavegacion(){
+    public CoordinadorAplicacion(){
+        this.coordinadorNegocio = new CoordinadorNegocio();
         this.iFachadaSolicitud = new FachadaSolicitud(new ControlSolicitud());
         this.iFachadaInicioSesion = new FachadaInicioSesion(new ControlInicioSesion());
-
-        mainFrame = new MainFrame(this);
+        mainFrame = new MainFrame(this,this.coordinadorNegocio);
         mainFrame.setVisible(true);
 
     }
 
-    @Override
-    public EstudianteResponseDTO solicitarInicioSesion(SolicitudLoginDTO solicitudLoginDTO){
-        return iFachadaInicioSesion.solicitarLogin(solicitudLoginDTO);
-    }
 
     public void solicitarBeca() {
         mainFrame.setVisible(false);
@@ -55,16 +52,6 @@ public class ControlNavegacion implements IControlNavegacion{
     public void main() {
         solicitarBeca.setVisible(false);
         mainFrame.setVisible(true);
-    }
-
-    @Override
-    public SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO){
-        return iFachadaSolicitud.obtenerBecasDisponibles(solicitudDTO);
-    }
-
-    @Override
-    public void SolicitarCerrarSesion() {
-
     }
 
     public void mostrarBecasDisponibles(SolicitudBecasDisponiblesResponseDTO responseDTO) {

@@ -1,6 +1,6 @@
 package presentacion.solicitarBeca.panels;
 
-import controlNavegacion.ControlNavegacion;
+import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import dto.TutorDTO;
 import enums.Parentesco;
 import presentacion.solicitarBeca.SolicitarBeca;
@@ -26,11 +26,11 @@ public class DatosTutorPanel extends PanelSolicitarBeca {
     private TextField field_apellido_materno;
     private TextField field_apellido_paterno;
     private ComboBox<Parentesco> comboParentesco;
-    private ControlNavegacion controlNavegacion;
+    private CoordinadorAplicacion coordinadorAplicacion;
 
-    public DatosTutorPanel(SolicitarBeca frame, ControlNavegacion controlNavegacion) {
-        super(frame, controlNavegacion);
-        this.controlNavegacion = controlNavegacion;
+    public DatosTutorPanel(SolicitarBeca frame, CoordinadorAplicacion coordinadorAplicacion) {
+        super(frame, coordinadorAplicacion);
+        this.coordinadorAplicacion = coordinadorAplicacion;
     }
 
     private JPanel crearDosColumnas(String labelText, TextField field) {
@@ -134,7 +134,7 @@ public class DatosTutorPanel extends PanelSolicitarBeca {
                 Validadores.validarCorreo(correo);
 
                 TutorDTO tutor = new TutorDTO(nombre, parentesco, apMat, apPat, telefono, correo);
-                controlNavegacion.setTutor(tutor);
+                coordinadorAplicacion.setTutor(tutor);
                 mainFrame.showPanel("informacionSocioeconomicaPanel");
 
             } catch (NombresInvalidosException | ApellidoInvalidoException |
