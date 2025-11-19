@@ -1,30 +1,31 @@
-package gobierno;
+package control;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import dto.DocumentoDTO;
 import dto.SolicitudBecasDisponiblesResponseDTO;
 import dto.SolicitudDTO;
 import dto.SolicitudLoginDTO;
-import interfaces.IGobierno;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Optional;
+import interfaces.IFachadaGobierno;
 
-public class Gobierno implements IGobierno {
+public class ControlGobierno {
 
     private static final String GOBIERNO_BASE_URL = "http://localhost:8081/api/";
     private static final String SOLICITUD_ENDPOINT = "solicitudes/";
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final HttpClient client = HttpClient.newHttpClient();
 
-    @Override
-    public Optional<SolicitudBecasDisponiblesResponseDTO> solicitarBecas(SolicitudLoginDTO solicitudLoginDTO) {
+    
+    public Optional<SolicitudBecasDisponiblesResponseDTO> solicitarBecas(SolicitudDTO solicitudDTO) {
         return Optional.empty();
     }
 
-    @Override
+   
     public Optional<Boolean> enviarSolicitud(SolicitudDTO solicitudDTO) {
         final String jsonSolicitud;
         try {
@@ -67,4 +68,9 @@ public class Gobierno implements IGobierno {
             return Optional.empty();
         }
     }
+
+    public Optional<Boolean> validarDocumento(DocumentoDTO documentoDTO){
+        return Optional.of(true);
+    }
+
 }
