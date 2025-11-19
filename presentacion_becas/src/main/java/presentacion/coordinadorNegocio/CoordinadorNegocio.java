@@ -39,7 +39,7 @@ public class CoordinadorNegocio implements ICoordinadorNegocio{
 
     @Override
     public boolean enviarSolicitudAGobierno(SolicitudDTO solicitudDTO) {
-        return iFachadaSolicitud.enviarSolicitudBeca(solicitudDTO);
+        return iFachadaSolicitud.guardarSolicitud(solicitudDTO);
     }
 
 }

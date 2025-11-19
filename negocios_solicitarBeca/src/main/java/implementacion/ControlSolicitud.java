@@ -6,6 +6,7 @@ package implementacion;
 
 import dto.*;
 
+import interfaces.IBecaBOMock;
 import objetosNegocio.mock.BecaBOMock;
 import objetosNegocio.mock.EstudianteMock;
 import objetosNegocio.mock.GobiernoMock;
@@ -38,12 +39,9 @@ public class ControlSolicitud {
 
     }
 
-    public boolean enviaSolicitudBeca(SolicitudDTO solicitudDTO){
+    public boolean guardarSolicitud(SolicitudDTO solicitudDTO){
         return GobiernoMock.enviarSolicitud(solicitudDTO);
     }
-    
-//    public boolean enviarSolicitudGobierno(SolicitudDTO solicitudDTO){
-//        
-//    }
+
 
 }
