@@ -1,10 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package presentacion.solicitarBeca.panels;
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
-import dto.HistAcademicoDTO;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.*;
 import presentacion.styles.Button;
@@ -33,8 +28,8 @@ public class HistorialAcademicoPanel extends PanelSolicitarBeca {
 
     @Override
     public void startComponents() {
-        centralPanel.add(Box.createVerticalStrut(Style.TOP_ESPACIO));
 
+        centralPanel.add(Box.createVerticalStrut(Style.TOP_ESPACIO));
         titulo = new Label("Historial Academico");
         titulo.setFont(Style.TITLE_FONT);
         titulo.setAlignmentX(CENTER_ALIGNMENT);
@@ -79,17 +74,15 @@ public class HistorialAcademicoPanel extends PanelSolicitarBeca {
         centralPanel.add(botonSiguiente);
 
         btnBack.addActionListener(e -> {
-            mainFrame.showPanel("datosDelSolicitantePanel");
+            coordinadorAplicacion.mostrarBecaSeleccionada();
         });
 
         botonSiguiente.addActionListener(e -> {
-            String carrera= (String) comboCarrera.getSelectedItem();
-            String cargaAcademica= (String) comboCargaAcademica.getSelectedItem();
-            int semestre= (int) comboSemestre.getSelectedItem();
-            
-            HistAcademicoDTO historialAcademicoDTO= new HistAcademicoDTO(carrera, cargaAcademica, semestre);
-            coordinadorAplicacion.setHistorialAcademicoDTO(historialAcademicoDTO);
-            mainFrame.showPanel("datosTutorPanel");
+            String carreraSeleccionada = (String) comboCarrera.getSelectedItem();
+            String cargaAcademicaSeleccionada = (String) comboCargaAcademica.getSelectedItem();
+            int semestreSeleccionado = (int) comboSemestre.getSelectedItem();
+
+            coordinadorAplicacion.procesarHistorialAcademico(carreraSeleccionada, cargaAcademicaSeleccionada, semestreSeleccionado);
         });
     }
 }

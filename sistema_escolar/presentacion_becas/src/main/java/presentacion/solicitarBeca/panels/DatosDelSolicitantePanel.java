@@ -1,13 +1,11 @@
 package presentacion.solicitarBeca.panels;
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
-import dto.DatosSolicitanteDTO;
 import presentacion.login.exceptions.IDInvalidoException;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.solicitarBeca.exceptions.ApellidoInvalidoException;
 import presentacion.solicitarBeca.exceptions.DireccionInvalidaException;
 import presentacion.solicitarBeca.exceptions.NombresInvalidosException;
 import presentacion.solicitarBeca.exceptions.TelefonoInvalidoException;
-import presentacion.solicitarBeca.validadores.Validadores;
 import presentacion.styles.*;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
@@ -26,11 +24,11 @@ public class DatosDelSolicitantePanel extends PanelSolicitarBeca {
     private TextField field_direccion;
     private TextField field_telefono;
     private TextField field_email;
-    private final CoordinadorAplicacion control;
+    private final CoordinadorAplicacion coordinadorAplicacion;
 
     public DatosDelSolicitantePanel(SolicitarBeca mainFrame, CoordinadorAplicacion coordinadorAplicacion) {
         super(mainFrame, coordinadorAplicacion);
-        this.control= coordinadorAplicacion;
+        this.coordinadorAplicacion= coordinadorAplicacion;
     }
 
     private JPanel crearDosColumnas(String labelText, TextField field) {
@@ -52,6 +50,7 @@ public class DatosDelSolicitantePanel extends PanelSolicitarBeca {
 
     @Override
     public void startComponents() {
+
         centralPanel.setBorder(new EmptyBorder(Style.TOP_ESPACIO, 50, 20, 50));
 
         Label titulo = new Label("Datos del Solicitante");
@@ -113,18 +112,10 @@ public class DatosDelSolicitantePanel extends PanelSolicitarBeca {
                 String direccion= field_direccion.getText();
                 String telefono= field_telefono.getText();
                 String email= field_email.getText();
-                Validadores.validarNombres(nombre);
-                Validadores.validarApellido(apellidoPaterno);
-                Validadores.validarApellido(apellidoMaterno);
-                Validadores.validarDireccion(direccion);
-                Validadores.validarTelefono(telefono);
-                Validadores.validarCorreo(email);
 
-                DatosSolicitanteDTO datosSolicitanteDTO= new DatosSolicitanteDTO(nombre, apellidoMaterno, apellidoPaterno, direccion, telefono, email);
-                control.setDatosSolicitanteDTO(datosSolicitanteDTO);
-                mainFrame.showPanel("historialAcademicoPanel");
-            } catch(NombresInvalidosException | ApellidoInvalidoException | DireccionInvalidaException | TelefonoInvalidoException |
-                    IDInvalidoException ex){
+                coordinadorAplicacion.procesarDatosSolicitante(nombre, apellidoMaterno, apellidoPaterno, direccion, telefono, email);
+
+            } catch(NombresInvalidosException | ApellidoInvalidoException | DireccionInvalidaException | TelefonoInvalidoException | IDInvalidoException ex){
                 JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
             } catch (NumberFormatException ex){
                 JOptionPane.showMessageDialog(mainFrame,"Solo se aceptan números","Error de validación", JOptionPane.ERROR_MESSAGE);
@@ -132,5 +123,4 @@ public class DatosDelSolicitantePanel extends PanelSolicitarBeca {
 
         });
     }
-
 }

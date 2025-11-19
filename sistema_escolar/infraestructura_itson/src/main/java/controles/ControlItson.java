@@ -1,20 +1,20 @@
-package controles;
+package implementacion;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dto.EstudianteResponseDTO;
 import dto.SolicitudLoginDTO;
-import interfaces.IITSON;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Optional;
+import interfaz.IFachadaITSON;
 
 /**
  * @author Escalante, Sebastian.
  */
-public class ControlItson implements IITSON {
+public class ControlItson implements IFachadaITSON {
 
     private static final String ITSON_BASE_URL = "http://localhost:8080/api/";
     private static final String LOGIN_ENDPOINT = "login/";

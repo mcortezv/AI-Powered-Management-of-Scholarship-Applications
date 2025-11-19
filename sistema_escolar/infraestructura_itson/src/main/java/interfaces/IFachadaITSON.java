@@ -7,6 +7,6 @@ import java.util.Optional;
 /**
  * @author Escalante, Sebastian.
  */
-public interface IITSON {
+public interface IFachadaITSON {
     Optional<EstudianteResponseDTO> verificarLogin(SolicitudLoginDTO solicitudLoginDTO);
 }

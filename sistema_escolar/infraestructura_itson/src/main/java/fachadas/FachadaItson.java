@@ -2,22 +2,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package fachadas;
+package fachada;
 
 import dto.EstudianteResponseDTO;
 import dto.SolicitudLoginDTO;
-import interfaces.IITSON;
+import implementacion.ControlItson;
 import java.util.Optional;
+import interfaz.IFachadaITSON;
 
 /**
  *
  * @author janethcristinagalvanquinonez
  */
-public class FachadaItson implements IITSON{
+public class FachadaItson implements IFachadaITSON{
+    private ControlItson controlItson;
+
+    public FachadaItson(ControlItson controlItson) {
+        this.controlItson = controlItson;
+    }
+    
+    
 
     @Override
     public Optional<EstudianteResponseDTO> verificarLogin(SolicitudLoginDTO solicitudLoginDTO) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return controlItson.verificarLogin(solicitudLoginDTO);
     }
     
 }

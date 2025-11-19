@@ -1,8 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 package presentacion.solicitarBeca.panels;
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import presentacion.login.panels.ImgPanel;
@@ -32,7 +27,7 @@ public class ConfirmacionPanel extends PanelSolicitarBeca {
     public void startComponents() {
         centralPanel.add(Box.createVerticalStrut(Style.TOP_ESPACIO));
 
-        titulo = new Label("Historial Academico");
+        titulo = new Label("Solicitud Completada");
         titulo.setFont(Style.TITLE_FONT);
         titulo.setAlignmentX(CENTER_ALIGNMENT);
         centralPanel.add(titulo);
@@ -44,7 +39,7 @@ public class ConfirmacionPanel extends PanelSolicitarBeca {
         centralPanel.add(img);
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
 
-        subTitulo = new Label("Se ha registrado tu solicitud");
+        subTitulo = new Label("Se ha registrado tu solicitud exitosamente.");
         subTitulo.setFont(Style.LABEL_FONT);
         subTitulo.setAlignmentX(CENTER_ALIGNMENT);
         centralPanel.add(subTitulo);
@@ -55,6 +50,7 @@ public class ConfirmacionPanel extends PanelSolicitarBeca {
         centralPanel.add(btnAceptar);
 
         btnBack.setVisible(false);
+
         btnAceptar.addActionListener(e -> {
             coordinadorAplicacion.main();
         });
