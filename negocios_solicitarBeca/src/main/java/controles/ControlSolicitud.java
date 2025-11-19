@@ -1,29 +1,27 @@
 package controles;
 import dominio.*;
+import excepciones.*;
+import interfaces.*;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * Control que orquesta las operaciones atómicas sobre la Solicitud.
- * No mantiene estado por sesión; recibe la Solicitud (objeto dominio)
- * y delega a los BOs. Esto permite que la Fachada lleve el "estado" de la solicitud.
- */
+
 public class ControlSolicitud {
     private final ISolicitudBO solicitudBO;
     private final IEstudianteBO estudianteBO;
     private final ITutorBO tutorBO;
     private final IBecaBO becaBO;
     private final IDocumentoBO documentoBO;
-    private final IHistorialBO historialBO;
-    private final ISocioeconomicoBO socioBO;
+    private final IHistorialAcademicoBO  historialBO;
+    private final IInformacionSocioeconomicaBO socioBO;
 
-    public ControlSolicitarBeca(ISolicitudBO solicitudBO,
+    public ControlSolicitud(ISolicitudBO solicitudBO,
                                 IEstudianteBO estudianteBO,
                                 ITutorBO tutorBO,
                                 IBecaBO becaBO,
                                 IDocumentoBO documentoBO,
-                                IHistorialBO historialBO,
-                                ISocioeconomicoBO socioBO) {
+                                IHistorialAcademicoBO historialBO,
+                                IInformacionSocioeconomicaBO socioBO) {
         this.solicitudBO = Objects.requireNonNull(solicitudBO);
         this.estudianteBO = Objects.requireNonNull(estudianteBO);
         this.tutorBO = Objects.requireNonNull(tutorBO);
@@ -33,34 +31,31 @@ public class ControlSolicitud {
         this.socioBO = Objects.requireNonNull(socioBO);
     }
 
-    /* Crear solicitud vacía (delegar al BO) */
-    public Solicitud iniciarSolicitud() throws negocio.excepciones.SolicitudInvalidaException {
+    public Solicitud iniciarSolicitud() throws SolicitudInvalidaException {
         return solicitudBO.crearSolicitudVacia();
     }
 
-    /* Asignaciones atómicas delegadas a la BO de solicitud */
-    public void asignarEstudiante(Solicitud s, Estudiante est) throws negocio.excepciones.SolicitudInvalidaException {
-        solicitudBO.asignarEstudiante(s, est);
+    public void asignarEstudiante(Solicitud solicitud, Estudiante estudiante) throws SolicitudInvalidaException {
+        solicitudBO.asignarEstudiante(solicitud, estudiante);
     }
 
-    public void asignarBeca(Solicitud s, Beca b) throws negocio.excepciones.SolicitudInvalidaException {
-        solicitudBO.asignarBeca(s, b);
+    public void asignarBeca(Solicitud solicitud, Beca beca) throws SolicitudInvalidaException {
+        solicitudBO.asignarBeca(solicitud, beca);
     }
 
-    public void asignarDocumentos(Solicitud s, List<Documento> docs) throws negocio.excepciones.SolicitudInvalidaException {
-        solicitudBO.asignarDocumentos(s, docs);
+    public void asignarDocumentos(Solicitud solicitud, List<Documento> documentos) throws SolicitudInvalidaException {
+        solicitudBO.asignarDocumentos(solicitud, documentos);
     }
 
-    public void asignarHistorial(Solicitud s, HistorialAcademico h) throws negocio.excepciones.SolicitudInvalidaException {
-        solicitudBO.asignarHistorial(s, h);
+    public void asignarHistorial(Solicitud solicitud, HistorialAcademico historialAcademico) throws SolicitudInvalidaException {
+        solicitudBO.asignarHistorial(solicitud, historialAcademico);
     }
 
-    public void asignarSocioeconomico(Solicitud s, InformacionSocioeconomica info) throws negocio.excepciones.SolicitudInvalidaException {
-        solicitudBO.asignarSocioeconomico(s, info);
+    public void asignarSocioeconomico(Solicitud solicitud, InformacionSocioeconomica informacionSocioeconomica) throws SolicitudInvalidaException {
+        solicitudBO.asignarSocioeconomico(solicitud, informacionSocioeconomica);
     }
 
-    /* Validar toda la solicitud (cambia estado a ENVIADA si todo ok) */
-    public void validarYFinalizarSolicitud(Solicitud s) throws negocio.excepciones.SolicitudInvalidaException {
-        solicitudBO.validarSolicitudCompleta(s);
+    public void validarYFinalizarSolicitud(Solicitud solicitud) throws SolicitudInvalidaException {
+        solicitudBO.validarSolicitudCompleta(solicitud);
     }
 }
