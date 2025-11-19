@@ -3,16 +3,15 @@ package objetosNegocio.mock;
 
 import dto.BecaDTO;
 import dto.RequisitosBecaDTO;
-import dto.RequisitosDTO;
 import dto.SolicitudBecasDisponiblesDTO;
 import dto.SolicitudBecasDisponiblesResponseDTO;
-import dto.SolicitudDTO;
-import interfaces.IBecaBOMock;
-import java.time.LocalDate;
+import interfaces.mock.IBecaBOMock;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * The type Beca bo mock.
  *
  * @author janethcristinagalvanquinonez
  */
@@ -27,7 +26,12 @@ public class BecaBOMock implements IBecaBOMock {
 //    public BecaBOMock(){
 //        obtenerBecas();
 //    }
-    
+
+    /**
+     * Get instance beca bo mock.
+     *
+     * @return the beca bo mock
+     */
     public static BecaBOMock getInstance(){
         if(instancia==null){
             instancia= new BecaBOMock();
