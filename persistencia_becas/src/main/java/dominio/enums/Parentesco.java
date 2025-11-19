@@ -2,12 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Enum.java to edit this template
  */
-package objetosNegocio.enums;
+package dominio.enums;
 
 /**
  *
- * @author mdjes
+ * @author Cortez, Manuel;
  */
-public enum TipoDocumento {
-    CURP, INE, KARDEX, COMPROBANTE_INSCIRPCION, COMPROBANTE_INGRESOS;
+public enum Parentesco {
+    PADRE, MADRE, ABUELO, ABUELA, HERMANO, HERMANA,
+    TIO, TIA, PADRASTRO, MADRASTRA, TUTOR_OFICIAL;
 }
