@@ -13,6 +13,7 @@
         <module>infraestructura_itson</module>
         <module>infraestructura_gobierno</module>
         <module>presentacion_becas</module>
+        <module>persistencia_becas</module>
     </modules>
 
     <properties>
