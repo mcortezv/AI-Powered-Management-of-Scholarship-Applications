@@ -15,31 +15,20 @@ import java.awt.*;
  * @author Escalante, Sebastian.
  */
 public class ResumenSolicitudPanel extends PanelSolicitarBeca{
-    private Label titulo;
-    private Label lbl_beca_solicitada;
-    private Label lbl_datos_solicitante;
-    private Label lbl_datos_tutor;
-    private Label lbl_info_socioeconomica;
-    private Label lbl_documentos;
-    private Button btnAceptar;
-    Label lbl_beca_response;
-    Label lbl_tutor_1;
-    Label lbl_tutor_2;
-    Label lbl_tutor_3 ;
-    Label lbl_info_2;
-    Label lbl_info_3;
+    private Label lbl_beca_response;
+    private Label lbl_info_2;
+    private Label lbl_info_3;
     private CoordinadorAplicacion control;
 
     public ResumenSolicitudPanel(SolicitarBeca frame, CoordinadorAplicacion coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
         this.southPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
         this.southPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 50));
-        coordinadorAplicacion = this.coordinadorAplicacion;
     }
 
     @Override
     public void startComponents() {
-        titulo = new Label("Resumen Final");
+        Label titulo = new Label("Resumen Final");
         titulo.setFont(Style.TITLE_FONT);
         titulo.setAlignmentX(CENTER_ALIGNMENT);
         centralPanel.add(titulo);
@@ -58,7 +47,7 @@ public class ResumenSolicitudPanel extends PanelSolicitarBeca{
         leftColumn.setLayout(new BoxLayout(leftColumn, BoxLayout.Y_AXIS));
         leftColumn.setBackground(Style.PANEL_COLOR);
 
-        lbl_beca_solicitada = new Label("Beca solicitada:");
+        Label lbl_beca_solicitada = new Label("Beca solicitada:");
         lbl_beca_solicitada.setFont(sectionFont);
         lbl_beca_solicitada.setAlignmentX(Component.LEFT_ALIGNMENT);
 
@@ -71,7 +60,7 @@ public class ResumenSolicitudPanel extends PanelSolicitarBeca{
         leftColumn.add(lbl_beca_response);
         leftColumn.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
 
-        lbl_datos_solicitante = new Label("Datos del Solicitante:");
+        Label lbl_datos_solicitante = new Label("Datos del Solicitante:");
         lbl_datos_solicitante.setFont(sectionFont);
         lbl_datos_solicitante.setAlignmentX(Component.LEFT_ALIGNMENT);
 
@@ -89,19 +78,19 @@ public class ResumenSolicitudPanel extends PanelSolicitarBeca{
         leftColumn.add(lbl_solicitante_2);
         leftColumn.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
 
-        lbl_datos_tutor = new Label("Datos del Tutor:");
+        Label lbl_datos_tutor = new Label("Datos del Tutor:");
         lbl_datos_tutor.setFont(sectionFont);
         lbl_datos_tutor.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-         lbl_tutor_1 = new Label("Juan López Vázquez");
+        Label lbl_tutor_1 = new Label("Juan López Vázquez");
         lbl_tutor_1.setFont(dataFont);
         lbl_tutor_1.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-         lbl_tutor_2 = new Label("Padre");
+        Label lbl_tutor_2 = new Label("Padre");
         lbl_tutor_2.setFont(dataFont);
         lbl_tutor_2.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-         lbl_tutor_3 = new Label("53 años");
+        Label lbl_tutor_3 = new Label("53 años");
         lbl_tutor_3.setFont(dataFont);
         lbl_tutor_3.setAlignmentX(Component.LEFT_ALIGNMENT);
 
@@ -118,7 +107,7 @@ public class ResumenSolicitudPanel extends PanelSolicitarBeca{
         rightColumn.setLayout(new BoxLayout(rightColumn, BoxLayout.Y_AXIS));
         rightColumn.setBackground(Style.PANEL_COLOR);
 
-        lbl_info_socioeconomica = new Label("Informacion Socioeconómica:");
+        Label lbl_info_socioeconomica = new Label("Informacion Socioeconómica:");
         lbl_info_socioeconomica.setFont(sectionFont);
         lbl_info_socioeconomica.setAlignmentX(Component.LEFT_ALIGNMENT);
 
@@ -141,7 +130,7 @@ public class ResumenSolicitudPanel extends PanelSolicitarBeca{
         rightColumn.add(lbl_info_3);
         rightColumn.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
 
-        lbl_documentos = new Label("Documentos:");
+        Label lbl_documentos = new Label("Documentos:");
         lbl_documentos.setFont(sectionFont);
         lbl_documentos.setAlignmentX(Component.LEFT_ALIGNMENT);
 
@@ -161,7 +150,7 @@ public class ResumenSolicitudPanel extends PanelSolicitarBeca{
 
         centralPanel.add(contentPanel);
         centralPanel.add(Box.createVerticalGlue());
-        btnAceptar = new Button("Aceptar");
+        Button btnAceptar = new Button("Aceptar");
         btnAceptar.setAlignmentX(CENTER_ALIGNMENT);
         centralPanel.add(btnAceptar);
     }
@@ -176,10 +165,7 @@ public class ResumenSolicitudPanel extends PanelSolicitarBeca{
       } else{
           lbl_info_3.setText("No");
       }
-     
-      
-      
-      
+
     }
     private Label createDocumentLabel(String text, Font font) {
         String checkMark = "\u2713  ";

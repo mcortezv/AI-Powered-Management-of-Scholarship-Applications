@@ -1,10 +1,6 @@
 package presentacion.solicitarBeca.panels;
 
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
-import dto.BecaDTO;
-import dto.HistAcademicoDTO;
-import dto.InformacionSocioeconomicaDTO;
-import dto.SolicitudDTO;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
@@ -21,7 +17,8 @@ public class SubirDocumentosPanel extends PanelSolicitarBeca {
     private Label titulo;
     private Button btnContinuar;
     private final Map<String, File> documentosCargados = new HashMap<>();
-    private CoordinadorAplicacion coordinadorAplicacion;
+    private final CoordinadorAplicacion coordinadorAplicacion;
+    private final String[] DOCUMENTOS_REQUERIDOS = {"CURP", "IDENTIFICACIÓN OFICIAL", "COMPROBANTE DE INSCRIPCIÓN", "KÁRDEX", "COMPROBANTE INGRESOS PADRE"};
 
     public SubirDocumentosPanel(SolicitarBeca frame, CoordinadorAplicacion coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
@@ -45,15 +42,10 @@ public class SubirDocumentosPanel extends PanelSolicitarBeca {
         panelBotones.setMaximumSize(new Dimension(600, 600));
         panelBotones.setAlignmentX(CENTER_ALIGNMENT);
 
-        panelBotones.add(createUploadSection("CURP"));
-        panelBotones.add(Box.createVerticalStrut(15));
-        panelBotones.add(createUploadSection("IDENTIFICACIÓN OFICIAL"));
-        panelBotones.add(Box.createVerticalStrut(15));
-        panelBotones.add(createUploadSection("COMPROBANTE DE INSCRIPCIÓN"));
-        panelBotones.add(Box.createVerticalStrut(15));
-        panelBotones.add(createUploadSection("KÁRDEX"));
-        panelBotones.add(Box.createVerticalStrut(15));
-        panelBotones.add(createUploadSection("COMPROBANTE INGRESOS PADRE"));
+        for (String docName : DOCUMENTOS_REQUERIDOS) {
+            panelBotones.add(createUploadSection(docName));
+            panelBotones.add(Box.createVerticalStrut(15));
+        }
 
         centralPanel.add(panelBotones);
         centralPanel.add(Box.createVerticalGlue());
@@ -66,15 +58,19 @@ public class SubirDocumentosPanel extends PanelSolicitarBeca {
         btnBack.addActionListener(e -> mainFrame.showPanel("informacionSocioeconomicaPanel"));
 
         btnContinuar.addActionListener(e -> {
-            BecaDTO becaDTO = coordinadorAplicacion.obtenerBecaSeleccionadaDTO();
-            InformacionSocioeconomicaDTO infoSocioeconomicaDTO = coordinadorAplicacion.obtenerInfoSocioeconomicaDTO();
-            HistAcademicoDTO historialAcademicoDTO = coordinadorAplicacion.obtenerHistAcademico();
+            if (documentosCargados.size() != DOCUMENTOS_REQUERIDOS.length) {
+                JOptionPane.showMessageDialog(mainFrame, "Debe subir los " + DOCUMENTOS_REQUERIDOS.length + " documentos requeridos para continuar.", "Documentos faltantes", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
 
-            SolicitudDTO solicitudDTO = new SolicitudDTO(becaDTO, infoSocioeconomicaDTO, historialAcademicoDTO);
-            coordinadorAplicacion.setSolicitud(solicitudDTO);
-            coordinadorAplicacion.mostrarResumen();
+            try {
+                coordinadorAplicacion.procesarDocumentosYSolicitud(documentosCargados);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(mainFrame, "Error al procesar la solicitud: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
         });
     }
+
     private JPanel createUploadSection(String docName) {
         JPanel sectionPanel = new JPanel();
         sectionPanel.setLayout(new BoxLayout(sectionPanel, BoxLayout.X_AXIS));
