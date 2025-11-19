@@ -93,7 +93,14 @@ public class IniciarSesionPanel extends Panel {
             String usuario = txtUsuario.getText().trim();
             String contrasenia = new String(txtPassword.getPassword());
             try {
-               EstudianteResponseDTO estudianteResponseDTo = coordinadorAplicacion.intentarIniciarSesion(usuario,contrasenia);
+                EstudianteResponseDTO estudianteResponseDTo = coordinadorAplicacion.intentarIniciarSesion(usuario,contrasenia);
+                if(estudianteResponseDTo != null){
+                    txtUsuario.setText("");
+                    txtPassword.setText("");
+                    mainFrame.showPanel("hubPanel");
+                    mainFrame.getNorthPanel().setVisible(true);
+
+                }
             } catch (IDInvalidoException | ContraseniaInvalidaException ex) {
                 JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
             } catch (Exception ex) {
