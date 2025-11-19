@@ -4,7 +4,7 @@
  */
 package presentacion.solicitarBeca.panels;
 
-import controlNavegacion.ControlNavegacion;
+import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import dto.BecaDTO;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -14,12 +14,11 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.SwingConstants;
+
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
 import presentacion.styles.Style;
-import presentacion.styles.TextField;
 
 /**
  *
@@ -35,8 +34,8 @@ public class DetallesBecaPanel extends PanelSolicitarBeca {
     private JPanel lista;
     private JScrollPane scroll;
 
-    public DetallesBecaPanel(SolicitarBeca mainFrame, ControlNavegacion controlNavegacion){
-        super(mainFrame, controlNavegacion);
+    public DetallesBecaPanel(SolicitarBeca mainFrame, CoordinadorAplicacion coordinadorAplicacion){
+        super(mainFrame, coordinadorAplicacion);
     }
     
     public void startComponents(){

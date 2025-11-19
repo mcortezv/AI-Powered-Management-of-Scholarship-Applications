@@ -1,7 +1,8 @@
 package presentacion.login.panels;
-import controlNavegacion.ControlNavegacion;
+import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import dto.EstudianteResponseDTO;
 import dto.SolicitudLoginDTO;
+import presentacion.coordinadorNegocio.CoordinadorNegocio;
 import presentacion.login.MainFrame;
 import presentacion.login.exceptions.ContraseniaInvalidaException;
 import presentacion.login.exceptions.IDInvalidoException;
@@ -28,11 +29,13 @@ public class IniciarSesionPanel extends Panel {
     private Label lblPassword;
     private PasswordField txtPassword;
     private Button btnIniciarSesion;
-    private final ControlNavegacion controlNavegacion;
+    private final CoordinadorAplicacion coordinadorAplicacion;
+    private final CoordinadorNegocio coordinadorNegocio;
 
-    public IniciarSesionPanel(MainFrame frame, ControlNavegacion controlNavegacion) {
-        super(frame, controlNavegacion);
-        this.controlNavegacion = controlNavegacion;
+    public IniciarSesionPanel(MainFrame frame, CoordinadorAplicacion coordinadorAplicacion, CoordinadorNegocio coordinadorNegocio) {
+        super(frame, coordinadorAplicacion);
+        this.coordinadorAplicacion = coordinadorAplicacion;
+        this.coordinadorNegocio = coordinadorNegocio;
     }
 
     @Override
@@ -100,7 +103,7 @@ public class IniciarSesionPanel extends Panel {
                 Validadores.validarContrasenia(contrasenia);
 
                 SolicitudLoginDTO solicitudLoginDTO = new SolicitudLoginDTO(usuario, contrasenia);
-                EstudianteResponseDTO estudiante = controlNavegacion.solicitarInicioSesion(solicitudLoginDTO);
+                EstudianteResponseDTO estudiante = coordinadorNegocio.solicitarInicioSesion(solicitudLoginDTO);
 
                 if (estudiante != null) {
                     txtUsuario.setText("");

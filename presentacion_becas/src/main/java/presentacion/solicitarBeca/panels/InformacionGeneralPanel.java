@@ -3,10 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package presentacion.solicitarBeca.panels;
-import controlNavegacion.ControlNavegacion;
+import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import java.awt.Component;
 import javax.swing.*;
 
+import presentacion.coordinadorNegocio.CoordinadorNegocio;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.solicitarBeca.exceptions.IngresoInvalidoException;
 import presentacion.solicitarBeca.exceptions.PromedioInvalidoException;
@@ -22,15 +23,16 @@ import presentacion.styles.ComboBox;
  */
 public class InformacionGeneralPanel extends PanelSolicitarBeca {
     private SolicitudBecasDisponiblesDTO solicitudDTO;
-    private ControlNavegacion control;
+    private CoordinadorAplicacion control;
+    private CoordinadorNegocio coordinadorNegocio;
     private Button btnContinuar;
     private TextField campoPromedio;
     private ComboBox<String> campoCarga;
     private TextField campoIngreso;
 
 
-    public InformacionGeneralPanel(SolicitarBeca frame, ControlNavegacion controlNavegacion) {
-        super(frame, controlNavegacion);
+    public InformacionGeneralPanel(SolicitarBeca frame, CoordinadorAplicacion coordinadorAplicacion) {
+        super(frame, coordinadorAplicacion);
     }
 
     public void startComponents() {
@@ -74,7 +76,7 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
         centralPanel.add(btnContinuar);
 
         btnBack.addActionListener(e -> {
-            controlNavegacion.main();
+            coordinadorAplicacion.main();
         });
 
 //        btnContinuar.addActionListener(e -> {
@@ -90,8 +92,8 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
             Validadores.validarIngreso(ingreso);
 
             SolicitudBecasDisponiblesDTO solictudBecasDisponiblesDTO  = new SolicitudBecasDisponiblesDTO(promedio, carga, ingreso);
-            SolicitudBecasDisponiblesResponseDTO solicitudBecasDisponiblesResponseDTO = controlNavegacion.obtenerBecasDisponibles(solictudBecasDisponiblesDTO);
-            controlNavegacion.mostrarBecasDisponibles(solicitudBecasDisponiblesResponseDTO);
+            SolicitudBecasDisponiblesResponseDTO solicitudBecasDisponiblesResponseDTO = coordinadorNegocio.obtenerBecasDisponibles(solictudBecasDisponiblesDTO);
+            coordinadorAplicacion.mostrarBecasDisponibles(solicitudBecasDisponiblesResponseDTO);
 
         } catch (PromedioInvalidoException | IngresoInvalidoException ex) {
             JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);

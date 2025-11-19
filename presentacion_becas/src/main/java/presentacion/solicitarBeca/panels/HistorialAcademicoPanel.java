@@ -3,9 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package presentacion.solicitarBeca.panels;
-import controlNavegacion.ControlNavegacion;
+import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import dto.HistAcademicoDTO;
-import dto.HistorialAcademicoDTO;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.*;
 import presentacion.styles.Button;
@@ -25,11 +24,11 @@ public class HistorialAcademicoPanel extends PanelSolicitarBeca {
     private Label semestre;
     private ComboBox<Integer> comboSemestre;
     private Button botonSiguiente;
-    private ControlNavegacion controlNavegacion;
+    private CoordinadorAplicacion coordinadorAplicacion;
 
-    public HistorialAcademicoPanel(SolicitarBeca mainFrame, ControlNavegacion controlNavegacion) {
-        super(mainFrame, controlNavegacion);
-        this.controlNavegacion= controlNavegacion;
+    public HistorialAcademicoPanel(SolicitarBeca mainFrame, CoordinadorAplicacion coordinadorAplicacion) {
+        super(mainFrame, coordinadorAplicacion);
+        this.coordinadorAplicacion = coordinadorAplicacion;
     }
 
     @Override
@@ -89,7 +88,7 @@ public class HistorialAcademicoPanel extends PanelSolicitarBeca {
             int semestre= (int) comboSemestre.getSelectedItem();
             
             HistAcademicoDTO historialAcademicoDTO= new HistAcademicoDTO(carrera, cargaAcademica, semestre);
-            controlNavegacion.setHistorialAcademicoDTO(historialAcademicoDTO);
+            coordinadorAplicacion.setHistorialAcademicoDTO(historialAcademicoDTO);
             mainFrame.showPanel("datosTutorPanel");
         });
     }

@@ -1,6 +1,6 @@
 package presentacion.solicitarBeca.panels;
 
-import controlNavegacion.ControlNavegacion;
+import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import dto.BecaDTO;
 import dto.HistAcademicoDTO;
 import dto.InformacionSocioeconomicaDTO;
@@ -21,11 +21,11 @@ public class SubirDocumentosPanel extends PanelSolicitarBeca {
     private Label titulo;
     private Button btnContinuar;
     private final Map<String, File> documentosCargados = new HashMap<>();
-    private ControlNavegacion controlNavegacion;
+    private CoordinadorAplicacion coordinadorAplicacion;
 
-    public SubirDocumentosPanel(SolicitarBeca frame, ControlNavegacion controlNavegacion) {
-        super(frame, controlNavegacion);
-        this.controlNavegacion = controlNavegacion;
+    public SubirDocumentosPanel(SolicitarBeca frame, CoordinadorAplicacion coordinadorAplicacion) {
+        super(frame, coordinadorAplicacion);
+        this.coordinadorAplicacion = coordinadorAplicacion;
     }
 
     @Override
@@ -66,13 +66,13 @@ public class SubirDocumentosPanel extends PanelSolicitarBeca {
         btnBack.addActionListener(e -> mainFrame.showPanel("informacionSocioeconomicaPanel"));
 
         btnContinuar.addActionListener(e -> {
-            BecaDTO becaDTO = controlNavegacion.obtenerBecaSeleccionadaDTO();
-            InformacionSocioeconomicaDTO infoSocioeconomicaDTO = controlNavegacion.obtenerInfoSocioeconomicaDTO();
-            HistAcademicoDTO historialAcademicoDTO = controlNavegacion.obtenerHistAcademico();
+            BecaDTO becaDTO = coordinadorAplicacion.obtenerBecaSeleccionadaDTO();
+            InformacionSocioeconomicaDTO infoSocioeconomicaDTO = coordinadorAplicacion.obtenerInfoSocioeconomicaDTO();
+            HistAcademicoDTO historialAcademicoDTO = coordinadorAplicacion.obtenerHistAcademico();
 
             SolicitudDTO solicitudDTO = new SolicitudDTO(becaDTO, infoSocioeconomicaDTO, historialAcademicoDTO);
-            controlNavegacion.setSolicitud(solicitudDTO);
-            controlNavegacion.mostrarResumen();
+            coordinadorAplicacion.setSolicitud(solicitudDTO);
+            coordinadorAplicacion.mostrarResumen();
         });
     }
     private JPanel createUploadSection(String docName) {
