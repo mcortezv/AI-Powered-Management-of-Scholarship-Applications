@@ -66,8 +66,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         presentacion.solicitarBeca.validadores.Validadores.validarTelefono(telefono);
         presentacion.solicitarBeca.validadores.Validadores.validarCorreo(email);
 
-        DatosSolicitanteDTO datosSolicitanteDTO = new DatosSolicitanteDTO(nombre, apellidoMaterno, apellidoPaterno, direccion, telefono, email);
-        setDatosSolicitanteDTO(datosSolicitanteDTO);
+        DatosSolicitanteDTO datosSolicitanteDTO = new DatosSolicitanteDTO(nombre, apellidoMaterno, apellidoPaterno, direccion, telefono, email);setDatosSolicitanteDTO(datosSolicitanteDTO);
 
         solicitarBeca.showPanel("historialAcademicoPanel");
     }
@@ -97,7 +96,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         solicitarBeca.showPanel("detalleBecaPanel");
     }
     public void mostrarResumen(){
-        SolicitudDTO solicitudDTO= obtenerSolicitud();
+        SolicitudDTO solicitudDTO = obtenerSolicitud();
         TutorDTO tutorDTO= obtenerTutor();
         DatosSolicitanteDTO solicitanteDTO= obtenerDatosSolicitanteDTO();
         ResumenFinalPanel resumenFinal= (ResumenFinalPanel) solicitarBeca.getPanel("resumenFinalPanel");
