@@ -1,11 +1,11 @@
 package presentacion.coordinadorNegocio;
 
 import dto.*;
-import fachada.FachadaInicioSesion;
+import fachadas.FachadaInicioSesion;
 import fachada.FachadaSolicitud;
-import implementacion.ControlInicioSesion;
+import controles.ControlInicioSesion;
 import implementacion.ControlSolicitud;
-import interfaz.IFachadaInicioSesion;
+import interfaces.IFachadaInicioSesion;
 import interfaz.IFachadaSolicitud;
 import presentacion.login.MainFrame;
 
@@ -34,7 +34,7 @@ public class CoordinadorNegocio implements ICoordinadorNegocio{
 
     @Override
     public void SolicitarCerrarSesion() {
-        iFachadaInicioSesion.solicitarCerrarSesion();
+        iFachadaInicioSesion.solicitarLogOut();
     }
 
     @Override

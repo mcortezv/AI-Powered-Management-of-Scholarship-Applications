@@ -9,7 +9,7 @@ public class TutorAdaptador {
                 dto.getNombre(),
                 dto.getParentesco(),
                 dto.getTelefono(),
-                new Direccion(dto.getCalle(), dto.getColonia(), dto.getCiudad()), // La direccion esta distinta
+                new Direccion(dto.getDireccion().getCalle(), dto.getDireccion().getColonia(), dto.getDireccion().getCiudad()), // La direccion esta distinta
                 dto.getCorreo()
         );
     }
