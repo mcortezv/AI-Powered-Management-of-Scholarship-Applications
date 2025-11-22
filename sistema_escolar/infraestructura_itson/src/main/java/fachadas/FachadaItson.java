@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package fachada;
+package fachadas;
 
 import dto.EstudianteResponseDTO;
 import dto.SolicitudLoginDTO;
-import implementacion.ControlItson;
+import controles.ControlItson;
 import java.util.Optional;
-import interfaz.IFachadaITSON;
+import interfaces.IFachadaITSON;
 
 /**
  *

@@ -7,22 +7,24 @@ public class EstudianteResponseDTO {
     private String nombre;
     private String carrera;
     private String telefono;
-    private String direccion;
+    private DireccionDTO direccion;
     private String correo;
     private double promedio;
 
     public EstudianteResponseDTO() {
     }
 
-    public EstudianteResponseDTO(String estatus, double promedio, String correo, String direccion, String telefono, String carrera, String nombre, int matricula) {
-        this.promedio = promedio;
-        this.correo = correo;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.carrera = carrera;
-        this.nombre = nombre;
+    public EstudianteResponseDTO(int matricula, String nombre, String carrera, String telefono, DireccionDTO direccion, String correo, double promedio) {
         this.matricula = matricula;
+        this.nombre = nombre;
+        this.carrera = carrera;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.correo = correo;
+        this.promedio = promedio;
     }
+
+    
 
     public int getMatricula() {
         return matricula;
@@ -56,11 +58,11 @@ public class EstudianteResponseDTO {
         this.telefono = telefono;
     }
 
-    public String getDireccion() {
+    public DireccionDTO getDireccion() {
         return direccion;
     }
 
-    public void setDireccion(String direccion) {
+    public void setDireccion(DireccionDTO direccion) {
         this.direccion = direccion;
     }
 

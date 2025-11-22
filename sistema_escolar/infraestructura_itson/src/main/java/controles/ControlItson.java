@@ -1,4 +1,4 @@
-package implementacion;
+package controles;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dto.EstudianteResponseDTO;
@@ -9,7 +9,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Optional;
-import interfaz.IFachadaITSON;
+import interfaces.IFachadaITSON;
 
 /**
  * @author Escalante, Sebastian.
