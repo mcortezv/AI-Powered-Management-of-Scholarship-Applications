@@ -1,4 +1,5 @@
 package objetosNegocio;
+import dao.interfaces.IEstudianteDAO;
 import dominio.*;
 import dto.EstudianteResponseDTO;
 import dto.LoginDTO;
@@ -10,10 +11,12 @@ import interfaces.IFachadaITSON;
  * @author Cortez, Manuel;
  */
 public class EstudianteBO implements IEstudianteBO {
-    private IFachadaITSON fachadaITSON;
+    private final IFachadaITSON fachadaITSON;
+    private final IEstudianteDAO estudianteDAO;
 
-    public EstudianteBO(IFachadaITSON fachadaITSON){
+    public EstudianteBO(IFachadaITSON fachadaITSON, IEstudianteDAO estudianteDAO){
         this.fachadaITSON = fachadaITSON;
+        this.estudianteDAO = estudianteDAO;
     }
 
     @Override

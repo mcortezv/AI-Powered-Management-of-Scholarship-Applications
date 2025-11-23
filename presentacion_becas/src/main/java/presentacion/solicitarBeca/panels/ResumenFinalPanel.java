@@ -1,11 +1,13 @@
 package presentacion.solicitarBeca.panels;
+import dto.BecaDTO;
+import dto.EstudianteDTO;
+import dto.TutorDTO;
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import dto.SolicitudDTO;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
 import presentacion.styles.Style;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -24,6 +26,7 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
     private CoordinadorAplicacion coordinadorAplicacion;
     private SolicitudDTO solicitudDTO;
     private TutorDTO tutorDTO;
+    private EstudianteDTO estudianteDTO;
     Label lbl_tutor_1;
     Label lbl_tutor_2;
     Label lbl_info_2 ;
@@ -31,7 +34,6 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
     Label lbl_info_5;
     Label lblDependencia;
     Label lblSolicitanteaNombre;
-    Label lblSolicitanteApPaterno;
    
 
     public ResumenFinalPanel(SolicitarBeca frame, CoordinadorAplicacion coordinadorAplicacion) {
@@ -78,12 +80,9 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
         lbl_datos_solicitante.setFont(sectionFont);
         lbl_datos_solicitante.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-         lblSolicitanteaNombre = new Label("Katia Ximena Álvarez Espinoza");
+        lblSolicitanteaNombre = new Label("Katia Ximena Álvarez Espinoza");
         lblSolicitanteaNombre.setFont(dataFont);
         lblSolicitanteaNombre.setAlignmentX(Component.LEFT_ALIGNMENT);
-        lblSolicitanteApPaterno= new Label("...");
-        lblSolicitanteApPaterno.setFont(dataFont);
-        lblSolicitanteApPaterno.setAlignmentX(Component.LEFT_ALIGNMENT);        
 
         Label lbl_solicitante_2 = new Label("21 años");
         lbl_solicitante_2.setFont(dataFont);
@@ -92,7 +91,6 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
         leftColumn.add(lbl_datos_solicitante);
         leftColumn.add(Box.createVerticalStrut(10));
         leftColumn.add(lblSolicitanteaNombre);
-        leftColumn.add(lblSolicitanteApPaterno);
         leftColumn.add(lbl_solicitante_2);
         leftColumn.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
 
@@ -130,7 +128,7 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
         lbl_info_socioeconomica.setAlignmentX(Component.LEFT_ALIGNMENT);
         
 
-        Label lbl_info_1 = new Label("Dependencia Económica: ");
+        Label lbl_info_1 = new Label("Deudas: ");
         lbl_info_1.setFont(dataFont);
         lbl_info_1.setAlignmentX(Component.LEFT_ALIGNMENT);
         lblDependencia= new Label("...");
@@ -197,17 +195,17 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
         });
     }
     
-    public void cargarResumen(SolicitudDTO solicitudDTO, TutorDTO tutor, DatosSolicitanteDTO solicitanteDTO){
+    public void cargarResumen(SolicitudDTO solicitudDTO){
         this.solicitudDTO= solicitudDTO;
-        this.tutorDTO= tutor;
+        this.tutorDTO= solicitudDTO.getEstudiante().getTutor();
+        this.estudianteDTO =  solicitudDTO.getEstudiante();
         lbl_beca_response.setText(solicitudDTO.getBeca().getNombre());
         lbl_info_3.setText(String.valueOf(solicitudDTO.getInformacionSocioeconomica().getIngresoTotalFamilarMensual()));
         lbl_tutor_1.setText(tutorDTO.getNombre());
         lbl_tutor_2.setText(String.valueOf(tutorDTO.getParentesco()));
-        lblDependencia.setText(solicitudDTO.getInformacionSocioeconomica().isDependenciaEconomica() ? "SI" : "NO");
+        lblDependencia.setText(solicitudDTO.getInformacionSocioeconomica().isDeudas() ? "SI" : "NO");
         lbl_info_5.setText(solicitudDTO.getInformacionSocioeconomica().isTrabajo() ? "SI" : "NO");
-       lblSolicitanteaNombre.setText(solicitanteDTO.getNombreField());
-       lblSolicitanteApPaterno.setText(solicitanteDTO.getPrimerApellidoField());
+       lblSolicitanteaNombre.setText(estudianteDTO.getNombre());
        
         
         

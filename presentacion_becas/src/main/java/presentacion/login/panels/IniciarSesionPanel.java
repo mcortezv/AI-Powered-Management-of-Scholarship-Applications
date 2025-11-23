@@ -1,6 +1,5 @@
 package presentacion.login.panels;
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
-import dto.EstudianteResponseDTO;
 import presentacion.login.MainFrame;
 import presentacion.login.exceptions.ContraseniaInvalidaException;
 import presentacion.login.exceptions.IDInvalidoException;

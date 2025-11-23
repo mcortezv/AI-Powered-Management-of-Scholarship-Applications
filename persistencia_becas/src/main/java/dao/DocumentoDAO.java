@@ -1,4 +1,9 @@
 package dao;
+import dao.interfaces.IDocumentoDAO;
 
-public class DocumentoDAO {
+/**
+ *
+ * @author Cortez, Manuel;
+ */
+public class DocumentoDAO implements IDocumentoDAO {
 }
