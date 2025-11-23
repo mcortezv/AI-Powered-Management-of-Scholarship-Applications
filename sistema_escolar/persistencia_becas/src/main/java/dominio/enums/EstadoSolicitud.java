@@ -6,7 +6,7 @@ package dominio.enums;
 
 /**
  *
- * @author mdjes
+ * @author Cortez, Manuel;
  */
 public enum EstadoSolicitud {
     ACTIVA, ACEPTADA, RECHAZADA, DEVUELTA;

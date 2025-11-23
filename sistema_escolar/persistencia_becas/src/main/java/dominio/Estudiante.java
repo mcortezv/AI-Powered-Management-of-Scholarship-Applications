@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 package dominio;
 
 /**
@@ -15,12 +14,12 @@ public class Estudiante {
     private Tutor tutor;
     private String password;
     private String telefono;
-    private Direccion direccion;
+    private String direccion;
     private String correo;
 
     public Estudiante() {}
 
-    public Estudiante(String nombre, Tutor tutor, String password, String telefono, Direccion direccion, String correo) {
+    public Estudiante(String nombre, Tutor tutor, String password, String telefono, String direccion, String correo) {
         this.nombre = nombre;
         this.tutor = tutor;
         this.password = password;
@@ -29,7 +28,7 @@ public class Estudiante {
         this.correo = correo;
     }
 
-    public Estudiante(Long matricula, String nombre, Tutor tutor, String password, String telefono, Direccion direccion, String correo) {
+    public Estudiante(Long matricula, String nombre, Tutor tutor, String password, String telefono, String direccion, String correo) {
         this.matricula = matricula;
         this.nombre = nombre;
         this.tutor = tutor;
@@ -38,8 +37,6 @@ public class Estudiante {
         this.direccion = direccion;
         this.correo = correo;
     }
-    
-    
 
     public Long getMatricula() {
         return matricula;
@@ -81,11 +78,11 @@ public class Estudiante {
         this.telefono = telefono;
     }
 
-    public Direccion getDireccion() {
+    public String getDireccion() {
         return direccion;
     }
 
-    public void setDireccion(Direccion direccion) {
+    public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
 

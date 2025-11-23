@@ -6,7 +6,6 @@ package objetosNegocio.mock;
 import java.util.HashMap;
 import java.util.Map;
 
-import dominio.Direccion;
 import dominio.Estudiante;
 import dto.EstudianteResponseDTO;
 import dto.SolicitudLoginDTO;

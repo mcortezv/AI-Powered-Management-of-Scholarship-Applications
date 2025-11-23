@@ -6,7 +6,7 @@ package dominio.enums;
 
 /**
  *
- * @author mdjes
+ * @author Cortez, Manuel;
  */
 public enum TipoVivienda {
     CASA_PROPIA, DEPARTAMENTO, RESIDENCIA, VIVIENDA_IMPROVISADA;

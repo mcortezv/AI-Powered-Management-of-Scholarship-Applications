@@ -2,13 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 package dominio;
 import dominio.enums.TipoBeca;
-
 import java.time.LocalDate;
-import java.time.Period;
-
 
 /**
  *
@@ -18,21 +14,23 @@ public class Beca {
     private int codigo;
     private TipoBeca tipo;
     private String nombre;
-    private Period periodo;
+    private LocalDate fechaInicio;
+    private LocalDate fechaFin;
     private int becasDisponibles;
     private Requisitos requisitos;
     private LocalDate fechaResultados;
 
     public Beca() {}
 
-    public Beca(int codigo, TipoBeca tipo, String nombre, Period periodo, int becasDisponibles, Requisitos requisitos, LocalDate fechaResultados) {
-        this.codigo = codigo;
-        this.tipo = tipo;
-        this.nombre = nombre;
-        this.periodo = periodo;
+    public Beca(int becasDisponibles, int codigo, LocalDate fechaFin, LocalDate fechaInicio, LocalDate fechaResultados, String nombre, Requisitos requisitos, TipoBeca tipo) {
         this.becasDisponibles = becasDisponibles;
-        this.requisitos = requisitos;
+        this.codigo = codigo;
+        this.fechaFin = fechaFin;
+        this.fechaInicio = fechaInicio;
         this.fechaResultados = fechaResultados;
+        this.nombre = nombre;
+        this.requisitos = requisitos;
+        this.tipo = tipo;
     }
 
     public int getBecasDisponibles() {
@@ -67,18 +65,25 @@ public class Beca {
         this.nombre = nombre;
     }
 
-    public Period getPeriodo() {
-        return periodo;
+    public LocalDate getFechaFin() {
+        return fechaFin;
     }
 
-    public void setPeriodo(Period periodo) {
-        this.periodo = periodo;
+    public void setFechaFin(LocalDate fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    public LocalDate getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(LocalDate fechaInicio) {
+        this.fechaInicio = fechaInicio;
     }
 
     public Requisitos getRequisitos() {
         return requisitos;
     }
-
 
     public TipoBeca getTipo() {
         return tipo;
