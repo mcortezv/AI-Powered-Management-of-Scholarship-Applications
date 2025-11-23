@@ -12,7 +12,7 @@ import presentacion.login.exceptions.IDInvalidoException;
 import presentacion.solicitarBeca.exceptions.ApellidoInvalidoException;
 import presentacion.solicitarBeca.exceptions.NombresInvalidosException;
 import presentacion.solicitarBeca.exceptions.TelefonoInvalidoException;
-import presentacion.solicitarBeca.validadores.Validadores;
+// import presentacion.solicitarBeca.validadores.Validadores; // ELIMINADO
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -37,17 +37,13 @@ public class DatosTutorPanel extends PanelSolicitarBeca {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setBackground(Style.PANEL_COLOR);
-
         Label label = new Label(labelText);
         label.setHorizontalAlignment(SwingConstants.RIGHT);
-
         field.setColumns(20);
         field.setMaximumSize(new Dimension(Integer.MAX_VALUE, field.getPreferredSize().height + 10));
-
         panel.add(label);
         panel.add(Box.createVerticalStrut(5));
         panel.add(field);
-
         panel.setMaximumSize(new Dimension(500, 70));
         return panel;
     }
@@ -58,7 +54,6 @@ public class DatosTutorPanel extends PanelSolicitarBeca {
         contenido.setLayout(new BoxLayout(contenido, BoxLayout.Y_AXIS));
         contenido.setBackground(Style.PANEL_COLOR);
         contenido.setBorder(new EmptyBorder(50, 50, 50, 50));
-
         Label titulo = new Label("Datos del Tutor");
         titulo.setFont(Style.TITLE_FONT);
         titulo.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -83,6 +78,7 @@ public class DatosTutorPanel extends PanelSolicitarBeca {
         field_telefono = new TextField(20);
         field_email = new TextField(20);
 
+
         JPanel fila1 = new JPanel(new GridLayout(1, 2, 40, 0));
         fila1.setBackground(Style.PANEL_COLOR);
         fila1.add(crearDosColumnas("Nombres:", field_nombre));
@@ -90,6 +86,8 @@ public class DatosTutorPanel extends PanelSolicitarBeca {
         fila1.setMaximumSize(new Dimension(800, 80));
         contenido.add(fila1);
         contenido.add(Box.createVerticalStrut(20));
+
+
 
         JPanel fila2 = new JPanel(new GridLayout(1, 2, 40, 0));
         fila2.setBackground(Style.PANEL_COLOR);
@@ -117,7 +115,6 @@ public class DatosTutorPanel extends PanelSolicitarBeca {
         centralPanel.add(contenido, BorderLayout.NORTH);
 
         btnBack.addActionListener(e -> mainFrame.showPanel("historialAcademicoPanel"));
-
         btnContinuar.addActionListener(e -> {
             try {
                 Parentesco parentesco = (Parentesco) comboParentesco.getSelectedItem();
@@ -127,18 +124,11 @@ public class DatosTutorPanel extends PanelSolicitarBeca {
                 String telefono = field_telefono.getText();
                 String correo = field_email.getText();
 
-                Validadores.validarNombres(nombre);
-                Validadores.validarApellido(apPat);
-                Validadores.validarApellido(apMat);
-                Validadores.validarTelefono(telefono);
-                Validadores.validarCorreo(correo);
+                coordinadorAplicacion.procesarDatosTutor(
+                        parentesco, nombre, apPat, apMat, telefono, correo
+                );
 
-                TutorDTO tutor = new TutorDTO(nombre, parentesco, apMat, apPat, telefono, correo);
-                coordinadorAplicacion.setTutor(tutor);
-                mainFrame.showPanel("informacionSocioeconomicaPanel");
-
-            } catch (NombresInvalidosException | ApellidoInvalidoException |
-                     TelefonoInvalidoException | IDInvalidoException ex) {
+            } catch (NombresInvalidosException | ApellidoInvalidoException | TelefonoInvalidoException | IDInvalidoException ex) {
                 JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(mainFrame, "Solo se aceptan números", "Error de validación", JOptionPane.ERROR_MESSAGE);

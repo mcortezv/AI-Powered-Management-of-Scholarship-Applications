@@ -1,6 +1,5 @@
 package presentacion.solicitarBeca.panels;
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
-import dto.InformacionSocioeconomicaDTO;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.*;
 import presentacion.styles.Button;
@@ -75,24 +74,15 @@ public class InformacionSocioeconomicaPanel extends PanelSolicitarBeca{
         });
 
         btn_next.addActionListener(e -> {
-            //if(field_ingreso.getText().trim().isBlank()){
-                //JOptionPane.showMessageDialog(this, "Favor de seleccionar todos los campos", "Aviso", JOptionPane.WARNING_MESSAGE);
-                //return;
-            //}
-            Double ingreso= Double.parseDouble(field_ingreso.getText());
-            String seleccionDependEconomica= (String) cbx_familia_depende.getSelectedItem();
-            boolean dependenciaEconomica= seleccionDependEconomica.equals("SI");
-            String seleccionGeneraIngreso=   (String) cbx_genera_ingreso.getSelectedItem();
-            boolean generaIngreso= seleccionGeneraIngreso.equals("SI");
-            
-            InformacionSocioeconomicaDTO informacionSocioeconomicaDTO = new InformacionSocioeconomicaDTO(ingreso, dependenciaEconomica, generaIngreso);
-            coordinadorAplicacion.setInfoSocioeconomica(informacionSocioeconomicaDTO);
-            //String ingresoFamiliarMensual = field_ingreso.getText();
-            //double ingresoFamiliarMensualDouble = Double.parseDouble(ingresoFamiliarMensual);
-            //informacionSocioeconomicaDTO.setIngresoTotalFamilarMensual(ingresoFamiliarMensualDouble);
-           // mainFrame.setInformacionSocioeconomicaDTO(informacionSocioeconomicaDTO);
-          //  mainFrame.showSiguiente();
-            mainFrame.showPanel("subirDocumentosPanel");
+            try {
+                String ingresoStr = field_ingreso.getText().trim();
+                String seleccionDependEconomica = (String) cbx_familia_depende.getSelectedItem();
+                String seleccionGeneraIngreso = (String) cbx_genera_ingreso.getSelectedItem();
+
+                coordinadorAplicacion.procesarInformacionSocioeconomica(ingresoStr, seleccionDependEconomica, seleccionGeneraIngreso);
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(mainFrame, "El ingreso familiar debe ser un valor numérico válido.", "Error de validación", JOptionPane.ERROR_MESSAGE);
+            }
         });
     }
 }
