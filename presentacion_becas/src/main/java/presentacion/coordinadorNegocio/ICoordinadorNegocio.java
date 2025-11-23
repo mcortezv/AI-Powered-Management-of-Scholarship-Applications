@@ -1,10 +1,17 @@
 package presentacion.coordinadorNegocio;
-
 import dto.*;
 
+/**
+ *
+ * @author Cortez, Manuel;
+ */
 public interface ICoordinadorNegocio {
-    EstudianteResponseDTO solicitarInicioSesion(LoginDTO solicitudLoginDTO);
-    BecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO);
-    void SolicitarCerrarSesion();
-    boolean enviarSolicitudAGobierno(SolicitudDTO solicitudDTO);
+
+    boolean solicitarInicioSesion(LoginDTO solicitudLoginDTO);
+
+    BecasDisponiblesResponseDTO obtenerBecasDisponibles(RequisitosDTO requisitosDTO);
+
+    void solicitarCerrarSesion();
+
+    boolean enviarSolicitudAGobierno();
 }

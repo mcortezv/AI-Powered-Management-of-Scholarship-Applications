@@ -3,9 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
 package interfaces;
-
+import dominio.*;
 import dto.*;
-import excepciones.SolicitudInvalidaException;
 
 /**
  *
@@ -13,21 +12,19 @@ import excepciones.SolicitudInvalidaException;
  */
 public interface IFachadaSolicitarBeca {
 
-    BecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO);
+    BecasFiltradasDTO obtenerBecasDisponibles(RequisitosDTO requisitosDTO);
 
     boolean validarRequisitos(RequisitosDTO requisitos);
 
-    boolean validarSolicitudNoExistente(int idEstudiante, int idSolicitud);
+    boolean validarSolicitudNoExistente(Long idEstudiante, Long idSolicitud);
 
-    BecaDTO recuperarBeca(int idBeca);
+    Beca recuperarBeca(Long idBeca);
 
-    EstudianteDTO solicitarDatosEstudiante(int  idEstudiante);
+    Estudiante solicitarDatosEstudiante(Long  idEstudiante);
 
-    SolicitudDTO crearSolicitud();
+    Solicitud crearSolicitud();
 
-    boolean guardarSolicitud(SolicitudDTO solicitud);
+    boolean guardarSolicitud();
 
-    boolean enviarSolicitudGobierno(SolicitudDTO solicitudDTO);
-    
-     public SolicitudDTO iniciarNuevaSolicitud() throws SolicitudInvalidaException;
+    boolean enviarSolicitudGobierno();
 }

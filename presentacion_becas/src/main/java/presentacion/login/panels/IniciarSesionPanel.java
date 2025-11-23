@@ -11,7 +11,6 @@ import presentacion.styles.Style;
 import presentacion.styles.TextField;
 import javax.swing.*;
 import java.awt.*;
-
 import presentacion.styles.PasswordField;
 
 /**
@@ -93,8 +92,8 @@ public class IniciarSesionPanel extends Panel {
             String usuario = txtUsuario.getText().trim();
             String contrasenia = new String(txtPassword.getPassword());
             try {
-                EstudianteResponseDTO estudianteResponseDTo = coordinadorAplicacion.intentarIniciarSesion(usuario,contrasenia);
-                if(estudianteResponseDTo != null) {
+                boolean verificarLogin = coordinadorAplicacion.intentarIniciarSesion(usuario,contrasenia);
+                if(verificarLogin) {
                     txtUsuario.setText("");
                     txtPassword.setText("");
                     mainFrame.showPanel("hubPanel");
