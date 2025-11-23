@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Enum.java to edit this template
  */
-package dominio.enums;
+package solicitarBeca.dominio.enums;
 
 /**
  *
  * @author Cortez, Manuel;
  */
-public enum EstadoSolicitud {
-    ACTIVA, ACEPTADA, RECHAZADA, DEVUELTA;
+public enum TipoVivienda {
+    CASA_PROPIA, DEPARTAMENTO, RESIDENCIA, VIVIENDA_IMPROVISADA;
 }

@@ -1,5 +1,5 @@
 package interfaces;
-import dominio.BecasFiltradas;
+import solicitarBeca.dominio.BecasFiltradas;
 import dto.BecaDTO;
 import dto.BecasFiltradasDTO;
 import dto.RequisitosDTO;

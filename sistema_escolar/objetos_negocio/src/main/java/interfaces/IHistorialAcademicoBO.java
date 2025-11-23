@@ -1,5 +1,5 @@
 package interfaces;
-import dominio.*;
+import solicitarBeca.dominio.HistorialAcademico;
 
 /**
  *

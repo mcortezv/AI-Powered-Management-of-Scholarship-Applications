@@ -1,7 +1,7 @@
 package interfaces;
-import dominio.*;
 import dto.DocumentoDTO;
 import excepciones.*;
+import solicitarBeca.dominio.Documento;
 
 /**
  *

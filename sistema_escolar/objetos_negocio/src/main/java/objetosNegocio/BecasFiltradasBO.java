@@ -1,8 +1,8 @@
 package objetosNegocio;
 import adaptadores.BecaAdaptador;
 import adaptadores.BecasFiltradasAdaptador;
-import dominio.Beca;
-import dominio.BecasFiltradas;
+import solicitarBeca.dominio.Beca;
+import solicitarBeca.dominio.BecasFiltradas;
 import dto.BecaDTO;
 import dto.BecasDisponiblesResponseDTO;
 import dto.BecasFiltradasDTO;

@@ -1,6 +1,6 @@
 package adaptadores;
-import dominio.InformacionSocioeconomica;
-import dominio.enums.TipoVivienda;
+import solicitarBeca.dominio.InformacionSocioeconomica;
+import solicitarBeca.dominio.enums.TipoVivienda;
 import dto.InformacionSocioeconomicaDTO;
 
 /**

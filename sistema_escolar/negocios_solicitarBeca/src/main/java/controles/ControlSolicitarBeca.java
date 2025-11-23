@@ -1,9 +1,10 @@
 package controles;
-import dominio.*;
 import dto.BecasFiltradasDTO;
 import dto.RequisitosDTO;
 import excepciones.*;
 import interfaces.*;
+import solicitarBeca.dominio.*;
+
 import java.util.List;
 import java.util.Objects;
 

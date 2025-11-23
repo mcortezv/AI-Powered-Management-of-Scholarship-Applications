@@ -1,6 +1,6 @@
 package adaptadores;
-import dominio.Tutor;
-import dominio.enums.Parentesco;
+import solicitarBeca.dominio.Tutor;
+import solicitarBeca.dominio.enums.Parentesco;
 import dto.TutorDTO;
 
 /**

@@ -3,9 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
 package interfaces;
-import dominio.*;
 import dto.*;
 import excepciones.SolicitudInvalidaException;
+import solicitarBeca.dominio.*;
+
 import java.util.List;
 
 /**
