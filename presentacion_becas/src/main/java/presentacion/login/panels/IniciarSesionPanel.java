@@ -94,14 +94,13 @@ public class IniciarSesionPanel extends Panel {
             String contrasenia = new String(txtPassword.getPassword());
             try {
                 EstudianteResponseDTO estudianteResponseDTo = coordinadorAplicacion.intentarIniciarSesion(usuario,contrasenia);
-                if(estudianteResponseDTo != null){
+                if(estudianteResponseDTo != null) {
                     txtUsuario.setText("");
                     txtPassword.setText("");
                     mainFrame.showPanel("hubPanel");
                     mainFrame.getNorthPanel().setVisible(true);
-
                 }
-            } catch (IDInvalidoException | ContraseniaInvalidaException ex) {
+                } catch (IDInvalidoException | ContraseniaInvalidaException ex) {
                 JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(mainFrame, "Error intentando iniciar sesión.", "Inicio de sesión", JOptionPane.ERROR_MESSAGE

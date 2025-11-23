@@ -10,7 +10,7 @@ public class EstudianteAdaptador {
                 tutor,
                 "Contrasenia",
                 dto.getTelefono(),
-                new Direccion(dto.getDireccion().getCalle(), dto.getDireccion().getColonia(), dto.getDireccion().getCiudad()), // La direccion esta distinta
+                null,
                 dto.getCorreo()
         );
     }

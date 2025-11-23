@@ -1,5 +1,4 @@
 package dto;
-
 import enums.Parentesco;
 
 /**
