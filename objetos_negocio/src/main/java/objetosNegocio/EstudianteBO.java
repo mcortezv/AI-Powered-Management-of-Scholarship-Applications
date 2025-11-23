@@ -1,21 +1,31 @@
 package objetosNegocio;
 import dominio.*;
-import excepciones.*;
+import dto.EstudianteResponseDTO;
 import interfaces.IEstudianteBO;
+import interfaces.IFachadaITSON;
 
+/**
+ *
+ * @author Cortez, Manuel;
+ */
 public class EstudianteBO implements IEstudianteBO {
+    private IFachadaITSON fachadaITSON;
+
+    public EstudianteBO(IFachadaITSON fachadaITSON){
+        this.fachadaITSON = fachadaITSON;
+    }
 
     @Override
-    public Estudiante crearEstudiante(String nombre, String correo, String telefono,
-                                      Direccion direccion, Tutor tutor)
-            throws EstudianteInvalidoException {
-
-        if (nombre == null || correo == null || telefono == null || direccion == null)
-            throw new EstudianteInvalidoException("Faltan datos obligatorios del estudiante.");
-
-        if (tutor == null)
-            throw new EstudianteInvalidoException("El estudiante debe tener un tutor.");
-
-        return new Estudiante(null, nombre, tutor, null, telefono, direccion, correo);
+    public Estudiante crearEstudiante(Long matricula, Tutor tutor){
+        EstudianteResponseDTO dto = fachadaITSON.verificarEstudiante(matricula);
+        Estudiante estudiante = new Estudiante();
+        estudiante.setMatricula(matricula);
+        estudiante.setNombre(dto.getNombre());
+        estudiante.setCarrera(dto.getCarrera());
+        estudiante.setTutor(tutor);
+        estudiante.setTelefono(dto.getTelefono());
+        estudiante.setDireccion(dto.getDireccion());
+        estudiante.setCorreo(dto.getCorreo());
+        return estudiante;
     }
 }

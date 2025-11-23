@@ -1,36 +1,34 @@
 package dto;
+import dominio.enums.Carrera;
+
 /**
  * @author Escalante, Sebastian.
  */
 public class EstudianteResponseDTO {
-    private int matricula;
+    private Long matricula;
     private String nombre;
-    private String carrera;
+    private Carrera carrera;
     private String telefono;
-    private DireccionDTO direccion;
+    private String direccion;
     private String correo;
-    private double promedio;
 
     public EstudianteResponseDTO() {
     }
 
-    public EstudianteResponseDTO(int matricula, String nombre, String carrera, String telefono, DireccionDTO direccion, String correo, double promedio) {
+    public EstudianteResponseDTO(Carrera carrera, String correo, String direccion, Long matricula, String nombre, String telefono) {
+        this.carrera = carrera;
+        this.correo = correo;
+        this.direccion = direccion;
         this.matricula = matricula;
         this.nombre = nombre;
-        this.carrera = carrera;
         this.telefono = telefono;
-        this.direccion = direccion;
-        this.correo = correo;
-        this.promedio = promedio;
     }
 
-    
-
-    public int getMatricula() {
+    public Long getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(int matricula) {
+    public void setMatricula(Long matricula) {
         this.matricula = matricula;
     }
 
@@ -42,11 +40,11 @@ public class EstudianteResponseDTO {
         this.nombre = nombre;
     }
 
-    public String getCarrera() {
+    public Carrera getCarrera() {
         return carrera;
     }
 
-    public void setCarrera(String carrera) {
+    public void setCarrera(Carrera carrera) {
         this.carrera = carrera;
     }
 
@@ -58,11 +56,11 @@ public class EstudianteResponseDTO {
         this.telefono = telefono;
     }
 
-    public DireccionDTO getDireccion() {
+    public String getDireccion() {
         return direccion;
     }
 
-    public void setDireccion(DireccionDTO direccion) {
+    public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
 
@@ -73,13 +71,4 @@ public class EstudianteResponseDTO {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-
-    public double getPromedio() {
-        return promedio;
-    }
-
-    public void setPromedio(double promedio) {
-        this.promedio = promedio;
-    }
-
 }

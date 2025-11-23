@@ -14,6 +14,7 @@
         <module>infraestructura_gobierno</module>
         <module>presentacion_becas</module>
         <module>persistencia_becas</module>
+        <module>dto_infraestructura</module>
     </modules>
 
     <properties>

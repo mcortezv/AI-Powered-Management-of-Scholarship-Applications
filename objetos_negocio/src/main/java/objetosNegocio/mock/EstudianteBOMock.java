@@ -6,10 +6,9 @@ package objetosNegocio.mock;
 import java.util.HashMap;
 import java.util.Map;
 
-import dominio.Direccion;
 import dominio.Estudiante;
 import dto.EstudianteResponseDTO;
-import dto.SolicitudLoginDTO;
+import dto.LoginDTO;
 
 /**
  *
@@ -43,7 +42,7 @@ public class EstudianteBOMock {
         return estudiantes;
     }
 
-    public EstudianteResponseDTO getEstudianteResponseDTO(SolicitudLoginDTO solicitudLoginDTO){
+    public EstudianteResponseDTO getEstudianteResponseDTO(LoginDTO solicitudLoginDTO){
         return new EstudianteResponseDTO("inscrito",9.8,"sebastian.potros@gmail","6681118936", "ISW","sebastian escalante", 252321);
     }
 

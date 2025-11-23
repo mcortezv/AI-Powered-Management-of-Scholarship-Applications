@@ -1,5 +1,5 @@
 package dto;
-import enums.Parentesco;
+import dominio.enums.Parentesco;
 
 /**
  * @author Escalante, Sebastian.
@@ -11,34 +11,52 @@ public class TutorDTO {
     private String apellidoPaterno;
     private String telefono;
     private String correo;
-    private DireccionDTO direccion;
-    
+    private String direccion;
 
     public TutorDTO() {
     }
 
-    public TutorDTO(String nombre, Parentesco parentesco, String apellidoMaterno, String apellidoPaterno, String telefono, String correo) {
-        this.nombre = nombre;
-        this.parentesco = parentesco;
+    public TutorDTO(String apellidoMaterno, String apellidoPaterno, String correo, String direccion, String nombre, Parentesco parentesco, String telefono) {
         this.apellidoMaterno = apellidoMaterno;
         this.apellidoPaterno = apellidoPaterno;
-        this.telefono = telefono;
-        this.correo = correo;
-    }
-
-    public TutorDTO(String nombre, Parentesco parentesco, String apellidoMaterno, String apellidoPaterno, String telefono, String correo, DireccionDTO direccion) {
-        this.nombre = nombre;
-        this.parentesco = parentesco;
-        this.apellidoMaterno = apellidoMaterno;
-        this.apellidoPaterno = apellidoPaterno;
-        this.telefono = telefono;
         this.correo = correo;
         this.direccion = direccion;
+        this.nombre = nombre;
+        this.parentesco = parentesco;
+        this.telefono = telefono;
     }
-    
-    
 
-    
+    public String getApellidoMaterno() {
+        return apellidoMaterno;
+    }
+
+    public void setApellidoMaterno(String apellidoMaterno) {
+        this.apellidoMaterno = apellidoMaterno;
+    }
+
+    public String getApellidoPaterno() {
+        return apellidoPaterno;
+    }
+
+    public void setApellidoPaterno(String apellidoPaterno) {
+        this.apellidoPaterno = apellidoPaterno;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
 
     public String getNombre() {
         return nombre;
@@ -63,41 +81,4 @@ public class TutorDTO {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String getApellidoMaterno() {
-        return apellidoMaterno;
-    }
-
-    public void setApellidoMaterno(String apellidoMaterno) {
-        this.apellidoMaterno = apellidoMaterno;
-    }
-
-    public String getApellidoPaterno() {
-        return apellidoPaterno;
-    }
-
-    public void setApellidoPaterno(String apellidoPaterno) {
-        this.apellidoPaterno = apellidoPaterno;
-    }
-
-    public DireccionDTO getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(DireccionDTO direccion) {
-        this.direccion = direccion;
-    }
-    
-    
-
-
 }

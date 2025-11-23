@@ -1,10 +1,7 @@
 
 package objetosNegocio.mock;
 
-import dto.BecaDTO;
-import dto.RequisitosBecaDTO;
-import dto.SolicitudBecasDisponiblesDTO;
-import dto.SolicitudBecasDisponiblesResponseDTO;
+import dto.BecasDisponiblesResponseDTO;
 import interfaces.mock.IBecaBOMock;
 
 import java.util.ArrayList;
@@ -61,7 +58,7 @@ public class BecaBOMock implements IBecaBOMock {
         
     }
     
-    public SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO){
+    public BecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO){
         List<BecaDTO> becas= obtenerBecas();
         List<BecaDTO> listaBecasDisponibles= new ArrayList<>();
         
@@ -81,7 +78,7 @@ public class BecaBOMock implements IBecaBOMock {
             }
       
         }
-        SolicitudBecasDisponiblesResponseDTO solicitudBecasDispResponse= new SolicitudBecasDisponiblesResponseDTO(listaBecasDisponibles);
+        BecasDisponiblesResponseDTO solicitudBecasDispResponse= new BecasDisponiblesResponseDTO(listaBecasDisponibles);
         return solicitudBecasDispResponse;
     }
     

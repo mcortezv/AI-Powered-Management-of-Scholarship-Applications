@@ -1,17 +1,30 @@
 package adaptadores;
-import dominio.Direccion;
 import dominio.Tutor;
-import dto.*;
+import dto.TutorDTO;
 
+/**
+ *
+ * @author Cortez, Manuel;
+ */
 public class TutorAdaptador {
 
-//    public static Tutor fromDTO(TutorDTO dto) {
-//        return new Tutor(
-//                dto.getNombre(),
-//                dto.getParentesco(),
-//                dto.getTelefono(),
-//                new Direccion(dto.getDireccion().getCalle(), dto.getDireccion().getColonia(), dto.getDireccion().getCiudad()), // La direccion esta distinta
-//                dto.getCorreo()
-//        );
-//    }
+    public static Tutor toEntity(TutorDTO dto) {
+        Tutor tutor = new Tutor();
+        tutor.setNombre(dto.getNombre());
+        tutor.setParentesco(dto.getParentesco());
+        tutor.setTelefono(dto.getTelefono());
+        tutor.setDireccion(dto.getDireccion());
+        tutor.setCorreo(dto.getCorreo());
+        return tutor;
+    }
+
+    public static TutorDTO toDTO(Tutor tutor) {
+        TutorDTO dto = new TutorDTO();
+        dto.setNombre(tutor.getNombre());
+        dto.setParentesco(tutor.getParentesco());
+        dto.setTelefono(tutor.getTelefono());
+        dto.setDireccion(tutor.getDireccion());
+        dto.setCorreo(tutor.getCorreo());
+        return dto;
+    }
 }

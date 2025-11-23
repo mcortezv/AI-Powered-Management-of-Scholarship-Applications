@@ -4,9 +4,7 @@
  */
 package interfaces.mock;
 
-import dto.BecaDTO;
-import dto.SolicitudBecasDisponiblesDTO;
-import dto.SolicitudBecasDisponiblesResponseDTO;
+import dto.BecasDisponiblesResponseDTO;
 import java.util.List;
 
 /**
@@ -16,6 +14,6 @@ import java.util.List;
 public interface IBecaBOMock {
     
     public List<BecaDTO> obtenerBecas();
-    public SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO);
+    public BecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO);
     
 }

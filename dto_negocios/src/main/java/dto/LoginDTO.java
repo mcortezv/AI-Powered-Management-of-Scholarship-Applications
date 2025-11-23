@@ -3,14 +3,14 @@ package dto;
 /**
  * @author Escalante, Sebastian.
  */
-public class SolicitudLoginDTO {
+public class LoginDTO {
     private String usuario;
     private String contrasenia;
 
-    public SolicitudLoginDTO() {
+    public LoginDTO() {
     }
 
-    public SolicitudLoginDTO(String usuario, String contrasenia) {
+    public LoginDTO(String usuario, String contrasenia) {
         this.usuario = usuario;
         this.contrasenia = contrasenia;
     }
