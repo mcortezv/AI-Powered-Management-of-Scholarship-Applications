@@ -1,16 +1,22 @@
 package controles;
 import dto.EstudianteResponseDTO;
+import dto.HistorialAcademicoResponseDTO;
 import dto.LoginDTO;
-import interfaces.IITSON;
-import java.util.Optional;
 
 /**
  * @author Escalante, Sebastian.
  */
-public class ControlItson implements IITSON {
+public class ControlItson {
 
-    @Override
-    public Optional<EstudianteResponseDTO> verificarLogin(LoginDTO solicitudLoginDTO) {
-        return Optional.empty();
+    public boolean verificarLogin(LoginDTO solicitudLoginDTO) {
+        return true;
+    }
+
+    public EstudianteResponseDTO verificarEstudiante(Long matricula) {
+        return null;
+    }
+
+    public HistorialAcademicoResponseDTO verificarHistorialAcademcio(Long matricula) {
+        return null;
     }
 }

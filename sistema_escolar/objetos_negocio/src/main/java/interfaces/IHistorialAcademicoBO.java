@@ -1,9 +1,11 @@
 package interfaces;
 import dominio.*;
-import dominio.enums.Carrera;
-import excepciones.*;
 
+/**
+ *
+ * @author Cortez, Manuel;
+ */
 public interface IHistorialAcademicoBO {
-    HistorialAcademico crearHistorial(double cargaAcademica, Carrera carrera, double indiceReprobacion, double porcentajeBajas, double promedio, int semestre)
-            throws HistorialInvalidoException;
+
+    HistorialAcademico crearHistorial(Long matricula);
 }

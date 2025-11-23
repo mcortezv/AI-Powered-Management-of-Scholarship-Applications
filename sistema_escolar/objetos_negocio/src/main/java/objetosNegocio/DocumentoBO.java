@@ -5,6 +5,10 @@ import dominio.enums.TipoDocumento;
 import excepciones.DocumentoInvalidoException;
 import interfaces.IDocumentoBO;
 
+/**
+ *
+ * @author Cortez, Manuel;
+ */
 public class DocumentoBO implements IDocumentoBO {
 
     public DocumentoBO() {}

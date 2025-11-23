@@ -1,11 +1,16 @@
 package interfaces;
 import dto.EstudianteResponseDTO;
+import dto.HistorialAcademicoResponseDTO;
 import dto.LoginDTO;
-import java.util.Optional;
 
 /**
  * @author Escalante, Sebastian.
  */
 public interface IFachadaITSON {
-    Optional<EstudianteResponseDTO> verificarLogin(LoginDTO solicitudLoginDTO);
+
+    boolean verificarLogin(LoginDTO solicitudLoginDTO);
+
+    EstudianteResponseDTO verificarEstudiante(Long matricula);
+
+    HistorialAcademicoResponseDTO verificarHistorialAcademcio(Long matricula);
 }
