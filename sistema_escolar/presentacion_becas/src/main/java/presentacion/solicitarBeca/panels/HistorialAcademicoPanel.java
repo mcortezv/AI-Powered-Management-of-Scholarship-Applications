@@ -79,7 +79,8 @@ public class HistorialAcademicoPanel extends PanelSolicitarBeca {
 
         botonSiguiente.addActionListener(e -> {
             String carreraSeleccionada = (String) comboCarrera.getSelectedItem();
-            String cargaAcademicaSeleccionada = (String) comboCargaAcademica.getSelectedItem();
+            String cargaStr = (String) comboCargaAcademica.getSelectedItem();
+            double cargaAcademicaSeleccionada = Double.parseDouble(cargaStr.replace("%", ""));
             int semestreSeleccionado = (int) comboSemestre.getSelectedItem();
 
             coordinadorAplicacion.procesarHistorialAcademico(carreraSeleccionada, cargaAcademicaSeleccionada, semestreSeleccionado);

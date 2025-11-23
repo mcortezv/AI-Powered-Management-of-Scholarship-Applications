@@ -9,7 +9,7 @@ public interface ICoordinadorNegocio {
 
     boolean solicitarInicioSesion(LoginDTO solicitudLoginDTO);
 
-    BecasDisponiblesResponseDTO obtenerBecasDisponibles(RequisitosDTO requisitosDTO);
+    BecasFiltradasDTO obtenerBecasDisponibles(RequisitosDTO requisitosDTO);
 
     void solicitarCerrarSesion();
 
