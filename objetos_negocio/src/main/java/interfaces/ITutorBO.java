@@ -1,9 +1,13 @@
 package interfaces;
 import dominio.*;
+import dto.TutorDTO;
 import excepciones.*;
 
+/**
+ *
+ * @author Cortez, Manuel;
+ */
 public interface ITutorBO {
-    Tutor crearTutor(String nombre, String correo, String telefono,
-                     Direccion direccion)
-            throws TutorInvalidoException;
+
+    Tutor crearTutor(TutorDTO tutorDTO) throws TutorInvalidoException;
 }

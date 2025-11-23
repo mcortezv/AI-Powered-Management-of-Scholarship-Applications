@@ -74,7 +74,7 @@ public class FachadaSolicitud implements IFachadaSolicitud {
         }
     }
 
-    public SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO) {
+    public BecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO) {
         return null;
     }
 

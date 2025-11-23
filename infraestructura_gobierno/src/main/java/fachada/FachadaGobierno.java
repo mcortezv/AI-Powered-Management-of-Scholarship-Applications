@@ -3,14 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package fachada;
-
-import control.ControlGobierno;
+import dto.BecasDisponiblesResponseDTO;
 import dto.DocumentoDTO;
-import dto.SolicitudBecasDisponiblesResponseDTO;
+import dto.RequisitosDTO;
 import dto.SolicitudDTO;
-import dto.SolicitudLoginDTO;
 import interfaces.IFachadaGobierno;
-import java.util.Optional;
 
 /**
  *
@@ -19,25 +16,19 @@ import java.util.Optional;
 public class FachadaGobierno implements IFachadaGobierno{
     private final ControlGobierno controlGobierno;
 
-    
-    public FachadaGobierno(ControlGobierno controlGobierno) {
-        this.controlGobierno= controlGobierno;
+
+    @Override
+    public BecasDisponiblesResponseDTO obtenerBecas(RequisitosDTO requisitosDTO) {
+        return null;
     }
 
     @Override
-    public Optional<SolicitudBecasDisponiblesResponseDTO> obtenerBecas(SolicitudDTO solicitudDTO) {
-       return controlGobierno.solicitarBecas(solicitudDTO);
+    public boolean validarDocumento(DocumentoDTO documentoDTO) {
+        return false;
     }
 
     @Override
-    public Optional<Boolean> validarDocumento(DocumentoDTO documentoDTO){
-        return controlGobierno.validarDocumento(documentoDTO);
+    public boolean enviarSolicitud(SolicitudDTO solicitudDTO) {
+        return false;
     }
-
-    @Override
-    public Optional<Boolean> enviarSolicitud(SolicitudDTO solicitudDTO) {
-        return controlGobierno.enviarSolicitud(solicitudDTO);
-    }
-    
-    
 }

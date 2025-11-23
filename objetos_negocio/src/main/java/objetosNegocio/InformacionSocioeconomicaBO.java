@@ -1,15 +1,21 @@
 package objetosNegocio;
+import adaptadores.InformacionSocioeconomicaAdaptador;
 import dominio.InformacionSocioeconomica;
-import dominio.enums.TipoVivienda;
+import dto.InformacionSocioeconomicaDTO;
 import excepciones.InformacionSocioeconomicaInvalidaException;
 import interfaces.IInformacionSocioeconomicaBO;
 
-import java.math.BigDecimal;
-
+/**
+ *
+ * @author Cortez, Manuel;
+ */
 public class InformacionSocioeconomicaBO implements IInformacionSocioeconomicaBO {
-    public InformacionSocioeconomica crearInfo(BigDecimal ingreso, TipoVivienda tipoVivienda) {
-        if (ingreso == null || tipoVivienda == null)
+
+    @Override
+    public InformacionSocioeconomica crearInformacionSocioeconomica(InformacionSocioeconomicaDTO informacionSocioeconomicaDTO) {
+        if (informacionSocioeconomicaDTO.getIngresoTotalFamilarMensual() == null || informacionSocioeconomicaDTO.getTipoVivienda() == null) {
             throw new InformacionSocioeconomicaInvalidaException("Datos socioeconómicos incompletos");
-        return new InformacionSocioeconomica(ingreso, tipoVivienda, true, true); //Hardcode
+        }
+        return InformacionSocioeconomicaAdaptador.toEntity(informacionSocioeconomicaDTO);
     }
 }

@@ -1,20 +1,21 @@
 package dto;
+import dominio.enums.Carrera;
 
 /**
  * @author Escalante, Sebastian.
  */
-public class HistorialAcademicoDTO {
-    private String carrera;
+public class HistorialAcademicoResponseDTO {
+    private Carrera carrera;
     private double promedio;
     private double procentajeBajas;
     private double cargaAcademica;
     private int semestre;
     private double indiceReprobacion;
 
-    public HistorialAcademicoDTO() {
+    public HistorialAcademicoResponseDTO() {
     }
 
-    public HistorialAcademicoDTO(String carrera, double promedio, double procentajeBajas, double cargaAcademica, int semestre, double indiceReprobacion) {
+    public HistorialAcademicoResponseDTO(Carrera carrera, double promedio, double procentajeBajas, double cargaAcademica, int semestre, double indiceReprobacion) {
         this.carrera = carrera;
         this.promedio = promedio;
         this.procentajeBajas = procentajeBajas;
@@ -23,11 +24,11 @@ public class HistorialAcademicoDTO {
         this.indiceReprobacion = indiceReprobacion;
     }
 
-    public String getCarrera() {
+    public Carrera getCarrera() {
         return carrera;
     }
 
-    public void setCarrera(String carrera) {
+    public void setCarrera(Carrera carrera) {
         this.carrera = carrera;
     }
 

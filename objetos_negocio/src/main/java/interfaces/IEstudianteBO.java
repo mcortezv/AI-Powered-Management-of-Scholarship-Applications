@@ -2,8 +2,11 @@ package interfaces;
 import dominio.*;
 import excepciones.*;
 
+/**
+ *
+ * @author Cortez, Manuel;
+ */
 public interface IEstudianteBO {
-    Estudiante crearEstudiante(String nombre, String correo, String telefono,
-                               Direccion direccion, Tutor tutor)
-            throws EstudianteInvalidoException;
+
+    Estudiante crearEstudiante(Long matricula, Tutor tutor) throws EstudianteInvalidoException;
 }

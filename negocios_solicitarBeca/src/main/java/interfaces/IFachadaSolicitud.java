@@ -12,7 +12,7 @@ import dto.*;
  */
 public interface IFachadaSolicitud {
 
-    SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO);
+    BecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO);
 
     boolean validarRequisitos(Requisitos requisitos);
 
