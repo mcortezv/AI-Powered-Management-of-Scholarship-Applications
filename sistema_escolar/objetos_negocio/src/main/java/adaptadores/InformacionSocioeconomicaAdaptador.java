@@ -1,5 +1,6 @@
 package adaptadores;
 import dominio.InformacionSocioeconomica;
+import dominio.enums.TipoVivienda;
 import dto.InformacionSocioeconomicaDTO;
 
 /**
@@ -11,7 +12,7 @@ public class InformacionSocioeconomicaAdaptador {
     public static InformacionSocioeconomica toEntity(InformacionSocioeconomicaDTO dto) {
         InformacionSocioeconomica informacionSocioeconomica = new InformacionSocioeconomica();
         informacionSocioeconomica.setIngresoTotalFamilarMensual(dto.getIngresoTotalFamilarMensual());
-        informacionSocioeconomica.setTipoVivienda(dto.getTipoVivienda());
+        informacionSocioeconomica.setTipoVivienda(TipoVivienda.valueOf(dto.getTipoVivienda()));
         informacionSocioeconomica.setDeudas(dto.isDeudas());
         informacionSocioeconomica.setTrabajo(dto.isTrabajo());
         return informacionSocioeconomica;
@@ -20,7 +21,7 @@ public class InformacionSocioeconomicaAdaptador {
     public static InformacionSocioeconomicaDTO toDTO(InformacionSocioeconomica informacionSocioeconomica) {
         InformacionSocioeconomicaDTO dto = new InformacionSocioeconomicaDTO();
         dto.setIngresoTotalFamilarMensual(informacionSocioeconomica.getIngresoTotalFamilarMensual());
-        dto.setTipoVivienda(informacionSocioeconomica.getTipoVivienda());
+        dto.setTipoVivienda(informacionSocioeconomica.getTipoVivienda().toString());
         dto.setDeudas(informacionSocioeconomica.getDeudas());
         dto.setTrabajo(informacionSocioeconomica.getTrabajo());
         return dto;

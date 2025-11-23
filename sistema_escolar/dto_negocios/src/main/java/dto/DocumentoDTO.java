@@ -1,20 +1,18 @@
 package dto;
-import dominio.Estudiante;
-import dominio.enums.TipoDocumento;
 
 /**
  * @author Escalante, Sebastian.
  */
 public class DocumentoDTO {
     private Long identificador;
-    private TipoDocumento tipo;
+    private String tipo;
     private byte[] contenido;
-    private Estudiante estudiante;
+    private EstudianteDTO estudiante;
 
     public DocumentoDTO() {
     }
 
-    public DocumentoDTO(byte[] contenido, Estudiante estudiante, Long identificador, TipoDocumento tipo) {
+    public DocumentoDTO(byte[] contenido, EstudianteDTO estudiante, Long identificador, String tipo) {
         this.contenido = contenido;
         this.estudiante = estudiante;
         this.identificador = identificador;
@@ -29,11 +27,11 @@ public class DocumentoDTO {
         this.contenido = contenido;
     }
 
-    public Estudiante getEstudiante() {
+    public EstudianteDTO getEstudiante() {
         return estudiante;
     }
 
-    public void setEstudiante(Estudiante estudiante) {
+    public void setEstudiante(EstudianteDTO estudiante) {
         this.estudiante = estudiante;
     }
 
@@ -45,11 +43,11 @@ public class DocumentoDTO {
         this.identificador = identificador;
     }
 
-    public TipoDocumento getTipo() {
+    public String getTipo() {
         return tipo;
     }
 
-    public void setTipo(TipoDocumento tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 }
