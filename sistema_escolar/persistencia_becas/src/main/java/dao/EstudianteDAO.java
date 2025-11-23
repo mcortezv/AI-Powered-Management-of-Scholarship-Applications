@@ -1,4 +1,9 @@
 package dao;
+import dao.interfaces.IEstudianteDAO;
 
-public class EstudianteDAO {
+/**
+ *
+ * @author Cortez, Manuel;
+ */
+public class EstudianteDAO implements IEstudianteDAO {
 }

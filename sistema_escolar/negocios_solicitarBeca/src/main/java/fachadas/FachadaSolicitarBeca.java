@@ -14,8 +14,7 @@ import java.util.List;
  *                          FACHADA
  * @author janethcristinagalvanquinonez
  */
-public class FachadaSolicitarBeca //implements IFachadaSolicitarBeca
-{
+public class FachadaSolicitarBeca implements IFachadaSolicitarBeca {
     private final ControlSolicitarBeca controlSolicitud;
     private Solicitud solicitudActual;
     
@@ -62,12 +61,12 @@ public class FachadaSolicitarBeca //implements IFachadaSolicitarBeca
     }
 
     public Solicitud validarYEnviarSolicitud() throws SolicitudInvalidaException {
-        assertSolicitudIniciada();
         controlSolicitud.validarYFinalizarSolicitud(solicitudActual);
         Solicitud finalizada = this.solicitudActual;
         this.solicitudActual = null;
         return finalizada;
     }
+
 
     private void assertSolicitudIniciada() throws SolicitudInvalidaException {
         if (this.solicitudActual == null) {
