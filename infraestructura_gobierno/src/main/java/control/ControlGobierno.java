@@ -1,14 +1,14 @@
 package gobierno;
-import dto.SolicitudBecasDisponiblesResponseDTO;
+import dto.BecasDisponiblesResponseDTO;
 import dto.SolicitudDTO;
-import dto.SolicitudLoginDTO;
+import dto.LoginDTO;
 import interfaces.IGobierno;
 import java.util.Optional;
 
 public class Gobierno implements IGobierno {
 
     @Override
-    public Optional<SolicitudBecasDisponiblesResponseDTO> solicitarBecas(SolicitudLoginDTO solicitudLoginDTO) {
+    public Optional<BecasDisponiblesResponseDTO> solicitarBecas(LoginDTO solicitudLoginDTO) {
         return Optional.empty();
     }
 

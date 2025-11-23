@@ -4,7 +4,7 @@
  */
 package fachadas;
 import dto.EstudianteResponseDTO;
-import dto.SolicitudLoginDTO;
+import dto.LoginDTO;
 import controles.ControlItson;
 import java.util.Optional;
 import interfaces.IFachadaITSON;
@@ -23,7 +23,7 @@ public class FachadaItson implements IFachadaITSON{
     
 
     @Override
-    public Optional<EstudianteResponseDTO> verificarLogin(SolicitudLoginDTO solicitudLoginDTO) {
+    public Optional<EstudianteResponseDTO> verificarLogin(LoginDTO solicitudLoginDTO) {
         return controlItson.verificarLogin(solicitudLoginDTO);
     }
     

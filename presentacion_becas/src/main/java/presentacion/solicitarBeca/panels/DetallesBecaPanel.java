@@ -5,7 +5,7 @@
 package presentacion.solicitarBeca.panels;
 
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
-import dto.BecaDTO;
+
 import java.awt.Component;
 import java.awt.Dimension;
 import static java.awt.Font.BOLD;

@@ -1,11 +1,11 @@
 package interfaces;
 import dto.EstudianteResponseDTO;
-import dto.SolicitudLoginDTO;
+import dto.LoginDTO;
 import java.util.Optional;
 
 /**
  * @author Escalante, Sebastian.
  */
 public interface IFachadaITSON {
-    Optional<EstudianteResponseDTO> verificarLogin(SolicitudLoginDTO solicitudLoginDTO);
+    Optional<EstudianteResponseDTO> verificarLogin(LoginDTO solicitudLoginDTO);
 }

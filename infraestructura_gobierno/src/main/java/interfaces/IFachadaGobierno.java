@@ -5,7 +5,7 @@ import dto.*;
 import java.util.Optional;
 
 public interface IFachadaGobierno {
-    Optional<SolicitudBecasDisponiblesResponseDTO> obtenerBecas(SolicitudDTO solicitudDTO);
+    Optional<BecasDisponiblesResponseDTO> obtenerBecas(SolicitudDTO solicitudDTO);
     Optional<Boolean> validarDocumento(DocumentoDTO documentoDTO);
     Optional<Boolean> enviarSolicitud(SolicitudDTO solicitudDTO);
 }

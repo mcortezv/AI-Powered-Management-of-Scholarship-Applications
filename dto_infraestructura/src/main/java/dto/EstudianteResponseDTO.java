@@ -1,4 +1,5 @@
 package dto;
+
 /**
  * @author Escalante, Sebastian.
  */
@@ -7,24 +8,20 @@ public class EstudianteResponseDTO {
     private String nombre;
     private String carrera;
     private String telefono;
-    private DireccionDTO direccion;
+    private String direccion;
     private String correo;
-    private double promedio;
 
     public EstudianteResponseDTO() {
     }
 
-    public EstudianteResponseDTO(int matricula, String nombre, String carrera, String telefono, DireccionDTO direccion, String correo, double promedio) {
+    public EstudianteResponseDTO(String carrera, String correo, String direccion, int matricula, String nombre, String telefono) {
+        this.carrera = carrera;
+        this.correo = correo;
+        this.direccion = direccion;
         this.matricula = matricula;
         this.nombre = nombre;
-        this.carrera = carrera;
         this.telefono = telefono;
-        this.direccion = direccion;
-        this.correo = correo;
-        this.promedio = promedio;
     }
-
-    
 
     public int getMatricula() {
         return matricula;
@@ -58,11 +55,11 @@ public class EstudianteResponseDTO {
         this.telefono = telefono;
     }
 
-    public DireccionDTO getDireccion() {
+    public String getDireccion() {
         return direccion;
     }
 
-    public void setDireccion(DireccionDTO direccion) {
+    public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
 
@@ -73,13 +70,4 @@ public class EstudianteResponseDTO {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-
-    public double getPromedio() {
-        return promedio;
-    }
-
-    public void setPromedio(double promedio) {
-        this.promedio = promedio;
-    }
-
 }

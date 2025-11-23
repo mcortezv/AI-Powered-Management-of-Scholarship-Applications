@@ -4,6 +4,7 @@
  */
 package dominio;
 import dominio.enums.EstadoSolicitud;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -14,19 +15,22 @@ public class Solicitud {
     private long id;
     private Beca beca;
     private Estudiante estudiante;
-    private EstadoSolicitud estado;
-    private List<Documento> documentos;
     private InformacionSocioeconomica informacionSocioeconomica;
     private HistorialAcademico historialAcademico;
+    private List<Documento> documentos;
+    private LocalDate fecha;
+    private EstadoSolicitud estado;
 
     public Solicitud() {}
 
-    public Solicitud(Beca beca, Estudiante estudiante, EstadoSolicitud estado, List<Documento> documentos, InformacionSocioeconomica informacionSocioeconomica, HistorialAcademico historialAcademico) {
+    public Solicitud(Beca beca, List<Documento> documentos, EstadoSolicitud estado, Estudiante estudiante, LocalDate fecha, HistorialAcademico historialAcademico, long id, InformacionSocioeconomica informacionSocioeconomica) {
         this.beca = beca;
         this.documentos = documentos;
         this.estado = estado;
         this.estudiante = estudiante;
+        this.fecha = fecha;
         this.historialAcademico = historialAcademico;
+        this.id = id;
         this.informacionSocioeconomica = informacionSocioeconomica;
     }
 
@@ -62,12 +66,28 @@ public class Solicitud {
         this.estudiante = estudiante;
     }
 
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+
     public HistorialAcademico getHistorialAcademico() {
         return historialAcademico;
     }
 
     public void setHistorialAcademico(HistorialAcademico historialAcademico) {
         this.historialAcademico = historialAcademico;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public InformacionSocioeconomica getInformacionSocioeconomica() {

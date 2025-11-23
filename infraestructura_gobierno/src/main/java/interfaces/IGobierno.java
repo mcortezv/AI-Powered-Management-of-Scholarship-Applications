@@ -1,11 +1,11 @@
 package interfaces;
-import dto.SolicitudBecasDisponiblesResponseDTO;
+import dto.BecasDisponiblesResponseDTO;
 import dto.SolicitudDTO;
-import dto.SolicitudLoginDTO;
+import dto.LoginDTO;
 
 import java.util.Optional;
 
 public interface IGobierno {
-    Optional<SolicitudBecasDisponiblesResponseDTO> solicitarBecas(SolicitudLoginDTO solicitudLoginDTO);
+    Optional<BecasDisponiblesResponseDTO> solicitarBecas(LoginDTO solicitudLoginDTO);
     Optional<Boolean> enviarSolicitud(SolicitudDTO solicitudDTO);
 }
