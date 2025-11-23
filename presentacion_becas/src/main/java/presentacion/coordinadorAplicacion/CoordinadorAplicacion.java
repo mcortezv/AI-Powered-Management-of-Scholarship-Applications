@@ -2,6 +2,10 @@ package presentacion.coordinadorAplicacion;
 import dominio.BecasFiltradas;
 import dominio.HistorialAcademico;
 import dto.*;
+import fachadas.FachadaInicioSesion;
+import fachadas.FachadaSolicitarBeca;
+import interfaces.*;
+import objetosNegocio.*;
 import presentacion.coordinadorNegocio.CoordinadorNegocio;
 import presentacion.login.MainFrame;
 import presentacion.login.exceptions.ContraseniaInvalidaException;
@@ -33,7 +37,8 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
 
 
     public CoordinadorAplicacion(){
-        this.coordinadorNegocio = new CoordinadorNegocio();
+
+        this.coordinadorNegocio = new CoordinadorNegocio(becasFiltradasBO, );
         mainFrame = new MainFrame(this);
         mainFrame.setVisible(true);
 

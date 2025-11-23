@@ -14,8 +14,8 @@ import java.util.List;
  * @author Cortez, Manuel;
  */
 public class SolicitudBO implements ISolicitudBO {
-    private IFachadaGobierno fachadaGobierno;
-    private ISolicitudDAO solicitudDAO;
+    private final IFachadaGobierno fachadaGobierno;
+    private final ISolicitudDAO solicitudDAO;
 
     public SolicitudBO(IFachadaGobierno fachadaGobierno, ISolicitudDAO solicitudDAO) {
         this.fachadaGobierno = fachadaGobierno;
