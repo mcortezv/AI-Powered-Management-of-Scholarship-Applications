@@ -3,7 +3,10 @@ import dominio.Beca;
 import excepciones.BecaInvalidaException;
 import interfaces.IBecasFiltradasBO;
 
-
+/**
+ *
+ * @author Cortez, Manuel;
+ */
 public class BecasFiltradasBO implements IBecasFiltradasBO {
 
     public BecasFiltradasBO() {}

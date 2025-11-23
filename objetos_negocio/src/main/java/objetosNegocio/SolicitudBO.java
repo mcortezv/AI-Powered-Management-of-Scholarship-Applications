@@ -1,6 +1,5 @@
 package objetosNegocio;
 import adaptadores.SolicitudAdaptador;
-import dao.SolicitudDAO;
 import dao.interfaces.ISolicitudDAO;
 import dominio.*;
 import dominio.enums.EstadoSolicitud;
@@ -18,9 +17,9 @@ public class SolicitudBO implements ISolicitudBO {
     private IFachadaGobierno fachadaGobierno;
     private ISolicitudDAO solicitudDAO;
 
-    public SolicitudBO(IFachadaGobierno fachadaGobierno) {
+    public SolicitudBO(IFachadaGobierno fachadaGobierno, ISolicitudDAO solicitudDAO) {
         this.fachadaGobierno = fachadaGobierno;
-        this.solicitudDAO = new SolicitudDAO();
+        this.solicitudDAO = solicitudDAO;
     }
 
     @Override

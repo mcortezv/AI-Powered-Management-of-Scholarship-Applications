@@ -3,6 +3,10 @@ import dominio.*;
 import excepciones.*;
 import interfaces.IBecaBO;
 
+/**
+ *
+ * @author Cortez, Manuel;
+ */
 public class BecaBO implements IBecaBO {
 
     public BecaBO() {
