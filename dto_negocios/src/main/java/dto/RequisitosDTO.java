@@ -1,4 +1,5 @@
 package dto;
+
 /**
  * @author Escalante, Sebastian.
  */

@@ -1,17 +1,21 @@
 package controles;
-import dto.EstudianteResponseDTO;
 import dto.LoginDTO;
-import objetosNegocio.mock.EstudianteBOMock;
+import objetosNegocio.EstudianteBO;
 
 
 public class ControlInicioSesion {
-    private final EstudianteBOMock estudianteMock= EstudianteBOMock.getInstance();
+    private final EstudianteBO estudianteBO;
 
-    public EstudianteResponseDTO solicitarLogin(LoginDTO solicitudLoginDTO){
-        return estudianteMock.getEstudianteResponseDTO(solicitudLoginDTO);
+    public ControlInicioSesion(EstudianteBO estudianteBO) {
+        this.estudianteBO = estudianteBO;
+    }
+
+    public boolean solicitarLogin(LoginDTO solicitudLoginDTO){
+        return estudianteBO.iniciarSesion(solicitudLoginDTO);
     }
 
     public void cerrarSesion(){
         System.out.println("Cerrrando sesion...");
     }
 }
+

@@ -1,31 +1,36 @@
 package controles;
 import dominio.*;
+import dto.BecasFiltradasDTO;
+import dto.RequisitosDTO;
 import excepciones.*;
 import interfaces.*;
 import java.util.List;
 import java.util.Objects;
 
-
-public class ControlSolicitud {
+/**
+ *
+ * @author Cortez, Manuel;
+ */
+public class ControlSolicitarBeca {
     private final ISolicitudBO solicitudBO;
     private final IEstudianteBO estudianteBO;
     private final ITutorBO tutorBO;
-    private final IBecaBO becaBO;
+    private final IBecasFiltradasBO becasFiltradasBO;
     private final IDocumentoBO documentoBO;
     private final IHistorialAcademicoBO  historialBO;
     private final IInformacionSocioeconomicaBO socioBO;
 
-    public ControlSolicitud(ISolicitudBO solicitudBO,
+    public ControlSolicitarBeca(ISolicitudBO solicitudBO,
                                 IEstudianteBO estudianteBO,
                                 ITutorBO tutorBO,
-                                IBecaBO becaBO,
+                                IBecasFiltradasBO becaBO,
                                 IDocumentoBO documentoBO,
                                 IHistorialAcademicoBO historialBO,
                                 IInformacionSocioeconomicaBO socioBO) {
         this.solicitudBO = Objects.requireNonNull(solicitudBO);
         this.estudianteBO = Objects.requireNonNull(estudianteBO);
         this.tutorBO = Objects.requireNonNull(tutorBO);
-        this.becaBO = Objects.requireNonNull(becaBO);
+        this.becasFiltradasBO = Objects.requireNonNull(becaBO);
         this.documentoBO = Objects.requireNonNull(documentoBO);
         this.historialBO = Objects.requireNonNull(historialBO);
         this.socioBO = Objects.requireNonNull(socioBO);
@@ -33,6 +38,10 @@ public class ControlSolicitud {
 
     public Solicitud iniciarSolicitud() throws SolicitudInvalidaException {
         return solicitudBO.crearSolicitudVacia();
+    }
+
+    public BecasFiltradasDTO obtenerBecasFiltradas(RequisitosDTO requisitosDTO) throws BecaInvalidaException {
+        return becasFiltradasBO.obtenerBecasFiltradas(requisitosDTO);
     }
 
     public void asignarEstudiante(Solicitud solicitud, Estudiante estudiante) throws SolicitudInvalidaException {

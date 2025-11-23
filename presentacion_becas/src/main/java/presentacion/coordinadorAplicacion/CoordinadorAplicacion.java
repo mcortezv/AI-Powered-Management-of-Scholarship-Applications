@@ -1,7 +1,7 @@
-
 package presentacion.coordinadorAplicacion;
+import dominio.BecasFiltradas;
+import dominio.HistorialAcademico;
 import dto.*;
-import enums.Parentesco;
 import presentacion.coordinadorNegocio.CoordinadorNegocio;
 import presentacion.login.MainFrame;
 import presentacion.login.exceptions.ContraseniaInvalidaException;
@@ -11,7 +11,6 @@ import presentacion.solicitarBeca.exceptions.*;
 import presentacion.solicitarBeca.panels.DetallesBecaPanel;
 import presentacion.solicitarBeca.panels.ListadoBecasDisponiblesPanel;
 import presentacion.solicitarBeca.panels.ResumenFinalPanel;
-
 import java.io.File;
 import java.util.Map;
 
@@ -26,8 +25,8 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     private SolicitarBeca solicitarBeca;
     private BecaDTO becaDTO;
     private BecaDTO becaSeleccionadaDTO;
-    private DatosSolicitanteDTO datosSolicitanteDTO;
-    private HistAcademicoDTO historialAcademicoDTO;
+    private RequisitosDTO requisitosDTO;
+    private HistorialAcademico historialAcademico;
     private TutorDTO tutorDTO;
     private InformacionSocioeconomicaDTO infoSocioeconomicaDTO;
     private SolicitudDTO solicitudDTO;
@@ -40,19 +39,24 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
 
     }
 
-    public EstudianteResponseDTO intentarIniciarSesion(String usuario, String contrasenia) throws IDInvalidoException, ContraseniaInvalidaException {
+    public boolean intentarIniciarSesion(String usuario, String contrasenia) throws IDInvalidoException, ContraseniaInvalidaException {
         presentacion.login.validadores.Validadores.validarID(usuario);
         presentacion.login.validadores.Validadores.validarContrasenia(contrasenia);
         LoginDTO solicitudLoginDTO = new LoginDTO(usuario, contrasenia);
         return coordinadorNegocio.solicitarInicioSesion(solicitudLoginDTO);
     }
 
-    public void procesarInformacionGeneral(double promedio, boolean carga, double ingreso) throws PromedioInvalidoException, IngresoInvalidoException {
+    public void procesarInformacionGeneral(double promedio, double carga, double ingreso, boolean trabajo, boolean deudas) throws PromedioInvalidoException, IngresoInvalidoException {
         presentacion.solicitarBeca.validadores.Validadores.validarPromedio(promedio);
         presentacion.solicitarBeca.validadores.Validadores.validarIngreso(ingreso);
-        SolicitudBecasDisponiblesDTO solictudBecasDisponiblesDTO  = new SolicitudBecasDisponiblesDTO(promedio, carga, ingreso);
-        BecasDisponiblesResponseDTO solicitudBecasDisponiblesResponseDTO = coordinadorNegocio.obtenerBecasDisponibles(solictudBecasDisponiblesDTO);
-        mostrarBecasDisponibles(solicitudBecasDisponiblesResponseDTO);
+        RequisitosDTO requisitosDTO  = new RequisitosDTO();
+        requisitosDTO.setPromedioMinimo(promedio);
+        requisitosDTO.setIngresoFamiliarMaximo(ingreso);
+        requisitosDTO.setCargaAcademica(carga);
+        requisitosDTO.setTrabajo(trabajo);
+        requisitosDTO.setDeudas(deudas);
+        BecasFiltradasDTO becasFiltradas = coordinadorNegocio.obtenerBecasDisponibles(requisitosDTO);
+        mostrarBecasDisponibles(becasFiltradas);
     }
 
     public void procesarDatosSolicitante(String nombre, String apellidoMaterno, String apellidoPaterno, String direccion, String telefono, String email)
@@ -81,9 +85,9 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         mainFrame.setVisible(true);
     }
 
-    public void mostrarBecasDisponibles(BecasDisponiblesResponseDTO responseDTO) {
+    public void mostrarBecasDisponibles(BecasFiltradasDTO becasFiltradasDTO) {
         ListadoBecasDisponiblesPanel pnl = (ListadoBecasDisponiblesPanel) solicitarBeca.getPanel("listadoBecasDisponiblesPanel");
-        pnl.setBecas(responseDTO.getBecas());
+        pnl.setBecas(becasFiltradasDTO.getBecas());
         solicitarBeca.showPanel("listadoBecasDisponiblesPanel");
         solicitarBeca.getNorthPanel().setVisible(true);
     }
