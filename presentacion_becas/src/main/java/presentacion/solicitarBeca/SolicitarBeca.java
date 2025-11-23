@@ -31,24 +31,56 @@ public final class SolicitarBeca extends JFrame {
         centralPanel = new JPanel();
         this.coordinadorAplicacion = coordinadorAplicacion;
         this.becaDTO= becaDTO;
-
-        panels = new HashMap<String, JPanel>();
-        panels.put("informacionGeneralPanel", new InformacionGeneralPanel(this, coordinadorAplicacion));
-        panels.put("listadoBecasDisponiblesPanel", new ListadoBecasDisponiblesPanel(this, coordinadorAplicacion));
-        panels.put("detalleBecaPanel", new DetallesBecaPanel(this, coordinadorAplicacion));
-        panels.put("datosDelSolicitantePanel", new DatosDelSolicitantePanel(this, coordinadorAplicacion));
-        panels.put("historialAcademicoPanel", new HistorialAcademicoPanel(this, coordinadorAplicacion));
-        panels.put("datosTutorPanel", new DatosTutorPanel(this, coordinadorAplicacion));
-        panels.put("informacionSocioeconomicaPanel", new InformacionSocioeconomicaPanel(this, coordinadorAplicacion));
-        panels.put("subirDocumentosPanel", new SubirDocumentosPanel(this, coordinadorAplicacion));
-        panels.put("resumenFinalPanel", new ResumenFinalPanel(this, coordinadorAplicacion));
-        panels.put("confirmacionPanel", new ConfirmacionPanel(this, coordinadorAplicacion));
-
+        panels = new HashMap<>();
+        initializePanels();
         add(northPanel, BorderLayout.NORTH);
         add(centralPanel, BorderLayout.CENTER);
-            northPanel.setVisible(false);
+        northPanel.setVisible(false);
         showPanel("informacionGeneralPanel");
+    }
 
+    private void initializePanels() {
+        PanelSolicitarBeca panel;
+
+        panel = new InformacionGeneralPanel(this, coordinadorAplicacion);
+        panel.startComponents();
+        panels.put("informacionGeneralPanel", panel);
+
+        panel = new ListadoBecasDisponiblesPanel(this, coordinadorAplicacion);
+        panel.startComponents();
+        panels.put("listadoBecasDisponiblesPanel", panel);
+
+        panel = new DetallesBecaPanel(this, coordinadorAplicacion);
+        panel.startComponents();
+        panels.put("detalleBecaPanel", panel);
+
+        panel = new DatosDelSolicitantePanel(this, coordinadorAplicacion);
+        panel.startComponents();
+        panels.put("datosDelSolicitantePanel", panel);
+
+        panel = new HistorialAcademicoPanel(this, coordinadorAplicacion);
+        panel.startComponents();
+        panels.put("historialAcademicoPanel", panel);
+
+        panel = new DatosTutorPanel(this, coordinadorAplicacion);
+        panel.startComponents();
+        panels.put("datosTutorPanel", panel);
+
+        panel = new InformacionSocioeconomicaPanel(this, coordinadorAplicacion);
+        panel.startComponents();
+        panels.put("informacionSocioeconomicaPanel", panel);
+
+        panel = new SubirDocumentosPanel(this, coordinadorAplicacion);
+        panel.startComponents();
+        panels.put("subirDocumentosPanel", panel);
+
+        panel = new ResumenFinalPanel(this, coordinadorAplicacion);
+        panel.startComponents();
+        panels.put("resumenFinalPanel", panel);
+
+        panel = new ConfirmacionPanel(this, coordinadorAplicacion);
+        panel.startComponents();
+        panels.put("confirmacionPanel", panel);
     }
 
     public void showPanel(String nuevoPanel) {

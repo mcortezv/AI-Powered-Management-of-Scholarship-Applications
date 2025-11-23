@@ -1,5 +1,4 @@
 package dto;
-
 import enums.Parentesco;
 
 /**
@@ -12,6 +11,8 @@ public class TutorDTO {
     private String apellidoPaterno;
     private String telefono;
     private String correo;
+    private DireccionDTO direccion;
+    
 
     public TutorDTO() {
     }
@@ -24,6 +25,18 @@ public class TutorDTO {
         this.telefono = telefono;
         this.correo = correo;
     }
+
+    public TutorDTO(String nombre, Parentesco parentesco, String apellidoMaterno, String apellidoPaterno, String telefono, String correo, DireccionDTO direccion) {
+        this.nombre = nombre;
+        this.parentesco = parentesco;
+        this.apellidoMaterno = apellidoMaterno;
+        this.apellidoPaterno = apellidoPaterno;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.direccion = direccion;
+    }
+    
+    
 
     
 
@@ -74,6 +87,14 @@ public class TutorDTO {
 
     public void setApellidoPaterno(String apellidoPaterno) {
         this.apellidoPaterno = apellidoPaterno;
+    }
+
+    public DireccionDTO getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(DireccionDTO direccion) {
+        this.direccion = direccion;
     }
     
     

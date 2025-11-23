@@ -36,7 +36,6 @@ public abstract class PanelSolicitarBeca extends JPanel {
         centralPanel.setBackground(Style.PANEL_COLOR);
         southPanel.setBackground(Style.PANEL_COLOR);
         add(centralPanel, BorderLayout.CENTER);
-        startComponents();
         add(southPanel, BorderLayout.SOUTH);
         southPanel.add(btnBack);
         btnBack.addActionListener(e -> {
