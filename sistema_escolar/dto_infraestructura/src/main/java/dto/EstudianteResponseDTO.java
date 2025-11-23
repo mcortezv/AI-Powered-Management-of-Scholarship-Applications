@@ -1,12 +1,13 @@
 package dto;
+import dominio.enums.Carrera;
 
 /**
  * @author Escalante, Sebastian.
  */
 public class EstudianteResponseDTO {
-    private int matricula;
+    private Long matricula;
     private String nombre;
-    private String carrera;
+    private Carrera carrera;
     private String telefono;
     private String direccion;
     private String correo;
@@ -14,7 +15,7 @@ public class EstudianteResponseDTO {
     public EstudianteResponseDTO() {
     }
 
-    public EstudianteResponseDTO(String carrera, String correo, String direccion, int matricula, String nombre, String telefono) {
+    public EstudianteResponseDTO(Carrera carrera, String correo, String direccion, Long matricula, String nombre, String telefono) {
         this.carrera = carrera;
         this.correo = correo;
         this.direccion = direccion;
@@ -23,11 +24,11 @@ public class EstudianteResponseDTO {
         this.telefono = telefono;
     }
 
-    public int getMatricula() {
+    public Long getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(int matricula) {
+    public void setMatricula(Long matricula) {
         this.matricula = matricula;
     }
 
@@ -39,11 +40,11 @@ public class EstudianteResponseDTO {
         this.nombre = nombre;
     }
 
-    public String getCarrera() {
+    public Carrera getCarrera() {
         return carrera;
     }
 
-    public void setCarrera(String carrera) {
+    public void setCarrera(Carrera carrera) {
         this.carrera = carrera;
     }
 

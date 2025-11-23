@@ -1,5 +1,7 @@
 package objetosNegocio;
+import adaptadores.TutorAdaptador;
 import dominio.*;
+import dto.TutorDTO;
 import excepciones.*;
 import interfaces.ITutorBO;
 
@@ -10,13 +12,12 @@ import interfaces.ITutorBO;
 public class TutorBO implements ITutorBO {
 
     @Override
-    public Tutor crearTutor(String nombre, String correo, String telefono,
-                            String direccion)
-            throws TutorInvalidoException {
-
-        if (nombre == null || correo == null || telefono == null || direccion == null)
+    public Tutor crearTutor(TutorDTO tutorDTO) throws TutorInvalidoException {
+        if (tutorDTO.getNombre() == null || tutorDTO.getApellidoPaterno() == null || tutorDTO.getApellidoMaterno() == null
+                || tutorDTO.getCorreo() == null  || tutorDTO.getDireccion() == null  || tutorDTO.getParentesco() == null
+                || tutorDTO.getTelefono() == null) {
             throw new TutorInvalidoException("Datos de tutor incompletos.");
-
-        return new Tutor(nombre, null, telefono, direccion, correo);
+        }
+        return TutorAdaptador.toEntity(tutorDTO);
     }
 }
