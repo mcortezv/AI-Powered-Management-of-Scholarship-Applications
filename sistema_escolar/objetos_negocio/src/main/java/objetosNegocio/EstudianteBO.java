@@ -1,6 +1,7 @@
 package objetosNegocio;
 import dominio.*;
 import dto.EstudianteResponseDTO;
+import dto.LoginDTO;
 import interfaces.IEstudianteBO;
 import interfaces.IFachadaITSON;
 
@@ -13,6 +14,11 @@ public class EstudianteBO implements IEstudianteBO {
 
     public EstudianteBO(IFachadaITSON fachadaITSON){
         this.fachadaITSON = fachadaITSON;
+    }
+
+    @Override
+    public boolean iniciarSesion(LoginDTO solicitudLoginDTO){
+        return fachadaITSON.verificarLogin(solicitudLoginDTO);
     }
 
     @Override

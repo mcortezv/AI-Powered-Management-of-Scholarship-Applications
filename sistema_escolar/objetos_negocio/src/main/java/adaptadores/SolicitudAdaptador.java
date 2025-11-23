@@ -3,8 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package adaptadores;
+import dominio.Documento;
 import dominio.Solicitud;
+import dominio.enums.EstadoSolicitud;
+import dto.DocumentoDTO;
 import dto.SolicitudDTO;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,26 +19,34 @@ public class SolicitudAdaptador {
     public static SolicitudDTO toDTO(Solicitud solicitud) {
         SolicitudDTO dto = new SolicitudDTO();
         dto.setId(solicitud.getId());
-        dto.setBeca(solicitud.getBeca());
-        dto.setEstudiante(solicitud.getEstudiante());
-        dto.setInformacionSocioeconomica(solicitud.getInformacionSocioeconomica());
-        dto.setHistorialAcademico(solicitud.getHistorialAcademico());
-        dto.setDocumentos(solicitud.getDocumentos());
+        dto.setBeca(BecaAdaptador.toDTO(solicitud.getBeca()));
+        dto.setEstudiante(EstudianteAdaptador.toDTO(solicitud.getEstudiante()));
+        dto.setInformacionSocioeconomica(InformacionSocioeconomicaAdaptador.toDTO(solicitud.getInformacionSocioeconomica()));
+        dto.setHistorialAcademico(HistorialAcademicoAdaptador.toDTO(solicitud.getHistorialAcademico()));
+        ArrayList<DocumentoDTO> documentosDTO = new ArrayList<>();
+        for (Documento documento : solicitud.getDocumentos()) {
+            documentosDTO.add(DocumentoAdaptador.toDTO(documento));
+        }
+        dto.setDocumentos(documentosDTO);
         dto.setFecha(solicitud.getFecha());
-        dto.setEstado(solicitud.getEstado());
+        dto.setEstado(solicitud.getEstado().toString());
         return dto;
     }
 
     public static Solicitud toEntity(SolicitudDTO dto) {
         Solicitud solicitud = new Solicitud();
         solicitud.setId(dto.getId());
-        solicitud.setBeca(dto.getBeca());
-        solicitud.setEstudiante(dto.getEstudiante());
-        solicitud.setInformacionSocioeconomica(dto.getInformacionSocioeconomica());
-        solicitud.setHistorialAcademico(dto.getHistorialAcademico());
-        solicitud.setDocumentos(dto.getDocumentos());
+        solicitud.setBeca(BecaAdaptador.toEntity(dto.getBeca()));
+        solicitud.setEstudiante(EstudianteAdaptador.toEntity(dto.getEstudiante()));
+        solicitud.setInformacionSocioeconomica(InformacionSocioeconomicaAdaptador.toEntity(dto.getInformacionSocioeconomica()));
+        solicitud.setHistorialAcademico(HistorialAcademicoAdaptador.toEntity(dto.getHistorialAcademico()));
+        ArrayList<Documento> documentos = new ArrayList<>();
+        for (DocumentoDTO documento : dto.getDocumentos()) {
+            documentos.add(DocumentoAdaptador.toEntity(documento));
+        }
+        solicitud.setDocumentos(documentos);
         solicitud.setFecha(dto.getFecha());
-        solicitud.setEstado(dto.getEstado());
+        solicitud.setEstado(EstadoSolicitud.valueOf(dto.getEstado()));
         return solicitud;
     }
 }

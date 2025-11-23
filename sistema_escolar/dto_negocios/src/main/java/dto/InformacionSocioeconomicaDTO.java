@@ -1,5 +1,4 @@
 package dto;
-import dominio.enums.TipoVivienda;
 import java.math.BigDecimal;
 
 /**
@@ -8,7 +7,7 @@ import java.math.BigDecimal;
 
 public class InformacionSocioeconomicaDTO {
     private BigDecimal ingresoTotalFamilarMensual;
-    private TipoVivienda tipoVivienda;
+    private String tipoVivienda;
     private boolean trabajo;
     private boolean deudas;
    
@@ -16,7 +15,7 @@ public class InformacionSocioeconomicaDTO {
     public InformacionSocioeconomicaDTO() {
     }
 
-    public InformacionSocioeconomicaDTO(boolean deudas, BigDecimal ingresoTotalFamilarMensual, TipoVivienda tipoVivienda, boolean trabajo) {
+    public InformacionSocioeconomicaDTO(boolean deudas, BigDecimal ingresoTotalFamilarMensual, String tipoVivienda, boolean trabajo) {
         this.deudas = deudas;
         this.ingresoTotalFamilarMensual = ingresoTotalFamilarMensual;
         this.tipoVivienda = tipoVivienda;
@@ -39,11 +38,11 @@ public class InformacionSocioeconomicaDTO {
         this.ingresoTotalFamilarMensual = ingresoTotalFamilarMensual;
     }
 
-    public TipoVivienda getTipoVivienda() {
+    public String getTipoVivienda() {
         return tipoVivienda;
     }
 
-    public void setTipoVivienda(TipoVivienda tipoVivienda) {
+    public void setTipoVivienda(String tipoVivienda) {
         this.tipoVivienda = tipoVivienda;
     }
 
