@@ -8,7 +8,6 @@ import java.util.Map;
 
 import dominio.Direccion;
 import dominio.Estudiante;
-import dto.DireccionDTO;
 import dto.EstudianteResponseDTO;
 import dto.SolicitudLoginDTO;
 
@@ -45,8 +44,7 @@ public class EstudianteBOMock {
     }
 
     public EstudianteResponseDTO getEstudianteResponseDTO(SolicitudLoginDTO solicitudLoginDTO){
-        return new EstudianteResponseDTO(252321, "sebastian escalante", "ISW", "6681118936", new DireccionDTO("Luar", "Villas del Rey", "Ciudad Obregon"), "sebastian escalante", 9.8);
-       
+        return new EstudianteResponseDTO("inscrito",9.8,"sebastian.potros@gmail","6681118936", "ISW","sebastian escalante", 252321);
     }
 
     public boolean iniciarSesionPorMatricula(String matricula, String password) {

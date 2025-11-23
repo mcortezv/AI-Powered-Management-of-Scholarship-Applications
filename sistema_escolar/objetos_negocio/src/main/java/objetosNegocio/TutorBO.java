@@ -13,8 +13,6 @@ public class TutorBO implements ITutorBO {
         if (nombre == null || correo == null || telefono == null || direccion == null)
             throw new TutorInvalidoException("Datos de tutor incompletos.");
 
-        Tutor t = new Tutor(nombre, null, telefono, direccion, correo);
-
-        return TutorMock.save(t); // Pendiente
+        return new Tutor(nombre, null, telefono, direccion, correo);
     }
 }

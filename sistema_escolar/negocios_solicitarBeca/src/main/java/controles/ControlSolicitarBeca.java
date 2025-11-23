@@ -1,39 +1,27 @@
 package controles;
 import dominio.*;
-import dto.BecaDTO;
-import dto.DocumentoDTO;
-import dto.HistorialAcademicoDTO;
-import dto.InformacionSocioeconomicaDTO;
-import dto.SolicitudDTO;
-import interfaces.IBecaBO;
-import interfaces.IDocumentoBO;
-import interfaces.IEstudianteBO;
-import interfaces.ISolicitudBO;
-import interfaces.ITutorBO;
+import excepciones.*;
+import interfaces.*;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * Control que orquesta las operaciones atómicas sobre la Solicitud.
- * No mantiene estado por sesión; recibe la Solicitud (objeto dominio)
- * y delega a los BOs. Esto permite que la Fachada lleve el "estado" de la solicitud.
- */
-public class ControlSolicitarBeca {
+
+public class ControlSolicitud {
     private final ISolicitudBO solicitudBO;
     private final IEstudianteBO estudianteBO;
     private final ITutorBO tutorBO;
     private final IBecaBO becaBO;
     private final IDocumentoBO documentoBO;
-    private final IHistorialBO historialBO;
-    private final ISocioeconomicoBO socioBO;
+    private final IHistorialAcademicoBO  historialBO;
+    private final IInformacionSocioeconomicaBO socioBO;
 
-    public ControlSolicitarBecaBeca(ISolicitudBO solicitudBO,
+    public ControlSolicitud(ISolicitudBO solicitudBO,
                                 IEstudianteBO estudianteBO,
                                 ITutorBO tutorBO,
                                 IBecaBO becaBO,
                                 IDocumentoBO documentoBO,
-                                IHistorialBO historialBO,
-                                ISocioeconomicoBO socioBO) {
+                                IHistorialAcademicoBO historialBO,
+                                IInformacionSocioeconomicaBO socioBO) {
         this.solicitudBO = Objects.requireNonNull(solicitudBO);
         this.estudianteBO = Objects.requireNonNull(estudianteBO);
         this.tutorBO = Objects.requireNonNull(tutorBO);
@@ -43,34 +31,31 @@ public class ControlSolicitarBeca {
         this.socioBO = Objects.requireNonNull(socioBO);
     }
 
-    /* Crear solicitud vacía (delegar al BO) */
-    public SolicitudDTO iniciarSolicitud() throws excepciones.SolicitudInvalidaException {
+    public Solicitud iniciarSolicitud() throws SolicitudInvalidaException {
         return solicitudBO.crearSolicitudVacia();
     }
 
-    /* Asignaciones atómicas delegadas a la BO de solicitud */
-    public void asignarEstudiante(SolicitudDTO solicitud, EstudianteDTO estudiante) throws excepciones.SolicitudInvalidaException {
+    public void asignarEstudiante(Solicitud solicitud, Estudiante estudiante) throws SolicitudInvalidaException {
         solicitudBO.asignarEstudiante(solicitud, estudiante);
     }
 
-    public void asignarBeca(SolicitudDTO solicitud, BecaDTO beca) throws excepciones.SolicitudInvalidaException {
+    public void asignarBeca(Solicitud solicitud, Beca beca) throws SolicitudInvalidaException {
         solicitudBO.asignarBeca(solicitud, beca);
     }
 
-    public void asignarDocumentos(SolicitudDTO solicitud, List<DocumentoDTO> docs) throws excepciones.SolicitudInvalidaException {
-        solicitudBO.asignarDocumentos(solicitud, docs);
+    public void asignarDocumentos(Solicitud solicitud, List<Documento> documentos) throws SolicitudInvalidaException {
+        solicitudBO.asignarDocumentos(solicitud, documentos);
     }
 
-    public void asignarHistorial(SolicitudDTO solicitud, HistorialAcademicoDTO histAcademico) throws excepciones.SolicitudInvalidaException {
-        solicitudBO.asignarHistorial(solicitud, histAcademico);
+    public void asignarHistorial(Solicitud solicitud, HistorialAcademico historialAcademico) throws SolicitudInvalidaException {
+        solicitudBO.asignarHistorial(solicitud, historialAcademico);
     }
 
-    public void asignarSocioeconomico(SolicitudDTO solicitud, InformacionSocioeconomicaDTO infoSocioeconomica) throws excepciones.SolicitudInvalidaException {
-        solicitudBO.asignarSocioeconomico(solicitud, infoSocioeconomica);
+    public void asignarSocioeconomico(Solicitud solicitud, InformacionSocioeconomica informacionSocioeconomica) throws SolicitudInvalidaException {
+        solicitudBO.asignarSocioeconomico(solicitud, informacionSocioeconomica);
     }
 
-    /* Validar toda la solicitud (cambia estado a ENVIADA si todo ok) */
-    public void validarYFinalizarSolicitud(SolicitudDTO solicitud) throws excepciones.SolicitudInvalidaException {
+    public void validarYFinalizarSolicitud(Solicitud solicitud) throws SolicitudInvalidaException {
         solicitudBO.validarSolicitudCompleta(solicitud);
     }
 }
