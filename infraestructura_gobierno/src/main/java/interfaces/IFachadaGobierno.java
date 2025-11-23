@@ -1,11 +1,15 @@
 package interfaces;
-
 import dto.*;
 
-import java.util.Optional;
-
+/**
+ *
+ * @author Cortez, Manuel;
+ */
 public interface IFachadaGobierno {
-    Optional<BecasDisponiblesResponseDTO> obtenerBecas(SolicitudDTO solicitudDTO);
-    Optional<Boolean> validarDocumento(DocumentoDTO documentoDTO);
-    Optional<Boolean> enviarSolicitud(SolicitudDTO solicitudDTO);
+
+    BecasDisponiblesResponseDTO obtenerBecas(RequisitosDTO requisitosDTO);
+
+    boolean validarDocumento(DocumentoDTO documentoDTO);
+
+    boolean enviarSolicitud(SolicitudDTO solicitudDTO);
 }
