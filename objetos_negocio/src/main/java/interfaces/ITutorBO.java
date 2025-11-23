@@ -1,5 +1,6 @@
 package interfaces;
 import dominio.*;
+import dto.TutorDTO;
 import excepciones.*;
 
 /**
@@ -8,5 +9,5 @@ import excepciones.*;
  */
 public interface ITutorBO {
 
-    Tutor crearTutor(String nombre, String correo, String telefono, String direccion) throws TutorInvalidoException;
+    Tutor crearTutor(TutorDTO tutorDTO) throws TutorInvalidoException;
 }

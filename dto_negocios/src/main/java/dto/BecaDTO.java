@@ -1,0 +1,106 @@
+package dto;
+import dominio.Requisitos;
+import dominio.enums.TipoBeca;
+import java.time.LocalDate;
+
+/**
+ * @author Escalante, Sebastian.
+ */
+public class BecaDTO {
+    private int codigo;
+    private TipoBeca tipo;
+    private String nombre;
+    private String descripcion;
+    private LocalDate fechaInicio;
+    private LocalDate fechaFin;
+    private int becasDisponibles;
+    private Requisitos requisitos;
+    private LocalDate fechaResultados;
+
+    public BecaDTO() {
+    }
+
+    public BecaDTO(int becasDisponibles, int codigo, String descripcion, LocalDate fechaFin, LocalDate fechaInicio, LocalDate fechaResultados, String nombre, Requisitos requisitos, TipoBeca tipo) {
+        this.becasDisponibles = becasDisponibles;
+        this.codigo = codigo;
+        this.descripcion = descripcion;
+        this.fechaFin = fechaFin;
+        this.fechaInicio = fechaInicio;
+        this.fechaResultados = fechaResultados;
+        this.nombre = nombre;
+        this.requisitos = requisitos;
+        this.tipo = tipo;
+    }
+
+    public int getBecasDisponibles() {
+        return becasDisponibles;
+    }
+
+    public void setBecasDisponibles(int becasDisponibles) {
+        this.becasDisponibles = becasDisponibles;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public LocalDate getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(LocalDate fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    public LocalDate getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(LocalDate fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public LocalDate getFechaResultados() {
+        return fechaResultados;
+    }
+
+    public void setFechaResultados(LocalDate fechaResultados) {
+        this.fechaResultados = fechaResultados;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Requisitos getRequisitos() {
+        return requisitos;
+    }
+
+    public void setRequisitos(Requisitos requisitos) {
+        this.requisitos = requisitos;
+    }
+
+    public TipoBeca getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoBeca tipo) {
+        this.tipo = tipo;
+    }
+}

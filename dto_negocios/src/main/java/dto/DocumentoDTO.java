@@ -1,23 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package dominio;
+package dto;
+import dominio.Estudiante;
 import dominio.enums.TipoDocumento;
 
 /**
- *
- * @author Cortez, Manuel;
+ * @author Escalante, Sebastian.
  */
-public class Documento {
+public class DocumentoDTO {
     private long identificador;
     private TipoDocumento tipo;
     private byte[] contenido;
     private Estudiante estudiante;
 
-    public Documento() {}
+    public DocumentoDTO() {
+    }
 
-    public Documento(byte[] contenido, Estudiante estudiante, long identificador, TipoDocumento tipo) {
+    public DocumentoDTO(byte[] contenido, Estudiante estudiante, long identificador, TipoDocumento tipo) {
         this.contenido = contenido;
         this.estudiante = estudiante;
         this.identificador = identificador;
