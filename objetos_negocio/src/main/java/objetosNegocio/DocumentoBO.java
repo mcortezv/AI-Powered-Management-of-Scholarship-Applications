@@ -1,5 +1,6 @@
 package objetosNegocio;
 import adaptadores.DocumentoAdaptador;
+import dao.interfaces.IDocumentoDAO;
 import dominio.Documento;
 import dto.DocumentoDTO;
 import excepciones.DocumentoInvalidoException;
@@ -10,8 +11,11 @@ import interfaces.IDocumentoBO;
  * @author Cortez, Manuel;
  */
 public class DocumentoBO implements IDocumentoBO {
+    private final IDocumentoDAO documentoDAO;
 
-    public DocumentoBO() {}
+    public DocumentoBO(IDocumentoDAO documentoDAO) {
+        this.documentoDAO = documentoDAO;
+    }
 
     @Override
     public Documento crearDocumento(DocumentoDTO dto) throws DocumentoInvalidoException {

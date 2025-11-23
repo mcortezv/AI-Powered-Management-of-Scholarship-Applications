@@ -5,7 +5,6 @@ import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.*;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
-
 import javax.swing.*;
 import java.awt.*;
 

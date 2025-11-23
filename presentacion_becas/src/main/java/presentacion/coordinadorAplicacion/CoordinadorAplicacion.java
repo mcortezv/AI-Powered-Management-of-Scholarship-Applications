@@ -1,7 +1,6 @@
 package presentacion.coordinadorAplicacion;
-import dominio.BecasFiltradas;
-import dominio.HistorialAcademico;
 import dto.*;
+import interfaces.*;
 import presentacion.coordinadorNegocio.CoordinadorNegocio;
 import presentacion.login.MainFrame;
 import presentacion.login.exceptions.ContraseniaInvalidaException;
@@ -12,6 +11,7 @@ import presentacion.solicitarBeca.panels.DetallesBecaPanel;
 import presentacion.solicitarBeca.panels.ListadoBecasDisponiblesPanel;
 import presentacion.solicitarBeca.panels.ResumenFinalPanel;
 import java.io.File;
+import java.math.BigDecimal;
 import java.util.Map;
 
 /**
@@ -26,14 +26,15 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     private BecaDTO becaDTO;
     private BecaDTO becaSeleccionadaDTO;
     private RequisitosDTO requisitosDTO;
-    private HistorialAcademico historialAcademico;
+    private HistorialAcademicoDTO historialAcademicoDTO;
     private TutorDTO tutorDTO;
     private InformacionSocioeconomicaDTO infoSocioeconomicaDTO;
     private SolicitudDTO solicitudDTO;
+    private EstudianteDTO estudianteDTO;
 
 
-    public CoordinadorAplicacion(){
-        this.coordinadorNegocio = new CoordinadorNegocio();
+    public CoordinadorAplicacion(IFachadaInicioSesion fachadaInicioSesion, IFachadaSolicitarBeca fachadaSolicitarBeca) {
+        this.coordinadorNegocio = new CoordinadorNegocio(fachadaInicioSesion, fachadaSolicitarBeca);
         mainFrame = new MainFrame(this);
         mainFrame.setVisible(true);
 
@@ -69,8 +70,13 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         presentacion.solicitarBeca.validadores.Validadores.validarTelefono(telefono);
         presentacion.solicitarBeca.validadores.Validadores.validarCorreo(email);
 
-        DatosSolicitanteDTO datosSolicitanteDTO = new DatosSolicitanteDTO(nombre, apellidoMaterno, apellidoPaterno, direccion, telefono, email);setDatosSolicitanteDTO(datosSolicitanteDTO);
+        EstudianteDTO estudianteDTO = new EstudianteDTO();
+        estudianteDTO.setNombre(nombre + " " + apellidoPaterno + " " + apellidoMaterno);
+        estudianteDTO.setDireccion(direccion);
+        estudianteDTO.setTelefono(telefono);
+        estudianteDTO.setCorreo(email);
 
+        this.estudianteDTO = estudianteDTO;
         solicitarBeca.showPanel("historialAcademicoPanel");
     }
 
@@ -93,39 +99,38 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     }
     
     public void mostrarBecaSeleccionada(){
-        BecaDTO becaSeleccionada= obtenerBecaSeleccionadaDTO();
         DetallesBecaPanel detallesBeca= (DetallesBecaPanel) solicitarBeca.getPanel("detalleBecaPanel");
-        detallesBeca.cargarBeca(becaSeleccionada);
+        detallesBeca.cargarBeca(becaSeleccionadaDTO);
         solicitarBeca.showPanel("detalleBecaPanel");
     }
+
     public void mostrarResumen(){
-        SolicitudDTO solicitudDTO = obtenerSolicitud();
-        TutorDTO tutorDTO= obtenerTutor();
-        DatosSolicitanteDTO solicitanteDTO= obtenerDatosSolicitanteDTO();
         ResumenFinalPanel resumenFinal= (ResumenFinalPanel) solicitarBeca.getPanel("resumenFinalPanel");
-        resumenFinal.cargarResumen(solicitudDTO, tutorDTO, solicitanteDTO);
+        resumenFinal.cargarResumen(solicitudDTO);
         solicitarBeca.showPanel("resumenFinalPanel");
         
     }
 
-    public void procesarHistorialAcademico(String carrera, String cargaAcademica, int semestre) {
-        HistAcademicoDTO historialAcademicoDTO = new HistAcademicoDTO(carrera, cargaAcademica, semestre);
-        setHistorialAcademicoDTO(historialAcademicoDTO);
+    public void procesarHistorialAcademico(String carrera, double cargaAcademica, int semestre) {
+        this.historialAcademicoDTO = new HistorialAcademicoDTO();;
+        historialAcademicoDTO.setCarrera(carrera);
+        historialAcademicoDTO.setSemestre(semestre);
+        historialAcademicoDTO.setCargaAcademica(cargaAcademica);
         solicitarBeca.showPanel("datosTutorPanel");
     }
 
-    public void procesarDatosTutor(Parentesco parentesco, String nombre, String apPat, String apMat, String telefono, String correo) throws NombresInvalidosException, ApellidoInvalidoException, TelefonoInvalidoException, IDInvalidoException {
+    public void procesarDatosTutor(String parentesco, String nombre, String apPat, String apMat, String direccion, String telefono, String correo) throws NombresInvalidosException, ApellidoInvalidoException, TelefonoInvalidoException, IDInvalidoException {
         presentacion.solicitarBeca.validadores.Validadores.validarNombres(nombre);
         presentacion.solicitarBeca.validadores.Validadores.validarApellido(apPat);
         presentacion.solicitarBeca.validadores.Validadores.validarApellido(apMat);
         presentacion.solicitarBeca.validadores.Validadores.validarTelefono(telefono);
+        presentacion.solicitarBeca.validadores.Validadores.validarDireccion(direccion);
         presentacion.solicitarBeca.validadores.Validadores.validarCorreo(correo);
-        TutorDTO tutor = new TutorDTO(nombre, parentesco, apMat, apPat, telefono, correo);
-        setTutor(tutor);
+        tutorDTO = new TutorDTO(apMat, apPat, correo, direccion, nombre, parentesco, telefono);
         solicitarBeca.showPanel("informacionSocioeconomicaPanel");
     }
 
-    public void procesarInformacionSocioeconomica(String ingresoStr, String seleccionDependEconomica, String seleccionGeneraIngreso) throws NumberFormatException, IngresoInvalidoException {
+    public void procesarInformacionSocioeconomica(String ingresoStr, String deudas, String seleccionGeneraIngreso) throws NumberFormatException, IngresoInvalidoException {
         double ingreso;
         try {
             ingreso = Double.parseDouble(ingresoStr);
@@ -133,69 +138,20 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
             throw new NumberFormatException("El ingreso debe ser un número válido.");
         }
         presentacion.solicitarBeca.validadores.Validadores.validarIngreso(ingreso);
-        boolean dependenciaEconomica = "SI".equals(seleccionDependEconomica);
+        boolean deudasBool = "SI".equals(deudas);
         boolean generaIngreso = "SI".equals(seleccionGeneraIngreso);
-        InformacionSocioeconomicaDTO informacionSocioeconomicaDTO = new InformacionSocioeconomicaDTO(ingreso, dependenciaEconomica, generaIngreso);
-        setInfoSocioeconomica(informacionSocioeconomicaDTO);
+        infoSocioeconomicaDTO = new InformacionSocioeconomicaDTO();
+        infoSocioeconomicaDTO.setIngresoTotalFamilarMensual(BigDecimal.valueOf(ingreso));
+        infoSocioeconomicaDTO.setDeudas(deudasBool);
+        infoSocioeconomicaDTO.setTrabajo(generaIngreso);
         solicitarBeca.showPanel("subirDocumentosPanel");
     }
 
     public void procesarDocumentosYSolicitud(Map<String, File> documentosCargados) {
-        BecaDTO becaDTO = obtenerBecaSeleccionadaDTO();
-        InformacionSocioeconomicaDTO infoSocioeconomicaDTO = obtenerInfoSocioeconomicaDTO();
-        HistAcademicoDTO historialAcademicoDTO = obtenerHistAcademico();
-
-        SolicitudDTO solicitudDTO = new SolicitudDTO(becaDTO, infoSocioeconomicaDTO, historialAcademicoDTO);
-        setSolicitud(solicitudDTO);
         mostrarResumen();
     }
-   
 
-    public BecaDTO obtenerBecaSeleccionadaDTO() {
-        return becaSeleccionadaDTO;
+    public void setBecaSeleccionadaDTO(BecaDTO becaDTO) {
+        this.becaDTO = becaDTO;
     }
-    
-    public DatosSolicitanteDTO obtenerDatosSolicitanteDTO(){
-        return datosSolicitanteDTO;
-    }
-    
-    public void setDatosSolicitanteDTO(DatosSolicitanteDTO datosSolicitante){
-        this.datosSolicitanteDTO= datosSolicitante;
-    }
-
-    public void setBecaSeleccionadaDTO(BecaDTO becaSeleccionadaDTO) {
-        this.becaSeleccionadaDTO = becaSeleccionadaDTO;
-    }
-    public void setHistorialAcademicoDTO(HistAcademicoDTO historialAcademicoDTO){
-       this.historialAcademicoDTO= historialAcademicoDTO;
-    }
-    
-    public void setTutor(TutorDTO tutor){
-        this.tutorDTO= tutor;
-    }
-    public TutorDTO obtenerTutor(){
-        return tutorDTO;
-    }
-    
-    public InformacionSocioeconomicaDTO obtenerInfoSocioeconomicaDTO(){
-        return infoSocioeconomicaDTO;
-    }    
-    
-    public void setInfoSocioeconomica(InformacionSocioeconomicaDTO infoSocioeconomicaDTO){
-        this.infoSocioeconomicaDTO= infoSocioeconomicaDTO;
-    }
-    
-    public HistAcademicoDTO obtenerHistAcademico(){
-        return historialAcademicoDTO;
-    }
-    
-    public void setSolicitud(SolicitudDTO solicitudDTO){
-       this.solicitudDTO= solicitudDTO;
-    }
-    
-    public SolicitudDTO obtenerSolicitud(){
-        return solicitudDTO;
-    }
-
-
 }

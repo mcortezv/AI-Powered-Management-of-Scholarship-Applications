@@ -5,6 +5,8 @@
 package interfaces;
 import dominio.*;
 import dto.*;
+import excepciones.SolicitudInvalidaException;
+import java.util.List;
 
 /**
  *
@@ -12,19 +14,37 @@ import dto.*;
  */
 public interface IFachadaSolicitarBeca {
 
+    Solicitud iniciarNuevaSolicitud() throws SolicitudInvalidaException;
+
+    Solicitud obtenerSolicitudActual();
+
+    void cancelarSolicitud();
+
+    void agregarEstudiante(Estudiante estudiante) throws SolicitudInvalidaException;
+
+    void agregarBeca(Beca beca) throws SolicitudInvalidaException;
+
+    void agregarDocumentos(List<Documento> documentos) throws SolicitudInvalidaException;
+
+    void agregarHistorial(HistorialAcademico historial) throws SolicitudInvalidaException;
+
+    void agregarInfoSocioeconomica(InformacionSocioeconomica info) throws SolicitudInvalidaException;
+
+    Solicitud validarYEnviarSolicitud() throws SolicitudInvalidaException;
+
     BecasFiltradasDTO obtenerBecasDisponibles(RequisitosDTO requisitosDTO);
 
-    boolean validarRequisitos(RequisitosDTO requisitos);
+    boolean validarRequisitos(Requisitos requisitos);
 
-    boolean validarSolicitudNoExistente(Long idEstudiante, Long idSolicitud);
+    boolean validarSolicitudNoExistente(int idEstudiante, int idSolicitud);
 
-    Beca recuperarBeca(Long idBeca);
+    Beca recuperarBeca(int idBeca);
 
-    Estudiante solicitarDatosEstudiante(Long  idEstudiante);
+    Estudiante solicitarDatosEstudiante(int idEstudiante);
 
     Solicitud crearSolicitud();
 
-    boolean guardarSolicitud();
+    boolean guardarSolicitud(Solicitud solicitud);
 
-    boolean enviarSolicitudGobierno();
+    boolean enviarSolicitudGobierno(SolicitudDTO solicitudDTO);
 }
