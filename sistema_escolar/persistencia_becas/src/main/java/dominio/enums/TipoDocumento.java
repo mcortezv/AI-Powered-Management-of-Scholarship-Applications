@@ -6,7 +6,7 @@ package dominio.enums;
 
 /**
  *
- * @author mdjes
+ * @author Cortez, Manuel;
  */
 public enum TipoDocumento {
     CURP, INE, KARDEX, COMPROBANTE_INSCIRPCION, COMPROBANTE_INGRESOS;

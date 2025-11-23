@@ -1,36 +1,50 @@
 package dto;
+import dominio.enums.TipoVivienda;
+import java.math.BigDecimal;
+
 /**
  * @author Escalante, Sebastian.
  */
+
 public class InformacionSocioeconomicaDTO {
-    private double ingresoTotalFamilarMensual;
-    private boolean dependenciaEconomica;
+    private BigDecimal ingresoTotalFamilarMensual;
+    private TipoVivienda tipoVivienda;
     private boolean trabajo;
+    private boolean deudas;
    
 
     public InformacionSocioeconomicaDTO() {
     }
 
-    public InformacionSocioeconomicaDTO(double ingresoTotalFamilarMensual, boolean dependenciaEconomica, boolean trabajo) {
+    public InformacionSocioeconomicaDTO(boolean deudas, BigDecimal ingresoTotalFamilarMensual, TipoVivienda tipoVivienda, boolean trabajo) {
+        this.deudas = deudas;
         this.ingresoTotalFamilarMensual = ingresoTotalFamilarMensual;
-        this.dependenciaEconomica = dependenciaEconomica;
+        this.tipoVivienda = tipoVivienda;
         this.trabajo = trabajo;
     }
 
-    public double getIngresoTotalFamilarMensual() {
+    public boolean isDeudas() {
+        return deudas;
+    }
+
+    public void setDeudas(boolean deudas) {
+        this.deudas = deudas;
+    }
+
+    public BigDecimal getIngresoTotalFamilarMensual() {
         return ingresoTotalFamilarMensual;
     }
 
-    public void setIngresoTotalFamilarMensual(double ingresoTotalFamilarMensual) {
+    public void setIngresoTotalFamilarMensual(BigDecimal ingresoTotalFamilarMensual) {
         this.ingresoTotalFamilarMensual = ingresoTotalFamilarMensual;
     }
 
-    public boolean isDependenciaEconomica() {
-        return dependenciaEconomica;
+    public TipoVivienda getTipoVivienda() {
+        return tipoVivienda;
     }
 
-    public void setDependenciaEconomica(boolean dependenciaEconomica) {
-        this.dependenciaEconomica = dependenciaEconomica;
+    public void setTipoVivienda(TipoVivienda tipoVivienda) {
+        this.tipoVivienda = tipoVivienda;
     }
 
     public boolean isTrabajo() {
@@ -40,6 +54,4 @@ public class InformacionSocioeconomicaDTO {
     public void setTrabajo(boolean trabajo) {
         this.trabajo = trabajo;
     }
-
-    
 }

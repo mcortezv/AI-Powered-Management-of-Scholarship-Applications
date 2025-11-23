@@ -19,7 +19,7 @@ public class FachadaSolicitud implements IFachadaSolicitud {
     }
 
     @Override
-    public SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO) {
+    public BecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO) {
         return controlSolicitud.obtenerBecasDisponibles(solicitudDTO);
     }
 

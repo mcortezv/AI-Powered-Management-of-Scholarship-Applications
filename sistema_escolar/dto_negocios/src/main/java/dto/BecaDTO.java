@@ -1,63 +1,35 @@
 package dto;
-
+import dominio.Requisitos;
+import dominio.enums.TipoBeca;
 import java.time.LocalDate;
+
 /**
  * @author Escalante, Sebastian.
  */
 public class BecaDTO {
     private int codigo;
-    private String tipo;
+    private TipoBeca tipo;
     private String nombre;
     private String descripcion;
-    private String periodo;
+    private LocalDate fechaInicio;
+    private LocalDate fechaFin;
     private int becasDisponibles;
-    private RequisitosBecaDTO requisitos;
+    private Requisitos requisitos;
     private LocalDate fechaResultados;
 
     public BecaDTO() {
     }
 
-    public BecaDTO(int codigo, String tipo, String nombre, String descripcion, String periodo, int becasDisponibles, RequisitosBecaDTO requisitos, LocalDate fechaResultados) {
-        this.codigo = codigo;
-        this.tipo = tipo;
-        this.nombre = nombre;
-        this.descripcion= descripcion;
-        this.periodo = periodo;
+    public BecaDTO(int becasDisponibles, int codigo, String descripcion, LocalDate fechaFin, LocalDate fechaInicio, LocalDate fechaResultados, String nombre, Requisitos requisitos, TipoBeca tipo) {
         this.becasDisponibles = becasDisponibles;
-        this.requisitos = requisitos;
-        this.fechaResultados = fechaResultados;
-    }
-
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigo) {
         this.codigo = codigo;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
+        this.descripcion = descripcion;
+        this.fechaFin = fechaFin;
+        this.fechaInicio = fechaInicio;
+        this.fechaResultados = fechaResultados;
         this.nombre = nombre;
-    }
-
-    public String getPeriodo() {
-        return periodo;
-    }
-
-    public void setPeriodo(String periodo) {
-        this.periodo = periodo;
+        this.requisitos = requisitos;
+        this.tipo = tipo;
     }
 
     public int getBecasDisponibles() {
@@ -68,20 +40,12 @@ public class BecaDTO {
         this.becasDisponibles = becasDisponibles;
     }
 
-    public RequisitosBecaDTO getRequisitos() {
-        return requisitos;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public void setRequisitos(RequisitosBecaDTO requisitos) {
-        this.requisitos = requisitos;
-    }
-
-    public LocalDate getFechaResultados() {
-        return fechaResultados;
-    }
-
-    public void setFechaResultados(LocalDate fechaResultados) {
-        this.fechaResultados = fechaResultados;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public String getDescripcion() {
@@ -92,8 +56,51 @@ public class BecaDTO {
         this.descripcion = descripcion;
     }
 
-    @Override
-    public String toString(){
+    public LocalDate getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(LocalDate fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    public LocalDate getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(LocalDate fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public LocalDate getFechaResultados() {
+        return fechaResultados;
+    }
+
+    public void setFechaResultados(LocalDate fechaResultados) {
+        this.fechaResultados = fechaResultados;
+    }
+
+    public String getNombre() {
         return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Requisitos getRequisitos() {
+        return requisitos;
+    }
+
+    public void setRequisitos(Requisitos requisitos) {
+        this.requisitos = requisitos;
+    }
+
+    public TipoBeca getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoBeca tipo) {
+        this.tipo = tipo;
     }
 }

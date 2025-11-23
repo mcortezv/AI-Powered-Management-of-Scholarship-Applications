@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 package dominio;
 import dominio.enums.Parentesco;
 
@@ -15,12 +14,12 @@ public class Tutor {
     private String nombre;
     private Parentesco parentesco;
     private String telefono;
-    private Direccion direccion;
+    private String direccion;
     private String correo;
 
     public Tutor() {}
 
-    public Tutor(String nombre, Parentesco parentesco, String telefono, Direccion direccion, String correo) {
+    public Tutor(String nombre, Parentesco parentesco, String telefono, String direccion, String correo) {
         this.nombre = nombre;
         this.parentesco = parentesco;
         this.telefono = telefono;
@@ -28,7 +27,7 @@ public class Tutor {
         this.correo = correo;
     }
 
-    public Tutor(Long id, String nombre, Parentesco parentesco, String telefono, Direccion direccion, String correo) {
+    public Tutor(Long id, String nombre, Parentesco parentesco, String telefono, String direccion, String correo) {
         this.id = id;
         this.nombre = nombre;
         this.parentesco = parentesco;
@@ -69,11 +68,11 @@ public class Tutor {
         this.telefono = telefono;
     }
 
-    public Direccion getDireccion() {
+    public String getDireccion() {
         return direccion;
     }
 
-    public void setDireccion(Direccion direccion) {
+    public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
 
