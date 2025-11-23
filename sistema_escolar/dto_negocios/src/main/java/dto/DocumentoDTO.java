@@ -6,7 +6,7 @@ import dominio.enums.TipoDocumento;
  * @author Escalante, Sebastian.
  */
 public class DocumentoDTO {
-    private long identificador;
+    private Long identificador;
     private TipoDocumento tipo;
     private byte[] contenido;
     private Estudiante estudiante;
@@ -14,7 +14,7 @@ public class DocumentoDTO {
     public DocumentoDTO() {
     }
 
-    public DocumentoDTO(byte[] contenido, Estudiante estudiante, long identificador, TipoDocumento tipo) {
+    public DocumentoDTO(byte[] contenido, Estudiante estudiante, Long identificador, TipoDocumento tipo) {
         this.contenido = contenido;
         this.estudiante = estudiante;
         this.identificador = identificador;
@@ -37,11 +37,11 @@ public class DocumentoDTO {
         this.estudiante = estudiante;
     }
 
-    public long getIdentificador() {
+    public Long getIdentificador() {
         return identificador;
     }
 
-    public void setIdentificador(long identificador) {
+    public void setIdentificador(Long identificador) {
         this.identificador = identificador;
     }
 

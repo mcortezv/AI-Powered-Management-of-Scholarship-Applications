@@ -10,14 +10,14 @@ import dominio.enums.TipoDocumento;
  * @author Cortez, Manuel;
  */
 public class Documento {
-    private long identificador;
+    private Long identificador;
     private TipoDocumento tipo;
     private byte[] contenido;
     private Estudiante estudiante;
 
     public Documento() {}
 
-    public Documento(byte[] contenido, Estudiante estudiante, long identificador, TipoDocumento tipo) {
+    public Documento(byte[] contenido, Estudiante estudiante, Long identificador, TipoDocumento tipo) {
         this.contenido = contenido;
         this.estudiante = estudiante;
         this.identificador = identificador;
@@ -40,11 +40,11 @@ public class Documento {
         this.estudiante = estudiante;
     }
 
-    public long getIdentificador() {
+    public Long getIdentificador() {
         return identificador;
     }
 
-    public void setIdentificador(long identificador) {
+    public void setIdentificador(Long identificador) {
         this.identificador = identificador;
     }
 

@@ -1,9 +1,13 @@
 package interfaces;
 import dominio.*;
-import dominio.enums.TipoDocumento;
+import dto.DocumentoDTO;
 import excepciones.*;
 
+/**
+ *
+ * @author Cortez, Manuel;
+ */
 public interface IDocumentoBO {
-    Documento crearDocumento(TipoDocumento tipo, Estudiante est)
-            throws DocumentoInvalidoException;
+
+    Documento crearDocumento(DocumentoDTO documentoDTO) throws DocumentoInvalidoException;
 }

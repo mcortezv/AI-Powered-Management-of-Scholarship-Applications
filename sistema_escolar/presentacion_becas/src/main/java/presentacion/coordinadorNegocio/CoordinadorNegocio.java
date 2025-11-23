@@ -13,7 +13,6 @@ import objetosNegocio.*;
 public class CoordinadorNegocio implements ICoordinadorNegocio{
     private final IFachadaInicioSesion iFachadaInicioSesion;
     private final IFachadaSolicitud iFachadaSolicitud;
-    private final IBecaBO becaBO = new BecaBO();
     private final IBecasFiltradasBO becasFiltradasBO = new BecasFiltradasBO();
     private final IEstudianteBO estudianteBO = new EstudianteBO();
     private final ITutorBO tutorBO =  new TutorBO();
