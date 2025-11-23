@@ -1,9 +1,9 @@
 package interfaces;
 import dto.EstudianteResponseDTO;
-import dto.SolicitudLoginDTO;
+import dto.LoginDTO;
 
 public interface IFachadaInicioSesion {
-    EstudianteResponseDTO solicitarLogin(SolicitudLoginDTO solicitudLoginDTO);
+    EstudianteResponseDTO solicitarLogin(LoginDTO solicitudLoginDTO);
     void solicitarLogOut();
     
 }

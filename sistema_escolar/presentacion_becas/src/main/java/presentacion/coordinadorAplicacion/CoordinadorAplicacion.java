@@ -6,7 +6,6 @@ import presentacion.coordinadorNegocio.CoordinadorNegocio;
 import presentacion.login.MainFrame;
 import presentacion.login.exceptions.ContraseniaInvalidaException;
 import presentacion.login.exceptions.IDInvalidoException;
-import presentacion.login.validadores.Validadores;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.solicitarBeca.exceptions.*;
 import presentacion.solicitarBeca.panels.DetallesBecaPanel;
@@ -44,7 +43,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     public EstudianteResponseDTO intentarIniciarSesion(String usuario, String contrasenia) throws IDInvalidoException, ContraseniaInvalidaException {
         presentacion.login.validadores.Validadores.validarID(usuario);
         presentacion.login.validadores.Validadores.validarContrasenia(contrasenia);
-        SolicitudLoginDTO solicitudLoginDTO = new SolicitudLoginDTO(usuario, contrasenia);
+        LoginDTO solicitudLoginDTO = new LoginDTO(usuario, contrasenia);
         return coordinadorNegocio.solicitarInicioSesion(solicitudLoginDTO);
     }
 
@@ -52,7 +51,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         presentacion.solicitarBeca.validadores.Validadores.validarPromedio(promedio);
         presentacion.solicitarBeca.validadores.Validadores.validarIngreso(ingreso);
         SolicitudBecasDisponiblesDTO solictudBecasDisponiblesDTO  = new SolicitudBecasDisponiblesDTO(promedio, carga, ingreso);
-        SolicitudBecasDisponiblesResponseDTO solicitudBecasDisponiblesResponseDTO = coordinadorNegocio.obtenerBecasDisponibles(solictudBecasDisponiblesDTO);
+        BecasDisponiblesResponseDTO solicitudBecasDisponiblesResponseDTO = coordinadorNegocio.obtenerBecasDisponibles(solictudBecasDisponiblesDTO);
         mostrarBecasDisponibles(solicitudBecasDisponiblesResponseDTO);
     }
 
@@ -82,7 +81,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         mainFrame.setVisible(true);
     }
 
-    public void mostrarBecasDisponibles(SolicitudBecasDisponiblesResponseDTO responseDTO) {
+    public void mostrarBecasDisponibles(BecasDisponiblesResponseDTO responseDTO) {
         ListadoBecasDisponiblesPanel pnl = (ListadoBecasDisponiblesPanel) solicitarBeca.getPanel("listadoBecasDisponiblesPanel");
         pnl.setBecas(responseDTO.getBecas());
         solicitarBeca.showPanel("listadoBecasDisponiblesPanel");

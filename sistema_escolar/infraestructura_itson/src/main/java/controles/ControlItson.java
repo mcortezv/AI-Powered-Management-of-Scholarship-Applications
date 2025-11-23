@@ -1,6 +1,6 @@
 package controles;
 import dto.EstudianteResponseDTO;
-import dto.SolicitudLoginDTO;
+import dto.LoginDTO;
 import interfaces.IITSON;
 import java.util.Optional;
 
@@ -10,7 +10,7 @@ import java.util.Optional;
 public class ControlItson implements IITSON {
 
     @Override
-    public Optional<EstudianteResponseDTO> verificarLogin(SolicitudLoginDTO solicitudLoginDTO) {
+    public Optional<EstudianteResponseDTO> verificarLogin(LoginDTO solicitudLoginDTO) {
         return Optional.empty();
     }
 }

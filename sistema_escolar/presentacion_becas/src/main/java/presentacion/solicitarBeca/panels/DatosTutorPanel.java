@@ -1,7 +1,6 @@
 package presentacion.solicitarBeca.panels;
 
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
-import dto.TutorDTO;
 import enums.Parentesco;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.*;

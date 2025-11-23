@@ -1,9 +1,8 @@
 package presentacion.coordinadorNegocio;
 
 import dto.EstudianteResponseDTO;
-import dto.SolicitudBecasDisponiblesDTO;
-import dto.SolicitudBecasDisponiblesResponseDTO;
-import dto.SolicitudLoginDTO;
+import dto.BecasDisponiblesResponseDTO;
+import dto.LoginDTO;
 import fachadas.FachadaInicioSesion;
 import fachadas.FachadaSolicitud;
 import controles.ControlInicioSesion;
@@ -32,12 +31,12 @@ public class CoordinadorNegocio implements ICoordinadorNegocio{
 
 
     @Override
-    public EstudianteResponseDTO solicitarInicioSesion(SolicitudLoginDTO solicitudLoginDTO) {
+    public EstudianteResponseDTO solicitarInicioSesion(LoginDTO solicitudLoginDTO) {
         return iFachadaInicioSesion.solicitarLogin(solicitudLoginDTO);
     }
 
     @Override
-    public SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO) {
+    public BecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO) {
         return iFachadaSolicitud.obtenerBecasDisponibles(solicitudDTO);
     }
 

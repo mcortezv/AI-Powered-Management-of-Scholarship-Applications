@@ -11,28 +11,29 @@ package dominio;
 public class Estudiante {
     private Long matricula;
     private String nombre;
+    private String carrera;
     private Tutor tutor;
-    private String password;
+    private String contrasenia;
     private String telefono;
     private String direccion;
     private String correo;
 
     public Estudiante() {}
 
-    public Estudiante(String nombre, Tutor tutor, String password, String telefono, String direccion, String correo) {
+    public Estudiante(String nombre, Tutor tutor, String contrasenia, String telefono, String direccion, String correo) {
         this.nombre = nombre;
         this.tutor = tutor;
-        this.password = password;
+        this.contrasenia = contrasenia;
         this.telefono = telefono;
         this.direccion = direccion;
         this.correo = correo;
     }
 
-    public Estudiante(Long matricula, String nombre, Tutor tutor, String password, String telefono, String direccion, String correo) {
+    public Estudiante(Long matricula, String nombre, Tutor tutor, String contrasenia, String telefono, String direccion, String correo) {
         this.matricula = matricula;
         this.nombre = nombre;
         this.tutor = tutor;
-        this.password = password;
+        this.contrasenia = contrasenia;
         this.telefono = telefono;
         this.direccion = direccion;
         this.correo = correo;
@@ -62,12 +63,12 @@ public class Estudiante {
         this.tutor = tutor;
     }
 
-    public String getPassword() {
-        return password;
+    public String getContrasenia() {
+        return contrasenia;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setContrasenia(String password) {
+        this.contrasenia = password;
     }
 
     public String getTelefono() {

@@ -14,6 +14,7 @@ public class Beca {
     private int codigo;
     private TipoBeca tipo;
     private String nombre;
+    private String descripcion;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private int becasDisponibles;
