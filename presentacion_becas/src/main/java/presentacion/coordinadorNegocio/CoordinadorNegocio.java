@@ -1,46 +1,54 @@
 package presentacion.coordinadorNegocio;
-
-import dto.EstudianteResponseDTO;
-import dto.BecasDisponiblesResponseDTO;
+import dto.BecasFiltradasDTO;
 import dto.LoginDTO;
-import fachadas.FachadaInicioSesion;
-import fachadas.FachadaSolicitud;
-import controles.ControlInicioSesion;
-import controles.ControlSolicitud;
+import dto.RequisitosDTO;
 import interfaces.*;
-import objetosNegocio.*;
 
+/**
+ *
+ * @author Cortez, Manuel;
+ */
 public class CoordinadorNegocio implements ICoordinadorNegocio{
-    private final IFachadaInicioSesion iFachadaInicioSesion;
-    private final IFachadaSolicitud iFachadaSolicitud;
-    private final IBecasFiltradasBO becasFiltradasBO = new BecasFiltradasBO();
-    private final IEstudianteBO estudianteBO = new EstudianteBO();
-    private final ITutorBO tutorBO =  new TutorBO();
-    private final IDocumentoBO documentoBO = new DocumentoBO();
-    private final IInformacionSocioeconomicaBO informacionSocioeconomicaBO = new InformacionSocioeconomicaBO();
-    private final IHistorialAcademicoBO historialAcademicoBO = new HistorialAcademicoBO();
-    private final ISolicitudBO  solicitudBO =  new SolicitudBO();
+    private final IFachadaInicioSesion fachadaInicioSesion;
+    private final IFachadaSolicitarBeca fachadaSolicitarBeca;
+    private final IBecasFiltradasBO becasFiltradasBO;
+    private final IDocumentoBO documentoBO;
+    private final IEstudianteBO estudianteBO;
+    private final IHistorialAcademicoBO historialAcademicoBO;
+    private final IInformacionSocioeconomicaBO informacionSocioeconomicaBO;
+    private final ISolicitudBO solicitudBO;
+    private final ITutorBO tutorBO;
 
-    public CoordinadorNegocio() {
-        ControlInicioSesion controlInicioSesion = new ControlInicioSesion();
-        this.iFachadaInicioSesion = new FachadaInicioSesion(controlInicioSesion);
-        ControlSolicitud controlSolicitud = new ControlSolicitud(solicitudBO, estudianteBO, tutorBO, becaBO, documentoBO, historialAcademicoBO, informacionSocioeconomicaBO);
-        this.iFachadaSolicitud = new FachadaSolicitud(controlSolicitud);
+    public CoordinadorNegocio(IBecasFiltradasBO becasFiltradasBO, IFachadaInicioSesion fachadaInicioSesion, IFachadaSolicitarBeca fachadaSolicitarBeca, IDocumentoBO documentoBO, IEstudianteBO estudianteBO, IHistorialAcademicoBO historialAcademicoBO, IInformacionSocioeconomicaBO informacionSocioeconomicaBO, ISolicitudBO solicitudBO, ITutorBO tutorBO) {
+        this.becasFiltradasBO = becasFiltradasBO;
+        this.fachadaInicioSesion = fachadaInicioSesion;
+        this.fachadaSolicitarBeca = fachadaSolicitarBeca;
+        this.documentoBO = documentoBO;
+        this.estudianteBO = estudianteBO;
+        this.historialAcademicoBO = historialAcademicoBO;
+        this.informacionSocioeconomicaBO = informacionSocioeconomicaBO;
+        this.solicitudBO = solicitudBO;
+        this.tutorBO = tutorBO;
+    }
+
+    @Override
+    public boolean solicitarInicioSesion(LoginDTO solicitudLoginDTO) {
+        return fachadaInicioSesion.solicitarLogin(solicitudLoginDTO);
+    }
+
+    @Override
+    public BecasFiltradasDTO obtenerBecasDisponibles(RequisitosDTO requisitosDTO) {
+        return fachadaSolicitarBeca.obtenerBecasDisponibles(requisitosDTO);
+    }
+
+    @Override
+    public void solicitarCerrarSesion() {
+        fachadaInicioSesion.solicitarLogOut();
     }
 
 
     @Override
-    public EstudianteResponseDTO solicitarInicioSesion(LoginDTO solicitudLoginDTO) {
-        return iFachadaInicioSesion.solicitarLogin(solicitudLoginDTO);
-    }
-
-    @Override
-    public BecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO) {
-        return iFachadaSolicitud.obtenerBecasDisponibles(solicitudDTO);
-    }
-
-    @Override
-    public void SolicitarCerrarSesion() {
-        iFachadaInicioSesion.solicitarLogOut();
+    public boolean enviarSolicitudAGobierno(){
+        return fachadaSolicitarBeca.enviarSolicitudGobierno();
     }
 }

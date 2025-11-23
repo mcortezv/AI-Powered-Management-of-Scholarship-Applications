@@ -97,4 +97,12 @@ public class Beca {
     public void setRequisitos(Requisitos requisitos) {
         this.requisitos = requisitos;
     }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 }

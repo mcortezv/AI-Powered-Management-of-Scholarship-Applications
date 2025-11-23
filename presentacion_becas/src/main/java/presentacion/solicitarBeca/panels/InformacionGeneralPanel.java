@@ -2,7 +2,6 @@ package presentacion.solicitarBeca.panels;
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import java.awt.Component;
 import javax.swing.*;
-
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.solicitarBeca.exceptions.IngresoInvalidoException;
 import presentacion.solicitarBeca.exceptions.PromedioInvalidoException;
@@ -18,6 +17,8 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
     private TextField campoPromedio;
     private ComboBox<String> campoCarga;
     private TextField campoIngreso;
+    private ComboBox<String> campoTrabajo;
+    private ComboBox<String> campoDeudas;
 
 
     public InformacionGeneralPanel(SolicitarBeca frame, CoordinadorAplicacion coordinadorAplicacion) {
@@ -45,7 +46,7 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
 
         Label lblCarga = new Label("Estás cursando la carga completa?");
         lblCarga.setAlignmentX(Component.CENTER_ALIGNMENT);
-        String[] opciones = {"Si", "No"};
+        String[] opciones = new String[]{"25%", "50%", "75%", "100%"};
         campoCarga = new ComboBox<>(opciones);
         centralPanel.add(lblCarga);
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
@@ -60,6 +61,24 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
         centralPanel.add(campoIngreso);
         centralPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
 
+        Label lblTrabajo = new Label("Trabajas?");
+        lblTrabajo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        String[] opcionesTrabajo = new String[]{"Si", "No"};
+        campoTrabajo = new ComboBox<>(opcionesTrabajo);
+        centralPanel.add(lblTrabajo);
+        centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
+        centralPanel.add(campoTrabajo);
+        centralPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
+
+        Label lblDeudas = new Label("Estás cursando la carga completa?");
+        lblCarga.setAlignmentX(Component.CENTER_ALIGNMENT);
+        String[] opcionesDeudas = new String[]{"Si", "No"};
+        campoDeudas = new ComboBox<>(opcionesDeudas);
+        centralPanel.add(lblDeudas);
+        centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
+        centralPanel.add(campoDeudas);
+        centralPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
+
         btnContinuar = new Button("Aceptar");
         btnContinuar.setAlignmentX(Component.CENTER_ALIGNMENT);
         centralPanel.add(btnContinuar);
@@ -72,9 +91,12 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
         btnContinuar.addActionListener(e -> {
             try {
                 double promedio = Double.parseDouble(campoPromedio.getText().trim().replace(',', '.'));
-                boolean carga   = "Si".equals(campoCarga.getSelectedItem());
                 double ingreso  = Double.parseDouble(campoIngreso.getText().trim().replace(',', '.'));
-                coordinadorAplicacion.procesarInformacionGeneral(promedio, carga, ingreso);
+                String cargaStr = (String) campoCarga.getSelectedItem();
+                double carga = Double.parseDouble(cargaStr.replace("%", ""));
+                boolean trabajo   = "Si".equals(campoTrabajo.getSelectedItem());
+                boolean deudas   = "Si".equals(campoDeudas.getSelectedItem());
+                coordinadorAplicacion.procesarInformacionGeneral(promedio, carga, ingreso, deudas, trabajo);
 
             } catch (PromedioInvalidoException | IngresoInvalidoException ex) {
                 JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);

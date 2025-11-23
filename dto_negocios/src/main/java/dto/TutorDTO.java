@@ -1,12 +1,11 @@
 package dto;
-import dominio.enums.Parentesco;
 
 /**
  * @author Escalante, Sebastian.
  */
 public class TutorDTO {
     private String nombre;
-    private Parentesco parentesco;
+    private String parentesco;
     private String apellidoMaterno;
     private String apellidoPaterno;
     private String telefono;
@@ -16,7 +15,7 @@ public class TutorDTO {
     public TutorDTO() {
     }
 
-    public TutorDTO(String apellidoMaterno, String apellidoPaterno, String correo, String direccion, String nombre, Parentesco parentesco, String telefono) {
+    public TutorDTO(String apellidoMaterno, String apellidoPaterno, String correo, String direccion, String nombre, String parentesco, String telefono) {
         this.apellidoMaterno = apellidoMaterno;
         this.apellidoPaterno = apellidoPaterno;
         this.correo = correo;
@@ -66,11 +65,11 @@ public class TutorDTO {
         this.nombre = nombre;
     }
 
-    public Parentesco getParentesco() {
+    public String getParentesco() {
         return parentesco;
     }
 
-    public void setParentesco(Parentesco parentesco) {
+    public void setParentesco(String parentesco) {
         this.parentesco = parentesco;
     }
 

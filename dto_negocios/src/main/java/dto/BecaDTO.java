@@ -1,6 +1,4 @@
 package dto;
-import dominio.Requisitos;
-import dominio.enums.TipoBeca;
 import java.time.LocalDate;
 
 /**
@@ -8,19 +6,19 @@ import java.time.LocalDate;
  */
 public class BecaDTO {
     private int codigo;
-    private TipoBeca tipo;
+    private String tipo;
     private String nombre;
     private String descripcion;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private int becasDisponibles;
-    private Requisitos requisitos;
+    private RequisitosDTO requisitos;
     private LocalDate fechaResultados;
 
     public BecaDTO() {
     }
 
-    public BecaDTO(int becasDisponibles, int codigo, String descripcion, LocalDate fechaFin, LocalDate fechaInicio, LocalDate fechaResultados, String nombre, Requisitos requisitos, TipoBeca tipo) {
+    public BecaDTO(int becasDisponibles, int codigo, String descripcion, LocalDate fechaFin, LocalDate fechaInicio, LocalDate fechaResultados, String nombre, RequisitosDTO requisitos, String tipo) {
         this.becasDisponibles = becasDisponibles;
         this.codigo = codigo;
         this.descripcion = descripcion;
@@ -88,19 +86,19 @@ public class BecaDTO {
         this.nombre = nombre;
     }
 
-    public Requisitos getRequisitos() {
+    public RequisitosDTO getRequisitos() {
         return requisitos;
     }
 
-    public void setRequisitos(Requisitos requisitos) {
+    public void setRequisitos(RequisitosDTO requisitos) {
         this.requisitos = requisitos;
     }
 
-    public TipoBeca getTipo() {
+    public String getTipo() {
         return tipo;
     }
 
-    public void setTipo(TipoBeca tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 }

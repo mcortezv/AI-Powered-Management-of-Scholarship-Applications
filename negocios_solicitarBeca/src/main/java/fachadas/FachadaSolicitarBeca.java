@@ -3,22 +3,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package fachadas;
+import controles.ControlSolicitarBeca;
 import dominio.*;
 import dto.*;
-import controles.ControlSolicitud;
 import excepciones.SolicitudInvalidaException;
-import interfaces.IFachadaSolicitud;
+import interfaces.IFachadaSolicitarBeca;
 import java.util.List;
 
 /**
  *                          FACHADA
  * @author janethcristinagalvanquinonez
  */
-public class FachadaSolicitud implements IFachadaSolicitud {
-    private final ControlSolicitud controlSolicitud;
+public class FachadaSolicitarBeca //implements IFachadaSolicitarBeca
+{
+    private final ControlSolicitarBeca controlSolicitud;
     private Solicitud solicitudActual;
     
-    public FachadaSolicitud(ControlSolicitud gestor){
+    public FachadaSolicitarBeca(ControlSolicitarBeca gestor){
         this.controlSolicitud= gestor;
     }
 
@@ -74,41 +75,39 @@ public class FachadaSolicitud implements IFachadaSolicitud {
         }
     }
 
-    public BecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO) {
-        return null;
+    public BecasFiltradasDTO obtenerBecasDisponibles(RequisitosDTO requisitosDTO) {
+        return controlSolicitud.obtenerBecasFiltradas(requisitosDTO);
     }
 
-    @Override
     public boolean validarRequisitos(Requisitos requisitos) {
         return false;
     }
 
-    @Override
     public boolean validarSolicitudNoExistente(int idEstudiante, int idSolicitud) {
         return false;
     }
 
-    @Override
+
     public Beca recuperarBeca(int idBeca) {
         return null;
     }
 
-    @Override
+
     public Estudiante solicitarDatosEstudiante(int idEstudiante) {
         return null;
     }
 
-    @Override
+
     public Solicitud crearSolicitud() {
         return null;
     }
 
-    @Override
+
     public boolean guardarSolicitud(Solicitud solicitud) {
         return false;
     }
 
-    @Override
+
     public boolean enviarSolicitudGobierno(SolicitudDTO solicitudDTO) {
         return false;
     }
