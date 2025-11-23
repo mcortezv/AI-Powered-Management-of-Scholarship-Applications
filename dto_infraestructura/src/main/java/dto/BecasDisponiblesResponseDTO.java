@@ -1,5 +1,5 @@
 package dto;
-import dominio.Beca;
+import solicitarBeca.dominio.Beca;
 import java.util.List;
 
 /**

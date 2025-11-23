@@ -3,8 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package dominio;
-import dominio.enums.Carrera;
+package solicitarBeca.dominio;
+import solicitarBeca.dominio.enums.Carrera;
 
 /**
  *

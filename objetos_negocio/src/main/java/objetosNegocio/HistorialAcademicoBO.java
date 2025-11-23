@@ -1,6 +1,6 @@
 package objetosNegocio;
 import adaptadores.HistorialAcademicoAdaptador;
-import dominio.HistorialAcademico;
+import solicitarBeca.dominio.HistorialAcademico;
 import dto.HistorialAcademicoResponseDTO;
 import interfaces.IFachadaITSON;
 import interfaces.IHistorialAcademicoBO;

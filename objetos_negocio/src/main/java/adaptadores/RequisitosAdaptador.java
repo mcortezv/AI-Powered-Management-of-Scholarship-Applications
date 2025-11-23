@@ -1,5 +1,5 @@
 package adaptadores;
-import dominio.Requisitos;
+import solicitarBeca.dominio.Requisitos;
 import dto.RequisitosDTO;
 
 /**

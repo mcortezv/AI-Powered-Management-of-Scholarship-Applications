@@ -1,6 +1,6 @@
 package objetosNegocio;
 import adaptadores.InformacionSocioeconomicaAdaptador;
-import dominio.InformacionSocioeconomica;
+import solicitarBeca.dominio.InformacionSocioeconomica;
 import dto.InformacionSocioeconomicaDTO;
 import excepciones.InformacionSocioeconomicaInvalidaException;
 import interfaces.IInformacionSocioeconomicaBO;

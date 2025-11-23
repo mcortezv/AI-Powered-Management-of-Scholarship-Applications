@@ -1,10 +1,11 @@
 package objetosNegocio;
-import dao.interfaces.IEstudianteDAO;
-import dominio.*;
+import solicitarBeca.dao.interfaces.IEstudianteDAO;
 import dto.EstudianteResponseDTO;
 import dto.LoginDTO;
 import interfaces.IEstudianteBO;
 import interfaces.IFachadaITSON;
+import solicitarBeca.dominio.Estudiante;
+import solicitarBeca.dominio.Tutor;
 
 /**
  *

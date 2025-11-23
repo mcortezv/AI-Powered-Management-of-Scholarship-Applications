@@ -1,6 +1,7 @@
 package interfaces;
-import dominio.*;
 import excepciones.*;
+import solicitarBeca.dominio.*;
+
 import java.util.List;
 
 public interface ISolicitudBO {

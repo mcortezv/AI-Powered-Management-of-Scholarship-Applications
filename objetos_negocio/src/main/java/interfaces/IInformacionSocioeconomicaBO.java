@@ -1,7 +1,7 @@
 package interfaces;
-import dominio.*;
 import dto.InformacionSocioeconomicaDTO;
 import excepciones.*;
+import solicitarBeca.dominio.InformacionSocioeconomica;
 
 /**
  *

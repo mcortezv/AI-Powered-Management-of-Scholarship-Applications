@@ -1,6 +1,6 @@
 package adaptadores;
-import dominio.*;
-import dominio.enums.Carrera;
+import solicitarBeca.dominio.Estudiante;
+import solicitarBeca.dominio.enums.Carrera;
 import dto.*;
 
 /**

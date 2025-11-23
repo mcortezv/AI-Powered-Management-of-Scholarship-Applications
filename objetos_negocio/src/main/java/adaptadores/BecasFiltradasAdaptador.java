@@ -1,6 +1,6 @@
 package adaptadores;
-import dominio.Beca;
-import dominio.BecasFiltradas;
+import solicitarBeca.dominio.Beca;
+import solicitarBeca.dominio.BecasFiltradas;
 import dto.BecasDisponiblesResponseDTO;
 import dto.BecasFiltradasDTO;
 

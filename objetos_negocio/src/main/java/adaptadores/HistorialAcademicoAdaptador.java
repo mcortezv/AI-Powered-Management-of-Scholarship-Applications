@@ -1,6 +1,6 @@
 package adaptadores;
-import dominio.HistorialAcademico;
-import dominio.enums.Carrera;
+import solicitarBeca.dominio.HistorialAcademico;
+import solicitarBeca.dominio.enums.Carrera;
 import dto.HistorialAcademicoDTO;
 import dto.HistorialAcademicoResponseDTO;
 

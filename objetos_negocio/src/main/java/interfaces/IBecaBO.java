@@ -1,6 +1,6 @@
 package interfaces;
-import dominio.*;
 import excepciones.*;
+import solicitarBeca.dominio.Beca;
 
 /**
  *

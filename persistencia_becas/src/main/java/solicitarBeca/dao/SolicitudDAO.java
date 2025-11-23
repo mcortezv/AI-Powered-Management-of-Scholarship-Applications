@@ -1,6 +1,6 @@
-package dao;
-import dao.interfaces.ISolicitudDAO;
-import dominio.Solicitud;
+package solicitarBeca.dao;
+import solicitarBeca.dao.interfaces.ISolicitudDAO;
+import solicitarBeca.dominio.Solicitud;
 
 /**
  *

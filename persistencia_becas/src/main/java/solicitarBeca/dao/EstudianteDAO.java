@@ -1,5 +1,5 @@
-package dao;
-import dao.interfaces.IEstudianteDAO;
+package solicitarBeca.dao;
+import solicitarBeca.dao.interfaces.IEstudianteDAO;
 
 /**
  *

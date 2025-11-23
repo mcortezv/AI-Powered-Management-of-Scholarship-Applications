@@ -1,5 +1,5 @@
 package dto;
-import dominio.enums.Carrera;
+import solicitarBeca.dominio.enums.Carrera;
 
 /**
  * @author Escalante, Sebastian.

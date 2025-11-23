@@ -3,9 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package adaptadores;
-import dominio.Documento;
-import dominio.Solicitud;
-import dominio.enums.EstadoSolicitud;
+import solicitarBeca.dominio.Documento;
+import solicitarBeca.dominio.Solicitud;
+import solicitarBeca.dominio.enums.EstadoSolicitud;
 import dto.DocumentoDTO;
 import dto.SolicitudDTO;
 import java.util.ArrayList;

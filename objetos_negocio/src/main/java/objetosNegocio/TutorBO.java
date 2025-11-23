@@ -1,9 +1,9 @@
 package objetosNegocio;
 import adaptadores.TutorAdaptador;
-import dominio.*;
 import dto.TutorDTO;
 import excepciones.*;
 import interfaces.ITutorBO;
+import solicitarBeca.dominio.Tutor;
 
 /**
  *

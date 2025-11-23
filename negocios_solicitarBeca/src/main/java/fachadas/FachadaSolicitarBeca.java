@@ -4,10 +4,11 @@
  */
 package fachadas;
 import controles.ControlSolicitarBeca;
-import dominio.*;
 import dto.*;
 import excepciones.SolicitudInvalidaException;
 import interfaces.IFachadaSolicitarBeca;
+import solicitarBeca.dominio.*;
+
 import java.util.List;
 
 /**
