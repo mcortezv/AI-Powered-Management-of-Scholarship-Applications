@@ -1,7 +1,4 @@
 package adaptadores;
-import dominio.Direccion;
-import dominio.Tutor;
-import dto.*;
 
 public class TutorAdaptador {
 
