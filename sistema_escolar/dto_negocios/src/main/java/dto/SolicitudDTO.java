@@ -1,6 +1,4 @@
 package dto;
-import dominio.*;
-import dominio.enums.EstadoSolicitud;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -8,19 +6,19 @@ import java.util.List;
  * @author Escalante, Sebastian.
  */
 public class SolicitudDTO {
-    private long id;
-    private Beca beca;
-    private Estudiante estudiante;
-    private InformacionSocioeconomica informacionSocioeconomica;
-    private HistorialAcademico historialAcademico;
-    private List<Documento> documentos;
+    private Long id;
+    private BecaDTO beca;
+    private EstudianteDTO estudiante;
+    private InformacionSocioeconomicaDTO informacionSocioeconomica;
+    private HistorialAcademicoDTO historialAcademico;
+    private List<DocumentoDTO> documentos;
     private LocalDate fecha;
-    private EstadoSolicitud estado;
+    private String estado;
 
     public SolicitudDTO() {
     }
 
-    public SolicitudDTO(Beca beca, List<Documento> documentos, EstadoSolicitud estado, Estudiante estudiante, LocalDate fecha, HistorialAcademico historialAcademico, long id, InformacionSocioeconomica informacionSocioeconomica) {
+    public SolicitudDTO(BecaDTO beca, List<DocumentoDTO> documentos, String estado, EstudianteDTO estudiante, LocalDate fecha, HistorialAcademicoDTO historialAcademico, Long id, InformacionSocioeconomicaDTO informacionSocioeconomica) {
         this.beca = beca;
         this.documentos = documentos;
         this.estado = estado;
@@ -31,35 +29,35 @@ public class SolicitudDTO {
         this.informacionSocioeconomica = informacionSocioeconomica;
     }
 
-    public Beca getBeca() {
+    public BecaDTO getBeca() {
         return beca;
     }
 
-    public void setBeca(Beca beca) {
+    public void setBeca(BecaDTO beca) {
         this.beca = beca;
     }
 
-    public List<Documento> getDocumentos() {
+    public List<DocumentoDTO> getDocumentos() {
         return documentos;
     }
 
-    public void setDocumentos(List<Documento> documentos) {
+    public void setDocumentos(List<DocumentoDTO> documentos) {
         this.documentos = documentos;
     }
 
-    public EstadoSolicitud getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(EstadoSolicitud estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 
-    public Estudiante getEstudiante() {
+    public EstudianteDTO getEstudiante() {
         return estudiante;
     }
 
-    public void setEstudiante(Estudiante estudiante) {
+    public void setEstudiante(EstudianteDTO estudiante) {
         this.estudiante = estudiante;
     }
 
@@ -71,27 +69,27 @@ public class SolicitudDTO {
         this.fecha = fecha;
     }
 
-    public HistorialAcademico getHistorialAcademico() {
+    public HistorialAcademicoDTO getHistorialAcademico() {
         return historialAcademico;
     }
 
-    public void setHistorialAcademico(HistorialAcademico historialAcademico) {
+    public void setHistorialAcademico(HistorialAcademicoDTO historialAcademico) {
         this.historialAcademico = historialAcademico;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public InformacionSocioeconomica getInformacionSocioeconomica() {
+    public InformacionSocioeconomicaDTO getInformacionSocioeconomica() {
         return informacionSocioeconomica;
     }
 
-    public void setInformacionSocioeconomica(InformacionSocioeconomica informacionSocioeconomica) {
+    public void setInformacionSocioeconomica(InformacionSocioeconomicaDTO informacionSocioeconomica) {
         this.informacionSocioeconomica = informacionSocioeconomica;
     }
 }

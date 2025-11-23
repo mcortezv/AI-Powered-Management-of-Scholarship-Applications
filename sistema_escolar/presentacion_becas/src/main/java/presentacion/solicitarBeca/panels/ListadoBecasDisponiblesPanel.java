@@ -1,5 +1,6 @@
 
 package presentacion.solicitarBeca.panels;
+import dto.BecaDTO;
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 
 import java.awt.BorderLayout;
