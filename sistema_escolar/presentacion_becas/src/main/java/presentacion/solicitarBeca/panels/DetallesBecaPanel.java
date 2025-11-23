@@ -3,9 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package presentacion.solicitarBeca.panels;
-
+import dto.BecaDTO;
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
-
 import java.awt.Component;
 import java.awt.Dimension;
 import static java.awt.Font.BOLD;
@@ -14,7 +13,6 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
@@ -29,7 +27,6 @@ public class DetallesBecaPanel extends PanelSolicitarBeca {
     private Label titulo;
     private Label lblTituloDescripcion, lblTituloPromedio, lblTituloPeriodo, lblDescripcion, lblPromedio, lblPeriodo, lblTituloTipo, lblTipo;
     private Button botonSiguiente;
-    private BecaDTO becaDTO= new BecaDTO();
     private BecaDTO beca;
     private JPanel lista;
     private JScrollPane scroll;
@@ -136,11 +133,11 @@ public class DetallesBecaPanel extends PanelSolicitarBeca {
             + "</html>"
         );
         lblPromedio.setText(String.valueOf(becaDTO.getRequisitos().getPromedioMinimo()));
-        lblPeriodo.setText(becaDTO.getPeriodo());
+        lblPeriodo.setText(becaDTO.getFechaInicio().toString() + "->" + becaDTO.getFechaFin().toString());
         lblTipo.setText(becaDTO.getTipo());
 
     }
 
-            
+
 }
 

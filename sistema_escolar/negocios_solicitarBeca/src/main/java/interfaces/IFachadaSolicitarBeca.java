@@ -47,7 +47,4 @@ public interface IFachadaSolicitarBeca {
     boolean guardarSolicitud(Solicitud solicitud);
 
     boolean enviarSolicitudGobierno(SolicitudDTO solicitudDTO);
-
-    boolean enviarSolicituGobierno(SolicitudDTO solicitudDTO);
-
 }

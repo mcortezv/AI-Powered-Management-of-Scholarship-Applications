@@ -44,6 +44,6 @@ public class Main {
         IFachadaSolicitarBeca fachadaSolicitarBeca = new FachadaSolicitarBeca(new ControlSolicitarBeca(solicitudBO,
                 estudianteBO, tutorBO, becasFiltradasBO, documentoBO, historialAcademicoBO, informacionSocioeconomicaBO));
 
-        CoordinadorAplicacion coordinadorAplicacion = new CoordinadorAplicacion();
+        CoordinadorAplicacion coordinadorAplicacion = new CoordinadorAplicacion(fachadaInicioSesion, fachadaSolicitarBeca);
     }
 }

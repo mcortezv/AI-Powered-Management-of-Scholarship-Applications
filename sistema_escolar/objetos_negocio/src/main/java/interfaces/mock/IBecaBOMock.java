@@ -4,16 +4,10 @@
  */
 package interfaces.mock;
 
-import dto.BecasDisponiblesResponseDTO;
-import java.util.List;
-
 /**
  *
  * @author janethcristinagalvanquinonez
  */
 public interface IBecaBOMock {
-    
-    public List<BecaDTO> obtenerBecas();
-    public BecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO);
-    
+
 }

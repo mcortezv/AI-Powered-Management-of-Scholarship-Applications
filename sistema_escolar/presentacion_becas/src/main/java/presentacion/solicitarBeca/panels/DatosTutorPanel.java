@@ -1,7 +1,5 @@
 package presentacion.solicitarBeca.panels;
-
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
-import enums.Parentesco;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.*;
 import presentacion.styles.Button;
@@ -11,7 +9,6 @@ import presentacion.login.exceptions.IDInvalidoException;
 import presentacion.solicitarBeca.exceptions.ApellidoInvalidoException;
 import presentacion.solicitarBeca.exceptions.NombresInvalidosException;
 import presentacion.solicitarBeca.exceptions.TelefonoInvalidoException;
-// import presentacion.solicitarBeca.validadores.Validadores; // ELIMINADO
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -24,7 +21,8 @@ public class DatosTutorPanel extends PanelSolicitarBeca {
     private Button btnContinuar;
     private TextField field_apellido_materno;
     private TextField field_apellido_paterno;
-    private ComboBox<Parentesco> comboParentesco;
+    private TextField field_direccion;
+    private ComboBox<String> comboParentesco;
     private CoordinadorAplicacion coordinadorAplicacion;
 
     public DatosTutorPanel(SolicitarBeca frame, CoordinadorAplicacion coordinadorAplicacion) {
@@ -65,7 +63,9 @@ public class DatosTutorPanel extends PanelSolicitarBeca {
         contenido.add(lbl_responsable);
         contenido.add(Box.createVerticalStrut(10));
 
-        comboParentesco = new ComboBox<>(Parentesco.values());
+        String[] parentescoOpciones = new String[]{"PADRE", "MADRE", "ABUELO", "ABUELA", "HERMANO", "HERMANA"
+                , "TIO", "TIA", "PADRASTRO", "MADRE", "TUTOR_OFICIAL"};
+        comboParentesco = new ComboBox<>(parentescoOpciones);
         comboParentesco.setAlignmentX(Component.CENTER_ALIGNMENT);
         comboParentesco.setMaximumSize(new Dimension(300, 30));
         contenido.add(comboParentesco);
@@ -76,7 +76,7 @@ public class DatosTutorPanel extends PanelSolicitarBeca {
         field_apellido_materno = new TextField(20);
         field_telefono = new TextField(20);
         field_email = new TextField(20);
-
+        field_direccion = new TextField(20);
 
         JPanel fila1 = new JPanel(new GridLayout(1, 2, 40, 0));
         fila1.setBackground(Style.PANEL_COLOR);
@@ -96,8 +96,11 @@ public class DatosTutorPanel extends PanelSolicitarBeca {
         contenido.add(fila2);
         contenido.add(Box.createVerticalStrut(20));
 
+
+
         JPanel fila3 = new JPanel(new GridLayout(1, 2, 40, 0));
         fila3.setBackground(Style.PANEL_COLOR);
+        fila3.add(crearDosColumnas("Direccion:", field_direccion));
         fila3.add(crearDosColumnas("Email:", field_email));
         fila3.add(Box.createHorizontalStrut(200));
         fila3.setMaximumSize(new Dimension(800, 80));
@@ -116,16 +119,15 @@ public class DatosTutorPanel extends PanelSolicitarBeca {
         btnBack.addActionListener(e -> mainFrame.showPanel("historialAcademicoPanel"));
         btnContinuar.addActionListener(e -> {
             try {
-                Parentesco parentesco = (Parentesco) comboParentesco.getSelectedItem();
+                String parentesco = (String) comboParentesco.getSelectedItem();
                 String nombre = field_nombre.getText();
                 String apPat = field_apellido_paterno.getText();
                 String apMat = field_apellido_materno.getText();
                 String telefono = field_telefono.getText();
+                String direccion = field_direccion.getText();
                 String correo = field_email.getText();
 
-                coordinadorAplicacion.procesarDatosTutor(
-                        parentesco, nombre, apPat, apMat, telefono, correo
-                );
+                coordinadorAplicacion.procesarDatosTutor(parentesco, nombre, apPat, apMat, direccion, telefono, correo);
 
             } catch (NombresInvalidosException | ApellidoInvalidoException | TelefonoInvalidoException | IDInvalidoException ex) {
                 JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);

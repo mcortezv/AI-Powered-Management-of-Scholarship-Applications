@@ -1,8 +1,7 @@
-
 package presentacion.solicitarBeca.panels;
 import dto.BecaDTO;
+import dto.RequisitosDTO;
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -148,7 +147,7 @@ public class ListadoBecasDisponiblesPanel extends PanelSolicitarBeca{
         private String safe(String s) { return s == null ? "" : s; }
 
     private String descripcionBeca(BecaDTO b) {
-        RequisitosBecaDTO r = b.getRequisitos();
+        RequisitosDTO r = b.getRequisitos();
         if (r == null) return "Está dirigida a estudiantes con buen desempeño académico.";
         StringBuilder sb = new StringBuilder("Está dirigida a estudiantes ");
         boolean pusoAlgo = false;
