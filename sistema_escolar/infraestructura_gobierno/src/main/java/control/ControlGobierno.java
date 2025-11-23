@@ -1,19 +1,19 @@
-package gobierno;
-import dto.SolicitudBecasDisponiblesResponseDTO;
+package control;
+import dto.BecasDisponiblesResponseDTO;
+import dto.RequisitosDTO;
 import dto.SolicitudDTO;
-import dto.SolicitudLoginDTO;
-import interfaces.IGobierno;
-import java.util.Optional;
 
-public class Gobierno implements IGobierno {
+/**
+ *
+ * @author Cortez, Manuel;
+ */
+public class ControlGobierno {
 
-    @Override
-    public Optional<SolicitudBecasDisponiblesResponseDTO> solicitarBecas(SolicitudLoginDTO solicitudLoginDTO) {
-        return Optional.empty();
+    BecasDisponiblesResponseDTO solicitarBecas(RequisitosDTO requisitosDTO) {
+        return null;
     }
 
-    @Override
-    public Optional<Boolean> enviarSolicitud(SolicitudDTO solicitudDTO) {
-        return Optional.empty();
+    boolean enviarSolicitud(SolicitudDTO solicitudDTO) {
+        return true;
     }
 }

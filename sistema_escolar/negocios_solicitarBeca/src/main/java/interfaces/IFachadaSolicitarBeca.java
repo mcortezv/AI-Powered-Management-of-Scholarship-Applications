@@ -13,7 +13,7 @@ import excepciones.SolicitudInvalidaException;
  */
 public interface IFachadaSolicitarBeca {
 
-    SolicitudBecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO);
+    BecasDisponiblesResponseDTO obtenerBecasDisponibles(SolicitudBecasDisponiblesDTO solicitudDTO);
 
     boolean validarRequisitos(RequisitosDTO requisitos);
 
