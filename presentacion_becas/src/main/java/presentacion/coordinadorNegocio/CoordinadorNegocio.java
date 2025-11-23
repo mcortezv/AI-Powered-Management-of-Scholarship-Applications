@@ -11,24 +11,10 @@ import interfaces.*;
 public class CoordinadorNegocio implements ICoordinadorNegocio{
     private final IFachadaInicioSesion fachadaInicioSesion;
     private final IFachadaSolicitarBeca fachadaSolicitarBeca;
-    private final IBecasFiltradasBO becasFiltradasBO;
-    private final IDocumentoBO documentoBO;
-    private final IEstudianteBO estudianteBO;
-    private final IHistorialAcademicoBO historialAcademicoBO;
-    private final IInformacionSocioeconomicaBO informacionSocioeconomicaBO;
-    private final ISolicitudBO solicitudBO;
-    private final ITutorBO tutorBO;
 
-    public CoordinadorNegocio(IBecasFiltradasBO becasFiltradasBO, IFachadaInicioSesion fachadaInicioSesion, IFachadaSolicitarBeca fachadaSolicitarBeca, IDocumentoBO documentoBO, IEstudianteBO estudianteBO, IHistorialAcademicoBO historialAcademicoBO, IInformacionSocioeconomicaBO informacionSocioeconomicaBO, ISolicitudBO solicitudBO, ITutorBO tutorBO) {
-        this.becasFiltradasBO = becasFiltradasBO;
+    public CoordinadorNegocio(IFachadaInicioSesion fachadaInicioSesion, IFachadaSolicitarBeca fachadaSolicitarBeca) {
         this.fachadaInicioSesion = fachadaInicioSesion;
         this.fachadaSolicitarBeca = fachadaSolicitarBeca;
-        this.documentoBO = documentoBO;
-        this.estudianteBO = estudianteBO;
-        this.historialAcademicoBO = historialAcademicoBO;
-        this.informacionSocioeconomicaBO = informacionSocioeconomicaBO;
-        this.solicitudBO = solicitudBO;
-        this.tutorBO = tutorBO;
     }
 
     @Override
@@ -49,6 +35,6 @@ public class CoordinadorNegocio implements ICoordinadorNegocio{
 
     @Override
     public boolean enviarSolicitudAGobierno(){
-        return fachadaSolicitarBeca.enviarSolicitudGobierno();
+        return true;//fachadaSolicitarBeca.enviarSolicitudGobierno();
     }
 }

@@ -1,5 +1,4 @@
 package presentacion.solicitarBeca.panels;
-
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.Button;
