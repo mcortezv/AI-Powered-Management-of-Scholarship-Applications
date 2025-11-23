@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package fachada;
+import control.ControlGobierno;
 import dto.BecasDisponiblesResponseDTO;
 import dto.DocumentoDTO;
 import dto.RequisitosDTO;
@@ -16,6 +17,9 @@ import interfaces.IFachadaGobierno;
 public class FachadaGobierno implements IFachadaGobierno{
     private final ControlGobierno controlGobierno;
 
+    public FachadaGobierno(ControlGobierno controlGobierno) {
+        this.controlGobierno = controlGobierno;
+    }
 
     @Override
     public BecasDisponiblesResponseDTO obtenerBecas(RequisitosDTO requisitosDTO) {

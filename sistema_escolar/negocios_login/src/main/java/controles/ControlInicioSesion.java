@@ -1,12 +1,12 @@
 package controles;
 import dto.LoginDTO;
-import objetosNegocio.EstudianteBO;
+import interfaces.IEstudianteBO;
 
 
 public class ControlInicioSesion {
-    private final EstudianteBO estudianteBO;
+    private final IEstudianteBO estudianteBO;
 
-    public ControlInicioSesion(EstudianteBO estudianteBO) {
+    public ControlInicioSesion(IEstudianteBO estudianteBO) {
         this.estudianteBO = estudianteBO;
     }
 
