@@ -29,6 +29,8 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     private HistorialAcademicoDTO historialAcademicoDTO;
     private TutorDTO tutorDTO;
     private InformacionSocioeconomicaDTO infoSocioeconomicaDTO;
+
+    // bajar a coordinador negocio
     private SolicitudDTO solicitudDTO;
     private EstudianteDTO estudianteDTO;
 
