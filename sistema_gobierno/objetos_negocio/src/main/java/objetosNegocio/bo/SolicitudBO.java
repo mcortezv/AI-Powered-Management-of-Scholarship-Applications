@@ -1,4 +1,5 @@
 package objetosNegocio.bo;
+import datos.dao.interfaces.ISolicitudDAO;
 import dto.SolicitudDTO;
 import objetosNegocio.bo.interfaces.ISolicitudBO;
 import java.util.List;
@@ -8,6 +9,11 @@ import java.util.List;
  * @author Cortez, Manuel;
  */
 public class SolicitudBO implements ISolicitudBO {
+    private final ISolicitudDAO solicitudDAO;
+
+    public SolicitudBO(ISolicitudDAO solicitudDAO) {
+        this.solicitudDAO = solicitudDAO;
+    }
 
     @Override
     public boolean cambiarEstado(int id, String nuevoEstado){
