@@ -9,16 +9,19 @@ import java.util.List;
  */
 public class SolicitudBO implements ISolicitudBO {
 
+    @Override
     public boolean cambiarEstado(int id, String nuevoEstado){
         System.out.println("Llama a la DAO");
         return false;
     }
 
+    @Override
     public SolicitudDTO obtenerSolicitud(int id){
         System.out.println("Llama a la DAO");
         return null;
     }
 
+    @Override
     public List<SolicitudDTO> obtenerListadoSolicitudes(int idConvocatoria){
         System.out.println("Llama a la DAO");
         return null;
