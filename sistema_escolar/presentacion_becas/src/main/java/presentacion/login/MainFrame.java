@@ -68,6 +68,11 @@ public final class MainFrame extends JFrame {
             coordinadorAplicacion.solicitarBeca();
         });
 
+        btnPagoAdeudo.addActionListener(e ->{
+            coordinadorAplicacion.pagarAdeudo();
+        });
+
+
     }
 
     public void showPanel(String nuevoPanel) {

@@ -2,6 +2,9 @@ package presentacion.pagarAdeudo.panels;
 
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import presentacion.pagarAdeudo.PagarAdeudo;
+import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
+import presentacion.pagarAdeudo.coordinadorNegocioPagarAdeudo.CoordinadorNegocioPagarAdeudo;
+import presentacion.pagarAdeudo.mainFraimePagarAdeudo.MainFramePagarAdeudo;
 import presentacion.styles.Button;
 import presentacion.styles.Style;
 
@@ -13,10 +16,10 @@ public abstract class PanelPagarAdeudo extends JPanel {
     protected JPanel centralPanel;
     protected JPanel southPanel;
     protected Button btnBack;
-    protected CoordinadorAplicacion coordinadorAplicacion;
+    protected CoordinadorAplicacionPagarAdeudo coordinadorAplicacion;
 
 
-    public PanelPagarAdeudo(PagarAdeudo frame, CoordinadorAplicacion coordinadorAplicacion){
+    public PanelPagarAdeudo(PagarAdeudo frame, CoordinadorAplicacionPagarAdeudo coordinadorAplicacion){
         this.pagarAdeudo = frame;
         btnBack = new Button("Volver");
         this.coordinadorAplicacion = coordinadorAplicacion;

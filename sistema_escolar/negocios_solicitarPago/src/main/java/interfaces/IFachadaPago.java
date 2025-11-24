@@ -14,6 +14,6 @@ public interface IFachadaPago {
     double solicitarAdeudoTotalColegiatura(EstudianteDTO estudianteDTO);
     List<ClaseDTO> solicitarListaClases(EstudianteDTO estudianteDTO);
 
-    SolicitudPagoDTO solicitarRealizarPago(SolicitudPagoDTO solicitudPagoDTO, MetodoPago metodoPago);
+    SolicitudPagoDTO solicitarRealizarPago(SolicitudPagoDTO solicitudPagoDTO, MetodoPago metodoPago) throws Exception;
     boolean notificarLiquidacion(SolicitudPagoDTO solicitudPagoDTO);
 }

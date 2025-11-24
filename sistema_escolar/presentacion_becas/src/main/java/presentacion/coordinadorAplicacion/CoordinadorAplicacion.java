@@ -1,11 +1,13 @@
 package presentacion.coordinadorAplicacion;
 import dto.*;
+import fachadas.FachadaPago;
 import interfaces.*;
 import presentacion.coordinadorNegocio.CoordinadorNegocio;
 import presentacion.login.MainFrame;
 import presentacion.login.exceptions.ContraseniaInvalidaException;
 import presentacion.login.exceptions.IDInvalidoException;
 import presentacion.pagarAdeudo.PagarAdeudo;
+import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.solicitarBeca.exceptions.*;
 import presentacion.solicitarBeca.panels.DetallesBecaPanel;
@@ -31,12 +33,17 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     private TutorDTO tutorDTO;
     private InformacionSocioeconomicaDTO infoSocioeconomicaDTO;
 
+    //pagar adeudo
+    private final CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo;
+    private PagarAdeudo adeudo;
+
     // bajar a coordinador negocio
     private SolicitudDTO solicitudDTO;
     private EstudianteDTO estudianteDTO;
 
-    public CoordinadorAplicacion(IFachadaInicioSesion fachadaInicioSesion, IFachadaSolicitarBeca fachadaSolicitarBeca) {
+    public CoordinadorAplicacion(IFachadaInicioSesion fachadaInicioSesion, IFachadaSolicitarBeca fachadaSolicitarBeca, CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo) {
         this.coordinadorNegocio = new CoordinadorNegocio(fachadaInicioSesion, fachadaSolicitarBeca);
+        this.coordinadorAplicacionPagarAdeudo = coordinadorAplicacionPagarAdeudo;
         mainFrame = new MainFrame(this);
         mainFrame.setVisible(true);
 
@@ -78,6 +85,12 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         mainFrame.setVisible(false);
         solicitarBeca = new SolicitarBeca(this, becaDTO);
         solicitarBeca.setVisible(true);
+    }
+
+    public void pagarAdeudo(){
+        mainFrame.setVisible(false);
+        adeudo = new PagarAdeudo(coordinadorAplicacionPagarAdeudo);
+        adeudo.setVisible(true);
     }
 
 
@@ -149,6 +162,8 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     public void setBecaSeleccionadaDTO(BecaDTO becaDTO) {
         this.becaDTO = becaDTO;
     }
+
+
 
 
 }

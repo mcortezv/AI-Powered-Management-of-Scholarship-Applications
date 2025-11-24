@@ -4,9 +4,13 @@
 package presentacion;
 import control.ControlGobierno;
 import controles.*;
+import dto.BecaDTO;
 import fachadas.*;
 import interfaces.pagarAdeudo.IAdeudoBO;
 import objetosNegocio.pagarAdeudo.AdeudoBO;
+import presentacion.login.MainFrame;
+import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
+import presentacion.solicitarBeca.SolicitarBeca;
 import solicitarBeca.dao.DocumentoDAO;
 import solicitarBeca.dao.EstudianteDAO;
 import solicitarBeca.dao.SolicitudDAO;
@@ -31,16 +35,10 @@ public class Main {
         IFachadaBanco fachadaBanco = new FachadaBanco(new ControlBanco());
         IFachadaPayPal fachadaPayPal = new FachadaPayPal(new ControlPayPal());
         IFachadaPago fachadaPago = new FachadaPago(new ControlPago(adeudoBO,fachadaBanco,fachadaPayPal));
-
-
-
+        CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo = new CoordinadorAplicacionPagarAdeudo(fachadaPago);
         //pagar adeudo
 
-
-
-
         //SOLICITAR BECA CASO BASE
-
         IFachadaITSON fachadaITSON = new FachadaItson(new ControlItson());
         IFachadaGobierno fachadaGobierno = new FachadaGobierno(new ControlGobierno());
         ISolicitudDAO solicitudDAO = new SolicitudDAO();
@@ -56,9 +54,10 @@ public class Main {
         IFachadaInicioSesion fachadaInicioSesion = new FachadaInicioSesion( new ControlInicioSesion(estudianteBO));
         IFachadaSolicitarBeca fachadaSolicitarBeca = new FachadaSolicitarBeca(new ControlSolicitarBeca(solicitudBO,
                 estudianteBO, tutorBO, becasFiltradasBO, documentoBO, historialAcademicoBO, informacionSocioeconomicaBO));
-        CoordinadorAplicacion coordinadorAplicacion = new CoordinadorAplicacion(fachadaInicioSesion, fachadaSolicitarBeca);
+        CoordinadorAplicacion coordinadorAplicacion = new CoordinadorAplicacion(fachadaInicioSesion, fachadaSolicitarBeca,coordinadorAplicacionPagarAdeudo);
 
-
+        MainFrame mainFrame = new MainFrame(coordinadorAplicacion);
+        mainFrame.setVisible(true);
 
     }
 }
