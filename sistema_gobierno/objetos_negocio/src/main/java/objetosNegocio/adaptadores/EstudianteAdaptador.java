@@ -1,6 +1,5 @@
 package objetosNegocio.adaptadores;
 import datos.dominio.Estudiante;
-import datos.dominio.Tutor;
 import datos.dominio.enums.Carrera;
 import dto.EstudianteDTO;
 import dto.EstudianteInfraestructuraDTO;

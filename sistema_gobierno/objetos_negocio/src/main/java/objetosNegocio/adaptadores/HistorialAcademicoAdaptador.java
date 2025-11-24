@@ -1,5 +1,6 @@
 package objetosNegocio.adaptadores;
 import datos.dominio.HistorialAcademico;
+import datos.dominio.enums.Carrera;
 import dto.HistorialAcademicoDTO;
 import dto.HistorialAcademicoInfraestructuraDTO;
 import objetosNegocio.adaptadores.excepciones.HistorialAcademicoAdaptadorException;
@@ -12,7 +13,14 @@ public class HistorialAcademicoAdaptador {
 
     public static HistorialAcademico toEntity(HistorialAcademicoDTO dto){
         try {
-
+            HistorialAcademico historialAcademico = new HistorialAcademico();
+            historialAcademico.setCarrera(Carrera.valueOf(dto.getCarrera()));
+            historialAcademico.setPromedio(dto.getPromedio());
+            historialAcademico.setProcentajeBajas(dto.getProcentajeBajas());
+            historialAcademico.setCargaAcademica(dto.getCargaAcademica());
+            historialAcademico.setSemestre(dto.getSemestre());
+            historialAcademico.setIndiceReprobacion(dto.getIndiceReprobacion());
+            return historialAcademico;
         } catch (Exception sinUso){
             throw new HistorialAcademicoAdaptadorException("No se pudo mappear la DTO a Entidad");
         }
@@ -20,7 +28,14 @@ public class HistorialAcademicoAdaptador {
 
     public static HistorialAcademico toEntity(HistorialAcademicoInfraestructuraDTO dto){
         try {
-
+            HistorialAcademico historialAcademico = new HistorialAcademico();
+            historialAcademico.setCarrera(Carrera.valueOf(dto.getCarrera()));
+            historialAcademico.setPromedio(dto.getPromedio());
+            historialAcademico.setProcentajeBajas(dto.getProcentajeBajas());
+            historialAcademico.setCargaAcademica(dto.getCargaAcademica());
+            historialAcademico.setSemestre(dto.getSemestre());
+            historialAcademico.setIndiceReprobacion(dto.getIndiceReprobacion());
+            return historialAcademico;
         } catch (Exception sinUso){
             throw new HistorialAcademicoAdaptadorException("No se pudo mappear la DTO de Infraestructura a Entidad");
         }
@@ -28,7 +43,14 @@ public class HistorialAcademicoAdaptador {
 
     public static HistorialAcademicoDTO toDTO(HistorialAcademico historialAcademico){
         try {
-
+            HistorialAcademicoDTO dto = new HistorialAcademicoDTO();
+            dto.setCarrera(historialAcademico.getCarrera().toString());
+            dto.setPromedio(historialAcademico.getPromedio());
+            dto.setProcentajeBajas(historialAcademico.getProcentajeBajas());
+            dto.setCargaAcademica(historialAcademico.getCargaAcademica());
+            dto.setSemestre(historialAcademico.getSemestre());
+            dto.setIndiceReprobacion(historialAcademico.getIndiceReprobacion());
+            return dto;
         } catch (Exception sinUso){
             throw new HistorialAcademicoAdaptadorException("No se pudo mappear la Entidad a DTO");
         }
@@ -36,7 +58,14 @@ public class HistorialAcademicoAdaptador {
 
     public static HistorialAcademicoInfraestructuraDTO toInfraestructuraDTO(HistorialAcademico  historialAcademico){
         try {
-
+            HistorialAcademicoInfraestructuraDTO dto = new HistorialAcademicoInfraestructuraDTO();
+            dto.setCarrera(historialAcademico.getCarrera().toString());
+            dto.setPromedio(historialAcademico.getPromedio());
+            dto.setProcentajeBajas(historialAcademico.getProcentajeBajas());
+            dto.setCargaAcademica(historialAcademico.getCargaAcademica());
+            dto.setSemestre(historialAcademico.getSemestre());
+            dto.setIndiceReprobacion(historialAcademico.getIndiceReprobacion());
+            return dto;
         } catch (Exception sinUso){
             throw new HistorialAcademicoAdaptadorException("No se pudo mappear la Entidad a DTO Infraestructura");
         }
