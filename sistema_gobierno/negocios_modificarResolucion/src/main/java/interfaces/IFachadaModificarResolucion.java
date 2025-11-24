@@ -12,7 +12,7 @@ public interface IFachadaModificarResolucion {
 
     ResolucionDTO resolverAtomatico(SolicitudDTO solicitud);
 
-    ResolucionDTO resolverManual(ResolucionDTO resolucionDTO);
+    boolean resolverManual(ResolucionDTO resolucionDTO);
 
     boolean modificarResolucion(ResolucionDTO resolucionDTO);
 }

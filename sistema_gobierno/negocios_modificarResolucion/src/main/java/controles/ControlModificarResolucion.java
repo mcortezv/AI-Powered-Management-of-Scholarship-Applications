@@ -42,12 +42,20 @@ public class ControlModificarResolucion {
         return ResolucionAdaptador.toDTO(resolucion);
     }
 
-    public boolean resolverManual(Solicitud solicitud, Decision decision, String motivo, LocalDate fechaEvaluacion){
+    public boolean resolverManual(ResolucionDTO resolucionDTO){
+        Solicitud solicitud = SolicitudAdaptador.toEntity(resolucionDTO.getSolicitud());
+        Decision decision = Decision.valueOf(resolucionDTO.getDecision());
+        String motivo = resolucionDTO.getMotivo();
+        LocalDate fechaEvaluacion =  resolucionDTO.getFechaEvaluacion();
         Resolucion resolucion = resolucionBO.crearResolucion(solicitud, decision, motivo, fechaEvaluacion);
-        return modificarResolucion(resolucion);
+        if (cambiarEstadoSolicitud(resolucion.getSolicitud())){
+            return resolucionBO.actualizarResolucion(resolucion);
+        }
+        return false;
     }
 
-    public boolean modificarResolucion(Resolucion resolucion){
+    public boolean modificarResolucion(ResolucionDTO resolucionDTO){
+        Resolucion resolucion = ResolucionAdaptador.toEntity(resolucionDTO);
         if (cambiarEstadoSolicitud(resolucion.getSolicitud())){
             return resolucionBO.actualizarResolucion(resolucion);
         }
