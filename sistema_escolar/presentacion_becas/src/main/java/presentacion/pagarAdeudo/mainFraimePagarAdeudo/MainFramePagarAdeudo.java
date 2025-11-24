@@ -34,13 +34,6 @@ public class MainFramePagarAdeudo extends JFrame {
         pagarAdeudo = new PagarAdeudo(coordinadorAplicacionPagarAdeudo);
 
         panels.put("consultaAdeudoMenu", new ConsultaAdeudoMenu(pagarAdeudo, coordinadorAplicacionPagarAdeudo));
-
-        btnBiblioteca.addActionListener(e->{
-            coordinadorAplicacionPagarAdeudo.seleccionarAdeudoBiblioteca();
-        });
-        btnColegiatura.addActionListener(e ->{
-            coordinadorAplicacionPagarAdeudo.seleccionarAdeudoColegiatura();
-        });
     }
 
 }

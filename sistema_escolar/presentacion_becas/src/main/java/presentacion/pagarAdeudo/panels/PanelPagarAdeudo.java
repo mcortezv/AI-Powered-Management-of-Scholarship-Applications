@@ -20,7 +20,7 @@ public abstract class PanelPagarAdeudo extends JPanel {
 
 
     public PanelPagarAdeudo(PagarAdeudo frame, CoordinadorAplicacionPagarAdeudo coordinadorAplicacion){
-        this.pagarAdeudo = frame;
+        pagarAdeudo = frame;
         btnBack = new Button("Volver");
         this.coordinadorAplicacion = coordinadorAplicacion;
         setLayout(new BorderLayout());
@@ -40,6 +40,8 @@ public abstract class PanelPagarAdeudo extends JPanel {
 
         });
     }
+
+
 
     public abstract void startComponents();
 }

@@ -25,6 +25,11 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
         mainFrame.setVisible(true);
     }
 
+    public void main(){
+        pagarAdeudo.setVisible(false);
+        mainFrame.setVisible(true);
+    }
+
     public void pagarAdeudo(){
         mainFrame.setVisible(false);
         pagarAdeudo = new PagarAdeudo(this);
@@ -32,11 +37,7 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
     }
 
     @Override
-    public void seleccionarAdeudoBiblioteca() {
-        // cambiar a que el dto se haga en el panel y llegue por medio del parametro el dto
-        EstudianteDTO estudianteDTO = new EstudianteDTO();
-        estudianteDTO.setMatricula(87249L);
-
+    public void seleccionarAdeudoBiblioteca(EstudianteDTO estudianteDTO) {
         double adeudo = coordinadorNegocioPagarAdeudo.obtenerAdeudoBiblioteca(estudianteDTO);
         List<PrestamoDTO> listaPrestamos = coordinadorNegocioPagarAdeudo.obtenerListaPrestamos(estudianteDTO);
         ListaPrestamosBiblioteca panel = (ListaPrestamosBiblioteca) pagarAdeudo.getPanel("listaPrestamos");
@@ -46,11 +47,7 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
     }
 
     @Override
-    public void seleccionarAdeudoColegiatura() {
-        // cambiar a que el dto se haga en el panel y llegue por medio del parametro el dto
-        EstudianteDTO estudianteDTO = new EstudianteDTO();
-        estudianteDTO.setMatricula(87249L);
-
+    public void seleccionarAdeudoColegiatura(EstudianteDTO estudianteDTO) {
         double adeudo = coordinadorNegocioPagarAdeudo.obtenerAdeudoColegiatura(estudianteDTO);
         List<ClaseDTO> listaPrestamos = coordinadorNegocioPagarAdeudo.obtenerListaClases(estudianteDTO);
         ListaClasesColegiatura panel = (ListaClasesColegiatura) pagarAdeudo.getPanel("listaPrestamos");
