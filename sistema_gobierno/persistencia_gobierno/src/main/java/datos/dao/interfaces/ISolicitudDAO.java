@@ -1,5 +1,6 @@
 package datos.dao.interfaces;
 import datos.dominio.Solicitud;
+import datos.dominio.enums.EstadoSolicitud;
 import java.util.List;
 
 /**
@@ -15,4 +16,6 @@ public interface ISolicitudDAO {
     Solicitud obtenerPorFiltro(String tipoFiltro, String filtro);
 
     boolean actualizar(Solicitud solicitud);
+
+    boolean cambiarEstado(int id, EstadoSolicitud estado);
 }
