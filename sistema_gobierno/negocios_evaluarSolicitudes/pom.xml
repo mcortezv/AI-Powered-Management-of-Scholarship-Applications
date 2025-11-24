@@ -10,6 +10,6 @@
     <packaging>jar</packaging>
     <properties>
         <maven.compiler.release>23</maven.compiler.release>
-        <exec.mainClass>fachada.Negocios_evaluarSolicitudes</exec.mainClass>
+        <exec.mainClass>fachadas.Negocios_evaluarSolicitudes</exec.mainClass>
     </properties>
 </project>

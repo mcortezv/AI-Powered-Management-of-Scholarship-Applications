@@ -10,6 +10,14 @@
     <packaging>jar</packaging>
     <properties>
         <maven.compiler.release>23</maven.compiler.release>
-        <exec.mainClass>fachada.Infraestructura_modeloML</exec.mainClass>
+        <exec.mainClass>fachadas.Infraestructura_modeloML</exec.mainClass>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>mcortezv</groupId>
+            <artifactId>dto_infraestructura</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 </project>
