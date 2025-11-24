@@ -1,16 +1,37 @@
 package fachadas;
+import controles.ControlModificarResolucion;
+import dto.ResolucionDTO;
+import dto.SolicitudDTO;
+import interfaces.IFachadaModificarResolucion;
 
 /**
  *
  * @author Cortez, Manuel;
  */
-public class FachadaModificarResolucion {
+public class FachadaModificarResolucion implements IFachadaModificarResolucion {
+    private final ControlModificarResolucion controlModificarResolucion;
 
-    buscarResolucion(in nombre:String, in filtro:String): Resolucion
+    public FachadaModificarResolucion(ControlModificarResolucion controlModificarResolucion) {
+        this.controlModificarResolucion = controlModificarResolucion;
+    }
 
-    resolverAtomatico(in solicitud:Solicitud): Resolucion
+    @Override
+    public ResolucionDTO buscarResolucion(String nombre, String filtro){
+        return controlModificarResolucion.buscarResolucion(nombre, filtro);
+    }
 
-    resolverManual(in solicitud:Solicitud, in decision:String, in motivo:String): Resolucion
+    @Override
+    public ResolucionDTO resolverAtomatico(SolicitudDTO solicitud){
+        return controlModificarResolucion.resolverAtomatico(solicitud);
+    }
 
-    modificarResolucion(in idResolucion:int, in nuevaResolucion:Resolucion): boolean
+    @Override
+    public ResolucionDTO resolverManual(ResolucionDTO resolucionDTO){
+        return controlModificarResolucion.resolverManual(resolucionDTO);
+    }
+
+    @Override
+    public boolean modificarResolucion(ResolucionDTO resolucionDTO){
+        return controlModificarResolucion.modificarResolucion(resolucionDTO);
+    }
 }

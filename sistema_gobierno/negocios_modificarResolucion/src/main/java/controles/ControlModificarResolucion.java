@@ -1,4 +1,6 @@
 package controles;
+import dto.ResolucionDTO;
+import dto.SolicitudDTO;
 import objetosNegocio.bo.interfaces.IResolucionBO;
 import objetosNegocio.bo.interfaces.ISolicitudBO;
 
@@ -15,15 +17,31 @@ public class ControlModificarResolucion {
         this.solicitudBO = solicitudBO;
     }
 
-    validarConvocatoriaDisp(in idConvocatoria:int): boolean
+    public boolean validarConvocatoriaDisp(int idConvocatoria){
+        return true;
+        // Pendiente
+    }
 
-    buscarResolucion(in nombre:String, in filtro:String): Resolucion
+    public ResolucionDTO buscarResolucion(String nombre, String filtro){
+        return resolucionBO.obtenerResolucionPorFiltro(nombre, filtro);
+    }
 
-    resolverAtomatico(in solicitud:Solicitud): Resolucion
+    public ResolucionDTO resolverAtomatico(SolicitudDTO solicitud){
+        return resolucionBO.crearResolucionAutomatica(solicitud);
+    }
 
-    resolverManual(in solicitud:Solicitud, in decision:String, in motivo:String): Resolucion
+    public ResolucionDTO resolverManual(ResolucionDTO resolucion){
+        return resolucionBO.crearResolucion(resolucion);
+    }
 
-    modificarResolucion(in idResolucion:int, in nuevaResolucion:Resolucion): boolean
+    public boolean modificarResolucion(ResolucionDTO resolucionDTO){
+        if (cambiarEstadoSolicitud(resolucionDTO.getSolicitud())){
+            return resolucionBO.actualizarResolucion(resolucionDTO);
+        }
+        return false;
+    }
 
-    cambiarEstadoSolicitud(in id:int, in nuevoEstado:String): boolean
+    public boolean cambiarEstadoSolicitud(SolicitudDTO solicitudDTO){
+        return solicitudBO.cambiarEstado((int) solicitudDTO.getId(), solicitudDTO.getEstado());
+    }
 }

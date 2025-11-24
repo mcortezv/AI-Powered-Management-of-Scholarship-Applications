@@ -1,5 +1,6 @@
 package objetosNegocio.bo;
 import datos.dao.interfaces.IResolucionDAO;
+import datos.dominio.Resolucion;
 import dto.ResolucionDTO;
 import dto.ResolucionInfraestructuraDTO;
 import dto.SolicitudDTO;
@@ -24,7 +25,18 @@ public class ResolucionBO implements IResolucionBO {
     }
 
     @Override
-    public boolean crearResolucion(ResolucionDTO resolucionDTO){
+    public ResolucionDTO crearResolucion(ResolucionDTO resolucionDTO){
+        try {
+            Resolucion resolucion = ResolucionAdaptador.toEntity(resolucionDTO);
+            //Validaciones etc
+            return ResolucionAdaptador.toDTO(resolucion);
+        } catch (Exception ex) {
+            throw new ResolucionBOException(ex.getMessage());
+        }
+    }
+
+    @Override
+    public boolean resolver(ResolucionDTO resolucionDTO){
         try {
             return resolucionDAO.guardar(ResolucionAdaptador.toEntity(resolucionDTO));
         } catch (Exception ex) {
@@ -56,6 +68,15 @@ public class ResolucionBO implements IResolucionBO {
     public ResolucionDTO obtenerResolucionPorFiltro(String tipoFiltro, String filtro) {
         try {
             return ResolucionAdaptador.toDTO(resolucionDAO.obtenerPorFiltro(tipoFiltro, filtro));
+        } catch (Exception ex) {
+            throw new ResolucionBOException(ex.getMessage());
+        }
+    }
+
+    @Override
+    public boolean actualizarResolucion(ResolucionDTO resolucionDTO){
+        try {
+            return resolucionDAO.actualizar(ResolucionAdaptador.toEntity(resolucionDTO));
         } catch (Exception ex) {
             throw new ResolucionBOException(ex.getMessage());
         }

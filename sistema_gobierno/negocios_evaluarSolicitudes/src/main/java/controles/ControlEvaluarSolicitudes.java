@@ -32,14 +32,14 @@ public class ControlEvaluarSolicitudes {
 
     public boolean resolverSolicitudManual(ResolucionDTO resolucionDTO){
         if (cambiarEstadoSolicitud((int) resolucionDTO.getSolicitud().getId(), resolucionDTO.getSolicitud().getEstado())){
-            return resolucionBO.crearResolucion(resolucionDTO);
+            return resolucionBO.resolver(resolucionDTO);
         }
         return false;
     }
 
     public boolean resolver(ResolucionDTO resolucionDTO){
         if (cambiarEstadoSolicitud((int) resolucionDTO.getSolicitud().getId(), resolucionDTO.getSolicitud().getEstado())){
-            return resolucionBO.crearResolucion(resolucionDTO);
+            return resolucionBO.resolver(resolucionDTO);
         }
         return false;
     }
