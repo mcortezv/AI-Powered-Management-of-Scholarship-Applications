@@ -35,11 +35,6 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     private SolicitudDTO solicitudDTO;
     private EstudianteDTO estudianteDTO;
 
-    //pagar adeudo
-    private PagarAdeudo pagarAdeudo;
-    //pagar adeudo
-
-
     public CoordinadorAplicacion(IFachadaInicioSesion fachadaInicioSesion, IFachadaSolicitarBeca fachadaSolicitarBeca) {
         this.coordinadorNegocio = new CoordinadorNegocio(fachadaInicioSesion, fachadaSolicitarBeca);
         mainFrame = new MainFrame(this);
@@ -84,16 +79,6 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         solicitarBeca = new SolicitarBeca(this, becaDTO);
         solicitarBeca.setVisible(true);
     }
-
-    //pagar adeudo
-    public void pagarAdeudo(){
-        mainFrame.setVisible(false);
-        pagarAdeudo = new PagarAdeudo(this);
-        pagarAdeudo.setVisible(true);
-    }
-    //pagar adeudo
-
-
 
 
     public void main() {

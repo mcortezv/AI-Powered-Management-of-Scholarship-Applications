@@ -1,18 +1,13 @@
 package controles;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import dto.EstudianteResponseDTO;
 import dto.HistorialAcademicoResponseDTO;
 import dto.LoginDTO;
-import dto.pagarAdeudo.PrestamoDTOI;
-
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.util.List;
 
 /**
- *  FASE DE PRUEBAS PARA HACER LA COMUNICACION CON LA API EXTERNA DE ITSON POR MEDIO DE HTTP
+ *  FASE DE PRUEBAS PARA HACER LA COMUNICACION CON LA API EXTERNA DE ITSON
+ *  LA COMUNICACON CON LA API EXTERNA DE ITSON SERÁ MEDIANTE MONGO DB ATLAS,
+ *  "CONTROLITSON" FUNCIONARÁ COMO UNA "DAO" QUE REALICE CONSULTAS
+ *  A LAS DIFERENTES COLECCIONES YA ESTABLECIDAS EN MONGO
  * @author Escalante, Sebastian.
  */
 public class ControlItson {
