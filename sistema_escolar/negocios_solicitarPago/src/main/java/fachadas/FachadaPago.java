@@ -6,20 +6,21 @@ import dto.pagarAdeudo.ClaseDTO;
 import dto.pagarAdeudo.PrestamoDTO;
 import dto.pagarAdeudo.SolicitudPagoDTO;
 import interfaces.IFachadaPago;
+import solicitarBeca.dominio.enums.pagarAdeudo.MetodoPago;
 
 import java.util.List;
 
 public class FachadaPago implements IFachadaPago {
-    public ControlPago solicitudPago;
+    public ControlPago controlPago;
     public SolicitudPagoDTO solicitudPagoDTO;
 
-    public FachadaPago(ControlPago controlSolicitudPago){
-        this.solicitudPago = controlSolicitudPago;
+    public FachadaPago(ControlPago controlPago){
+        this.controlPago = controlPago;
     }
 
     @Override
     public double solicitarAdeudoTotalBiblioteca(EstudianteDTO estudianteDTO) {
-        return 0.0;
+        return controlPago.solicitarAdeudoTotalBiblioteca(estudianteDTO);
     }
 
     @Override
@@ -38,7 +39,7 @@ public class FachadaPago implements IFachadaPago {
     }
 
     @Override
-    public SolicitudPagoDTO solicitarRealizarPago(SolicitudPagoDTO solicitudPagoDTO, String metodoPago) {
+    public SolicitudPagoDTO solicitarRealizarPago(SolicitudPagoDTO solicitudPagoDTO, MetodoPago metodoPago) {
         return null;
     }
 
