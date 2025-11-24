@@ -12,6 +12,8 @@ public class Resolucion {
     private String motivo;
     private LocalDate fechaEvaluacion;
 
+    public Resolucion(){}
+
     public Resolucion(Decision decision, LocalDate fechaEvaluacion, String motivo, Solicitud solicitud) {
         this.decision = decision;
         this.fechaEvaluacion = fechaEvaluacion;
