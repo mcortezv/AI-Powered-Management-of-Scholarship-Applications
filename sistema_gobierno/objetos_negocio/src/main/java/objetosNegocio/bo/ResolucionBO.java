@@ -1,8 +1,13 @@
 package objetosNegocio.bo;
 import datos.dao.interfaces.IResolucionDAO;
 import dto.ResolucionDTO;
+import dto.ResolucionInfraestructuraDTO;
 import dto.SolicitudDTO;
+import dto.SolicitudInfraestructuraDTO;
 import interfaces.IFachadaModeloML;
+import objetosNegocio.adaptadores.ResolucionAdaptador;
+import objetosNegocio.adaptadores.SolicitudAdaptador;
+import objetosNegocio.bo.excepciones.ResolucionBOException;
 import objetosNegocio.bo.interfaces.IResolucionBO;
 
 /**
@@ -19,27 +24,40 @@ public class ResolucionBO implements IResolucionBO {
     }
 
     @Override
-    public boolean crearResolución(SolicitudDTO solicitud, ResolucionDTO resolucionDTO){
-        return true;
+    public boolean crearResolucion(ResolucionDTO resolucionDTO){
+        try {
+            return resolucionDAO.guardar(ResolucionAdaptador.toEntity(resolucionDTO));
+        } catch (Exception ex) {
+            throw new ResolucionBOException(ex.getMessage());
+        }
     }
 
     @Override
     public ResolucionDTO crearResolucionAutomatica(SolicitudDTO solicitud) {
-        return null;
+        try {
+            SolicitudInfraestructuraDTO solicitudInfraestructuraDTO = SolicitudAdaptador.toInfraestructuraDTO(SolicitudAdaptador.toEntity(solicitud));
+            ResolucionInfraestructuraDTO resolucionInfraestructuraDTO = fachadaModeloML.generarPrediccion(solicitudInfraestructuraDTO);
+            return ResolucionAdaptador.toDTO(ResolucionAdaptador.toEntity(resolucionInfraestructuraDTO));
+        } catch (Exception ex) {
+            throw new ResolucionBOException(ex.getMessage());
+        }
     }
 
     @Override
     public ResolucionDTO obtenerResolucion(int id){
-        return null;
-    }
-
-    @Override
-    public ResolucionDTO obtenerResolucionPorNombre(String nombre){
-        return null;
+        try {
+            return ResolucionAdaptador.toDTO(resolucionDAO.obtenerPorId(id));
+        } catch (Exception ex) {
+            throw new ResolucionBOException(ex.getMessage());
+        }
     }
 
     @Override
     public ResolucionDTO obtenerResolucionPorFiltro(String tipoFiltro, String filtro) {
-        return null;
+        try {
+            return ResolucionAdaptador.toDTO(resolucionDAO.obtenerPorFiltro(tipoFiltro, filtro));
+        } catch (Exception ex) {
+            throw new ResolucionBOException(ex.getMessage());
+        }
     }
 }

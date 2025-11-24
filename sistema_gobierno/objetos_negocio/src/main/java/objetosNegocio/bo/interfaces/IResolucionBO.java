@@ -8,13 +8,11 @@ import dto.SolicitudDTO;
  */
 public interface IResolucionBO {
 
-    boolean crearResolución(SolicitudDTO solicitud, ResolucionDTO resolucionDTO);
+    boolean crearResolucion(ResolucionDTO resolucionDTO);
 
     ResolucionDTO crearResolucionAutomatica(SolicitudDTO solicitud);
 
     ResolucionDTO obtenerResolucion(int id);
-
-    ResolucionDTO obtenerResolucionPorNombre(String nombre);
 
     ResolucionDTO obtenerResolucionPorFiltro(String tipoFiltro, String filtro);
 }
