@@ -12,6 +12,7 @@ import interfaces.IFachadaBanco;
  */
 public class FachadaBanco implements IFachadaBanco {
     private ControlBanco controlBanco;
+
     public FachadaBanco(ControlBanco controlBanco){
         this.controlBanco = controlBanco;
     }

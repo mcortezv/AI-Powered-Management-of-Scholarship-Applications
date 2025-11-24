@@ -14,7 +14,11 @@ public class ControlPago {
    private IFachadaBanco iFachadaBanco;
     private IFachadaPayPal iFachadaPayPal;
 
-    public ControlPago(){}
+    public ControlPago(IAdeudoBO adeudoBO, IFachadaBanco iFachadaBanco, IFachadaPayPal fachadaPayPal){
+        this.iAdeudoBO = adeudoBO;
+        this.iFachadaPayPal = fachadaPayPal;
+        this.iFachadaBanco = iFachadaBanco;
+    }
 
     public double solicitarAdeudoTotalBiblioteca(EstudianteDTO estudianteDTO) {
         String matriculaString = String.valueOf(estudianteDTO.getMatricula());

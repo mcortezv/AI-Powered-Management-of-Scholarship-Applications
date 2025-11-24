@@ -13,12 +13,12 @@ public class AdeudoBO implements IAdeudoBO {
 
     @Override
     public double obtenerAdeudoBiblioteca(String matriculaEstudiante) {
-        return 0.0;
+        return iFachadaITSON.solicitarAdeudoBiblioteca(matriculaEstudiante);
     }
 
     @Override
     public double obtenerAdeudoColegiatura(String matriculaEstudiante) {
-        return 0;
+        return iFachadaITSON.solicitarAdeudoColegiatura(matriculaEstudiante);
     }
 
     @Override
