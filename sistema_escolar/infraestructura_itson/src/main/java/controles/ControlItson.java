@@ -19,4 +19,17 @@ public class ControlItson {
     public HistorialAcademicoResponseDTO verificarHistorialAcademcio(Long matricula) {
         return null;
     }
+
+
+    /**
+     * TODO ESTO ES PARA EL CASO DE USO PAGAR ADEUDO
+     */
+
+    double solicitarAdeudoBiblioteca(String matriculaEstudiante){
+        return 0.0;
+    }
+
+    /**
+     * AQUI TERMINA CASO DE USO PAGAR ADEUDO
+     */
 }

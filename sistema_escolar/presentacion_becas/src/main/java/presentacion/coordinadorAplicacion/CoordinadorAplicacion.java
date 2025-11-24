@@ -5,6 +5,7 @@ import presentacion.coordinadorNegocio.CoordinadorNegocio;
 import presentacion.login.MainFrame;
 import presentacion.login.exceptions.ContraseniaInvalidaException;
 import presentacion.login.exceptions.IDInvalidoException;
+import presentacion.pagarAdeudo.PagarAdeudo;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.solicitarBeca.exceptions.*;
 import presentacion.solicitarBeca.panels.DetallesBecaPanel;
@@ -23,6 +24,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     private final MainFrame mainFrame;
     private final CoordinadorNegocio coordinadorNegocio;
     private SolicitarBeca solicitarBeca;
+    private PagarAdeudo pagarAdeudo;
     private BecaDTO becaDTO;
     private BecaDTO becaSeleccionadaDTO;
     private RequisitosDTO requisitosDTO;
@@ -86,6 +88,12 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         mainFrame.setVisible(false);
         solicitarBeca = new SolicitarBeca(this, becaDTO);
         solicitarBeca.setVisible(true);
+    }
+
+    public void pagarAdeudo(){
+        mainFrame.setVisible(false);
+        pagarAdeudo = new PagarAdeudo(this);
+        pagarAdeudo.setVisible(true);
     }
 
     public void main() {

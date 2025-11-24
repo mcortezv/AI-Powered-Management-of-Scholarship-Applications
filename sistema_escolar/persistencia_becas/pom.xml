@@ -9,7 +9,7 @@
     <artifactId>persistencia_becas</artifactId>
     <packaging>jar</packaging>
     <properties>
-        <maven.compiler.release>23</maven.compiler.release>
+        <maven.compiler.release>17</maven.compiler.release>
         <exec.mainClass>mcortezv.persistencia_becas.Persistencia_becas</exec.mainClass>
     </properties>
 </project>

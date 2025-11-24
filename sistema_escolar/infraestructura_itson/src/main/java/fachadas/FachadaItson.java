@@ -7,7 +7,12 @@ import dto.EstudianteResponseDTO;
 import dto.HistorialAcademicoResponseDTO;
 import dto.LoginDTO;
 import controles.ControlItson;
+import dto.pagarAdeudo.ClaseDTOI;
+import dto.pagarAdeudo.PrestamoDTOI;
+import dto.pagarAdeudo.SolicitudPagoDTOI;
 import interfaces.IFachadaITSON;
+
+import java.util.List;
 
 /**
  *
@@ -15,6 +20,7 @@ import interfaces.IFachadaITSON;
  */
 public class FachadaItson implements IFachadaITSON{
     private ControlItson controlItson;
+
 
     public FachadaItson(ControlItson controlItson) {
         this.controlItson = controlItson;
@@ -34,4 +40,40 @@ public class FachadaItson implements IFachadaITSON{
     public HistorialAcademicoResponseDTO verificarHistorialAcademcio(Long matricula) {
         return controlItson.verificarHistorialAcademcio(matricula);
     }
+
+
+    /**
+     *  TODO ESTO ES DEL CASO PAGAR ADEUDO
+     * @param matriculaEstudiante
+     * // SEBASTIAN ESCALANTE RAMIREZ
+     * @return
+     */
+    @Override
+    public double solicitarAdeudoBiblioteca(String matriculaEstudiante) {
+        return 0;
+    }
+
+    @Override
+    public double solicitarAdeudoColegiatura(String matriculaEstudiante) {
+        return 0;
+    }
+
+    @Override
+    public List<PrestamoDTOI> solicitarListaPrestamso(String matriculaEstudiante) {
+        return List.of();
+    }
+
+    @Override
+    public List<ClaseDTOI> solicitarListaClases(String matriculaEstudiante) {
+        return List.of();
+    }
+
+    @Override
+    public boolean notificarLiquidacion(SolicitudPagoDTOI solicitudPagoDTOI) {
+        return false;
+    }
+
+    /**
+     * AQUI TERMINA CASO DE USO PAGAR ADEUDO
+     */
 }
