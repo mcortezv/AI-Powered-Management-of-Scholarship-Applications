@@ -1,8 +1,16 @@
 package controles;
+import datos.dominio.Resolucion;
+import datos.dominio.Solicitud;
+import datos.dominio.enums.EstadoSolicitud;
 import dto.ResolucionDTO;
+import dto.ResolucionInfraestructuraDTO;
 import dto.SolicitudDTO;
+import dto.SolicitudInfraestructuraDTO;
+import objetosNegocio.adaptadores.ResolucionAdaptador;
+import objetosNegocio.adaptadores.SolicitudAdaptador;
 import objetosNegocio.bo.interfaces.IResolucionBO;
 import objetosNegocio.bo.interfaces.ISolicitudBO;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,28 +31,36 @@ public class ControlEvaluarSolicitudes {
     }
 
     public List<SolicitudDTO> obtenerListadoSolicitudes(int idConvocatoria){
-        return solicitudBO.obtenerListadoSolicitudes(idConvocatoria);
+        List<SolicitudDTO> solicitudes = new ArrayList<>();
+        for (Solicitud solicitud: solicitudBO.obtenerListadoSolicitudes(idConvocatoria)){
+            solicitudes.add(SolicitudAdaptador.toDTO(solicitud));
+        }
+        return solicitudes;
     }
 
-    public ResolucionDTO evaluacionAutomatica(SolicitudDTO solicitud){
-        return resolucionBO.crearResolucionAutomatica(solicitud);
+    public ResolucionDTO evaluacionAutomatica(SolicitudDTO solicitudDTO){
+        Solicitud solicitud = SolicitudAdaptador.toEntity(solicitudDTO);
+        SolicitudInfraestructuraDTO solicitudInfraestructuraDTO = SolicitudAdaptador.toInfraestructuraDTO(solicitud);
+        ResolucionInfraestructuraDTO resolucionInfraestructuraDTO = resolucionBO.crearResolucionAutomatica(solicitudInfraestructuraDTO);
+        Resolucion resolucion = ResolucionAdaptador.toEntity(resolucionInfraestructuraDTO);
+        return ResolucionAdaptador.toDTO(resolucion);
     }
 
     public boolean resolverSolicitudManual(ResolucionDTO resolucionDTO){
         if (cambiarEstadoSolicitud((int) resolucionDTO.getSolicitud().getId(), resolucionDTO.getSolicitud().getEstado())){
-            return resolucionBO.resolver(resolucionDTO);
+            return resolucionBO.resolver(ResolucionAdaptador.toEntity(resolucionDTO));
         }
         return false;
     }
 
     public boolean resolver(ResolucionDTO resolucionDTO){
         if (cambiarEstadoSolicitud((int) resolucionDTO.getSolicitud().getId(), resolucionDTO.getSolicitud().getEstado())){
-            return resolucionBO.resolver(resolucionDTO);
+            return resolucionBO.resolver(ResolucionAdaptador.toEntity(resolucionDTO));
         }
         return false;
     }
 
     public boolean cambiarEstadoSolicitud(int id, String nuevoEstado){
-        return solicitudBO.cambiarEstado(id, nuevoEstado);
+        return solicitudBO.cambiarEstado(id, EstadoSolicitud.valueOf(nuevoEstado));
     }
 }

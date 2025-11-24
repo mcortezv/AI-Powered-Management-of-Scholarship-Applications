@@ -1,15 +1,14 @@
 package objetosNegocio.bo;
 import datos.dao.interfaces.IResolucionDAO;
 import datos.dominio.Resolucion;
-import dto.ResolucionDTO;
+import datos.dominio.Solicitud;
+import datos.dominio.enums.Decision;
 import dto.ResolucionInfraestructuraDTO;
-import dto.SolicitudDTO;
 import dto.SolicitudInfraestructuraDTO;
 import interfaces.IFachadaModeloML;
-import objetosNegocio.adaptadores.ResolucionAdaptador;
-import objetosNegocio.adaptadores.SolicitudAdaptador;
 import objetosNegocio.bo.excepciones.ResolucionBOException;
 import objetosNegocio.bo.interfaces.IResolucionBO;
+import java.time.LocalDate;
 
 /**
  *
@@ -25,58 +24,59 @@ public class ResolucionBO implements IResolucionBO {
     }
 
     @Override
-    public ResolucionDTO crearResolucion(ResolucionDTO resolucionDTO){
+    public Resolucion crearResolucion(Solicitud solicitud, Decision decision, String motivo, LocalDate fechaEvaluacion){
         try {
-            Resolucion resolucion = ResolucionAdaptador.toEntity(resolucionDTO);
-            //Validaciones etc
-            return ResolucionAdaptador.toDTO(resolucion);
+            Resolucion resolucion = new Resolucion();
+            resolucion.setSolicitud(solicitud);
+            resolucion.setDecision(decision);
+            resolucion.setMotivo(motivo);
+            resolucion.setFechaEvaluacion(fechaEvaluacion);
+            return  resolucion;
+        } catch (Exception sinUso) {
+            throw new ResolucionBOException("Error al crear resolucion");
+        }
+    }
+
+    @Override
+    public boolean resolver(Resolucion resolucion){
+        try {
+            return resolucionDAO.guardar(resolucion);
         } catch (Exception ex) {
             throw new ResolucionBOException(ex.getMessage());
         }
     }
 
     @Override
-    public boolean resolver(ResolucionDTO resolucionDTO){
+    public ResolucionInfraestructuraDTO crearResolucionAutomatica(SolicitudInfraestructuraDTO solicitud) {
         try {
-            return resolucionDAO.guardar(ResolucionAdaptador.toEntity(resolucionDTO));
+            return fachadaModeloML.generarPrediccion(solicitud);
         } catch (Exception ex) {
             throw new ResolucionBOException(ex.getMessage());
         }
     }
 
     @Override
-    public ResolucionDTO crearResolucionAutomatica(SolicitudDTO solicitud) {
+    public Resolucion obtenerResolucion(int id){
         try {
-            SolicitudInfraestructuraDTO solicitudInfraestructuraDTO = SolicitudAdaptador.toInfraestructuraDTO(SolicitudAdaptador.toEntity(solicitud));
-            ResolucionInfraestructuraDTO resolucionInfraestructuraDTO = fachadaModeloML.generarPrediccion(solicitudInfraestructuraDTO);
-            return ResolucionAdaptador.toDTO(ResolucionAdaptador.toEntity(resolucionInfraestructuraDTO));
+            return resolucionDAO.obtenerPorId(id);
         } catch (Exception ex) {
             throw new ResolucionBOException(ex.getMessage());
         }
     }
 
     @Override
-    public ResolucionDTO obtenerResolucion(int id){
+    public Resolucion obtenerResolucionPorFiltro(String tipoFiltro, String filtro) {
         try {
-            return ResolucionAdaptador.toDTO(resolucionDAO.obtenerPorId(id));
+            return resolucionDAO.obtenerPorFiltro(tipoFiltro, filtro);
         } catch (Exception ex) {
             throw new ResolucionBOException(ex.getMessage());
         }
     }
 
     @Override
-    public ResolucionDTO obtenerResolucionPorFiltro(String tipoFiltro, String filtro) {
+    public boolean actualizarResolucion(Resolucion resolucion){
         try {
-            return ResolucionAdaptador.toDTO(resolucionDAO.obtenerPorFiltro(tipoFiltro, filtro));
-        } catch (Exception ex) {
-            throw new ResolucionBOException(ex.getMessage());
-        }
-    }
-
-    @Override
-    public boolean actualizarResolucion(ResolucionDTO resolucionDTO){
-        try {
-            return resolucionDAO.actualizar(ResolucionAdaptador.toEntity(resolucionDTO));
+            return resolucionDAO.actualizar(resolucion);
         } catch (Exception ex) {
             throw new ResolucionBOException(ex.getMessage());
         }

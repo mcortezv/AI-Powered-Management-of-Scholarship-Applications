@@ -1,5 +1,4 @@
 package interfaces;
-
 import dto.ResolucionDTO;
 import dto.SolicitudDTO;
 
