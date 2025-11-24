@@ -26,6 +26,7 @@ public final class MainFrame extends JFrame {
     private final Map<String, JPanel> panels;
     private CoordinadorAplicacion coordinadorAplicacion;
 
+
     public MainFrame(CoordinadorAplicacion coordinadorAplicacion) {
         setTitle("Sistema de Aplicaciones Escolares");
         setResizable(false);
@@ -67,9 +68,6 @@ public final class MainFrame extends JFrame {
             coordinadorAplicacion.solicitarBeca();
         });
 
-        btnPagoAdeudo.addActionListener(e ->{
-            coordinadorAplicacion.pagarAdeudo();
-        });
     }
 
     public void showPanel(String nuevoPanel) {
