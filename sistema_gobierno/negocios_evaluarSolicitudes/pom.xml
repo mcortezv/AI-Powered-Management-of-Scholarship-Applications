@@ -12,4 +12,12 @@
         <maven.compiler.release>23</maven.compiler.release>
         <exec.mainClass>fachadas.Negocios_evaluarSolicitudes</exec.mainClass>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>mcortezv</groupId>
+            <artifactId>objetos_negocio</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 </project>
