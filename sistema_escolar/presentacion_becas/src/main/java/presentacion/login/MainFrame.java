@@ -44,6 +44,7 @@ public final class MainFrame extends JFrame {
         btnTutorias = new Button("Tutorias");
         btnCarteras = new Button("Carteras");
 
+
         northPanel.add(btnSolicitarBeca);
         northPanel.add(btnEvaluarSolicitudes);
         northPanel.add(btnApelacion);
@@ -65,6 +66,12 @@ public final class MainFrame extends JFrame {
         btnSolicitarBeca.addActionListener(e -> {
             coordinadorAplicacion.solicitarBeca();
         });
+
+        btnPagoAdeudo.addActionListener(e ->{
+            coordinadorAplicacion.pagarAdeudo();
+        });
+
+
     }
 
     public void showPanel(String nuevoPanel) {
