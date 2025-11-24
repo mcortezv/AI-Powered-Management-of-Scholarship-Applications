@@ -24,7 +24,6 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     private final MainFrame mainFrame;
     private final CoordinadorNegocio coordinadorNegocio;
     private SolicitarBeca solicitarBeca;
-    private PagarAdeudo pagarAdeudo;
     private BecaDTO becaDTO;
     private BecaDTO becaSeleccionadaDTO;
     private RequisitosDTO requisitosDTO;
@@ -35,6 +34,10 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     // bajar a coordinador negocio
     private SolicitudDTO solicitudDTO;
     private EstudianteDTO estudianteDTO;
+
+    //pagar adeudo
+    private PagarAdeudo pagarAdeudo;
+    //pagar adeudo
 
 
     public CoordinadorAplicacion(IFachadaInicioSesion fachadaInicioSesion, IFachadaSolicitarBeca fachadaSolicitarBeca) {
@@ -51,15 +54,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         return coordinadorNegocio.solicitarInicioSesion(solicitudLoginDTO);
     }
 
-    public void procesarInformacionGeneral(double promedio, double carga, double ingreso, boolean trabajo, boolean deudas) throws PromedioInvalidoException, IngresoInvalidoException {
-        presentacion.solicitarBeca.validadores.Validadores.validarPromedio(promedio);
-        presentacion.solicitarBeca.validadores.Validadores.validarIngreso(ingreso);
-        RequisitosDTO requisitosDTO  = new RequisitosDTO();
-        requisitosDTO.setPromedioMinimo(promedio);
-        requisitosDTO.setIngresoFamiliarMaximo(ingreso);
-        requisitosDTO.setCargaAcademica(carga);
-        requisitosDTO.setTrabajo(trabajo);
-        requisitosDTO.setDeudas(deudas);
+    public void procesarInformacionGeneral(RequisitosDTO requisitosDTO) throws PromedioInvalidoException, IngresoInvalidoException {
         BecasFiltradasDTO becasFiltradas = coordinadorNegocio.obtenerBecasDisponibles(requisitosDTO);
         mostrarBecasDisponibles(becasFiltradas);
     }
@@ -90,11 +85,16 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         solicitarBeca.setVisible(true);
     }
 
+    //pagar adeudo
     public void pagarAdeudo(){
         mainFrame.setVisible(false);
         pagarAdeudo = new PagarAdeudo(this);
         pagarAdeudo.setVisible(true);
     }
+    //pagar adeudo
+
+
+
 
     public void main() {
         solicitarBeca.setVisible(false);
@@ -164,4 +164,6 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     public void setBecaSeleccionadaDTO(BecaDTO becaDTO) {
         this.becaDTO = becaDTO;
     }
+
+
 }

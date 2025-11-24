@@ -3,9 +3,10 @@
  */
 package presentacion;
 import control.ControlGobierno;
-import controles.ControlInicioSesion;
-import controles.ControlItson;
-import controles.ControlSolicitarBeca;
+import controles.*;
+import fachadas.*;
+import interfaces.pagarAdeudo.IAdeudoBO;
+import objetosNegocio.pagarAdeudo.AdeudoBO;
 import solicitarBeca.dao.DocumentoDAO;
 import solicitarBeca.dao.EstudianteDAO;
 import solicitarBeca.dao.SolicitudDAO;
@@ -13,9 +14,6 @@ import solicitarBeca.dao.interfaces.IDocumentoDAO;
 import solicitarBeca.dao.interfaces.IEstudianteDAO;
 import solicitarBeca.dao.interfaces.ISolicitudDAO;
 import fachada.FachadaGobierno;
-import fachadas.FachadaInicioSesion;
-import fachadas.FachadaItson;
-import fachadas.FachadaSolicitarBeca;
 import interfaces.*;
 import objetosNegocio.*;
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
@@ -27,6 +25,21 @@ import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 public class Main {
 
     public static void main(String[] args) {
+
+        //pagar adeudo
+        IAdeudoBO adeudoBO = new AdeudoBO();
+        IFachadaBanco fachadaBanco = new FachadaBanco(new ControlBanco());
+        IFachadaPayPal fachadaPayPal = new FachadaPayPal(new ControlPayPal());
+        IFachadaPago fachadaPago = new FachadaPago(new ControlPago(adeudoBO,fachadaBanco,fachadaPayPal));
+
+
+
+        //pagar adeudo
+
+
+
+
+        //SOLICITAR BECA CASO BASE
 
         IFachadaITSON fachadaITSON = new FachadaItson(new ControlItson());
         IFachadaGobierno fachadaGobierno = new FachadaGobierno(new ControlGobierno());
@@ -43,7 +56,9 @@ public class Main {
         IFachadaInicioSesion fachadaInicioSesion = new FachadaInicioSesion( new ControlInicioSesion(estudianteBO));
         IFachadaSolicitarBeca fachadaSolicitarBeca = new FachadaSolicitarBeca(new ControlSolicitarBeca(solicitudBO,
                 estudianteBO, tutorBO, becasFiltradasBO, documentoBO, historialAcademicoBO, informacionSocioeconomicaBO));
-
         CoordinadorAplicacion coordinadorAplicacion = new CoordinadorAplicacion(fachadaInicioSesion, fachadaSolicitarBeca);
+
+
+
     }
 }
