@@ -11,6 +11,8 @@ public class ResolucionInfraestructuraDTO {
     private String motivo;
     private LocalDate fechaEvaluacion;
 
+    public ResolucionInfraestructuraDTO(){}
+
     public ResolucionInfraestructuraDTO(String decision, LocalDate fechaEvaluacion, String motivo, SolicitudInfraestructuraDTO solicitud) {
         this.decision = decision;
         this.fechaEvaluacion = fechaEvaluacion;

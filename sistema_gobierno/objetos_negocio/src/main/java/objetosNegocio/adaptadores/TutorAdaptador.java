@@ -1,5 +1,6 @@
 package objetosNegocio.adaptadores;
 import datos.dominio.Tutor;
+import datos.dominio.enums.Parentesco;
 import dto.TutorDTO;
 import dto.TutorInfraestructuraDTO;
 import objetosNegocio.adaptadores.excepciones.TutorAdaptadorException;
@@ -12,7 +13,14 @@ public class TutorAdaptador {
 
     public static Tutor toEntity(TutorDTO dto){
         try {
-
+            Tutor tutor = new Tutor();
+            tutor.setId(dto.getId());
+            tutor.setNombre(dto.getNombre());
+            tutor.setParentesco(Parentesco.valueOf(dto.getParentesco()));
+            tutor.setTelefono(dto.getTelefono());
+            tutor.setDireccion(dto.getDireccion());
+            tutor.setCorreo(dto.getCorreo());
+            return tutor;
         } catch (Exception sinUso){
             throw new TutorAdaptadorException("No se pudo mappear la DTO a Entidad");
         }
@@ -20,7 +28,14 @@ public class TutorAdaptador {
 
     public static Tutor toEntity(TutorInfraestructuraDTO dto){
         try {
-
+            Tutor tutor = new Tutor();
+            tutor.setId(dto.getId());
+            tutor.setNombre(dto.getNombre());
+            tutor.setParentesco(Parentesco.valueOf(dto.getParentesco()));
+            tutor.setTelefono(dto.getTelefono());
+            tutor.setDireccion(dto.getDireccion());
+            tutor.setCorreo(dto.getCorreo());
+            return tutor;
         } catch (Exception sinUso){
             throw new TutorAdaptadorException("No se pudo mappear la DTO de Infraestructura a Entidad");
         }
@@ -28,7 +43,14 @@ public class TutorAdaptador {
 
     public static TutorDTO toDTO(Tutor tutor){
         try {
-
+            TutorDTO dto = new TutorDTO();
+            dto.setId(tutor.getId());
+            dto.setNombre(tutor.getNombre());
+            dto.setParentesco(tutor.getParentesco().toString());
+            dto.setTelefono(tutor.getTelefono());
+            dto.setDireccion(tutor.getDireccion());
+            dto.setCorreo(tutor.getCorreo());
+            return dto;
         } catch (Exception sinUso){
             throw new TutorAdaptadorException("No se pudo mappear la Entidad a DTO");
         }
@@ -36,7 +58,14 @@ public class TutorAdaptador {
 
     public static TutorInfraestructuraDTO toInfraestructuraDTO(Tutor  tutor){
         try {
-
+            TutorInfraestructuraDTO dto = new TutorInfraestructuraDTO();
+            dto.setId(tutor.getId());
+            dto.setNombre(tutor.getNombre());
+            dto.setParentesco(tutor.getParentesco().toString());
+            dto.setTelefono(tutor.getTelefono());
+            dto.setDireccion(tutor.getDireccion());
+            dto.setCorreo(tutor.getCorreo());
+            return dto;
         } catch (Exception sinUso){
             throw new TutorAdaptadorException("No se pudo mappear la Entidad a DTO Infraestructura");
         }
