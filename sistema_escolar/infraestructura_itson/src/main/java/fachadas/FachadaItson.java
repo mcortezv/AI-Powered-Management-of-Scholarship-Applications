@@ -30,14 +30,12 @@ public class FachadaItson implements IFachadaITSON{
 
     @Override
     public EstudianteResponseDTO verificarEstudiante(Long matricula) {
-        return null;
-//        return controlItson.verificarEstudiante(matricula);
+        return controlItson.verificarEstudiante(matricula);
     }
 
     @Override
-    public HistorialAcademicoResponseDTO verificarHistorialAcademcio(String matricula) {
-        return null;
-//        return controlItson.verificarHistorialAcademcio(matricula);
+    public HistorialAcademicoResponseDTO verificarHistorialAcademcio(Long matricula) {
+        return controlItson.verificarHistorialAcademcio(matricula);
     }
 
 
@@ -49,32 +47,27 @@ public class FachadaItson implements IFachadaITSON{
      */
     @Override
     public double solicitarAdeudoBiblioteca(String matriculaEstudiante) {
-        return 0.0;
-//        return controlItson.solicitarAdeudoBiblioteca(matriculaEstudiante);
+        return controlItson.solicitarAdeudoBiblioteca(matriculaEstudiante);
     }
 
     @Override
     public double solicitarAdeudoColegiatura(String matriculaEstudiante) {
-        return 0.0;
-//        return controlItson.solicitarAdeudoColegiatura(matriculaEstudiante);
+        return controlItson.solicitarAdeudoColegiatura(matriculaEstudiante);
     }
 
     @Override
     public List<PrestamoDTOI> solicitarListaPrestamso(String matriculaEstudiante) {
-        return null;
-//        return controlItson.solicitarListaPrestamos(matriculaEstudiante);
+        return controlItson.solicitarListaPrestamos(matriculaEstudiante);
     }
 
     @Override
     public List<ClaseDTOI> solicitarListaClases(String matriculaEstudiante) {
-        return null;
-//        return controlItson.solicitarListaClases(matriculaEstudiante);
+        return controlItson.solicitarListaClases(matriculaEstudiante);
     }
 
     @Override
     public boolean notificarLiquidacion(SolicitudPagoDTOI solicitudPagoDTOI) {
-        return false;
-//        return controlItson.solicitarLiquidacion(solicitudPagoDTOI);
+        return controlItson.solicitarLiquidacion(solicitudPagoDTOI);
     }
 
     /**

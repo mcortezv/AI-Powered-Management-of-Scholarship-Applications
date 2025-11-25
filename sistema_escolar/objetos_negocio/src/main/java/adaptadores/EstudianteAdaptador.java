@@ -11,7 +11,7 @@ public class EstudianteAdaptador {
 
     public static Estudiante toEntity(EstudianteResponseDTO dto) {
         Estudiante estudiante = new Estudiante();
-        estudiante.setMatricula(dto.getMatricula());
+        estudiante.setMatricula(Long.valueOf(dto.getMatricula()));
         estudiante.setNombre(dto.getNombre());
         estudiante.setCarrera(dto.getCarrera());
         estudiante.setTelefono(dto.getTelefono());
@@ -22,7 +22,7 @@ public class EstudianteAdaptador {
 
     public static Estudiante toEntity(EstudianteDTO dto) {
         Estudiante estudiante = new Estudiante();
-        estudiante.setMatricula(dto.getMatricula());
+        estudiante.setMatricula(Long.valueOf(dto.getMatricula()));
         estudiante.setNombre(dto.getNombre());
         estudiante.setCarrera(Carrera.valueOf(dto.getCarrera()));
         estudiante.setTelefono(dto.getTelefono());
@@ -33,7 +33,7 @@ public class EstudianteAdaptador {
 
     public static EstudianteDTO toDTO(Estudiante estudiante) {
         EstudianteDTO dto = new EstudianteDTO();
-        dto.setMatricula(estudiante.getMatricula());
+        dto.setMatricula(String.valueOf(estudiante.getMatricula()));
         dto.setNombre(estudiante.getNombre());
         dto.setTutor(TutorAdaptador.toDTO(estudiante.getTutor()));
         dto.setCarrera(estudiante.getCarrera().toString());

@@ -90,10 +90,9 @@ public class IniciarSesionPanel extends Panel {
 
         btnIniciarSesion.addActionListener(e -> {
             String usuario = txtUsuario.getText().trim();
-            Long usuarioLong = Long.parseLong(usuario);
             String contrasenia = new String(txtPassword.getPassword());
             try {
-                LoginDTO loginDTO = new LoginDTO(usuarioLong,contrasenia);
+                LoginDTO loginDTO = new LoginDTO(usuario,contrasenia);
                 System.out.println("antes de llamar a coordinadorAplicacion");
                 boolean verificarLogin = coordinadorAplicacion.intentarIniciarSesion(loginDTO);
                 if(verificarLogin) {

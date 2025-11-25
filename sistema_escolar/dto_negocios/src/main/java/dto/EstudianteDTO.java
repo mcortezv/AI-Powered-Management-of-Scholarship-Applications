@@ -9,7 +9,7 @@ package dto;
  * @author Cortez, Manuel;
  */
 public class EstudianteDTO {
-    private Long matricula;
+    private String matricula;
     private String nombre;
     private String carrera;
     private TutorDTO tutor;
@@ -20,7 +20,7 @@ public class EstudianteDTO {
 
     public EstudianteDTO() {}
 
-    public EstudianteDTO(String carrera, String contrasenia, String correo, String direccion, Long matricula, String nombre, String telefono, TutorDTO tutor) {
+    public EstudianteDTO(String carrera, String contrasenia, String correo, String direccion, String matricula, String nombre, String telefono, TutorDTO tutor) {
         this.carrera = carrera;
         this.contrasenia = contrasenia;
         this.correo = correo;
@@ -65,11 +65,11 @@ public class EstudianteDTO {
         this.direccion = direccion;
     }
 
-    public Long getMatricula() {
+    public String getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(Long matricula) {
+    public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
 

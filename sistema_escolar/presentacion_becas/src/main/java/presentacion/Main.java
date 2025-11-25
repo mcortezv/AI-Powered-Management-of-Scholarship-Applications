@@ -1,6 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
 package presentacion;
 import control.ControlGobierno;
 import controles.*;
@@ -8,12 +5,12 @@ import fachadas.*;
 import interfaces.pagarAdeudo.IAdeudoBO;
 import objetosNegocio.pagarAdeudo.AdeudoBO;
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
-import solicitarBeca.repository.dao.DocumentoDAO;
-import solicitarBeca.repository.dao.EstudianteDAO;
-import solicitarBeca.repository.dao.SolicitudDAO;
-import solicitarBeca.repository.IDocumentoDAO;
-import solicitarBeca.repository.IEstudianteDAO;
-import solicitarBeca.repository.ISolicitudDAO;
+import solicitarBeca.dao.DocumentoDAO;
+import solicitarBeca.dao.EstudianteDAO;
+import solicitarBeca.dao.SolicitudDAO;
+import solicitarBeca.dao.interfaces.IDocumentoDAO;
+import solicitarBeca.dao.interfaces.IEstudianteDAO;
+import solicitarBeca.dao.interfaces.ISolicitudDAO;
 import fachada.FachadaGobierno;
 import interfaces.*;
 import objetosNegocio.*;
@@ -27,31 +24,46 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //pagar adeudo
-        IAdeudoBO adeudoBO = new AdeudoBO();
-        IFachadaBanco fachadaBanco = new FachadaBanco(new ControlBanco());
-        IFachadaPayPal fachadaPayPal = new FachadaPayPal(new ControlPayPal());
-        IFachadaPago fachadaPago = new FachadaPago(new ControlPago(adeudoBO,fachadaBanco,fachadaPayPal));
-        CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo = new CoordinadorAplicacionPagarAdeudo(fachadaPago);
-        //pagar adeudo
+        // Controles unicos para mantenerl el singleton
+        ControlItson controlItson = new ControlItson();
+        ControlGobierno controlGobierno = new ControlGobierno();
+        ControlBanco controlBanco = new ControlBanco();
+        ControlPayPal controlPayPal = new ControlPayPal();
 
-        IFachadaITSON fachadaITSON = new FachadaItson(new ControlItson());
-        IFachadaGobierno fachadaGobierno = new FachadaGobierno(new ControlGobierno());
+        //  Caso pagar Adeudo
+        IAdeudoBO adeudoBO = new AdeudoBO();
+
+        // creacion de fachadas
+        IFachadaBanco fachadaBanco = new FachadaBanco(controlBanco);
+        IFachadaPayPal fachadaPayPal = new FachadaPayPal(controlPayPal);
+        IFachadaPago fachadaPago = new FachadaPago(new ControlPago(adeudoBO, fachadaBanco, fachadaPayPal));
+        IFachadaITSON fachadaITSON = new FachadaItson(controlItson);
+        IFachadaGobierno fachadaGobierno = new FachadaGobierno(controlGobierno);
+
+        // creacion de daos
         ISolicitudDAO solicitudDAO = new SolicitudDAO();
         IEstudianteDAO estudianteDAO = new EstudianteDAO();
         IDocumentoDAO documentoDAO = new DocumentoDAO();
+
+        // creacion de las bo
         IBecasFiltradasBO becasFiltradasBO = new BecasFiltradasBO(fachadaGobierno);
         IDocumentoBO documentoBO = new DocumentoBO(documentoDAO);
         IEstudianteBO estudianteBO = new EstudianteBO(fachadaITSON, estudianteDAO);
         IHistorialAcademicoBO historialAcademicoBO = new HistorialAcademicoBO(fachadaITSON);
-        IInformacionSocioeconomicaBO informacionSocioeconomicaBO =  new InformacionSocioeconomicaBO();
+        IInformacionSocioeconomicaBO infoSocioBO = new InformacionSocioeconomicaBO();
         ISolicitudBO solicitudBO = new SolicitudBO(fachadaGobierno, solicitudDAO);
-        ITutorBO tutorBO  = new TutorBO();
-        IFachadaInicioSesion fachadaInicioSesion = new FachadaInicioSesion( new ControlInicioSesion(estudianteBO));
-        IFachadaSolicitarBeca fachadaSolicitarBeca = new FachadaSolicitarBeca(new ControlSolicitarBeca(solicitudBO,
-                estudianteBO, tutorBO, becasFiltradasBO, documentoBO, historialAcademicoBO, informacionSocioeconomicaBO));
-        CoordinadorAplicacion coordinadorAplicacion = new CoordinadorAplicacion(fachadaInicioSesion, fachadaSolicitarBeca,coordinadorAplicacionPagarAdeudo);
-        coordinadorAplicacion.iniciarGUI();
+        ITutorBO tutorBO = new TutorBO();
 
+        IFachadaInicioSesion fachadaInicioSesion = new FachadaInicioSesion(new ControlInicioSesion(estudianteBO));
+        IFachadaSolicitarBeca fachadaSolicitarBeca = new FachadaSolicitarBeca(new ControlSolicitarBeca(solicitudBO, estudianteBO, tutorBO, becasFiltradasBO, documentoBO, historialAcademicoBO, infoSocioBO));
+
+        // coordinadores de subsistemas
+        CoordinadorAplicacionPagarAdeudo coordAdeudo = new CoordinadorAplicacionPagarAdeudo(fachadaPago);
+
+        // Coordinador general
+        CoordinadorAplicacion coordinadorAplicacion = new CoordinadorAplicacion(fachadaInicioSesion, fachadaSolicitarBeca, coordAdeudo);
+
+        // iniciar la interfaz
+        coordinadorAplicacion.iniciarGUI();
     }
 }

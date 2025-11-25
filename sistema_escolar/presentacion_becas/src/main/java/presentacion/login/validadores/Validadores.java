@@ -9,11 +9,11 @@ import presentacion.login.exceptions.IDInvalidoException;
  */
 public class Validadores {
 
-    public static void validarID(Long id){
-        if(id == null){
+    public static void validarID(String id){
+        if(id == null || id.trim().isEmpty()){
             throw new IDInvalidoException("Favor de ingresar el id de usuario");
         }
-        if(!String.valueOf(id).matches("^\\d{6}$")){
+        if(!id.matches("^\\d{6}$")){
             throw new IDInvalidoException("Favor de ingresar un id correcto");
         }
     }
