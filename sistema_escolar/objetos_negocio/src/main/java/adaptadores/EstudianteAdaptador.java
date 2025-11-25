@@ -33,7 +33,7 @@ public class EstudianteAdaptador {
 
     public static EstudianteDTO toDTO(Estudiante estudiante) {
         EstudianteDTO dto = new EstudianteDTO();
-        dto.setMatricula(Long.valueOf(estudiante.getMatricula()));
+        dto.setMatricula(String.valueOf(estudiante.getMatricula()));
         dto.setNombre(estudiante.getNombre());
         dto.setTutor(TutorAdaptador.toDTO(estudiante.getTutor()));
         dto.setCarrera(estudiante.getCarrera().toString());

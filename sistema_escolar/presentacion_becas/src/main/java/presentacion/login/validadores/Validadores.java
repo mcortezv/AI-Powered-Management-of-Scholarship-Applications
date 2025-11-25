@@ -13,7 +13,7 @@ public class Validadores {
         if(id == null || id.trim().isEmpty()){
             throw new IDInvalidoException("Favor de ingresar el id de usuario");
         }
-        if(!id.matches("^\\d{11}$")){
+        if(!id.matches("^\\d{6}$")){
             throw new IDInvalidoException("Favor de ingresar un id correcto");
         }
     }

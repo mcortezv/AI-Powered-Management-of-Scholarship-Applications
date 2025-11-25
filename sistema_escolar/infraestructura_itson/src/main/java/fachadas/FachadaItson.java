@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package fachadas;
 import dto.EstudianteResponseDTO;
 import dto.HistorialAcademicoResponseDTO;
@@ -19,7 +16,7 @@ import java.util.List;
  * @author janethcristinagalvanquinonez
  */
 public class FachadaItson implements IFachadaITSON{
-    private ControlItson controlItson;
+    private final ControlItson controlItson;
 
 
     public FachadaItson(ControlItson controlItson) {
@@ -60,17 +57,17 @@ public class FachadaItson implements IFachadaITSON{
 
     @Override
     public List<PrestamoDTOI> solicitarListaPrestamso(String matriculaEstudiante) {
-        return List.of();
+        return controlItson.solicitarListaPrestamos(matriculaEstudiante);
     }
 
     @Override
     public List<ClaseDTOI> solicitarListaClases(String matriculaEstudiante) {
-        return List.of();
+        return controlItson.solicitarListaClases(matriculaEstudiante);
     }
 
     @Override
     public boolean notificarLiquidacion(SolicitudPagoDTOI solicitudPagoDTOI) {
-        return false;
+        return controlItson.solicitarLiquidacion(solicitudPagoDTOI);
     }
 
     /**

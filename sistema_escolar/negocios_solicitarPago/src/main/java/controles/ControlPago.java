@@ -1,18 +1,18 @@
 package controles;
 import java.util.List;
-import java.util.Objects;
 
+import adaptadores.pagarAdeudo.ClaseAdaptador;
+import adaptadores.pagarAdeudo.PrestamoAdaptador;
+import adaptadores.pagarAdeudo.SolicitudPagoAdaptador;
 import dto.EstudianteDTO;
-import dto.pagarAdeudo.ClaseDTO;
-import dto.pagarAdeudo.PrestamoDTO;
-import dto.pagarAdeudo.SolicitudPagoDTO;
+import dto.pagarAdeudo.*;
 import interfaces.*;
 import interfaces.pagarAdeudo.IAdeudoBO;
 
 public class ControlPago {
-   private IAdeudoBO iAdeudoBO;
-   private IFachadaBanco iFachadaBanco;
-    private IFachadaPayPal iFachadaPayPal;
+   private final IAdeudoBO iAdeudoBO;
+   private final IFachadaBanco iFachadaBanco;
+    private final IFachadaPayPal iFachadaPayPal;
 
     public ControlPago(IAdeudoBO adeudoBO, IFachadaBanco iFachadaBanco, IFachadaPayPal fachadaPayPal){
         this.iAdeudoBO = adeudoBO;
@@ -32,12 +32,14 @@ public class ControlPago {
 
     public List<PrestamoDTO>solicitarListaPrestamos(EstudianteDTO estudianteDTO){
         String matriculaString = String.valueOf(estudianteDTO.getMatricula());
-        return iAdeudoBO.obtenerDetallePrestamo(matriculaString);
+        List<PrestamoDTOI> prestamosI = iAdeudoBO.obtenerDetallePrestamo(matriculaString);
+        return prestamosI.stream().map(PrestamoAdaptador::toDTO).toList();
     }
 
     public List<ClaseDTO> solicitarListaClases(EstudianteDTO estudianteDTO){
         String matriculaString = String.valueOf(estudianteDTO.getMatricula());
-        return iAdeudoBO.obtenerDetalleClase(matriculaString);
+        List<ClaseDTOI> clasesI = iAdeudoBO.obtenerDetalleClase(matriculaString);
+        return clasesI.stream().map(ClaseAdaptador::toDTO).toList();
     }
 
     public SolicitudPagoDTO solicitarRealizarPagoBanco(SolicitudPagoDTO solicitudPagoDTO){
@@ -49,7 +51,8 @@ public class ControlPago {
     }
 
     public boolean notificarLiquidacion(SolicitudPagoDTO solicitudPagoDTO){
-        return iAdeudoBO.enviarSolicitudPago(solicitudPagoDTO);
+        SolicitudPagoDTOI solicitudPagoDTOI = SolicitudPagoAdaptador.toDTOI(solicitudPagoDTO);
+        return iAdeudoBO.enviarSolicitudPago(solicitudPagoDTOI);
     }
 
 
