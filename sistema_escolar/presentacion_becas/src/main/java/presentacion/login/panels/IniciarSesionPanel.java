@@ -1,4 +1,5 @@
 package presentacion.login.panels;
+import dto.LoginDTO;
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import presentacion.login.MainFrame;
 import presentacion.login.exceptions.ContraseniaInvalidaException;
@@ -91,12 +92,17 @@ public class IniciarSesionPanel extends Panel {
             String usuario = txtUsuario.getText().trim();
             String contrasenia = new String(txtPassword.getPassword());
             try {
-                boolean verificarLogin = coordinadorAplicacion.intentarIniciarSesion(usuario,contrasenia);
+                LoginDTO loginDTO = new LoginDTO(usuario,contrasenia);
+                System.out.println("antes de llamar a coordinadorAplicacion");
+                boolean verificarLogin = coordinadorAplicacion.intentarIniciarSesion(loginDTO);
                 if(verificarLogin) {
                     txtUsuario.setText("");
                     txtPassword.setText("");
                     mainFrame.showPanel("hubPanel");
                     mainFrame.getNorthPanel().setVisible(true);
+                    System.out.println("El login regresó true");
+                }else{
+                    System.out.println("El login esta regresando false");
                 }
                 } catch (IDInvalidoException | ContraseniaInvalidaException ex) {
                 JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);

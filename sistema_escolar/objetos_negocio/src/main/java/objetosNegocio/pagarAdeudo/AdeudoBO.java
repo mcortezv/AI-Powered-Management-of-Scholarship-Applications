@@ -1,8 +1,6 @@
 package objetosNegocio.pagarAdeudo;
 
-import dto.pagarAdeudo.ClaseDTO;
-import dto.pagarAdeudo.PrestamoDTO;
-import dto.pagarAdeudo.SolicitudPagoDTO;
+import dto.pagarAdeudo.*;
 import interfaces.IFachadaITSON;
 import interfaces.pagarAdeudo.IAdeudoBO;
 
@@ -22,17 +20,17 @@ public class AdeudoBO implements IAdeudoBO {
     }
 
     @Override
-    public List<PrestamoDTO> obtenerDetallePrestamo(String matriculaEstudiante) {
-        return List.of();
+    public List<PrestamoDTOI> obtenerDetallePrestamo(String matriculaEstudiante) {
+        return iFachadaITSON.solicitarListaPrestamso(matriculaEstudiante);
     }
 
     @Override
-    public List<ClaseDTO> obtenerDetalleClase(String matriculaEstudiante) {
-        return List.of();
+    public List<ClaseDTOI> obtenerDetalleClase(String matriculaEstudiante) {
+        return iFachadaITSON.solicitarListaClases(matriculaEstudiante);
     }
 
     @Override
-    public boolean enviarSolicitudPago(SolicitudPagoDTO solicitudPagoDTO) {
-        return false;
+    public boolean enviarSolicitudPago(SolicitudPagoDTOI solicitudPagoDTO) {
+        return iFachadaITSON.notificarLiquidacion(solicitudPagoDTO);
     }
 }

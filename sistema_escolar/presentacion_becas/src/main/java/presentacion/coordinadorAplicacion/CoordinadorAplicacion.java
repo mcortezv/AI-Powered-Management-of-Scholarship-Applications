@@ -54,11 +54,11 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         mainFrame.setVisible(true);
     }
 
-    public boolean intentarIniciarSesion(String usuario, String contrasenia) throws IDInvalidoException, ContraseniaInvalidaException {
-        presentacion.login.validadores.Validadores.validarID(usuario);
-        presentacion.login.validadores.Validadores.validarContrasenia(contrasenia);
-        LoginDTO solicitudLoginDTO = new LoginDTO(usuario, contrasenia);
-        return coordinadorNegocio.solicitarInicioSesion(solicitudLoginDTO);
+    public boolean intentarIniciarSesion(LoginDTO loginDTO) throws IDInvalidoException, ContraseniaInvalidaException {
+        presentacion.login.validadores.Validadores.validarID(loginDTO.getUsuario());
+        presentacion.login.validadores.Validadores.validarContrasenia(loginDTO.getContrasenia());
+        System.out.println("llego al coordinadorAplicacion");
+        return coordinadorNegocio.solicitarInicioSesion(loginDTO);
     }
 
     public void procesarInformacionGeneral(RequisitosDTO requisitosDTO) throws PromedioInvalidoException, IngresoInvalidoException {

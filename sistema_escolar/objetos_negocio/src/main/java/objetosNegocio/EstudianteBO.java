@@ -22,6 +22,7 @@ public class EstudianteBO implements IEstudianteBO {
 
     @Override
     public boolean iniciarSesion(LoginDTO solicitudLoginDTO){
+        System.out.println("Llego al EstudianteBO");
         return fachadaITSON.verificarLogin(solicitudLoginDTO);
     }
 
