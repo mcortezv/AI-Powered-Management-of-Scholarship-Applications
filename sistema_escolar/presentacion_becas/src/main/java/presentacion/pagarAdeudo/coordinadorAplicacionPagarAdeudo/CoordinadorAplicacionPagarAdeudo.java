@@ -14,23 +14,30 @@ import solicitarBeca.dominio.enums.pagarAdeudo.MetodoPago;
 
 import java.util.List;
 
-public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionPagarAdeudo{
-    private final MainFramePagarAdeudo mainFrame;
+public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionPagarAdeudo {
+
+    private MainFramePagarAdeudo mainFrame;
     private final CoordinadorNegocioPagarAdeudo coordinadorNegocioPagarAdeudo;
     private PagarAdeudo pagarAdeudo;
 
     public CoordinadorAplicacionPagarAdeudo(IFachadaPago fachadaPago) {
         coordinadorNegocioPagarAdeudo = new CoordinadorNegocioPagarAdeudo(fachadaPago);
-        mainFrame = new MainFramePagarAdeudo(this);
+        mainFrame = null;
+    }
+
+    public void iniciarGUI() {
+        if (mainFrame == null) {
+            mainFrame = new MainFramePagarAdeudo(this);
+        }
         mainFrame.setVisible(true);
     }
 
-    public void main(){
+    public void main() {
         pagarAdeudo.setVisible(false);
         mainFrame.setVisible(true);
     }
 
-    public void pagarAdeudo(){
+    public void pagarAdeudo() {
         mainFrame.setVisible(false);
         pagarAdeudo = new PagarAdeudo(this);
         pagarAdeudo.setVisible(true);
@@ -40,46 +47,55 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
     public void seleccionarAdeudoBiblioteca(EstudianteDTO estudianteDTO) {
         double adeudo = coordinadorNegocioPagarAdeudo.obtenerAdeudoBiblioteca(estudianteDTO);
         List<PrestamoDTO> listaPrestamos = coordinadorNegocioPagarAdeudo.obtenerListaPrestamos(estudianteDTO);
-        ListaPrestamosBiblioteca panel = (ListaPrestamosBiblioteca) pagarAdeudo.getPanel("listaPrestamos");
+
+        ListaPrestamosBiblioteca panel =
+                (ListaPrestamosBiblioteca) pagarAdeudo.getPanel("listaPrestamosBiblioteca");
+
         panel.setAdeudo(adeudo);
         panel.setPrestamos(listaPrestamos);
-        pagarAdeudo.showPanel("listaPrestamos");
+
+        pagarAdeudo.showPanel("listaPrestamosBiblioteca");
     }
 
     @Override
     public void seleccionarAdeudoColegiatura(EstudianteDTO estudianteDTO) {
         double adeudo = coordinadorNegocioPagarAdeudo.obtenerAdeudoColegiatura(estudianteDTO);
-        List<ClaseDTO> listaPrestamos = coordinadorNegocioPagarAdeudo.obtenerListaClases(estudianteDTO);
-        ListaClasesColegiatura panel = (ListaClasesColegiatura) pagarAdeudo.getPanel("listaPrestamos");
+        List<ClaseDTO> listaClases = coordinadorNegocioPagarAdeudo.obtenerListaClases(estudianteDTO);
+
+        ListaClasesColegiatura panel =
+                (ListaClasesColegiatura) pagarAdeudo.getPanel("listaClasesColegiatura");
+
         panel.setAdeudo(adeudo);
-        panel.setClases(listaPrestamos);
-        pagarAdeudo.showPanel("listaClases");
+        panel.setClases(listaClases);
+
+        pagarAdeudo.showPanel("listaClasesColegiatura");
     }
 
     @Override
     public void seleccionarRealizarPago() {
-        pagarAdeudo.showPanel("metodosDePago");;
+        pagarAdeudo.showPanel("metodosDePago");
     }
 
     @Override
     public void seleccionarMetodoPago(String metodoPago) throws Exception {
-        // cambiar a que el dto se haga en el panel y llegue por medio del parametro el dto
+
         SolicitudPagoDTO solicitudPagoDTO = new SolicitudPagoDTO();
         solicitudPagoDTO.setEstatusPago("Pendiente");
         solicitudPagoDTO.setIdEstudiante("87249L");
 
-        if(metodoPago == "BANCO"){
+        if (metodoPago.equals("BANCO")) {
             coordinadorNegocioPagarAdeudo.realizarPago(solicitudPagoDTO, MetodoPago.BANCO);
         }
-        if(metodoPago == "PAYPAL"){
+        if (metodoPago.equals("PAYPAL")) {
             coordinadorNegocioPagarAdeudo.realizarPago(solicitudPagoDTO, MetodoPago.PAYPAL);
         }
     }
 
     @Override
-    public void verDetalle() {
+    public void verDetalle() { }
 
+    public void setPagarAdeudo(PagarAdeudo pagarAdeudo) {
+        this.pagarAdeudo = pagarAdeudo;
     }
-
 
 }

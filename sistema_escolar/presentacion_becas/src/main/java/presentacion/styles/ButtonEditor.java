@@ -1,25 +1,32 @@
 package presentacion.styles;
 
-import presentacion.pagarAdeudo.*;
-import presentacion.pagarAdeudo.panels.ListaClasesColegiatura;
-import presentacion.pagarAdeudo.panels.ListaPrestamosBiblioteca;
+import presentacion.pagarAdeudo.PagarAdeudo;
+import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
 import presentacion.solicitarBeca.panels.enums.PanelCategory;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class ButtonEditor extends DefaultCellEditor{
-    private PagarAdeudo owner;
-    private JButton button;
-    private PanelCategory category;
-    private boolean isPushed;
-    private int currentRow;
-    private int id;
+public class ButtonEditor extends DefaultCellEditor {
 
-    public ButtonEditor(JCheckBox checkBox, PagarAdeudo owner, PanelCategory category, JPanel previous) {
+    private final PagarAdeudo owner;
+    private final JButton button;
+    private final PanelCategory category;
+    private final CoordinadorAplicacionPagarAdeudo coordinador;
+    private boolean isPushed;
+
+    public ButtonEditor(
+            JCheckBox checkBox,
+            PagarAdeudo owner,
+            PanelCategory category,
+            CoordinadorAplicacionPagarAdeudo coordinador
+    ) {
         super(checkBox);
+
         this.owner = owner;
         this.category = category;
+        this.coordinador = coordinador;
+
         button = new JButton("≡");
         button.setFont(new Font("SansSerif", Font.PLAIN, 24));
         button.setBackground(new Color(60, 63, 83));
@@ -31,20 +38,25 @@ public class ButtonEditor extends DefaultCellEditor{
         button.addActionListener(e -> {
             if (isPushed) {
                 switch (category) {
-//                    case LISTA_PRESTAMOS -> owner.showPanel(new ListaPrestamosBiblioteca(owner));
-//                    case LISTA_CLASES   -> owner.showPanel(new ListaClasesColegiatura(owner));
-                }
 
+                    case LISTA_PRESTAMOS ->
+                            owner.showPanel("listaPrestamosBiblioteca");
+
+                    case LISTA_CLASES ->
+                            owner.showPanel("listaClasesColegiatura");
+
+                    default ->
+                            System.out.println("Categoría sin implementar");
+                }
             }
         });
     }
 
     @Override
-    public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-        this.currentRow = row;
-        this.isPushed = true;
-        int id = (int) table.getValueAt(row, table.getColumnModel().getColumnIndex("Id"));
-        this.id = id;
+    public Component getTableCellEditorComponent(
+            JTable table, Object value, boolean isSelected, int row, int column
+    ) {
+        isPushed = true;
         return button;
     }
 

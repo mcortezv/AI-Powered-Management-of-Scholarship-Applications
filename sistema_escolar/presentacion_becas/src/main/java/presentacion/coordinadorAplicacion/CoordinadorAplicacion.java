@@ -1,6 +1,5 @@
 package presentacion.coordinadorAplicacion;
 import dto.*;
-import fachadas.FachadaPago;
 import interfaces.*;
 import presentacion.coordinadorNegocio.CoordinadorNegocio;
 import presentacion.login.MainFrame;
@@ -23,7 +22,7 @@ import java.util.Map;
  */
 
 public class CoordinadorAplicacion implements ICoordinadorAplicacion {
-    private final MainFrame mainFrame;
+    private MainFrame mainFrame;
     private final CoordinadorNegocio coordinadorNegocio;
     private SolicitarBeca solicitarBeca;
     private BecaDTO becaDTO;
@@ -44,9 +43,15 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     public CoordinadorAplicacion(IFachadaInicioSesion fachadaInicioSesion, IFachadaSolicitarBeca fachadaSolicitarBeca, CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo) {
         this.coordinadorNegocio = new CoordinadorNegocio(fachadaInicioSesion, fachadaSolicitarBeca);
         this.coordinadorAplicacionPagarAdeudo = coordinadorAplicacionPagarAdeudo;
-        mainFrame = new MainFrame(this);
-        mainFrame.setVisible(true);
+        mainFrame = null;
 
+    }
+
+    public void iniciarGUI() {
+        if (mainFrame == null) {
+            mainFrame = new MainFrame(this);
+        }
+        mainFrame.setVisible(true);
     }
 
     public boolean intentarIniciarSesion(String usuario, String contrasenia) throws IDInvalidoException, ContraseniaInvalidaException {

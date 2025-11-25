@@ -38,7 +38,6 @@ public class Main {
         CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo = new CoordinadorAplicacionPagarAdeudo(fachadaPago);
         //pagar adeudo
 
-        //SOLICITAR BECA CASO BASE
         IFachadaITSON fachadaITSON = new FachadaItson(new ControlItson());
         IFachadaGobierno fachadaGobierno = new FachadaGobierno(new ControlGobierno());
         ISolicitudDAO solicitudDAO = new SolicitudDAO();
@@ -55,9 +54,7 @@ public class Main {
         IFachadaSolicitarBeca fachadaSolicitarBeca = new FachadaSolicitarBeca(new ControlSolicitarBeca(solicitudBO,
                 estudianteBO, tutorBO, becasFiltradasBO, documentoBO, historialAcademicoBO, informacionSocioeconomicaBO));
         CoordinadorAplicacion coordinadorAplicacion = new CoordinadorAplicacion(fachadaInicioSesion, fachadaSolicitarBeca,coordinadorAplicacionPagarAdeudo);
-
-        MainFrame mainFrame = new MainFrame(coordinadorAplicacion);
-        mainFrame.setVisible(true);
+        coordinadorAplicacion.iniciarGUI();
 
     }
 }
