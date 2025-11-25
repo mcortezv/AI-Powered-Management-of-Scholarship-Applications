@@ -6,8 +6,6 @@ import dto.pagarAdeudo.ClaseDTOI;
 import dto.pagarAdeudo.PrestamoDTOI;
 import dto.pagarAdeudo.SolicitudPagoDTOI;
 import solicitarBeca.dominio.enums.TipoBeca;
-import solicitarBeca.dominio.enums.pagarAdeudo.TipoAdeudo;
-
 import java.util.List;
 
 /**
@@ -20,6 +18,7 @@ public interface IFachadaITSON {
     EstudianteResponseDTO verificarEstudiante(Long matricula);
 
     HistorialAcademicoResponseDTO verificarHistorialAcademcio(Long matricula);
+
 
 
     //pagar adeudo

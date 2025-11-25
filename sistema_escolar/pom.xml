@@ -13,9 +13,10 @@
         <module>negocios_solicitarPago</module>
         <module>infraestructura_itson</module>
         <module>infraestructura_gobierno</module>
+        <module>infraestructura_paypal</module>
+        <module>infraestructura_banco</module>
         <module>presentacion_becas</module>
         <module>persistencia_becas</module>
         <module>dto_infraestructura</module>
     </modules>
-
 </project>
