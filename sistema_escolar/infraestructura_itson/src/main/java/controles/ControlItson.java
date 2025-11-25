@@ -29,12 +29,9 @@ public class ControlItson {
     public boolean verificarLogin(LoginDTO loginDTO) {
         System.out.println("llego al ControlItson");
         String matricula = loginDTO.getUsuario();
-        String contrasenia = loginDTO.getContrasenia();
+//        String contrasenia = loginDTO.getContrasenia();
         MongoCollection<EstudianteDTO> estudiantes = MongoClienteProvider.INSTANCE.getCollection("estudiantes", EstudianteDTO.class);
-        EstudianteDTO estudiante = estudiantes.find(
-                new org.bson.Document("matricula", matricula)
-                        .append("contraseña", contrasenia)
-        ).first();
+        EstudianteDTO estudiante = estudiantes.find(new org.bson.Document("matricula", matricula)).first();
         return estudiante != null;
     }
 
