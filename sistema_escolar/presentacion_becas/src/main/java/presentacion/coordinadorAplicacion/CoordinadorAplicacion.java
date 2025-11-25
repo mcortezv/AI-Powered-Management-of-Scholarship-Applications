@@ -6,6 +6,7 @@ import presentacion.login.MainFrame;
 import presentacion.login.exceptions.ContraseniaInvalidaException;
 import presentacion.login.exceptions.IDInvalidoException;
 import presentacion.pagarAdeudo.PagarAdeudo;
+import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.solicitarBeca.exceptions.*;
 import presentacion.solicitarBeca.panels.DetallesBecaPanel;
@@ -21,10 +22,9 @@ import java.util.Map;
  */
 
 public class CoordinadorAplicacion implements ICoordinadorAplicacion {
-    private final MainFrame mainFrame;
+    private MainFrame mainFrame;
     private final CoordinadorNegocio coordinadorNegocio;
     private SolicitarBeca solicitarBeca;
-    private PagarAdeudo pagarAdeudo;
     private BecaDTO becaDTO;
     private BecaDTO becaSeleccionadaDTO;
     private RequisitosDTO requisitosDTO;
@@ -32,16 +32,26 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     private TutorDTO tutorDTO;
     private InformacionSocioeconomicaDTO infoSocioeconomicaDTO;
 
+    //pagar adeudo
+    private final CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo;
+    private PagarAdeudo adeudo;
+
     // bajar a coordinador negocio
     private SolicitudDTO solicitudDTO;
     private EstudianteDTO estudianteDTO;
 
-
-    public CoordinadorAplicacion(IFachadaInicioSesion fachadaInicioSesion, IFachadaSolicitarBeca fachadaSolicitarBeca) {
+    public CoordinadorAplicacion(IFachadaInicioSesion fachadaInicioSesion, IFachadaSolicitarBeca fachadaSolicitarBeca, CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo) {
         this.coordinadorNegocio = new CoordinadorNegocio(fachadaInicioSesion, fachadaSolicitarBeca);
-        mainFrame = new MainFrame(this);
-        mainFrame.setVisible(true);
+        this.coordinadorAplicacionPagarAdeudo = coordinadorAplicacionPagarAdeudo;
+        mainFrame = null;
 
+    }
+
+    public void iniciarGUI() {
+        if (mainFrame == null) {
+            mainFrame = new MainFrame(this);
+        }
+        mainFrame.setVisible(true);
     }
 
     public boolean intentarIniciarSesion(String usuario, String contrasenia) throws IDInvalidoException, ContraseniaInvalidaException {
@@ -51,15 +61,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         return coordinadorNegocio.solicitarInicioSesion(solicitudLoginDTO);
     }
 
-    public void procesarInformacionGeneral(double promedio, double carga, double ingreso, boolean trabajo, boolean deudas) throws PromedioInvalidoException, IngresoInvalidoException {
-        presentacion.solicitarBeca.validadores.Validadores.validarPromedio(promedio);
-        presentacion.solicitarBeca.validadores.Validadores.validarIngreso(ingreso);
-        RequisitosDTO requisitosDTO  = new RequisitosDTO();
-        requisitosDTO.setPromedioMinimo(promedio);
-        requisitosDTO.setIngresoFamiliarMaximo(ingreso);
-        requisitosDTO.setCargaAcademica(carga);
-        requisitosDTO.setTrabajo(trabajo);
-        requisitosDTO.setDeudas(deudas);
+    public void procesarInformacionGeneral(RequisitosDTO requisitosDTO) throws PromedioInvalidoException, IngresoInvalidoException {
         BecasFiltradasDTO becasFiltradas = coordinadorNegocio.obtenerBecasDisponibles(requisitosDTO);
         mostrarBecasDisponibles(becasFiltradas);
     }
@@ -92,9 +94,10 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
 
     public void pagarAdeudo(){
         mainFrame.setVisible(false);
-        pagarAdeudo = new PagarAdeudo(this);
-        pagarAdeudo.setVisible(true);
+        adeudo = new PagarAdeudo(coordinadorAplicacionPagarAdeudo);
+        adeudo.setVisible(true);
     }
+
 
     public void main() {
         solicitarBeca.setVisible(false);
@@ -164,4 +167,8 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     public void setBecaSeleccionadaDTO(BecaDTO becaDTO) {
         this.becaDTO = becaDTO;
     }
+
+
+
+
 }

@@ -1,5 +1,6 @@
 package presentacion.coordinadorNegocio;
 import dto.BecasFiltradasDTO;
+import dto.EstudianteDTO;
 import dto.LoginDTO;
 import dto.RequisitosDTO;
 import interfaces.*;

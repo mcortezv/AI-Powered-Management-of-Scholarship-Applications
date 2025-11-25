@@ -50,12 +50,12 @@ public class FachadaItson implements IFachadaITSON{
      */
     @Override
     public double solicitarAdeudoBiblioteca(String matriculaEstudiante) {
-        return 0;
+        return controlItson.solicitarAdeudoBiblioteca(matriculaEstudiante);
     }
 
     @Override
     public double solicitarAdeudoColegiatura(String matriculaEstudiante) {
-        return 0;
+        return controlItson.solicitarAdeudoColegiatura(matriculaEstudiante);
     }
 
     @Override

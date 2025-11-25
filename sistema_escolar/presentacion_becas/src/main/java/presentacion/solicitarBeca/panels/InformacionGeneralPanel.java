@@ -1,4 +1,5 @@
 package presentacion.solicitarBeca.panels;
+import dto.RequisitosDTO;
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import java.awt.Component;
 import javax.swing.*;
@@ -96,7 +97,13 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
                 double carga = Double.parseDouble(cargaStr.replace("%", ""));
                 boolean trabajo   = "Si".equals(campoTrabajo.getSelectedItem());
                 boolean deudas   = "Si".equals(campoDeudas.getSelectedItem());
-                coordinadorAplicacion.procesarInformacionGeneral(promedio, carga, ingreso, deudas, trabajo);
+                RequisitosDTO requisitosDTO  = new RequisitosDTO();
+                requisitosDTO.setPromedioMinimo(promedio);
+                requisitosDTO.setIngresoFamiliarMaximo(ingreso);
+                requisitosDTO.setCargaAcademica(carga);
+                requisitosDTO.setTrabajo(trabajo);
+                requisitosDTO.setDeudas(deudas);
+                coordinadorAplicacion.procesarInformacionGeneral(requisitosDTO);
 
             } catch (PromedioInvalidoException | IngresoInvalidoException ex) {
                 JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
