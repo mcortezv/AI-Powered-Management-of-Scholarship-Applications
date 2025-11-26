@@ -22,6 +22,7 @@ public class DocumentoDAO implements IDocumentoDAO {
         this.colDoc = MongoClientProvider.INSTANCE.getCollection("documentos", Document.class);
     }
 
+    @Override
     public ObjectId create(DocumentoDocument entity) throws DocumentoDAOException {
         try {
             if (entity.get_id() == null) {

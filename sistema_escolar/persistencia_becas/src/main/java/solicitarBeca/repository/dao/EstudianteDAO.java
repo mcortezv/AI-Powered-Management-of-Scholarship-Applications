@@ -4,7 +4,7 @@ import com.mongodb.client.MongoCollection;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 import solicitarBeca.config.MongoClientProvider;
-import solicitarBeca.excepciones.DocumentoDAOException;
+import solicitarBeca.excepciones.EstudianteDAOException;
 import solicitarBeca.repository.IEstudianteDAO;
 import solicitarBeca.repository.documents.EstudianteDocument;
 import java.time.Instant;
@@ -22,7 +22,8 @@ public class EstudianteDAO implements IEstudianteDAO {
         this.colDoc = MongoClientProvider.INSTANCE.getCollection("estudiantes", Document.class);
     }
 
-    public ObjectId create(EstudianteDocument entity) throws DocumentoDAOException {
+    @Override
+    public ObjectId create(EstudianteDocument entity) throws EstudianteDAOException {
         try {
             if (entity.get_id() == null) {
                 entity.set_id(new ObjectId());
@@ -31,7 +32,7 @@ public class EstudianteDAO implements IEstudianteDAO {
             col.insertOne(entity);
             return entity.get_id();
         } catch (MongoException ex) {
-            throw new DocumentoDAOException("Error al insertar Estudiante");
+            throw new EstudianteDAOException("Error al insertar Estudiante");
         }
     }
 }

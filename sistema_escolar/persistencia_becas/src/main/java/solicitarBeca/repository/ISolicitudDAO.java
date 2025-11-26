@@ -1,5 +1,7 @@
 package solicitarBeca.repository;
-import solicitarBeca.dominio.Solicitud;
+import org.bson.types.ObjectId;
+import solicitarBeca.excepciones.SolicitudDAOException;
+import solicitarBeca.repository.documents.SolicitudDocument;
 
 /**
  *
@@ -7,5 +9,6 @@ import solicitarBeca.dominio.Solicitud;
  */
 public interface ISolicitudDAO {
 
+    ObjectId create(SolicitudDocument entity) throws SolicitudDAOException;
 
 }

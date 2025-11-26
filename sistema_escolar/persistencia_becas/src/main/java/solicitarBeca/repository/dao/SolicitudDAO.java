@@ -4,7 +4,7 @@ import com.mongodb.client.MongoCollection;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 import solicitarBeca.config.MongoClientProvider;
-import solicitarBeca.excepciones.DocumentoDAOException;
+import solicitarBeca.excepciones.SolicitudDAOException;
 import solicitarBeca.repository.ISolicitudDAO;
 import solicitarBeca.repository.documents.SolicitudDocument;
 import java.time.Instant;
@@ -22,7 +22,8 @@ public class SolicitudDAO implements ISolicitudDAO {
         this.colDoc = MongoClientProvider.INSTANCE.getCollection("solicitudes", Document.class);
     }
 
-    public ObjectId create(SolicitudDocument entity) throws DocumentoDAOException {
+    @Override
+    public ObjectId create(SolicitudDocument entity) throws SolicitudDAOException {
         try {
             if (entity.get_id() == null) {
                 entity.set_id(new ObjectId());
@@ -31,7 +32,7 @@ public class SolicitudDAO implements ISolicitudDAO {
             col.insertOne(entity);
             return entity.get_id();
         } catch (MongoException ex) {
-            throw new DocumentoDAOException("Error al insertar Solicitud");
+            throw new SolicitudDAOException("Error al insertar Solicitud");
         }
     }
 }
