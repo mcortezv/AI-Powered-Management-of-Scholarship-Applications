@@ -11,6 +11,7 @@ public class ControlInicioSesion {
     }
 
     public boolean solicitarLogin(LoginDTO solicitudLoginDTO){
+        System.out.println("llego al ControlInicioSesion");
         return estudianteBO.iniciarSesion(solicitudLoginDTO);
     }
 

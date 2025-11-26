@@ -48,8 +48,7 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
         double adeudo = coordinadorNegocioPagarAdeudo.obtenerAdeudoBiblioteca(estudianteDTO);
         List<PrestamoDTO> listaPrestamos = coordinadorNegocioPagarAdeudo.obtenerListaPrestamos(estudianteDTO);
 
-        ListaPrestamosBiblioteca panel =
-                (ListaPrestamosBiblioteca) pagarAdeudo.getPanel("listaPrestamosBiblioteca");
+        ListaPrestamosBiblioteca panel = (ListaPrestamosBiblioteca) pagarAdeudo.getPanel("listaPrestamosBiblioteca");
 
         panel.setAdeudo(adeudo);
         panel.setPrestamos(listaPrestamos);

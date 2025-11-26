@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package fachadas;
 import dto.EstudianteResponseDTO;
 import dto.HistorialAcademicoResponseDTO;
@@ -19,7 +16,7 @@ import java.util.List;
  * @author janethcristinagalvanquinonez
  */
 public class FachadaItson implements IFachadaITSON{
-    private ControlItson controlItson;
+    private final ControlItson controlItson;
 
 
     public FachadaItson(ControlItson controlItson) {
@@ -33,12 +30,14 @@ public class FachadaItson implements IFachadaITSON{
 
     @Override
     public EstudianteResponseDTO verificarEstudiante(Long matricula) {
-        return controlItson.verificarEstudiante(matricula);
+        return null;
+//        return controlItson.verificarEstudiante(matricula);
     }
 
     @Override
-    public HistorialAcademicoResponseDTO verificarHistorialAcademcio(Long matricula) {
-        return controlItson.verificarHistorialAcademcio(matricula);
+    public HistorialAcademicoResponseDTO verificarHistorialAcademcio(String matricula) {
+        return null;
+//        return controlItson.verificarHistorialAcademcio(matricula);
     }
 
 
@@ -50,27 +49,32 @@ public class FachadaItson implements IFachadaITSON{
      */
     @Override
     public double solicitarAdeudoBiblioteca(String matriculaEstudiante) {
-        return controlItson.solicitarAdeudoBiblioteca(matriculaEstudiante);
+        return 0.0;
+//        return controlItson.solicitarAdeudoBiblioteca(matriculaEstudiante);
     }
 
     @Override
     public double solicitarAdeudoColegiatura(String matriculaEstudiante) {
-        return controlItson.solicitarAdeudoColegiatura(matriculaEstudiante);
+        return 0.0;
+//        return controlItson.solicitarAdeudoColegiatura(matriculaEstudiante);
     }
 
     @Override
     public List<PrestamoDTOI> solicitarListaPrestamso(String matriculaEstudiante) {
-        return List.of();
+        return null;
+//        return controlItson.solicitarListaPrestamos(matriculaEstudiante);
     }
 
     @Override
     public List<ClaseDTOI> solicitarListaClases(String matriculaEstudiante) {
-        return List.of();
+        return null;
+//        return controlItson.solicitarListaClases(matriculaEstudiante);
     }
 
     @Override
     public boolean notificarLiquidacion(SolicitudPagoDTOI solicitudPagoDTOI) {
         return false;
+//        return controlItson.solicitarLiquidacion(solicitudPagoDTOI);
     }
 
     /**

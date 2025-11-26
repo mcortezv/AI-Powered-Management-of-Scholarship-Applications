@@ -4,22 +4,22 @@ package dto;
  * @author Escalante, Sebastian.
  */
 public class LoginDTO {
-    private String usuario;
+    private Long usuario;
     private String contrasenia;
 
     public LoginDTO() {
     }
 
-    public LoginDTO(String usuario, String contrasenia) {
+    public LoginDTO(Long usuario, String contrasenia) {
         this.usuario = usuario;
         this.contrasenia = contrasenia;
     }
 
-    public String getUsuario() {
+    public Long getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(String usuario) {
+    public void setUsuario(Long usuario) {
         this.usuario = usuario;
     }
 
