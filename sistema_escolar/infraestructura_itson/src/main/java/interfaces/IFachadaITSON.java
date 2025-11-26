@@ -16,7 +16,7 @@ public interface IFachadaITSON {
 
     boolean verificarLogin(LoginDTO solicitudLoginDTO);
 
-    EstudianteResponseDTO verificarEstudiante(Long matricula);
+    EstudianteResponseDTO verificarEstudiante(String matricula);
 
     HistorialAcademicoResponseDTO verificarHistorialAcademcio(String matricula);
 
