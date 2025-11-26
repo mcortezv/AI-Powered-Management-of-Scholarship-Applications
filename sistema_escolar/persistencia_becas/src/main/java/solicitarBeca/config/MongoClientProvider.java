@@ -21,20 +21,22 @@ public enum MongoClientProvider {
     private String uri;
 
     public synchronized void init() {
-        if (client != null) {
-            return;
-        }
-
-        try (InputStream input = getClass()
-                .getClassLoader()
-                .getResourceAsStream("mongo.properties")) {
-            Properties props = new Properties();
-            props.load(input);
-            this.uri = props.getProperty("mongo.uri");
-            this.dbName = props.getProperty("mongo.dbname");
-            this.client = MongoClients.create(uri);
-        } catch (Exception e) {
-            throw new RuntimeException("Error cargando configuracion Mongo", e);
+        if (client == null) {
+            try {
+                InputStream input = getClass()
+                        .getClassLoader()
+                        .getResourceAsStream("mongo.properties");
+                Properties props = new Properties();
+                props.load(input);
+                this.uri = props.getProperty("mongo.uri");
+                this.dbName = props.getProperty("mongo.dbname");
+                client = MongoClients.create(MongoConfig.buildSettings(this.uri));
+                Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+                    client.close();
+                }));
+            } catch (Exception ignored) {
+                throw new RuntimeException("Error cargando configuracion Mongo");
+            }
         }
     }
 

@@ -16,8 +16,7 @@ import org.bson.codecs.pojo.PojoCodecProvider;
  */
 public class MongoConfig {
 
-    private MongoConfig() {
-    }
+    private MongoConfig() {}
 
     public static MongoClientSettings buildSettings(String uri) {
         ConnectionString connectionString = new ConnectionString(uri);

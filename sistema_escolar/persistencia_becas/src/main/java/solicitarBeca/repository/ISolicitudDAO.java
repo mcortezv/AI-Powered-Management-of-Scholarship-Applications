@@ -1,4 +1,4 @@
-package solicitarBeca.dao.interfaces;
+package solicitarBeca.repository;
 import solicitarBeca.dominio.Solicitud;
 
 /**
@@ -7,5 +7,5 @@ import solicitarBeca.dominio.Solicitud;
  */
 public interface ISolicitudDAO {
 
-    public void create(Solicitud solicitud);
+
 }

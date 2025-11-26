@@ -1,4 +1,4 @@
-package solicitarBeca.dao.interfaces;
+package solicitarBeca.repository;
 
 /**
  *
