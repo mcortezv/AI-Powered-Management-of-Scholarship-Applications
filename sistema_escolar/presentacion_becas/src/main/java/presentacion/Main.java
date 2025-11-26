@@ -5,11 +5,14 @@ import fachadas.*;
 import interfaces.pagarAdeudo.IAdeudoBO;
 import objetosNegocio.pagarAdeudo.AdeudoBO;
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
-
 import fachada.FachadaGobierno;
+import fachadas.*;
 import interfaces.*;
+import interfaces.pagarAdeudo.IAdeudoBO;
 import objetosNegocio.*;
+import objetosNegocio.pagarAdeudo.AdeudoBO;
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
+import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
 import solicitarBeca.repository.IDocumentoDAO;
 import solicitarBeca.repository.IEstudianteDAO;
 import solicitarBeca.repository.ISolicitudDAO;
