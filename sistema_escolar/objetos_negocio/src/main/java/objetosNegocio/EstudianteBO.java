@@ -27,7 +27,7 @@ public class EstudianteBO implements IEstudianteBO {
     }
 
     @Override
-    public Estudiante crearEstudiante(String matricula, Tutor tutor){
+    public Estudiante crearEstudiante(Long matricula, Tutor tutor){
         EstudianteResponseDTO dto = fachadaITSON.verificarEstudiante(matricula);
         Estudiante estudiante = new Estudiante();
         estudiante.setMatricula(matricula);

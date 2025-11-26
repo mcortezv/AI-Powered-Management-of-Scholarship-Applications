@@ -5,7 +5,7 @@ import solicitarBeca.dominio.enums.Carrera;
  * @author Escalante, Sebastian.
  */
 public class EstudianteResponseDTO {
-    private String matricula;
+    private Long matricula;
     private String nombre;
     private Carrera carrera;
     private String telefono;
@@ -15,7 +15,7 @@ public class EstudianteResponseDTO {
     public EstudianteResponseDTO() {
     }
 
-    public EstudianteResponseDTO(Carrera carrera, String correo, String direccion, String matricula, String nombre, String telefono) {
+    public EstudianteResponseDTO(Carrera carrera, String correo, String direccion, Long matricula, String nombre, String telefono) {
         this.carrera = carrera;
         this.correo = correo;
         this.direccion = direccion;
@@ -24,11 +24,11 @@ public class EstudianteResponseDTO {
         this.telefono = telefono;
     }
 
-    public String getMatricula() {
+    public Long getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(String matricula) {
+    public void setMatricula(Long matricula) {
         this.matricula = matricula;
     }
 
