@@ -12,5 +12,5 @@ public interface IEstudianteBO {
 
     public boolean iniciarSesion(LoginDTO solicitudLoginDTO);
 
-    Estudiante crearEstudiante(Long matricula, Tutor tutor) throws EstudianteInvalidoException;
+    Estudiante crearEstudiante(String matricula, Tutor tutor) throws EstudianteInvalidoException;
 }

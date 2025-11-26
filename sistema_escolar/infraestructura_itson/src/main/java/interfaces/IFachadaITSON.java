@@ -1,11 +1,12 @@
 package interfaces;
 import dto.EstudianteResponseDTO;
 import dto.HistorialAcademicoResponseDTO;
+
 import dto.LoginDTO;
+
 import dto.pagarAdeudo.ClaseDTOI;
 import dto.pagarAdeudo.PrestamoDTOI;
 import dto.pagarAdeudo.SolicitudPagoDTOI;
-import solicitarBeca.dominio.enums.TipoBeca;
 import java.util.List;
 
 /**
@@ -15,9 +16,9 @@ public interface IFachadaITSON {
 
     boolean verificarLogin(LoginDTO solicitudLoginDTO);
 
-    EstudianteResponseDTO verificarEstudiante(Long matricula);
+    EstudianteResponseDTO verificarEstudiante(String matricula);
 
-    HistorialAcademicoResponseDTO verificarHistorialAcademcio(Long matricula);
+    HistorialAcademicoResponseDTO verificarHistorialAcademcio(String matricula);
 
 
 
