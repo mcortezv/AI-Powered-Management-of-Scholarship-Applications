@@ -2,8 +2,6 @@ package objetosNegocio.bo;
 import datos.dao.interfaces.ISolicitudDAO;
 import datos.dominio.Solicitud;
 import datos.dominio.enums.EstadoSolicitud;
-import dto.SolicitudDTO;
-import objetosNegocio.adaptadores.SolicitudAdaptador;
 import objetosNegocio.bo.excepciones.SolicitudBOException;
 import objetosNegocio.bo.interfaces.ISolicitudBO;
 import java.util.ArrayList;
@@ -21,29 +19,29 @@ public class SolicitudBO implements ISolicitudBO {
     }
 
     @Override
-    public boolean cambiarEstado(int id, String nuevoEstado){
+    public boolean cambiarEstado(int id, EstadoSolicitud nuevoEstado){
         try {
-            return solicitudDAO.cambiarEstado(id, EstadoSolicitud.valueOf(nuevoEstado));
+            return solicitudDAO.cambiarEstado(id, nuevoEstado);
         } catch (Exception ex){
             throw new SolicitudBOException(ex.getMessage());
         }
     }
 
     @Override
-    public SolicitudDTO obtenerSolicitud(int id){
+    public Solicitud obtenerSolicitud(int id){
         try {
-            return SolicitudAdaptador.toDTO(solicitudDAO.obtenerPorId(id));
+            return solicitudDAO.obtenerPorId(id);
         } catch (Exception ex){
             throw new SolicitudBOException(ex.getMessage());
         }
     }
 
     @Override
-    public List<SolicitudDTO> obtenerListadoSolicitudes(int idConvocatoria){
+    public List<Solicitud> obtenerListadoSolicitudes(int idConvocatoria){
         try {
-            List<SolicitudDTO> solicitudes = new ArrayList<>();
+            List<Solicitud> solicitudes = new ArrayList<>();
             for (Solicitud solicitud: solicitudDAO.obtenerPorConvocatoria(idConvocatoria)){
-                solicitudes.add(SolicitudAdaptador.toDTO(solicitud));
+                solicitudes.add(solicitud);
             }
             return solicitudes;
         } catch (Exception ex){

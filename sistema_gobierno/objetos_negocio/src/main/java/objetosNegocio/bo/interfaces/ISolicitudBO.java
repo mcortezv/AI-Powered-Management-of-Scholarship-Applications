@@ -1,5 +1,6 @@
 package objetosNegocio.bo.interfaces;
-import dto.SolicitudDTO;
+import datos.dominio.Solicitud;
+import datos.dominio.enums.EstadoSolicitud;
 import java.util.List;
 
 /**
@@ -8,9 +9,9 @@ import java.util.List;
  */
 public interface ISolicitudBO {
 
-    boolean cambiarEstado(int id, String nuevoEstado);
+    boolean cambiarEstado(int id, EstadoSolicitud nuevoEstado);
 
-    SolicitudDTO obtenerSolicitud(int id);
+    Solicitud obtenerSolicitud(int id);
 
-    List<SolicitudDTO> obtenerListadoSolicitudes(int idConvocatoria);
+    List<Solicitud> obtenerListadoSolicitudes(int idConvocatoria);
 }
