@@ -1,6 +1,6 @@
 package objetosNegocio;
 import adaptadores.DocumentoAdaptador;
-import solicitarBeca.dao.interfaces.IDocumentoDAO;
+import solicitarBeca.repository.IDocumentoDAO;
 import solicitarBeca.dominio.Documento;
 import dto.DocumentoDTO;
 import excepciones.DocumentoInvalidoException;
