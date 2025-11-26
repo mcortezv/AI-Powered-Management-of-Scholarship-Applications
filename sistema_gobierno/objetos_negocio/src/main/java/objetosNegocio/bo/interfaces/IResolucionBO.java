@@ -1,6 +1,10 @@
 package objetosNegocio.bo.interfaces;
-import dto.ResolucionDTO;
-import dto.SolicitudDTO;
+import datos.dominio.Resolucion;
+import datos.dominio.Solicitud;
+import datos.dominio.enums.Decision;
+import dto.ResolucionInfraestructuraDTO;
+import dto.SolicitudInfraestructuraDTO;
+import java.time.LocalDate;
 
 /**
  *
@@ -8,15 +12,15 @@ import dto.SolicitudDTO;
  */
 public interface IResolucionBO {
 
-    ResolucionDTO crearResolucion(ResolucionDTO resolucionDTO);
+    Resolucion crearResolucion(Solicitud solicitud, Decision decision, String motivo, LocalDate fechaEvaluacion);
 
-    boolean resolver(ResolucionDTO resolucionDTO);
+    boolean resolver(Resolucion resolucion);
 
-    ResolucionDTO crearResolucionAutomatica(SolicitudDTO solicitud);
+    ResolucionInfraestructuraDTO crearResolucionAutomatica(SolicitudInfraestructuraDTO solicitud);
 
-    ResolucionDTO obtenerResolucion(int id);
+    Resolucion obtenerResolucion(int id);
 
-    ResolucionDTO obtenerResolucionPorFiltro(String tipoFiltro, String filtro);
+    Resolucion obtenerResolucionPorFiltro(String tipoFiltro, String filtro);
 
-    boolean actualizarResolucion(ResolucionDTO resolucionDTO);
+    boolean actualizarResolucion(Resolucion resolucion);
 }

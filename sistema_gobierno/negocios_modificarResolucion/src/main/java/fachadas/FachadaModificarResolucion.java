@@ -26,7 +26,7 @@ public class FachadaModificarResolucion implements IFachadaModificarResolucion {
     }
 
     @Override
-    public ResolucionDTO resolverManual(ResolucionDTO resolucionDTO){
+    public boolean resolverManual(ResolucionDTO resolucionDTO){
         return controlModificarResolucion.resolverManual(resolucionDTO);
     }
 
