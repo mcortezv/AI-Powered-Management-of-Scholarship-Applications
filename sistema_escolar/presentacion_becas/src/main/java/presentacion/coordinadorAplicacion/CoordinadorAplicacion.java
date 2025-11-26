@@ -55,8 +55,8 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     }
 
     public boolean intentarIniciarSesion(LoginDTO loginDTO) throws IDInvalidoException, ContraseniaInvalidaException {
-//        presentacion.login.validadores.Validadores.validarID(loginDTO.getUsuario());
-//        presentacion.login.validadores.Validadores.validarContrasenia(loginDTO.getContrasenia());
+        presentacion.login.validadores.Validadores.validarID(loginDTO.getUsuario());
+        presentacion.login.validadores.Validadores.validarContrasenia(loginDTO.getContrasenia());
         System.out.println("llego al coordinadorAplicacion");
         return coordinadorNegocio.solicitarInicioSesion(loginDTO);
     }

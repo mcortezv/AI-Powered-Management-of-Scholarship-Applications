@@ -13,10 +13,9 @@ public class ControlItson {
     }
 
     public boolean verificarLogin(LoginDTO loginDTO) {
-        LoginDTOI dtoInfra = new itson.org.dto.LoginDTOI();
+        LoginDTOI dtoInfra = new LoginDTOI();
         dtoInfra.setUsuario(loginDTO.getUsuario());
         dtoInfra.setContrasenia(loginDTO.getContrasenia());
-        System.out.println("aqui antes de hacer llamar a la api externa");
         return api.verificarLogin(dtoInfra);
     }
 }
