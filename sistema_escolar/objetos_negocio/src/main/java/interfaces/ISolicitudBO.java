@@ -20,5 +20,5 @@ public interface ISolicitudBO {
 
     void validarSolicitudCompleta(Solicitud solicitud) throws SolicitudInvalidaException;
 
-    public void guardarSolicitud(Solicitud solicitud) throws SolicitudInvalidaException;
+//    public void guardarSolicitud(Solicitud solicitud) throws SolicitudInvalidaException;
 }
