@@ -5,7 +5,7 @@ import java.time.LocalDate;
  * @author Escalante, Sebastian.
  */
 public class BecaDTO {
-    private int codigo;
+    private Long codigo;
     private String tipo;
     private String nombre;
     private String descripcion;
@@ -18,7 +18,7 @@ public class BecaDTO {
     public BecaDTO() {
     }
 
-    public BecaDTO(int becasDisponibles, int codigo, String descripcion, LocalDate fechaFin, LocalDate fechaInicio, LocalDate fechaResultados, String nombre, RequisitosDTO requisitos, String tipo) {
+    public BecaDTO(int becasDisponibles, Long codigo, String descripcion, LocalDate fechaFin, LocalDate fechaInicio, LocalDate fechaResultados, String nombre, RequisitosDTO requisitos, String tipo) {
         this.becasDisponibles = becasDisponibles;
         this.codigo = codigo;
         this.descripcion = descripcion;
@@ -38,11 +38,11 @@ public class BecaDTO {
         this.becasDisponibles = becasDisponibles;
     }
 
-    public int getCodigo() {
+    public Long getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(Long codigo) {
         this.codigo = codigo;
     }
 

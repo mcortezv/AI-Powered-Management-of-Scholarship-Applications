@@ -93,14 +93,14 @@ public class SolicitudBO implements ISolicitudBO {
         solicitud.setEstado(EstadoSolicitud.ACTIVA);
     }
 
-    @Override
-    public void guardarSolicitud(Solicitud solicitud) throws SolicitudInvalidaException {
-        try {
-            SolicitudDTO solicitudDTO = SolicitudAdaptador.toDTO(solicitud);
-            fachadaGobierno.enviarSolicitud(solicitudDTO);
-            solicitudDAO.create(solicitud);
-        } catch (Exception ex) {
-            throw new SolicitudInvalidaException(ex.getMessage());
-        }
-    }
+//    @Override
+//    public void guardarSolicitud(Solicitud solicitud) throws SolicitudInvalidaException {
+//        try {
+//            SolicitudDTO solicitudDTO = SolicitudAdaptador.toDTO(solicitud);
+//            fachadaGobierno.enviarSolicitud(solicitudDTO);
+//            solicitudDAO.create(solicitud);
+//        } catch (Exception ex) {
+//            throw new SolicitudInvalidaException(ex.getMessage());
+//        }
+//    }
 }
