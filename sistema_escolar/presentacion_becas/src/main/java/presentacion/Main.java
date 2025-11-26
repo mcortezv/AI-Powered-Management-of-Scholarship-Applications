@@ -1,20 +1,21 @@
 package presentacion;
+
 import control.ControlGobierno;
 import controles.*;
-import fachadas.*;
-import interfaces.pagarAdeudo.IAdeudoBO;
-import objetosNegocio.pagarAdeudo.AdeudoBO;
-import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
-import solicitarBeca.dao.DocumentoDAO;
-import solicitarBeca.dao.EstudianteDAO;
-import solicitarBeca.dao.SolicitudDAO;
-import solicitarBeca.dao.interfaces.IDocumentoDAO;
-import solicitarBeca.dao.interfaces.IEstudianteDAO;
-import solicitarBeca.dao.interfaces.ISolicitudDAO;
 import fachada.FachadaGobierno;
+import fachadas.*;
 import interfaces.*;
+import interfaces.pagarAdeudo.IAdeudoBO;
 import objetosNegocio.*;
+import objetosNegocio.pagarAdeudo.AdeudoBO;
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
+import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
+import solicitarBeca.repository.IDocumentoDAO;
+import solicitarBeca.repository.IEstudianteDAO;
+import solicitarBeca.repository.ISolicitudDAO;
+import solicitarBeca.repository.dao.DocumentoDAO;
+import solicitarBeca.repository.dao.EstudianteDAO;
+import solicitarBeca.repository.dao.SolicitudDAO;
 
 /**
  *
