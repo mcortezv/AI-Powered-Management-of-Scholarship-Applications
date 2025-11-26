@@ -7,5 +7,5 @@ import solicitarBeca.dominio.HistorialAcademico;
  */
 public interface IHistorialAcademicoBO {
 
-    HistorialAcademico crearHistorial(Long matricula);
+    HistorialAcademico crearHistorial(String matricula);
 }

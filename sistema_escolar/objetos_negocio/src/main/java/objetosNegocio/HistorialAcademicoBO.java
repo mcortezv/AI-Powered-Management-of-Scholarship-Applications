@@ -16,7 +16,7 @@ public class HistorialAcademicoBO implements IHistorialAcademicoBO {
         this.fachadaITSON = fachadaITSON;
     }
 
-    public HistorialAcademico crearHistorial(Long matricula) {
+    public HistorialAcademico crearHistorial(String matricula) {
         HistorialAcademicoResponseDTO dto = fachadaITSON.verificarHistorialAcademcio(matricula);
         return HistorialAcademicoAdaptador.toEntity(dto);
     }

@@ -10,7 +10,7 @@ import solicitarBeca.dominio.enums.Carrera;
  * @author Cortez, Manuel;
  */
 public class Estudiante {
-    private Long matricula;
+    private String matricula;
     private String nombre;
     private Carrera carrera;
     private Tutor tutor;
@@ -21,7 +21,7 @@ public class Estudiante {
 
     public Estudiante() {}
 
-    public Estudiante(Carrera carrera, String contrasenia, String correo, String direccion, Long matricula, String nombre, String telefono, Tutor tutor) {
+    public Estudiante(Carrera carrera, String contrasenia, String correo, String direccion, String matricula, String nombre, String telefono, Tutor tutor) {
         this.carrera = carrera;
         this.contrasenia = contrasenia;
         this.correo = correo;
@@ -64,11 +64,11 @@ public class Estudiante {
         this.direccion = direccion;
     }
 
-    public Long getMatricula() {
+    public String getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(Long matricula) {
+    public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
 
