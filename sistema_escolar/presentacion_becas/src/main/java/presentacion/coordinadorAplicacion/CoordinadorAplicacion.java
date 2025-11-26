@@ -66,23 +66,12 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         mostrarBecasDisponibles(becasFiltradas);
     }
 
-    public void procesarDatosSolicitante(String nombre, String apellidoMaterno, String apellidoPaterno, String direccion, String telefono, String email)
+    public void procesarDatosSolicitante(EstudianteDTO estudianteDTO)
             throws NombresInvalidosException, DireccionInvalidaException, TelefonoInvalidoException, IDInvalidoException {
-
-        presentacion.solicitarBeca.validadores.Validadores.validarNombres(nombre);
-        presentacion.solicitarBeca.validadores.Validadores.validarApellido(apellidoPaterno);
-        presentacion.solicitarBeca.validadores.Validadores.validarApellido(apellidoMaterno);
-        presentacion.solicitarBeca.validadores.Validadores.validarDireccion(direccion);
-        presentacion.solicitarBeca.validadores.Validadores.validarTelefono(telefono);
-        presentacion.solicitarBeca.validadores.Validadores.validarCorreo(email);
-
-        EstudianteDTO estudianteDTO = new EstudianteDTO();
-        estudianteDTO.setNombre(nombre + " " + apellidoPaterno + " " + apellidoMaterno);
-        estudianteDTO.setDireccion(direccion);
-        estudianteDTO.setTelefono(telefono);
-        estudianteDTO.setCorreo(email);
-
-        this.estudianteDTO = estudianteDTO;
+        presentacion.solicitarBeca.validadores.Validadores.validarNombres(estudianteDTO.getNombre());
+        presentacion.solicitarBeca.validadores.Validadores.validarDireccion(estudianteDTO.getDireccion());
+        presentacion.solicitarBeca.validadores.Validadores.validarTelefono(estudianteDTO.getTelefono());
+        presentacion.solicitarBeca.validadores.Validadores.validarCorreo(estudianteDTO.getCorreo());
         solicitarBeca.showPanel("historialAcademicoPanel");
     }
 

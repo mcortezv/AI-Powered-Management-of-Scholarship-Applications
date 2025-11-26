@@ -2,6 +2,7 @@ package presentacion.solicitarBeca.panels;
 import dto.RequisitosDTO;
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import java.awt.Component;
+import java.awt.FlowLayout;
 import javax.swing.*;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.solicitarBeca.exceptions.IngresoInvalidoException;
@@ -28,6 +29,7 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
 
     public void startComponents() {
         centralPanel.add(Box.createVerticalStrut(Style.TOP_ESPACIO));
+        southPanel.add(Box.createHorizontalBox());
 
         Label lblTitulo = new Label("Informacion General");
         lblTitulo.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -82,7 +84,9 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
 
         btnContinuar = new Button("Aceptar");
         btnContinuar.setAlignmentX(Component.CENTER_ALIGNMENT);
-        centralPanel.add(btnContinuar);
+        southPanel.add(btnContinuar);
+      southPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        
 
         btnBack.addActionListener(e -> {
             coordinadorAplicacion.main();

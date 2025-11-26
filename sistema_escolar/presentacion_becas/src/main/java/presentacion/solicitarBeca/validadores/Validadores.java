@@ -9,7 +9,7 @@ public class Validadores {
         if(nombres == null || nombres.trim().isEmpty()){
             throw new NombresInvalidosException("Favor de ingresar los nombres");
         }
-        if(!nombres.matches("^(?!.*([A-Za-zÁÉÍÓÚáéíóúÑñ])\\1\\1)[A-Za-zÁÉÍÓÚáéíóúÑñ]{1,20}( [A-Za-zÁÉÍÓÚáéíóúÑñ]{1,20})?$")){
+        if(!nombres.matches("^(?!.*([A-Za-zÁÉÍÓÚáéíóúÑñ])\\1\\1)[A-Za-zÁÉÍÓÚáéíóúÑñ]{1,35}( [A-Za-zÁÉÍÓÚáéíóúÑñ]{1,35})?$")){
             throw new NombresInvalidosException("Favor de ingresar nombres validos, verifique que sean sus verdaderos nombres");
         }
     }

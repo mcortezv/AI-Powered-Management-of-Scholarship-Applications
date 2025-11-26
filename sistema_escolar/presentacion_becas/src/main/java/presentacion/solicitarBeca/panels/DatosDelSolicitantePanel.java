@@ -1,4 +1,5 @@
 package presentacion.solicitarBeca.panels;
+import dto.EstudianteDTO;
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import presentacion.login.exceptions.IDInvalidoException;
 import presentacion.solicitarBeca.SolicitarBeca;
@@ -112,8 +113,10 @@ public class DatosDelSolicitantePanel extends PanelSolicitarBeca {
                 String direccion= field_direccion.getText();
                 String telefono= field_telefono.getText();
                 String email= field_email.getText();
-
-                coordinadorAplicacion.procesarDatosSolicitante(nombre, apellidoMaterno, apellidoPaterno, direccion, telefono, email);
+                String nombreCompleto= nombre + " " + apellidoPaterno + " " + apellidoMaterno;
+                //cambiar el nombre a un enum 
+                EstudianteDTO estudianteDTO= new EstudianteDTO(null, null, email, direccion, null,  nombreCompleto, telefono, null);
+                coordinadorAplicacion.procesarDatosSolicitante(estudianteDTO);
 
             } catch(NombresInvalidosException | ApellidoInvalidoException | DireccionInvalidaException | TelefonoInvalidoException | IDInvalidoException ex){
                 JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
