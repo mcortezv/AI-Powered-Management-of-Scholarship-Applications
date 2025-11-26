@@ -19,3 +19,10 @@ nbproject/private/
 Thumbs.db
 /negocios_solicitarBeca/nbproject/
 /objetos_negocio/nbproject/
+
+sistema_escolar/persistencia_becas/src/main/resources/mongo.properties
+/sistema_escolar/persistencia_becas/src/main/resources/mongo.properties
+sistema_escolar/persistencia_becas/src/main/resources/
+/sistema_escolar/persistencia_becas/src/main/resources/
+*.properties
+

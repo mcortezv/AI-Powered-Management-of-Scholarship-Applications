@@ -1,5 +1,5 @@
 package objetosNegocio;
-import solicitarBeca.dao.interfaces.IEstudianteDAO;
+import solicitarBeca.repository.IEstudianteDAO;
 import dto.EstudianteResponseDTO;
 import dto.LoginDTO;
 import interfaces.IEstudianteBO;

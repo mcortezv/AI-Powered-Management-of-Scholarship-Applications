@@ -1,9 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package solicitarBeca.dominio;
+package solicitarBeca.repository.documents;
+import org.bson.types.ObjectId;
+import solicitarBeca.dominio.*;
 import solicitarBeca.dominio.enums.EstadoSolicitud;
+
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -11,19 +11,22 @@ import java.util.List;
  *
  * @author Cortez, Manuel;
  */
-public class Solicitud {
+public class SolicitudDocument {
+    private ObjectId _id;
     private Long id;
     private Beca beca;
-    private Estudiante estudiante;
+    private ObjectId estudiante;
     private InformacionSocioeconomica informacionSocioeconomica;
     private HistorialAcademico historialAcademico;
-    private List<Documento> documentos;
+    private List<ObjectId> documentos;
     private LocalDate fecha;
     private EstadoSolicitud estado;
+    private Instant creadoEn;
 
-    public Solicitud() {}
+    public SolicitudDocument() {}
 
-    public Solicitud(Beca beca, List<Documento> documentos, EstadoSolicitud estado, Estudiante estudiante, LocalDate fecha, HistorialAcademico historialAcademico, long id, InformacionSocioeconomica informacionSocioeconomica) {
+    public SolicitudDocument(ObjectId _id, Beca beca, List<ObjectId> documentos, EstadoSolicitud estado, ObjectId estudiante, LocalDate fecha, HistorialAcademico historialAcademico, Long id, InformacionSocioeconomica informacionSocioeconomica, Instant  creadoEn) {
+        this._id = _id;
         this.beca = beca;
         this.documentos = documentos;
         this.estado = estado;
@@ -32,6 +35,15 @@ public class Solicitud {
         this.historialAcademico = historialAcademico;
         this.id = id;
         this.informacionSocioeconomica = informacionSocioeconomica;
+        this.creadoEn = creadoEn;
+    }
+
+    public ObjectId get_id() {
+        return _id;
+    }
+
+    public void set_id(ObjectId _id) {
+        this._id = _id;
     }
 
     public Beca getBeca() {
@@ -42,11 +54,11 @@ public class Solicitud {
         this.beca = beca;
     }
 
-    public List<Documento> getDocumentos() {
+    public List<ObjectId> getDocumentos() {
         return documentos;
     }
 
-    public void setDocumentos(List<Documento> documentos) {
+    public void setDocumentos(List<ObjectId> documentos) {
         this.documentos = documentos;
     }
 
@@ -58,11 +70,11 @@ public class Solicitud {
         this.estado = estado;
     }
 
-    public Estudiante getEstudiante() {
+    public ObjectId getEstudiante() {
         return estudiante;
     }
 
-    public void setEstudiante(Estudiante estudiante) {
+    public void setEstudiante(ObjectId estudiante) {
         this.estudiante = estudiante;
     }
 
@@ -96,5 +108,13 @@ public class Solicitud {
 
     public void setInformacionSocioeconomica(InformacionSocioeconomica informacionSocioeconomica) {
         this.informacionSocioeconomica = informacionSocioeconomica;
+    }
+
+    public Instant getCreadoEn() {
+        return creadoEn;
+    }
+
+    public void setCreadoEn(Instant creadoEn) {
+        this.creadoEn = creadoEn;
     }
 }
