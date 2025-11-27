@@ -4,10 +4,15 @@
  */
 package datos.services;
 
+import datos.dao.interfaces.IBecaDAO;
+
 /**
  *
  * @author janethcristinagalvanquinonez
  */
 public class BecasService {
-    
+    private final IBecaDAO becaDAO;
+    public BecasService(IBecaDAO becaDAO){
+        this.becaDAO = becaDAO;
+    }
 }

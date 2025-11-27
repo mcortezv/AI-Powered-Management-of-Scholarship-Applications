@@ -29,6 +29,7 @@ public class GobiernoAPI implements IGobiernoAPI {
 
     @Override
     public BecasResponseDTOI solicitarBecas(RequisitosDTOI requisitosDTOI) {
-     //   return gobiernoITSON.
+        return gobiernoITSON.obtenerBecas(requisitosDTOI);
+        
     }
 }
