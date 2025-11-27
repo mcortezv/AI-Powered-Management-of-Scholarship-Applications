@@ -16,7 +16,6 @@ import java.util.List;
 public class FachadaItson implements IFachadaITSON{
     private final ControlItson controlItson;
 
-
     public FachadaItson(ControlItson controlItson) {
         this.controlItson = controlItson;
     }
@@ -28,7 +27,7 @@ public class FachadaItson implements IFachadaITSON{
 
     @Override
     public EstudianteResponseDTO verificarEstudiante(Long matricula) {
-        return null;
+        return controlItson.verificarEstudiante(matricula);
 //        return controlItson.verificarEstudiante(matricula);
     }
 
