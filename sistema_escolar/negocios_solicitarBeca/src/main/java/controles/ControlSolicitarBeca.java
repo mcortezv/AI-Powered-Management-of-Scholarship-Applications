@@ -1,10 +1,9 @@
 package controles;
-import dto.BecasFiltradasDTO;
+import dto.BecasDisponiblesResponseDTO;
 import dto.RequisitosDTO;
 import excepciones.*;
 import interfaces.*;
 import solicitarBeca.dominio.*;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -20,6 +19,7 @@ public class ControlSolicitarBeca {
     private final IDocumentoBO documentoBO;
     private final IHistorialAcademicoBO  historialBO;
     private final IInformacionSocioeconomicaBO socioBO;
+    private Solicitud solicitudActual;
 
     public ControlSolicitarBeca(ISolicitudBO solicitudBO,
                                 IEstudianteBO estudianteBO,
@@ -37,11 +37,11 @@ public class ControlSolicitarBeca {
         this.socioBO = Objects.requireNonNull(socioBO);
     }
 
-    public Solicitud iniciarSolicitud() throws SolicitudInvalidaException {
-        return solicitudBO.crearSolicitudVacia();
+    public void iniciarSolicitud() throws SolicitudInvalidaException {
+        this.solicitudActual = solicitudBO.crearSolicitudVacia();
     }
 
-    public BecasFiltradasDTO obtenerBecasFiltradas(RequisitosDTO requisitosDTO) throws BecaInvalidaException {
+    public BecasDisponiblesResponseDTO obtenerBecasFiltradas(RequisitosDTO requisitosDTO) throws BecaInvalidaException {
         return becasFiltradasBO.obtenerBecasFiltradas(requisitosDTO);
     }
 
