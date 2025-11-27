@@ -14,6 +14,7 @@
         <module>objetos_negocio</module>
         <module>persistencia_gobierno</module>
         <module>presentacion_gobierno</module>
+        <module>api</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

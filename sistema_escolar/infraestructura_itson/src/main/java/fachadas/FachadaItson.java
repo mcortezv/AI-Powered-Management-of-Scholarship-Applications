@@ -33,11 +33,9 @@ public class FachadaItson implements IFachadaITSON{
     }
 
     @Override
-    public HistorialAcademicoResponseDTO verificarHistorialAcademcio(String matricula) {
+    public HistorialAcademicoResponseDTO verificarHistorialAcademcio(Long matricula) {
         return null;
-//        return controlItson.verificarHistorialAcademcio(matricula);
     }
-
 
     /**
      *  TODO ESTO ES DEL CASO PAGAR ADEUDO
