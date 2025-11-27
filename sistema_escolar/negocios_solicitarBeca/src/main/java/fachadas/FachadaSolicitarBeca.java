@@ -112,9 +112,6 @@ public class FachadaSolicitarBeca implements IFachadaSolicitarBeca {
         return false;
     }
 
-    public boolean enviarSolicituGobierno(SolicitudDTO solicitudDTO) {
-        return true;
-    }
 
     public Solicitud solicitarBeca(
             String estNombre, String estCorreo, String estTel, String estDir,

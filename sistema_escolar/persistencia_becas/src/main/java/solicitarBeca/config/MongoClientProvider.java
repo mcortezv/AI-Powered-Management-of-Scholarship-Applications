@@ -3,10 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package solicitarBeca.config;
+import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import org.bson.codecs.configuration.CodecRegistries;
+import org.bson.codecs.configuration.CodecRegistry;
+import org.bson.codecs.pojo.PojoCodecProvider;
+
 import java.io.InputStream;
 import java.util.Properties;
 
@@ -20,41 +25,35 @@ public enum MongoClientProvider {
     private String dbName;
     private String uri;
 
-    public synchronized void init() {
-        if (client == null) {
-            try {
-                InputStream input = getClass()
-                        .getClassLoader()
-                        .getResourceAsStream("mongo.properties");
-                Properties props = new Properties();
-                props.load(input);
-                this.uri = props.getProperty("mongo.uri");
-                this.dbName = props.getProperty("mongo.dbname");
-                client = MongoClients.create(MongoConfig.buildSettings(this.uri));
-                Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-                    client.close();
-                }));
-            } catch (Exception ignored) {
-                throw new RuntimeException("Error cargando configuracion Mongo");
-            }
+    MongoClientProvider(){
+        try {
+            InputStream input = getClass().getClassLoader().getResourceAsStream("mongo.properties");
+            Properties props = new Properties();
+            props.load(input);
+            this.uri = props.getProperty("mongo.uri");
+            this.dbName = props.getProperty("mongo.dbname");
+            client = MongoClients.create(MongoConfig.buildSettings(this.uri));
+            Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+                try { client.close(); } catch (Exception ignored) {}
+            }));
+        } catch (Exception ignored) {
+            throw new RuntimeException("Error cargando configuracion Mongo");
         }
     }
 
     public MongoClient client() {
-        if (client == null)
-            throw new IllegalStateException("MongoClientProvider no inicializado. Llama a init() antes.");
         return client;
     }
 
     public MongoDatabase database() {
-        return client().getDatabase(this.dbName);
+        CodecRegistry pojoCodecRegistry = CodecRegistries.fromRegistries(
+                MongoClientSettings.getDefaultCodecRegistry(),
+                CodecRegistries.fromProviders(PojoCodecProvider.builder().automatic(true).build())
+        );
+        return client.getDatabase(dbName).withCodecRegistry(pojoCodecRegistry);
     }
 
-    public <T> MongoCollection<T> getCollection(String collectionName, Class<T> clazz) {
-        if (client == null)
-            throw new IllegalStateException("MongoClientProvider no inicializado. Llama a init() antes.");
-
-        MongoDatabase db = client.getDatabase(this.dbName);
-        return db.getCollection(collectionName, clazz);
+    public <T> MongoCollection<T> getCollection(String name, Class<T> type) {
+        return database().getCollection(name, type);
     }
 }
