@@ -8,6 +8,8 @@ import solicitarBeca.dominio.Solicitud;
 import solicitarBeca.dominio.enums.EstadoSolicitud;
 import dto.DocumentoDTO;
 import dto.SolicitudDTO;
+import solicitarBeca.repository.documents.SolicitudDocument;
+
 import java.util.ArrayList;
 
 /**
@@ -48,5 +50,22 @@ public class SolicitudAdaptador {
         solicitud.setFecha(dto.getFecha());
         solicitud.setEstado(EstadoSolicitud.valueOf(dto.getEstado()));
         return solicitud;
+    }
+
+    public static SolicitudDocument toDocument(Solicitud solicitud) {
+        SolicitudDocument document = new SolicitudDocument();
+        document.setId(solicitud.getId());
+        document.setBeca(solicitud.getBeca());
+        document.setEstudiante(solicitud.getEstudiante().getMatricula());
+        document.setInformacionSocioeconomica(InformacionSocioeconomicaAdaptador.toDTO(solicitud.getInformacionSocioeconomica()));
+        document.setHistorialAcademico(HistorialAcademicoAdaptador.toDTO(solicitud.getHistorialAcademico()));
+        ArrayList<DocumentoDTO> documentosDTO = new ArrayList<>();
+        for (Documento documento : solicitud.getDocumentos()) {
+            documentosDTO.add(DocumentoAdaptador.toDTO(documento));
+        }
+        dto.setDocumentos(documentosDTO);
+        dto.setFecha(solicitud.getFecha());
+        dto.setEstado(solicitud.getEstado().toString());
+        return dto;
     }
 }

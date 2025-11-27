@@ -24,6 +24,20 @@ public class BecaAdaptador {
         return becaDTO;
     }
 
+    public static Beca toEntity(BecaDTO becaDTO){
+        Beca beca = new Beca();
+        beca.setCodigo(becaDTO.getCodigo());
+        beca.setNombre(becaDTO.getNombre());
+        beca.setBecasDisponibles(becaDTO.getBecasDisponibles());
+        beca.setDescripcion(becaDTO.getDescripcion());
+        beca.setFechaInicio(becaDTO.getFechaInicio());
+        beca.setFechaFin(becaDTO.getFechaFin());
+        beca.setFechaResultados(becaDTO.getFechaResultados());
+        beca.setTipo(TipoBeca.valueOf(becaDTO.getTipo()));
+        beca.setRequisitos(RequisitosAdaptador.toEntity(becaDTO.getRequisitos()));
+        return beca;
+    }
+
     public static Beca toEntity(BecaResponseDTO becaResponseDTO){
         Beca beca = new Beca();
         beca.setCodigo(becaResponseDTO.getCodigo());
@@ -37,5 +51,4 @@ public class BecaAdaptador {
         beca.setRequisitos(RequisitosAdaptador.toEntity(becaResponseDTO.getRequisitos()));
         return beca;
     }
-
 }

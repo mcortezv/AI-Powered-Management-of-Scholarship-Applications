@@ -32,4 +32,16 @@ public class RequisitosAdaptador {
         requisitos.setDeudas(dto.isDeudas());
         return requisitos;
     }
+
+    public static Requisitos toEntity(RequisitosDTO dto){
+        Requisitos requisitos = new Requisitos();
+        requisitos.setPromedioMinimo(dto.getPromedioMinimo());
+        requisitos.setIngresoFamiliarMaximo(dto.getIngresoFamiliarMaximo());
+        requisitos.setProcentajeBajas(dto.getProcentajeBajas());
+        requisitos.setCargaAcademica(dto.getCargaAcademica());
+        requisitos.setIndiceReprobacion(dto.getIndiceReprobacion());
+        requisitos.setTrabajo(dto.isTrabajo());
+        requisitos.setDeudas(dto.isDeudas());
+        return requisitos;
+    }
 }

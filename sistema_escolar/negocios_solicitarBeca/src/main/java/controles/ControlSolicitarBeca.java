@@ -7,6 +7,9 @@ import solicitarBeca.dominio.*;
 import solicitarBeca.dominio.enums.Carrera;
 import solicitarBeca.dominio.enums.Parentesco;
 import solicitarBeca.dominio.enums.TipoVivienda;
+import solicitarBeca.repository.documents.DocumentoDocument;
+import solicitarBeca.repository.documents.EstudianteDocument;
+import solicitarBeca.repository.documents.SolicitudDocument;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -102,7 +105,14 @@ public class ControlSolicitarBeca {
     public boolean guardarSolicitud(){
         solicitudBO.validarSolicitudCompleta(solicitudActual);
         solicitudBO.enviarSolicitud(SolicitudAdaptador.toDTO(solicitudActual));
-        //solicitudBO.guardarSolicitud(solicitudActual);
+        SolicitudDocument solicitudDocument = SolicitudAdaptador.toDocument(solicitudActual);
+        solicitudBO.guardarSolicitud(solicitudDocument);
+        EstudianteDocument estudianteDocument = EstudianteAdaptador.toDocument(solicitudActual.getEstudiante());
+        estudianteBO.guardarEstudiante(estudianteDocument);
+        for (Documento documento : solicitudActual.getDocumentos()) {
+            DocumentoDocument documentoDocument = DocumentoAdaptador.toDocument(documento);
+            documentoBO.guardarDocumento(documentoDocument);
+        }
         return true;
     }
 
