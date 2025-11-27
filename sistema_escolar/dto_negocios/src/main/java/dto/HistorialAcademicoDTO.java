@@ -27,6 +27,14 @@ public class HistorialAcademicoDTO {
         this.cargaAcademica = cargaAcademica;
     }
 
+    public HistorialAcademicoDTO(String carrera, double cargaAcademica, int semestre) {
+        this.carrera = carrera;
+        this.cargaAcademica = cargaAcademica;
+        this.semestre = semestre;
+    }
+    
+    
+
     public double getCargaAcademica() {
         return cargaAcademica;
     }

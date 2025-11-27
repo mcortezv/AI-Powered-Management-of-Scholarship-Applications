@@ -1,4 +1,5 @@
 package presentacion.solicitarBeca.panels;
+import dto.HistorialAcademicoDTO;
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.*;
@@ -82,8 +83,9 @@ public class HistorialAcademicoPanel extends PanelSolicitarBeca {
             String cargaStr = (String) comboCargaAcademica.getSelectedItem();
             double cargaAcademicaSeleccionada = Double.parseDouble(cargaStr.replace("%", ""));
             int semestreSeleccionado = (int) comboSemestre.getSelectedItem();
+          //  HistorialAcademicoDTO histAcademicoDTO= new HistorialAcademicoDTO(carreraSeleccionada, cargaAcademicaSeleccionada, semestreSeleccionado);
 
-            coordinadorAplicacion.procesarHistorialAcademico(carreraSeleccionada, cargaAcademicaSeleccionada, semestreSeleccionado);
+         //   coordinadorAplicacion.procesarHistorialAcademico(histAcademicoDTO);
         });
     }
 }

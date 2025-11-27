@@ -15,15 +15,17 @@ public class TutorDTO {
     public TutorDTO() {
     }
 
-    public TutorDTO(String apellidoMaterno, String apellidoPaterno, String correo, String direccion, String nombre, String parentesco, String telefono) {
-        this.apellidoMaterno = apellidoMaterno;
-        this.apellidoPaterno = apellidoPaterno;
-        this.correo = correo;
-        this.direccion = direccion;
+    public TutorDTO(String nombre, String parentesco, String apellidoMaterno, String apellidoPaterno, String telefono, String correo, String direccion) {
         this.nombre = nombre;
         this.parentesco = parentesco;
+        this.apellidoMaterno = apellidoMaterno;
+        this.apellidoPaterno = apellidoPaterno;
         this.telefono = telefono;
+        this.correo = correo;
+        this.direccion = direccion;
     }
+
+    
 
     public String getApellidoMaterno() {
         return apellidoMaterno;

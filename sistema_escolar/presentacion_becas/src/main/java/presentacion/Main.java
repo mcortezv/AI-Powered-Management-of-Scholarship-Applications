@@ -1,7 +1,10 @@
 package presentacion;
-
 import control.ControlGobierno;
 import controles.*;
+import fachadas.*;
+import interfaces.pagarAdeudo.IAdeudoBO;
+import objetosNegocio.pagarAdeudo.AdeudoBO;
+import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
 import fachada.FachadaGobierno;
 import fachadas.*;
 import interfaces.*;

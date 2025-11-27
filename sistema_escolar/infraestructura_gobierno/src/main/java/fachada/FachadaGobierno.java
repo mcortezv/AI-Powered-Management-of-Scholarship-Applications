@@ -23,7 +23,7 @@ public class FachadaGobierno implements IFachadaGobierno{
 
     @Override
     public BecasDisponiblesResponseDTO obtenerBecas(RequisitosDTO requisitosDTO) {
-        return null;
+        return controlGobierno.solicitarBecas(requisitosDTO);
     }
 
     @Override

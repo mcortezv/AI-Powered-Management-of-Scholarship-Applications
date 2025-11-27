@@ -24,4 +24,11 @@ public class EstudianteService {
         System.out.println("antes de regresar boolean: " + estudiante.getContrasenia());
         return estudiante.getContrasenia().equals(dto.getContrasenia());
     }
+    
+    public Estudiante solicitarDatosEstudiante(LoginDTOI dto){
+        Estudiante estudiante= estudianteDAO.findByMatricula(dto.getUsuario()).orElse(null);
+        return estudiante;
+             
+    }
+    
 }

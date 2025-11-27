@@ -23,7 +23,6 @@ public class Seeder {
 
     public static void main(String[] args) {
         try {
-            MongoClientProvider.INSTANCE.init();
             EstudianteDAO estudianteDAO = new EstudianteDAO();
             DocumentoDAO documentoDAO = new DocumentoDAO();
             SolicitudDAO solicitudDAO = new SolicitudDAO();

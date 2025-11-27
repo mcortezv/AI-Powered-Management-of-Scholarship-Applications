@@ -1,8 +1,12 @@
 package adaptadores;
+import dto.BecaDTO;
 import solicitarBeca.dominio.Beca;
 import solicitarBeca.dominio.BecasFiltradas;
 import dto.BecasDisponiblesResponseDTO;
 import dto.BecasFiltradasDTO;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -19,6 +23,8 @@ public class BecasFiltradasAdaptador {
 
     public static BecasFiltradasDTO toDTO(BecasFiltradas becasFiltradas) {
         BecasFiltradasDTO becasFiltradasDTO = new BecasFiltradasDTO();
+        List<BecaDTO> arrayList = new ArrayList<>();
+        becasFiltradasDTO.setBecas(arrayList);
         for (Beca beca : becasFiltradas.getBecas()) {
             becasFiltradasDTO.getBecas().add(BecaAdaptador.toDTO(beca));
         }
