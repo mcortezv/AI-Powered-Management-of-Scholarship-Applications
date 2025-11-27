@@ -1,7 +1,9 @@
 package adaptadores;
+import org.bson.types.ObjectId;
 import solicitarBeca.dominio.Estudiante;
 import solicitarBeca.dominio.enums.Carrera;
 import dto.*;
+import solicitarBeca.repository.documents.EstudianteDocument;
 
 /**
  *
@@ -52,5 +54,17 @@ public class EstudianteAdaptador {
         dto.setDireccion(estudiante.getDireccion());
         dto.setCorreo(estudiante.getCorreo());
         return dto;
+    }
+
+    public static EstudianteDocument toDocument(Estudiante estudiante) {
+        EstudianteDocument document = new EstudianteDocument();
+        document.set_id(new ObjectId());
+        document.setMatricula(estudiante.getMatricula());
+        document.setNombre(estudiante.getNombre());
+        document.setCarrera(estudiante.getCarrera());
+        document.setTelefono(estudiante.getTelefono());
+        document.setDireccion(estudiante.getDireccion());
+        document.setCorreo(estudiante.getCorreo());
+        return document;
     }
 }

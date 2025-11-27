@@ -3,14 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package adaptadores;
+import org.bson.types.ObjectId;
 import solicitarBeca.dominio.Documento;
 import solicitarBeca.dominio.Solicitud;
 import solicitarBeca.dominio.enums.EstadoSolicitud;
 import dto.DocumentoDTO;
 import dto.SolicitudDTO;
 import solicitarBeca.repository.documents.SolicitudDocument;
-
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -52,20 +53,17 @@ public class SolicitudAdaptador {
         return solicitud;
     }
 
-    public static SolicitudDocument toDocument(Solicitud solicitud) {
+    public static SolicitudDocument toDocument(Solicitud solicitud, ObjectId estudianteId, List<ObjectId> documentos) {
         SolicitudDocument document = new SolicitudDocument();
+        document.set_id(new ObjectId());
         document.setId(solicitud.getId());
         document.setBeca(solicitud.getBeca());
-        document.setEstudiante(solicitud.getEstudiante().getMatricula());
-        document.setInformacionSocioeconomica(InformacionSocioeconomicaAdaptador.toDTO(solicitud.getInformacionSocioeconomica()));
-        document.setHistorialAcademico(HistorialAcademicoAdaptador.toDTO(solicitud.getHistorialAcademico()));
-        ArrayList<DocumentoDTO> documentosDTO = new ArrayList<>();
-        for (Documento documento : solicitud.getDocumentos()) {
-            documentosDTO.add(DocumentoAdaptador.toDTO(documento));
-        }
-        dto.setDocumentos(documentosDTO);
-        dto.setFecha(solicitud.getFecha());
-        dto.setEstado(solicitud.getEstado().toString());
-        return dto;
+        document.setEstudiante(estudianteId);
+        document.setInformacionSocioeconomica(solicitud.getInformacionSocioeconomica());
+        document.setHistorialAcademico(solicitud.getHistorialAcademico());
+        document.setDocumentos(documentos);
+        document.setFecha(solicitud.getFecha());
+        document.setEstado(solicitud.getEstado());
+        return document;
     }
 }

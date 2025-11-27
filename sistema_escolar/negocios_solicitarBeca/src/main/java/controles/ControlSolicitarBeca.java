@@ -3,6 +3,7 @@ import adaptadores.*;
 import dto.*;
 import excepciones.*;
 import interfaces.*;
+import org.bson.types.ObjectId;
 import solicitarBeca.dominio.*;
 import solicitarBeca.dominio.enums.Carrera;
 import solicitarBeca.dominio.enums.Parentesco;
@@ -105,14 +106,16 @@ public class ControlSolicitarBeca {
     public boolean guardarSolicitud(){
         solicitudBO.validarSolicitudCompleta(solicitudActual);
         solicitudBO.enviarSolicitud(SolicitudAdaptador.toDTO(solicitudActual));
-        SolicitudDocument solicitudDocument = SolicitudAdaptador.toDocument(solicitudActual);
-        solicitudBO.guardarSolicitud(solicitudDocument);
         EstudianteDocument estudianteDocument = EstudianteAdaptador.toDocument(solicitudActual.getEstudiante());
         estudianteBO.guardarEstudiante(estudianteDocument);
+        List<ObjectId> documentos = new ArrayList<>();
         for (Documento documento : solicitudActual.getDocumentos()) {
-            DocumentoDocument documentoDocument = DocumentoAdaptador.toDocument(documento);
+            DocumentoDocument documentoDocument = DocumentoAdaptador.toDocument(documento, estudianteDocument.get_id());
+            documentos.add(documentoDocument.get_id());
             documentoBO.guardarDocumento(documentoDocument);
         }
+        SolicitudDocument solicitudDocument = SolicitudAdaptador.toDocument(solicitudActual, estudianteDocument.get_id(), documentos);
+        solicitudBO.guardarSolicitud(solicitudDocument);
         return true;
     }
 
