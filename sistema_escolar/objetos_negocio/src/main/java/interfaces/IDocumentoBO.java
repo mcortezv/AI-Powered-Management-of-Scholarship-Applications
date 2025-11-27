@@ -1,7 +1,8 @@
 package interfaces;
-import dto.DocumentoDTO;
 import excepciones.*;
 import solicitarBeca.dominio.Documento;
+import solicitarBeca.dominio.Estudiante;
+import solicitarBeca.dominio.enums.TipoDocumento;
 
 /**
  *
@@ -9,5 +10,5 @@ import solicitarBeca.dominio.Documento;
  */
 public interface IDocumentoBO {
 
-    Documento crearDocumento(DocumentoDTO documentoDTO) throws DocumentoInvalidoException;
+    Documento crearDocumento(Long identificador, TipoDocumento tipo, byte[] contenido, Estudiante estudiante) throws DocumentoInvalidoException;
 }

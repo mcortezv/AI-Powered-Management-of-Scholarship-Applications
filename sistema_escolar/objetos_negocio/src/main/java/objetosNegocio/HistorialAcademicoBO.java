@@ -1,6 +1,4 @@
 package objetosNegocio;
-import adaptadores.HistorialAcademicoAdaptador;
-import solicitarBeca.dominio.HistorialAcademico;
 import dto.HistorialAcademicoResponseDTO;
 import interfaces.IFachadaITSON;
 import interfaces.IHistorialAcademicoBO;
@@ -16,8 +14,7 @@ public class HistorialAcademicoBO implements IHistorialAcademicoBO {
         this.fachadaITSON = fachadaITSON;
     }
 
-    public HistorialAcademico crearHistorial(String matricula) {
-        HistorialAcademicoResponseDTO dto = fachadaITSON.verificarHistorialAcademcio(matricula);
-        return HistorialAcademicoAdaptador.toEntity(dto);
+    public HistorialAcademicoResponseDTO crearHistorial(String matricula) {
+        return fachadaITSON.verificarHistorialAcademcio(matricula);
     }
 }

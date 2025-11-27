@@ -1,24 +1,23 @@
 package dto;
-import solicitarBeca.dominio.Beca;
 import java.util.List;
 
 /**
  * @author Escalante, Sebastian.
  */
 public class BecasDisponiblesResponseDTO {
-    public List<Beca> becas;
+    public List<BecaResponseDTO> becas;
 
     public BecasDisponiblesResponseDTO(){}
 
-    public BecasDisponiblesResponseDTO(List<Beca> becas) {
+    public BecasDisponiblesResponseDTO(List<BecaResponseDTO> becas) {
         this.becas = becas;
     }
 
-    public List<Beca> getBecas() {
+    public List<BecaResponseDTO> getBecas() {
         return becas;
     }
 
-    public void setBecas(List<Beca> becas) {
+    public void setBecas(List<BecaResponseDTO> becas) {
         this.becas = becas;
     }
 }

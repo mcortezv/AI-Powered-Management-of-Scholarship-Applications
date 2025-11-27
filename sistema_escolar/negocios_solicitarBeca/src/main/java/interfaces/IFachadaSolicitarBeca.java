@@ -35,7 +35,7 @@ public interface IFachadaSolicitarBeca {
 
     BecasFiltradasDTO obtenerBecasDisponibles(RequisitosDTO requisitosDTO);
 
-    boolean validarRequisitos(Requisitos requisitos);
+    boolean validarRequisitos(RequisitosResponseDTO requisitos);
 
     boolean validarSolicitudNoExistente(int idEstudiante, int idSolicitud);
 

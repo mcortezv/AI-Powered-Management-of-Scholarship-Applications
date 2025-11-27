@@ -1,9 +1,7 @@
 package objetosNegocio;
-import adaptadores.SolicitudAdaptador;
 import solicitarBeca.repository.ISolicitudDAO;
 import solicitarBeca.dominio.*;
 import solicitarBeca.dominio.enums.EstadoSolicitud;
-import dto.SolicitudDTO;
 import excepciones.*;
 import interfaces.IFachadaGobierno;
 import interfaces.ISolicitudBO;

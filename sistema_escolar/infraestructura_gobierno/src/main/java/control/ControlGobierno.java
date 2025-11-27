@@ -1,12 +1,6 @@
 package control;
-import dto.BecaDTO;
-import dto.BecasDisponiblesResponseDTO;
-import dto.RequisitosDTO;
-import dto.SolicitudDTO;
-import solicitarBeca.dominio.Beca;
-import solicitarBeca.dominio.Requisitos;
+import dto.*;
 import solicitarBeca.dominio.enums.TipoBeca;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -18,9 +12,9 @@ public class ControlGobierno {
 
     public BecasDisponiblesResponseDTO solicitarBecas(RequisitosDTO requisitosDTO) {
         BecasDisponiblesResponseDTO becasDisponiblesResponseDTO = new BecasDisponiblesResponseDTO();
-        ArrayList<Beca> becas = new ArrayList<>();
-        Requisitos misRequisitos = new Requisitos();
-        Beca nuevaBeca = new Beca();
+        ArrayList<BecaResponseDTO> becas = new ArrayList<>();
+        RequisitosResponseDTO misRequisitos = new RequisitosResponseDTO();
+        BecaResponseDTO nuevaBeca = new BecaResponseDTO();
         nuevaBeca.setCodigo(1001L);
         nuevaBeca.setNombre("Beca de Excelencia Académica 2024");
         nuevaBeca.setDescripcion("Apoyo económico para estudiantes con promedio superior a 9.5");
@@ -35,7 +29,7 @@ public class ControlGobierno {
         return becasDisponiblesResponseDTO;
 }
 
-    boolean enviarSolicitud(SolicitudDTO solicitudDTO) {
+    public boolean enviarSolicitud(SolicitudDTO solicitudDTO) {
         return true;
     }
 }

@@ -4,8 +4,6 @@ import dto.EstudianteResponseDTO;
 import dto.LoginDTO;
 import interfaces.IEstudianteBO;
 import interfaces.IFachadaITSON;
-import solicitarBeca.dominio.Estudiante;
-import solicitarBeca.dominio.Tutor;
 
 /**
  *
@@ -22,21 +20,11 @@ public class EstudianteBO implements IEstudianteBO {
 
     @Override
     public boolean iniciarSesion(LoginDTO solicitudLoginDTO){
-        System.out.println("Llego al EstudianteBO");
         return fachadaITSON.verificarLogin(solicitudLoginDTO);
     }
 
     @Override
-    public Estudiante crearEstudiante(Long matricula, Tutor tutor){
-        EstudianteResponseDTO dto = fachadaITSON.verificarEstudiante(matricula);
-        Estudiante estudiante = new Estudiante();
-        estudiante.setMatricula(matricula);
-        estudiante.setNombre(dto.getNombre());
-        estudiante.setCarrera(dto.getCarrera());
-        estudiante.setTutor(tutor);
-        estudiante.setTelefono(dto.getTelefono());
-        estudiante.setDireccion(dto.getDireccion());
-        estudiante.setCorreo(dto.getCorreo());
-        return estudiante;
+    public EstudianteResponseDTO crearEstudiante(Long matricula){
+        return fachadaITSON.verificarEstudiante(matricula);
     }
 }

@@ -1,9 +1,12 @@
 package interfaces;
 import excepciones.*;
 import solicitarBeca.dominio.*;
-
 import java.util.List;
 
+/**
+ *
+ * @author Cortez, Manuel;
+ */
 public interface ISolicitudBO {
 
     Solicitud crearSolicitudVacia() throws SolicitudInvalidaException;

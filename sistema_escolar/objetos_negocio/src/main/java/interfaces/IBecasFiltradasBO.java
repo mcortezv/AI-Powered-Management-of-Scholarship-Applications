@@ -1,8 +1,8 @@
 package interfaces;
-import solicitarBeca.dominio.BecasFiltradas;
-import dto.BecaDTO;
-import dto.BecasFiltradasDTO;
+import dto.BecasDisponiblesResponseDTO;
 import dto.RequisitosDTO;
+import solicitarBeca.dominio.Beca;
+import solicitarBeca.dominio.BecasFiltradas;
 import excepciones.BecaInvalidaException;
 
 /**
@@ -11,7 +11,7 @@ import excepciones.BecaInvalidaException;
  */
 public interface IBecasFiltradasBO {
 
-    BecasFiltradasDTO obtenerBecasFiltradas(RequisitosDTO requisitosDTO) throws BecaInvalidaException;
+    BecasDisponiblesResponseDTO obtenerBecasFiltradas(RequisitosDTO requisitos) throws BecaInvalidaException;
 
-    BecaDTO obtenerBecaPorCodigo(int codigo, BecasFiltradas becasFiltradas) throws BecaInvalidaException;
+    Beca obtenerBecaPorCodigo(int codigo, BecasFiltradas becasFiltradas) throws BecaInvalidaException;
 }

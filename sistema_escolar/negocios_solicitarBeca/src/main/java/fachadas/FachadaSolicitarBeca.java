@@ -79,7 +79,7 @@ public class FachadaSolicitarBeca implements IFachadaSolicitarBeca {
         return controlSolicitud.obtenerBecasFiltradas(requisitosDTO);
     }
 
-    public boolean validarRequisitos(Requisitos requisitos) {
+    public boolean validarRequisitos(RequisitosResponseDTO requisitos) {
         return false;
     }
 

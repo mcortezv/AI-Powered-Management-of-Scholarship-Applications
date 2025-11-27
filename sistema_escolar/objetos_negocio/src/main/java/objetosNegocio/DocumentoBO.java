@@ -1,8 +1,8 @@
 package objetosNegocio;
-import adaptadores.DocumentoAdaptador;
+import solicitarBeca.dominio.Estudiante;
+import solicitarBeca.dominio.enums.TipoDocumento;
 import solicitarBeca.repository.IDocumentoDAO;
 import solicitarBeca.dominio.Documento;
-import dto.DocumentoDTO;
 import excepciones.DocumentoInvalidoException;
 import interfaces.IDocumentoBO;
 
@@ -18,10 +18,10 @@ public class DocumentoBO implements IDocumentoBO {
     }
 
     @Override
-    public Documento crearDocumento(DocumentoDTO dto) throws DocumentoInvalidoException {
-        if (dto.getIdentificador() == null || dto.getTipo() == null || dto.getEstudiante() == null || dto.getContenido() == null) {
+    public Documento crearDocumento(Long identificador, TipoDocumento tipo, byte[] contenido, Estudiante estudiante) throws DocumentoInvalidoException {
+        if (identificador == null || tipo == null || estudiante == null || contenido == null) {
             throw new DocumentoInvalidoException("Documento inválido");
         }
-        return DocumentoAdaptador.toEntity(dto);
+        return new Documento(contenido, estudiante, identificador, tipo);
     }
 }

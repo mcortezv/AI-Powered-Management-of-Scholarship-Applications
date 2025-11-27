@@ -1,8 +1,7 @@
 package interfaces;
+import dto.EstudianteResponseDTO;
 import dto.LoginDTO;
 import excepciones.*;
-import solicitarBeca.dominio.Estudiante;
-import solicitarBeca.dominio.Tutor;
 
 /**
  *
@@ -10,7 +9,7 @@ import solicitarBeca.dominio.Tutor;
  */
 public interface IEstudianteBO {
 
-    public boolean iniciarSesion(LoginDTO solicitudLoginDTO);
+    boolean iniciarSesion(LoginDTO solicitudLoginDTO);
 
-    Estudiante crearEstudiante(Long matricula, Tutor tutor) throws EstudianteInvalidoException;
+    EstudianteResponseDTO crearEstudiante(Long matricula) throws EstudianteInvalidoException;
 }

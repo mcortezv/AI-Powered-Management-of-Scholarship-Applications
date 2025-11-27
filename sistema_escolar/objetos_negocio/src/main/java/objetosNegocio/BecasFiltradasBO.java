@@ -1,11 +1,7 @@
 package objetosNegocio;
-import adaptadores.BecaAdaptador;
-import adaptadores.BecasFiltradasAdaptador;
 import solicitarBeca.dominio.Beca;
 import solicitarBeca.dominio.BecasFiltradas;
-import dto.BecaDTO;
 import dto.BecasDisponiblesResponseDTO;
-import dto.BecasFiltradasDTO;
 import dto.RequisitosDTO;
 import excepciones.BecaInvalidaException;
 import interfaces.IBecasFiltradasBO;
@@ -22,22 +18,24 @@ public class BecasFiltradasBO implements IBecasFiltradasBO {
         this.fachadaGobierno = fachadaGobierno;
     }
 
-    public BecasFiltradasDTO obtenerBecasFiltradas(RequisitosDTO requisitosDTO) throws BecaInvalidaException {
-        if (requisitosDTO.getPromedioMinimo() <= 0 || requisitosDTO.getIngresoFamiliarMaximo() <= 0 || requisitosDTO.getCargaAcademica() <= 0) {
+    @Override
+    public BecasDisponiblesResponseDTO obtenerBecasFiltradas(RequisitosDTO requisitos) throws BecaInvalidaException {
+        if (requisitos.getPromedioMinimo() <= 0 || requisitos.getIngresoFamiliarMaximo() <= 0 || requisitos.getCargaAcademica() <= 0) {
             throw new BecaInvalidaException("Requisitos minimos invalidos");
         }
-        BecasDisponiblesResponseDTO becasDisponiblesResponseDTO = fachadaGobierno.obtenerBecas(requisitosDTO);
+        BecasDisponiblesResponseDTO becasDisponiblesResponseDTO = fachadaGobierno.obtenerBecas(requisitos);
         if (becasDisponiblesResponseDTO == null || becasDisponiblesResponseDTO.getBecas() == null
                 || becasDisponiblesResponseDTO.getBecas().isEmpty()) {
             throw new BecaInvalidaException("No existe ninguna beca para estos requisitos");
         }
-        return BecasFiltradasAdaptador.toDTO(BecasFiltradasAdaptador.toEntity(becasDisponiblesResponseDTO));
+        return becasDisponiblesResponseDTO;
     }
 
-    public BecaDTO obtenerBecaPorCodigo(int codigo, BecasFiltradas becasFiltradas) throws BecaInvalidaException {
+    @Override
+    public Beca obtenerBecaPorCodigo(int codigo, BecasFiltradas becasFiltradas) throws BecaInvalidaException {
         for (Beca beca : becasFiltradas.getBecas()) {
             if (beca.getCodigo() == codigo) {
-                return BecaAdaptador.toDTO(beca);
+                return beca;
             }
         }
         return null;

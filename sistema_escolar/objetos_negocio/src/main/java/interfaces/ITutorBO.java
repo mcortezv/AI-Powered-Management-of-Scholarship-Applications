@@ -1,7 +1,7 @@
 package interfaces;
-import dto.TutorDTO;
 import excepciones.*;
 import solicitarBeca.dominio.Tutor;
+import solicitarBeca.dominio.enums.Parentesco;
 
 /**
  *
@@ -9,5 +9,5 @@ import solicitarBeca.dominio.Tutor;
  */
 public interface ITutorBO {
 
-    Tutor crearTutor(TutorDTO tutorDTO) throws TutorInvalidoException;
+    Tutor crearTutor(Long id, String nombre, Parentesco parentesco, String telefono, String direccion, String correo) throws TutorInvalidoException;
 }

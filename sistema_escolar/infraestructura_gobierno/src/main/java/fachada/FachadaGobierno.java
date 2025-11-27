@@ -5,7 +5,6 @@
 package fachada;
 import control.ControlGobierno;
 import dto.BecasDisponiblesResponseDTO;
-import dto.DocumentoDTO;
 import dto.RequisitosDTO;
 import dto.SolicitudDTO;
 import interfaces.IFachadaGobierno;
@@ -27,12 +26,7 @@ public class FachadaGobierno implements IFachadaGobierno{
     }
 
     @Override
-    public boolean validarDocumento(DocumentoDTO documentoDTO) {
-        return false;
-    }
-
-    @Override
     public boolean enviarSolicitud(SolicitudDTO solicitudDTO) {
-        return false;
+        return controlGobierno.enviarSolicitud(solicitudDTO);
     }
 }

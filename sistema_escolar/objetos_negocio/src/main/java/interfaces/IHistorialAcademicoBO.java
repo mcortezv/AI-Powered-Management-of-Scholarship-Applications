@@ -1,5 +1,5 @@
 package interfaces;
-import solicitarBeca.dominio.HistorialAcademico;
+import dto.HistorialAcademicoResponseDTO;
 
 /**
  *
@@ -7,5 +7,5 @@ import solicitarBeca.dominio.HistorialAcademico;
  */
 public interface IHistorialAcademicoBO {
 
-    HistorialAcademico crearHistorial(String matricula);
+    HistorialAcademicoResponseDTO crearHistorial(String matricula);
 }
