@@ -1,6 +1,8 @@
 package itson.org.service;
 
+import itson.org.adaptadores.EstudianteAdaptador;
 import itson.org.domain.Estudiante;
+import itson.org.dto.EstudianteResponseDTOI;
 import itson.org.dto.LoginDTOI;
 import itson.org.repository.impl.EstudianteDAO;
 
@@ -25,10 +27,10 @@ public class EstudianteService {
         return estudiante.getContrasenia().equals(dto.getContrasenia());
     }
     
-    public Estudiante solicitarDatosEstudiante(LoginDTOI dto){
-        Estudiante estudiante= estudianteDAO.findByMatricula(dto.getUsuario()).orElse(null);
-        return estudiante;
-             
+    public EstudianteResponseDTOI solicitarDatosEstudiante(Long matricula){
+         Estudiante estudiante = estudianteDAO.findByMatricula(matricula).orElse(null);
+        return EstudianteAdaptador.toResponseDTO(estudiante);
+
     }
     
 }
