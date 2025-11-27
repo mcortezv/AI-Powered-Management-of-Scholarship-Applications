@@ -74,8 +74,8 @@ public class FachadaSolicitarBeca implements IFachadaSolicitarBeca {
         return controlSolicitud.guardarSolicitud();
     }
 
-    @Override
-    public void cancelarSolicitud() throws SolicitudInvalidaException {
-        controlSolicitud.cancelarSolicitud();
-    }
+//    @Override
+//    public void cancelarSolicitud() throws SolicitudInvalidaException {
+//        controlSolicitud.cancelarSolicitud();
+//    }
 }

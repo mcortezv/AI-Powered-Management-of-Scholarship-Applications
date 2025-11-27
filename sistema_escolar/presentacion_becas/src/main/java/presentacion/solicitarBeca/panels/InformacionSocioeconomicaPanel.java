@@ -8,6 +8,7 @@ import presentacion.styles.Label;
 import presentacion.styles.TextField;
 import javax.swing.*;
 import java.awt.*;
+import java.math.BigDecimal;
 
 /**
  * @author Escalante, Sebastian.
@@ -75,13 +76,15 @@ public class InformacionSocioeconomicaPanel extends PanelSolicitarBeca{
         });
 
         btn_next.addActionListener(e -> {
-            
-                String ingresoStr = field_ingreso.getText().trim();
-                String seleccionDependEconomica = (String) cbx_familia_depende.getSelectedItem();
-                String seleccionGeneraIngreso = (String) cbx_genera_ingreso.getSelectedItem();
-                InformacionSocioeconomicaDTO infoSocioeconomica= new InformacionSocioeconomicaDTO(ingresoStr, seleccionGeneraIngreso, seleccionDependEconomica);
-                coordinadorAplicacion.procesarInformacionSocioeconomica(infoSocioeconomica);
-            
+            Double ingreso = Double.parseDouble(field_ingreso.getText());
+            BigDecimal ingresoBig = BigDecimal.valueOf(ingreso);
+            String seleccionDependEconomica= (String) cbx_familia_depende.getSelectedItem();
+            boolean dependenciaEconomica= seleccionDependEconomica.equals("SI");
+            String seleccionGeneraIngreso=   (String) cbx_genera_ingreso.getSelectedItem();
+            boolean generaIngreso= seleccionGeneraIngreso.equals("SI");
+            InformacionSocioeconomicaDTO informacionSocioeconomicaDTO = new InformacionSocioeconomicaDTO(ingresoBig, dependenciaEconomica, generaIngreso);
+            coordinadorAplicacion.procesarInformacionSocioeconomica(informacionSocioeconomicaDTO);
+
         });
     }
 }
