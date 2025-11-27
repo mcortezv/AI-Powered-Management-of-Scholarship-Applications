@@ -16,7 +16,7 @@ public interface IFachadaITSON {
 
     EstudianteResponseDTO verificarEstudiante(Long matricula);
 
-    HistorialAcademicoResponseDTO verificarHistorialAcademcio(String matricula);
+    HistorialAcademicoResponseDTO verificarHistorialAcademcio(Long matricula);
 
     //pagar adeudo
     double solicitarAdeudoBiblioteca(String matriculaEstudiante);

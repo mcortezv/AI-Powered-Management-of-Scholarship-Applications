@@ -7,5 +7,5 @@ import dto.HistorialAcademicoResponseDTO;
  */
 public interface IHistorialAcademicoBO {
 
-    HistorialAcademicoResponseDTO crearHistorial(String matricula);
+    HistorialAcademicoResponseDTO crearHistorial(Long matricula);
 }

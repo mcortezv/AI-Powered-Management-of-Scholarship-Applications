@@ -1,9 +1,11 @@
 package objetosNegocio;
+import excepciones.EstudianteInvalidoException;
 import solicitarBeca.repository.IEstudianteDAO;
 import dto.EstudianteResponseDTO;
 import dto.LoginDTO;
 import interfaces.IEstudianteBO;
 import interfaces.IFachadaITSON;
+import solicitarBeca.repository.documents.EstudianteDocument;
 
 /**
  *
@@ -26,5 +28,14 @@ public class EstudianteBO implements IEstudianteBO {
     @Override
     public EstudianteResponseDTO crearEstudiante(Long matricula){
         return fachadaITSON.verificarEstudiante(matricula);
+    }
+
+    @Override
+    public void guardarEstudiante(EstudianteDocument estudiante) throws EstudianteInvalidoException {
+        try {
+            estudianteDAO.create(estudiante);
+        } catch (Exception ex) {
+            throw new EstudianteInvalidoException(ex.getMessage());
+        }
     }
 }

@@ -32,7 +32,7 @@ public class BecasFiltradasBO implements IBecasFiltradasBO {
     }
 
     @Override
-    public Beca obtenerBecaPorCodigo(int codigo, BecasFiltradas becasFiltradas) throws BecaInvalidaException {
+    public Beca obtenerBecaPorCodigo(Long codigo, BecasFiltradas becasFiltradas) throws BecaInvalidaException {
         for (Beca beca : becasFiltradas.getBecas()) {
             if (beca.getCodigo() == codigo) {
                 return beca;

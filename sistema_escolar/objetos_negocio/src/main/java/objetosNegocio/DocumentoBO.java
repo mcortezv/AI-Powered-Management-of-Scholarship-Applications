@@ -5,6 +5,7 @@ import solicitarBeca.repository.IDocumentoDAO;
 import solicitarBeca.dominio.Documento;
 import excepciones.DocumentoInvalidoException;
 import interfaces.IDocumentoBO;
+import solicitarBeca.repository.documents.DocumentoDocument;
 
 /**
  *
@@ -23,5 +24,14 @@ public class DocumentoBO implements IDocumentoBO {
             throw new DocumentoInvalidoException("Documento inválido");
         }
         return new Documento(contenido, estudiante, identificador, tipo);
+    }
+
+    @Override
+    public void guardarDocumento(DocumentoDocument documento) throws DocumentoInvalidoException {
+        try {
+            documentoDAO.create(documento);
+        } catch (Exception ex) {
+            throw new DocumentoInvalidoException(ex.getMessage());
+        }
     }
 }
