@@ -30,5 +30,11 @@
             <version>1.0</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>mcortezv</groupId>
+            <artifactId>sistema_gobierno</artifactId>
+            <version>1.0</version>
+        </dependency>
+
     </dependencies>
 </project>

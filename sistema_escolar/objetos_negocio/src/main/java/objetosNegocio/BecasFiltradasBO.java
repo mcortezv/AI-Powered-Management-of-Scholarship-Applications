@@ -16,7 +16,7 @@ import interfaces.IFachadaGobierno;
  * @author Cortez, Manuel;
  */
 public class BecasFiltradasBO implements IBecasFiltradasBO {
-    private IFachadaGobierno fachadaGobierno;
+    private final IFachadaGobierno fachadaGobierno;
 
     public BecasFiltradasBO(IFachadaGobierno fachadaGobierno) {
         this.fachadaGobierno = fachadaGobierno;
