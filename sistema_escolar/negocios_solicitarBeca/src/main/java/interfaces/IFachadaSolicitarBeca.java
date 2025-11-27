@@ -4,7 +4,7 @@
  */
 package interfaces;
 import dto.*;
-import excepciones.SolicitudInvalidaException;
+import objetosNegocio.solicitarBeca.excepciones.SolicitudInvalidaException;
 import java.util.List;
 
 /**

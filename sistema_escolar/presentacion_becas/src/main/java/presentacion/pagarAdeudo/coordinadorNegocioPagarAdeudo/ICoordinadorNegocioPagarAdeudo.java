@@ -1,11 +1,9 @@
 package presentacion.pagarAdeudo.coordinadorNegocioPagarAdeudo;
 
-import adaptadores.EstudianteAdaptador;
 import dto.EstudianteDTO;
 import dto.pagarAdeudo.ClaseDTO;
 import dto.pagarAdeudo.PrestamoDTO;
 import dto.pagarAdeudo.SolicitudPagoDTO;
-import dto.pagarAdeudo.SolicitudPagoDTOI;
 import solicitarBeca.dominio.enums.pagarAdeudo.MetodoPago;
 
 import java.util.List;

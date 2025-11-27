@@ -5,7 +5,7 @@
 package fachadas;
 import controles.ControlSolicitarBeca;
 import dto.*;
-import excepciones.SolicitudInvalidaException;
+import objetosNegocio.solicitarBeca.excepciones.SolicitudInvalidaException;
 import interfaces.IFachadaSolicitarBeca;
 import solicitarBeca.dominio.*;
 import java.util.List;

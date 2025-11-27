@@ -1,6 +1,6 @@
 package controles;
 import dto.LoginDTO;
-import interfaces.IEstudianteBO;
+import interfaces.solicitarBeca.IEstudianteBO;
 
 
 public class ControlInicioSesion {
