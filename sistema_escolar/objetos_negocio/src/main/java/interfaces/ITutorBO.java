@@ -9,5 +9,5 @@ import solicitarBeca.dominio.enums.Parentesco;
  */
 public interface ITutorBO {
 
-    Tutor crearTutor(Long id, String nombre, Parentesco parentesco, String telefono, String direccion, String correo) throws TutorInvalidoException;
+    Tutor crearTutor(String nombre, Parentesco parentesco, String telefono, String direccion, String correo) throws TutorInvalidoException;
 }

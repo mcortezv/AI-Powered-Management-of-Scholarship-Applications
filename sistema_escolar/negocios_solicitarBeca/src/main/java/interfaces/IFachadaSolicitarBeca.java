@@ -5,8 +5,6 @@
 package interfaces;
 import dto.*;
 import excepciones.SolicitudInvalidaException;
-import solicitarBeca.dominio.*;
-
 import java.util.List;
 
 /**
@@ -15,37 +13,25 @@ import java.util.List;
  */
 public interface IFachadaSolicitarBeca {
 
-    Solicitud iniciarNuevaSolicitud() throws SolicitudInvalidaException;
+    BecasFiltradasDTO obtenerBecasFiltradas(RequisitosDTO requisitos) throws SolicitudInvalidaException;
 
-    Solicitud obtenerSolicitudActual();
+    BecaDTO obtenerBecaPorId(Long id) throws SolicitudInvalidaException;
 
-    void cancelarSolicitud();
+    void iniciarNuevaSolicitud() throws SolicitudInvalidaException;
 
-    void agregarEstudiante(Estudiante estudiante) throws SolicitudInvalidaException;
+    EstudianteDTO obtenerEstudiante(Long matricula) throws SolicitudInvalidaException;
 
-    void agregarBeca(Beca beca) throws SolicitudInvalidaException;
+    void setHistorialAcademico(HistorialAcademicoDTO historialAcademicoDTO) throws SolicitudInvalidaException;
 
-    void agregarDocumentos(List<Documento> documentos) throws SolicitudInvalidaException;
+    void setDatosTutor(TutorDTO tutor) throws SolicitudInvalidaException;
 
-    void agregarHistorial(HistorialAcademico historial) throws SolicitudInvalidaException;
+    void setInformacionSocioeconomica(InformacionSocioeconomicaDTO informacionSocioeconomica) throws SolicitudInvalidaException;
 
-    void agregarInfoSocioeconomica(InformacionSocioeconomica info) throws SolicitudInvalidaException;
+    void setDocumentos(List<DocumentoDTO> documentos) throws SolicitudInvalidaException;
 
-    Solicitud validarYEnviarSolicitud() throws SolicitudInvalidaException;
+    SolicitudDTO obtenerSolicitudActual() throws SolicitudInvalidaException;
 
-    BecasFiltradasDTO obtenerBecasDisponibles(RequisitosDTO requisitosDTO);
+    boolean guardarSolicitud() throws SolicitudInvalidaException;
 
-    boolean validarRequisitos(RequisitosResponseDTO requisitos);
-
-    boolean validarSolicitudNoExistente(int idEstudiante, int idSolicitud);
-
-    Beca recuperarBeca(int idBeca);
-
-    Estudiante solicitarDatosEstudiante(int idEstudiante);
-
-    Solicitud crearSolicitud();
-
-    boolean guardarSolicitud(Solicitud solicitud);
-
-    boolean enviarSolicitudGobierno(SolicitudDTO solicitudDTO);
+    void cancelarSolicitud() throws SolicitudInvalidaException;
 }

@@ -8,7 +8,6 @@ import dto.*;
 import excepciones.SolicitudInvalidaException;
 import interfaces.IFachadaSolicitarBeca;
 import solicitarBeca.dominio.*;
-
 import java.util.List;
 
 /**
@@ -20,108 +19,63 @@ public class FachadaSolicitarBeca implements IFachadaSolicitarBeca {
     private Solicitud solicitudActual;
     
     public FachadaSolicitarBeca(ControlSolicitarBeca gestor){
-        this.controlSolicitud= gestor;
-    }
-
-    public Solicitud iniciarNuevaSolicitud() throws SolicitudInvalidaException {
-        this.solicitudActual = controlSolicitud.iniciarSolicitud();
-        return this.solicitudActual;
-    }
-
-    public Solicitud obtenerSolicitudActual() {
-        return this.solicitudActual;
-    }
-
-    public void cancelarSolicitud() {
-        this.solicitudActual = null;
-    }
-
-    public void agregarEstudiante(Estudiante estudiante) throws SolicitudInvalidaException {
-        assertSolicitudIniciada();
-        controlSolicitud.asignarEstudiante(solicitudActual, estudiante);
-    }
-
-    public void agregarBeca(Beca beca) throws SolicitudInvalidaException {
-        assertSolicitudIniciada();
-        controlSolicitud.asignarBeca(solicitudActual, beca);
-    }
-
-    public void agregarDocumentos(List<Documento> documentos) throws SolicitudInvalidaException {
-        assertSolicitudIniciada();
-        controlSolicitud.asignarDocumentos(solicitudActual, documentos);
-    }
-
-    public void agregarHistorial(HistorialAcademico historial) throws SolicitudInvalidaException {
-        assertSolicitudIniciada();
-        controlSolicitud.asignarHistorial(solicitudActual, historial);
-    }
-
-    public void agregarInfoSocioeconomica(InformacionSocioeconomica info) throws SolicitudInvalidaException {
-        assertSolicitudIniciada();
-        controlSolicitud.asignarSocioeconomico(solicitudActual, info);
-    }
-
-    public Solicitud validarYEnviarSolicitud() throws SolicitudInvalidaException {
-        controlSolicitud.validarYFinalizarSolicitud(solicitudActual);
-        Solicitud finalizada = this.solicitudActual;
-        this.solicitudActual = null;
-        return finalizada;
+        this.controlSolicitud = gestor;
     }
 
 
-    private void assertSolicitudIniciada() throws SolicitudInvalidaException {
-        if (this.solicitudActual == null) {
-            throw new SolicitudInvalidaException("No hay una solicitud en curso. Llama a iniciarNuevaSolicitud() primero.");
-        }
+    @Override
+    public BecasFiltradasDTO obtenerBecasFiltradas(RequisitosDTO requisitos) throws SolicitudInvalidaException {
+        return controlSolicitud.obtenerBecasFiltradas(requisitos);
     }
 
-    public BecasFiltradasDTO obtenerBecasDisponibles(RequisitosDTO requisitosDTO) {
-        return controlSolicitud.obtenerBecasFiltradas(requisitosDTO);
+    @Override
+    public BecaDTO obtenerBecaPorId(Long id) throws SolicitudInvalidaException {
+        return controlSolicitud.obtenerBecaPorId(id);
     }
 
-    public boolean validarRequisitos(RequisitosResponseDTO requisitos) {
-        return false;
+    @Override
+    public void iniciarNuevaSolicitud() throws SolicitudInvalidaException {
+        controlSolicitud.iniciarSolicitud();
     }
 
-    public boolean validarSolicitudNoExistente(int idEstudiante, int idSolicitud) {
-        return false;
-    }
-
-
-    public Beca recuperarBeca(int idBeca) {
-        return null;
+    @Override
+    public EstudianteDTO obtenerEstudiante(Long matricula) throws SolicitudInvalidaException {
+        return controlSolicitud.obtenerEstudiante(matricula);
     }
 
 
-    public Estudiante solicitarDatosEstudiante(int idEstudiante) {
-        return null;
+    @Override
+    public void setHistorialAcademico(HistorialAcademicoDTO historialAcademicoDTO) throws SolicitudInvalidaException {
+        controlSolicitud.asignarHistorial(historialAcademicoDTO);
     }
 
-
-    public Solicitud crearSolicitud() {
-        return null;
+    @Override
+    public void setDatosTutor(TutorDTO tutor) throws SolicitudInvalidaException {
+        controlSolicitud.asignarTutor(tutor);
     }
 
-
-    public boolean guardarSolicitud(Solicitud solicitud) {
-        return false;
+    @Override
+    public void setInformacionSocioeconomica(InformacionSocioeconomicaDTO informacionSocioeconomica) throws SolicitudInvalidaException {
+        controlSolicitud.setInformacionSocioeconomica(informacionSocioeconomica);
     }
 
-
-    public boolean enviarSolicitudGobierno(SolicitudDTO solicitudDTO) {
-        return false;
+    @Override
+    public void setDocumentos(List<DocumentoDTO> documentos) throws SolicitudInvalidaException {
+        controlSolicitud.asignarDocumentos(documentos);
     }
 
-
-    public Solicitud solicitarBeca(
-            String estNombre, String estCorreo, String estTel, String estDir,
-            String tutorNombre, String tutorParen, String tutorTel,
-            String becaNom, String becaTipo, String becaReq, String becaFecha,
-            String carrera, Double promedio,
-            Double ingreso, String tipoVivienda,
-            List<String> documentos
-    ) {
-        return null;
+    @Override
+    public SolicitudDTO obtenerSolicitudActual() throws SolicitudInvalidaException {
+        return controlSolicitud.obtenerSolicitudActual();
     }
 
+    @Override
+    public boolean guardarSolicitud() throws SolicitudInvalidaException {
+        return controlSolicitud.guardarSolicitud();
+    }
+
+    @Override
+    public void cancelarSolicitud() throws SolicitudInvalidaException {
+        controlSolicitud.cancelarSolicitud();
+    }
 }

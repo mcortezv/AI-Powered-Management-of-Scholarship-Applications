@@ -42,4 +42,15 @@ public class EstudianteAdaptador {
         dto.setCorreo(estudiante.getCorreo());
         return dto;
     }
+
+    public static EstudianteDTO toDTO(EstudianteResponseDTO estudiante) {
+        EstudianteDTO dto = new EstudianteDTO();
+        dto.setMatricula(estudiante.getMatricula());
+        dto.setNombre(estudiante.getNombre());
+        dto.setCarrera(estudiante.getCarrera().toString());
+        dto.setTelefono(estudiante.getTelefono());
+        dto.setDireccion(estudiante.getDireccion());
+        dto.setCorreo(estudiante.getCorreo());
+        return dto;
+    }
 }

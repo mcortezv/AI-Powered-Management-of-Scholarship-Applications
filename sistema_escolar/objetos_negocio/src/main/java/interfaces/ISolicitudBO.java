@@ -1,6 +1,9 @@
 package interfaces;
+import dto.SolicitudDTO;
 import excepciones.*;
 import solicitarBeca.dominio.*;
+import solicitarBeca.repository.documents.SolicitudDocument;
+
 import java.util.List;
 
 /**
@@ -9,7 +12,7 @@ import java.util.List;
  */
 public interface ISolicitudBO {
 
-    Solicitud crearSolicitudVacia() throws SolicitudInvalidaException;
+    Solicitud crearSolicitud(Beca beca) throws SolicitudInvalidaException;
 
     void asignarEstudiante(Solicitud solicitud, Estudiante estudiante) throws SolicitudInvalidaException;
 
@@ -23,5 +26,7 @@ public interface ISolicitudBO {
 
     void validarSolicitudCompleta(Solicitud solicitud) throws SolicitudInvalidaException;
 
-//    public void guardarSolicitud(Solicitud solicitud) throws SolicitudInvalidaException;
+    void guardarSolicitud(SolicitudDocument solicitud) throws SolicitudInvalidaException;
+
+    void enviarSolicitud(SolicitudDTO solicitud) throws SolicitudInvalidaException;
 }

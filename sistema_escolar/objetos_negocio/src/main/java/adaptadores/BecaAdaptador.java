@@ -1,4 +1,5 @@
 package adaptadores;
+import dto.BecaResponseDTO;
 import solicitarBeca.dominio.Beca;
 import solicitarBeca.dominio.enums.TipoBeca;
 import dto.BecaDTO;
@@ -37,4 +38,17 @@ public class BecaAdaptador {
         return beca;
     }
 
+    public static Beca toEntity(BecaResponseDTO becaResponseDTO){
+        Beca beca = new Beca();
+        beca.setCodigo(becaResponseDTO.getCodigo());
+        beca.setNombre(becaResponseDTO.getNombre());
+        beca.setBecasDisponibles(becaResponseDTO.getBecasDisponibles());
+        beca.setDescripcion(becaResponseDTO.getDescripcion());
+        beca.setFechaInicio(becaResponseDTO.getFechaInicio());
+        beca.setFechaFin(becaResponseDTO.getFechaFin());
+        beca.setFechaResultados(becaResponseDTO.getFechaResultados());
+        beca.setTipo(TipoBeca.valueOf(becaResponseDTO.getTipo().toString()));
+        beca.setRequisitos(RequisitosAdaptador.toEntity(becaResponseDTO.getRequisitos()));
+        return beca;
+    }
 }
