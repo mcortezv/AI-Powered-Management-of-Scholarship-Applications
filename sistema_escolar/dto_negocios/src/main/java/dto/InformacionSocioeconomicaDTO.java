@@ -10,6 +10,7 @@ public class InformacionSocioeconomicaDTO {
     private String tipoVivienda;
     private boolean trabajo;
     private boolean deudas;
+    private String ingresoFamiliar;
    
 
     public InformacionSocioeconomicaDTO() {
@@ -21,6 +22,21 @@ public class InformacionSocioeconomicaDTO {
         this.tipoVivienda = tipoVivienda;
         this.trabajo = trabajo;
     }
+
+    public InformacionSocioeconomicaDTO(BigDecimal ingresoTotalFamilarMensual, boolean trabajo, boolean deudas) {
+        this.ingresoTotalFamilarMensual = ingresoTotalFamilarMensual;
+        this.trabajo = trabajo;
+        this.deudas = deudas;
+    }
+
+    public InformacionSocioeconomicaDTO(boolean trabajo, boolean deudas, String ingresoFamiliar) {
+        this.trabajo = trabajo;
+        this.deudas = deudas;
+        this.ingresoFamiliar = ingresoFamiliar;
+    }
+    
+    
+    
 
     public boolean isDeudas() {
         return deudas;
@@ -53,4 +69,14 @@ public class InformacionSocioeconomicaDTO {
     public void setTrabajo(boolean trabajo) {
         this.trabajo = trabajo;
     }
+
+    public String getIngresoFamiliar() {
+        return ingresoFamiliar;
+    }
+
+    public void setIngresoFamiliar(String ingresoFamiliar) {
+        this.ingresoFamiliar = ingresoFamiliar;
+    }
+    
+    
 }

@@ -1,4 +1,5 @@
 package presentacion.solicitarBeca.panels;
+import dto.InformacionSocioeconomicaDTO;
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.*;
@@ -78,7 +79,7 @@ public class InformacionSocioeconomicaPanel extends PanelSolicitarBeca{
                 String ingresoStr = field_ingreso.getText().trim();
                 String seleccionDependEconomica = (String) cbx_familia_depende.getSelectedItem();
                 String seleccionGeneraIngreso = (String) cbx_genera_ingreso.getSelectedItem();
-
+                InformacionSocioeconomicaDTO infoSocioeconomica= new InformacionSocioeconomicaDTO();
                 coordinadorAplicacion.procesarInformacionSocioeconomica(ingresoStr, seleccionDependEconomica, seleccionGeneraIngreso);
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(mainFrame, "El ingreso familiar debe ser un valor numérico válido.", "Error de validación", JOptionPane.ERROR_MESSAGE);

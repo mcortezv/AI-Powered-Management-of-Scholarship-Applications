@@ -113,22 +113,17 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         
     }
 
-    public void procesarHistorialAcademico(String carrera, double cargaAcademica, int semestre) {
-        this.historialAcademicoDTO = new HistorialAcademicoDTO();;
-        historialAcademicoDTO.setCarrera(carrera);
-        historialAcademicoDTO.setSemestre(semestre);
-        historialAcademicoDTO.setCargaAcademica(cargaAcademica);
+    public void procesarHistorialAcademico(HistorialAcademicoDTO historialAcademicoDTO) {
         solicitarBeca.showPanel("datosTutorPanel");
     }
 
-    public void procesarDatosTutor(String parentesco, String nombre, String apPat, String apMat, String direccion, String telefono, String correo) throws NombresInvalidosException, ApellidoInvalidoException, TelefonoInvalidoException, IDInvalidoException {
-        presentacion.solicitarBeca.validadores.Validadores.validarNombres(nombre);
-        presentacion.solicitarBeca.validadores.Validadores.validarApellido(apPat);
-        presentacion.solicitarBeca.validadores.Validadores.validarApellido(apMat);
-        presentacion.solicitarBeca.validadores.Validadores.validarTelefono(telefono);
-        presentacion.solicitarBeca.validadores.Validadores.validarDireccion(direccion);
-        presentacion.solicitarBeca.validadores.Validadores.validarCorreo(correo);
-        tutorDTO = new TutorDTO(apMat, apPat, correo, direccion, nombre, parentesco, telefono);
+    public void procesarDatosTutor(TutorDTO tutorDTO) throws NombresInvalidosException, ApellidoInvalidoException, TelefonoInvalidoException, IDInvalidoException {
+        presentacion.solicitarBeca.validadores.Validadores.validarNombres(tutorDTO.getNombre());
+        presentacion.solicitarBeca.validadores.Validadores.validarApellido(tutorDTO.getApellidoMaterno());
+        presentacion.solicitarBeca.validadores.Validadores.validarApellido(tutorDTO.getApellidoPaterno());
+        presentacion.solicitarBeca.validadores.Validadores.validarTelefono(tutorDTO.getTelefono());
+        presentacion.solicitarBeca.validadores.Validadores.validarDireccion(tutorDTO.getDireccion());
+        presentacion.solicitarBeca.validadores.Validadores.validarCorreo(tutorDTO.getCorreo());
         solicitarBeca.showPanel("informacionSocioeconomicaPanel");
     }
 

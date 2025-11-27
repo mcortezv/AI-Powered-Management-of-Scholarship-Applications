@@ -1,4 +1,5 @@
 package presentacion.solicitarBeca.panels;
+import dto.TutorDTO;
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.*;
@@ -126,8 +127,8 @@ public class DatosTutorPanel extends PanelSolicitarBeca {
                 String telefono = field_telefono.getText();
                 String direccion = field_direccion.getText();
                 String correo = field_email.getText();
-
-                coordinadorAplicacion.procesarDatosTutor(parentesco, nombre, apPat, apMat, direccion, telefono, correo);
+                TutorDTO tutorDTO= new TutorDTO(nombre, parentesco, apMat, apPat, telefono, correo, direccion);
+                coordinadorAplicacion.procesarDatosTutor(tutorDTO);
 
             } catch (NombresInvalidosException | ApellidoInvalidoException | TelefonoInvalidoException | IDInvalidoException ex) {
                 JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
