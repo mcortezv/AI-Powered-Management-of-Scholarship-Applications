@@ -1,4 +1,5 @@
 package adaptadores;
+import dto.BecaResponseDTO;
 import solicitarBeca.dominio.Beca;
 import solicitarBeca.dominio.enums.TipoBeca;
 import dto.BecaDTO;
@@ -23,17 +24,17 @@ public class BecaAdaptador {
         return becaDTO;
     }
 
-    public static Beca toEntity(BecaDTO becaDTO){
+    public static Beca toEntity(BecaResponseDTO becaResponseDTO){
         Beca beca = new Beca();
-        beca.setCodigo(becaDTO.getCodigo());
-        beca.setNombre(becaDTO.getNombre());
-        beca.setBecasDisponibles(becaDTO.getBecasDisponibles());
-        beca.setDescripcion(becaDTO.getDescripcion());
-        beca.setFechaInicio(becaDTO.getFechaInicio());
-        beca.setFechaFin(becaDTO.getFechaFin());
-        beca.setFechaResultados(becaDTO.getFechaResultados());
-        beca.setTipo(TipoBeca.valueOf(becaDTO.getTipo()));
-        beca.setRequisitos(RequisitosAdaptador.toEntity(becaDTO.getRequisitos()));
+        beca.setCodigo(becaResponseDTO.getCodigo());
+        beca.setNombre(becaResponseDTO.getNombre());
+        beca.setBecasDisponibles(becaResponseDTO.getBecasDisponibles());
+        beca.setDescripcion(becaResponseDTO.getDescripcion());
+        beca.setFechaInicio(becaResponseDTO.getFechaInicio());
+        beca.setFechaFin(becaResponseDTO.getFechaFin());
+        beca.setFechaResultados(becaResponseDTO.getFechaResultados());
+        beca.setTipo(TipoBeca.valueOf(becaResponseDTO.getTipo().toString()));
+        beca.setRequisitos(RequisitosAdaptador.toEntity(becaResponseDTO.getRequisitos()));
         return beca;
     }
 

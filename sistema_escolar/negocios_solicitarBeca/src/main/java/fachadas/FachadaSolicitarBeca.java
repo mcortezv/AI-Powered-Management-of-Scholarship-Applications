@@ -8,7 +8,6 @@ import dto.*;
 import excepciones.SolicitudInvalidaException;
 import interfaces.IFachadaSolicitarBeca;
 import solicitarBeca.dominio.*;
-
 import java.util.List;
 
 /**
@@ -20,72 +19,63 @@ public class FachadaSolicitarBeca implements IFachadaSolicitarBeca {
     private Solicitud solicitudActual;
     
     public FachadaSolicitarBeca(ControlSolicitarBeca gestor){
-        this.controlSolicitud= gestor;
+        this.controlSolicitud = gestor;
     }
 
 
     @Override
     public BecasFiltradasDTO obtenerBecasFiltradas(RequisitosDTO requisitos) throws SolicitudInvalidaException {
-        return null;
+        return controlSolicitud.obtenerBecasFiltradas(requisitos);
     }
 
     @Override
     public BecaDTO obtenerBecaPorId(Long id) throws SolicitudInvalidaException {
-        return null;
+        return controlSolicitud.obtenerBecaPorId(id);
     }
 
     @Override
     public void iniciarNuevaSolicitud() throws SolicitudInvalidaException {
-
-    }
-
-    @Override
-    public void setBecaActual(BecaDTO becaActual) throws SolicitudInvalidaException {
-
+        controlSolicitud.iniciarSolicitud();
     }
 
     @Override
     public EstudianteDTO obtenerEstudiante(Long matricula) throws SolicitudInvalidaException {
-        return null;
+        return controlSolicitud.obtenerEstudiante(matricula);
     }
 
-    @Override
-    public void setEstudiante() throws SolicitudInvalidaException {
-
-    }
 
     @Override
-    public void setHistorialAcademico(HistorialAcademicoDTO historialAcademico) throws SolicitudInvalidaException {
-
+    public void setHistorialAcademico(HistorialAcademicoDTO historialAcademicoDTO) throws SolicitudInvalidaException {
+        controlSolicitud.asignarHistorial(historialAcademicoDTO);
     }
 
     @Override
     public void setDatosTutor(TutorDTO tutor) throws SolicitudInvalidaException {
-
+        controlSolicitud.asignarTutor(tutor);
     }
 
     @Override
     public void setInformacionSocioeconomica(InformacionSocioeconomicaDTO informacionSocioeconomica) throws SolicitudInvalidaException {
-
+        controlSolicitud.setInformacionSocioeconomica(informacionSocioeconomica);
     }
 
     @Override
     public void setDocumentos(List<DocumentoDTO> documentos) throws SolicitudInvalidaException {
-
+        controlSolicitud.asignarDocumentos(documentos);
     }
 
     @Override
     public SolicitudDTO obtenerSolicitudActual() throws SolicitudInvalidaException {
-        return null;
+        return controlSolicitud.obtenerSolicitudActual();
     }
 
     @Override
     public boolean guardarSolicitud() throws SolicitudInvalidaException {
-        return false;
+        return controlSolicitud.guardarSolicitud();
     }
 
     @Override
     public void cancelarSolicitud() throws SolicitudInvalidaException {
-        
+        controlSolicitud.cancelarSolicitud();
     }
 }

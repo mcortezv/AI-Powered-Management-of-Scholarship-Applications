@@ -1,9 +1,13 @@
 package controles;
-import dto.BecasDisponiblesResponseDTO;
-import dto.RequisitosDTO;
+import adaptadores.*;
+import dto.*;
 import excepciones.*;
 import interfaces.*;
 import solicitarBeca.dominio.*;
+import solicitarBeca.dominio.enums.Carrera;
+import solicitarBeca.dominio.enums.Parentesco;
+import solicitarBeca.dominio.enums.TipoVivienda;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,6 +23,9 @@ public class ControlSolicitarBeca {
     private final IDocumentoBO documentoBO;
     private final IHistorialAcademicoBO  historialBO;
     private final IInformacionSocioeconomicaBO socioBO;
+    private BecasFiltradas becasFiltradas;
+    private Beca becaActual;
+    private Estudiante estudiante;
     private Solicitud solicitudActual;
 
     public ControlSolicitarBeca(ISolicitudBO solicitudBO,
@@ -38,34 +45,68 @@ public class ControlSolicitarBeca {
     }
 
     public void iniciarSolicitud() throws SolicitudInvalidaException {
-        this.solicitudActual = solicitudBO.crearSolicitudVacia();
+        this.solicitudActual = solicitudBO.crearSolicitud(becaActual);
     }
 
-    public BecasDisponiblesResponseDTO obtenerBecasFiltradas(RequisitosDTO requisitosDTO) throws BecaInvalidaException {
-        return becasFiltradasBO.obtenerBecasFiltradas(requisitosDTO);
+    public BecasFiltradasDTO obtenerBecasFiltradas(RequisitosDTO requisitosDTO) throws BecaInvalidaException {
+        this.becasFiltradas = BecasFiltradasAdaptador.toEntity(becasFiltradasBO.obtenerBecasFiltradas(requisitosDTO)) ;
+        return BecasFiltradasAdaptador.toDTO(becasFiltradas);
     }
 
-    public void asignarEstudiante(Solicitud solicitud, Estudiante estudiante) throws SolicitudInvalidaException {
-        solicitudBO.asignarEstudiante(solicitud, estudiante);
+    public BecaDTO obtenerBecaPorId(Long id) throws BecaInvalidaException {
+        becaActual = becasFiltradasBO.obtenerBecaPorCodigo(id, becasFiltradas);
+        return BecaAdaptador.toDTO(becaActual);
     }
 
-    public void asignarBeca(Solicitud solicitud, Beca beca) throws SolicitudInvalidaException {
-        solicitudBO.asignarBeca(solicitud, beca);
+    public EstudianteDTO obtenerEstudiante(Long id) throws SolicitudInvalidaException {
+        EstudianteResponseDTO estudianteResponseDTO = estudianteBO.crearEstudiante(id);
+        estudiante = EstudianteAdaptador.toEntity(estudianteResponseDTO);
+        return EstudianteAdaptador.toDTO(estudianteResponseDTO);
     }
 
-    public void asignarDocumentos(Solicitud solicitud, List<Documento> documentos) throws SolicitudInvalidaException {
-        solicitudBO.asignarDocumentos(solicitud, documentos);
+    public void asignarHistorial(HistorialAcademicoDTO historialAcademicoDTO) throws SolicitudInvalidaException {
+        HistorialAcademico historialAcademico = HistorialAcademicoAdaptador.toEntity(historialBO.crearHistorial(estudiante.getMatricula()));
+        historialAcademico.setCarrera(Carrera.valueOf(historialAcademicoDTO.getCarrera()));
+        historialAcademico.setCargaAcademica(historialAcademicoDTO.getCargaAcademica());
+        historialAcademico.setSemestre(historialAcademicoDTO.getSemestre());
+        solicitudActual.setHistorialAcademico(historialAcademico);
     }
 
-    public void asignarHistorial(Solicitud solicitud, HistorialAcademico historialAcademico) throws SolicitudInvalidaException {
-        solicitudBO.asignarHistorial(solicitud, historialAcademico);
+    public void asignarTutor(TutorDTO tutorDTO) throws SolicitudInvalidaException {
+        if (tutorDTO.getNombre() == null || tutorDTO.getNombre().equals("")) {}
+        Tutor tutor = tutorBO.crearTutor(tutorDTO.getNombre(), Parentesco.valueOf(tutorDTO.getParentesco()), tutorDTO.getTelefono(), tutorDTO.getDireccion(), tutorDTO.getCorreo());
+        estudiante.setTutor(tutor);
+        solicitudActual.setEstudiante(estudiante);
     }
 
-    public void asignarSocioeconomico(Solicitud solicitud, InformacionSocioeconomica informacionSocioeconomica) throws SolicitudInvalidaException {
-        solicitudBO.asignarSocioeconomico(solicitud, informacionSocioeconomica);
+    public void setInformacionSocioeconomica(InformacionSocioeconomicaDTO informacionSocioeconomica) throws SolicitudInvalidaException {
+        if (informacionSocioeconomica == null) {
+
+        }
+        InformacionSocioeconomica infoSocio = socioBO.crearInformacionSocioeconomica(informacionSocioeconomica.getIngresoTotalFamilarMensual(), TipoVivienda.valueOf(informacionSocioeconomica.getTipoVivienda()), informacionSocioeconomica.isTrabajo(), informacionSocioeconomica.isDeudas());
+        solicitudActual.setInformacionSocioeconomica(infoSocio);
     }
 
-    public void validarYFinalizarSolicitud(Solicitud solicitud) throws SolicitudInvalidaException {
-        solicitudBO.validarSolicitudCompleta(solicitud);
+    public void asignarDocumentos(List<DocumentoDTO> documentosDTO) throws SolicitudInvalidaException {
+        List<Documento>  documentos = new ArrayList<>();
+        for (DocumentoDTO documentoDTO : documentosDTO) {
+            documentos.add(DocumentoAdaptador.toEntity(documentoDTO));
+        }
+        solicitudActual.setDocumentos(documentos);
+    }
+
+    public SolicitudDTO obtenerSolicitudActual(){
+        return SolicitudAdaptador.toDTO(solicitudActual);
+    }
+
+    public boolean guardarSolicitud(){
+        solicitudBO.validarSolicitudCompleta(solicitudActual);
+        solicitudBO.enviarSolicitud(SolicitudAdaptador.toDTO(solicitudActual));
+        //solicitudBO.guardarSolicitud(solicitudActual);
+        return true;
+    }
+
+    public void cancelarSolicitud(){
+        solicitudActual.setBeca(null);
     }
 }

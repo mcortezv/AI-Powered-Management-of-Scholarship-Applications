@@ -19,13 +19,9 @@ public interface IFachadaSolicitarBeca {
 
     void iniciarNuevaSolicitud() throws SolicitudInvalidaException;
 
-    void setBecaActual(BecaDTO becaActual) throws SolicitudInvalidaException;
-
     EstudianteDTO obtenerEstudiante(Long matricula) throws SolicitudInvalidaException;
 
-    void setEstudiante() throws SolicitudInvalidaException;
-
-    void setHistorialAcademico(HistorialAcademicoDTO historialAcademico) throws SolicitudInvalidaException;
+    void setHistorialAcademico(HistorialAcademicoDTO historialAcademicoDTO) throws SolicitudInvalidaException;
 
     void setDatosTutor(TutorDTO tutor) throws SolicitudInvalidaException;
 

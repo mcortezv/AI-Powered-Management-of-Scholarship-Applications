@@ -1,4 +1,5 @@
 package adaptadores;
+import dto.RequisitosResponseDTO;
 import solicitarBeca.dominio.Requisitos;
 import dto.RequisitosDTO;
 
@@ -20,7 +21,7 @@ public class RequisitosAdaptador {
         return dto;
     }
 
-    public static Requisitos toEntity(RequisitosDTO dto){
+    public static Requisitos toEntity(RequisitosResponseDTO dto){
         Requisitos requisitos = new Requisitos();
         requisitos.setPromedioMinimo(dto.getPromedioMinimo());
         requisitos.setIngresoFamiliarMaximo(dto.getIngresoFamiliarMaximo());

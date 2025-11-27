@@ -1,10 +1,13 @@
 package objetosNegocio;
+import dto.SolicitudDTO;
 import solicitarBeca.repository.ISolicitudDAO;
 import solicitarBeca.dominio.*;
 import solicitarBeca.dominio.enums.EstadoSolicitud;
 import excepciones.*;
 import interfaces.IFachadaGobierno;
 import interfaces.ISolicitudBO;
+import solicitarBeca.repository.documents.SolicitudDocument;
+
 import java.util.List;
 
 /**
@@ -21,8 +24,9 @@ public class SolicitudBO implements ISolicitudBO {
     }
 
     @Override
-    public Solicitud crearSolicitudVacia() {
+    public Solicitud crearSolicitud(Beca beca) {
         Solicitud solicitud = new Solicitud();
+        solicitud.setBeca(beca);
         solicitud.setEstado(EstadoSolicitud.ACTIVA);
         return solicitud;
     }
@@ -91,14 +95,21 @@ public class SolicitudBO implements ISolicitudBO {
         solicitud.setEstado(EstadoSolicitud.ACTIVA);
     }
 
-//    @Override
-//    public void guardarSolicitud(Solicitud solicitud) throws SolicitudInvalidaException {
-//        try {
-//            SolicitudDTO solicitudDTO = SolicitudAdaptador.toDTO(solicitud);
-//            fachadaGobierno.enviarSolicitud(solicitudDTO);
-//            solicitudDAO.create(solicitud);
-//        } catch (Exception ex) {
-//            throw new SolicitudInvalidaException(ex.getMessage());
-//        }
-//    }
+    @Override
+    public void guardarSolicitud(SolicitudDocument solicitud) throws SolicitudInvalidaException {
+        try {
+            solicitudDAO.create(solicitud);
+        } catch (Exception ex) {
+            throw new SolicitudInvalidaException(ex.getMessage());
+        }
+    }
+
+    @Override
+    public void enviarSolicitud(SolicitudDTO solicitud) throws SolicitudInvalidaException {
+        try {
+            fachadaGobierno.enviarSolicitud(solicitud);
+        } catch (Exception ex) {
+            throw new SolicitudInvalidaException(ex.getMessage());
+        }
+    }
 }
