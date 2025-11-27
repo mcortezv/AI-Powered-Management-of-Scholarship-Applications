@@ -1,7 +1,9 @@
 package controles;
 import api_publica.ItsonAPI;
 import api_publica.interfaz.IItsonAPI;
+import dto.EstudianteResponseDTO;
 import dto.LoginDTO;
+import itson.org.dto.EstudianteResponseDTOI;
 import itson.org.dto.LoginDTOI;
 
 public class ControlItson {
@@ -16,5 +18,13 @@ public class ControlItson {
         dtoInfra.setUsuario(loginDTO.getUsuario());
         dtoInfra.setContrasenia(loginDTO.getContrasenia());
         return api.verificarLogin(dtoInfra);
+    }
+
+    public EstudianteResponseDTO verificarEstudiante(Long matricula){
+        EstudianteResponseDTOI estudianteResponseDTOI = api.obtenerDatosEstudiante(matricula);
+        EstudianteResponseDTO estudianteResponseDTO = new EstudianteResponseDTO();
+        estudianteResponseDTO.setMatricula(estudianteResponseDTOI.getMatricula());
+        estudianteResponseDTO.setNombre(estudianteResponseDTOI.getNombre());
+        return null;
     }
 }

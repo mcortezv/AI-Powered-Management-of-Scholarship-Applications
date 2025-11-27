@@ -4,7 +4,7 @@ import itson.org.domain.Carrera;
 /**
  * @author Escalante, Sebastian.
  */
-public class EstudianteResponseDTO {
+public class EstudianteResponseDTOI {
     private Long matricula;
     private String nombre;
     private Carrera carrera;
@@ -12,10 +12,10 @@ public class EstudianteResponseDTO {
     private String direccion;
     private String correo;
 
-    public EstudianteResponseDTO() {
+    public EstudianteResponseDTOI() {
     }
 
-    public EstudianteResponseDTO(Carrera carrera, String correo, String direccion, Long matricula, String nombre, String telefono) {
+    public EstudianteResponseDTOI(Carrera carrera, String correo, String direccion, Long matricula, String nombre, String telefono) {
         this.carrera = carrera;
         this.correo = correo;
         this.direccion = direccion;
