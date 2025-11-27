@@ -83,7 +83,7 @@ public class HistorialAcademicoPanel extends PanelSolicitarBeca {
             String cargaStr = (String) comboCargaAcademica.getSelectedItem();
             double cargaAcademicaSeleccionada = Double.parseDouble(cargaStr.replace("%", ""));
             int semestreSeleccionado = (int) comboSemestre.getSelectedItem();
-          //  HistorialAcademicoDTO histAcademicoDTO= new HistorialAcademicoDTO(carreraSeleccionada, cargaAcademicaSeleccionada, semestreSeleccionado);
+            HistorialAcademicoDTO histAcademicoDTO= new HistorialAcademicoDTO(carreraSeleccionada, cargaAcademicaSeleccionada, semestreSeleccionado);
 
          //   coordinadorAplicacion.procesarHistorialAcademico(histAcademicoDTO);
         });

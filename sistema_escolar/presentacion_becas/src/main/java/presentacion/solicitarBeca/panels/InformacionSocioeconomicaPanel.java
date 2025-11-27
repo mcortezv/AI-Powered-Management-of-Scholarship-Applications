@@ -75,15 +75,13 @@ public class InformacionSocioeconomicaPanel extends PanelSolicitarBeca{
         });
 
         btn_next.addActionListener(e -> {
-            try {
+            
                 String ingresoStr = field_ingreso.getText().trim();
                 String seleccionDependEconomica = (String) cbx_familia_depende.getSelectedItem();
                 String seleccionGeneraIngreso = (String) cbx_genera_ingreso.getSelectedItem();
-                InformacionSocioeconomicaDTO infoSocioeconomica= new InformacionSocioeconomicaDTO();
-                coordinadorAplicacion.procesarInformacionSocioeconomica(ingresoStr, seleccionDependEconomica, seleccionGeneraIngreso);
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(mainFrame, "El ingreso familiar debe ser un valor numérico válido.", "Error de validación", JOptionPane.ERROR_MESSAGE);
-            }
+                InformacionSocioeconomicaDTO infoSocioeconomica= new InformacionSocioeconomicaDTO(ingresoStr, seleccionGeneraIngreso, seleccionDependEconomica);
+                coordinadorAplicacion.procesarInformacionSocioeconomica(infoSocioeconomica);
+            
         });
     }
 }

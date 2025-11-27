@@ -127,20 +127,18 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         solicitarBeca.showPanel("informacionSocioeconomicaPanel");
     }
 
-    public void procesarInformacionSocioeconomica(String ingresoStr, String deudas, String seleccionGeneraIngreso) throws NumberFormatException, IngresoInvalidoException {
-        double ingreso;
+    public void procesarInformacionSocioeconomica(InformacionSocioeconomicaDTO infoSocioeconomicaDTO) throws NumberFormatException, IngresoInvalidoException {
+        Double ingreso;
         try {
-            ingreso = Double.parseDouble(ingresoStr);
+            ingreso = Double.parseDouble(infoSocioeconomicaDTO.getIngresoFamiliarSt());
         } catch (NumberFormatException e) {
-            throw new NumberFormatException("El ingreso debe ser un número válido.");
+            throw new NumberFormatException("El ingreso debe ser un número.");
         }
         presentacion.solicitarBeca.validadores.Validadores.validarIngreso(ingreso);
-        boolean deudasBool = "SI".equals(deudas);
-        boolean generaIngreso = "SI".equals(seleccionGeneraIngreso);
-        infoSocioeconomicaDTO = new InformacionSocioeconomicaDTO();
-        infoSocioeconomicaDTO.setIngresoTotalFamilarMensual(BigDecimal.valueOf(ingreso));
-        infoSocioeconomicaDTO.setDeudas(deudasBool);
-        infoSocioeconomicaDTO.setTrabajo(generaIngreso);
+        
+        boolean dependenciaEconomica= "SI".equals(infoSocioeconomicaDTO.getDependenciaEconomica());
+        boolean generaIngreso = "SI".equals(infoSocioeconomicaDTO.getTrabajoSt());
+       
         solicitarBeca.showPanel("subirDocumentosPanel");
     }
 

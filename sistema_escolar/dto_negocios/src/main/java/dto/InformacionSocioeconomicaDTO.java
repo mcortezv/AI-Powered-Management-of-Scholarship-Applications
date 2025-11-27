@@ -6,60 +6,29 @@ import java.math.BigDecimal;
  */
 
 public class InformacionSocioeconomicaDTO {
-    private BigDecimal ingresoTotalFamilarMensual;
-    private String tipoVivienda;
+  //  private BigDecimal ingresoTotalFamilarMensual;
+ //   private String tipoVivienda;
     private boolean trabajo;
-    private boolean deudas;
-    private String ingresoFamiliar;
+    private boolean dependencia;
+    private Double ingresoFamiliar;
+    private String ingresoFamiliarSt;
+    private String trabajoSt;
+    private String dependenciaEconomica;
    
 
     public InformacionSocioeconomicaDTO() {
     }
 
-    public InformacionSocioeconomicaDTO(boolean deudas, BigDecimal ingresoTotalFamilarMensual, String tipoVivienda, boolean trabajo) {
-        this.deudas = deudas;
-        this.ingresoTotalFamilarMensual = ingresoTotalFamilarMensual;
-        this.tipoVivienda = tipoVivienda;
-        this.trabajo = trabajo;
+    public InformacionSocioeconomicaDTO(String ingresoFamiliarSt, String trabajoSt, String dependenciaEconomica) {
+        this.ingresoFamiliarSt = ingresoFamiliarSt;
+        this.trabajoSt = trabajoSt;
+        this.dependenciaEconomica = dependenciaEconomica;
     }
 
-    public InformacionSocioeconomicaDTO(BigDecimal ingresoTotalFamilarMensual, boolean trabajo, boolean deudas) {
-        this.ingresoTotalFamilarMensual = ingresoTotalFamilarMensual;
+    public InformacionSocioeconomicaDTO(boolean trabajo, boolean dependencia, Double ingresoFamiliar) {
         this.trabajo = trabajo;
-        this.deudas = deudas;
-    }
-
-    public InformacionSocioeconomicaDTO(boolean trabajo, boolean deudas, String ingresoFamiliar) {
-        this.trabajo = trabajo;
-        this.deudas = deudas;
+        this.dependencia = dependencia;
         this.ingresoFamiliar = ingresoFamiliar;
-    }
-    
-    
-    
-
-    public boolean isDeudas() {
-        return deudas;
-    }
-
-    public void setDeudas(boolean deudas) {
-        this.deudas = deudas;
-    }
-
-    public BigDecimal getIngresoTotalFamilarMensual() {
-        return ingresoTotalFamilarMensual;
-    }
-
-    public void setIngresoTotalFamilarMensual(BigDecimal ingresoTotalFamilarMensual) {
-        this.ingresoTotalFamilarMensual = ingresoTotalFamilarMensual;
-    }
-
-    public String getTipoVivienda() {
-        return tipoVivienda;
-    }
-
-    public void setTipoVivienda(String tipoVivienda) {
-        this.tipoVivienda = tipoVivienda;
     }
 
     public boolean isTrabajo() {
@@ -70,13 +39,44 @@ public class InformacionSocioeconomicaDTO {
         this.trabajo = trabajo;
     }
 
-    public String getIngresoFamiliar() {
+    public boolean isDependencia() {
+        return dependencia;
+    }
+
+    public void setDependencia(boolean dependencia) {
+        this.dependencia = dependencia;
+    }
+
+    public Double getIngresoFamiliar() {
         return ingresoFamiliar;
     }
 
-    public void setIngresoFamiliar(String ingresoFamiliar) {
+    public void setIngresoFamiliar(Double ingresoFamiliar) {
         this.ingresoFamiliar = ingresoFamiliar;
     }
-    
+
+    public String getIngresoFamiliarSt() {
+        return ingresoFamiliarSt;
+    }
+
+    public void setIngresoFamiliarSt(String ingresoFamiliarSt) {
+        this.ingresoFamiliarSt = ingresoFamiliarSt;
+    }
+
+    public String getTrabajoSt() {
+        return trabajoSt;
+    }
+
+    public void setTrabajoSt(String trabajoSt) {
+        this.trabajoSt = trabajoSt;
+    }
+
+    public String getDependenciaEconomica() {
+        return dependenciaEconomica;
+    }
+
+    public void setDependenciaEconomica(String dependenciaEconomica) {
+        this.dependenciaEconomica = dependenciaEconomica;
+    }
     
 }
