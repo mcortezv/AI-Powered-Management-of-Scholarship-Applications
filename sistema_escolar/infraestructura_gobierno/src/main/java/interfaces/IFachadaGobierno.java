@@ -7,7 +7,7 @@ import dto.*;
  */
 public interface IFachadaGobierno {
 
-    BecasDisponiblesResponseDTO obtenerBecas(RequisitosDTO requisitosDTO);
+    BecasFiltradasDTO obtenerBecas(RequisitosDTO requisitosDTO);
 
     boolean enviarSolicitud(SolicitudDTO solicitudDTO);
 }

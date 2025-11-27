@@ -1,4 +1,6 @@
 package interfaces.solicitarBeca;
+import dto.BecasFiltradasDTO;
+import dto.RequisitosDTO;
 import objetosNegocio.solicitarBeca.excepciones.BecaInvalidaException;
 import solicitarBeca.dominio.Beca;
 
@@ -8,4 +10,5 @@ import solicitarBeca.dominio.Beca;
  */
 public interface IBecaBO {
     Beca obtenerBecaPorCodigo(int codigo) throws BecaInvalidaException;
+    BecasFiltradasDTO obtenerBecasFiltradas(RequisitosDTO requisitos) throws BecaInvalidaException;
 }

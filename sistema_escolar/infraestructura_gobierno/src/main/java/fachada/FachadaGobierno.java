@@ -5,6 +5,7 @@
 package fachada;
 import control.ControlGobierno;
 import dto.BecasDisponiblesResponseDTO;
+import dto.BecasFiltradasDTO;
 import dto.RequisitosDTO;
 import dto.SolicitudDTO;
 import interfaces.IFachadaGobierno;
@@ -21,7 +22,7 @@ public class FachadaGobierno implements IFachadaGobierno{
     }
 
     @Override
-    public BecasDisponiblesResponseDTO obtenerBecas(RequisitosDTO requisitosDTO) {
+    public BecasFiltradasDTO obtenerBecas(RequisitosDTO requisitosDTO) {
         return controlGobierno.solicitarBecas(requisitosDTO);
     }
 

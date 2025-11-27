@@ -62,7 +62,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     }
 
     public void procesarInformacionGeneral(RequisitosDTO requisitosDTO) throws PromedioInvalidoException, IngresoInvalidoException {
-        BecasFiltradasDTO becasFiltradas = coordinadorNegocio.obtenerBecasDisponibles(requisitosDTO);
+        BecasFiltradasDTO becasFiltradas = coordinadorNegocio.obtenerBecasFiltradas(requisitosDTO);
         mostrarBecasDisponibles(becasFiltradas);
     }
 
@@ -127,20 +127,20 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         solicitarBeca.showPanel("informacionSocioeconomicaPanel");
     }
 
-    public void procesarInformacionSocioeconomica(InformacionSocioeconomicaDTO infoSocioeconomicaDTO) throws NumberFormatException, IngresoInvalidoException {
-        Double ingreso;
-        try {
-            ingreso = Double.parseDouble(infoSocioeconomicaDTO.getIngresoFamiliarSt());
-        } catch (NumberFormatException e) {
-            throw new NumberFormatException("El ingreso debe ser un número.");
-        }
-        presentacion.solicitarBeca.validadores.Validadores.validarIngreso(ingreso);
-        
-        boolean dependenciaEconomica= "SI".equals(infoSocioeconomicaDTO.getDependenciaEconomica());
-        boolean generaIngreso = "SI".equals(infoSocioeconomicaDTO.getTrabajoSt());
-       
-        solicitarBeca.showPanel("subirDocumentosPanel");
-    }
+//    public void procesarInformacionSocioeconomica(InformacionSocioeconomicaDTO infoSocioeconomicaDTO) throws NumberFormatException, IngresoInvalidoException {
+//        Double ingreso;
+//        try {
+//            ingreso = Double.parseDouble(infoSocioeconomicaDTO.getIngresoFamiliarSt());
+//        } catch (NumberFormatException e) {
+//            throw new NumberFormatException("El ingreso debe ser un número.");
+//        }
+//        presentacion.solicitarBeca.validadores.Validadores.validarIngreso(ingreso);
+//        
+//        boolean dependenciaEconomica= "SI".equals(infoSocioeconomicaDTO.getDependenciaEconomica());
+//        boolean generaIngreso = "SI".equals(infoSocioeconomicaDTO.getTrabajoSt());
+//       
+//        solicitarBeca.showPanel("subirDocumentosPanel");
+//    }
 
     public void procesarDocumentosYSolicitud(Map<String, File> documentosCargados) {
         mostrarResumen();

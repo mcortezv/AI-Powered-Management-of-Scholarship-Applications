@@ -30,5 +30,10 @@
             <version>1.0</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>persistencia_gobierno</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 </project>

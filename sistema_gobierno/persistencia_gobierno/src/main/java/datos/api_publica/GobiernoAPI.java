@@ -1,14 +1,20 @@
 package datos.api_publica;
 
+import datos.api_publica.control.GobiernoItson;
+import datos.api_publica.interfaz.IGobiernoAPI;
+import datos.dominio.Beca;
+import datos.dto.BecasResponseDTOI;
+import datos.dto.RequisitosDTOI;
+
 /**
  *
  * @author Cortez, Manuel;
  */
-public class GobiernoAPI implements IItsonAPI {
-    private final ControlItson controlItson;
+public class GobiernoAPI implements IGobiernoAPI {
+    private final GobiernoItson gobiernoITSON;
 
     public GobiernoAPI(){
-        this.controlItson = new ControlItson();
+        this.gobiernoITSON = new GobiernoItson();
     }
 
     @Override
@@ -19,5 +25,10 @@ public class GobiernoAPI implements IItsonAPI {
     @Override
     public Estudiante obtenerDatosEstudiante(LoginDTOI dto) {
        return controlItson.solicitarDatosEstudiante(dto);
+    }
+
+    @Override
+    public BecasResponseDTOI solicitarBecas(RequisitosDTOI requisitosDTOI) {
+     //   return gobiernoITSON.
     }
 }

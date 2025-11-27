@@ -58,8 +58,8 @@ public class ControlSolicitarBeca {
 
     public BecasFiltradasDTO obtenerBecasFiltradas(RequisitosDTO requisitosDTO) throws SolicitarBecaException {
         try {
-            this.becasFiltradas = BecasFiltradasAdaptador.toEntity(becasFiltradasBO.obtenerBecasFiltradas(requisitosDTO)) ;
-            return BecasFiltradasAdaptador.toDTO(becasFiltradas);
+           // this.becasFiltradas = BecasFiltradasAdaptador.toEntity(becasFiltradasBO.obtenerBecasFiltradas(requisitosDTO)) ;
+            return becasFiltradasBO.obtenerBecasFiltradas(requisitosDTO);
         } catch (Exception ex) {
             throw new SolicitarBecaException(ex.getMessage());
         }

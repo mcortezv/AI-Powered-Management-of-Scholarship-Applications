@@ -1,5 +1,6 @@
 package interfaces.solicitarBeca;
 import dto.BecasDisponiblesResponseDTO;
+import dto.BecasFiltradasDTO;
 import dto.RequisitosDTO;
 import solicitarBeca.dominio.Beca;
 import solicitarBeca.dominio.BecasFiltradas;
@@ -11,7 +12,7 @@ import objetosNegocio.solicitarBeca.excepciones.BecaInvalidaException;
  */
 public interface IBecasFiltradasBO {
 
-    BecasDisponiblesResponseDTO obtenerBecasFiltradas(RequisitosDTO requisitos) throws BecaInvalidaException;
+    BecasFiltradasDTO obtenerBecasFiltradas(RequisitosDTO requisitos) throws BecaInvalidaException;
 
     Beca obtenerBecaPorCodigo(Long codigo, BecasFiltradas becasFiltradas) throws BecaInvalidaException;
 }
