@@ -33,5 +33,5 @@ public interface IFachadaSolicitarBeca {
 
     boolean guardarSolicitud() throws SolicitudInvalidaException;
 
-    void cancelarSolicitud() throws SolicitudInvalidaException;
+//    void cancelarSolicitud() throws SolicitudInvalidaException;
 }

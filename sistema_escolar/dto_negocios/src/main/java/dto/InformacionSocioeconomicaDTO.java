@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 
 public class InformacionSocioeconomicaDTO {
     private BigDecimal ingresoTotalFamilarMensual;
+    private boolean dependenciaEconomica;
     private String tipoVivienda;
     private boolean trabajo;
     private boolean deudas;
@@ -19,6 +20,13 @@ public class InformacionSocioeconomicaDTO {
         this.ingresoTotalFamilarMensual = ingresoTotalFamilarMensual;
         this.deudas = deudas;
     }
+
+    public InformacionSocioeconomicaDTO(BigDecimal ingresoBig, boolean dependenciaEconomica, boolean generaIngreso) {
+        this.ingresoTotalFamilarMensual = ingresoBig;
+        this.trabajo = generaIngreso;
+        this.dependenciaEconomica = dependenciaEconomica;
+    }
+
 
     public boolean isDeudas() {
         return deudas;
@@ -50,5 +58,17 @@ public class InformacionSocioeconomicaDTO {
 
     public void setTrabajo(boolean trabajo) {
         this.trabajo = trabajo;
+    }
+
+    public String getDependenciaEconomica() {
+        return null;
+    }
+
+    public String getIngresoFamiliarSt() {
+        return null;
+    }
+
+    public String getTrabajoSt() {
+        return null;
     }
 }
