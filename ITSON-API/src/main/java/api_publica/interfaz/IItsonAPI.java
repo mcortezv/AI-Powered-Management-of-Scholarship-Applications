@@ -1,9 +1,10 @@
 package api_publica.interfaz;
-
+import dto.itson.LoginDTOItson;
 import itson.org.domain.Estudiante;
-import itson.org.dto.LoginDTOI;
 
 public interface IItsonAPI {
-    boolean verificarLogin(LoginDTOI dto);
-    Estudiante obtenerDatosEstudiante(LoginDTOI dto);
+
+    boolean verificarLogin(LoginDTOItson dto);
+
+    Estudiante obtenerDatosEstudiante(LoginDTOItson dto);
 }

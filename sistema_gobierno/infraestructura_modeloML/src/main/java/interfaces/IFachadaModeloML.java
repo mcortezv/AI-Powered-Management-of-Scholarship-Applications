@@ -1,6 +1,6 @@
 package interfaces;
-import dto.ResolucionInfraestructuraDTO;
-import dto.SolicitudInfraestructuraDTO;
+import dto.gobierno.ResolucionDTOGobierno;
+import dto.gobierno.SolicitudDTOGobierno;
 
 /**
  *
@@ -8,5 +8,5 @@ import dto.SolicitudInfraestructuraDTO;
  */
 public interface IFachadaModeloML {
 
-    ResolucionInfraestructuraDTO generarPrediccion(SolicitudInfraestructuraDTO solicitud);
+    ResolucionDTOGobierno generarPrediccion(SolicitudDTOGobierno solicitud);
 }

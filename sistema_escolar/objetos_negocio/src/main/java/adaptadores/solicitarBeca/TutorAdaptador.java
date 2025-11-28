@@ -1,9 +1,9 @@
 package adaptadores.solicitarBeca;
 import adaptadores.solicitarBeca.excepciones.BecasFiltradasAdaptadorException;
 import adaptadores.solicitarBeca.excepciones.TutorAdaptadorException;
+import dto.TutorDTO;
 import solicitarBeca.dominio.Tutor;
 import solicitarBeca.dominio.enums.Parentesco;
-import dto.TutorDTO;
 
 /**
  *

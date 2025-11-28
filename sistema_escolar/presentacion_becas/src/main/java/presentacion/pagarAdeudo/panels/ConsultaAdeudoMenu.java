@@ -1,6 +1,6 @@
 package presentacion.pagarAdeudo.panels;
 
-import dto.EstudianteDTO;
+import dto_gobierno.EstudianteDTO;
 import presentacion.pagarAdeudo.PagarAdeudo;
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
 import presentacion.styles.Button;

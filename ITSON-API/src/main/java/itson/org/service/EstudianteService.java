@@ -1,7 +1,6 @@
 package itson.org.service;
-
+import dto.itson.LoginDTOItson;
 import itson.org.domain.Estudiante;
-import itson.org.dto.LoginDTOI;
 import itson.org.repository.impl.EstudianteDAO;
 
 public class EstudianteService {
@@ -16,7 +15,7 @@ public class EstudianteService {
         this.estudianteDAO = new EstudianteDAO();
     }
 
-    public boolean verificarLogin(LoginDTOI dto){
+    public boolean verificarLogin(LoginDTOItson dto){
         Estudiante estudiante = estudianteDAO.findByMatricula(dto.getUsuario()).orElse(null);
         if (estudiante == null || estudiante.getContrasenia() == null) {
             return false;
@@ -25,7 +24,7 @@ public class EstudianteService {
         return estudiante.getContrasenia().equals(dto.getContrasenia());
     }
     
-    public Estudiante solicitarDatosEstudiante(LoginDTOI dto){
+    public Estudiante solicitarDatosEstudiante(LoginDTOItson dto){
         Estudiante estudiante= estudianteDAO.findByMatricula(dto.getUsuario()).orElse(null);
         return estudiante;
              

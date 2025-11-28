@@ -1,6 +1,9 @@
 package datos.dao.interfaces;
 import datos.dominio.Solicitud;
 import datos.dominio.enums.EstadoSolicitud;
+import dto.gobierno.SolicitudDTOGobierno;
+import dto_gobierno.SolicitudDTO;
+
 import java.util.List;
 
 /**
@@ -8,6 +11,8 @@ import java.util.List;
  * @author Cortez, Manuel;
  */
 public interface ISolicitudDAO {
+
+    boolean guardarSolicitud(SolicitudDTOGobierno solicitud);
 
     List<Solicitud> obtenerPorConvocatoria(int idConvocatoria);
 

@@ -1,5 +1,5 @@
 package interfaces.solicitarBeca;
-import dto.HistorialAcademicoResponseDTO;
+import dto.itson.HistorialAcademicoDTOItson;
 import objetosNegocio.solicitarBeca.excepciones.HistorialInvalidoException;
 
 /**
@@ -8,5 +8,5 @@ import objetosNegocio.solicitarBeca.excepciones.HistorialInvalidoException;
  */
 public interface IHistorialAcademicoBO {
 
-    HistorialAcademicoResponseDTO crearHistorial(Long matricula) throws HistorialInvalidoException;
+    HistorialAcademicoDTOItson crearHistorial(Long matricula) throws HistorialInvalidoException;
 }

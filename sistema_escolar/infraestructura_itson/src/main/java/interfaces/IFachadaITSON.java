@@ -1,10 +1,11 @@
 package interfaces;
-import dto.EstudianteResponseDTO;
-import dto.HistorialAcademicoResponseDTO;
-import dto.LoginDTO;
-import dto.pagarAdeudo.ClaseDTOI;
-import dto.pagarAdeudo.PrestamoDTOI;
-import dto.pagarAdeudo.SolicitudPagoDTOI;
+import dto.itson.EstudianteDTOItson;
+import dto.itson.HistorialAcademicoDTOItson;
+import dto.banco.ClaseDTOI;
+import dto.banco.PrestamoDTOI;
+import dto.banco.SolicitudPagoDTOI;
+import dto.itson.LoginDTOItson;
+
 import java.util.List;
 
 /**
@@ -12,11 +13,11 @@ import java.util.List;
  */
 public interface IFachadaITSON {
 
-    boolean verificarLogin(LoginDTO solicitudLoginDTO);
+    boolean verificarLogin(LoginDTOItson solicitudLoginDTO);
 
-    EstudianteResponseDTO verificarEstudiante(Long matricula);
+    EstudianteDTOItson verificarEstudiante(Long matricula);
 
-    HistorialAcademicoResponseDTO verificarHistorialAcademcio(Long matricula);
+    HistorialAcademicoDTOItson verificarHistorialAcademcio(Long matricula);
 
     //pagar adeudo
     double solicitarAdeudoBiblioteca(String matriculaEstudiante);

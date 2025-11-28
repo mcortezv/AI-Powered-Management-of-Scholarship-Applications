@@ -1,6 +1,6 @@
 package interfaces;
-import dto.ResolucionDTO;
-import dto.SolicitudDTO;
+import dto_gobierno.ResolucionDTO;
+import dto_gobierno.SolicitudDTO;
 import java.util.List;
 
 /**

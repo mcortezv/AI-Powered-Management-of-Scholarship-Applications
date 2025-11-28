@@ -5,19 +5,34 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>mcortezv</groupId>
-        <artifactId>Managing-School-Applications-and-Scholarships-with-Artificial-Intelligence</artifactId>
+        <artifactId>sistema_escolar</artifactId>
         <version>1.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
-
     <artifactId>infraestructura_gobierno</artifactId>
-
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
     <dependencies>
+        <dependency>
+            <groupId>mcortezv</groupId>
+            <artifactId>dto_negocios_gobierno</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>mcortezv</groupId>
+            <artifactId>dto_infraestructura_gobierno</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>persistencia_gobierno</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <dependency>
             <groupId>mcortezv</groupId>
             <artifactId>dto_negocios</artifactId>
@@ -29,11 +44,6 @@
             <artifactId>dto_infraestructura</artifactId>
             <version>1.0</version>
             <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>persistencia_gobierno</artifactId>
-            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>

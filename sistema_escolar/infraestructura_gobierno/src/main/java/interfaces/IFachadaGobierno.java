@@ -1,5 +1,8 @@
 package interfaces;
-import dto.*;
+import dto.gobierno.BecasDisponiblesDTOGobierno;
+import dto.gobierno.RequisitosDTOGobierno;
+import dto.gobierno.SolicitudDTOGobierno;
+import dto_gobierno.SolicitudDTO;
 
 /**
  *
@@ -7,7 +10,7 @@ import dto.*;
  */
 public interface IFachadaGobierno {
 
-    BecasFiltradasDTO obtenerBecas(RequisitosDTO requisitosDTO);
+    BecasDisponiblesDTOGobierno obtenerBecas(RequisitosDTOGobierno requisitosDTO);
 
-    boolean enviarSolicitud(SolicitudDTO solicitudDTO);
+    boolean enviarSolicitud(SolicitudDTOGobierno solicitudDTO);
 }

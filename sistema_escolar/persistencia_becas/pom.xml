@@ -3,8 +3,9 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>mcortezv</groupId>
-        <artifactId>Managing-School-Applications-and-Scholarships-with-Artificial-Intelligence</artifactId>
+        <artifactId>sistema_escolar</artifactId>
         <version>1.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>persistencia_becas</artifactId>
     <packaging>jar</packaging>
@@ -17,6 +18,5 @@
     </dependencies>
     <properties>
         <maven.compiler.release>17</maven.compiler.release>
-        <exec.mainClass>mcortezv.persistencia_becas.Persistencia_becas</exec.mainClass>
     </properties>
 </project>

@@ -1,7 +1,7 @@
 package fachadas;
 import controles.ControlModeloML;
-import dto.ResolucionInfraestructuraDTO;
-import dto.SolicitudInfraestructuraDTO;
+import dto.gobierno.ResolucionDTOGobierno;
+import dto.gobierno.SolicitudDTOGobierno;
 import interfaces.IFachadaModeloML;
 
 /**
@@ -16,7 +16,7 @@ public class FachadaModeloML implements IFachadaModeloML {
     }
 
     @Override
-    public ResolucionInfraestructuraDTO generarPrediccion(SolicitudInfraestructuraDTO solicitud) {
+    public ResolucionDTOGobierno generarPrediccion(SolicitudDTOGobierno solicitud) {
         return controlModeloML.predecir(solicitud);
     }
 }

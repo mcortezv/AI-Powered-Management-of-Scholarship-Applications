@@ -6,15 +6,13 @@
     <version>1.0</version>
     <packaging>pom</packaging>
     <modules>
-        <module>dto_infraestructura</module>
-        <module>dto_negocios</module>
+        <module>dto_negocios_gobierno</module>
         <module>infraestructura_modeloML</module>
         <module>negocios_evaluarSolicitudes</module>
         <module>negocios_modificarResolucion</module>
-        <module>objetos_negocio</module>
+        <module>objetos_negocio_gobierno</module>
         <module>persistencia_gobierno</module>
         <module>presentacion_gobierno</module>
-        <module>api</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

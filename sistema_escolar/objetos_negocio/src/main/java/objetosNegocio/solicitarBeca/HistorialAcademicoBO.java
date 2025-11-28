@@ -1,5 +1,5 @@
 package objetosNegocio.solicitarBeca;
-import dto.HistorialAcademicoResponseDTO;
+import dto.itson.HistorialAcademicoDTOItson;
 import objetosNegocio.solicitarBeca.excepciones.HistorialInvalidoException;
 import interfaces.IFachadaITSON;
 import interfaces.solicitarBeca.IHistorialAcademicoBO;
@@ -15,7 +15,7 @@ public class HistorialAcademicoBO implements IHistorialAcademicoBO {
         this.fachadaITSON = fachadaITSON;
     }
 
-    public HistorialAcademicoResponseDTO crearHistorial(Long matricula) throws HistorialInvalidoException {
+    public HistorialAcademicoDTOItson crearHistorial(Long matricula) throws HistorialInvalidoException {
         try {
             return fachadaITSON.verificarHistorialAcademcio(matricula);
         } catch (Exception e) {

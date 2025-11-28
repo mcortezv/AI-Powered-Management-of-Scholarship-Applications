@@ -1,7 +1,9 @@
 package datos.services;
 import datos.dao.SolicitudDAO;
 import datos.dao.excepciones.SolicitudDAOException;
-import dto.SolicitudDTO;
+
+import dto.gobierno.SolicitudDTOGobierno;
+import dto_gobierno.SolicitudDTO;
 
 /**
  *
@@ -10,11 +12,11 @@ import dto.SolicitudDTO;
 public class SolicitudService {
     private final SolicitudDAO solicitudDAO;
 
-    public SolicitudService(SolicitudDAO solicitudDAO){
-        this.solicitudDAO = solicitudDAO;
+    public SolicitudService(){
+        this.solicitudDAO = new SolicitudDAO();
     }
 
-    public boolean guardarSolicitud(SolicitudDTO solicitud) throws SolicitudDAOException {
-
+    public boolean guardarSolicitud(SolicitudDTOGobierno solicitud) throws SolicitudDAOException {
+        return solicitudDAO.guardarSolicitud(solicitud);
     }
 }

@@ -1,10 +1,9 @@
 package excepciones;
-import objetosNegocio.solicitarBeca.excepciones.ValidacionException;
 
 /**
  *
  * @author Cortez, Manuel;
  */
-public class SolicitarBecaException extends ValidacionException {
+public class SolicitarBecaException extends RuntimeException {
     public SolicitarBecaException(String msg) { super(msg); }
 }

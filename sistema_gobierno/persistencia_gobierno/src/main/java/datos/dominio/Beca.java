@@ -11,7 +11,7 @@ import java.time.LocalDate;
  * @author Cortez, Manuel;
  */
 public class Beca {
-    private int codigo;
+    private Long codigo;
     private TipoBeca tipo;
     private String nombre;
     private String descripcion;
@@ -23,7 +23,7 @@ public class Beca {
 
     public Beca() {}
 
-    public Beca(int becasDisponibles, int codigo, LocalDate fechaFin, LocalDate fechaInicio, LocalDate fechaResultados, String nombre, Requisitos requisitos, TipoBeca tipo) {
+    public Beca(int becasDisponibles, Long codigo, LocalDate fechaFin, LocalDate fechaInicio, LocalDate fechaResultados, String nombre, Requisitos requisitos, TipoBeca tipo) {
         this.becasDisponibles = becasDisponibles;
         this.codigo = codigo;
         this.fechaFin = fechaFin;
@@ -42,11 +42,11 @@ public class Beca {
         this.becasDisponibles = becasDisponibles;
     }
 
-    public int getCodigo() {
+    public Long getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(Long codigo) {
         this.codigo = codigo;
     }
 

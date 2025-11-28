@@ -1,9 +1,10 @@
 package adaptadores.solicitarBeca;
 import adaptadores.solicitarBeca.excepciones.BecasFiltradasAdaptadorException;
 import adaptadores.solicitarBeca.excepciones.InformacionSocioeconomicaAdaptadorException;
+import dto.InformacionSocioeconomicaDTO;
+import dto.gobierno.InformacionSocioeconomicaDTOGobierno;
 import solicitarBeca.dominio.InformacionSocioeconomica;
 import solicitarBeca.dominio.enums.TipoVivienda;
-import dto.InformacionSocioeconomicaDTO;
 
 /**
  *
@@ -27,6 +28,19 @@ public class InformacionSocioeconomicaAdaptador {
     public static InformacionSocioeconomicaDTO toDTO(InformacionSocioeconomica informacionSocioeconomica) {
         try {
             InformacionSocioeconomicaDTO dto = new InformacionSocioeconomicaDTO();
+            dto.setIngresoTotalFamilarMensual(informacionSocioeconomica.getIngresoTotalFamilarMensual());
+            dto.setTipoVivienda(informacionSocioeconomica.getTipoVivienda().toString());
+            dto.setDeudas(informacionSocioeconomica.getDeudas());
+            dto.setTrabajo(informacionSocioeconomica.getTrabajo());
+            return dto;
+        } catch (Exception ex) {
+            throw new BecasFiltradasAdaptadorException("Error al convertir entidad InformacionSocioeconomica a DTO");
+        }
+    }
+
+    public static InformacionSocioeconomicaDTOGobierno toDTOGobierno(InformacionSocioeconomica informacionSocioeconomica) {
+        try {
+            InformacionSocioeconomicaDTOGobierno dto = new InformacionSocioeconomicaDTOGobierno();
             dto.setIngresoTotalFamilarMensual(informacionSocioeconomica.getIngresoTotalFamilarMensual());
             dto.setTipoVivienda(informacionSocioeconomica.getTipoVivienda().toString());
             dto.setDeudas(informacionSocioeconomica.getDeudas());

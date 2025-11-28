@@ -1,5 +1,5 @@
 package presentacion.login.panels;
-import dto.LoginDTO;
+import dto.itson.LoginDTOItson;
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import presentacion.login.MainFrame;
 import presentacion.login.exceptions.ContraseniaInvalidaException;
@@ -93,7 +93,7 @@ public class IniciarSesionPanel extends Panel {
             Long usuarioLong = Long.parseLong(usuario);
             String contrasenia = new String(txtPassword.getPassword());
             try {
-                LoginDTO loginDTO = new LoginDTO(usuarioLong,contrasenia);
+                LoginDTOItson loginDTO = new LoginDTOItson(usuarioLong,contrasenia);
                 System.out.println("antes de llamar a coordinadorAplicacion");
                 boolean verificarLogin = coordinadorAplicacion.intentarIniciarSesion(loginDTO);
                 if(verificarLogin) {

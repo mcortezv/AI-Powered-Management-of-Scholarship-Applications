@@ -1,16 +1,15 @@
 package itson.org.adaptadores;
-
+import dto.itson.EstudianteDTOItson;
 import itson.org.domain.Estudiante;
-import itson.org.dto.EstudianteResponseDTO;
 
 public class EstudianteAdaptador {
 
-    public static EstudianteResponseDTO toResponseDTO(Estudiante estudiante) {
+    public static EstudianteDTOItson toResponseDTO(Estudiante estudiante) {
         if (estudiante == null) {
             return null;
         }
-        return new EstudianteResponseDTO(
-                estudiante.getCarrera(),
+        return new EstudianteDTOItson(
+                estudiante.getCarrera().toString(),
                 estudiante.getCorreo(),
                 estudiante.getDireccion(),
                 estudiante.getMatricula(),

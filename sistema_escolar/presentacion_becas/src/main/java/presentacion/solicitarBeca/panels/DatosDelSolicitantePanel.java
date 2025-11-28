@@ -1,5 +1,5 @@
 package presentacion.solicitarBeca.panels;
-import dto.EstudianteDTO;
+import dto_gobierno.EstudianteDTO;
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import presentacion.login.exceptions.IDInvalidoException;
 import presentacion.solicitarBeca.SolicitarBeca;
@@ -107,12 +107,12 @@ public class DatosDelSolicitantePanel extends PanelSolicitarBeca {
 
         btn_next.addActionListener(e -> {
             try{
-                String nombre= field_nombre.getText();
-                String apellidoMaterno= field_apellido_materno.getText();
-                String apellidoPaterno= field_apellido_paterno.getText();
-                String direccion= field_direccion.getText();
-                String telefono= field_telefono.getText();
-                String email= field_email.getText();
+                String nombre = field_nombre.getText();
+                String apellidoMaterno = field_apellido_materno.getText();
+                String apellidoPaterno = field_apellido_paterno.getText();
+                String direccion = field_direccion.getText();
+                String telefono = field_telefono.getText();
+                String email = field_email.getText();
                 String nombreCompleto= nombre + " " + apellidoPaterno + " " + apellidoMaterno;
                 //cambiar el nombre a un enum 
                 EstudianteDTO estudianteDTO= new EstudianteDTO(null, null, email, direccion, null,  nombreCompleto, telefono, null);

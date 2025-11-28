@@ -1,9 +1,9 @@
 package adaptadores.solicitarBeca;
 import adaptadores.solicitarBeca.excepciones.BecasFiltradasAdaptadorException;
 import adaptadores.solicitarBeca.excepciones.RequisitosAdaptadorException;
-import dto.RequisitosResponseDTO;
-import solicitarBeca.dominio.Requisitos;
 import dto.RequisitosDTO;
+import dto.gobierno.RequisitosDTOGobierno;
+import solicitarBeca.dominio.Requisitos;
 
 /**
  *
@@ -27,7 +27,55 @@ public class RequisitosAdaptador {
         }
     }
 
-    public static Requisitos toEntity(RequisitosResponseDTO dto){
+    public static RequisitosDTO toDTO(RequisitosDTOGobierno requisitos){
+        try {
+            RequisitosDTO dto = new RequisitosDTO();
+            dto.setPromedioMinimo(requisitos.getPromedioMinimo());
+            dto.setIngresoFamiliarMaximo(requisitos.getIngresoFamiliarMaximo());
+            dto.setProcentajeBajas(requisitos.getProcentajeBajas());
+            dto.setCargaAcademica(requisitos.getCargaAcademica());
+            dto.setIndiceReprobacion(requisitos.getIndiceReprobacion());
+            dto.setTrabajo(requisitos.isTrabajo());
+            dto.setDeudas(requisitos.isDeudas());
+            return dto;
+        } catch (Exception ex) {
+            throw new RequisitosAdaptadorException("Error al convertir entidad Requisitos a DTO");
+        }
+    }
+
+    public static RequisitosDTOGobierno toDTOGobierno(Requisitos requisitos){
+        try {
+            RequisitosDTOGobierno dto = new RequisitosDTOGobierno();
+            dto.setPromedioMinimo(requisitos.getPromedioMinimo());
+            dto.setIngresoFamiliarMaximo(requisitos.getIngresoFamiliarMaximo());
+            dto.setProcentajeBajas(requisitos.getProcentajeBajas());
+            dto.setCargaAcademica(requisitos.getCargaAcademica());
+            dto.setIndiceReprobacion(requisitos.getIndiceReprobacion());
+            dto.setTrabajo(requisitos.isTrabajo());
+            dto.setDeudas(requisitos.isDeudas());
+            return dto;
+        } catch (Exception ex) {
+            throw new RequisitosAdaptadorException("Error al convertir entidad Requisitos a DTO");
+        }
+    }
+
+    public static RequisitosDTOGobierno toDTOGobierno(RequisitosDTO requisitos){
+        try {
+            RequisitosDTOGobierno dto = new RequisitosDTOGobierno();
+            dto.setPromedioMinimo(requisitos.getPromedioMinimo());
+            dto.setIngresoFamiliarMaximo(requisitos.getIngresoFamiliarMaximo());
+            dto.setProcentajeBajas(requisitos.getProcentajeBajas());
+            dto.setCargaAcademica(requisitos.getCargaAcademica());
+            dto.setIndiceReprobacion(requisitos.getIndiceReprobacion());
+            dto.setTrabajo(requisitos.isTrabajo());
+            dto.setDeudas(requisitos.isDeudas());
+            return dto;
+        } catch (Exception ex) {
+            throw new RequisitosAdaptadorException("Error al convertir entidad Requisitos a DTO");
+        }
+    }
+
+    public static Requisitos toEntity(RequisitosDTOGobierno dto){
         try {
             Requisitos requisitos = new Requisitos();
             requisitos.setPromedioMinimo(dto.getPromedioMinimo());

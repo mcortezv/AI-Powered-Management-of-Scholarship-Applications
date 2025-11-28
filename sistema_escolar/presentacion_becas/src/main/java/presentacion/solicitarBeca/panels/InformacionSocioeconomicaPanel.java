@@ -8,6 +8,7 @@ import presentacion.styles.Label;
 import presentacion.styles.TextField;
 import javax.swing.*;
 import java.awt.*;
+import java.math.BigDecimal;
 
 /**
  * @author Escalante, Sebastian.
@@ -16,10 +17,12 @@ public class InformacionSocioeconomicaPanel extends PanelSolicitarBeca{
     private Label titulo;
     private Label lbl_ingreso;
     private TextField field_ingreso;
-    private Label lbl_familia_depende;
-    private ComboBox<String> cbx_familia_depende;
-    private Label lbl_genera_ingreso;
-    private ComboBox<String> cbx_genera_ingreso;
+    private Label lbl_tipo_vivienda;
+    private ComboBox<String> cbx_tipo_vivienda;
+    private Label lbl_deudas;
+    private ComboBox<String> cbx_deudas;
+    private Label lbl_tabajo;
+    private ComboBox<String> cbx_tabajo;
     private Button btn_next;
 
     public InformacionSocioeconomicaPanel(SolicitarBeca mainFrame, CoordinadorAplicacion coordinadorAplicacion){
@@ -44,26 +47,37 @@ public class InformacionSocioeconomicaPanel extends PanelSolicitarBeca{
         centralPanel.add(field_ingreso);
         centralPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
 
-        lbl_familia_depende = new Label("Tu familia depende económicamente de una sola persona?");
-        lbl_familia_depende.setFont(Style.LABEL_FONT);
-        lbl_familia_depende.setAlignmentX(CENTER_ALIGNMENT);
-        centralPanel.add(lbl_familia_depende);
+        lbl_tipo_vivienda = new Label("Tipo de vivienda:");
+        lbl_tipo_vivienda.setFont(Style.LABEL_FONT);
+        lbl_tipo_vivienda.setAlignmentX(CENTER_ALIGNMENT);
+        centralPanel.add(lbl_tipo_vivienda);
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
-        String[] opciones_depende = new String[]{"SI", "NO"};
-        cbx_familia_depende = new ComboBox<>(opciones_depende);
-        cbx_familia_depende.setAlignmentX(CENTER_ALIGNMENT);
-        centralPanel.add(cbx_familia_depende);
+        String[] opciones_vivienda = new String[]{"CASA_PROPIA", "DEPARTAMENTO", "RESIDENCIA", "VIVIENDA_IMPROVISADA"};
+        cbx_tipo_vivienda = new ComboBox<>(opciones_vivienda);
+        cbx_tipo_vivienda.setAlignmentX(CENTER_ALIGNMENT);
+        centralPanel.add(cbx_tipo_vivienda);
         centralPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
 
-        lbl_genera_ingreso = new Label("Generas algún ingreso?");
-        lbl_genera_ingreso.setFont(Style.LABEL_FONT);
-        lbl_genera_ingreso.setAlignmentX(CENTER_ALIGNMENT);
-        centralPanel.add(lbl_genera_ingreso);
+        lbl_deudas = new Label("Tienes deudas?");
+        lbl_deudas.setFont(Style.LABEL_FONT);
+        lbl_deudas.setAlignmentX(CENTER_ALIGNMENT);
+        centralPanel.add(lbl_deudas);
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
-        String[] opciones_genera_ingreso = new String[]{"SI", "NO"};
-        cbx_genera_ingreso = new ComboBox<>(opciones_genera_ingreso);
-        cbx_genera_ingreso.setAlignmentX(CENTER_ALIGNMENT);
-        centralPanel.add(cbx_genera_ingreso);
+        String[] opciones_deudas = new String[]{"SI", "NO"};
+        cbx_deudas = new ComboBox<>(opciones_deudas);
+        cbx_deudas.setAlignmentX(CENTER_ALIGNMENT);
+        centralPanel.add(cbx_deudas);
+        centralPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
+
+        lbl_tabajo = new Label("Trabajas?");
+        lbl_tabajo.setFont(Style.LABEL_FONT);
+        lbl_tabajo.setAlignmentX(CENTER_ALIGNMENT);
+        centralPanel.add(lbl_tabajo);
+        centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
+        String[] opciones_trabajas = new String[]{"SI", "NO"};
+        cbx_tabajo = new ComboBox<>(opciones_trabajas);
+        cbx_tabajo.setAlignmentX(CENTER_ALIGNMENT);
+        centralPanel.add(cbx_tabajo);
         centralPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
 
         btn_next = new Button("Continuar");
@@ -76,10 +90,17 @@ public class InformacionSocioeconomicaPanel extends PanelSolicitarBeca{
 
         btn_next.addActionListener(e -> {
             
-                String ingresoStr = field_ingreso.getText().trim();
-                String seleccionDependEconomica = (String) cbx_familia_depende.getSelectedItem();
-                String seleccionGeneraIngreso = (String) cbx_genera_ingreso.getSelectedItem();
-                InformacionSocioeconomicaDTO infoSocioeconomica= new InformacionSocioeconomicaDTO(ingresoStr, seleccionGeneraIngreso, seleccionDependEconomica);
+                BigDecimal ingreso = BigDecimal.valueOf(Double.parseDouble(field_ingreso.getText()));
+                String tipoVivienda = (String) cbx_tipo_vivienda.getSelectedItem();
+                String valorDeudas = (String) cbx_deudas.getSelectedItem();
+                boolean seleccionDeudas = valorDeudas.equalsIgnoreCase("SI");
+                String valorTrabajo = (String) cbx_tabajo.getSelectedItem();
+                boolean seleccionTrabajo = valorTrabajo.equalsIgnoreCase("SI");
+                InformacionSocioeconomicaDTO infoSocioeconomica = new InformacionSocioeconomicaDTO();
+                infoSocioeconomica.setIngresoTotalFamilarMensual(ingreso);
+                infoSocioeconomica.setTipoVivienda(tipoVivienda);
+                infoSocioeconomica.setTrabajo(seleccionTrabajo);
+                infoSocioeconomica.setDeudas(seleccionDeudas);
                 coordinadorAplicacion.procesarInformacionSocioeconomica(infoSocioeconomica);
             
         });

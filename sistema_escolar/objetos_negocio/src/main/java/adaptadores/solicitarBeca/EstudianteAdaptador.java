@@ -1,10 +1,12 @@
 package adaptadores.solicitarBeca;
 import adaptadores.solicitarBeca.excepciones.BecasFiltradasAdaptadorException;
 import adaptadores.solicitarBeca.excepciones.EstudianteAdaptadorException;
+import dto.EstudianteDTO;
+import dto.gobierno.EstudianteDTOGobierno;
+import dto.itson.EstudianteDTOItson;
 import org.bson.types.ObjectId;
 import solicitarBeca.dominio.Estudiante;
 import solicitarBeca.dominio.enums.Carrera;
-import dto.*;
 import solicitarBeca.repository.documents.EstudianteDocument;
 
 /**
@@ -13,12 +15,12 @@ import solicitarBeca.repository.documents.EstudianteDocument;
  */
 public class EstudianteAdaptador {
 
-    public static Estudiante toEntity(EstudianteResponseDTO dto) {
+    public static Estudiante toEntity(EstudianteDTOItson dto) {
         try {
             Estudiante estudiante = new Estudiante();
             estudiante.setMatricula(dto.getMatricula());
             estudiante.setNombre(dto.getNombre());
-            estudiante.setCarrera(dto.getCarrera());
+            estudiante.setCarrera(Carrera.valueOf(dto.getCarrera()));
             estudiante.setTelefono(dto.getTelefono());
             estudiante.setDireccion(dto.getDireccion());
             estudiante.setCorreo(dto.getCorreo());
@@ -59,9 +61,24 @@ public class EstudianteAdaptador {
         }
     }
 
-    public static EstudianteDTO toDTO(EstudianteResponseDTO estudiante) {
+    public static EstudianteDTO toDTO(EstudianteDTOItson estudiante) {
         try {
             EstudianteDTO dto = new EstudianteDTO();
+            dto.setMatricula(estudiante.getMatricula());
+            dto.setNombre(estudiante.getNombre());
+            dto.setCarrera(estudiante.getCarrera().toString());
+            dto.setTelefono(estudiante.getTelefono());
+            dto.setDireccion(estudiante.getDireccion());
+            dto.setCorreo(estudiante.getCorreo());
+            return dto;
+        } catch (Exception ex) {
+            throw new BecasFiltradasAdaptadorException("Error al convertir ResponseDTO Estudiante a DTO");
+        }
+    }
+
+    public static EstudianteDTOGobierno toDTOGobierno(Estudiante estudiante) {
+        try {
+            EstudianteDTOGobierno dto = new EstudianteDTOGobierno();
             dto.setMatricula(estudiante.getMatricula());
             dto.setNombre(estudiante.getNombre());
             dto.setCarrera(estudiante.getCarrera().toString());

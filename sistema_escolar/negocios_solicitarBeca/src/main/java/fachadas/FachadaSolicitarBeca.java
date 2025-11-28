@@ -4,15 +4,11 @@
  */
 package fachadas;
 import controles.ControlSolicitarBeca;
-import dto.BecaDTO;
-import dto.EstudianteDTO;
-import dto.RequisitosDTO;
+import dto.*;
 import objetosNegocio.solicitarBeca.excepciones.SolicitudInvalidaException;
 import interfaces.IFachadaSolicitarBeca;
 import solicitarBeca.dominio.*;
 import java.util.List;
-import dto.BecasFiltradasDTO;
-import dto.*;
 
 /**
  *                          FACHADA
@@ -82,6 +78,4 @@ public class FachadaSolicitarBeca implements IFachadaSolicitarBeca {
     public void cancelarSolicitud() throws SolicitudInvalidaException {
         controlSolicitud.cancelarSolicitud();
     }
-
-
 }

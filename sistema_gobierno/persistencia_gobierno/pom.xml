@@ -15,7 +15,19 @@
     <dependencies>
         <dependency>
             <groupId>mcortezv</groupId>
-            <artifactId>dto_negocios</artifactId>
+            <artifactId>dto_negocios_gobierno</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>mcortezv</groupId>
+            <artifactId>ITSON-API</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>mcortezv</groupId>
+            <artifactId>dto_infraestructura</artifactId>
             <version>1.0</version>
             <scope>compile</scope>
         </dependency>

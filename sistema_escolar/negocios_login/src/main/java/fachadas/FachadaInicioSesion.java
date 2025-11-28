@@ -1,7 +1,7 @@
 package fachadas;
 import controles.ControlInicioSesion;
+import dto.itson.LoginDTOItson;
 import interfaces.IFachadaInicioSesion;
-import dto.LoginDTO;
 
 public class FachadaInicioSesion implements IFachadaInicioSesion {
     public ControlInicioSesion controlInicioSesion;
@@ -11,7 +11,7 @@ public class FachadaInicioSesion implements IFachadaInicioSesion {
     }
 
     @Override
-    public boolean solicitarLogin(LoginDTO solicitudLoginDTO) {
+    public boolean solicitarLogin(LoginDTOItson solicitudLoginDTO) {
         System.out.println("llego al FachadaInicioSesion");
         return controlInicioSesion.solicitarLogin(solicitudLoginDTO);
     }

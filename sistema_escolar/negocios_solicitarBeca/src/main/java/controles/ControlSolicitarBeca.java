@@ -1,6 +1,7 @@
 package controles;
 import adaptadores.solicitarBeca.*;
 import dto.*;
+import dto.itson.EstudianteDTOItson;
 import excepciones.SolicitarBecaException;
 import interfaces.solicitarBeca.*;
 import org.bson.types.ObjectId;
@@ -59,7 +60,7 @@ public class ControlSolicitarBeca {
     public BecasFiltradasDTO obtenerBecasFiltradas(RequisitosDTO requisitosDTO) throws SolicitarBecaException {
         try {
            // this.becasFiltradas = BecasFiltradasAdaptador.toEntity(becasFiltradasBO.obtenerBecasFiltradas(requisitosDTO)) ;
-            return becasFiltradasBO.obtenerBecasFiltradas(requisitosDTO);
+            return BecasFiltradasAdaptador.toDTO(becasFiltradasBO.obtenerBecasFiltradas(RequisitosAdaptador.toDTOGobierno(requisitosDTO)));
         } catch (Exception ex) {
             throw new SolicitarBecaException(ex.getMessage());
         }
@@ -76,7 +77,7 @@ public class ControlSolicitarBeca {
 
     public EstudianteDTO obtenerEstudiante(Long id) throws SolicitarBecaException {
         try {
-            EstudianteResponseDTO estudianteResponseDTO = estudianteBO.crearEstudiante(id);
+            EstudianteDTOItson estudianteResponseDTO = estudianteBO.crearEstudiante(id);
             estudiante = EstudianteAdaptador.toEntity(estudianteResponseDTO);
             return EstudianteAdaptador.toDTO(estudianteResponseDTO);
         } catch (Exception ex) {
@@ -112,8 +113,8 @@ public class ControlSolicitarBeca {
             if (informacionSocioeconomica == null) {
 
             }
-            InformacionSocioeconomica infoSocio = socioBO.crearInformacionSocioeconomica(informacionSocioeconomica.getIngresoTotalFamilarMensual(), TipoVivienda.valueOf(informacionSocioeconomica.getTipoVivienda()), informacionSocioeconomica.isTrabajo(), informacionSocioeconomica.isDeudas());
-            solicitudActual.setInformacionSocioeconomica(infoSocio);
+            //InformacionSocioeconomica infoSocio = socioBO.crearInformacionSocioeconomica(informacionSocioeconomica.getIngresoTotalFamilarMensual(), TipoVivienda.valueOf(informacionSocioeconomica.getTipoVivienda()), informacionSocioeconomica.isTrabajo(), informacionSocioeconomica.isDeudas());
+           // solicitudActual.setInformacionSocioeconomica(infoSocio);
         } catch (Exception ex) {
             throw new SolicitarBecaException(ex.getMessage());
         }
@@ -142,7 +143,7 @@ public class ControlSolicitarBeca {
     public boolean guardarSolicitud() throws SolicitarBecaException {
         try {
             solicitudBO.validarSolicitudCompleta(solicitudActual);
-            solicitudBO.enviarSolicitud(SolicitudAdaptador.toDTO(solicitudActual));
+            solicitudBO.enviarSolicitud(SolicitudAdaptador.toDTOGobierno(solicitudActual));
             EstudianteDocument estudianteDocument = EstudianteAdaptador.toDocument(solicitudActual.getEstudiante());
             estudianteBO.guardarEstudiante(estudianteDocument);
             List<ObjectId> documentos = new ArrayList<>();

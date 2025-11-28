@@ -1,12 +1,12 @@
 package control;
 import datos.api_publica.GobiernoAPI;
 import datos.api_publica.interfaz.IGobiernoAPI;
-import datos.dto.BecasResponseDTOI;
-import datos.dto.RequisitosDTOI;
-import dto.*;
-import solicitarBeca.dominio.enums.TipoBeca;
-import java.time.LocalDate;
-import java.util.ArrayList;
+import datos.dto.BecasFiltradasDTO;
+import dto.gobierno.BecasDisponiblesDTOGobierno;
+import dto.gobierno.RequisitosDTOGobierno;
+import dto.gobierno.SolicitudDTOGobierno;
+import dto_gobierno.SolicitudDTO;
+
 /**
  *
  * @author Cortez, Manuel;
@@ -19,17 +19,8 @@ public class ControlGobierno {
         this.gobiernoAPI= new GobiernoAPI();
     }
 
-    public BecasResponseDTOI solicitarBecas(RequisitosDTO requisitosDTO) {
-        
-        RequisitosDTOI requisitosDTOI= new RequisitosDTOI();
-        requisitosDTOI.setPromedioMinimo(requisitosDTO.getPromedioMinimo());
-        requisitosDTOI.setIngresoFamiliarMaximo(requisitosDTO.getIngresoFamiliarMaximo());
-        requisitosDTOI.setProcentajeBajas(requisitosDTO.getProcentajeBajas());
-        requisitosDTOI.setCargaAcademica(requisitosDTO.getCargaAcademica());
-        requisitosDTOI.setIndiceReprobacion(requisitosDTO.getIndiceReprobacion());
-        requisitosDTOI.setTrabajo(requisitosDTO.isTrabajo());
-        requisitosDTOI.setDeudas(requisitosDTO.isDeudas());
-        return gobiernoAPI.solicitarBecas(requisitosDTOI);
+    public BecasDisponiblesDTOGobierno solicitarBecas(RequisitosDTOGobierno requisitosDTO) {
+        return gobiernoAPI.obtenerBecas(requisitosDTO);
         
         
         
@@ -51,7 +42,7 @@ public class ControlGobierno {
 //        return becasDisponiblesResponseDTO;
 }
 
-    public boolean enviarSolicitud(SolicitudDTO solicitudDTO) {
+    public boolean enviarSolicitud(SolicitudDTOGobierno solicitudDTO) {
         return true;
     }
 }

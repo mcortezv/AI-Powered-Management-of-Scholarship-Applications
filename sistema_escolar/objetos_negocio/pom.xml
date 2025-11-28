@@ -3,11 +3,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>mcortezv</groupId>
-        <artifactId>Managing-School-Applications-and-Scholarships-with-Artificial-Intelligence</artifactId>
+        <artifactId>sistema_escolar</artifactId>
         <version>1.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>objetos_negocio</artifactId>
-    <packaging>jar</packaging>
+
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -16,12 +17,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>dto_negocios</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>mcortezv</groupId>
             <artifactId>infraestructura_gobierno</artifactId>
             <version>${project.version}</version>
@@ -29,7 +24,7 @@
         </dependency>
         <dependency>
             <groupId>mcortezv</groupId>
-            <artifactId>dto_infraestructura</artifactId>
+            <artifactId>dto_infraestructura_gobierno</artifactId>
             <version>${project.version}</version>
             <scope>compile</scope>
         </dependency>
@@ -41,25 +36,13 @@
         </dependency>
         <dependency>
             <groupId>mcortezv</groupId>
-            <artifactId>dto_negocios</artifactId>
-            <version>1.0</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>mcortezv</groupId>
             <artifactId>persistencia_becas</artifactId>
             <version>1.0</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>mcortezv</groupId>
-            <artifactId>dto_negocios</artifactId>
-            <version>1.0</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>mcortezv</groupId>
-            <artifactId>dto_negocios</artifactId>
+            <artifactId>dto_negocios_gobierno</artifactId>
             <version>1.0</version>
             <scope>compile</scope>
         </dependency>

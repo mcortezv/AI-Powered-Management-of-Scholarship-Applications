@@ -1,5 +1,7 @@
 package presentacion.coordinadorAplicacion;
+import datos.dominio.InformacionSocioeconomica;
 import dto.*;
+import dto.itson.LoginDTOItson;
 import interfaces.*;
 import presentacion.coordinadorNegocio.CoordinadorNegocio;
 import presentacion.login.MainFrame;
@@ -13,7 +15,6 @@ import presentacion.solicitarBeca.panels.DetallesBecaPanel;
 import presentacion.solicitarBeca.panels.ListadoBecasDisponiblesPanel;
 import presentacion.solicitarBeca.panels.ResumenFinalPanel;
 import java.io.File;
-import java.math.BigDecimal;
 import java.util.Map;
 
 /**
@@ -37,8 +38,8 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     private PagarAdeudo adeudo;
 
     // bajar a coordinador negocio
-    private SolicitudDTO solicitudDTO;
-    private EstudianteDTO estudianteDTO;
+    private dto_gobierno.SolicitudDTO solicitudDTO;
+    private dto_gobierno.EstudianteDTO estudianteDTO;
 
     public CoordinadorAplicacion(IFachadaInicioSesion fachadaInicioSesion, IFachadaSolicitarBeca fachadaSolicitarBeca, CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo) {
         this.coordinadorNegocio = new CoordinadorNegocio(fachadaInicioSesion, fachadaSolicitarBeca);
@@ -54,7 +55,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         mainFrame.setVisible(true);
     }
 
-    public boolean intentarIniciarSesion(LoginDTO loginDTO) throws IDInvalidoException, ContraseniaInvalidaException {
+    public boolean intentarIniciarSesion(LoginDTOItson loginDTO) throws IDInvalidoException, ContraseniaInvalidaException {
         presentacion.login.validadores.Validadores.validarID(loginDTO.getUsuario());
         presentacion.login.validadores.Validadores.validarContrasenia(loginDTO.getContrasenia());
         System.out.println("llego al coordinadorAplicacion");
@@ -62,11 +63,11 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     }
 
     public void procesarInformacionGeneral(RequisitosDTO requisitosDTO) throws PromedioInvalidoException, IngresoInvalidoException {
-        BecasFiltradasDTO becasFiltradas = coordinadorNegocio.obtenerBecasFiltradas(requisitosDTO);
+        BecasFiltradasDTO becasFiltradas = coordinadorNegocio.obtenerBecasDisponibles(requisitosDTO);
         mostrarBecasDisponibles(becasFiltradas);
     }
 
-    public void procesarDatosSolicitante(EstudianteDTO estudianteDTO)
+    public void procesarDatosSolicitante(dto_gobierno.EstudianteDTO estudianteDTO)
             throws NombresInvalidosException, DireccionInvalidaException, TelefonoInvalidoException, IDInvalidoException {
         presentacion.solicitarBeca.validadores.Validadores.validarNombres(estudianteDTO.getNombre());
         presentacion.solicitarBeca.validadores.Validadores.validarDireccion(estudianteDTO.getDireccion());
@@ -151,6 +152,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     }
 
 
-
-
+    public void procesarInformacionSocioeconomica(InformacionSocioeconomicaDTO infoSocioeconomica) {
+        solicitarBeca.showPanel("datosTutorPanel");
+    }
 }

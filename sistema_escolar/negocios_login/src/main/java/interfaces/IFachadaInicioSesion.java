@@ -1,9 +1,9 @@
 package interfaces;
-import dto.LoginDTO;
+import dto.itson.LoginDTOItson;
 
 public interface IFachadaInicioSesion {
 
-    boolean solicitarLogin(LoginDTO solicitudLoginDTO);
+    boolean solicitarLogin(LoginDTOItson solicitudLoginDTO);
 
     void solicitarLogOut();
     

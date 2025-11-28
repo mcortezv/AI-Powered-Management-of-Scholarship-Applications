@@ -15,6 +15,18 @@
     <dependencies>
         <dependency>
             <groupId>mcortezv</groupId>
+            <artifactId>dto_infraestructura_gobierno</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>mcortezv</groupId>
+            <artifactId>dto_infraestructura_gobierno</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>mcortezv</groupId>
             <artifactId>dto_infraestructura</artifactId>
             <version>1.0</version>
             <scope>compile</scope>

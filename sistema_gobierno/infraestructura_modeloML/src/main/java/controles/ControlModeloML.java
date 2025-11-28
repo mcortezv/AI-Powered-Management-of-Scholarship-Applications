@@ -1,6 +1,6 @@
 package controles;
-import dto.ResolucionInfraestructuraDTO;
-import dto.SolicitudInfraestructuraDTO;
+import dto.gobierno.ResolucionDTOGobierno;
+import dto.gobierno.SolicitudDTOGobierno;
 
 /**
  *
@@ -8,7 +8,7 @@ import dto.SolicitudInfraestructuraDTO;
  */
 public class ControlModeloML {
 
-    public ResolucionInfraestructuraDTO predecir(SolicitudInfraestructuraDTO solicitud) {
+    public ResolucionDTOGobierno predecir(SolicitudDTOGobierno solicitud) {
         System.out.println("Llamar a la API");
         return null;
     }

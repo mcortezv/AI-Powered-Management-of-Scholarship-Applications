@@ -1,6 +1,5 @@
 package controles;
 
-import dto.SolicitudDTO;
 import dto.pagarAdeudo.SolicitudPagoDTO;
 
 /**

@@ -1,10 +1,11 @@
 package adaptadores.solicitarBeca;
 import adaptadores.solicitarBeca.excepciones.BecasFiltradasAdaptadorException;
 import adaptadores.solicitarBeca.excepciones.DocumentoAdaptadorException;
+import dto.DocumentoDTO;
+import dto.gobierno.DocumentoDTOGobierno;
 import org.bson.types.ObjectId;
 import solicitarBeca.dominio.Documento;
 import solicitarBeca.dominio.enums.TipoDocumento;
-import dto.DocumentoDTO;
 import solicitarBeca.repository.documents.DocumentoDocument;
 
 /**
@@ -33,6 +34,19 @@ public class DocumentoAdaptador {
             dto.setTipo(documento.getTipo().toString());
             dto.setContenido(documento.getContenido());
             dto.setEstudiante(EstudianteAdaptador.toDTO(documento.getEstudiante()));
+            return dto;
+        } catch (Exception ex) {
+            throw new BecasFiltradasAdaptadorException("Error al convertir entidad Documento a DTO");
+        }
+    }
+
+    public static DocumentoDTOGobierno toDTOGobierno(Documento documento) {
+        try {
+            DocumentoDTOGobierno dto = new DocumentoDTOGobierno();
+            dto.setIdentificador(documento.getIdentificador());
+            dto.setTipo(documento.getTipo().toString());
+            dto.setContenido(documento.getContenido());
+            dto.setEstudiante(EstudianteAdaptador.toDTOGobierno(documento.getEstudiante()));
             return dto;
         } catch (Exception ex) {
             throw new BecasFiltradasAdaptadorException("Error al convertir entidad Documento a DTO");

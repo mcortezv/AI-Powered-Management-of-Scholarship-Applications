@@ -1,11 +1,11 @@
 package fachadas;
-import dto.EstudianteResponseDTO;
-import dto.HistorialAcademicoResponseDTO;
-import dto.LoginDTO;
+import dto.itson.EstudianteDTOItson;
+import dto.itson.HistorialAcademicoDTOItson;
 import controles.ControlItson;
-import dto.pagarAdeudo.ClaseDTOI;
-import dto.pagarAdeudo.PrestamoDTOI;
-import dto.pagarAdeudo.SolicitudPagoDTOI;
+import dto.banco.ClaseDTOI;
+import dto.banco.PrestamoDTOI;
+import dto.banco.SolicitudPagoDTOI;
+import dto.itson.LoginDTOItson;
 import interfaces.IFachadaITSON;
 import java.util.List;
 
@@ -22,18 +22,18 @@ public class FachadaItson implements IFachadaITSON{
     }
 
     @Override
-    public boolean verificarLogin(LoginDTO solicitudLoginDTO) {
+    public boolean verificarLogin(LoginDTOItson solicitudLoginDTO) {
         return controlItson.verificarLogin(solicitudLoginDTO);
     }
 
     @Override
-    public EstudianteResponseDTO verificarEstudiante(Long matricula) {
+    public EstudianteDTOItson verificarEstudiante(Long matricula) {
         return null;
 //        return controlItson.verificarEstudiante(matricula);
     }
 
     @Override
-    public HistorialAcademicoResponseDTO verificarHistorialAcademcio(Long matricula) {
+    public HistorialAcademicoDTOItson verificarHistorialAcademcio(Long matricula) {
         return null;
     }
 

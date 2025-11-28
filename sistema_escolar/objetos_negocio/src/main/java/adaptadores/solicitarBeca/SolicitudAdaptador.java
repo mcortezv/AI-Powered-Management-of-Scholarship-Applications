@@ -5,12 +5,14 @@
 package adaptadores.solicitarBeca;
 import adaptadores.solicitarBeca.excepciones.BecasFiltradasAdaptadorException;
 import adaptadores.solicitarBeca.excepciones.SolicitudAdaptadorException;
+import dto.DocumentoDTO;
+import dto.SolicitudDTO;
+import dto.gobierno.DocumentoDTOGobierno;
+import dto.gobierno.SolicitudDTOGobierno;
 import org.bson.types.ObjectId;
 import solicitarBeca.dominio.Documento;
 import solicitarBeca.dominio.Solicitud;
 import solicitarBeca.dominio.enums.EstadoSolicitud;
-import dto.DocumentoDTO;
-import dto.SolicitudDTO;
 import solicitarBeca.repository.documents.SolicitudDocument;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +34,27 @@ public class SolicitudAdaptador {
             ArrayList<DocumentoDTO> documentosDTO = new ArrayList<>();
             for (Documento documento : solicitud.getDocumentos()) {
                 documentosDTO.add(DocumentoAdaptador.toDTO(documento));
+            }
+            dto.setDocumentos(documentosDTO);
+            dto.setFecha(solicitud.getFecha());
+            dto.setEstado(solicitud.getEstado().toString());
+            return dto;
+        } catch (Exception ex) {
+            throw new SolicitudAdaptadorException("Error al convertir entidad Solicitud a DTO");
+        }
+    }
+
+    public static SolicitudDTOGobierno toDTOGobierno(Solicitud solicitud) {
+        try {
+            SolicitudDTOGobierno dto = new SolicitudDTOGobierno();
+            dto.setId(solicitud.getId());
+            dto.setBeca(BecaAdaptador.toDTOGobierno(solicitud.getBeca()));
+            dto.setEstudiante(EstudianteAdaptador.toDTOGobierno(solicitud.getEstudiante()));
+            dto.setInformacionSocioeconomica(InformacionSocioeconomicaAdaptador.toDTOGobierno(solicitud.getInformacionSocioeconomica()));
+            dto.setHistorialAcademico(HistorialAcademicoAdaptador.toDTOGobierno(solicitud.getHistorialAcademico()));
+            ArrayList<DocumentoDTOGobierno> documentosDTO = new ArrayList<>();
+            for (Documento documento : solicitud.getDocumentos()) {
+                documentosDTO.add(DocumentoAdaptador.toDTOGobierno(documento));
             }
             dto.setDocumentos(documentosDTO);
             dto.setFecha(solicitud.getFecha());
