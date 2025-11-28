@@ -13,7 +13,7 @@ import java.util.Objects;
  * @author Cortez, Manuel;
  */
 public class BecasFiltradasBO implements IBecasFiltradasBO {
-    private IFachadaGobierno fachadaGobierno;
+    private final IFachadaGobierno fachadaGobierno;
 
     public BecasFiltradasBO(IFachadaGobierno fachadaGobierno) {
         this.fachadaGobierno = fachadaGobierno;

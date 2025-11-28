@@ -7,19 +7,31 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
+import solicitarBeca.config.MongoConfig;
+
+import java.io.InputStream;
+import java.util.Properties;
 
 public enum MongoClienteProvider {
     INSTANCE;
-
     private final MongoClient client;
-    private final String dbName = "itson";
+    private final String dbName;
+    private String uri;
 
     MongoClienteProvider() {
-        String uri = "";
-        client = MongoClients.create(uri);
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            try { client.close(); } catch (Exception ignored) {}
-        }));
+        try {
+            InputStream input = getClass().getClassLoader().getResourceAsStream("mongo.properties");
+            Properties props = new Properties();
+            props.load(input);
+            this.uri = props.getProperty("mongo.uri");
+            this.dbName = props.getProperty("mongo.dbnameItson");
+            client = MongoClients.create(MongoConfig.buildSettings(this.uri));
+            Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+                try { client.close(); } catch (Exception ignored) {}
+            }));
+        } catch (Exception ignored) {
+            throw new RuntimeException("Error cargando configuracion Mongo");
+        }
     }
 
     public MongoClient client() {

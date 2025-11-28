@@ -1,32 +1,28 @@
 package itson.org.config;
 
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoDatabase;
+import com.mongodb.ConnectionString;
+import com.mongodb.MongoClientSettings;
+import org.bson.codecs.configuration.CodecRegistry;
+import org.bson.codecs.pojo.PojoCodecProvider;
+
+import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
+import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 
 public class MongoConfig {
 
-    private static MongoClient client;
-    private static MongoDatabase database;
+    private MongoConfig() {}
 
-    private static void init() {
-        if (client == null) {
-            client = MongoClients.create("mongodb://localhost:27017");
-            database = client.getDatabase("itson_db");
-        }
-    }
+    public static MongoClientSettings buildSettings(String uri) {
+        ConnectionString connectionString = new ConnectionString(uri);
 
-    public static MongoDatabase getDatabase() {
-        if (database == null) {
-            init();
-        }
-        return database;
-    }
+        CodecRegistry pojoCodecRegistry = fromRegistries(
+                MongoClientSettings.getDefaultCodecRegistry(),
+                fromProviders(PojoCodecProvider.builder().automatic(true).build())
+        );
 
-    public static MongoClient getClient() {
-        if (client == null) {
-            init();
-        }
-        return client;
+        return MongoClientSettings.builder()
+                .applyConnectionString(connectionString)
+                .codecRegistry(pojoCodecRegistry)
+                .build();
     }
 }

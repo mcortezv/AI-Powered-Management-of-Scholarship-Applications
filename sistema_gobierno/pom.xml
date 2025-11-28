@@ -17,4 +17,18 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+
+            <resource>
+                <directory>../src/main/resources</directory>
+                <includes>
+                    <include>mongo.properties</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
 </project>

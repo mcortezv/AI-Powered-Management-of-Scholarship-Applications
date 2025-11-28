@@ -26,3 +26,6 @@ sistema_escolar/persistencia_becas/src/main/resources/
 /sistema_escolar/persistencia_becas/src/main/resources/
 *.properties
 
+#credenciales
+src/main/resources/mongo.properties
+

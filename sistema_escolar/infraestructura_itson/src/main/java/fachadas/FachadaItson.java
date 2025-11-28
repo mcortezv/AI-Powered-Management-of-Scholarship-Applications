@@ -16,7 +16,6 @@ import java.util.List;
 public class FachadaItson implements IFachadaITSON{
     private final ControlItson controlItson;
 
-
     public FachadaItson(ControlItson controlItson) {
         this.controlItson = controlItson;
     }

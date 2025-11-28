@@ -19,4 +19,18 @@
         <module>persistencia_becas</module>
         <module>dto_infraestructura</module>
     </modules>
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+
+            <resource>
+                <directory>../src/main/resources</directory>
+                <includes>
+                    <include>mongo.properties</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
 </project>

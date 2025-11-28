@@ -143,6 +143,10 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
 //        solicitarBeca.showPanel("subirDocumentosPanel");
 //    }
 
+
+
+
+
     public void procesarDocumentosYSolicitud(Map<String, File> documentosCargados) {
         mostrarResumen();
     }
