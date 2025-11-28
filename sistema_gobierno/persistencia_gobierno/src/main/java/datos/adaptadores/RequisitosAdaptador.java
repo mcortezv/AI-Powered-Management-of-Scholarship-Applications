@@ -1,5 +1,5 @@
-package adaptadores.solicitarBeca;
-import adaptadores.solicitarBeca.excepciones.RequisitosAdaptadorException;
+package datos.adaptadores;
+import datos.adaptadores.excepciones.RequisitosAdaptadorException;
 import dto.RequisitosDTO;
 import dto.gobierno.RequisitosDTOGobierno;
 import solicitarBeca.dominio.Requisitos;

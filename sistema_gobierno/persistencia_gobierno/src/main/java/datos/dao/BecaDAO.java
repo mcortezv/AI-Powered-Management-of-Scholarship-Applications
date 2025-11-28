@@ -3,17 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package datos.dao;
-
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import datos.config.MongoClienteProvider;
 import datos.dao.excepciones.BecaDAOException;
 import datos.dao.interfaces.IBecaDAO;
-import datos.dominio.Beca;
-import datos.dto.RequisitosDTOI;
 import java.util.ArrayList;
 import java.util.List;
+import dto.gobierno.RequisitosDTOGobierno;
 import org.bson.conversions.Bson;
+import solicitarBeca.dominio.Beca;
+import solicitarBeca.dominio.BecasFiltradas;
 
 
 /**
@@ -28,17 +28,18 @@ public class BecaDAO implements IBecaDAO{
     }
     
     @Override
-    public List<Beca> findByRequisitos(RequisitosDTOI r){
+    public BecasFiltradas findByRequisitos(RequisitosDTOGobierno r){
         try{
+            BecasFiltradas bf = new BecasFiltradas();
             List<Beca> resultado = new ArrayList<>();
-            
             Bson filtro = Filters.and(
                     Filters.lte("requisitos.promedio_minimo", r.getPromedioMinimo()),
                     Filters.gte("requisitos.ingreso_familiar_max", r.getIngresoFamiliarMaximo()),
                     Filters.eq("requisitos.trabajo_requerido", r.isTrabajo())
             );
             col.find(filtro).into(resultado);
-            return resultado;
+            bf.setBecas(resultado);
+            return bf;
         } catch (Exception ex){
             ex.printStackTrace();
             throw new BecaDAOException("Error al buscar becas con los requisitos proporcionado.s");

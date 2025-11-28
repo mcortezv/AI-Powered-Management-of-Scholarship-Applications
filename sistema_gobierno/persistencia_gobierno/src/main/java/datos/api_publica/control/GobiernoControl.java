@@ -1,4 +1,5 @@
 package datos.api_publica.control;
+import datos.adaptadores.BecasFiltradasAdaptador;
 import datos.services.BecasService;
 import datos.services.SolicitudService;
 import dto.gobierno.BecasDisponiblesDTOGobierno;
@@ -23,7 +24,7 @@ public class GobiernoControl {
     }
 
     public BecasDisponiblesDTOGobierno obtenerBecas(RequisitosDTOGobierno requisitosDTO) {
-        return becasService.obtenerBecas(requisitosDTO);
+        return BecasFiltradasAdaptador.toDTOGobierno(becasService.obtenerBecas(requisitosDTO));
     }
             
 }
