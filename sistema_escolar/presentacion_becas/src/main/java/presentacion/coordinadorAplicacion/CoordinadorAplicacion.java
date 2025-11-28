@@ -1,5 +1,4 @@
 package presentacion.coordinadorAplicacion;
-import datos.dominio.InformacionSocioeconomica;
 import dto.*;
 import dto.itson.LoginDTOItson;
 import interfaces.*;
@@ -67,7 +66,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         mostrarBecasDisponibles(becasFiltradas);
     }
 
-    public void procesarDatosSolicitante(dto_gobierno.EstudianteDTO estudianteDTO)
+    public void procesarDatosSolicitante(EstudianteDTO estudianteDTO)
             throws NombresInvalidosException, DireccionInvalidaException, TelefonoInvalidoException, IDInvalidoException {
         presentacion.solicitarBeca.validadores.Validadores.validarNombres(estudianteDTO.getNombre());
         presentacion.solicitarBeca.validadores.Validadores.validarDireccion(estudianteDTO.getDireccion());
@@ -114,7 +113,12 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         
     }
 
+    public void iniciarSolicitud(){
+        coordinadorNegocio.iniciarSolicitud(becaDTO);
+    }
+
     public void procesarHistorialAcademico(HistorialAcademicoDTO historialAcademicoDTO) {
+        coordinadorNegocio.procesarHistorialAcademico(historialAcademicoDTO);
         solicitarBeca.showPanel("datosTutorPanel");
     }
 
@@ -125,6 +129,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         presentacion.solicitarBeca.validadores.Validadores.validarTelefono(tutorDTO.getTelefono());
         presentacion.solicitarBeca.validadores.Validadores.validarDireccion(tutorDTO.getDireccion());
         presentacion.solicitarBeca.validadores.Validadores.validarCorreo(tutorDTO.getCorreo());
+        coordinadorNegocio.procesarTutor(tutorDTO);
         solicitarBeca.showPanel("informacionSocioeconomicaPanel");
     }
 
@@ -151,8 +156,12 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         this.becaDTO = becaDTO;
     }
 
+    public void enviarSolicitudAGobierno() {
+        coordinadorNegocio.enviarSolicitudAGobierno();
+    }
 
     public void procesarInformacionSocioeconomica(InformacionSocioeconomicaDTO infoSocioeconomica) {
-        solicitarBeca.showPanel("datosTutorPanel");
+        coordinadorNegocio.procesarInformacionSocioeconomica(infoSocioeconomica);
+        solicitarBeca.showPanel("subirDocumentosPanel");
     }
 }

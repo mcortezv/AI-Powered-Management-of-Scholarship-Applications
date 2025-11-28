@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package datos.config;
-
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
@@ -24,23 +23,17 @@ public enum MongoClienteProvider {
     private final String dbName = "gobierno";
 
     MongoClienteProvider() {
-        String uri = "";
+        String uri = "mongodb+srv://pruebaUsuario:teOdioAlgoritmosItson@clustertest.r3o81yp.mongodb.net/?retryWrites=true&w=majority";
         client = MongoClients.create(uri);
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            try { client.close(); } catch (Exception ignored) {}
-        }));
-    }
-
-    public MongoClient client() {
-        return client;
     }
 
     public MongoDatabase database() {
-        CodecRegistry pojoCodecRegistry = CodecRegistries.fromRegistries(
+        CodecRegistry codecRegistry = CodecRegistries.fromRegistries(
                 MongoClientSettings.getDefaultCodecRegistry(),
                 CodecRegistries.fromProviders(PojoCodecProvider.builder().automatic(true).build())
         );
-        return client.getDatabase(dbName).withCodecRegistry(pojoCodecRegistry);
+
+        return client.getDatabase(dbName).withCodecRegistry(codecRegistry);
     }
 
     public <T> MongoCollection<T> getCollection(String name, Class<T> type) {

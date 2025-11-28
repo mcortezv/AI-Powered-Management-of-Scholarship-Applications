@@ -136,11 +136,12 @@ public class DatosTutorPanel extends PanelSolicitarBeca {
                 tutorDTO.setDireccion(direccion);
                 tutorDTO.setCorreo(correo);
                 coordinadorAplicacion.procesarDatosTutor(tutorDTO);
-
             } catch (NombresInvalidosException | ApellidoInvalidoException | TelefonoInvalidoException | IDInvalidoException ex) {
                 JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(mainFrame, "Solo se aceptan números", "Error de validación", JOptionPane.ERROR_MESSAGE);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(mainFrame,"No se pudo crear el Tutor","Error de datos", JOptionPane.ERROR_MESSAGE);
             }
         });
     }

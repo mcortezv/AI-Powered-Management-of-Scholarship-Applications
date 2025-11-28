@@ -112,6 +112,8 @@ public class DetallesBecaPanel extends PanelSolicitarBeca {
         lista.setMaximumSize(new Dimension(Integer.MAX_VALUE, 1500));
         lista.add(Box.createVerticalGlue());
         botonSiguiente.addActionListener(e -> {
+            coordinadorAplicacion.setBecaSeleccionadaDTO(beca);
+            coordinadorAplicacion.iniciarSolicitud();
             mainFrame.showPanel("datosDelSolicitantePanel");
         });
         

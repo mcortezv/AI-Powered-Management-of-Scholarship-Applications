@@ -15,7 +15,7 @@ public enum MongoClienteProvider {
     private final String dbName = "itson";
 
     MongoClienteProvider() {
-        String uri = "";
+        String uri = "mongodb+srv://pruebaUsuario:teOdioAlgoritmosItson@clustertest.r3o81yp.mongodb.net/?appName=ClusterTest";
         client = MongoClients.create(uri);
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             try { client.close(); } catch (Exception ignored) {}

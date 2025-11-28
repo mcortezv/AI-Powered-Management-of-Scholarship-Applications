@@ -11,8 +11,8 @@ public class MongoConfig {
 
     private static void init() {
         if (client == null) {
-            client = MongoClients.create("mongodb://localhost:27017");
-            database = client.getDatabase("itson_db");
+            client = MongoClients.create("mongodb+srv://pruebaUsuario:teOdioAlgoritmosItson@clustertest.r3o81yp.mongodb.net/?appName=ClusterTest");
+            database = client.getDatabase("itson");
         }
     }
 

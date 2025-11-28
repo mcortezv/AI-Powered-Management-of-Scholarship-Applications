@@ -8,7 +8,6 @@ import org.bson.types.ObjectId;
 import solicitarBeca.dominio.*;
 import solicitarBeca.dominio.enums.Carrera;
 import solicitarBeca.dominio.enums.Parentesco;
-import solicitarBeca.dominio.enums.TipoVivienda;
 import solicitarBeca.repository.documents.DocumentoDocument;
 import solicitarBeca.repository.documents.EstudianteDocument;
 import solicitarBeca.repository.documents.SolicitudDocument;
@@ -55,6 +54,10 @@ public class ControlSolicitarBeca {
         } catch (Exception ex) {
             throw new SolicitarBecaException(ex.getMessage());
         }
+    }
+
+    public void setBecaActual(BecaDTO becaActual) {
+        this.becaActual = BecaAdaptador.toEntity(becaActual);
     }
 
     public BecasFiltradasDTO obtenerBecasFiltradas(RequisitosDTO requisitosDTO) throws SolicitarBecaException {
