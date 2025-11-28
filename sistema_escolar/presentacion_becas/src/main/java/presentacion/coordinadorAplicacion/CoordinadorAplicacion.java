@@ -144,6 +144,8 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
 
 
 
+
+
     public void procesarDocumentosYSolicitud(Map<String, File> documentosCargados) {
         mostrarResumen();
     }

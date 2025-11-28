@@ -25,7 +25,7 @@ public class CoordinadorNegocio implements ICoordinadorNegocio{
     }
 
     @Override
-    public BecasFiltradasDTO obtenerBecasFiltradas(RequisitosDTO requisitosDTO) {
+    public BecasFiltradasDTO obtenerBecasDisponibles(RequisitosDTO requisitosDTO) {
         return fachadaSolicitarBeca.obtenerBecasFiltradas(requisitosDTO);
     }
 

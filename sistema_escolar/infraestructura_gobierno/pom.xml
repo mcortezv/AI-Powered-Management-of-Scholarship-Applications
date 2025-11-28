@@ -31,9 +31,10 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>persistencia_gobierno</artifactId>
-            <version>${project.version}</version>
+            <groupId>mcortezv</groupId>
+            <artifactId>sistema_gobierno</artifactId>
+            <version>1.0</version>
         </dependency>
+
     </dependencies>
 </project>
