@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package presentacion.styles;
-import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
+import presentacion.CoordinadorAplicacion;
 import presentacion.login.MainFrame;
 import javax.swing.*;
 import java.awt.*;

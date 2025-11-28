@@ -3,9 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package datos.services;
-import datos.dao.BecaDAO;
-import datos.dao.excepciones.SolicitudDAOException;
-import dto.gobierno.RequisitosDTOGobierno;
+import datos.repository.dao.BecaDAO;
+import datos.repository.dao.excepciones.SolicitudDAOException;
+import gobierno.RequisitosDTOGobierno;
 import solicitarBeca.dominio.BecasFiltradas;
 
 /**

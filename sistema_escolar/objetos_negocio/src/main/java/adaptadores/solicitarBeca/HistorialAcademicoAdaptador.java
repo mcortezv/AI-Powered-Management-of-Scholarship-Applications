@@ -1,11 +1,11 @@
 package adaptadores.solicitarBeca;
 import adaptadores.solicitarBeca.excepciones.BecasFiltradasAdaptadorException;
 import adaptadores.solicitarBeca.excepciones.HistorialAcademicoAdaptadorException;
-import dto.HistorialAcademicoDTO;
-import dto.gobierno.HistorialAcademicoDTOGobierno;
+import solicitarBeca.HistorialAcademicoDTO;
+import gobierno.HistorialAcademicoDTOGobierno;
 import solicitarBeca.dominio.HistorialAcademico;
 import solicitarBeca.dominio.enums.Carrera;
-import dto.itson.HistorialAcademicoDTOItson;
+import itson.HistorialAcademicoDTOItson;
 
 /**
  *

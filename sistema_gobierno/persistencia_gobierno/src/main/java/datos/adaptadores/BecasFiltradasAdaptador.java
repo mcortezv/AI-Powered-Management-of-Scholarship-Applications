@@ -1,9 +1,9 @@
 package datos.adaptadores;
 import datos.adaptadores.excepciones.BecasFiltradasAdaptadorException;
-import dto.BecaDTO;
-import dto.BecasFiltradasDTO;
-import dto.gobierno.BecaDTOGobierno;
-import dto.gobierno.BecasDisponiblesDTOGobierno;
+import solicitarBeca.BecaDTO;
+import solicitarBeca.BecasFiltradasDTO;
+import gobierno.BecaDTOGobierno;
+import gobierno.BecasDisponiblesDTOGobierno;
 import solicitarBeca.dominio.Beca;
 import solicitarBeca.dominio.BecasFiltradas;
 import java.util.ArrayList;

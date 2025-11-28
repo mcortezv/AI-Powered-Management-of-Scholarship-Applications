@@ -10,7 +10,7 @@
     <packaging>jar</packaging>
     <properties>
         <maven.compiler.release>23</maven.compiler.release>
-        <exec.mainClass>objetosNegocio.Objetos_negocio</exec.mainClass>
+        <exec.mainClass>objetosNegocioGobierno.Objetos_negocio</exec.mainClass>
     </properties>
     <dependencies>
         <dependency>

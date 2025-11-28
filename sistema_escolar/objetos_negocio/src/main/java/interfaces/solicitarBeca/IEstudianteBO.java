@@ -1,7 +1,7 @@
 package interfaces.solicitarBeca;
-import dto.itson.EstudianteDTOItson;
-import dto.itson.LoginDTOItson;
-import objetosNegocio.solicitarBeca.excepciones.EstudianteInvalidoException;
+import itson.EstudianteDTOItson;
+import itson.LoginDTOItson;
+import bo.solicitarBeca.excepciones.EstudianteInvalidoException;
 import solicitarBeca.repository.documents.EstudianteDocument;
 
 /**

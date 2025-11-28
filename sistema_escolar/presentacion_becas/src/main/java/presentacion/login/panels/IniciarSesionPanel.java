@@ -1,6 +1,6 @@
 package presentacion.login.panels;
-import dto.itson.LoginDTOItson;
-import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
+import itson.LoginDTOItson;
+import presentacion.CoordinadorAplicacion;
 import presentacion.login.MainFrame;
 import presentacion.login.exceptions.ContraseniaInvalidaException;
 import presentacion.login.exceptions.IDInvalidoException;

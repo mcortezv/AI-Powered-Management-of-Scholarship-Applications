@@ -1,7 +1,7 @@
 package fachadas;
 import controles.ControlEvaluarSolicitudes;
-import dto_gobierno.ResolucionDTO;
-import dto_gobierno.SolicitudDTO;
+import dtoGobierno.ResolucionDTO;
+import dtoGobierno.SolicitudDTO;
 import interfaces.IFachadaEvaluarSolicitudes;
 import java.util.List;
 

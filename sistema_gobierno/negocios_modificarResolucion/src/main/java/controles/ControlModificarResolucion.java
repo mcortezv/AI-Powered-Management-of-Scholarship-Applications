@@ -2,14 +2,14 @@ package controles;
 import datos.dominio.Resolucion;
 import datos.dominio.Solicitud;
 import datos.dominio.enums.Decision;
-import dto.gobierno.ResolucionDTOGobierno;
-import dto.gobierno.SolicitudDTOGobierno;
-import dto_gobierno.ResolucionDTO;
-import dto_gobierno.SolicitudDTO;
-import objetosNegocio.adaptadores.ResolucionAdaptador;
-import objetosNegocio.adaptadores.SolicitudAdaptador;
-import objetosNegocio.bo.interfaces.IResolucionBO;
-import objetosNegocio.bo.interfaces.ISolicitudBO;
+import gobierno.ResolucionDTOGobierno;
+import gobierno.SolicitudDTOGobierno;
+import dtoGobierno.ResolucionDTO;
+import dtoGobierno.SolicitudDTO;
+import objetosNegocioGobierno.adaptadores.ResolucionAdaptador;
+import objetosNegocioGobierno.adaptadores.SolicitudAdaptador;
+import objetosNegocioGobierno.bo.interfaces.IResolucionBO;
+import objetosNegocioGobierno.bo.interfaces.ISolicitudBO;
 import java.time.LocalDate;
 
 /**

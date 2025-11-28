@@ -1,6 +1,6 @@
 package solicitarBeca;
 import org.bson.types.ObjectId;
-import solicitarBeca.config.MongoClientProvider;
+import solicitarBeca.dominio.enums.Parentesco;
 import solicitarBeca.repository.dao.DocumentoDAO;
 import solicitarBeca.repository.dao.EstudianteDAO;
 import solicitarBeca.repository.dao.SolicitudDAO;
@@ -29,30 +29,29 @@ public class Seeder {
 
             EstudianteDocument estudiante = new EstudianteDocument();
             estudiante.set_id(new ObjectId());
-            estudiante.setMatricula(2025001L);
-            estudiante.setNombre("Juan Perez");
+            estudiante.setMatricula(258835L);
+            estudiante.setNombre("Manuel Cortez");
             estudiante.setCarrera(Carrera.INGENIERIA);
-            estudiante.setCorreo("juan@example.com");
-            estudiante.setTelefono("555-1234");
-            estudiante.setDireccion("Av. Universidad #100");
-            estudiante.setContrasenia("12345");
-            estudiante.setTutor(new Tutor("Carlos Perez", null, "555-9000", "Av. 10", "carlos@example.com"));
+            estudiante.setCorreo("mdjesuscv@gmail.com");
+            estudiante.setTelefono("6441976108");
+            estudiante.setDireccion("San Jose de Bacum, Son.");
+            estudiante.setContrasenia("Manuel123");
+            estudiante.setTutor(new Tutor("Dora Imelda", Parentesco.MADRE, "6441434194", "Cd. Obregon", "dimelda@gmail.com"));
             estudiante.setCreadoEn(Instant.now());
-
             ObjectId estudianteId = estudianteDAO.create(estudiante);
-            System.out.println("Estudiante insertado: " + estudianteId);
+            System.out.println("Estudiante Insertado: " + estudianteId);
 
 
             DocumentoDocument doc = new DocumentoDocument();
             doc.set_id(new ObjectId());
-            doc.setContenido("PDF_FAKE".getBytes());
+            doc.setContenido("Algo mas que bien".getBytes());
             doc.setTipo(TipoDocumento.INE);
             doc.setIdentificador(1L);
             doc.setEstudiante(estudianteId);
             doc.setCreadoEn(Instant.now());
-
             ObjectId documentoId = documentoDAO.create(doc);
-            System.out.println("Documento insertado: " + documentoId);
+            System.out.println("Documento Insertado: " + documentoId);
+
 
             SolicitudDocument sol = new SolicitudDocument();
             sol.set_id(new ObjectId());
@@ -62,14 +61,12 @@ public class Seeder {
             sol.setFecha(LocalDate.now());
             sol.setEstado(EstadoSolicitud.ACEPTADA);
             sol.setCreadoEn(Instant.now());
-
             ObjectId solicitudId = solicitudDAO.create(sol);
-            System.out.println("Solicitud insertada: " + solicitudId);
+            System.out.println("Solicitud Insertada: " + solicitudId);
 
-            System.out.println("Seeder ejecutado correctamente.");
 
         } catch (Exception ex) {
-            System.err.println("Error ejecutando Seeder: " + ex.getMessage());
+            System.err.println("Error al cargar datos en la base de datos" + ex.getMessage());
         }
     }
 }

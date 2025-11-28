@@ -3,8 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package presentacion.solicitarBeca.panels;
-import dto.BecaDTO;
-import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
+import solicitarBeca.BecaDTO;
+import presentacion.CoordinadorAplicacion;
 import java.awt.Component;
 import java.awt.Dimension;
 import static java.awt.Font.BOLD;

@@ -1,6 +1,6 @@
 package presentacion.solicitarBeca.panels;
-import dto.HistorialAcademicoDTO;
-import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
+import solicitarBeca.HistorialAcademicoDTO;
+import presentacion.CoordinadorAplicacion;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.*;
 import presentacion.styles.Button;

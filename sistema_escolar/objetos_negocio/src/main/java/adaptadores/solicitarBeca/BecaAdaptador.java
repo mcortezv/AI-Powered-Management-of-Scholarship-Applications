@@ -1,7 +1,7 @@
 package adaptadores.solicitarBeca;
 import adaptadores.solicitarBeca.excepciones.BecaAdaptadorException;
-import dto.BecaDTO;
-import dto.gobierno.BecaDTOGobierno;
+import solicitarBeca.BecaDTO;
+import gobierno.BecaDTOGobierno;
 import solicitarBeca.dominio.Beca;
 import solicitarBeca.dominio.enums.TipoBeca;
 

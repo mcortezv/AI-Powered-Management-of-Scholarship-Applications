@@ -1,7 +1,7 @@
 package fachadas;
 import controles.ControlModeloML;
-import dto.gobierno.ResolucionDTOGobierno;
-import dto.gobierno.SolicitudDTOGobierno;
+import gobierno.ResolucionDTOGobierno;
+import gobierno.SolicitudDTOGobierno;
 import interfaces.IFachadaModeloML;
 
 /**

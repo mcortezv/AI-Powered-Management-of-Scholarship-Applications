@@ -1,7 +1,7 @@
 package presentacion.solicitarBeca.panels;
-import dto.BecaDTO;
-import dto.RequisitosDTO;
-import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
+import solicitarBeca.BecaDTO;
+import solicitarBeca.RequisitosDTO;
+import presentacion.CoordinadorAplicacion;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;

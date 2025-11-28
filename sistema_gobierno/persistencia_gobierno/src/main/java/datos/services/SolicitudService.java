@@ -1,9 +1,7 @@
 package datos.services;
-import datos.dao.SolicitudDAO;
-import datos.dao.excepciones.SolicitudDAOException;
-
-import dto.gobierno.SolicitudDTOGobierno;
-import dto_gobierno.SolicitudDTO;
+import datos.repository.dao.SolicitudDAO;
+import datos.repository.dao.excepciones.SolicitudDAOException;
+import gobierno.SolicitudDTOGobierno;
 
 /**
  *

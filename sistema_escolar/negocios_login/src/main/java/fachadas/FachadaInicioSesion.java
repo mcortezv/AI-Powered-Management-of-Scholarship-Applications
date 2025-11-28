@@ -1,6 +1,6 @@
 package fachadas;
 import controles.ControlInicioSesion;
-import dto.itson.LoginDTOItson;
+import itson.LoginDTOItson;
 import interfaces.IFachadaInicioSesion;
 
 public class FachadaInicioSesion implements IFachadaInicioSesion {

@@ -1,6 +1,6 @@
 package presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo;
 
-import dto_gobierno.EstudianteDTO;
+import dtoGobierno.EstudianteDTO;
 
 public interface ICoordinadorAplicacionPagarAdeudo {
     void seleccionarAdeudoBiblioteca(EstudianteDTO estudianteDTO);

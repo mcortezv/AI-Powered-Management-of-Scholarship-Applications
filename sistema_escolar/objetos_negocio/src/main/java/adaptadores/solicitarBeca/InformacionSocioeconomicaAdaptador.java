@@ -1,8 +1,8 @@
 package adaptadores.solicitarBeca;
 import adaptadores.solicitarBeca.excepciones.BecasFiltradasAdaptadorException;
 import adaptadores.solicitarBeca.excepciones.InformacionSocioeconomicaAdaptadorException;
-import dto.InformacionSocioeconomicaDTO;
-import dto.gobierno.InformacionSocioeconomicaDTOGobierno;
+import solicitarBeca.InformacionSocioeconomicaDTO;
+import gobierno.InformacionSocioeconomicaDTOGobierno;
 import solicitarBeca.dominio.InformacionSocioeconomica;
 import solicitarBeca.dominio.enums.TipoVivienda;
 

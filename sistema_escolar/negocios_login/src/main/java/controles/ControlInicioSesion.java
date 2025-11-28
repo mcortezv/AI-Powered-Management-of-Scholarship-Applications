@@ -1,5 +1,5 @@
 package controles;
-import dto.itson.LoginDTOItson;
+import itson.LoginDTOItson;
 import interfaces.solicitarBeca.IEstudianteBO;
 
 

@@ -1,5 +1,5 @@
 package presentacion.login.panels;
-import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
+import presentacion.CoordinadorAplicacion;
 import presentacion.login.MainFrame;
 import presentacion.styles.Panel;
 

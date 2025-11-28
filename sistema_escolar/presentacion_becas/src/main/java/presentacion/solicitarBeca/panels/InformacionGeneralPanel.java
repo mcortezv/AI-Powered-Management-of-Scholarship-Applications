@@ -1,6 +1,6 @@
 package presentacion.solicitarBeca.panels;
-import dto.RequisitosDTO;
-import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
+import solicitarBeca.RequisitosDTO;
+import presentacion.CoordinadorAplicacion;
 import java.awt.Component;
 import java.awt.FlowLayout;
 import javax.swing.*;
