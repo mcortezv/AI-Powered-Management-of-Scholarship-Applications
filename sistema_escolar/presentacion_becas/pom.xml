@@ -76,4 +76,18 @@
         <maven.compiler.release>17</maven.compiler.release>
         <exec.mainClass>presentacion.Main</exec.mainClass>
     </properties>
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+
+            <resource>
+                <directory>../src/main/resources</directory>
+                <includes>
+                    <include>mongo.properties</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
 </project>

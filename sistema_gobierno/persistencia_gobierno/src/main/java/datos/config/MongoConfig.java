@@ -1,39 +1,32 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package datos.config;
 
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoDatabase;
+import com.mongodb.ConnectionString;
+import com.mongodb.MongoClientSettings;
+import org.bson.codecs.configuration.CodecRegistry;
+import org.bson.codecs.pojo.PojoCodecProvider;
+
+import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
+import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 
 /**
  *
  * @author katia
  */
 public class MongoConfig {
-    private static MongoClient client;
-    private static MongoDatabase database;
 
-    private static void init() {
-        if (client == null) {
-            client = MongoClients.create("mongodb://localhost:27017");
-            database = client.getDatabase("gobierno_db");
-        }
-    }
+    private MongoConfig() {}
 
-    public static MongoDatabase getDatabase() {
-        if (database == null) {
-            init();
-        }
-        return database;
-    }
+    public static MongoClientSettings buildSettings(String uri) {
+        ConnectionString connectionString = new ConnectionString(uri);
 
-    public static MongoClient getClient() {
-        if (client == null) {
-            init();
-        }
-        return client;
+        CodecRegistry pojoCodecRegistry = fromRegistries(
+                MongoClientSettings.getDefaultCodecRegistry(),
+                fromProviders(PojoCodecProvider.builder().automatic(true).build())
+        );
+
+        return MongoClientSettings.builder()
+                .applyConnectionString(connectionString)
+                .codecRegistry(pojoCodecRegistry)
+                .build();
     }
 }

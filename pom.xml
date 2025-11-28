@@ -12,4 +12,17 @@
         <module>sistema_escolar</module>
         <module>sistema_gobierno</module>
     </modules>
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>${project.basedir}/../src/main/resources</directory>
+                <includes>
+                    <include>mongo.properties</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
 </project>

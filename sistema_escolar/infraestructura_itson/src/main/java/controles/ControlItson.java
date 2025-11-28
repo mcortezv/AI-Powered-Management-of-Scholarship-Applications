@@ -17,11 +17,4 @@ public class ControlItson {
         return api.verificarLogin(dtoInfra);
     }
 
-    public EstudianteResponseDTO verificarEstudiante(Long matricula){
-        EstudianteResponseDTOI estudianteResponseDTOI = api.obtenerDatosEstudiante(matricula);
-        EstudianteResponseDTO estudianteResponseDTO = new EstudianteResponseDTO();
-        estudianteResponseDTO.setMatricula(estudianteResponseDTOI.getMatricula());
-        estudianteResponseDTO.setNombre(estudianteResponseDTOI.getNombre());
-        return null;
-    }
 }
