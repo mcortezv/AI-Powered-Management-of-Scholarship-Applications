@@ -1,7 +1,7 @@
 package adaptadores.pagarAdeudo;
 
 import dto.pagarAdeudo.ClaseDTO;
-import dto.pagarAdeudo.ClaseDTOI;
+import dto.banco.ClaseDTOI;
 
 public class ClaseAdaptador {
 

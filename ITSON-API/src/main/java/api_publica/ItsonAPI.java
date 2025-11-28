@@ -1,9 +1,8 @@
 package api_publica;
-
 import api_publica.control.ControlItson;
 import api_publica.interfaz.IItsonAPI;
-import itson.org.dto.EstudianteResponseDTOI;
-import itson.org.dto.LoginDTOI;
+import dto.itson.LoginDTOItson;
+import itson.org.domain.Estudiante;
 
 public class ItsonAPI implements IItsonAPI {
     private final ControlItson controlItson;
@@ -13,15 +12,12 @@ public class ItsonAPI implements IItsonAPI {
     }
 
     @Override
-    public boolean verificarLogin(LoginDTOI dto) {
+    public boolean verificarLogin(LoginDTOItson dto) {
         return controlItson.verificarLogin(dto);
     }
 
     @Override
-    public EstudianteResponseDTOI obtenerDatosEstudiante(Long matricula) {
-       return controlItson.solicitarDatosEstudiante(matricula);
+    public Estudiante obtenerDatosEstudiante(LoginDTOItson dto) {
+       return controlItson.solicitarDatosEstudiante(dto);
     }
-    
-   
-
 }

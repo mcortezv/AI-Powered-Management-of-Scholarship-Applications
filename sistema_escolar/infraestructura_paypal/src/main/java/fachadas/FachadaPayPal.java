@@ -1,11 +1,7 @@
 package fachadas;
-
-
 import controles.ControlPayPal;
 import dto.pagarAdeudo.SolicitudPagoDTO;
 import interfaces.IFachadaPayPal;
-
-import javax.naming.ldap.Control;
 
 /**
  *  CASO DE USO PAGAR ADEUDO

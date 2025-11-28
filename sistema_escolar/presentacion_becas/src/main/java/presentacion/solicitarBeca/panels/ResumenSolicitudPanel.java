@@ -1,6 +1,6 @@
 package presentacion.solicitarBeca.panels;
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
-import dto.SolicitudDTO;
+import dto_gobierno.SolicitudDTO;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
@@ -157,7 +157,7 @@ public class ResumenSolicitudPanel extends PanelSolicitarBeca{
         lbl_beca_response.setText(solicitudDTO.getBeca().getNombre());
      
       lbl_info_2.setText(String.valueOf(solicitudDTO.getInformacionSocioeconomica().getIngresoTotalFamilarMensual()));
-      if(solicitudDTO.getInformacionSocioeconomica().isTrabajo()){
+      if(solicitudDTO.getInformacionSocioeconomica().getTrabajo()){
           lbl_info_3.setText("Si");
           
       } else{

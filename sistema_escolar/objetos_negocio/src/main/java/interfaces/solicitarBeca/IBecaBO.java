@@ -1,6 +1,6 @@
 package interfaces.solicitarBeca;
 import dto.BecasFiltradasDTO;
-import dto.RequisitosDTO;
+import dto_gobierno.RequisitosDTO;
 import objetosNegocio.solicitarBeca.excepciones.BecaInvalidaException;
 import solicitarBeca.dominio.Beca;
 

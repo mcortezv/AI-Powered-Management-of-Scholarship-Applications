@@ -1,7 +1,7 @@
 package fachadas;
 
 import controles.ControlPago;
-import dto.EstudianteDTO;
+import dto_gobierno.EstudianteDTO;
 import dto.pagarAdeudo.ClaseDTO;
 import dto.pagarAdeudo.PrestamoDTO;
 import dto.pagarAdeudo.SolicitudPagoDTO;

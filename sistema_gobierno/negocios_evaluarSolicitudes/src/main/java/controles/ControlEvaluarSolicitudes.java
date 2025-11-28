@@ -2,10 +2,10 @@ package controles;
 import datos.dominio.Resolucion;
 import datos.dominio.Solicitud;
 import datos.dominio.enums.EstadoSolicitud;
-import dto.ResolucionDTO;
-import dto.ResolucionInfraestructuraDTO;
-import dto.SolicitudDTO;
-import dto.SolicitudInfraestructuraDTO;
+import dto.gobierno.ResolucionDTOGobierno;
+import dto.gobierno.SolicitudDTOGobierno;
+import dto_gobierno.ResolucionDTO;
+import dto_gobierno.SolicitudDTO;
 import objetosNegocio.adaptadores.ResolucionAdaptador;
 import objetosNegocio.adaptadores.SolicitudAdaptador;
 import objetosNegocio.bo.interfaces.IResolucionBO;
@@ -40,8 +40,8 @@ public class ControlEvaluarSolicitudes {
 
     public ResolucionDTO evaluacionAutomatica(SolicitudDTO solicitudDTO){
         Solicitud solicitud = SolicitudAdaptador.toEntity(solicitudDTO);
-        SolicitudInfraestructuraDTO solicitudInfraestructuraDTO = SolicitudAdaptador.toInfraestructuraDTO(solicitud);
-        ResolucionInfraestructuraDTO resolucionInfraestructuraDTO = resolucionBO.crearResolucionAutomatica(solicitudInfraestructuraDTO);
+        SolicitudDTOGobierno solicitudInfraestructuraDTO = SolicitudAdaptador.toInfraestructuraDTO(solicitud);
+        ResolucionDTOGobierno resolucionInfraestructuraDTO = resolucionBO.crearResolucionAutomatica(solicitudInfraestructuraDTO);
         Resolucion resolucion = ResolucionAdaptador.toEntity(resolucionInfraestructuraDTO);
         return ResolucionAdaptador.toDTO(resolucion);
     }

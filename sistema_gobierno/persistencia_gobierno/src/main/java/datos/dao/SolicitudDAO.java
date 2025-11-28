@@ -3,6 +3,9 @@ import datos.dao.excepciones.SolicitudDAOException;
 import datos.dao.interfaces.ISolicitudDAO;
 import datos.dominio.Solicitud;
 import datos.dominio.enums.EstadoSolicitud;
+import dto.gobierno.SolicitudDTOGobierno;
+import dto_gobierno.SolicitudDTO;
+
 import java.util.List;
 
 /**
@@ -10,6 +13,15 @@ import java.util.List;
  * @author Cortez, Manuel;
  */
 public class SolicitudDAO implements ISolicitudDAO {
+
+    @Override
+    public boolean guardarSolicitud(SolicitudDTOGobierno solicitud){
+        try {
+            return true;
+        } catch (Exception sinUso){
+            throw new SolicitudDAOException("Error al obtener las solicitudes por convocatoria");
+        }
+    }
 
     @Override
     public List<Solicitud> obtenerPorConvocatoria(int idConvocatoria){

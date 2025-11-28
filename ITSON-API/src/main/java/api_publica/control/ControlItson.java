@@ -1,8 +1,8 @@
 package api_publica.control;
-
-import itson.org.dto.EstudianteResponseDTOI;
-import itson.org.dto.LoginDTOI;
+import dto.itson.LoginDTOItson;
+import itson.org.domain.Estudiante;
 import itson.org.service.EstudianteService;
+
 
 public class ControlItson {
 
@@ -12,13 +12,11 @@ public class ControlItson {
         this.estudianteService = new EstudianteService();
     }
 
-    public boolean verificarLogin(LoginDTOI dto){
+    public boolean verificarLogin(LoginDTOItson dto){
         return estudianteService.verificarLogin(dto);
     }
     
-    public EstudianteResponseDTOI solicitarDatosEstudiante(Long matricula){
-        return estudianteService.solicitarDatosEstudiante(matricula);
+    public Estudiante solicitarDatosEstudiante(LoginDTOItson dto){
+        return estudianteService.solicitarDatosEstudiante(dto);
     }
-
-
 }

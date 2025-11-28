@@ -1,5 +1,6 @@
 package presentacion.coordinadorNegocio;
 import dto.*;
+import dto.itson.LoginDTOItson;
 
 /**
  *
@@ -7,7 +8,7 @@ import dto.*;
  */
 public interface ICoordinadorNegocio {
 
-    boolean solicitarInicioSesion(LoginDTO solicitudLoginDTO);
+    boolean solicitarInicioSesion(LoginDTOItson solicitudLoginDTO);
 
     BecasFiltradasDTO obtenerBecasDisponibles(RequisitosDTO requisitosDTO);
 

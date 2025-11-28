@@ -1,6 +1,6 @@
 package interfaces.solicitarBeca;
-import dto.EstudianteResponseDTO;
-import dto.LoginDTO;
+import dto.itson.EstudianteDTOItson;
+import dto.itson.LoginDTOItson;
 import objetosNegocio.solicitarBeca.excepciones.EstudianteInvalidoException;
 import solicitarBeca.repository.documents.EstudianteDocument;
 
@@ -10,9 +10,9 @@ import solicitarBeca.repository.documents.EstudianteDocument;
  */
 public interface IEstudianteBO {
 
-    boolean iniciarSesion(LoginDTO solicitudLoginDTO);
+    boolean iniciarSesion(LoginDTOItson solicitudLoginDTO);
 
-    EstudianteResponseDTO crearEstudiante(Long matricula) throws EstudianteInvalidoException;
+    EstudianteDTOItson crearEstudiante(Long matricula) throws EstudianteInvalidoException;
 
     void guardarEstudiante(EstudianteDocument estudiante) throws EstudianteInvalidoException;
 }

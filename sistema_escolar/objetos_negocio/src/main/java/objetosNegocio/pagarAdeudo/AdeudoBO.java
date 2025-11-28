@@ -1,6 +1,8 @@
 package objetosNegocio.pagarAdeudo;
 
-import dto.pagarAdeudo.*;
+import dto.banco.ClaseDTOI;
+import dto.banco.PrestamoDTOI;
+import dto.banco.SolicitudPagoDTOI;
 import interfaces.IFachadaITSON;
 import interfaces.pagarAdeudo.IAdeudoBO;
 

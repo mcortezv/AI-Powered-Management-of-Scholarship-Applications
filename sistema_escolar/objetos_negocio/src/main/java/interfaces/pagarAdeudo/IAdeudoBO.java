@@ -1,6 +1,8 @@
 package interfaces.pagarAdeudo;
 
-import dto.pagarAdeudo.*;
+import dto.banco.ClaseDTOI;
+import dto.banco.PrestamoDTOI;
+import dto.banco.SolicitudPagoDTOI;
 
 import java.util.List;
 

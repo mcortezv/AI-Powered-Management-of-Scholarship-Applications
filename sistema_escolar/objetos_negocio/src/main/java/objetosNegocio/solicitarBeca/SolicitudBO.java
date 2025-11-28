@@ -1,5 +1,6 @@
 package objetosNegocio.solicitarBeca;
-import dto.SolicitudDTO;
+import dto.gobierno.SolicitudDTOGobierno;
+import dto_gobierno.SolicitudDTO;
 import objetosNegocio.solicitarBeca.excepciones.SolicitudInvalidaException;
 import solicitarBeca.repository.ISolicitudDAO;
 import solicitarBeca.dominio.*;
@@ -105,7 +106,7 @@ public class SolicitudBO implements ISolicitudBO {
     }
 
     @Override
-    public void enviarSolicitud(SolicitudDTO solicitud) throws SolicitudInvalidaException {
+    public void enviarSolicitud(SolicitudDTOGobierno solicitud) throws SolicitudInvalidaException {
         try {
             fachadaGobierno.enviarSolicitud(solicitud);
         } catch (Exception ex) {

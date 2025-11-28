@@ -3,14 +3,14 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>mcortezv</groupId>
-        <artifactId>Managing-School-Applications-and-Scholarships-with-Artificial-Intelligence</artifactId>
+        <artifactId>sistema_escolar</artifactId>
         <version>1.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>dto_infraestructura</artifactId>
     <packaging>jar</packaging>
     <properties>
         <maven.compiler.release>17</maven.compiler.release>
-        <exec.mainClass>dto.Dto_infraestructura</exec.mainClass>
     </properties>
     <dependencies>
         <dependency>

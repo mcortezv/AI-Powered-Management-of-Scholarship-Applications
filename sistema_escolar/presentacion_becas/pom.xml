@@ -3,15 +3,16 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>mcortezv</groupId>
-        <artifactId>Managing-School-Applications-and-Scholarships-with-Artificial-Intelligence</artifactId>
+        <artifactId>sistema_escolar</artifactId>
         <version>1.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>presentacion_becas</artifactId>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>dto_negocios</artifactId>
+            <artifactId>persistencia_becas</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -21,14 +22,28 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>objetos_negocio</artifactId>
+            <artifactId>ITSON-API</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>mcortezv</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>negocios_login</artifactId>
-            <version>1.0</version>
-            <scope>compile</scope>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>infraestructura_gobierno</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>dto_negocios</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>objetos_negocio</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
@@ -36,20 +51,23 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>infraestructura_paypal</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>infraestructura_banco</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>dto_infraestructura</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>mcortezv</groupId>
             <artifactId>infraestructura_itson</artifactId>
-            <version>1.0</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>mcortezv</groupId>
-            <artifactId>infraestructura_gobierno</artifactId>
-            <version>1.0</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>mcortezv</groupId>
-            <artifactId>objetos_negocio</artifactId>
             <version>1.0</version>
             <scope>compile</scope>
         </dependency>

@@ -1,8 +1,7 @@
 package presentacion.coordinadorNegocio;
 import dto.BecasFiltradasDTO;
-import dto.EstudianteDTO;
-import dto.LoginDTO;
 import dto.RequisitosDTO;
+import dto.itson.LoginDTOItson;
 import interfaces.*;
 
 /**
@@ -19,7 +18,7 @@ public class CoordinadorNegocio implements ICoordinadorNegocio{
     }
 
     @Override
-    public boolean solicitarInicioSesion(LoginDTO solicitudLoginDTO) {
+    public boolean solicitarInicioSesion(LoginDTOItson solicitudLoginDTO) {
         System.out.println("llego al coordinadorNegocio");
         return fachadaInicioSesion.solicitarLogin(solicitudLoginDTO);
     }

@@ -1,8 +1,8 @@
 package objetosNegocio.solicitarBeca;
+import dto.itson.LoginDTOItson;
 import objetosNegocio.solicitarBeca.excepciones.EstudianteInvalidoException;
 import solicitarBeca.repository.IEstudianteDAO;
-import dto.EstudianteResponseDTO;
-import dto.LoginDTO;
+import dto.itson.EstudianteDTOItson;
 import interfaces.solicitarBeca.IEstudianteBO;
 import interfaces.IFachadaITSON;
 import solicitarBeca.repository.documents.EstudianteDocument;
@@ -21,7 +21,7 @@ public class EstudianteBO implements IEstudianteBO {
     }
 
     @Override
-    public boolean iniciarSesion(LoginDTO solicitudLoginDTO){
+    public boolean iniciarSesion(LoginDTOItson solicitudLoginDTO){
         try {
             return fachadaITSON.verificarLogin(solicitudLoginDTO);
         } catch (EstudianteInvalidoException ex) {
@@ -30,7 +30,7 @@ public class EstudianteBO implements IEstudianteBO {
     }
 
     @Override
-    public EstudianteResponseDTO crearEstudiante(Long matricula){
+    public EstudianteDTOItson crearEstudiante(Long matricula){
         return fachadaITSON.verificarEstudiante(matricula);
     }
 

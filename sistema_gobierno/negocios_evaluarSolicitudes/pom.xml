@@ -15,7 +15,13 @@
     <dependencies>
         <dependency>
             <groupId>mcortezv</groupId>
-            <artifactId>objetos_negocio</artifactId>
+            <artifactId>objetos_negocio_gobierno</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>mcortezv</groupId>
+            <artifactId>dto_negocios_gobierno</artifactId>
             <version>1.0</version>
             <scope>compile</scope>
         </dependency>

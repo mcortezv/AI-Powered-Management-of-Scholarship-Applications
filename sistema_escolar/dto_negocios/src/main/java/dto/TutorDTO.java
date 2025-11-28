@@ -25,8 +25,6 @@ public class TutorDTO {
         this.direccion = direccion;
     }
 
-    
-
     public String getApellidoMaterno() {
         return apellidoMaterno;
     }

@@ -4,10 +4,10 @@
  */
 package fachada;
 import control.ControlGobierno;
-//import dto.BecasDisponiblesResponseDTO;
-import dto.BecasFiltradasDTO;
-import dto.RequisitosDTO;
-import dto.SolicitudDTO;
+import dto.gobierno.BecasDisponiblesDTOGobierno;
+import dto.gobierno.RequisitosDTOGobierno;
+import dto.gobierno.SolicitudDTOGobierno;
+import dto_gobierno.SolicitudDTO;
 import interfaces.IFachadaGobierno;
 
 /**
@@ -22,12 +22,12 @@ public class FachadaGobierno implements IFachadaGobierno{
     }
 
     @Override
-    public BecasFiltradasDTO obtenerBecas(RequisitosDTO requisitosDTO) {
+    public BecasDisponiblesDTOGobierno obtenerBecas(RequisitosDTOGobierno requisitosDTO) {
         return controlGobierno.solicitarBecas(requisitosDTO);
     }
 
     @Override
-    public boolean enviarSolicitud(SolicitudDTO solicitudDTO) {
+    public boolean enviarSolicitud(SolicitudDTOGobierno solicitudDTO) {
         return controlGobierno.enviarSolicitud(solicitudDTO);
     }
 }

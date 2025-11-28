@@ -1,6 +1,6 @@
 package presentacion.pagarAdeudo.coordinadorNegocioPagarAdeudo;
 
-import dto.EstudianteDTO;
+import dto_gobierno.EstudianteDTO;
 import dto.pagarAdeudo.ClaseDTO;
 import dto.pagarAdeudo.PrestamoDTO;
 import dto.pagarAdeudo.SolicitudPagoDTO;

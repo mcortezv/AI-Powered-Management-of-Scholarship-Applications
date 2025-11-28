@@ -127,7 +127,14 @@ public class DatosTutorPanel extends PanelSolicitarBeca {
                 String telefono = field_telefono.getText();
                 String direccion = field_direccion.getText();
                 String correo = field_email.getText();
-                TutorDTO tutorDTO= new TutorDTO(nombre, parentesco, apMat, apPat, telefono, correo, direccion);
+                TutorDTO tutorDTO = new TutorDTO();
+                tutorDTO.setNombre(nombre);
+                tutorDTO.setParentesco(parentesco);
+                tutorDTO.setApellidoMaterno(apMat);
+                tutorDTO.setApellidoPaterno(apPat);
+                tutorDTO.setTelefono(telefono);
+                tutorDTO.setDireccion(direccion);
+                tutorDTO.setCorreo(correo);
                 coordinadorAplicacion.procesarDatosTutor(tutorDTO);
 
             } catch (NombresInvalidosException | ApellidoInvalidoException | TelefonoInvalidoException | IDInvalidoException ex) {

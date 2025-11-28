@@ -1,10 +1,10 @@
 package adaptadores.solicitarBeca;
 import adaptadores.solicitarBeca.excepciones.BecasFiltradasAdaptadorException;
 import dto.BecaDTO;
-import dto.BecaResponseDTO;
+import dto.gobierno.BecaDTOGobierno;
 import solicitarBeca.dominio.Beca;
 import solicitarBeca.dominio.BecasFiltradas;
-import dto.BecasDisponiblesResponseDTO;
+import dto.gobierno.BecasDisponiblesDTOGobierno;
 import dto.BecasFiltradasDTO;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +16,11 @@ import java.util.List;
  */
 public class BecasFiltradasAdaptador {
 
-    public static BecasFiltradas toEntity(BecasDisponiblesResponseDTO dto) {
+    public static BecasFiltradas toEntity(BecasDisponiblesDTOGobierno dto) {
         try {
             BecasFiltradas becasFiltradas = new BecasFiltradas();
             List<Beca> becas = new ArrayList<>();
-            for (BecaResponseDTO becaResponseDTO : dto.getBecas()) {
+            for (BecaDTOGobierno becaResponseDTO : dto.getBecas()) {
                 becas.add(BecaAdaptador.toEntity(becaResponseDTO));
             }
             becasFiltradas.setBecas(becas);
@@ -33,11 +33,39 @@ public class BecasFiltradasAdaptador {
     public static BecasFiltradasDTO toDTO(BecasFiltradas becasFiltradas) {
         try {
             BecasFiltradasDTO becasFiltradasDTO = new BecasFiltradasDTO();
-            List<BecaDTO> arrayList = new ArrayList<>();
-            becasFiltradasDTO.setBecas(arrayList);
+            List<BecaDTO> becas = new ArrayList<>();
             for (Beca beca : becasFiltradas.getBecas()) {
                 becasFiltradasDTO.getBecas().add(BecaAdaptador.toDTO(beca));
             }
+            becasFiltradasDTO.setBecas(becas);
+            return becasFiltradasDTO;
+        } catch (Exception ex) {
+            throw new BecasFiltradasAdaptadorException("Error al convertir entidad BecasFiltradas a DTO");
+        }
+    }
+
+    public static BecasDisponiblesDTOGobierno toDTOGobierno(BecasFiltradas becasFiltradas) {
+        try {
+            BecasDisponiblesDTOGobierno becasFiltradasDTO = new BecasDisponiblesDTOGobierno();
+            List<BecaDTOGobierno> becas = new ArrayList<>();
+            for (Beca beca : becasFiltradas.getBecas()) {
+                becasFiltradasDTO.getBecas().add(BecaAdaptador.toDTOGobierno(beca));
+            }
+            becasFiltradasDTO.setBecas(becas);
+            return becasFiltradasDTO;
+        } catch (Exception ex) {
+            throw new BecasFiltradasAdaptadorException("Error al convertir entidad BecasFiltradas a DTO");
+        }
+    }
+
+    public static BecasFiltradasDTO toDTO(BecasDisponiblesDTOGobierno becasFiltradas) {
+        try {
+            BecasFiltradasDTO becasFiltradasDTO = new BecasFiltradasDTO();
+            List<BecaDTO> becas = new ArrayList<>();
+            for (BecaDTOGobierno beca : becasFiltradas.getBecas()) {
+                becasFiltradasDTO.getBecas().add(BecaAdaptador.toDTO(beca));
+            }
+            becasFiltradasDTO.setBecas(becas);
             return becasFiltradasDTO;
         } catch (Exception ex) {
             throw new BecasFiltradasAdaptadorException("Error al convertir entidad BecasFiltradas a DTO");

@@ -1,9 +1,9 @@
 package presentacion.solicitarBeca.panels;
-import dto.BecaDTO;
-import dto.EstudianteDTO;
-import dto.TutorDTO;
+import dto_gobierno.BecaDTO;
+import dto_gobierno.EstudianteDTO;
+import dto_gobierno.TutorDTO;
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
-import dto.SolicitudDTO;
+import dto_gobierno.SolicitudDTO;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
@@ -203,8 +203,8 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
         lbl_info_3.setText(String.valueOf(solicitudDTO.getInformacionSocioeconomica().getIngresoTotalFamilarMensual()));
         lbl_tutor_1.setText(tutorDTO.getNombre());
         lbl_tutor_2.setText(String.valueOf(tutorDTO.getParentesco()));
-        lblDependencia.setText(solicitudDTO.getInformacionSocioeconomica().isDeudas() ? "SI" : "NO");
-        lbl_info_5.setText(solicitudDTO.getInformacionSocioeconomica().isTrabajo() ? "SI" : "NO");
+        lblDependencia.setText(solicitudDTO.getInformacionSocioeconomica().getDeudas() ? "SI" : "NO");
+        lbl_info_5.setText(solicitudDTO.getInformacionSocioeconomica().getTrabajo() ? "SI" : "NO");
        lblSolicitanteaNombre.setText(estudianteDTO.getNombre());
        
         
