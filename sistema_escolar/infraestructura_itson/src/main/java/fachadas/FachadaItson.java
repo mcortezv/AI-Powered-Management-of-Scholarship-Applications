@@ -27,7 +27,7 @@ public class FachadaItson implements IFachadaITSON{
 
     @Override
     public EstudianteDTOItson verificarEstudiante(Long matricula) {
-        return null;
+        return controlItson.verificarEstudiante(matricula);
 //        return controlItson.verificarEstudiante(matricula);
     }
 

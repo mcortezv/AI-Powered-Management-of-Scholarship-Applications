@@ -22,17 +22,17 @@ public class Validadores {
         }
     }
 
-    public static void validarPromedio(double promedio){
-        if (promedio < 0 || promedio > 10.0) {
-            throw new PromedioInvalidoException("Favor de ingresar un promedio válido de 0.0 a 10.0");
-        }
-    }
-
-    public static void validarIngreso(double ingreso){
-        if(ingreso < 0 || ingreso > 10000000){
-            throw new IngresoInvalidoException("Favor de ingresar un ingreso válido.");
-        }
-    }
+//    public static void validarPromedio(double promedio){
+//        if (promedio < 0 || promedio > 10.0) {
+//            throw new PromedioInvalidoException("Favor de ingresar un promedio válido de 0.0 a 10.0");
+//        }
+//    }
+//
+//    public static void validarIngreso(double ingreso){
+//        if(ingreso < 0 || ingreso > 10000000){
+//            throw new IngresoInvalidoException("Favor de ingresar un ingreso válido.");
+//        }
+//    }
 
 
     public static void validarCorreo(String correo){

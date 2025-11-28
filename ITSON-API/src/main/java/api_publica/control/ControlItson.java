@@ -16,7 +16,7 @@ public class ControlItson {
         return estudianteService.verificarLogin(dto);
     }
     
-    public Estudiante solicitarDatosEstudiante(LoginDTOItson dto){
-        return estudianteService.solicitarDatosEstudiante(dto);
+    public Estudiante solicitarDatosEstudiante(Long matricula){
+        return estudianteService.solicitarDatosEstudiante(matricula);
     }
 }

@@ -47,7 +47,6 @@ public class FachadaSolicitarBeca implements IFachadaSolicitarBeca {
         return controlSolicitud.obtenerEstudiante(matricula);
     }
 
-
     @Override
     public void setHistorialAcademico(HistorialAcademicoDTO historialAcademicoDTO) throws SolicitudInvalidaException {
         controlSolicitud.asignarHistorial(historialAcademicoDTO);

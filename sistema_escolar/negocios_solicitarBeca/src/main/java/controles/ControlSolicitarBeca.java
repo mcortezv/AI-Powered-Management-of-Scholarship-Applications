@@ -9,6 +9,7 @@ import org.bson.types.ObjectId;
 import solicitarBeca.dominio.*;
 import solicitarBeca.dominio.enums.Carrera;
 import solicitarBeca.dominio.enums.Parentesco;
+import solicitarBeca.dominio.enums.TipoVivienda;
 import solicitarBeca.repository.documents.DocumentoDocument;
 import solicitarBeca.repository.documents.EstudianteDocument;
 import solicitarBeca.repository.documents.SolicitudDocument;
@@ -112,13 +113,14 @@ public class ControlSolicitarBeca {
         }
     }
 
-    public void setInformacionSocioeconomica(InformacionSocioeconomicaDTO informacionSocioeconomica) throws SolicitarBecaException {
+    public void setInformacionSocioeconomica(InformacionSocioeconomicaDTO infoSoDTO) throws SolicitarBecaException {
         try {
-            if (informacionSocioeconomica == null) {
+            if (infoSoDTO == null) {
+                throw new SolicitarBecaException("No se han adjuntado documentos para asignar.");
 
             }
-            //InformacionSocioeconomica infoSocio = socioBO.crearInformacionSocioeconomica(informacionSocioeconomica.getIngresoTotalFamilarMensual(), TipoVivienda.valueOf(informacionSocioeconomica.getTipoVivienda()), informacionSocioeconomica.isTrabajo(), informacionSocioeconomica.isDeudas());
-           // solicitudActual.setInformacionSocioeconomica(infoSocio);
+            InformacionSocioeconomica infoSocio = socioBO.crearInformacionSocioeconomica(infoSoDTO.getIngresoTotalFamilarMensual(), TipoVivienda.valueOf(infoSoDTO.getTipoVivienda()), infoSoDTO.isTrabajo(), infoSoDTO.isDeudas());
+            solicitudActual.setInformacionSocioeconomica(infoSocio);
         } catch (Exception ex) {
             throw new SolicitarBecaException(ex.getMessage());
         }
@@ -145,9 +147,6 @@ public class ControlSolicitarBeca {
     }
 
     private void validarDocumento(DocumentoDTO dto) throws DocumentoInvalidoException {
-        if (dto == null) {
-            throw new DocumentoInvalidoException("se detectó un documento nulo.");
-        }
         String nombreDoc = (dto.getTipo() != null) ? dto.getTipo() : "Sin Tipo";
         byte[] contenido = dto.getContenido();
         if (contenido == null || contenido.length == 0) {
@@ -165,8 +164,7 @@ public class ControlSolicitarBeca {
                 contenido[2] != 0x44 ||
                 contenido[3] != 0x46 ||
                 contenido[4] != 0x2D) {
-
-            throw new DocumentoInvalidoException("El documento '" + nombreDoc + "' no tiene formato PDF válido. Por favor suba solo archivos PDF");
+            throw new DocumentoInvalidoException("Error en el documento");
         }
     }
 

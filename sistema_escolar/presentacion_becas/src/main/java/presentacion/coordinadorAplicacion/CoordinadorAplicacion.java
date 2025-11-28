@@ -3,6 +3,7 @@ import dto.*;
 import dto.itson.LoginDTOItson;
 import interfaces.*;
 import presentacion.coordinadorNegocio.CoordinadorNegocio;
+import presentacion.coordinadorNegocio.ICoordinadorNegocio;
 import presentacion.login.MainFrame;
 import presentacion.login.exceptions.ContraseniaInvalidaException;
 import presentacion.login.exceptions.IDInvalidoException;
@@ -59,6 +60,10 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         presentacion.login.validadores.Validadores.validarContrasenia(loginDTO.getContrasenia());
         System.out.println("llego al coordinadorAplicacion");
         return coordinadorNegocio.solicitarInicioSesion(loginDTO);
+    }
+
+    public void cerrarSesion(){
+        coordinadorNegocio.solicitarCerrarSesion();
     }
 
     public void procesarInformacionGeneral(RequisitosDTO requisitosDTO) throws PromedioInvalidoException, IngresoInvalidoException {

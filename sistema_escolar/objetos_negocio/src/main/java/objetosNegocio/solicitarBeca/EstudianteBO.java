@@ -1,5 +1,8 @@
 package objetosNegocio.solicitarBeca;
+import adaptadores.solicitarBeca.EstudianteAdaptador;
+import dto.EstudianteDTO;
 import dto.itson.LoginDTOItson;
+import objetosNegocio.sesion.SesionUsuario;
 import objetosNegocio.solicitarBeca.excepciones.EstudianteInvalidoException;
 import solicitarBeca.repository.IEstudianteDAO;
 import dto.itson.EstudianteDTOItson;
@@ -21,12 +24,37 @@ public class EstudianteBO implements IEstudianteBO {
     }
 
     @Override
-    public boolean iniciarSesion(LoginDTOItson solicitudLoginDTO){
+    public boolean iniciarSesion(LoginDTOItson solicitudLoginDTO) {
         try {
-            return fachadaITSON.verificarLogin(solicitudLoginDTO);
-        } catch (EstudianteInvalidoException ex) {
-            throw new EstudianteInvalidoException("Error en las credenciales del estudiante");
+            boolean credencialesCorrectas = fachadaITSON.verificarLogin(solicitudLoginDTO);
+            if (credencialesCorrectas) {
+                Long matricula = solicitudLoginDTO.getUsuario();
+                EstudianteDTOItson estudianteCompleto = fachadaITSON.verificarEstudiante(matricula);
+                if (estudianteCompleto == null) {
+                    return false;
+                }
+                SesionUsuario.getInstance().setEstudianteLogueado(EstudianteAdaptador.toDTO(estudianteCompleto));
+                return true;
+            }
+            return false;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new EstudianteInvalidoException(ex.getMessage());
         }
+    }
+
+//    @Override
+//    public boolean iniciarSesion(LoginDTOItson solicitudLoginDTO){
+//        try {
+//            return fachadaITSON.verificarLogin(solicitudLoginDTO);
+//        } catch (EstudianteInvalidoException ex) {
+//            throw new EstudianteInvalidoException(ex.getMessage());
+//        }
+//    }
+
+    @Override
+    public void cerrarSesion() {
+        SesionUsuario.getInstance().limpiarSesion();
     }
 
     @Override

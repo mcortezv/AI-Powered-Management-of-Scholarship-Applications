@@ -5,7 +5,7 @@ import presentacion.styles.Panel;
 
 
 public class HubPanel extends Panel {
-
+    private CoordinadorAplicacion coordinadorAplicacion;
     public HubPanel(MainFrame mainFrame, CoordinadorAplicacion coordinadorAplicacion) {
         super(mainFrame, coordinadorAplicacion);
     }
@@ -15,8 +15,9 @@ public class HubPanel extends Panel {
         btnBack.setVisible(false);
         btnLogOut.setVisible(true);
         btnLogOut.addActionListener(e -> {
-            mainFrame.showPanel("iniciarSesionPanel");
-            mainFrame.getNorthPanel().setVisible(false);
+            coordinadorAplicacion.cerrarSesion();
+//            mainFrame.showPanel("iniciarSesionPanel");
+//            mainFrame.getNorthPanel().setVisible(false);
         });
     }
 
