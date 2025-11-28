@@ -146,6 +146,7 @@ public class ListadoBecasDisponiblesPanel extends PanelSolicitarBeca{
         
         private String safe(String s) { return s == null ? "" : s; }
 
+
     private String descripcionBeca(BecaDTO b) {
         RequisitosDTO r = b.getRequisitos();
         if (r == null) return "Está dirigida a estudiantes con buen desempeño académico.";

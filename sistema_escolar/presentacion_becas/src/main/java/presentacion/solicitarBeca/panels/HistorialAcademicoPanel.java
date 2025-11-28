@@ -1,5 +1,5 @@
 package presentacion.solicitarBeca.panels;
-import dto_gobierno.HistorialAcademicoDTO;
+import dto.HistorialAcademicoDTO;
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.*;
@@ -79,16 +79,19 @@ public class HistorialAcademicoPanel extends PanelSolicitarBeca {
         });
 
         botonSiguiente.addActionListener(e -> {
-            String carreraSeleccionada = (String) comboCarrera.getSelectedItem();
-            String cargaStr = (String) comboCargaAcademica.getSelectedItem();
-            double cargaAcademicaSeleccionada = Double.parseDouble(cargaStr.replace("%", ""));
-            int semestreSeleccionado = (int) comboSemestre.getSelectedItem();
-            HistorialAcademicoDTO histAcademicoDTO= new HistorialAcademicoDTO();
-            histAcademicoDTO.setCarrera(carreraSeleccionada);
-            histAcademicoDTO.setCargaAcademica(cargaAcademicaSeleccionada);
-            histAcademicoDTO.setSemestre(semestreSeleccionado);
-
-         //   coordinadorAplicacion.procesarHistorialAcademico(histAcademicoDTO);
+            try {
+                String carreraSeleccionada = (String) comboCarrera.getSelectedItem();
+                String cargaStr = (String) comboCargaAcademica.getSelectedItem();
+                double cargaAcademicaSeleccionada = Double.parseDouble(cargaStr.replace("%", ""));
+                int semestreSeleccionado = (int) comboSemestre.getSelectedItem();
+                HistorialAcademicoDTO histAcademicoDTO= new HistorialAcademicoDTO();
+                histAcademicoDTO.setCarrera(carreraSeleccionada);
+                histAcademicoDTO.setCargaAcademica(cargaAcademicaSeleccionada);
+                histAcademicoDTO.setSemestre(semestreSeleccionado);
+                coordinadorAplicacion.procesarHistorialAcademico(histAcademicoDTO);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(mainFrame,"Error al recuperar el historial academico del estudiante","Error de recuperacion", JOptionPane.ERROR_MESSAGE);
+            }
         });
     }
 }

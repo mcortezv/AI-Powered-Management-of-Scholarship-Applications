@@ -15,6 +15,8 @@ public interface IFachadaSolicitarBeca {
 
     BecasFiltradasDTO obtenerBecasFiltradas(RequisitosDTO requisitos) throws SolicitudInvalidaException;
 
+    void setBeca(BecaDTO becaActual);
+
     BecaDTO obtenerBecaPorId(Long id) throws SolicitudInvalidaException;
 
     void iniciarNuevaSolicitud() throws SolicitudInvalidaException;

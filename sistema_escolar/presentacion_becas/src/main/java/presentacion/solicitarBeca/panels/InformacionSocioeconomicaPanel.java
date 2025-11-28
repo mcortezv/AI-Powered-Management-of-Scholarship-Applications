@@ -89,7 +89,7 @@ public class InformacionSocioeconomicaPanel extends PanelSolicitarBeca{
         });
 
         btn_next.addActionListener(e -> {
-            
+            try {
                 BigDecimal ingreso = BigDecimal.valueOf(Double.parseDouble(field_ingreso.getText()));
                 String tipoVivienda = (String) cbx_tipo_vivienda.getSelectedItem();
                 String valorDeudas = (String) cbx_deudas.getSelectedItem();
@@ -102,7 +102,9 @@ public class InformacionSocioeconomicaPanel extends PanelSolicitarBeca{
                 infoSocioeconomica.setTrabajo(seleccionTrabajo);
                 infoSocioeconomica.setDeudas(seleccionDeudas);
                 coordinadorAplicacion.procesarInformacionSocioeconomica(infoSocioeconomica);
-            
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(mainFrame,"No se pudo crear la Informacion Socioeconomica","Error de creacion", JOptionPane.ERROR_MESSAGE);
+            }
         });
     }
 }

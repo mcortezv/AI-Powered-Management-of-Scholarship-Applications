@@ -9,7 +9,6 @@ import dto.BecasFiltradasDTO;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  *
  * @author Cortez, Manuel;
@@ -21,6 +20,20 @@ public class BecasFiltradasAdaptador {
             BecasFiltradas becasFiltradas = new BecasFiltradas();
             List<Beca> becas = new ArrayList<>();
             for (BecaDTOGobierno becaResponseDTO : dto.getBecas()) {
+                becas.add(BecaAdaptador.toEntity(becaResponseDTO));
+            }
+            becasFiltradas.setBecas(becas);
+            return becasFiltradas;
+        } catch (Exception ex) {
+            throw new BecasFiltradasAdaptadorException("Error al convertir ResponseDTO BecasDisponibles a entidad");
+        }
+    }
+
+    public static BecasFiltradas toEntity(BecasFiltradasDTO dto) {
+        try {
+            BecasFiltradas becasFiltradas = new BecasFiltradas();
+            List<Beca> becas = new ArrayList<>();
+            for (BecaDTO becaResponseDTO : dto.getBecas()) {
                 becas.add(BecaAdaptador.toEntity(becaResponseDTO));
             }
             becasFiltradas.setBecas(becas);

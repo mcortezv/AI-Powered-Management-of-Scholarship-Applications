@@ -1,5 +1,5 @@
 package presentacion.solicitarBeca.panels;
-import dto_gobierno.EstudianteDTO;
+import dto.EstudianteDTO;
 import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import presentacion.login.exceptions.IDInvalidoException;
 import presentacion.solicitarBeca.SolicitarBeca;
@@ -122,8 +122,9 @@ public class DatosDelSolicitantePanel extends PanelSolicitarBeca {
                 JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
             } catch (NumberFormatException ex){
                 JOptionPane.showMessageDialog(mainFrame,"Solo se aceptan números","Error de validación", JOptionPane.ERROR_MESSAGE);
+            } catch (Exception ex){
+                JOptionPane.showMessageDialog(mainFrame,"No se pudo recuperar al estudiante","Error de datos", JOptionPane.ERROR_MESSAGE);
             }
-
         });
     }
 }

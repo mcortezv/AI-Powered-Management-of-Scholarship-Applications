@@ -1,8 +1,8 @@
 package presentacion.coordinadorNegocio;
-import dto.BecasFiltradasDTO;
-import dto.RequisitosDTO;
+import dto.*;
 import dto.itson.LoginDTOItson;
 import interfaces.*;
+import objetosNegocio.solicitarBeca.excepciones.SolicitudInvalidaException;
 
 /**
  *
@@ -33,9 +33,25 @@ public class CoordinadorNegocio implements ICoordinadorNegocio{
         fachadaInicioSesion.solicitarLogOut();
     }
 
+    public void iniciarSolicitud(BecaDTO becaDTO) throws SolicitudInvalidaException {
+        fachadaSolicitarBeca.setBeca(becaDTO);
+        fachadaSolicitarBeca.iniciarNuevaSolicitud();
+    }
+
+    public void procesarHistorialAcademico(HistorialAcademicoDTO historialAcademicDTO) {
+        fachadaSolicitarBeca.setHistorialAcademico(historialAcademicDTO);
+    }
+
+    public void procesarTutor(TutorDTO tutorDTO) {
+        fachadaSolicitarBeca.setDatosTutor(tutorDTO);
+    }
+
+    public void procesarInformacionSocioeconomica(InformacionSocioeconomicaDTO informacionSocioeconomicaDTO) {
+        fachadaSolicitarBeca.setInformacionSocioeconomica(informacionSocioeconomicaDTO);
+    }
 
     @Override
     public boolean enviarSolicitudAGobierno(){
-        return true;//fachadaSolicitarBeca.enviarSolicitudGobierno();
+        return fachadaSolicitarBeca.guardarSolicitud();
     }
 }

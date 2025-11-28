@@ -191,6 +191,7 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
 
 
         btnContinuar.addActionListener(e -> {
+            coordinadorAplicacion.enviarSolicitudAGobierno();
             mainFrame.showPanel("confirmacionPanel");
         });
     }

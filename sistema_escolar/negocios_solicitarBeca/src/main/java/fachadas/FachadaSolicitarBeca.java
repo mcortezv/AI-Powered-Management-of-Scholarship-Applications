@@ -22,8 +22,7 @@ public class FachadaSolicitarBeca implements IFachadaSolicitarBeca {
         this.controlSolicitud = gestor;
     }
 
-
-    @Override
+  
     public BecasFiltradasDTO obtenerBecasFiltradas(RequisitosDTO requisitos) throws SolicitudInvalidaException {
         return controlSolicitud.obtenerBecasFiltradas(requisitos);
     }
@@ -36,6 +35,11 @@ public class FachadaSolicitarBeca implements IFachadaSolicitarBeca {
     @Override
     public void iniciarNuevaSolicitud() throws SolicitudInvalidaException {
         controlSolicitud.iniciarSolicitud();
+    }
+
+    @Override
+    public void setBeca(BecaDTO becaActual) {
+        controlSolicitud.setBecaActual(becaActual);
     }
 
     @Override
@@ -74,4 +78,8 @@ public class FachadaSolicitarBeca implements IFachadaSolicitarBeca {
         return controlSolicitud.guardarSolicitud();
     }
 
+    @Override
+    public void cancelarSolicitud() throws SolicitudInvalidaException {
+        controlSolicitud.cancelarSolicitud();
+    }
 }

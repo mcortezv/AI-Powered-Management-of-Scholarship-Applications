@@ -99,8 +99,8 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
                 double ingreso  = Double.parseDouble(campoIngreso.getText().trim().replace(',', '.'));
                 String cargaStr = (String) campoCarga.getSelectedItem();
                 double carga = Double.parseDouble(cargaStr.replace("%", ""));
-                boolean trabajo   = "Si".equals(campoTrabajo.getSelectedItem());
-                boolean deudas   = "Si".equals(campoDeudas.getSelectedItem());
+                boolean trabajo   = "SI".equals(campoTrabajo.getSelectedItem());
+                boolean deudas   = "SI".equals(campoDeudas.getSelectedItem());
                 RequisitosDTO requisitosDTO  = new RequisitosDTO();
                 requisitosDTO.setPromedioMinimo(promedio);
                 requisitosDTO.setIngresoFamiliarMaximo(ingreso);
@@ -113,6 +113,8 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
                 JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
             }catch (NumberFormatException ex){
                 JOptionPane.showMessageDialog(mainFrame,"Solo se aceptan números","Error de validación", JOptionPane.ERROR_MESSAGE);
+            }catch (Exception ex){
+                JOptionPane.showMessageDialog(mainFrame,"Ninguna beca cumple con los requisitos","Error de requisitos", JOptionPane.ERROR_MESSAGE);
             }
         });
     }
