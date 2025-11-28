@@ -1,6 +1,5 @@
 package controles;
 import java.util.List;
-
 import adaptadores.pagarAdeudo.ClaseAdaptador;
 import adaptadores.pagarAdeudo.PrestamoAdaptador;
 import adaptadores.pagarAdeudo.SolicitudPagoAdaptador;

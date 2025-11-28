@@ -8,7 +8,7 @@
     <version>1.0</version>
     <packaging>pom</packaging>
     <modules>
-        <module>ITSON-API</module>
+        <module>sistema_itson</module>
         <module>sistema_escolar</module>
         <module>sistema_gobierno</module>
     </modules>
