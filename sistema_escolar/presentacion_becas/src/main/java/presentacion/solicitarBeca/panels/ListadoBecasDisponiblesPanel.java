@@ -97,6 +97,9 @@ public class ListadoBecasDisponiblesPanel extends PanelSolicitarBeca{
     }
     
     public void setBecas(List<BecaDTO> becas) {
+        for (BecaDTO beca : becas) {
+            ddlBecas.add(beca);
+        }
         lista.removeAll();
         if (becas != null && !becas.isEmpty()) {
             for (BecaDTO b : becas) {

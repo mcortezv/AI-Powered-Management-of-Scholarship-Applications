@@ -7,6 +7,7 @@ import presentacion.solicitarBeca.exceptions.ApellidoInvalidoException;
 import presentacion.solicitarBeca.exceptions.DireccionInvalidaException;
 import presentacion.solicitarBeca.exceptions.NombresInvalidosException;
 import presentacion.solicitarBeca.exceptions.TelefonoInvalidoException;
+import presentacion.solicitarBeca.validadores.Validadores;
 import presentacion.styles.*;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
@@ -113,6 +114,12 @@ public class DatosDelSolicitantePanel extends PanelSolicitarBeca {
                 String direccion = field_direccion.getText();
                 String telefono = field_telefono.getText();
                 String email = field_email.getText();
+                Validadores.validarNombres(nombre);
+                Validadores.validarApellido(apellidoMaterno);
+                Validadores.validarApellido(apellidoPaterno);
+                Validadores.validarDireccion(direccion);
+                Validadores.validarTelefono(telefono);
+                Validadores.validarCorreo(email);
                 String nombreCompleto= nombre + " " + apellidoPaterno + " " + apellidoMaterno;
                 //cambiar el nombre a un enum 
                 EstudianteDTO estudianteDTO= new EstudianteDTO(null, null, email, direccion, null,  nombreCompleto, telefono, null);

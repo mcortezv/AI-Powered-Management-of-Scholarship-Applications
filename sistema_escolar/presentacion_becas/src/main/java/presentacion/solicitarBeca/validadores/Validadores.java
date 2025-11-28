@@ -1,5 +1,4 @@
 package presentacion.solicitarBeca.validadores;
-
 import presentacion.login.exceptions.IDInvalidoException;
 import presentacion.solicitarBeca.exceptions.*;
 
