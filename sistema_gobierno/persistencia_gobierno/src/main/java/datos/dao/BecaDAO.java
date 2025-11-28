@@ -33,11 +33,11 @@ public class BecaDAO implements IBecaDAO{
             BecasFiltradas bf = new BecasFiltradas();
             List<Beca> resultado = new ArrayList<>();
             Bson filtro = Filters.and(
-                    Filters.lte("requisitos.promedio_minimo", r.getPromedioMinimo()),
-                    Filters.gte("requisitos.ingreso_familiar_max", r.getIngresoFamiliarMaximo()),
+                    Filters.gte("requisitos.promedio_minimo", r.getPromedioMinimo()),
+                    Filters.lte("requisitos.ingreso_familiar_max", r.getIngresoFamiliarMaximo()),
                     Filters.eq("requisitos.trabajo_requerido", r.isTrabajo())
             );
-            col.find(filtro).into(resultado);
+            col.find().into(resultado);
             bf.setBecas(resultado);
             return bf;
         } catch (Exception ex){

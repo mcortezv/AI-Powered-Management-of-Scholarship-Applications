@@ -21,15 +21,12 @@ public class BecasFiltradasBO implements IBecasFiltradasBO {
 
     @Override
     public BecasDisponiblesDTOGobierno obtenerBecasFiltradas(RequisitosDTOGobierno requisitos) throws BecaInvalidaException {
-        if (requisitos.getPromedioMinimo() <= 0 || requisitos.getIngresoFamiliarMaximo() <= 0 || requisitos.getCargaAcademica() <= 0) {
-            throw new BecaInvalidaException("Requisitos minimos invalidos");
-        }
         BecasDisponiblesDTOGobierno becasDisponiblesResponseDTO = fachadaGobierno.obtenerBecas(requisitos);
         if (becasDisponiblesResponseDTO == null || becasDisponiblesResponseDTO.getBecas() == null
                 || becasDisponiblesResponseDTO.getBecas().isEmpty()) {
             throw new BecaInvalidaException("No existe ninguna beca para estos requisitos");
         }
-        return fachadaGobierno.obtenerBecas(requisitos);
+        return becasDisponiblesResponseDTO;
     }
 
     @Override
