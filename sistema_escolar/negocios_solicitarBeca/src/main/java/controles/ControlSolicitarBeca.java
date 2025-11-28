@@ -2,6 +2,7 @@ package controles;
 import adaptadores.solicitarBeca.*;
 import dto.*;
 import dto.itson.EstudianteDTOItson;
+import excepciones.DocumentoInvalidoException;
 import excepciones.SolicitarBecaException;
 import interfaces.solicitarBeca.*;
 import org.bson.types.ObjectId;
@@ -121,14 +122,48 @@ public class ControlSolicitarBeca {
     }
 
     public void asignarDocumentos(List<DocumentoDTO> documentosDTO) throws SolicitarBecaException {
+        if (documentosDTO == null || documentosDTO.isEmpty()) {
+            throw new SolicitarBecaException("No se han adjuntado documentos para asignar.");
+        }
+        List<Documento> documentosEntidad = new ArrayList<>();
         try {
-            List<Documento>  documentos = new ArrayList<>();
-            for (DocumentoDTO documentoDTO : documentosDTO) {
-                documentos.add(DocumentoAdaptador.toEntity(documentoDTO));
+            for (DocumentoDTO dto : documentosDTO) {
+                validarDocumento(dto);
+                Documento documento = DocumentoAdaptador.toEntity(dto);
+                documentosEntidad.add(documento);
             }
-            solicitudActual.setDocumentos(documentos);
+            solicitudActual.setDocumentos(documentosEntidad);
+        } catch (DocumentoInvalidoException ex) {
+            throw new SolicitarBecaException("Error en los documentos: " + ex.getMessage());
         } catch (Exception ex) {
-            throw new SolicitarBecaException(ex.getMessage());
+            ex.printStackTrace();
+            throw new SolicitarBecaException("Ocurrió un error inesperado al procesar los archivos.");
+        }
+    }
+
+    private void validarDocumento(DocumentoDTO dto) throws DocumentoInvalidoException {
+        if (dto == null) {
+            throw new DocumentoInvalidoException("se detectó un documento nulo.");
+        }
+        String nombreDoc = (dto.getTipo() != null) ? dto.getTipo() : "Sin Tipo";
+        byte[] contenido = dto.getContenido();
+        if (contenido == null || contenido.length == 0) {
+            throw new DocumentoInvalidoException("El documento de tipo '" + nombreDoc + "' está vacío 0 kb");
+        }
+        int maxBytes = 5 * 1024 * 1024;
+        if (contenido.length > maxBytes) {
+            throw new DocumentoInvalidoException("El documento '" + nombreDoc + "' excede el tamaño máximo permitido 5MB");
+        }
+        if (contenido.length < 5) {
+            throw new DocumentoInvalidoException("El documento '" + nombreDoc + "' es inválido (muy corto).");
+        }
+        if (contenido[0] != 0x25 ||
+                contenido[1] != 0x50 ||
+                contenido[2] != 0x44 ||
+                contenido[3] != 0x46 ||
+                contenido[4] != 0x2D) {
+
+            throw new DocumentoInvalidoException("El documento '" + nombreDoc + "' no tiene formato PDF válido. Por favor suba solo archivos PDF");
         }
     }
 
