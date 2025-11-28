@@ -5,8 +5,8 @@
 package datos.services;
 import datos.dao.BecaDAO;
 import datos.dao.excepciones.SolicitudDAOException;
-import dto.gobierno.BecasDisponiblesDTOGobierno;
 import dto.gobierno.RequisitosDTOGobierno;
+import solicitarBeca.dominio.BecasFiltradas;
 
 /**
  *
@@ -19,7 +19,7 @@ public class BecasService {
         this.becaDAO = new BecaDAO();
     }
 
-    public BecasDisponiblesDTOGobierno obtenerBecas(RequisitosDTOGobierno requisitos) throws SolicitudDAOException {
-        return becaDAO.obtenerBecas(requisitos);
+    public BecasFiltradas obtenerBecas(RequisitosDTOGobierno requisitos) throws SolicitudDAOException {
+        return becaDAO.findByRequisitos(requisitos);
     }
 }
