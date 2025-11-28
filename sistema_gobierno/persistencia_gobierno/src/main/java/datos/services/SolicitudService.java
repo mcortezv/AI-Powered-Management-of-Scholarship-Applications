@@ -15,6 +15,6 @@ public class SolicitudService {
     }
 
     public boolean guardarSolicitud(SolicitudDTO solicitud) throws SolicitudDAOException {
-
+        return true;
     }
 }

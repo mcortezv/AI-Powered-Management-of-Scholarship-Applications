@@ -18,6 +18,11 @@ public class BecasResponseDTOI {
     public BecasResponseDTOI(){
         
     }
+    
+    public BecasResponseDTOI(List<Beca> becas){
+        this.becas = becas;
+    }
+    
     public List<Beca> getBecas(){
         return becas;
     }

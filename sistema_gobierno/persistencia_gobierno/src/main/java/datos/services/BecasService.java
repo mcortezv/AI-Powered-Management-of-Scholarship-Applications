@@ -4,7 +4,12 @@
  */
 package datos.services;
 
+import datos.dao.BecaDAO;
 import datos.dao.interfaces.IBecaDAO;
+import datos.dominio.Beca;
+import datos.dto.BecasResponseDTOI;
+import datos.dto.RequisitosDTOI;
+import java.util.List;
 
 /**
  *
@@ -12,7 +17,18 @@ import datos.dao.interfaces.IBecaDAO;
  */
 public class BecasService {
     private final IBecaDAO becaDAO;
+    
     public BecasService(IBecaDAO becaDAO){
         this.becaDAO = becaDAO;
+    }
+    public BecasService(){
+        this.becaDAO = new BecaDAO();
+    }
+    
+    public BecasResponseDTOI obtenerBecas(RequisitosDTOI requisitosDTOI){
+        
+        List<Beca> becas = becaDAO.findByRequisitos(requisitosDTOI);
+        
+        return new BecasResponseDTOI(becas);
     }
 }
