@@ -42,6 +42,10 @@ public class CoordinadorNegocio implements ICoordinadorNegocio{
         fachadaSolicitarBeca.setHistorialAcademico(historialAcademicDTO);
     }
 
+    public void procesarEstudiante(EstudianteDTO estudianteDTO) {
+        fachadaSolicitarBeca.obtenerEstudiante(estudianteDTO.getMatricula());
+    }
+
     public void procesarTutor(TutorDTO tutorDTO) {
         fachadaSolicitarBeca.setDatosTutor(tutorDTO);
     }

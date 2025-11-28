@@ -111,6 +111,8 @@ public class DetallesBecaPanel extends PanelSolicitarBeca {
         
         lista.setMaximumSize(new Dimension(Integer.MAX_VALUE, 1500));
         lista.add(Box.createVerticalGlue());
+
+
         botonSiguiente.addActionListener(e -> {
             coordinadorAplicacion.setBecaSeleccionadaDTO(beca);
             coordinadorAplicacion.iniciarSolicitud();
@@ -124,7 +126,7 @@ public class DetallesBecaPanel extends PanelSolicitarBeca {
     }
     
     public void cargarBeca(BecaDTO becaDTO){
-        this.beca= becaDTO;
+        this.beca = becaDTO;
         titulo.setText(becaDTO.getNombre());
         //lblDescripcion.setText(becaDTO.getDescripcion());
         lblDescripcion.setText(
@@ -134,10 +136,10 @@ public class DetallesBecaPanel extends PanelSolicitarBeca {
             + "</div>"
             + "</html>"
         );
+        System.out.println(becaDTO.getFechaInicio());
         lblPromedio.setText(String.valueOf(becaDTO.getRequisitos().getPromedioMinimo()));
-        lblPeriodo.setText(becaDTO.getFechaInicio().toString() + "->" + becaDTO.getFechaFin().toString());
+        lblPeriodo.setText(becaDTO.getFechaInicio().toString() + " -> " + becaDTO.getFechaFin().toString());
         lblTipo.setText(becaDTO.getTipo());
-
     }
 
 

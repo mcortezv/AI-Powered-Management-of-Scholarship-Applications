@@ -68,7 +68,7 @@ public class BecaAdaptador {
     public static Beca toEntity(BecaDTO becaDTO){
         try {
             Beca beca = new Beca();
-            beca.setCodigo((long) becaDTO.getCodigo());
+            beca.setCodigo(becaDTO.getCodigo());
             beca.setNombre(becaDTO.getNombre());
             beca.setBecasDisponibles(becaDTO.getBecasDisponibles());
             beca.setDescripcion(becaDTO.getDescripcion());
