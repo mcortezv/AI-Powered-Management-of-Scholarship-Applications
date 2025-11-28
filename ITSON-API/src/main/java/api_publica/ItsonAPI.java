@@ -17,7 +17,7 @@ public class ItsonAPI implements IItsonAPI {
     }
 
     @Override
-    public Estudiante obtenerDatosEstudiante(LoginDTOItson dto) {
-       return controlItson.solicitarDatosEstudiante(dto);
+    public Estudiante obtenerDatosEstudiante(Long matricula) {
+       return controlItson.solicitarDatosEstudiante(matricula);
     }
 }

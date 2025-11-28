@@ -15,4 +15,6 @@ public interface IEstudianteBO {
     EstudianteDTOItson crearEstudiante(Long matricula) throws EstudianteInvalidoException;
 
     void guardarEstudiante(EstudianteDocument estudiante) throws EstudianteInvalidoException;
+
+    void cerrarSesion();
 }

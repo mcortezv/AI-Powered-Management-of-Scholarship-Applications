@@ -16,7 +16,7 @@ public class ControlInicioSesion {
     }
 
     public void cerrarSesion(){
-        System.out.println("Cerrrando sesion...");
+        estudianteBO.cerrarSesion();
     }
 }
 

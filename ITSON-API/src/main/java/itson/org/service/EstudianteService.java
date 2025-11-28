@@ -24,9 +24,8 @@ public class EstudianteService {
         return estudiante.getContrasenia().equals(dto.getContrasenia());
     }
     
-    public Estudiante solicitarDatosEstudiante(LoginDTOItson dto){
-        Estudiante estudiante= estudianteDAO.findByMatricula(dto.getUsuario()).orElse(null);
-        return estudiante;
+    public Estudiante solicitarDatosEstudiante(Long matricula){
+        return estudianteDAO.findByMatricula(matricula).orElse(null);
              
     }
     
