@@ -4,7 +4,7 @@
  */
 package fachada;
 import control.ControlGobierno;
-import dto.BecasDisponiblesResponseDTO;
+//import dto.BecasDisponiblesResponseDTO;
 import dto.BecasFiltradasDTO;
 import dto.RequisitosDTO;
 import dto.SolicitudDTO;

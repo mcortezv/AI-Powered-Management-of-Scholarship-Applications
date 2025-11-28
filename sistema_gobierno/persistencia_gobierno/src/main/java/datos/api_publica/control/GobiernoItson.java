@@ -14,8 +14,8 @@ public class GobiernoItson {
     private final BecasService becasService;
 
     public GobiernoItson() {
-        this.solicitudService = new SolicitudService();
-        this.becasService= new BecasService();
+        this.solicitudService = new SolicitudService(new datos.dao.SolicitudDAO());
+        this.becasService= new BecasService(new datos.dao.BecaDAO());
     }
 
     public boolean guardarSolicitud(SolicitudDTO dto){
@@ -23,7 +23,7 @@ public class GobiernoItson {
     }
     
     public BecasResponseDTOI obtenerBecas(RequisitosDTOI requisitosDTOI){
-     //   return becasService.
+        return becasService.obtenerBecas(requisitosDTOI);
         
     }
             

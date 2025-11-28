@@ -7,6 +7,7 @@ import dto.*;
 import solicitarBeca.dominio.enums.TipoBeca;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 /**
  *
  * @author Cortez, Manuel;
@@ -19,7 +20,7 @@ public class ControlGobierno {
         this.gobiernoAPI= new GobiernoAPI();
     }
 
-    public BecasResponseDTOI solicitarBecas(RequisitosDTO requisitosDTO) {
+    public BecasFiltradasDTO solicitarBecas(RequisitosDTO requisitosDTO) {
         
         RequisitosDTOI requisitosDTOI= new RequisitosDTOI();
         requisitosDTOI.setPromedioMinimo(requisitosDTO.getPromedioMinimo());
@@ -29,7 +30,37 @@ public class ControlGobierno {
         requisitosDTOI.setIndiceReprobacion(requisitosDTO.getIndiceReprobacion());
         requisitosDTOI.setTrabajo(requisitosDTO.isTrabajo());
         requisitosDTOI.setDeudas(requisitosDTO.isDeudas());
-        return gobiernoAPI.solicitarBecas(requisitosDTOI);
+        
+        BecasResponseDTOI becasResponseDTOI = gobiernoAPI.solicitarBecas(requisitosDTOI);
+        
+        BecasFiltradasDTO becasFiltradasDTO = new BecasFiltradasDTO();
+        List<BecaDTO> becasDTO = new ArrayList<>();
+        
+        if (becasResponseDTOI != null && becasResponseDTOI.getBecas() != null) {
+            for (datos.dominio.Beca b : becasResponseDTOI.getBecas()) {
+                BecaDTO dto = new BecaDTO();
+                dto.setCodigo((long) b.getCodigo());
+                dto.setNombre(b.getNombre());
+                dto.setDescripcion(b.getDescripcion());
+                dto.setFechaInicio(b.getFechaInicio());
+                dto.setFechaFin(b.getFechaFin());
+                dto.setFechaResultados(b.getFechaResultados());
+                dto.setBecasDisponibles(b.getBecasDisponibles());
+                dto.setTipo(b.getTipo().name());
+
+                RequisitosDTO rDTO = new RequisitosDTO();
+                rDTO.setPromedioMinimo(b.getRequisitos().getPromedioMinimo());
+                rDTO.setIngresoFamiliarMaximo(b.getRequisitos().getIngresoFamiliarMaximo());
+                rDTO.setTrabajo(b.getRequisitos().isTrabajo());
+
+                dto.setRequisitos(rDTO);
+
+                becasDTO.add(dto);
+            }
+        }
+        becasFiltradasDTO.setBecas(becasDTO);
+        
+        return becasFiltradasDTO;
         
         
         

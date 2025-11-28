@@ -4,10 +4,14 @@
  */
 package datos.dao.interfaces;
 
+import datos.dominio.Beca;
+import datos.dto.RequisitosDTOI;
+import java.util.List;
+
 /**
  *
  * @author janethcristinagalvanquinonez
  */
 public interface IBecaDAO {
-    
+    List<Beca> findByRequisitos(RequisitosDTOI requisitos);
 }

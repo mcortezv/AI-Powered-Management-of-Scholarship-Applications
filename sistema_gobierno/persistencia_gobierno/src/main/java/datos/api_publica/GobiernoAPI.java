@@ -17,18 +17,19 @@ public class GobiernoAPI implements IGobiernoAPI {
         this.gobiernoITSON = new GobiernoItson();
     }
 
-    @Override
-    public boolean verificarLogin(LoginDTOI dto) {
-        return controlItson.verificarLogin(dto);
-    }
-
-    @Override
-    public Estudiante obtenerDatosEstudiante(LoginDTOI dto) {
-       return controlItson.solicitarDatosEstudiante(dto);
-    }
+//    @Override
+//    public boolean verificarLogin(LoginDTOI dto) {
+//        return controlItson.verificarLogin(dto);
+//    }
+//
+//    @Override
+//    public Estudiante obtenerDatosEstudiante(LoginDTOI dto) {
+//       return controlItson.solicitarDatosEstudiante(dto);
+//    }
 
     @Override
     public BecasResponseDTOI solicitarBecas(RequisitosDTOI requisitosDTOI) {
-     //   return gobiernoITSON.
+        return gobiernoITSON.obtenerBecas(requisitosDTOI);
+        
     }
 }

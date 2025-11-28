@@ -9,7 +9,7 @@ import datos.dto.RequisitosDTOI;
  * @author Cortez, Manuel;
  */
 public interface IGobiernoAPI {
-    boolean verificarLogin(LoginDTOI dto);
+//    boolean verificarLogin(LoginDTOI dto);
  //   Estudiante obtenerDatosEstudiante(LoginDTOI dto);
     BecasResponseDTOI solicitarBecas(RequisitosDTOI dto);
 }
