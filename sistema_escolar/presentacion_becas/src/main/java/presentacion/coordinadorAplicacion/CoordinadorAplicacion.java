@@ -25,7 +25,6 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     private MainFrame mainFrame;
     private final CoordinadorNegocio coordinadorNegocio;
     private SolicitarBeca solicitarBeca;
-    private BecaDTO becaDTO;
     private BecaDTO becaSeleccionadaDTO;
     private RequisitosDTO requisitosDTO;
     private HistorialAcademicoDTO historialAcademicoDTO;
@@ -66,18 +65,14 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         mostrarBecasDisponibles(becasFiltradas);
     }
 
-    public void procesarDatosSolicitante(EstudianteDTO estudianteDTO)
-            throws NombresInvalidosException, DireccionInvalidaException, TelefonoInvalidoException, IDInvalidoException {
-        presentacion.solicitarBeca.validadores.Validadores.validarNombres(estudianteDTO.getNombre());
-        presentacion.solicitarBeca.validadores.Validadores.validarDireccion(estudianteDTO.getDireccion());
-        presentacion.solicitarBeca.validadores.Validadores.validarTelefono(estudianteDTO.getTelefono());
-        presentacion.solicitarBeca.validadores.Validadores.validarCorreo(estudianteDTO.getCorreo());
+    public void procesarDatosSolicitante(EstudianteDTO estudianteDTO) throws NombresInvalidosException, DireccionInvalidaException, TelefonoInvalidoException, IDInvalidoException {
+        coordinadorNegocio.procesarEstudiante(estudianteDTO);
         solicitarBeca.showPanel("historialAcademicoPanel");
     }
 
     public void solicitarBeca() {
         mainFrame.setVisible(false);
-        solicitarBeca = new SolicitarBeca(this, becaDTO);
+        solicitarBeca = new SolicitarBeca(this, becaSeleccionadaDTO);
         solicitarBeca.setVisible(true);
     }
 
@@ -101,7 +96,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     }
     
     public void mostrarBecaSeleccionada(){
-        DetallesBecaPanel detallesBeca= (DetallesBecaPanel) solicitarBeca.getPanel("detalleBecaPanel");
+        DetallesBecaPanel detallesBeca = (DetallesBecaPanel) solicitarBeca.getPanel("detalleBecaPanel");
         detallesBeca.cargarBeca(becaSeleccionadaDTO);
         solicitarBeca.showPanel("detalleBecaPanel");
     }
@@ -114,7 +109,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     }
 
     public void iniciarSolicitud(){
-        coordinadorNegocio.iniciarSolicitud(becaDTO);
+        coordinadorNegocio.iniciarSolicitud(becaSeleccionadaDTO);
     }
 
     public void procesarHistorialAcademico(HistorialAcademicoDTO historialAcademicoDTO) {
@@ -149,15 +144,12 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
 //    }
 
 
-
-
-
     public void procesarDocumentosYSolicitud(Map<String, File> documentosCargados) {
         mostrarResumen();
     }
 
     public void setBecaSeleccionadaDTO(BecaDTO becaDTO) {
-        this.becaDTO = becaDTO;
+        this.becaSeleccionadaDTO = becaDTO;
     }
 
     public void enviarSolicitudAGobierno() {

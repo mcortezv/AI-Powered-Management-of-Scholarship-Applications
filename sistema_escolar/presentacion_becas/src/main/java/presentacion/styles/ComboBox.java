@@ -32,6 +32,10 @@ public class ComboBox<T> extends JComboBox<T> {
         super.paintComponent(g);
     }
 
+    public void add(T beca) {
+
+    }
+
     private static class MyComboBoxRenderer<T> extends JLabel implements ListCellRenderer<T> {
         public MyComboBoxRenderer() {
             setOpaque(true);
