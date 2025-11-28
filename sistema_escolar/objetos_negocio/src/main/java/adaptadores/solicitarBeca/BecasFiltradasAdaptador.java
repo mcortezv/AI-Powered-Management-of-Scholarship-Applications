@@ -67,7 +67,7 @@ public class BecasFiltradasAdaptador {
             becasFiltradasDTO.setBecas(becas);
             return becasFiltradasDTO;
         } catch (Exception ex) {
-            throw new BecasFiltradasAdaptadorException("Error al convertir entidad BecasFiltradas a DTO");
+            throw new BecasFiltradasAdaptadorException("Error al convertir entidad BecasFiltradas a DTO Gobierno");
         }
     }
 
@@ -76,7 +76,7 @@ public class BecasFiltradasAdaptador {
             BecasFiltradasDTO becasFiltradasDTO = new BecasFiltradasDTO();
             List<BecaDTO> becas = new ArrayList<>();
             for (BecaDTOGobierno beca : becasFiltradas.getBecas()) {
-                becasFiltradasDTO.getBecas().add(BecaAdaptador.toDTO(beca));
+                becas.add(BecaAdaptador.toDTO(beca));
             }
             becasFiltradasDTO.setBecas(becas);
             return becasFiltradasDTO;
