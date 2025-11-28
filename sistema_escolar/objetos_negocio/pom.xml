@@ -24,12 +24,6 @@
         </dependency>
         <dependency>
             <groupId>mcortezv</groupId>
-            <artifactId>dto_infraestructura_gobierno</artifactId>
-            <version>${project.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>mcortezv</groupId>
             <artifactId>infraestructura_itson</artifactId>
             <version>${project.version}</version>
             <scope>compile</scope>
