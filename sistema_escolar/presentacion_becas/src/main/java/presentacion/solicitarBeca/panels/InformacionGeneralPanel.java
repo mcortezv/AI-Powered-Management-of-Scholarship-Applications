@@ -113,8 +113,6 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
                 JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
             }catch (NumberFormatException ex){
                 JOptionPane.showMessageDialog(mainFrame,"Solo se aceptan números","Error de validación", JOptionPane.ERROR_MESSAGE);
-            }catch (Exception ex){
-                JOptionPane.showMessageDialog(mainFrame,"Ninguna beca cumple con los requisitos","Error de requisitos", JOptionPane.ERROR_MESSAGE);
             }
         });
     }

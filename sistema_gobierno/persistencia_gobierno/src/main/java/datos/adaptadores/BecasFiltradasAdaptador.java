@@ -49,7 +49,8 @@ public class BecasFiltradasAdaptador {
             BecasDisponiblesDTOGobierno becasFiltradasDTO = new BecasDisponiblesDTOGobierno();
             List<BecaDTOGobierno> becas = new ArrayList<>();
             for (Beca beca : becasFiltradas.getBecas()) {
-                becasFiltradasDTO.getBecas().add(BecaAdaptador.toDTOGobierno(beca));
+                becas.add(BecaAdaptador.toDTOGobierno(beca));
+
             }
             becasFiltradasDTO.setBecas(becas);
             return becasFiltradasDTO;
