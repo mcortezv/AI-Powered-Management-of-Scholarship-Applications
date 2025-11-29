@@ -1,9 +1,9 @@
 package adaptadores.solicitarBeca;
 import adaptadores.solicitarBeca.excepciones.BecasFiltradasAdaptadorException;
 import adaptadores.solicitarBeca.excepciones.EstudianteAdaptadorException;
-import dto.EstudianteDTO;
-import dto.gobierno.EstudianteDTOGobierno;
-import dto.itson.EstudianteDTOItson;
+import solicitarBeca.EstudianteDTO;
+import gobierno.EstudianteDTOGobierno;
+import itson.EstudianteDTOItson;
 import org.bson.types.ObjectId;
 import solicitarBeca.dominio.Estudiante;
 import solicitarBeca.dominio.enums.Carrera;

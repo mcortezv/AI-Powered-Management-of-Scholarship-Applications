@@ -1,10 +1,10 @@
 package fachadas;
 
 import controles.ControlPago;
-import dto_gobierno.EstudianteDTO;
-import dto.pagarAdeudo.ClaseDTO;
-import dto.pagarAdeudo.PrestamoDTO;
-import dto.pagarAdeudo.SolicitudPagoDTO;
+import dtoGobierno.EstudianteDTO;
+import pagarAdeudo.ClaseDTO;
+import pagarAdeudo.PrestamoDTO;
+import pagarAdeudo.SolicitudPagoDTO;
 import interfaces.IFachadaPago;
 import solicitarBeca.dominio.enums.pagarAdeudo.MetodoPago;
 

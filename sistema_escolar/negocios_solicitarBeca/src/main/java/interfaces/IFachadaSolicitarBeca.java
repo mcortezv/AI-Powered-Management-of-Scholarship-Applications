@@ -3,8 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
 package interfaces;
-import dto.*;
-import objetosNegocio.solicitarBeca.excepciones.SolicitudInvalidaException;
+import bo.solicitarBeca.excepciones.SolicitudInvalidaException;
+import solicitarBeca.*;
+
 import java.util.List;
 
 /**

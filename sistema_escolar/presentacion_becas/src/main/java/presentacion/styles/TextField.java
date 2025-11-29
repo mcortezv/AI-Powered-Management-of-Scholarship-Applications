@@ -7,8 +7,8 @@ public class TextField extends JTextField {
     public TextField(int columns) {
         super(columns);
         setFont(Style.INPUT_FONT);
-        setBackground(Color.WHITE);
-        setForeground(Style.TEXT_COLOR);
+        setBackground(Style.INPUT_COLOR);
+        setForeground(Style.INPUT_TEXT_COLOR);
         setCaretColor(Color.BLACK);
         setMaximumSize(new Dimension(600, 60));
         setOpaque(false);

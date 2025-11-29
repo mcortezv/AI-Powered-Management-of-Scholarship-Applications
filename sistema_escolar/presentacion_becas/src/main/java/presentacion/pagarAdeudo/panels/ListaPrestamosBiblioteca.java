@@ -1,10 +1,8 @@
 package presentacion.pagarAdeudo.panels;
 
-import dto.pagarAdeudo.PrestamoDTO;
-import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
+import pagarAdeudo.PrestamoDTO;
 import presentacion.pagarAdeudo.PagarAdeudo;
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
-import presentacion.pagarAdeudo.coordinadorNegocioPagarAdeudo.CoordinadorNegocioPagarAdeudo;
 
 import java.util.List;
 

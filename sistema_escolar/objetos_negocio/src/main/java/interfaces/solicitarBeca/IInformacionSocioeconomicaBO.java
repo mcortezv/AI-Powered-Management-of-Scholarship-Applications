@@ -1,5 +1,5 @@
 package interfaces.solicitarBeca;
-import objetosNegocio.solicitarBeca.excepciones.InformacionSocioeconomicaInvalidaException;
+import bo.solicitarBeca.excepciones.InformacionSocioeconomicaInvalidaException;
 import solicitarBeca.dominio.InformacionSocioeconomica;
 import solicitarBeca.dominio.enums.TipoVivienda;
 import java.math.BigDecimal;

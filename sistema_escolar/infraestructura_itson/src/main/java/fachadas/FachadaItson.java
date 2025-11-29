@@ -1,11 +1,11 @@
 package fachadas;
-import dto.itson.EstudianteDTOItson;
-import dto.itson.HistorialAcademicoDTOItson;
+import itson.EstudianteDTOItson;
+import itson.HistorialAcademicoDTOItson;
 import controles.ControlItson;
-import dto.banco.ClaseDTOI;
-import dto.banco.PrestamoDTOI;
-import dto.banco.SolicitudPagoDTOI;
-import dto.itson.LoginDTOItson;
+import banco.ClaseDTOI;
+import banco.PrestamoDTOI;
+import banco.SolicitudPagoDTOI;
+import itson.LoginDTOItson;
 import interfaces.IFachadaITSON;
 import java.util.List;
 

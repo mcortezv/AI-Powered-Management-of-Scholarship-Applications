@@ -1,10 +1,10 @@
 package interfaces;
-import dto.itson.EstudianteDTOItson;
-import dto.itson.HistorialAcademicoDTOItson;
-import dto.banco.ClaseDTOI;
-import dto.banco.PrestamoDTOI;
-import dto.banco.SolicitudPagoDTOI;
-import dto.itson.LoginDTOItson;
+import itson.EstudianteDTOItson;
+import itson.HistorialAcademicoDTOItson;
+import banco.ClaseDTOI;
+import banco.PrestamoDTOI;
+import banco.SolicitudPagoDTOI;
+import itson.LoginDTOItson;
 
 import java.util.List;
 

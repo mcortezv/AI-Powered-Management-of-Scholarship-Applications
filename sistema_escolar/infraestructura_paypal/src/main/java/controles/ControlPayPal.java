@@ -1,8 +1,8 @@
 package controles;
 
 
-import dto_gobierno.SolicitudDTO;
-import dto.pagarAdeudo.SolicitudPagoDTO;
+import dtoGobierno.SolicitudDTO;
+import pagarAdeudo.SolicitudPagoDTO;
 
 /**
  *  CASO DE USO PAGAR ADEUDO

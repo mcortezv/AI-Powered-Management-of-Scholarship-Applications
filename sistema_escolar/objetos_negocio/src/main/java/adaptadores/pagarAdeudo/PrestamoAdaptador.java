@@ -1,7 +1,7 @@
 package adaptadores.pagarAdeudo;
 
-import dto.pagarAdeudo.PrestamoDTO;
-import dto.banco.PrestamoDTOI;
+import pagarAdeudo.PrestamoDTO;
+import banco.PrestamoDTOI;
 
 public class PrestamoAdaptador {
 

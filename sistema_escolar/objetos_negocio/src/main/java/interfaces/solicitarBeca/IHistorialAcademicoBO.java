@@ -1,6 +1,6 @@
 package interfaces.solicitarBeca;
-import dto.itson.HistorialAcademicoDTOItson;
-import objetosNegocio.solicitarBeca.excepciones.HistorialInvalidoException;
+import itson.HistorialAcademicoDTOItson;
+import bo.solicitarBeca.excepciones.HistorialInvalidoException;
 
 /**
  *

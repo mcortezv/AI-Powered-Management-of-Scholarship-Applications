@@ -2,7 +2,7 @@ package presentacion.styles;
 
 import presentacion.pagarAdeudo.PagarAdeudo;
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
-import presentacion.solicitarBeca.panels.enums.PanelCategory;
+import presentacion.styles.enums.PanelCategory;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;

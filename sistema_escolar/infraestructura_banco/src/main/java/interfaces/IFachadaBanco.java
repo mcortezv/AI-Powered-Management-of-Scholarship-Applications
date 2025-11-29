@@ -1,5 +1,5 @@
 package interfaces;
-import dto.pagarAdeudo.SolicitudPagoDTO;
+import pagarAdeudo.SolicitudPagoDTO;
 
 /**
  *  CASO DE USO PAGAR ADEUDO

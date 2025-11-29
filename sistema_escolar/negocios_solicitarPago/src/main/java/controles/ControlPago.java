@@ -1,16 +1,17 @@
 package controles;
 import java.util.List;
-
 import adaptadores.pagarAdeudo.ClaseAdaptador;
 import adaptadores.pagarAdeudo.PrestamoAdaptador;
 import adaptadores.pagarAdeudo.SolicitudPagoAdaptador;
-import dto.banco.ClaseDTOI;
-import dto.banco.PrestamoDTOI;
-import dto.banco.SolicitudPagoDTOI;
-import dto_gobierno.EstudianteDTO;
-import dto.pagarAdeudo.*;
+import banco.ClaseDTOI;
+import banco.PrestamoDTOI;
+import banco.SolicitudPagoDTOI;
+import dtoGobierno.EstudianteDTO;
 import interfaces.*;
 import interfaces.pagarAdeudo.IAdeudoBO;
+import pagarAdeudo.ClaseDTO;
+import pagarAdeudo.PrestamoDTO;
+import pagarAdeudo.SolicitudPagoDTO;
 
 public class ControlPago {
    private final IAdeudoBO iAdeudoBO;

@@ -11,7 +11,7 @@ public class ComboBox<T> extends JComboBox<T> {
         setMaximumSize(new Dimension(600, 60));
         setRenderer(new MyComboBoxRenderer<>());
         setUI(new ModernComboBoxUI());
-        setBackground(Color.WHITE);
+        setBackground(Style.INPUT_COLOR);
         setForeground(Color.DARK_GRAY);
         setOpaque(false);
         setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));

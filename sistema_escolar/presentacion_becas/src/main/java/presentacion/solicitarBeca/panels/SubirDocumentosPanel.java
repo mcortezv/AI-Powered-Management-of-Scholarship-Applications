@@ -1,5 +1,6 @@
 package presentacion.solicitarBeca.panels;
-import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
+import presentacion.CoordinadorAplicacion;
+import presentacion.solicitarBeca.PanelSolicitarBeca;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
@@ -88,7 +89,7 @@ public class SubirDocumentosPanel extends PanelSolicitarBeca {
         deleteButton.addActionListener(e -> {
             documentosCargados.remove(docName);
             uploadButton.setText(docName);
-            uploadButton.setBackground(Style.BUTTON_COLOR);
+            uploadButton.setBackground(Style.PANEL_COLOR);
             uploadButton.setEnabled(true);
             deleteButton.setVisible(false);
         });

@@ -1,5 +1,5 @@
 package interfaces;
-import dto.itson.LoginDTOItson;
+import itson.LoginDTOItson;
 
 public interface IFachadaInicioSesion {
 

@@ -1,7 +1,6 @@
 package interfaces.solicitarBeca;
-import dto.gobierno.SolicitudDTOGobierno;
-import dto_gobierno.SolicitudDTO;
-import objetosNegocio.solicitarBeca.excepciones.SolicitudInvalidaException;
+import gobierno.SolicitudDTOGobierno;
+import bo.solicitarBeca.excepciones.SolicitudInvalidaException;
 import solicitarBeca.dominio.*;
 import solicitarBeca.repository.documents.SolicitudDocument;
 

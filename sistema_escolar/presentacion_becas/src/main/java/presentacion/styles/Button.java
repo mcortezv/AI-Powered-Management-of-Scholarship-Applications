@@ -20,8 +20,8 @@ public class Button extends JButton {
     public Button(String text) {
         super(text);
         setFont(Style.BUTTON_FONT);
-        setForeground(Color.WHITE);
-        setBackground(Style.BUTTON_COLOR);
+        setForeground(Style.BUTTON_TEXT_COLOR);
+        setBackground(Style.INPUT_COLOR);
         setFocusPainted(false);
         setContentAreaFilled(false);
         setBorderPainted(false);

@@ -1,5 +1,5 @@
 package interfaces.solicitarBeca;
-import objetosNegocio.solicitarBeca.excepciones.TutorInvalidoException;
+import bo.solicitarBeca.excepciones.TutorInvalidoException;
 import solicitarBeca.dominio.Tutor;
 import solicitarBeca.dominio.enums.Parentesco;
 

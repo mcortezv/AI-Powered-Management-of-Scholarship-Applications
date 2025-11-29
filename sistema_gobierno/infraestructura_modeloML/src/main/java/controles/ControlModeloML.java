@@ -1,6 +1,6 @@
 package controles;
-import dto.gobierno.ResolucionDTOGobierno;
-import dto.gobierno.SolicitudDTOGobierno;
+import gobierno.ResolucionDTOGobierno;
+import gobierno.SolicitudDTOGobierno;
 
 /**
  *

@@ -1,9 +1,10 @@
 package presentacion.solicitarBeca.panels;
-import dto_gobierno.BecaDTO;
-import dto_gobierno.EstudianteDTO;
-import dto_gobierno.TutorDTO;
-import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
-import dto_gobierno.SolicitudDTO;
+import dtoGobierno.BecaDTO;
+import dtoGobierno.EstudianteDTO;
+import dtoGobierno.TutorDTO;
+import presentacion.CoordinadorAplicacion;
+import dtoGobierno.SolicitudDTO;
+import presentacion.solicitarBeca.PanelSolicitarBeca;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.Button;
 import presentacion.styles.Label;

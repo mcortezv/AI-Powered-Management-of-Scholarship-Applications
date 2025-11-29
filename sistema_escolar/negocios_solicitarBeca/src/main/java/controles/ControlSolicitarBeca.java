@@ -1,11 +1,11 @@
 package controles;
 import adaptadores.solicitarBeca.*;
-import dto.*;
-import dto.itson.EstudianteDTOItson;
+import itson.EstudianteDTOItson;
 import excepciones.DocumentoInvalidoException;
 import excepciones.SolicitarBecaException;
 import interfaces.solicitarBeca.*;
 import org.bson.types.ObjectId;
+import solicitarBeca.*;
 import solicitarBeca.dominio.*;
 import solicitarBeca.dominio.enums.Carrera;
 import solicitarBeca.dominio.enums.Parentesco;
