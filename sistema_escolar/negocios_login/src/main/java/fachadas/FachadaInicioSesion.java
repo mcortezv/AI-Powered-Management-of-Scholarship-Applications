@@ -2,6 +2,7 @@ package fachadas;
 import controles.ControlInicioSesion;
 import itson.LoginDTOItson;
 import interfaces.IFachadaInicioSesion;
+import solicitarBeca.EstudianteDTO;
 
 public class FachadaInicioSesion implements IFachadaInicioSesion {
     public ControlInicioSesion controlInicioSesion;
@@ -18,5 +19,9 @@ public class FachadaInicioSesion implements IFachadaInicioSesion {
     @Override
     public void solicitarLogOut() {
         controlInicioSesion.cerrarSesion();
+    }
+
+    public EstudianteDTO getEstudianteLogueado() {
+        return controlInicioSesion.getEstudianteLogueado();
     }
 }

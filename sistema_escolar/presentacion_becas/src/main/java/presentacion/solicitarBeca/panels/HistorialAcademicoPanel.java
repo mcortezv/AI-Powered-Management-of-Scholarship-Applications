@@ -43,7 +43,7 @@ public class HistorialAcademicoPanel extends PanelSolicitarBeca {
         carrera.setAlignmentX(CENTER_ALIGNMENT);
         centralPanel.add(carrera);
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
-        String[] carreras = new String[]{"ISW", "LPS"};
+        String[] carreras = new String[]{"INGENIERIA", "LICENCIATURA", "MAESTRIA", "DOCTORADO"};
         comboCarrera = new ComboBox<>(carreras);
         comboCarrera.setAlignmentX(CENTER_ALIGNMENT);
         centralPanel.add(comboCarrera);
@@ -70,14 +70,13 @@ public class HistorialAcademicoPanel extends PanelSolicitarBeca {
         comboSemestre.setAlignmentX(CENTER_ALIGNMENT);
         centralPanel.add(comboSemestre);
         centralPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
+        centralPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
 
         botonSiguiente = new Button("Continuar");
         botonSiguiente.setAlignmentX(CENTER_ALIGNMENT);
         centralPanel.add(botonSiguiente);
 
-        btnBack.addActionListener(e -> {
-            coordinadorAplicacion.mostrarBecaSeleccionada();
-        });
+        btnBack.addActionListener(e -> mainFrame.showPanel("datosDelSolicitantePanel"));
 
         botonSiguiente.addActionListener(e -> {
             try {
@@ -85,13 +84,14 @@ public class HistorialAcademicoPanel extends PanelSolicitarBeca {
                 String cargaStr = (String) comboCargaAcademica.getSelectedItem();
                 double cargaAcademicaSeleccionada = Double.parseDouble(cargaStr.replace("%", ""));
                 int semestreSeleccionado = (int) comboSemestre.getSelectedItem();
-                HistorialAcademicoDTO histAcademicoDTO= new HistorialAcademicoDTO();
+                HistorialAcademicoDTO histAcademicoDTO = new HistorialAcademicoDTO();
+                histAcademicoDTO.setMatriculaEstudiante(coordinadorAplicacion.getEstudianteLogueado().getMatricula());
                 histAcademicoDTO.setCarrera(carreraSeleccionada);
                 histAcademicoDTO.setCargaAcademica(cargaAcademicaSeleccionada);
                 histAcademicoDTO.setSemestre(semestreSeleccionado);
                 coordinadorAplicacion.procesarHistorialAcademico(histAcademicoDTO);
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(mainFrame,"Error al recuperar el historial academico del estudiante","Error de recuperacion", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(mainFrame,ex.getMessage(),"Error de recuperacion", JOptionPane.ERROR_MESSAGE);
             }
         });
     }

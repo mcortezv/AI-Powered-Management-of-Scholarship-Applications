@@ -33,7 +33,7 @@ public class FachadaItson implements IFachadaITSON{
 
     @Override
     public HistorialAcademicoDTOItson verificarHistorialAcademcio(Long matricula) {
-        return null;
+        return controlItson.verificarHistorialAcademico(matricula);
     }
 
     /**

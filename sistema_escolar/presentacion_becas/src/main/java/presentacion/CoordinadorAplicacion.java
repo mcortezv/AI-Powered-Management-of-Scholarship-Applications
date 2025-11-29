@@ -9,6 +9,7 @@ import presentacion.pagarAdeudo.PagarAdeudo;
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.solicitarBeca.exceptions.*;
+import presentacion.solicitarBeca.panels.DatosDelSolicitantePanel;
 import presentacion.solicitarBeca.panels.DetallesBecaPanel;
 import presentacion.solicitarBeca.panels.ListadoBecasDisponiblesPanel;
 import presentacion.solicitarBeca.panels.ResumenFinalPanel;
@@ -162,5 +163,14 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     public void procesarInformacionSocioeconomica(InformacionSocioeconomicaDTO infoSocioeconomica) {
         coordinadorNegocio.procesarInformacionSocioeconomica(infoSocioeconomica);
         solicitarBeca.showPanel("subirDocumentosPanel");
+    }
+
+    public EstudianteDTO getEstudianteLogueado() {
+        return coordinadorNegocio.getEstudianteLogueado();
+    }
+
+    public void setDatosSolicitante(){
+        DatosDelSolicitantePanel pnl = (DatosDelSolicitantePanel) solicitarBeca.getPanel("datosDelSolicitantePanel");
+        pnl.setEstudiante(getEstudianteLogueado());
     }
 }

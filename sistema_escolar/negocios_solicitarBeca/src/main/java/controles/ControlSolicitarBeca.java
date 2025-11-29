@@ -92,7 +92,7 @@ public class ControlSolicitarBeca {
 
     public void asignarHistorial(HistorialAcademicoDTO historialAcademicoDTO) throws SolicitarBecaException {
         try {
-            HistorialAcademico historialAcademico = HistorialAcademicoAdaptador.toEntity(historialBO.crearHistorial(estudiante.getMatricula()));
+            HistorialAcademico historialAcademico = HistorialAcademicoAdaptador.toEntity(historialBO.crearHistorial(historialAcademicoDTO.getMatriculaEstudiante()));
             historialAcademico.setCarrera(Carrera.valueOf(historialAcademicoDTO.getCarrera()));
             historialAcademico.setCargaAcademica(historialAcademicoDTO.getCargaAcademica());
             historialAcademico.setSemestre(historialAcademicoDTO.getSemestre());

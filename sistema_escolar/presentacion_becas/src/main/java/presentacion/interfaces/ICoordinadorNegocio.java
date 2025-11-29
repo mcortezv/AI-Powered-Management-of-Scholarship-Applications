@@ -1,6 +1,7 @@
 package presentacion.interfaces;
 import itson.LoginDTOItson;
 import solicitarBeca.BecasFiltradasDTO;
+import solicitarBeca.EstudianteDTO;
 import solicitarBeca.RequisitosDTO;
 
 /**
@@ -16,4 +17,6 @@ public interface ICoordinadorNegocio {
     void solicitarCerrarSesion();
 
     boolean enviarSolicitudAGobierno();
+
+    EstudianteDTO getEstudianteLogueado();
 }

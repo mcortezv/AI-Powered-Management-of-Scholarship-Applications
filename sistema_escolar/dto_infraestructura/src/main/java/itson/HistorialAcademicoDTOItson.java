@@ -4,6 +4,7 @@ package itson;
  * @author Escalante, Sebastian.
  */
 public class HistorialAcademicoDTOItson {
+    private Long matriculaEstudiante;
     private String carrera;
     private double promedio;
     private double porcentajeBajas;
@@ -14,37 +15,14 @@ public class HistorialAcademicoDTOItson {
     public HistorialAcademicoDTOItson() {
     }
 
-    public HistorialAcademicoDTOItson(String carrera, double promedio, double porcentajeBajas, double cargaAcademica, int semestre, double indiceReprobacion) {
-        this.carrera = carrera;
-        this.promedio = promedio;
-        this.porcentajeBajas = porcentajeBajas;
+    public HistorialAcademicoDTOItson(double cargaAcademica, String carrera, double indiceReprobacion, Long matriculaEstudiante, double porcentajeBajas, double promedio, int semestre) {
         this.cargaAcademica = cargaAcademica;
-        this.semestre = semestre;
-        this.indiceReprobacion = indiceReprobacion;
-    }
-
-    public String getCarrera() {
-        return carrera;
-    }
-
-    public void setCarrera(String carrera) {
         this.carrera = carrera;
-    }
-
-    public double getPromedio() {
-        return promedio;
-    }
-
-    public void setPromedio(double promedio) {
-        this.promedio = promedio;
-    }
-
-    public double getPorcentajeBajas() {
-        return porcentajeBajas;
-    }
-
-    public void setPorcentajeBajas(double porcentajeBajas) {
+        this.indiceReprobacion = indiceReprobacion;
+        this.matriculaEstudiante = matriculaEstudiante;
         this.porcentajeBajas = porcentajeBajas;
+        this.promedio = promedio;
+        this.semestre = semestre;
     }
 
     public double getCargaAcademica() {
@@ -55,12 +33,12 @@ public class HistorialAcademicoDTOItson {
         this.cargaAcademica = cargaAcademica;
     }
 
-    public int getSemestre() {
-        return semestre;
+    public String getCarrera() {
+        return carrera;
     }
 
-    public void setSemestre(int semestre) {
-        this.semestre = semestre;
+    public void setCarrera(String carrera) {
+        this.carrera = carrera;
     }
 
     public double getIndiceReprobacion() {
@@ -69,5 +47,37 @@ public class HistorialAcademicoDTOItson {
 
     public void setIndiceReprobacion(double indiceReprobacion) {
         this.indiceReprobacion = indiceReprobacion;
+    }
+
+    public Long getMatriculaEstudiante() {
+        return matriculaEstudiante;
+    }
+
+    public void setMatriculaEstudiante(Long matriculaEstudiante) {
+        this.matriculaEstudiante = matriculaEstudiante;
+    }
+
+    public double getPorcentajeBajas() {
+        return porcentajeBajas;
+    }
+
+    public void setPorcentajeBajas(double porcentajeBajas) {
+        this.porcentajeBajas = porcentajeBajas;
+    }
+
+    public double getPromedio() {
+        return promedio;
+    }
+
+    public void setPromedio(double promedio) {
+        this.promedio = promedio;
+    }
+
+    public int getSemestre() {
+        return semestre;
+    }
+
+    public void setSemestre(int semestre) {
+        this.semestre = semestre;
     }
 }
