@@ -96,7 +96,6 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         ListadoBecasDisponiblesPanel pnl = (ListadoBecasDisponiblesPanel) solicitarBeca.getPanel("listadoBecasDisponiblesPanel");
         pnl.setBecas(becasFiltradasDTO.getBecas());
         solicitarBeca.showPanel("listadoBecasDisponiblesPanel");
-        solicitarBeca.getNorthPanel().setVisible(true);
     }
     
     public void mostrarBecaSeleccionada(){

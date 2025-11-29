@@ -4,7 +4,6 @@ import solicitarBeca.BecaDTO;
 import solicitarBeca.RequisitosDTO;
 import presentacion.CoordinadorAplicacion;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.util.List;
@@ -22,81 +21,59 @@ import presentacion.styles.ComboBox;
 import presentacion.styles.Label;
 import presentacion.styles.Style;
 
-/**
- *
- * @author katia
- */
+
 public class ListadoBecasDisponiblesPanel extends PanelSolicitarBeca {
     private Label titulo;
     private JScrollPane scroll;
     private JPanel lista;
     private ComboBox<BecaDTO> ddlBecas;
     private Button btnSeleccionar;
-    
-       
+
     public ListadoBecasDisponiblesPanel(SolicitarBeca frame, CoordinadorAplicacion coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
-        
     }
 
     public void startComponents() {
-        //centralPanel.add(Box.createVerticalStrut(Style.TOP_ESPACIO));
-        
+        centralPanel.add(Box.createVerticalStrut(Style.TOP_ESPACIO));
         titulo = new Label("Becas Disponibles");
         titulo.setFont(Style.TITLE_FONT);
         titulo.setAlignmentX(CENTER_ALIGNMENT);
         centralPanel.add(titulo);
-        //centralPanel.add(Box.createVerticalStrut(Style.TITULO_ESPACIO));
-        
+        centralPanel.add(Box.createVerticalStrut(Style.TITULO_ESPACIO));
+
         lista = new JPanel();
         lista.setOpaque(false);
         lista.setLayout(new BoxLayout(lista, BoxLayout.Y_AXIS));
 
         scroll = new JScrollPane(lista);
         scroll.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 20));
-        //scroll.setBorder(BorderFactory.createEmptyBorder());
         scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scroll.getViewport().setOpaque(false);
         scroll.setOpaque(false);
-        scroll.setMaximumSize(new Dimension(Integer.MAX_VALUE, 420));
+        scroll.setMaximumSize(new Dimension(Integer.MAX_VALUE, 500));
         scroll.setAlignmentX(CENTER_ALIGNMENT);
-        
-        centralPanel.add(scroll);
-        //centralPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
 
-        ddlBecas = new ComboBox<>(new BecaDTO[]{}); // se va  a llenar con setBecas
+        centralPanel.add(scroll);
+
+        ddlBecas = new ComboBox<>(new BecaDTO[]{});
         ddlBecas.setAlignmentX(CENTER_ALIGNMENT);
-        ddlBecas.setMaximumSize(new Dimension(600, 60));
+        ddlBecas.setMaximumSize(new Dimension(400, 55));
         centralPanel.add(ddlBecas);
-        //centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
+        centralPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
 
         btnSeleccionar = new Button("Seleccionar");
         btnSeleccionar.setAlignmentX(CENTER_ALIGNMENT);
         centralPanel.add(btnSeleccionar);
 
-        btnBack.addActionListener(e -> {
-            mainFrame.showPanel("informacionGeneralPanel");
-        });
+        btnBack.addActionListener(e -> mainFrame.showPanel("informacionGeneralPanel"));
 
         btnSeleccionar.addActionListener(e -> {
             BecaDTO seleccionada = (BecaDTO) ddlBecas.getSelectedItem();
             coordinadorAplicacion.setBecaSeleccionadaDTO(seleccionada);
             coordinadorAplicacion.mostrarBecaSeleccionada();
-            
-            
-            //if (seleccionada == null) {
-                //JOptionPane.showMessageDialog(this, "Selecciona una beca.", "Aviso", JOptionPane.WARNING_MESSAGE);
-                //return;
-           // }
-          
-           
-           
-           
-          //  mainFrame.showPanel("detalleBecaPanel");
         });
-
     }
-    
+
     public void setBecas(List<BecaDTO> becas) {
         for (BecaDTO beca : becas) {
             ddlBecas.add(beca);
@@ -108,7 +85,9 @@ public class ListadoBecasDisponiblesPanel extends PanelSolicitarBeca {
                 lista.add(Box.createVerticalStrut(16));
             }
         } else {
-            lista.add(new Label("Lo siento. No hay becas disponibles para ti."));
+            Label lbl = new Label("Lo sentimos. No hay becas disponibles para ti.");
+            lbl.setForeground(Style.TEXT_COLOR);
+            lista.add(lbl);
         }
         lista.revalidate();
         lista.repaint();
@@ -117,24 +96,24 @@ public class ListadoBecasDisponiblesPanel extends PanelSolicitarBeca {
                 becas == null ? new BecaDTO[]{} : becas.toArray(new BecaDTO[0])
         ));
     }
-    
+
     private JComponent crearItem(BecaDTO b) {
         JPanel card = new JPanel();
         card.setOpaque(false);
         card.setLayout(new BorderLayout());
         card.setMaximumSize(new Dimension(980, 100));
-        //card.setAlignmentX(CENTER_ALIGNMENT);
-        //card.setMaximumSize(new Dimension(Integer.MAX_VALUE, 100));
         card.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createMatteBorder(1,1,1,1,new Color(220,220,220)),
+                BorderFactory.createMatteBorder(1,1,1,1,new java.awt.Color(220,220,220)),
                 BorderFactory.createEmptyBorder(12, 12, 12, 12)
         ));
-        
+
         JLabel titul = new JLabel("<html><b>" + safe(b.getNombre()) + "</b>:</html>");
         titul.setFont(Style.LABEL_FONT);
-        
+        titul.setForeground(Style.TEXT_COLOR);
+
         JLabel desc = new JLabel("<html>" + descripcionBeca(b) + "</html>");
         desc.setFont(Style.LABEL_FONT.deriveFont(Font.PLAIN, 20f));
+        desc.setForeground(Style.TEXT_COLOR);
 
         JPanel text = new JPanel();
         text.setOpaque(false);
@@ -143,13 +122,12 @@ public class ListadoBecasDisponiblesPanel extends PanelSolicitarBeca {
         text.add(Box.createVerticalStrut(6));
         text.add(desc);
 
-        card.add(Box.createRigidArea(new Dimension(56, 56)), BorderLayout.WEST); // placeholder de icono
+        card.add(Box.createRigidArea(new Dimension(56, 56)), BorderLayout.WEST);
         card.add(text, BorderLayout.CENTER);
         return card;
     }
-        
-        private String safe(String s) { return s == null ? "" : s; }
 
+    private String safe(String s) { return s == null ? "" : s; }
 
     private String descripcionBeca(BecaDTO b) {
         RequisitosDTO r = b.getRequisitos();
