@@ -9,6 +9,7 @@ package solicitarBeca;
  * @author Cortez, Manuel;
  */
 public class HistorialAcademicoDTO {
+    private Long matriculaEstudiante;
     private String carrera;
     private double promedio;
     private double porcentajeBajas;
@@ -18,22 +19,15 @@ public class HistorialAcademicoDTO {
 
     public HistorialAcademicoDTO() {}
 
-    public HistorialAcademicoDTO(int semestre, double promedio, double porcentajeBajas, double indiceReprobacion, String carrera, double cargaAcademica) {
-        this.semestre = semestre;
-        this.promedio = promedio;
-        this.porcentajeBajas = porcentajeBajas;
+    public HistorialAcademicoDTO(double cargaAcademica, String carrera, double indiceReprobacion, Long matriculaEstudiante, double porcentajeBajas, double promedio, int semestre) {
+        this.cargaAcademica = cargaAcademica;
+        this.carrera = carrera;
         this.indiceReprobacion = indiceReprobacion;
-        this.carrera = carrera;
-        this.cargaAcademica = cargaAcademica;
-    }
-
-    public HistorialAcademicoDTO(String carrera, double cargaAcademica, int semestre) {
-        this.carrera = carrera;
-        this.cargaAcademica = cargaAcademica;
+        this.matriculaEstudiante = matriculaEstudiante;
+        this.porcentajeBajas = porcentajeBajas;
+        this.promedio = promedio;
         this.semestre = semestre;
     }
-    
-    
 
     public double getCargaAcademica() {
         return cargaAcademica;
@@ -57,6 +51,14 @@ public class HistorialAcademicoDTO {
 
     public void setIndiceReprobacion(double indiceReprobacion) {
         this.indiceReprobacion = indiceReprobacion;
+    }
+
+    public Long getMatriculaEstudiante() {
+        return matriculaEstudiante;
+    }
+
+    public void setMatriculaEstudiante(Long matriculaEstudiante) {
+        this.matriculaEstudiante = matriculaEstudiante;
     }
 
     public double getPorcentajeBajas() {

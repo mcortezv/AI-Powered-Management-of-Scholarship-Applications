@@ -34,16 +34,18 @@ public class DatosTutorPanel extends PanelSolicitarBeca {
 
     private JPanel crearDosColumnas(String labelText, TextField field) {
         JPanel panel = new JPanel();
+        panel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setBackground(Style.PANEL_COLOR);
         Label label = new Label(labelText);
-        label.setHorizontalAlignment(SwingConstants.RIGHT);
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
         field.setColumns(20);
         field.setMaximumSize(new Dimension(Integer.MAX_VALUE, field.getPreferredSize().height + 10));
+        field.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(label);
-        panel.add(Box.createVerticalStrut(5));
+        panel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
         panel.add(field);
-        panel.setMaximumSize(new Dimension(500, 70));
+        panel.setMaximumSize(new Dimension(800, 80));
         return panel;
     }
 
@@ -104,10 +106,9 @@ public class DatosTutorPanel extends PanelSolicitarBeca {
         fila3.setBackground(Style.PANEL_COLOR);
         fila3.add(crearDosColumnas("Direccion:", field_direccion));
         fila3.add(crearDosColumnas("Email:", field_email));
-        fila3.add(Box.createHorizontalStrut(200));
         fila3.setMaximumSize(new Dimension(800, 80));
         contenido.add(fila3);
-        contenido.add(Box.createVerticalStrut(40));
+        contenido.add(Box.createVerticalStrut(Style.TOP_ESPACIO));
 
         btnContinuar = new Button("Continuar");
         btnContinuar.setAlignmentX(Component.CENTER_ALIGNMENT);

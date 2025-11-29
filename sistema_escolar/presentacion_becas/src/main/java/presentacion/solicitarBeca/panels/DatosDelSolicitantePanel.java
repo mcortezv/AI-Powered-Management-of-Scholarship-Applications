@@ -2,8 +2,6 @@ package presentacion.solicitarBeca.panels;
 import presentacion.solicitarBeca.PanelSolicitarBeca;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
-import presentacion.styles.TextField;
-import solicitarBeca.EstudianteDTO;
 import presentacion.CoordinadorAplicacion;
 import presentacion.login.exceptions.IDInvalidoException;
 import presentacion.solicitarBeca.SolicitarBeca;
@@ -11,18 +9,19 @@ import presentacion.solicitarBeca.exceptions.ApellidoInvalidoException;
 import presentacion.solicitarBeca.exceptions.DireccionInvalidaException;
 import presentacion.solicitarBeca.exceptions.NombresInvalidosException;
 import presentacion.solicitarBeca.exceptions.TelefonoInvalidoException;
-import presentacion.solicitarBeca.validadores.Validadores;
 import presentacion.styles.*;
+import solicitarBeca.EstudianteDTO;
 import javax.swing.*;
 import java.awt.*;
 
 public class DatosDelSolicitantePanel extends PanelSolicitarBeca {
-    private TextField field_nombre;
-    private TextField field_apellido_materno;
-    private TextField field_apellido_paterno;
-    private TextField field_direccion;
-    private TextField field_telefono;
-    private TextField field_email;
+    private Label matricula;
+    private Label nombre;
+    private Label carrera;
+    private Label telefono;
+    private Label direccion;
+    private Label correo;
+    private EstudianteDTO estudiante;
     private final CoordinadorAplicacion coordinadorAplicacion;
 
     public DatosDelSolicitantePanel(SolicitarBeca mainFrame, CoordinadorAplicacion coordinadorAplicacion) {
@@ -30,18 +29,18 @@ public class DatosDelSolicitantePanel extends PanelSolicitarBeca {
         this.coordinadorAplicacion = coordinadorAplicacion;
     }
 
-    private JPanel crearDosColumnas(String labelText, TextField field) {
+    private JPanel crearDosColumnas(String labelText, Label field) {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setBackground(Style.PANEL_COLOR);
+        panel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
         Label label = new Label(labelText);
-        label.setAlignmentX(CENTER_ALIGNMENT);
-        field.setPreferredSize(new Dimension(Integer.MAX_VALUE, 60));
-        field.setMaximumSize(new Dimension(Integer.MAX_VALUE, 60));
-        field.setMinimumSize(new Dimension(100, 60));
-
+        label.setFont(Style.SUBTITLE_FONT);
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
         panel.add(label);
-        panel.add(Box.createVerticalStrut(5));
+        panel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
+        field.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(field);
         return panel;
     }
@@ -56,34 +55,34 @@ public class DatosDelSolicitantePanel extends PanelSolicitarBeca {
         centralPanel.add(titulo);
         centralPanel.add(Box.createVerticalStrut(Style.TITULO_ESPACIO));
 
-        field_nombre = new TextField(20);
-        field_apellido_materno = new TextField(20);
-        field_apellido_paterno = new TextField(20);
-        field_direccion = new TextField(20);
-        field_telefono = new TextField(20);
-        field_email = new TextField(20);
+        matricula = new Label("");
+        nombre = new Label("");
+        carrera = new Label("");
+        telefono = new Label("");
+        direccion = new Label("");
+        correo = new Label("");
 
         JPanel fila1 = new JPanel(new GridLayout(1, 2, 60, 0));
         fila1.setBackground(Style.PANEL_COLOR);
         fila1.setMaximumSize(new Dimension(800, 60));
-        fila1.add(crearDosColumnas("Nombres:", field_nombre));
-        fila1.add(crearDosColumnas("Apellido Paterno:", field_apellido_paterno));
+        fila1.add(crearDosColumnas("Matricula:", matricula));
+        fila1.add(crearDosColumnas("Nombre:", nombre));
         centralPanel.add(fila1);
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO * 2));
 
         JPanel fila2 = new JPanel(new GridLayout(1, 2, 60, 0));
         fila2.setBackground(Style.PANEL_COLOR);
         fila2.setMaximumSize(new Dimension(800, 60));
-        fila2.add(crearDosColumnas("Apellido Materno:", field_apellido_materno));
-        fila2.add(crearDosColumnas("Dirección:", field_direccion));
+        fila2.add(crearDosColumnas("Carrera:", carrera));
+        fila2.add(crearDosColumnas("Teléfono:", telefono));
         centralPanel.add(fila2);
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO * 2));
 
         JPanel fila3 = new JPanel(new GridLayout(1, 2, 60, 0));
         fila3.setBackground(Style.PANEL_COLOR);
         fila3.setMaximumSize(new Dimension(800, 60));
-        fila3.add(crearDosColumnas("Teléfono:", field_telefono));
-        fila3.add(crearDosColumnas("Email:", field_email));
+        fila3.add(crearDosColumnas("Dirección:", direccion));
+        fila3.add(crearDosColumnas("Correo:", correo));
         centralPanel.add(fila3);
 
         centralPanel.add(Box.createVerticalStrut(40));
@@ -97,23 +96,7 @@ public class DatosDelSolicitantePanel extends PanelSolicitarBeca {
 
         btn_next.addActionListener(e -> {
             try {
-                String nombre = field_nombre.getText();
-                String apellidoMaterno = field_apellido_materno.getText();
-                String apellidoPaterno = field_apellido_paterno.getText();
-                String direccion = field_direccion.getText();
-                String telefono = field_telefono.getText();
-                String email = field_email.getText();
-
-                Validadores.validarNombres(nombre);
-                Validadores.validarApellido(apellidoMaterno);
-                Validadores.validarApellido(apellidoPaterno);
-                Validadores.validarDireccion(direccion);
-                Validadores.validarTelefono(telefono);
-                Validadores.validarCorreo(email);
-
-                String nombreCompleto = nombre + " " + apellidoPaterno + " " + apellidoMaterno;
-                EstudianteDTO estudianteDTO = new EstudianteDTO(null, null, email, direccion, null, nombreCompleto, telefono, null);
-                coordinadorAplicacion.procesarDatosSolicitante(estudianteDTO);
+                coordinadorAplicacion.procesarDatosSolicitante(estudiante);
 
             } catch (NombresInvalidosException | ApellidoInvalidoException | DireccionInvalidaException |
                      TelefonoInvalidoException | IDInvalidoException ex) {
@@ -124,5 +107,15 @@ public class DatosDelSolicitantePanel extends PanelSolicitarBeca {
                 JOptionPane.showMessageDialog(mainFrame, "No se pudo recuperar al estudiante", "Error de datos", JOptionPane.ERROR_MESSAGE);
             }
         });
+    }
+
+    public void setEstudiante(EstudianteDTO estudiante) {
+        this.estudiante = estudiante;
+        matricula.setText(estudiante.getMatricula().toString());
+        nombre.setText(estudiante.getNombre());
+        carrera.setText(estudiante.getCarrera());
+        telefono.setText(estudiante.getTelefono());
+        direccion.setText(estudiante.getDireccion());
+        correo.setText(estudiante.getCorreo());
     }
 }
