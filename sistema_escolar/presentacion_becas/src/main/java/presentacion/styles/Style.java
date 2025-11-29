@@ -21,6 +21,7 @@ public class Style {
     public static final Color INPUT_TEXT_COLOR = DARK_MODE ? new Color(33, 33, 33) : new Color(33, 33, 33);
 
     public static final Font TITLE_FONT = new Font("Segoe UI", Font.BOLD, 70);
+    public static final Font SUBTITLE_FONT = new Font("Segoe UI", Font.BOLD, 25);
     public static final Font LABEL_FONT = new Font("Segoe UI", Font.PLAIN, 20);
     public static final Font INPUT_FONT = new Font("Segoe UI", Font.PLAIN, 18);
     public static final Font BUTTON_FONT = new Font("Segoe UI", Font.BOLD, 18);

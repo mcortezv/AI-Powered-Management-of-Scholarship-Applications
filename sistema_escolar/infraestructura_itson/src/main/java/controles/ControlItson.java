@@ -1,10 +1,13 @@
 package controles;
 import apiItson.ItsonAPI;
 import apiItson.interfaces.IItsonAPI;
+import datos.adaptadores.HistorialAcademicoAdaptador;
 import itson.EstudianteDTOItson;
+import itson.HistorialAcademicoDTOItson;
 import itson.LoginDTOItson;
 import datos.adaptadores.EstudianteAdaptador;
 import datos.dominio.Estudiante;
+
 
 public class ControlItson {
     IItsonAPI api;
@@ -25,4 +28,8 @@ public class ControlItson {
         return EstudianteAdaptador.toResponseDTO(estudiante);
     }
 
+    public HistorialAcademicoDTOItson verificarHistorialAcademico(Long matricula){
+        HistorialAcademicoDTOItson historialAcademicoDTOItson = HistorialAcademicoAdaptador.toDTOItson(api.obtenerHistorialAcademico(matricula));
+        return historialAcademicoDTOItson;
+    }
 }

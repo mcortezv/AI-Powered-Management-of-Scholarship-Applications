@@ -59,4 +59,9 @@ public class CoordinadorNegocio implements ICoordinadorNegocio {
     public boolean enviarSolicitudAGobierno(){
         return fachadaSolicitarBeca.guardarSolicitud();
     }
+
+    public EstudianteDTO getEstudianteLogueado() {
+        return fachadaInicioSesion.getEstudianteLogueado();
+
+    }
 }
