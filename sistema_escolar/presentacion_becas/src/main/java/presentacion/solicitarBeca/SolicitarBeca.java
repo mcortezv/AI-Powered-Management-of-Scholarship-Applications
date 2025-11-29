@@ -2,7 +2,6 @@ package presentacion.solicitarBeca;
 import solicitarBeca.BecaDTO;
 import presentacion.CoordinadorAplicacion;
 import presentacion.styles.ImgPanel;
-import presentacion.login.panels.NorthPanel;
 import presentacion.solicitarBeca.panels.*;
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +13,6 @@ import java.util.Map;
  * @author Cortez, Manuel;
  */
 public final class SolicitarBeca extends JFrame {
-    private NorthPanel northPanel;
     private JPanel centralPanel;
     private ImgPanel mainPanel;
     private Map<String, JPanel> panels;
@@ -27,15 +25,12 @@ public final class SolicitarBeca extends JFrame {
         setSize(1500,900);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
-        northPanel = new NorthPanel();
-        centralPanel = new JPanel();
+        centralPanel = new JPanel(new BorderLayout());
         this.coordinadorAplicacion = coordinadorAplicacion;
         this.becaDTO= becaDTO;
         panels = new HashMap<>();
         initializePanels();
-        add(northPanel, BorderLayout.NORTH);
         add(centralPanel, BorderLayout.CENTER);
-        northPanel.setVisible(false);
         showPanel("informacionGeneralPanel");
     }
 
@@ -88,10 +83,6 @@ public final class SolicitarBeca extends JFrame {
         centralPanel.add(panels.get(nuevoPanel), BorderLayout.CENTER);
         centralPanel.revalidate();
         centralPanel.repaint();
-    }
-
-    public NorthPanel getNorthPanel() {
-        return northPanel;
     }
     
     public JPanel getPanel(String key){
