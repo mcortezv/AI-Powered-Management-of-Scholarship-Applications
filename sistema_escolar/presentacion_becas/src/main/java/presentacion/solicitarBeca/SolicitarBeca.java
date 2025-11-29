@@ -1,7 +1,7 @@
 package presentacion.solicitarBeca;
 import solicitarBeca.BecaDTO;
 import presentacion.CoordinadorAplicacion;
-import presentacion.login.panels.ImgPanel;
+import presentacion.styles.ImgPanel;
 import presentacion.login.panels.NorthPanel;
 import presentacion.solicitarBeca.panels.*;
 import javax.swing.*;

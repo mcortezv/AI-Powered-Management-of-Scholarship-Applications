@@ -1,6 +1,6 @@
 package objetosNegocioGobierno.adaptadores;
-import datos.dominio.Estudiante;
-import datos.dominio.enums.Carrera;
+import datosGobierno.dominioGobierno.Estudiante;
+import datosGobierno.dominioGobierno.enums.Carrera;
 import dtoGobierno.EstudianteDTO;
 import gobierno.EstudianteDTOGobierno;
 import objetosNegocioGobierno.adaptadores.excepciones.EstudianteAdaptadorException;

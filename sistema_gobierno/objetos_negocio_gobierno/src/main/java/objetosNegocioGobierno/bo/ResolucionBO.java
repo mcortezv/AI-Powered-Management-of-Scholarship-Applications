@@ -1,8 +1,8 @@
 package objetosNegocioGobierno.bo;
-import datos.repository.dao.interfaces.IResolucionDAO;
-import datos.dominio.Resolucion;
-import datos.dominio.Solicitud;
-import datos.dominio.enums.Decision;
+import datosGobierno.repositoryGobierno.daoGobierno.interfacesGobierno.IResolucionDAO;
+import datosGobierno.dominioGobierno.Resolucion;
+import datosGobierno.dominioGobierno.Solicitud;
+import datosGobierno.dominioGobierno.enums.Decision;
 import gobierno.ResolucionDTOGobierno;
 import gobierno.SolicitudDTOGobierno;
 import interfaces.IFachadaModeloML;

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package presentacion.solicitarBeca.panels;
+import presentacion.solicitarBeca.PanelSolicitarBeca;
 import solicitarBeca.BecaDTO;
 import presentacion.CoordinadorAplicacion;
 import java.awt.Component;

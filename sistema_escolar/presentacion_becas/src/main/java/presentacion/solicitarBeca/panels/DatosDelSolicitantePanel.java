@@ -1,4 +1,5 @@
 package presentacion.solicitarBeca.panels;
+import presentacion.solicitarBeca.PanelSolicitarBeca;
 import solicitarBeca.EstudianteDTO;
 import presentacion.CoordinadorAplicacion;
 import presentacion.login.exceptions.IDInvalidoException;

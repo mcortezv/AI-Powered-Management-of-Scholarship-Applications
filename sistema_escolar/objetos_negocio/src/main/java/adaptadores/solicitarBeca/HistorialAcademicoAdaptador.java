@@ -18,7 +18,7 @@ public class HistorialAcademicoAdaptador {
             HistorialAcademico historialAcademico = new HistorialAcademico();
             historialAcademico.setCarrera( Carrera.valueOf(dto.getCarrera()));
             historialAcademico.setPromedio( dto.getPromedio());
-            historialAcademico.setProcentajeBajas( dto.getProcentajeBajas());
+            historialAcademico.setPorcentajeBajas( dto.getPorcentajeBajas());
             historialAcademico.setCargaAcademica( dto.getCargaAcademica());
             historialAcademico.setSemestre( dto.getSemestre());
             historialAcademico.setIndiceReprobacion( dto.getIndiceReprobacion());
@@ -33,7 +33,7 @@ public class HistorialAcademicoAdaptador {
             HistorialAcademico historialAcademico = new HistorialAcademico();
             historialAcademico.setCarrera(Carrera.valueOf(dto.getCarrera()));
             historialAcademico.setPromedio( dto.getPromedio());
-            historialAcademico.setProcentajeBajas( dto.getProcentajeBajas());
+            historialAcademico.setPorcentajeBajas( dto.getPorcentajeBajas());
             historialAcademico.setCargaAcademica( dto.getCargaAcademica());
             historialAcademico.setSemestre( dto.getSemestre());
             historialAcademico.setIndiceReprobacion( dto.getIndiceReprobacion());
@@ -48,7 +48,7 @@ public class HistorialAcademicoAdaptador {
             HistorialAcademicoDTO dto = new HistorialAcademicoDTO();
             dto.setCarrera( historialAcademico.getCarrera().toString());
             dto.setPromedio( historialAcademico.getPromedio());
-            dto.setProcentajeBajas( historialAcademico.getProcentajeBajas());
+            dto.setPorcentajeBajas( historialAcademico.getPorcentajeBajas());
             dto.setCargaAcademica( historialAcademico.getCargaAcademica());
             dto.setSemestre( historialAcademico.getSemestre());
             dto.setIndiceReprobacion( historialAcademico.getIndiceReprobacion());
@@ -63,7 +63,7 @@ public class HistorialAcademicoAdaptador {
             HistorialAcademicoDTOGobierno dto = new HistorialAcademicoDTOGobierno();
             dto.setCarrera( historialAcademico.getCarrera().toString());
             dto.setPromedio( historialAcademico.getPromedio());
-            dto.setProcentajeBajas( historialAcademico.getProcentajeBajas());
+            dto.setPorcentajeBajas( historialAcademico.getPorcentajeBajas());
             dto.setCargaAcademica( historialAcademico.getCargaAcademica());
             dto.setSemestre( historialAcademico.getSemestre());
             dto.setIndiceReprobacion( historialAcademico.getIndiceReprobacion());

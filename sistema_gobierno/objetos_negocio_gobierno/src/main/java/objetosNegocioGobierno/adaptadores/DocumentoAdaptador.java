@@ -1,6 +1,6 @@
 package objetosNegocioGobierno.adaptadores;
-import datos.dominio.Documento;
-import datos.dominio.enums.TipoDocumento;
+import datosGobierno.dominioGobierno.Documento;
+import datosGobierno.dominioGobierno.enums.TipoDocumento;
 import gobierno.DocumentoDTOGobierno;
 import dtoGobierno.DocumentoDTO;
 import objetosNegocioGobierno.adaptadores.excepciones.DocumentoAdaptadorException;

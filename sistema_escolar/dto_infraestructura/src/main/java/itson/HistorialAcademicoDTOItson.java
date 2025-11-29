@@ -6,7 +6,7 @@ package itson;
 public class HistorialAcademicoDTOItson {
     private String carrera;
     private double promedio;
-    private double procentajeBajas;
+    private double porcentajeBajas;
     private double cargaAcademica;
     private int semestre;
     private double indiceReprobacion;
@@ -14,10 +14,10 @@ public class HistorialAcademicoDTOItson {
     public HistorialAcademicoDTOItson() {
     }
 
-    public HistorialAcademicoDTOItson(String carrera, double promedio, double procentajeBajas, double cargaAcademica, int semestre, double indiceReprobacion) {
+    public HistorialAcademicoDTOItson(String carrera, double promedio, double porcentajeBajas, double cargaAcademica, int semestre, double indiceReprobacion) {
         this.carrera = carrera;
         this.promedio = promedio;
-        this.procentajeBajas = procentajeBajas;
+        this.porcentajeBajas = porcentajeBajas;
         this.cargaAcademica = cargaAcademica;
         this.semestre = semestre;
         this.indiceReprobacion = indiceReprobacion;
@@ -39,12 +39,12 @@ public class HistorialAcademicoDTOItson {
         this.promedio = promedio;
     }
 
-    public double getProcentajeBajas() {
-        return procentajeBajas;
+    public double getPorcentajeBajas() {
+        return porcentajeBajas;
     }
 
-    public void setProcentajeBajas(double procentajeBajas) {
-        this.procentajeBajas = procentajeBajas;
+    public void setPorcentajeBajas(double porcentajeBajas) {
+        this.porcentajeBajas = porcentajeBajas;
     }
 
     public double getCargaAcademica() {

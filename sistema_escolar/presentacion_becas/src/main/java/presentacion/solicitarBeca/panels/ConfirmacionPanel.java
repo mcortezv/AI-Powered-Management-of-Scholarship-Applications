@@ -1,6 +1,7 @@
 package presentacion.solicitarBeca.panels;
 import presentacion.CoordinadorAplicacion;
-import presentacion.login.panels.ImgPanel;
+import presentacion.solicitarBeca.PanelSolicitarBeca;
+import presentacion.styles.ImgPanel;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.*;
 import presentacion.styles.Button;

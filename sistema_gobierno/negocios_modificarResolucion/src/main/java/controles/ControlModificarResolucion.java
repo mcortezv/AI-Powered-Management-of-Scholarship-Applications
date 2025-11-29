@@ -1,7 +1,7 @@
 package controles;
-import datos.dominio.Resolucion;
-import datos.dominio.Solicitud;
-import datos.dominio.enums.Decision;
+import datosGobierno.dominioGobierno.Resolucion;
+import datosGobierno.dominioGobierno.Solicitud;
+import datosGobierno.dominioGobierno.enums.Decision;
 import gobierno.ResolucionDTOGobierno;
 import gobierno.SolicitudDTOGobierno;
 import dtoGobierno.ResolucionDTO;

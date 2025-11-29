@@ -20,7 +20,6 @@ public class CoordinadorNegocio implements ICoordinadorNegocio {
 
     @Override
     public boolean solicitarInicioSesion(LoginDTOItson solicitudLoginDTO) {
-        System.out.println("llego al coordinadorNegocio");
         return fachadaInicioSesion.solicitarLogin(solicitudLoginDTO);
     }
 

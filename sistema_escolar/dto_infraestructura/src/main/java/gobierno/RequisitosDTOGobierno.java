@@ -11,7 +11,7 @@ package gobierno;
 public class RequisitosDTOGobierno {
     private double promedioMinimo;
     private double ingresoFamiliarMaximo;
-    private double procentajeBajas;
+    private double porcentajeBajas;
     private double cargaAcademica;
     private double indiceReprobacion;
     private boolean trabajo;
@@ -20,10 +20,10 @@ public class RequisitosDTOGobierno {
     public RequisitosDTOGobierno() {
     }
 
-    public RequisitosDTOGobierno(double promedioMinimo, double ingresoFamiliarMaximo, double procentajeBajas, double cargaAcademica, double indiceReprobacion, boolean trabajo, boolean deudas) {
+    public RequisitosDTOGobierno(double promedioMinimo, double ingresoFamiliarMaximo, double porcentajeBajas, double cargaAcademica, double indiceReprobacion, boolean trabajo, boolean deudas) {
         this.promedioMinimo = promedioMinimo;
         this.ingresoFamiliarMaximo = ingresoFamiliarMaximo;
-        this.procentajeBajas = procentajeBajas;
+        this.porcentajeBajas = porcentajeBajas;
         this.cargaAcademica = cargaAcademica;
         this.indiceReprobacion = indiceReprobacion;
         this.trabajo = trabajo;
@@ -46,12 +46,12 @@ public class RequisitosDTOGobierno {
         this.ingresoFamiliarMaximo = ingresoFamiliarMaximo;
     }
 
-    public double getProcentajeBajas() {
-        return procentajeBajas;
+    public double getPorcentajeBajas() {
+        return porcentajeBajas;
     }
 
-    public void setProcentajeBajas(double procentajeBajas) {
-        this.procentajeBajas = procentajeBajas;
+    public void setPorcentajeBajas(double porcentajeBajas) {
+        this.porcentajeBajas = porcentajeBajas;
     }
 
     public double getCargaAcademica() {

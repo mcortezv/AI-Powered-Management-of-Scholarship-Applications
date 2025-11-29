@@ -20,8 +20,8 @@ public class PasswordField extends JPasswordField{
     public PasswordField(int columns) {
         super(columns);
         setFont(Style.INPUT_FONT);
-        setBackground(Color.WHITE);
-        setForeground(Style.TEXT_COLOR);
+        setBackground(Style.INPUT_COLOR);
+        setForeground(Style.INPUT_TEXT_COLOR);
         setCaretColor(Color.BLACK);
         setMaximumSize(new Dimension(600, 60));
         setOpaque(false);

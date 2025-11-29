@@ -1,4 +1,5 @@
 package presentacion.solicitarBeca.panels;
+import presentacion.solicitarBeca.PanelSolicitarBeca;
 import solicitarBeca.InformacionSocioeconomicaDTO;
 import presentacion.CoordinadorAplicacion;
 import presentacion.solicitarBeca.SolicitarBeca;
@@ -13,7 +14,7 @@ import java.math.BigDecimal;
 /**
  * @author Escalante, Sebastian.
  */
-public class InformacionSocioeconomicaPanel extends PanelSolicitarBeca{
+public class InformacionSocioeconomicaPanel extends PanelSolicitarBeca {
     private Label titulo;
     private Label lbl_ingreso;
     private TextField field_ingreso;

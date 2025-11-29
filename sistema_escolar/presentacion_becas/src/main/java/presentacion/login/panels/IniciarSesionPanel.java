@@ -4,14 +4,13 @@ import presentacion.CoordinadorAplicacion;
 import presentacion.login.MainFrame;
 import presentacion.login.exceptions.ContraseniaInvalidaException;
 import presentacion.login.exceptions.IDInvalidoException;
+import presentacion.styles.*;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
 import presentacion.styles.Panel;
-import presentacion.styles.Style;
 import presentacion.styles.TextField;
 import javax.swing.*;
 import java.awt.*;
-import presentacion.styles.PasswordField;
 
 /**
  *
@@ -34,7 +33,6 @@ public class IniciarSesionPanel extends Panel {
 
     @Override
     public void startComponents() {
-        btnLogOut.setVisible(false);
         centralPanel.add(Box.createVerticalStrut(Style.TOP_ESPACIO));
         btnBack.setVisible(false);
 
@@ -45,10 +43,10 @@ public class IniciarSesionPanel extends Panel {
         centralPanel.add(Box.createVerticalStrut(Style.TITULO_ESPACIO));
 
         img = new ImgPanel("/assets/usuario.png");
-        img.setMaximumSize(new Dimension(215, 300));
+        img.setMaximumSize(new Dimension(300, 300));
         img.setAlignmentY(CENTER_ALIGNMENT);
         centralPanel.add(img);
-        centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
+        centralPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
 
         lblUsuario = new Label("Usuario");
         txtUsuario = new TextField(1);
@@ -57,7 +55,7 @@ public class IniciarSesionPanel extends Panel {
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
         txtUsuario.setMaximumSize(new Dimension(400, 60));
         centralPanel.add(txtUsuario);
-        centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
+        centralPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
 
         lblPassword = new Label("Contraseña");
         txtPassword = new PasswordField(1);
@@ -66,7 +64,7 @@ public class IniciarSesionPanel extends Panel {
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
         txtPassword.setMaximumSize(new Dimension(400, 60));
         centralPanel.add(txtPassword);
-        centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
+        centralPanel.add(Box.createVerticalStrut(Style.TITULO_ESPACIO));
 
         btnIniciarSesion = new Button("Iniciar Sesión");
         btnIniciarSesion.setAlignmentX(CENTER_ALIGNMENT);
@@ -94,23 +92,24 @@ public class IniciarSesionPanel extends Panel {
             String contrasenia = new String(txtPassword.getPassword());
             try {
                 LoginDTOItson loginDTO = new LoginDTOItson(usuarioLong,contrasenia);
-                System.out.println("antes de llamar a coordinadorAplicacion");
                 boolean verificarLogin = coordinadorAplicacion.intentarIniciarSesion(loginDTO);
                 if(verificarLogin) {
                     txtUsuario.setText("");
                     txtPassword.setText("");
+                    Style.DARK_MODE = false;
+
                     mainFrame.showPanel("hubPanel");
                     mainFrame.getNorthPanel().setVisible(true);
-                    System.out.println("El login regresó true");
-                }else{
-                    System.out.println("El login esta regresando false");
+                    SwingUtilities.invokeLater(() -> {
+                        SwingUtilities.updateComponentTreeUI(mainFrame);
+                        mainFrame.repaint();
+                    });
                 }
-                } catch (IDInvalidoException | ContraseniaInvalidaException ex) {
+            } catch (IDInvalidoException | ContraseniaInvalidaException ex) {
                 JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(mainFrame, "Error intentando iniciar sesión.", "Inicio de sesión", JOptionPane.ERROR_MESSAGE
                 );
-                ex.printStackTrace();
             }
         });
     }

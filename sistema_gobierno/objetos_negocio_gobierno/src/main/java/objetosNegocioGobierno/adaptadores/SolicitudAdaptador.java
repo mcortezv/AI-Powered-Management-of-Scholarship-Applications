@@ -1,7 +1,7 @@
 package objetosNegocioGobierno.adaptadores;
-import datos.dominio.Documento;
-import datos.dominio.Solicitud;
-import datos.dominio.enums.EstadoSolicitud;
+import datosGobierno.dominioGobierno.Documento;
+import datosGobierno.dominioGobierno.Solicitud;
+import datosGobierno.dominioGobierno.enums.EstadoSolicitud;
 import dtoGobierno.DocumentoDTO;
 import gobierno.DocumentoDTOGobierno;
 import dtoGobierno.SolicitudDTO;

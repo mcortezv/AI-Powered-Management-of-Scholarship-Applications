@@ -1,6 +1,6 @@
 package objetosNegocioGobierno.adaptadores;
-import datos.dominio.Tutor;
-import datos.dominio.enums.Parentesco;
+import datosGobierno.dominioGobierno.Tutor;
+import datosGobierno.dominioGobierno.enums.Parentesco;
 import dtoGobierno.TutorDTO;
 import gobierno.TutorDTOGobierno;
 import objetosNegocioGobierno.adaptadores.excepciones.TutorAdaptadorException;

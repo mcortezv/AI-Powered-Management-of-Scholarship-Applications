@@ -1,4 +1,5 @@
 package presentacion.solicitarBeca.panels;
+import presentacion.solicitarBeca.PanelSolicitarBeca;
 import solicitarBeca.BecaDTO;
 import solicitarBeca.RequisitosDTO;
 import presentacion.CoordinadorAplicacion;
@@ -25,7 +26,7 @@ import presentacion.styles.Style;
  *
  * @author katia
  */
-public class ListadoBecasDisponiblesPanel extends PanelSolicitarBeca{
+public class ListadoBecasDisponiblesPanel extends PanelSolicitarBeca {
     private Label titulo;
     private JScrollPane scroll;
     private JPanel lista;

@@ -1,6 +1,6 @@
 package objetosNegocioGobierno.adaptadores;
-import datos.dominio.InformacionSocioeconomica;
-import datos.dominio.enums.TipoVivienda;
+import datosGobierno.dominioGobierno.InformacionSocioeconomica;
+import datosGobierno.dominioGobierno.enums.TipoVivienda;
 import dtoGobierno.InformacionSocioeconomicaDTO;
 import gobierno.InformacionSocioeconomicaDTOGobierno;
 import objetosNegocioGobierno.adaptadores.excepciones.InformacionSocioeconomicaAdaptadorException;

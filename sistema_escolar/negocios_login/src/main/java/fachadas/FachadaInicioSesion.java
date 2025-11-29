@@ -12,7 +12,6 @@ public class FachadaInicioSesion implements IFachadaInicioSesion {
 
     @Override
     public boolean solicitarLogin(LoginDTOItson solicitudLoginDTO) {
-        System.out.println("llego al FachadaInicioSesion");
         return controlInicioSesion.solicitarLogin(solicitudLoginDTO);
     }
 

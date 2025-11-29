@@ -1,4 +1,5 @@
 package presentacion.solicitarBeca.panels;
+import presentacion.solicitarBeca.PanelSolicitarBeca;
 import solicitarBeca.RequisitosDTO;
 import presentacion.CoordinadorAplicacion;
 import java.awt.Component;
@@ -31,13 +32,13 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
         centralPanel.add(Box.createVerticalStrut(Style.TOP_ESPACIO));
         southPanel.add(Box.createHorizontalBox());
 
-        Label lblTitulo = new Label("Informacion General");
+        Label lblTitulo = new Label("Información General");
         lblTitulo.setAlignmentX(Component.CENTER_ALIGNMENT);
         lblTitulo.setFont(Style.TITLE_FONT);
         centralPanel.add(lblTitulo);
         centralPanel.add(Box.createVerticalStrut(Style.TITULO_ESPACIO));
 
-        Label lblPromedio = new Label("Qué promedio llevas actualmente?");
+        Label lblPromedio = new Label("Promedio Actual");
         lblPromedio.setAlignmentX(Component.CENTER_ALIGNMENT);
         campoPromedio = new TextField(1);
         campoPromedio.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -47,7 +48,7 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
         centralPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
 
 
-        Label lblCarga = new Label("Estás cursando la carga completa?");
+        Label lblCarga = new Label("Carga Académica");
         lblCarga.setAlignmentX(Component.CENTER_ALIGNMENT);
         String[] opciones = new String[]{"25%", "50%", "75%", "100%"};
         campoCarga = new ComboBox<>(opciones);
@@ -56,7 +57,7 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
         centralPanel.add(campoCarga);
         centralPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
 
-        Label lblIngreso = new Label("Cuál es el ingreso mensual total de tu familia?");
+        Label lblIngreso = new Label("Ingreso Total Familiar Mensual");
         campoIngreso = new TextField(1);
         lblIngreso.setAlignmentX(Component.CENTER_ALIGNMENT);
         centralPanel.add(lblIngreso);
@@ -64,7 +65,7 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
         centralPanel.add(campoIngreso);
         centralPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
 
-        Label lblTrabajo = new Label("Trabajas?");
+        Label lblTrabajo = new Label("Me Encuentro Trabajando");
         lblTrabajo.setAlignmentX(Component.CENTER_ALIGNMENT);
         String[] opcionesTrabajo = new String[]{"Si", "No"};
         campoTrabajo = new ComboBox<>(opcionesTrabajo);
@@ -73,19 +74,18 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
         centralPanel.add(campoTrabajo);
         centralPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
 
-        Label lblDeudas = new Label("Estás cursando la carga completa?");
-        lblCarga.setAlignmentX(Component.CENTER_ALIGNMENT);
-        String[] opcionesDeudas = new String[]{"Si", "No"};
-        campoDeudas = new ComboBox<>(opcionesDeudas);
-        centralPanel.add(lblDeudas);
+        Label lblDeuda = new Label("Tengo Deudas");
+        lblDeuda.setAlignmentX(Component.CENTER_ALIGNMENT);
+        String[] opcionesDeuda = new String[]{"Si", "No"};
+        campoDeudas = new ComboBox<>(opcionesDeuda);
+        centralPanel.add(lblDeuda);
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
         centralPanel.add(campoDeudas);
-        centralPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
+        centralPanel.add(Box.createVerticalStrut(Style.TITULO_ESPACIO));
 
         btnContinuar = new Button("Aceptar");
         btnContinuar.setAlignmentX(Component.CENTER_ALIGNMENT);
-        southPanel.add(btnContinuar);
-      southPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        centralPanel.add(btnContinuar);
         
 
         btnBack.addActionListener(e -> {
@@ -99,8 +99,8 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
                 double ingreso  = Double.parseDouble(campoIngreso.getText().trim().replace(',', '.'));
                 String cargaStr = (String) campoCarga.getSelectedItem();
                 double carga = Double.parseDouble(cargaStr.replace("%", ""));
-                boolean trabajo   = "SI".equals(campoTrabajo.getSelectedItem());
-                boolean deudas   = "SI".equals(campoDeudas.getSelectedItem());
+                boolean trabajo   = "Si".equals(campoTrabajo.getSelectedItem());
+                boolean deudas   = "Si".equals(campoDeudas.getSelectedItem());
                 RequisitosDTO requisitosDTO  = new RequisitosDTO();
                 requisitosDTO.setPromedioMinimo(promedio);
                 requisitosDTO.setIngresoFamiliarMaximo(ingreso);

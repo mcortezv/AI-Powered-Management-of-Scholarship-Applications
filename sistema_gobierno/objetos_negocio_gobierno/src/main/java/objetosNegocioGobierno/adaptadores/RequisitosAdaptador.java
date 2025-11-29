@@ -1,5 +1,5 @@
 package objetosNegocioGobierno.adaptadores;
-import datos.dominio.Requisitos;
+import datosGobierno.dominioGobierno.Requisitos;
 import dtoGobierno.RequisitosDTO;
 import gobierno.RequisitosDTOGobierno;
 import objetosNegocioGobierno.adaptadores.excepciones.RequisitosAdaptadorException;
@@ -15,7 +15,7 @@ public class RequisitosAdaptador {
             Requisitos requisitos = new Requisitos();
             requisitos.setPromedioMinimo(dto.getPromedioMinimo());
             requisitos.setIngresoFamiliarMaximo(dto.getIngresoFamiliarMaximo());
-            requisitos.setProcentajeBajas(dto.getProcentajeBajas());
+            requisitos.setPorcentajeBajas(dto.getPorcentajeBajas());
             requisitos.setCargaAcademica(dto.getCargaAcademica());
             requisitos.setIndiceReprobacion(dto.getIndiceReprobacion());
             requisitos.setTrabajo(dto.isTrabajo());
@@ -31,7 +31,7 @@ public class RequisitosAdaptador {
             Requisitos requisitos = new Requisitos();
             requisitos.setPromedioMinimo(dto.getPromedioMinimo());
             requisitos.setIngresoFamiliarMaximo(dto.getIngresoFamiliarMaximo());
-            requisitos.setProcentajeBajas(dto.getProcentajeBajas());
+            requisitos.setPorcentajeBajas(dto.getPorcentajeBajas());
             requisitos.setCargaAcademica(dto.getCargaAcademica());
             requisitos.setIndiceReprobacion(dto.getIndiceReprobacion());
             requisitos.setTrabajo(dto.isTrabajo());
@@ -47,7 +47,7 @@ public class RequisitosAdaptador {
             RequisitosDTO dto = new RequisitosDTO();
             dto.setPromedioMinimo(requisitos.getPromedioMinimo());
             dto.setIngresoFamiliarMaximo(requisitos.getIngresoFamiliarMaximo());
-            dto.setProcentajeBajas(requisitos.getProcentajeBajas());
+            dto.setPorcentajeBajas(requisitos.getPorcentajeBajas());
             dto.setCargaAcademica(requisitos.getCargaAcademica());
             dto.setIndiceReprobacion(requisitos.getIndiceReprobacion());
             dto.setTrabajo(requisitos.isTrabajo());
@@ -63,7 +63,7 @@ public class RequisitosAdaptador {
             RequisitosDTOGobierno dto = new RequisitosDTOGobierno();
             dto.setPromedioMinimo(requisitos.getPromedioMinimo());
             dto.setIngresoFamiliarMaximo(requisitos.getIngresoFamiliarMaximo());
-            dto.setProcentajeBajas(requisitos.getProcentajeBajas());
+            dto.setPorcentajeBajas(requisitos.getPorcentajeBajas());
             dto.setCargaAcademica(requisitos.getCargaAcademica());
             dto.setIndiceReprobacion(requisitos.getIndiceReprobacion());
             dto.setTrabajo(requisitos.isTrabajo());

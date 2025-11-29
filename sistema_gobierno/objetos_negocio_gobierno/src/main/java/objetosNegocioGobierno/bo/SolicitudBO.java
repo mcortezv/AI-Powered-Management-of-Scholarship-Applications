@@ -1,7 +1,7 @@
 package objetosNegocioGobierno.bo;
-import datos.repository.dao.interfaces.ISolicitudDAO;
-import datos.dominio.Solicitud;
-import datos.dominio.enums.EstadoSolicitud;
+import datosGobierno.repositoryGobierno.daoGobierno.interfacesGobierno.ISolicitudDAO;
+import datosGobierno.dominioGobierno.Solicitud;
+import datosGobierno.dominioGobierno.enums.EstadoSolicitud;
 import objetosNegocioGobierno.bo.excepciones.SolicitudBOException;
 import objetosNegocioGobierno.bo.interfaces.ISolicitudBO;
 import java.util.ArrayList;

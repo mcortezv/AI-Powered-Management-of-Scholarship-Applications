@@ -4,6 +4,7 @@ import dtoGobierno.EstudianteDTO;
 import dtoGobierno.TutorDTO;
 import presentacion.CoordinadorAplicacion;
 import dtoGobierno.SolicitudDTO;
+import presentacion.solicitarBeca.PanelSolicitarBeca;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.Button;
 import presentacion.styles.Label;

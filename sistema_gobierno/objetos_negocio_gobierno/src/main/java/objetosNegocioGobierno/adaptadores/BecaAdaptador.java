@@ -1,6 +1,6 @@
 package objetosNegocioGobierno.adaptadores;
-import datos.dominio.Beca;
-import datos.dominio.enums.TipoBeca;
+import datosGobierno.dominioGobierno.Beca;
+import datosGobierno.dominioGobierno.enums.TipoBeca;
 import dtoGobierno.BecaDTO;
 import gobierno.BecaDTOGobierno;
 import objetosNegocioGobierno.adaptadores.excepciones.BecaAdaptadorException;

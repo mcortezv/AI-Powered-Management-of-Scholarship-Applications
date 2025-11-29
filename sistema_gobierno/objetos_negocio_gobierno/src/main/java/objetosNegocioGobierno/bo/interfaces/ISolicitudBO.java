@@ -1,6 +1,6 @@
 package objetosNegocioGobierno.bo.interfaces;
-import datos.dominio.Solicitud;
-import datos.dominio.enums.EstadoSolicitud;
+import datosGobierno.dominioGobierno.Solicitud;
+import datosGobierno.dominioGobierno.enums.EstadoSolicitud;
 import java.util.List;
 
 /**

@@ -11,17 +11,17 @@ package solicitarBeca;
 public class HistorialAcademicoDTO {
     private String carrera;
     private double promedio;
-    private double procentajeBajas;
+    private double porcentajeBajas;
     private double cargaAcademica;
     private int semestre;
     private double indiceReprobacion;
 
     public HistorialAcademicoDTO() {}
 
-    public HistorialAcademicoDTO(int semestre, double promedio, double procentajeBajas, double indiceReprobacion, String carrera, double cargaAcademica) {
+    public HistorialAcademicoDTO(int semestre, double promedio, double porcentajeBajas, double indiceReprobacion, String carrera, double cargaAcademica) {
         this.semestre = semestre;
         this.promedio = promedio;
-        this.procentajeBajas = procentajeBajas;
+        this.porcentajeBajas = porcentajeBajas;
         this.indiceReprobacion = indiceReprobacion;
         this.carrera = carrera;
         this.cargaAcademica = cargaAcademica;
@@ -59,12 +59,12 @@ public class HistorialAcademicoDTO {
         this.indiceReprobacion = indiceReprobacion;
     }
 
-    public double getProcentajeBajas() {
-        return procentajeBajas;
+    public double getPorcentajeBajas() {
+        return porcentajeBajas;
     }
 
-    public void setProcentajeBajas(double procentajeBajas) {
-        this.procentajeBajas = procentajeBajas;
+    public void setPorcentajeBajas(double porcentajeBajas) {
+        this.porcentajeBajas = porcentajeBajas;
     }
 
     public double getPromedio() {

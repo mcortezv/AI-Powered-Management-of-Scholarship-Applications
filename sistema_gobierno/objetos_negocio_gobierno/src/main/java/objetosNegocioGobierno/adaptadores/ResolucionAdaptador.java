@@ -1,6 +1,6 @@
 package objetosNegocioGobierno.adaptadores;
-import datos.dominio.Resolucion;
-import datos.dominio.enums.Decision;
+import datosGobierno.dominioGobierno.Resolucion;
+import datosGobierno.dominioGobierno.enums.Decision;
 import gobierno.ResolucionDTOGobierno;
 import dtoGobierno.ResolucionDTO;
 import objetosNegocioGobierno.adaptadores.excepciones.ResolucionAdaptadorException;

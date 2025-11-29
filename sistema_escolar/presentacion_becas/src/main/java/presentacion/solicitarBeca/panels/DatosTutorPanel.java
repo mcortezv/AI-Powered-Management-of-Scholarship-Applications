@@ -1,4 +1,5 @@
 package presentacion.solicitarBeca.panels;
+import presentacion.solicitarBeca.PanelSolicitarBeca;
 import solicitarBeca.TutorDTO;
 import presentacion.CoordinadorAplicacion;
 import presentacion.solicitarBeca.SolicitarBeca;

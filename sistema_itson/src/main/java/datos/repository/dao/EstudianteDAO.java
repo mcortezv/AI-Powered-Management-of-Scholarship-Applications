@@ -20,7 +20,6 @@ public class EstudianteDAO implements IEstudianteDAO {
     @Override
     public Optional<Estudiante> findByMatricula(Long matricula) {
         try {
-            System.out.println(matricula);
             Estudiante est = col.find(Filters.eq("matricula", matricula)).first();
             return Optional.ofNullable(est);
         } catch (Exception ex) {

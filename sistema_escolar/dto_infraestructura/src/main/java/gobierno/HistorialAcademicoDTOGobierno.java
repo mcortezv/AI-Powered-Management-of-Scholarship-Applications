@@ -11,18 +11,18 @@ package gobierno;
 public class HistorialAcademicoDTOGobierno {
     private String carrera;
     private double promedio;
-    private double procentajeBajas;
+    private double porcentajeBajas;
     private double cargaAcademica;
     private int semestre;
     private double indiceReprobacion;
 
     public HistorialAcademicoDTOGobierno() {}
 
-    public HistorialAcademicoDTOGobierno(double cargaAcademica, String carrera, double indiceReprobacion, double procentajeBajas, double promedio, int semestre) {
+    public HistorialAcademicoDTOGobierno(double cargaAcademica, String carrera, double indiceReprobacion, double porcentajeBajas, double promedio, int semestre) {
         this.cargaAcademica = cargaAcademica;
         this.carrera = carrera;
         this.indiceReprobacion = indiceReprobacion;
-        this.procentajeBajas = procentajeBajas;
+        this.porcentajeBajas = porcentajeBajas;
         this.promedio = promedio;
         this.semestre = semestre;
     }
@@ -51,12 +51,12 @@ public class HistorialAcademicoDTOGobierno {
         this.indiceReprobacion = indiceReprobacion;
     }
 
-    public double getProcentajeBajas() {
-        return procentajeBajas;
+    public double getPorcentajeBajas() {
+        return porcentajeBajas;
     }
 
-    public void setProcentajeBajas(double procentajeBajas) {
-        this.procentajeBajas = procentajeBajas;
+    public void setPorcentajeBajas(double porcentajeBajas) {
+        this.porcentajeBajas = porcentajeBajas;
     }
 
     public double getPromedio() {

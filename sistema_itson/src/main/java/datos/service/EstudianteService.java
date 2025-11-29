@@ -20,7 +20,6 @@ public class EstudianteService {
         if (estudiante == null || estudiante.getContrasenia() == null) {
             return false;
         }
-        System.out.println("antes de regresar boolean: " + estudiante.getContrasenia());
         return estudiante.getContrasenia().equals(dto.getContrasenia());
     }
     
