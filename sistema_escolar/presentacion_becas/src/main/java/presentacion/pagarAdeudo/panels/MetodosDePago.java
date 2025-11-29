@@ -1,9 +1,7 @@
 package presentacion.pagarAdeudo.panels;
 
-import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
 import presentacion.pagarAdeudo.PagarAdeudo;
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
-import presentacion.pagarAdeudo.coordinadorNegocioPagarAdeudo.CoordinadorNegocioPagarAdeudo;
 
 public class MetodosDePago extends PanelPagarAdeudo{
 

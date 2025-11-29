@@ -9,7 +9,7 @@ public class ButtonRenderer extends JButton implements TableCellRenderer {
         setOpaque(false);
         setText("≡");
         setFont(new Font("SansSerif", Font.PLAIN, 24));
-        setBackground(Color.white);
+        setBackground(Style.INPUT_COLOR);
         setForeground(Color.black);
         setFocusPainted(false);
         setBorderPainted(false);

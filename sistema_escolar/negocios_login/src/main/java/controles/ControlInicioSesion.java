@@ -1,5 +1,5 @@
 package controles;
-import dto.itson.LoginDTOItson;
+import itson.LoginDTOItson;
 import interfaces.solicitarBeca.IEstudianteBO;
 
 
@@ -11,7 +11,6 @@ public class ControlInicioSesion {
     }
 
     public boolean solicitarLogin(LoginDTOItson solicitudLoginDTO){
-        System.out.println("llego al ControlInicioSesion");
         return estudianteBO.iniciarSesion(solicitudLoginDTO);
     }
 

@@ -5,9 +5,9 @@
 package fachadas;
 import adaptadores.solicitarBeca.EstudianteAdaptador;
 import controles.ControlSolicitarBeca;
-import dto.*;
-import objetosNegocio.solicitarBeca.excepciones.SolicitudInvalidaException;
+import bo.solicitarBeca.excepciones.SolicitudInvalidaException;
 import interfaces.IFachadaSolicitarBeca;
+import solicitarBeca.*;
 import solicitarBeca.dominio.*;
 import java.util.List;
 

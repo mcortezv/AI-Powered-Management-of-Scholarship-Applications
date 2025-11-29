@@ -5,10 +5,10 @@
 package adaptadores.solicitarBeca;
 import adaptadores.solicitarBeca.excepciones.BecasFiltradasAdaptadorException;
 import adaptadores.solicitarBeca.excepciones.SolicitudAdaptadorException;
-import dto.DocumentoDTO;
-import dto.SolicitudDTO;
-import dto.gobierno.DocumentoDTOGobierno;
-import dto.gobierno.SolicitudDTOGobierno;
+import solicitarBeca.DocumentoDTO;
+import solicitarBeca.SolicitudDTO;
+import gobierno.DocumentoDTOGobierno;
+import gobierno.SolicitudDTOGobierno;
 import org.bson.types.ObjectId;
 import solicitarBeca.dominio.Documento;
 import solicitarBeca.dominio.Solicitud;

@@ -1,9 +1,9 @@
 package interfaces.solicitarBeca;
-import dto.gobierno.BecasDisponiblesDTOGobierno;
-import dto.gobierno.RequisitosDTOGobierno;
+import gobierno.BecasDisponiblesDTOGobierno;
+import gobierno.RequisitosDTOGobierno;
 import solicitarBeca.dominio.Beca;
 import solicitarBeca.dominio.BecasFiltradas;
-import objetosNegocio.solicitarBeca.excepciones.BecaInvalidaException;
+import bo.solicitarBeca.excepciones.BecaInvalidaException;
 
 /**
  *

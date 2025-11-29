@@ -1,6 +1,6 @@
 package fachadas;
 import controles.ControlBanco;
-import dto.pagarAdeudo.SolicitudPagoDTO;
+import pagarAdeudo.SolicitudPagoDTO;
 import interfaces.IFachadaBanco;
 
 

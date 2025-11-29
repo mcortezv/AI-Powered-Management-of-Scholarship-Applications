@@ -5,7 +5,7 @@ import org.bson.Document;
 import org.bson.types.ObjectId;
 import solicitarBeca.config.MongoClientProvider;
 import solicitarBeca.excepciones.SolicitudDAOException;
-import solicitarBeca.repository.ISolicitudDAO;
+import solicitarBeca.repository.dao.interfaces.ISolicitudDAO;
 import solicitarBeca.repository.documents.SolicitudDocument;
 import java.time.Instant;
 

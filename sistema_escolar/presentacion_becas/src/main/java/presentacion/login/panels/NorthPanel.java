@@ -26,7 +26,7 @@ public class NorthPanel extends JPanel {
         int width = getWidth();
         int height = getHeight();
 
-        g.setColor(Style.BACKGROUND_COLOR);
+        g.setColor(Style.PANEL_COLOR);
         g.fillRect(0, 0, width, height);
         Graphics2D g2 = (Graphics2D) g;
 

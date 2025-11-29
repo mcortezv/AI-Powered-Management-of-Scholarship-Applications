@@ -1,11 +1,10 @@
 package controles;
-import api_publica.ItsonAPI;
-import api_publica.interfaz.IItsonAPI;
-import dto.itson.EstudianteDTOItson;
-import dto.itson.LoginDTOItson;
-import dto_gobierno.EstudianteDTO;
-import itson.org.adaptadores.EstudianteAdaptador;
-import itson.org.domain.Estudiante;
+import apiItson.ItsonAPI;
+import apiItson.interfaces.IItsonAPI;
+import itson.EstudianteDTOItson;
+import itson.LoginDTOItson;
+import datos.adaptadores.EstudianteAdaptador;
+import datos.dominio.Estudiante;
 
 public class ControlItson {
     IItsonAPI api;

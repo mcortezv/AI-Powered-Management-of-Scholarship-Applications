@@ -1,7 +1,9 @@
 package presentacion.login;
-
-import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import presentacion.CoordinadorAplicacion;
 import presentacion.login.panels.HubPanel;
+import presentacion.styles.ImgPanel;
 import presentacion.login.panels.IniciarSesionPanel;
 import presentacion.login.panels.NorthPanel;
 import presentacion.styles.Button;
@@ -15,6 +17,7 @@ import java.util.Map;
  * @author Cortez, Manuel;
  */
 public final class MainFrame extends JFrame {
+    private static final Logger log = LoggerFactory.getLogger(MainFrame.class);
     private final NorthPanel northPanel;
     private final JPanel centralPanel;
     private Button btnSolicitarBeca;
@@ -22,57 +25,42 @@ public final class MainFrame extends JFrame {
     private Button btnPagoAdeudo;
     private Button btnExtracurriculares;
     private Button btnTutorias;
-    private Button btnCarteras;
+    private ImgPanel logo;
     private final Map<String, JPanel> panels;
     private CoordinadorAplicacion coordinadorAplicacion;
-
 
     public MainFrame(CoordinadorAplicacion coordinadorAplicacion) {
         setTitle("Sistema de Aplicaciones Escolares");
         setResizable(false);
-        setSize(1500,900);
+        setSize(1500, 900);
         setLocationRelativeTo(null);
-        setLayout(new BorderLayout());
-        northPanel = new NorthPanel();
-        centralPanel = new JPanel();
+        getContentPane().setLayout(new BorderLayout());
         this.coordinadorAplicacion = coordinadorAplicacion;
-
+        northPanel = new NorthPanel();
+        logo = new ImgPanel("/assets/logo.png");
+        logo.setPreferredSize(new Dimension(135, 50));
         btnSolicitarBeca = new Button("Solicitar Beca");
-        Button btnEvaluarSolicitudes = new Button("Evaluar Solicitudes");
         btnApelacion = new Button("Apelacion");
         btnPagoAdeudo = new Button("Pago Adeudo");
         btnExtracurriculares = new Button("Extracurriculares");
         btnTutorias = new Button("Tutorias");
-        btnCarteras = new Button("Carteras");
-
-
+        northPanel.add(logo);
+        northPanel.add(Box.createHorizontalStrut(40));
         northPanel.add(btnSolicitarBeca);
-        northPanel.add(btnEvaluarSolicitudes);
         northPanel.add(btnApelacion);
         northPanel.add(btnPagoAdeudo);
         northPanel.add(btnExtracurriculares);
         northPanel.add(btnTutorias);
-        northPanel.add(btnCarteras);
-
-        panels = new HashMap<String, JPanel>();
-
+        centralPanel = new JPanel(new BorderLayout());
+        panels = new HashMap<>();
         panels.put("iniciarSesionPanel", new IniciarSesionPanel(this, coordinadorAplicacion));
         panels.put("hubPanel", new HubPanel(this, coordinadorAplicacion));
-
-        add(northPanel, BorderLayout.NORTH);
-        add(centralPanel, BorderLayout.CENTER);
+        getContentPane().add(northPanel, BorderLayout.NORTH);
+        getContentPane().add(centralPanel, BorderLayout.CENTER);
         northPanel.setVisible(false);
         showPanel("iniciarSesionPanel");
-
-        btnSolicitarBeca.addActionListener(e -> {
-            coordinadorAplicacion.solicitarBeca();
-        });
-
-        btnPagoAdeudo.addActionListener(e ->{
-            coordinadorAplicacion.pagarAdeudo();
-        });
-
-
+        btnSolicitarBeca.addActionListener(e -> coordinadorAplicacion.solicitarBeca());
+        btnPagoAdeudo.addActionListener(e -> coordinadorAplicacion.pagarAdeudo());
     }
 
     public void showPanel(String nuevoPanel) {

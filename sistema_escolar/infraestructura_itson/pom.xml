@@ -34,7 +34,7 @@
         </dependency>
         <dependency>
             <groupId>mcortezv</groupId>
-            <artifactId>ITSON-API</artifactId>
+            <artifactId>sistema_itson</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

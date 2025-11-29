@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package presentacion.styles;
-import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
+import presentacion.CoordinadorAplicacion;
 import presentacion.login.MainFrame;
 import javax.swing.*;
 import java.awt.*;
@@ -17,14 +17,13 @@ public abstract class Panel extends JPanel {
     protected JPanel centralPanel;
     protected JPanel southPanel;
     protected Button btnBack;
-    protected Button btnLogOut;
+
     private CoordinadorAplicacion coordinadorAplicacion;
 
     public Panel(MainFrame frame, CoordinadorAplicacion coordinadorAplicacion) {
         mainFrame = frame;
         this.coordinadorAplicacion = coordinadorAplicacion;
         btnBack = new Button("Volver");
-        btnLogOut = new Button("Cerrar Sesión");
         setLayout(new BorderLayout());
         centralPanel = new JPanel();
         southPanel = new JPanel();
@@ -33,10 +32,10 @@ public abstract class Panel extends JPanel {
         southPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         southPanel.setPreferredSize(new Dimension(1500, 100));
         southPanel.setBorder(BorderFactory.createEmptyBorder(0, 30, 0, 0));
-        centralPanel.setBackground(Style.PANEL_COLOR);
         southPanel.setBackground(Style.PANEL_COLOR);
+        centralPanel.setBackground(Style.PANEL_COLOR);
+        southPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 20));
         startComponents();
-        southPanel.add(btnLogOut);
         add(centralPanel, BorderLayout.CENTER);
         add(southPanel, BorderLayout.SOUTH);
         southPanel.add(btnBack);

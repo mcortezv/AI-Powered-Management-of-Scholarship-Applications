@@ -1,31 +1,29 @@
-.venv/
+# Project Config
+target/
+build/
+.DS_Store
+Thumbs.db
 
+# IDEA
+.idea/
+*.iml
+*.iws
+
+# NetBeans
+/negocios_solicitarBeca/nbproject/
+/objetos_negocio/nbproject/
+nbproject/private/
+
+# Credenciales Mongo
+src/main/resources/mongo.properties
+*.properties
+
+# Historial
+*.log
+
+# Python
+.venv/
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-
-*.log
-
-target/
-build/
-
-.idea/
-*.iml
-*.iws
-nbproject/private/
-
-.DS_Store
-Thumbs.db
-/negocios_solicitarBeca/nbproject/
-/objetos_negocio/nbproject/
-
-sistema_escolar/persistencia_becas/src/main/resources/mongo.properties
-/sistema_escolar/persistencia_becas/src/main/resources/mongo.properties
-sistema_escolar/persistencia_becas/src/main/resources/
-/sistema_escolar/persistencia_becas/src/main/resources/
-*.properties
-
-#credenciales
-src/main/resources/mongo.properties
-

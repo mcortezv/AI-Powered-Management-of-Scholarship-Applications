@@ -1,8 +1,8 @@
 package adaptadores.solicitarBeca;
 import adaptadores.solicitarBeca.excepciones.BecasFiltradasAdaptadorException;
 import adaptadores.solicitarBeca.excepciones.DocumentoAdaptadorException;
-import dto.DocumentoDTO;
-import dto.gobierno.DocumentoDTOGobierno;
+import solicitarBeca.DocumentoDTO;
+import gobierno.DocumentoDTOGobierno;
 import org.bson.types.ObjectId;
 import solicitarBeca.dominio.Documento;
 import solicitarBeca.dominio.enums.TipoDocumento;

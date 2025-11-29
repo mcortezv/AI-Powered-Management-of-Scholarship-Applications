@@ -1,8 +1,7 @@
 package interfaces;
-import dto.gobierno.BecasDisponiblesDTOGobierno;
-import dto.gobierno.RequisitosDTOGobierno;
-import dto.gobierno.SolicitudDTOGobierno;
-import dto_gobierno.SolicitudDTO;
+import gobierno.BecasDisponiblesDTOGobierno;
+import gobierno.RequisitosDTOGobierno;
+import gobierno.SolicitudDTOGobierno;
 
 /**
  *

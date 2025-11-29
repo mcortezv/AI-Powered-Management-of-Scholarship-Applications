@@ -1,7 +1,7 @@
 package adaptadores.pagarAdeudo;
 
-import dto.pagarAdeudo.SolicitudPagoDTO;
-import dto.banco.SolicitudPagoDTOI;
+import pagarAdeudo.SolicitudPagoDTO;
+import banco.SolicitudPagoDTOI;
 
 public class SolicitudPagoAdaptador {
 

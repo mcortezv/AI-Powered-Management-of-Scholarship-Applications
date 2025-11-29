@@ -1,5 +1,5 @@
 package interfaces.solicitarBeca;
-import objetosNegocio.solicitarBeca.excepciones.DocumentoInvalidoException;
+import bo.solicitarBeca.excepciones.DocumentoInvalidoException;
 import solicitarBeca.dominio.Documento;
 import solicitarBeca.dominio.Estudiante;
 import solicitarBeca.dominio.enums.TipoDocumento;
