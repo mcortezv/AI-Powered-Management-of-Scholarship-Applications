@@ -7,12 +7,12 @@ public class DocumentoDTO {
     private Long identificador;
     private String tipo;
     private byte[] contenido;
-    private EstudianteDTO estudiante;
+    private Long estudiante;
 
     public DocumentoDTO() {
     }
 
-    public DocumentoDTO(byte[] contenido, EstudianteDTO estudiante, Long identificador, String tipo) {
+    public DocumentoDTO(byte[] contenido, Long estudiante, Long identificador, String tipo) {
         this.contenido = contenido;
         this.estudiante = estudiante;
         this.identificador = identificador;
@@ -27,11 +27,11 @@ public class DocumentoDTO {
         this.contenido = contenido;
     }
 
-    public EstudianteDTO getEstudiante() {
+    public Long getEstudiante() {
         return estudiante;
     }
 
-    public void setEstudiante(EstudianteDTO estudiante) {
+    public void setEstudiante(Long estudiante) {
         this.estudiante = estudiante;
     }
 

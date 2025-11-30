@@ -8,7 +8,9 @@ import interfaces.IFachadaGobierno;
 import interfaces.solicitarBeca.ISolicitudBO;
 import solicitarBeca.repository.documents.SolicitudDocument;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  *
@@ -26,7 +28,9 @@ public class SolicitudBO implements ISolicitudBO {
     @Override
     public Solicitud crearSolicitud(Beca beca) {
         Solicitud solicitud = new Solicitud();
+        solicitud.setId(ThreadLocalRandom.current().nextLong(1, Long.MAX_VALUE));
         solicitud.setBeca(beca);
+        solicitud.setFecha(LocalDate.now());
         solicitud.setEstado(EstadoSolicitud.ACTIVA);
         return solicitud;
     }

@@ -26,6 +26,7 @@ public class ConfirmacionPanel extends PanelSolicitarBeca {
     @Override
     public void startComponents() {
         centralPanel.add(Box.createVerticalStrut(Style.TOP_ESPACIO));
+        centralPanel.add(Box.createVerticalStrut(Style.TOP_ESPACIO));
 
         titulo = new Label("Solicitud Completada");
         titulo.setFont(Style.TITLE_FONT);
@@ -37,13 +38,13 @@ public class ConfirmacionPanel extends PanelSolicitarBeca {
         img.setMaximumSize(new Dimension(300, 300));
         img.setAlignmentY(CENTER_ALIGNMENT);
         centralPanel.add(img);
-        centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
+        centralPanel.add(Box.createVerticalStrut(Style.TITULO_ESPACIO));
 
-        subTitulo = new Label("Se ha registrado tu solicitud exitosamente.");
+        subTitulo = new Label("Se ha registrado tu solicitud exitosamente!.");
         subTitulo.setFont(Style.LABEL_FONT);
         subTitulo.setAlignmentX(CENTER_ALIGNMENT);
         centralPanel.add(subTitulo);
-        centralPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
+        centralPanel.add(Box.createVerticalStrut(Style.TITULO_ESPACIO));
 
         btnAceptar = new Button("Aceptar");
         btnAceptar.setAlignmentX(CENTER_ALIGNMENT);

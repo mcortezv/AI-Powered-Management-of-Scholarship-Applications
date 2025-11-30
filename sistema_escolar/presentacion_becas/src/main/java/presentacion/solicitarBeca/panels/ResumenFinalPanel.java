@@ -1,14 +1,14 @@
 package presentacion.solicitarBeca.panels;
-import dtoGobierno.BecaDTO;
-import dtoGobierno.EstudianteDTO;
-import dtoGobierno.TutorDTO;
 import presentacion.CoordinadorAplicacion;
-import dtoGobierno.SolicitudDTO;
 import presentacion.solicitarBeca.PanelSolicitarBeca;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
 import presentacion.styles.Style;
+import solicitarBeca.BecaDTO;
+import solicitarBeca.EstudianteDTO;
+import solicitarBeca.SolicitudDTO;
+import solicitarBeca.TutorDTO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -35,7 +35,7 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
     Label lbl_info_5;
     Label lblDependencia;
     Label lblSolicitanteaNombre;
-   
+
 
     public ResumenFinalPanel(SolicitarBeca frame, CoordinadorAplicacion coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
@@ -45,6 +45,7 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
 
     @Override
     public void startComponents() {
+        centralPanel.add(Box.createVerticalStrut(Style.TOP_ESPACIO));
         titulo = new Label("Resumen Final");
         titulo.setFont(Style.TITLE_FONT);
         titulo.setAlignmentX(CENTER_ALIGNMENT);
@@ -64,7 +65,7 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
         leftColumn.setLayout(new BoxLayout(leftColumn, BoxLayout.Y_AXIS));
         leftColumn.setBackground(Style.PANEL_COLOR);
 
-        lbl_beca_solicitada = new Label("Beca solicitada:");
+        lbl_beca_solicitada = new Label("Beca Solicitada:");
         lbl_beca_solicitada.setFont(sectionFont);
         lbl_beca_solicitada.setAlignmentX(Component.LEFT_ALIGNMENT);
 
@@ -127,14 +128,14 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
         lbl_info_socioeconomica = new Label("Informacion Socioeconómica:");
         lbl_info_socioeconomica.setFont(sectionFont);
         lbl_info_socioeconomica.setAlignmentX(Component.LEFT_ALIGNMENT);
-        
+
 
         Label lbl_info_1 = new Label("Deudas: ");
         lbl_info_1.setFont(dataFont);
         lbl_info_1.setAlignmentX(Component.LEFT_ALIGNMENT);
         lblDependencia= new Label("...");
         lblDependencia.setFont(dataFont);
-        lblDependencia.setAlignmentX(Component.LEFT_ALIGNMENT);        
+        lblDependencia.setAlignmentX(Component.LEFT_ALIGNMENT);
 
          lbl_info_2 = new Label("Ingreso mensual familiar:");
         lbl_info_2.setFont(dataFont);
@@ -142,7 +143,7 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
         lbl_info_3= new Label("...");
         lbl_info_3.setFont(dataFont);
         lbl_info_3.setAlignmentX(Component.LEFT_ALIGNMENT);
-        
+
 
         Label lbl_info_4 = new Label("Generas ingreso:");
         lbl_info_4.setFont(dataFont);
@@ -150,7 +151,7 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
         lbl_info_5= new Label("...");
         lbl_info_5.setFont(dataFont);
         lbl_info_5.setAlignmentX(Component.LEFT_ALIGNMENT);
-        
+
 
         rightColumn.add(lbl_info_socioeconomica);
         rightColumn.add(Box.createVerticalStrut(10));
@@ -196,21 +197,21 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
             mainFrame.showPanel("confirmacionPanel");
         });
     }
-    
+
     public void cargarResumen(SolicitudDTO solicitudDTO){
-        this.solicitudDTO= solicitudDTO;
-        this.tutorDTO= solicitudDTO.getEstudiante().getTutor();
+        this.solicitudDTO = solicitudDTO;
+        this.tutorDTO = solicitudDTO.getEstudiante().getTutor();
         this.estudianteDTO =  solicitudDTO.getEstudiante();
         lbl_beca_response.setText(solicitudDTO.getBeca().getNombre());
         lbl_info_3.setText(String.valueOf(solicitudDTO.getInformacionSocioeconomica().getIngresoTotalFamilarMensual()));
         lbl_tutor_1.setText(tutorDTO.getNombre());
         lbl_tutor_2.setText(String.valueOf(tutorDTO.getParentesco()));
-        lblDependencia.setText(solicitudDTO.getInformacionSocioeconomica().getDeudas() ? "SI" : "NO");
-        lbl_info_5.setText(solicitudDTO.getInformacionSocioeconomica().getTrabajo() ? "SI" : "NO");
+        lblDependencia.setText(solicitudDTO.getInformacionSocioeconomica().isDeudas() ? "Si" : "No");
+        lbl_info_5.setText(solicitudDTO.getInformacionSocioeconomica().isTrabajo() ? "Si" : "No");
        lblSolicitanteaNombre.setText(estudianteDTO.getNombre());
-       
-        
-        
+
+
+
     }
     private Label createDocumentLabel(String text, Font font) {
         String checkMark = "\u2713  ";

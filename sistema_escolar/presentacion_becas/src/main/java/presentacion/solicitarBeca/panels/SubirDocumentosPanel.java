@@ -4,6 +4,7 @@ import presentacion.solicitarBeca.PanelSolicitarBeca;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.Button;
 import presentacion.styles.Label;
+import presentacion.styles.Panel;
 import presentacion.styles.Style;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -18,7 +19,7 @@ public class SubirDocumentosPanel extends PanelSolicitarBeca {
     private Button btnContinuar;
     private final Map<String, File> documentosCargados = new HashMap<>();
     private final CoordinadorAplicacion coordinadorAplicacion;
-    private final String[] DOCUMENTOS_REQUERIDOS = {"CURP", "IDENTIFICACIÓN OFICIAL", "COMPROBANTE DE INSCRIPCIÓN", "KÁRDEX", "COMPROBANTE INGRESOS PADRE"};
+    private final String[] DOCUMENTOS_REQUERIDOS = {"CURP", "INE", "KARDEX", "COMPROBANTE_INSCIRPCION", "COMPROBANTE_INGRESOS"};
     public SubirDocumentosPanel(SolicitarBeca frame, CoordinadorAplicacion coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
         this.coordinadorAplicacion = coordinadorAplicacion;
@@ -28,18 +29,18 @@ public class SubirDocumentosPanel extends PanelSolicitarBeca {
     public void startComponents() {
         centralPanel.setBackground(Style.PANEL_COLOR);
         centralPanel.setLayout(new BoxLayout(centralPanel, BoxLayout.Y_AXIS));
-
+        centralPanel.add(Box.createVerticalStrut(Style.TOP_ESPACIO));
         titulo = new Label("Subir Documentos");
         titulo.setFont(Style.TITLE_FONT);
-        titulo.setAlignmentX(CENTER_ALIGNMENT);
+        titulo.setAlignmentX(Component.CENTER_ALIGNMENT);
         centralPanel.add(titulo);
         centralPanel.add(Box.createVerticalStrut(Style.TITULO_ESPACIO));
 
         JPanel panelBotones = new JPanel();
+        panelBotones.setAlignmentX(Component.CENTER_ALIGNMENT);
         panelBotones.setLayout(new BoxLayout(panelBotones, BoxLayout.Y_AXIS));
         panelBotones.setBackground(Style.PANEL_COLOR);
-        panelBotones.setMaximumSize(new Dimension(600, 600));
-        panelBotones.setAlignmentX(CENTER_ALIGNMENT);
+        panelBotones.setMaximumSize(new Dimension(800, 600));
 
         for (String docName : DOCUMENTOS_REQUERIDOS) {
             panelBotones.add(createUploadSection(docName));
@@ -48,6 +49,7 @@ public class SubirDocumentosPanel extends PanelSolicitarBeca {
 
         centralPanel.add(panelBotones);
         centralPanel.add(Box.createVerticalGlue());
+        centralPanel.add(Box.createVerticalStrut(Style.TOP_ESPACIO));
 
         btnContinuar = new Button("Continuar");
         btnContinuar.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -61,9 +63,10 @@ public class SubirDocumentosPanel extends PanelSolicitarBeca {
                 JOptionPane.showMessageDialog(mainFrame, "Debe subir los " + DOCUMENTOS_REQUERIDOS.length + " documentos requeridos para continuar.", "Documentos faltantes", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-
             try {
-                coordinadorAplicacion.procesarDocumentosYSolicitud(documentosCargados);
+                coordinadorAplicacion.procesarDocumentos(documentosCargados);
+                ResumenFinalPanel pnl = (ResumenFinalPanel) mainFrame.getPanel("resumenFinalPanel");
+                coordinadorAplicacion.mostrarResumen();
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(mainFrame, "Error al procesar la solicitud: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
@@ -74,10 +77,10 @@ public class SubirDocumentosPanel extends PanelSolicitarBeca {
         JPanel sectionPanel = new JPanel();
         sectionPanel.setLayout(new BoxLayout(sectionPanel, BoxLayout.X_AXIS));
         sectionPanel.setBackground(Style.PANEL_COLOR);
-        sectionPanel.setMaximumSize(new Dimension(600, 50));
-
+        sectionPanel.setMaximumSize(new Dimension(800, 50));
+        sectionPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
         Button uploadButton = createUploadButton(docName);
-
+        uploadButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         Button deleteButton = new Button("X");
         deleteButton.setFont(new Font("Segoe UI", Font.BOLD, 16));
         deleteButton.setForeground(Color.WHITE);

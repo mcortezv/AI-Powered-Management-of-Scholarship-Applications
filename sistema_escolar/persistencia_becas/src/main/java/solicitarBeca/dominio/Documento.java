@@ -5,6 +5,8 @@
 package solicitarBeca.dominio;
 import solicitarBeca.dominio.enums.TipoDocumento;
 
+import java.util.Arrays;
+
 /**
  *
  * @author Cortez, Manuel;
@@ -13,11 +15,11 @@ public class Documento {
     private Long identificador;
     private TipoDocumento tipo;
     private byte[] contenido;
-    private Estudiante estudiante;
+    private Long estudiante;
 
     public Documento() {}
 
-    public Documento(byte[] contenido, Estudiante estudiante, Long identificador, TipoDocumento tipo) {
+    public Documento(byte[] contenido, Long estudiante, Long identificador, TipoDocumento tipo) {
         this.contenido = contenido;
         this.estudiante = estudiante;
         this.identificador = identificador;
@@ -32,11 +34,11 @@ public class Documento {
         this.contenido = contenido;
     }
 
-    public Estudiante getEstudiante() {
+    public Long getEstudiante() {
         return estudiante;
     }
 
-    public void setEstudiante(Estudiante estudiante) {
+    public void setEstudiante(Long estudiante) {
         this.estudiante = estudiante;
     }
 
@@ -54,5 +56,14 @@ public class Documento {
 
     public void setTipo(TipoDocumento tipo) {
         this.tipo = tipo;
+    }
+
+    @Override
+    public String toString() {
+        return "Documento{" +
+                ", identificador=" + identificador +
+                ", tipo=" + tipo +
+                ", estudiante=" + estudiante +
+                '}';
     }
 }

@@ -11,7 +11,7 @@ import solicitarBeca.repository.documents.DocumentoDocument;
  */
 public interface IDocumentoBO {
 
-    Documento crearDocumento(Long identificador, TipoDocumento tipo, byte[] contenido, Estudiante estudiante) throws DocumentoInvalidoException;
+    Documento crearDocumento(Long identificador, TipoDocumento tipo, byte[] contenido, Long estudiante) throws DocumentoInvalidoException;
 
     void guardarDocumento(DocumentoDocument documento) throws DocumentoInvalidoException;
 }
