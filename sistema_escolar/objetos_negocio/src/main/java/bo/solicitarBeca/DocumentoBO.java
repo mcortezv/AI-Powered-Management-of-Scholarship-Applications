@@ -1,5 +1,4 @@
 package bo.solicitarBeca;
-import solicitarBeca.dominio.Estudiante;
 import solicitarBeca.dominio.enums.TipoDocumento;
 import solicitarBeca.repository.dao.interfaces.IDocumentoDAO;
 import solicitarBeca.dominio.Documento;
@@ -19,7 +18,7 @@ public class DocumentoBO implements IDocumentoBO {
     }
 
     @Override
-    public Documento crearDocumento(Long identificador, TipoDocumento tipo, byte[] contenido, Estudiante estudiante) throws DocumentoInvalidoException {
+    public Documento crearDocumento(Long identificador, TipoDocumento tipo, byte[] contenido, Long estudiante) throws DocumentoInvalidoException {
         if (identificador == null || tipo == null || estudiante == null || contenido == null) {
             throw new DocumentoInvalidoException("Documento invalido");
         }

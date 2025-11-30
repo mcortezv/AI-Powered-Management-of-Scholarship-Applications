@@ -16,6 +16,7 @@ import presentacion.solicitarBeca.panels.ResumenFinalPanel;
 import solicitarBeca.*;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -36,10 +37,6 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     //pagar adeudo
     private final CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo;
     private PagarAdeudo adeudo;
-
-    // bajar a coordinador negocio
-    private dtoGobierno.SolicitudDTO solicitudDTO;
-    private dtoGobierno.EstudianteDTO estudianteDTO;
 
     public CoordinadorAplicacion(IFachadaInicioSesion fachadaInicioSesion, IFachadaSolicitarBeca fachadaSolicitarBeca, CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo) {
         this.coordinadorNegocio = new CoordinadorNegocio(fachadaInicioSesion, fachadaSolicitarBeca);
@@ -70,8 +67,15 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         mostrarBecasDisponibles(becasFiltradas);
     }
 
-    public void procesarDatosSolicitante(EstudianteDTO estudianteDTO) throws NombresInvalidosException, DireccionInvalidaException, TelefonoInvalidoException, IDInvalidoException {
+    public void procesarDatosSolicitante() throws NombresInvalidosException, DireccionInvalidaException, TelefonoInvalidoException, IDInvalidoException {
+        DatosDelSolicitantePanel datosDelSolicitantePanel= (DatosDelSolicitantePanel) solicitarBeca.getPanel("datosDelSolicitantePanel");
+        EstudianteDTO estudianteDTO = getEstudianteLogueado();
+        datosDelSolicitantePanel.setEstudiante(estudianteDTO);
         coordinadorNegocio.procesarEstudiante(estudianteDTO);
+        solicitarBeca.showPanel("datosDelSolicitantePanel");
+    }
+
+    public void mostrarPanelHitorialAcademico(){
         solicitarBeca.showPanel("historialAcademicoPanel");
     }
 
@@ -107,7 +111,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
 
     public void mostrarResumen(){
         ResumenFinalPanel resumenFinal= (ResumenFinalPanel) solicitarBeca.getPanel("resumenFinalPanel");
-        resumenFinal.cargarResumen(solicitudDTO);
+        resumenFinal.cargarResumen(coordinadorNegocio.getSolicitudActual());
         solicitarBeca.showPanel("resumenFinalPanel");
         
     }
@@ -132,20 +136,15 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         solicitarBeca.showPanel("informacionSocioeconomicaPanel");
     }
 
-//    public void procesarInformacionSocioeconomica(InformacionSocioeconomicaDTO infoSocioeconomicaDTO) throws NumberFormatException, IngresoInvalidoException {
-//        Double ingreso;
-//        try {
-//            ingreso = Double.parseDouble(infoSocioeconomicaDTO.getIngresoFamiliarSt());
-//        } catch (NumberFormatException e) {
-//            throw new NumberFormatException("El ingreso debe ser un número.");
-//        }
-//        presentacion.solicitarBeca.validadores.Validadores.validarIngreso(ingreso);
-//        
-//        boolean dependenciaEconomica= "SI".equals(infoSocioeconomicaDTO.getDependenciaEconomica());
-//        boolean generaIngreso = "SI".equals(infoSocioeconomicaDTO.getTrabajoSt());
-//       
-//        solicitarBeca.showPanel("subirDocumentosPanel");
-//    }
+
+    public void procesarDocumentos(Map<String, File> documentosCargados) throws IOException {
+        try {
+            coordinadorNegocio.procesarDocumentos(documentosCargados);
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
 
 
     public void procesarDocumentosYSolicitud(Map<String, File> documentosCargados) {
@@ -167,10 +166,5 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
 
     public EstudianteDTO getEstudianteLogueado() {
         return coordinadorNegocio.getEstudianteLogueado();
-    }
-
-    public void setDatosSolicitante(){
-        DatosDelSolicitantePanel pnl = (DatosDelSolicitantePanel) solicitarBeca.getPanel("datosDelSolicitantePanel");
-        pnl.setEstudiante(getEstudianteLogueado());
     }
 }

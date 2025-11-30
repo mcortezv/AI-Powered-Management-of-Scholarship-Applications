@@ -56,4 +56,14 @@ public class InformacionSocioeconomica {
     public void setDeudas(boolean deudas) {
         this.deudas = deudas;
     }
+
+    @Override
+    public String toString() {
+        return "InformacionSocioeconomica{" +
+                "deudas=" + deudas +
+                ", ingresoTotalFamilarMensual=" + ingresoTotalFamilarMensual +
+                ", tipoVivienda=" + tipoVivienda +
+                ", trabajo=" + trabajo +
+                '}';
+    }
 }

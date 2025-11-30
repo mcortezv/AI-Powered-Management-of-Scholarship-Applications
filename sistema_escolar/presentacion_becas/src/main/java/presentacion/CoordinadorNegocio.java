@@ -5,6 +5,14 @@ import bo.solicitarBeca.excepciones.SolicitudInvalidaException;
 import presentacion.interfaces.ICoordinadorNegocio;
 import solicitarBeca.*;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  *
  * @author Cortez, Manuel;
@@ -43,8 +51,8 @@ public class CoordinadorNegocio implements ICoordinadorNegocio {
         fachadaSolicitarBeca.setHistorialAcademico(historialAcademicDTO);
     }
 
-    public void procesarEstudiante(EstudianteDTO estudianteDTO) {
-        fachadaSolicitarBeca.obtenerEstudiante(estudianteDTO.getMatricula());
+    public EstudianteDTO procesarEstudiante(EstudianteDTO estudianteDTO) {
+        return fachadaSolicitarBeca.obtenerEstudiante(estudianteDTO);
     }
 
     public void procesarTutor(TutorDTO tutorDTO) {
@@ -63,5 +71,28 @@ public class CoordinadorNegocio implements ICoordinadorNegocio {
     public EstudianteDTO getEstudianteLogueado() {
         return fachadaInicioSesion.getEstudianteLogueado();
 
+    }
+
+    public void procesarDocumentos(Map<String, File> documentosCargados) throws IOException {
+        try {
+            List<DocumentoDTO> documentoDTOList = new ArrayList<>();
+            for (Map.Entry<String, File> entry : documentosCargados.entrySet()) {
+                String tipo = entry.getKey();
+                File documento = entry.getValue();
+                DocumentoDTO documentoDTO = new DocumentoDTO();
+                documentoDTO.setIdentificador(ThreadLocalRandom.current().nextLong(1, Long.MAX_VALUE));
+                documentoDTO.setTipo(tipo);
+                documentoDTO.setContenido(Files.readAllBytes(documento.toPath()));
+                documentoDTO.setEstudiante(fachadaInicioSesion.getEstudianteLogueado().getMatricula());
+                documentoDTOList.add(documentoDTO);
+            }
+            fachadaSolicitarBeca.setDocumentos(documentoDTOList);
+        } catch (IOException e) {
+            throw new RuntimeException("Error al procesar documentos", e);
+        }
+    }
+
+    public SolicitudDTO getSolicitudActual() {
+        return fachadaSolicitarBeca.obtenerSolicitudActual();
     }
 }

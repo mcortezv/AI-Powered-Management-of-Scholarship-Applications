@@ -97,4 +97,18 @@ public class Solicitud {
     public void setInformacionSocioeconomica(InformacionSocioeconomica informacionSocioeconomica) {
         this.informacionSocioeconomica = informacionSocioeconomica;
     }
+
+    @Override
+    public String toString() {
+        return "Solicitud{" +
+                "beca=" + beca +
+                ", id=" + id +
+                ", estudiante=" + estudiante +
+                ", informacionSocioeconomica=" + informacionSocioeconomica +
+                ", historialAcademico=" + historialAcademico +
+                ", documentos=" + documentos +
+                ", fecha=" + fecha +
+                ", estado=" + estado +
+                '}';
+    }
 }

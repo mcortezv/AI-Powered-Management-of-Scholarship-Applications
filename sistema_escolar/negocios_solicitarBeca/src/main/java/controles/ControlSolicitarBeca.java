@@ -133,7 +133,7 @@ public class ControlSolicitarBeca {
         List<Documento> documentosEntidad = new ArrayList<>();
         try {
             for (DocumentoDTO dto : documentosDTO) {
-                validarDocumento(dto);
+                //validarDocumento(dto);
                 Documento documento = DocumentoAdaptador.toEntity(dto);
                 documentosEntidad.add(documento);
             }

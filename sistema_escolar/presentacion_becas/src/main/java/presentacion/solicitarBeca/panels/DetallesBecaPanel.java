@@ -74,8 +74,7 @@ public class DetallesBecaPanel extends PanelSolicitarBeca {
         botonSiguiente.addActionListener(e -> {
             coordinadorAplicacion.setBecaSeleccionadaDTO(beca);
             coordinadorAplicacion.iniciarSolicitud();
-            coordinadorAplicacion.setDatosSolicitante();
-            mainFrame.showPanel("datosDelSolicitantePanel");
+            coordinadorAplicacion.procesarDatosSolicitante();
         });
 
         btnBack.addActionListener(e -> mainFrame.showPanel("listadoBecasDisponiblesPanel"));

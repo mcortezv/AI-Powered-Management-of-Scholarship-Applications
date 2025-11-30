@@ -88,7 +88,7 @@ public class DatosDelSolicitantePanel extends PanelSolicitarBeca {
         centralPanel.add(Box.createVerticalStrut(40));
         centralPanel.add(Box.createVerticalGlue());
 
-        Button btn_next = new Button("Continuar");
+        Button btn_next = new Button("Aceptar");
         btn_next.setAlignmentX(CENTER_ALIGNMENT);
         centralPanel.add(btn_next);
 
@@ -96,8 +96,7 @@ public class DatosDelSolicitantePanel extends PanelSolicitarBeca {
 
         btn_next.addActionListener(e -> {
             try {
-                coordinadorAplicacion.procesarDatosSolicitante(estudiante);
-
+                coordinadorAplicacion.mostrarPanelHitorialAcademico();
             } catch (NombresInvalidosException | ApellidoInvalidoException | DireccionInvalidaException |
                      TelefonoInvalidoException | IDInvalidoException ex) {
                 JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);

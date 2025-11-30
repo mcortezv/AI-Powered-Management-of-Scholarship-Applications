@@ -61,7 +61,7 @@ public class SolicitudAdaptador {
             dto.setEstado(solicitud.getEstado().toString());
             return dto;
         } catch (Exception ex) {
-            throw new SolicitudAdaptadorException("Error al convertir entidad Solicitud a DTO");
+            throw new SolicitudAdaptadorException("Error al convertir entidad Solicitud a DTO Gobierno");
         }
     }
 
