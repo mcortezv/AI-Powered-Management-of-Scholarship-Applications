@@ -22,7 +22,7 @@ public interface IFachadaSolicitarBeca {
 
     void iniciarNuevaSolicitud() throws SolicitudInvalidaException;
 
-    EstudianteDTO obtenerEstudiante(Long matricula) throws SolicitudInvalidaException;
+    EstudianteDTO obtenerEstudiante(EstudianteDTO estudianteDTO) throws SolicitudInvalidaException;
 
     void setHistorialAcademico(HistorialAcademicoDTO historialAcademicoDTO) throws SolicitudInvalidaException;
 

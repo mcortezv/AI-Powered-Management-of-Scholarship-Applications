@@ -1,5 +1,4 @@
 package presentacion;
-import bo.sesion.SesionUsuario;
 import bo.solicitarBeca.*;
 import controles.ControlGobierno;
 import controles.*;
@@ -54,7 +53,6 @@ public class Main {
         IInformacionSocioeconomicaBO infoSocioBO = new InformacionSocioeconomicaBO();
         ISolicitudBO solicitudBO = new SolicitudBO(fachadaGobierno, solicitudDAO);
         ITutorBO tutorBO = new TutorBO();
-
 
         IFachadaInicioSesion fachadaInicioSesion = new FachadaInicioSesion(new ControlInicioSesion(estudianteBO));
         IFachadaSolicitarBeca fachadaSolicitarBeca = new FachadaSolicitarBeca(new ControlSolicitarBeca(solicitudBO, estudianteBO, tutorBO, becasFiltradasBO, documentoBO, historialAcademicoBO, infoSocioBO));

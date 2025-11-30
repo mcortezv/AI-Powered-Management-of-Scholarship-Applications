@@ -45,8 +45,8 @@ public class FachadaSolicitarBeca implements IFachadaSolicitarBeca {
     }
 
     @Override
-    public EstudianteDTO obtenerEstudiante(Long matricula) throws SolicitudInvalidaException {
-        EstudianteDTO estudiantDTO = controlSolicitud.obtenerEstudiante(matricula);
+    public EstudianteDTO obtenerEstudiante(EstudianteDTO estudianteDTO) throws SolicitudInvalidaException {
+        EstudianteDTO estudiantDTO = controlSolicitud.obtenerEstudiante(estudianteDTO.getMatricula());
         estudianteActual = EstudianteAdaptador.toEntity(estudiantDTO);
         return estudiantDTO;
     }

@@ -12,11 +12,11 @@ public class DocumentoDTOGobierno {
     private Long identificador;
     private String tipo;
     private byte[] contenido;
-    private EstudianteDTOGobierno estudiante;
+    private Long estudiante;
 
     public DocumentoDTOGobierno() {}
 
-    public DocumentoDTOGobierno(byte[] contenido, EstudianteDTOGobierno estudiante, Long identificador, String tipo) {
+    public DocumentoDTOGobierno(byte[] contenido, Long estudiante, Long identificador, String tipo) {
         this.contenido = contenido;
         this.estudiante = estudiante;
         this.identificador = identificador;
@@ -31,11 +31,11 @@ public class DocumentoDTOGobierno {
         this.contenido = contenido;
     }
 
-    public EstudianteDTOGobierno getEstudiante() {
+    public Long getEstudiante() {
         return estudiante;
     }
 
-    public void setEstudiante(EstudianteDTOGobierno estudiante) {
+    public void setEstudiante(Long estudiante) {
         this.estudiante = estudiante;
     }
 

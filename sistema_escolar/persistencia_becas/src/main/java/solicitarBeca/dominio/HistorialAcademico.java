@@ -76,4 +76,16 @@ public class HistorialAcademico {
     public void setSemestre(int semestre) {
         this.semestre = semestre;
     }
+
+    @Override
+    public String toString() {
+        return "HistorialAcademico{" +
+                "cargaAcademica=" + cargaAcademica +
+                ", carrera=" + carrera +
+                ", promedio=" + promedio +
+                ", porcentajeBajas=" + porcentajeBajas +
+                ", semestre=" + semestre +
+                ", indiceReprobacion=" + indiceReprobacion +
+                '}';
+    }
 }
