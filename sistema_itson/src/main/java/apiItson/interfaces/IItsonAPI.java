@@ -1,4 +1,5 @@
 package apiItson.interfaces;
+import datos.dominioItson.Actividad;
 import datos.dominioItson.HistorialAcademico;
 import datos.dominioItson.pagarAdeudo.Prestamo;
 import itson.LoginDTOItson;
@@ -18,6 +19,7 @@ public interface IItsonAPI {
 
     double obtenerAdeudoColegiatura(Long matricula);
 
+    List<Actividad> soloicitarActividades();
 
 
     //pagar adeudo

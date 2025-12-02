@@ -1,6 +1,8 @@
 package presentacion;
 import itson.LoginDTOItson;
 import interfaces.*;
+import presentacion.actividadesExtracurriculares.coordinador.CoordinadorAplicacionActividades;
+import presentacion.actividadesExtracurriculares.panels.ActividadesExtracurriculares;
 import presentacion.interfaces.ICoordinadorAplicacion;
 import presentacion.login.MainFrame;
 import presentacion.login.exceptions.ContraseniaInvalidaException;
@@ -33,8 +35,12 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     private HistorialAcademicoDTO historialAcademicoDTO;
     private TutorDTO tutorDTO;
     private InformacionSocioeconomicaDTO infoSocioeconomicaDTO;
+
+    // pagar adeudo
     private CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo;
 
+    // act extra
+    private CoordinadorAplicacionActividades coordinadorAplicacionActividades;
     public CoordinadorAplicacion(IFachadaInicioSesion fachadaInicioSesion, IFachadaSolicitarBeca fachadaSolicitarBeca) {
         this.coordinadorNegocio = new CoordinadorNegocio(fachadaInicioSesion, fachadaSolicitarBeca);
         mainFrame = null;
@@ -86,10 +92,20 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         pagarAdeudoFrame.setVisible(true);
     }
 
+    public void actividades(){
+        mainFrame.setVisible(false);
+        ActividadesExtracurriculares act = new ActividadesExtracurriculares(coordinadorAplicacionActividades);
+        act.setVisible(true);
+
+    }
+
     public void setCoordinadorAplicacionPagarAdeudo(CoordinadorAplicacionPagarAdeudo c) {
         this.coordinadorAplicacionPagarAdeudo = c;
     }
 
+    public void setCoordinadorAplicacionActividades(CoordinadorAplicacionActividades c){
+        this.coordinadorAplicacionActividades = c;
+    }
     public void main() {
         solicitarBeca.setVisible(false);
         mainFrame.setVisible(true);
@@ -100,7 +116,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         pnl.setBecas(becasFiltradasDTO.getBecas());
         solicitarBeca.showPanel("listadoBecasDisponiblesPanel");
     }
-    
+
     public void mostrarBecaSeleccionada(){
         DetallesBecaPanel detallesBeca = (DetallesBecaPanel) solicitarBeca.getPanel("detalleBecaPanel");
         detallesBeca.cargarBeca(becaSeleccionadaDTO);
@@ -137,6 +153,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     public void procesarDocumentos(Map<String, File> documentosCargados) throws IOException {
         try {
             coordinadorNegocio.procesarDocumentos(documentosCargados);
+            solicitarBeca.showPanel("confirmacionPanel");
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }

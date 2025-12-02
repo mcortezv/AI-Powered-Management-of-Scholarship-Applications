@@ -3,9 +3,12 @@ import bo.solicitarBeca.*;
 import controles.ControlGobierno;
 import controles.*;
 import fachadas.*;
+import interfaces.actividades.IActividadBO;
 import interfaces.pagarAdeudo.IAdeudoBO;
 import interfaces.solicitarBeca.*;
 import bo.pagarAdeudo.AdeudoBO;
+import objetosNegocio.actividades.ActividadBO;
+import presentacion.actividadesExtracurriculares.coordinador.CoordinadorAplicacionActividades;
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
 import fachadas.FachadaGobierno;
 import interfaces.*;
@@ -38,7 +41,9 @@ public class Main {
         //  Caso pagar Adeudo
         IAdeudoBO adeudoBO = new AdeudoBO(fachadaITSON);
         IFachadaPago fachadaPago = new FachadaPago(new ControlPago(adeudoBO, fachadaBanco, fachadaPayPal));
-
+        // caso act extra
+        IActividadBO actividadBO = new ActividadBO(fachadaITSON);
+        IFachadaActividad fachadaAct = new FachadaActividad(new ControlActividad(actividadBO));
 
         // creacion de daos
         ISolicitudDAO solicitudDAO = new SolicitudDAO();
@@ -64,8 +69,10 @@ public class Main {
         CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo =
                 new CoordinadorAplicacionPagarAdeudo(fachadaPago, coordinadorAplicacion);
 
+        CoordinadorAplicacionActividades coordinadorAplicacionActividades =
+                new CoordinadorAplicacionActividades(fachadaAct, coordinadorAplicacion);
         coordinadorAplicacion.setCoordinadorAplicacionPagarAdeudo(coordinadorAplicacionPagarAdeudo);
-
+        coordinadorAplicacion.setCoordinadorAplicacionActividades(coordinadorAplicacionActividades);
         coordinadorAplicacion.iniciarGUI();
     }
 }

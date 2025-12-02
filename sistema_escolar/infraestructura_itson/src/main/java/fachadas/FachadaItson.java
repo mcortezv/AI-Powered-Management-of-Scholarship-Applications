@@ -1,15 +1,15 @@
 package fachadas;
-import datos.dominioItson.pagarAdeudo.Prestamo;
-import itson.EstudianteDTOItson;
-import itson.HistorialAcademicoDTOItson;
-import controles.ControlItson;
+
+
 import banco.ClaseDTOI;
 import banco.PrestamoDTOI;
 import banco.SolicitudPagoDTOI;
-import itson.LoginDTOItson;
+import controles.ControlItson;
 import interfaces.IFachadaITSON;
-import itson.pagarAdeudo.ClaseDTOItson;
-import itson.pagarAdeudo.PrestamoDTOItson;
+import itson.ActividadesDTOItson;
+import itson.EstudianteDTOItson;
+import itson.HistorialAcademicoDTOItson;
+import itson.LoginDTOItson;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @author janethcristinagalvanquinonez
  */
-public class FachadaItson implements IFachadaITSON{
+public class FachadaItson implements IFachadaITSON {
     private final ControlItson controlItson;
 
     public FachadaItson(ControlItson controlItson) {
@@ -57,7 +57,7 @@ public class FachadaItson implements IFachadaITSON{
 
     @Override
     public List<PrestamoDTOI> solicitarListaPrestamso(Long matricula) {
-     return null;
+        return null;
 
     }
 
@@ -76,4 +76,12 @@ public class FachadaItson implements IFachadaITSON{
     /**
      * AQUI TERMINA CASO DE USO PAGAR ADEUDO
      */
+    
+    /**
+     * ESTO ES DEL CASO ACTIVIDADES 
+     */
+    
+    public ActividadesDTOItson obtenerActividades(){
+        return controlItson.obtenerActividades();
+    }
 }

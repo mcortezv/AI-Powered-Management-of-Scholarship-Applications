@@ -1,9 +1,10 @@
 package interfaces;
-import itson.EstudianteDTOItson;
-import itson.HistorialAcademicoDTOItson;
 import banco.ClaseDTOI;
 import banco.PrestamoDTOI;
 import banco.SolicitudPagoDTOI;
+import itson.ActividadesDTOItson;
+import itson.EstudianteDTOItson;
+import itson.HistorialAcademicoDTOItson;
 import itson.LoginDTOItson;
 
 import java.util.List;
@@ -25,4 +26,6 @@ public interface IFachadaITSON {
     List<PrestamoDTOI> solicitarListaPrestamso(Long matricula);
     List<ClaseDTOI> solicitarListaClases(Long matricula);
     boolean notificarLiquidacion(SolicitudPagoDTOI solicitudPagoDTOI);
+    //actividades
+    public ActividadesDTOItson obtenerActividades();
 }

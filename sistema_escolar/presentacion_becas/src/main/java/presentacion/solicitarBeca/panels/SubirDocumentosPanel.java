@@ -65,8 +65,6 @@ public class SubirDocumentosPanel extends PanelSolicitarBeca {
             }
             try {
                 coordinadorAplicacion.procesarDocumentos(documentosCargados);
-                ResumenFinalPanel pnl = (ResumenFinalPanel) mainFrame.getPanel("resumenFinalPanel");
-                coordinadorAplicacion.mostrarResumen();
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(mainFrame, "Error al procesar la solicitud: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }

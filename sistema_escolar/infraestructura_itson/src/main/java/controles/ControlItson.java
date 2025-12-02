@@ -1,18 +1,21 @@
 package controles;
+
 import apiItson.ItsonAPI;
 import apiItson.interfaces.IItsonAPI;
+import datos.adaptadoresItson.EstudianteAdaptador;
 import datos.adaptadoresItson.HistorialAcademicoAdaptador;
 import datos.adaptadoresItson.pagarAdeudo.PrestamoAdaptador;
+import datos.dominioItson.Actividad;
+import datos.dominioItson.Estudiante;
+
+import itson.ActividadesDTOItson;
 import itson.EstudianteDTOItson;
 import itson.HistorialAcademicoDTOItson;
 import itson.LoginDTOItson;
-import datos.adaptadoresItson.EstudianteAdaptador;
-import datos.dominioItson.Estudiante;
+import itson.org.adaptadores.ActividadAdaptador;
 import itson.pagarAdeudo.PrestamoDTOItson;
 
-import java.util.ArrayList;
 import java.util.List;
-
 
 public class ControlItson {
     IItsonAPI api;
@@ -49,6 +52,14 @@ public class ControlItson {
 
 
     public List<PrestamoDTOItson> obtenerListaPrestamos(Long matricula){
-       return PrestamoAdaptador.toDtoItson(api.obtenerListaPrestamosBiblioteca(matricula));
+        return PrestamoAdaptador.toDtoItson(api.obtenerListaPrestamosBiblioteca(matricula));
     }
+
+    // caso de uso actividades
+    
+    public ActividadesDTOItson obtenerActividades(){
+        List<Actividad> actividad= api.soloicitarActividades();
+        return ActividadAdaptador.toResponseDTOListaAct(actividad);
+    }
+
 }
