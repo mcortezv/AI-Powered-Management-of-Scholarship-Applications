@@ -5,6 +5,7 @@
 package presentacion.actividadesExtracurriculares.coordNegocio;
 
 import dto.actividades.ActividadesDTO;
+import interfaces.IFachadaActividad;
 
 /**
  *
@@ -12,7 +13,7 @@ import dto.actividades.ActividadesDTO;
  */
 public class CoordinadorNegocioActividades implements ICoordNegocioActividades {
     
-    private final IFachadaActividad fachadaActividad; 
+    private final IFachadaActividad fachadaActividad;
     
     public CoordinadorNegocioActividades(IFachadaActividad fachadaActividad){
         this.fachadaActividad= fachadaActividad;

@@ -17,11 +17,9 @@ import itson.ActividadesDTOItson;
 public class ActividadBO implements IActividadBO {
     
     private IFachadaITSON fachadaITSON;
-    private IActividadDAO actividadDAO;
 
-    public ActividadBO(IFachadaITSON fachadaITSON, IActividadDAO actividadDAO) {
+    public ActividadBO(IFachadaITSON fachadaITSON) {
         this.fachadaITSON= fachadaITSON;
-        this.actividadDAO= actividadDAO;
     }
     
     @Override

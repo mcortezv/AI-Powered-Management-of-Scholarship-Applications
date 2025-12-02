@@ -11,6 +11,7 @@
         <module>negocios_solicitarBeca</module>
         <module>negocios_login</module>
         <module>negocios_solicitarPago</module>
+        <module>negocios_actividades</module>
         <module>infraestructura_itson</module>
         <module>infraestructura_gobierno</module>
         <module>infraestructura_paypal</module>
@@ -18,6 +19,7 @@
         <module>presentacion_becas</module>
         <module>persistencia_becas</module>
         <module>dto_infraestructura</module>
+
     </modules>
     <build>
         <resources>

@@ -35,9 +35,6 @@ public class ControlPago {
     }
 
     public List<PrestamoDTO>solicitarListaPrestamos(EstudianteDTO estudianteDTO){
-        try{
-
-        }
 
         Long matricula = estudianteDTO.getMatricula();
         List<PrestamoDTOI> prestamosI = iAdeudoBO.obtenerDetallePrestamo(matricula);

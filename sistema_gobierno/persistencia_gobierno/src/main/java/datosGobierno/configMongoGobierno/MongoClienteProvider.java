@@ -31,8 +31,8 @@ public enum MongoClienteProvider {
             InputStream input = getClass().getClassLoader().getResourceAsStream("mongo.properties");
             Properties props = new Properties();
             props.load(input);
-            this.uri = "mongodb+srv://pruebaUsuario:teOdioAlgoritmosItson@clustertest.r3o81yp.mongodb.net/?appName=ClusterTest";
-            this.dbName = "gobierno";
+            this.uri = props.getProperty("mongo.uri");
+            this.dbName = props.getProperty("mongo.dbnameGobierno");
             client = MongoClients.create(MongoConfig.buildSettings(this.uri));
             Runtime.getRuntime().addShutdownHook(new Thread(() -> {
                 try { client.close(); } catch (Exception ignored) {}

@@ -32,40 +32,37 @@ public class FachadaItson implements IFachadaITSON {
     @Override
     public EstudianteDTOItson verificarEstudiante(Long matricula) {
         return controlItson.verificarEstudiante(matricula);
-//        return controlItson.verificarEstudiante(matricula);
     }
 
     @Override
     public HistorialAcademicoDTOItson verificarHistorialAcademcio(Long matricula) {
-        return null;
+        return controlItson.verificarHistorialAcademico(matricula);
     }
 
     /**
      *  TODO ESTO ES DEL CASO PAGAR ADEUDO
-     * @param matriculaEstudiante
+     * @param matricula
      * // SEBASTIAN ESCALANTE RAMIREZ
      * @return
      */
     @Override
-    public double solicitarAdeudoBiblioteca(String matriculaEstudiante) {
-        return 0.0;
-//        return controlItson.solicitarAdeudoBiblioteca(matriculaEstudiante);
+    public double solicitarAdeudoBiblioteca(Long matricula) {
+        return controlItson.obtenerAdeudoBiblioteca(matricula);
     }
 
     @Override
-    public double solicitarAdeudoColegiatura(String matriculaEstudiante) {
-        return 0.0;
-//        return controlItson.solicitarAdeudoColegiatura(matriculaEstudiante);
+    public double solicitarAdeudoColegiatura(Long matricula) {
+        return controlItson.obtenerAdeudoColegiatura(matricula);
     }
 
     @Override
-    public List<PrestamoDTOI> solicitarListaPrestamso(String matriculaEstudiante) {
+    public List<PrestamoDTOI> solicitarListaPrestamso(Long matricula) {
         return null;
-//        return controlItson.solicitarListaPrestamos(matriculaEstudiante);
+
     }
 
     @Override
-    public List<ClaseDTOI> solicitarListaClases(String matriculaEstudiante) {
+    public List<ClaseDTOI> solicitarListaClases(Long matricula) {
         return null;
 //        return controlItson.solicitarListaClases(matriculaEstudiante);
     }
@@ -73,8 +70,8 @@ public class FachadaItson implements IFachadaITSON {
     @Override
     public boolean notificarLiquidacion(SolicitudPagoDTOI solicitudPagoDTOI) {
         return false;
+//        return controlItson.solicitarLiquidacion(solicitudPagoDTOI);
     }
-
 
     /**
      * AQUI TERMINA CASO DE USO PAGAR ADEUDO

@@ -1,6 +1,6 @@
 package presentacion.login;
 
-import presentacion.coordinadorAplicacion.CoordinadorAplicacion;
+import presentacion.CoordinadorAplicacion;
 import presentacion.login.panels.HubPanel;
 import presentacion.login.panels.IniciarSesionPanel;
 import presentacion.login.panels.NorthPanel;

@@ -3,13 +3,18 @@ package controles;
 import apiItson.ItsonAPI;
 import apiItson.interfaces.IItsonAPI;
 import datos.adaptadoresItson.EstudianteAdaptador;
+import datos.adaptadoresItson.HistorialAcademicoAdaptador;
+import datos.adaptadoresItson.pagarAdeudo.PrestamoAdaptador;
 import datos.dominioItson.Actividad;
 import datos.dominioItson.Estudiante;
 
 import itson.ActividadesDTOItson;
 import itson.EstudianteDTOItson;
+import itson.HistorialAcademicoDTOItson;
 import itson.LoginDTOItson;
 import itson.org.adaptadores.ActividadAdaptador;
+import itson.pagarAdeudo.PrestamoDTOItson;
+
 import java.util.List;
 
 public class ControlItson {
@@ -30,12 +35,31 @@ public class ControlItson {
         Estudiante estudiante = api.obtenerDatosEstudiante(matricula);
         return EstudianteAdaptador.toResponseDTO(estudiante);
     }
+
+    public HistorialAcademicoDTOItson verificarHistorialAcademico(Long matricula){
+        return HistorialAcademicoAdaptador.toDTOItson(api.obtenerHistorialAcademico(matricula));
+    }
+
+
+    //Caso de uso Pagar adeudo
+    public double obtenerAdeudoBiblioteca(Long matricula){
+        return api.obtenerAdeudoBiblioteca(matricula);
+    }
+
+    public double obtenerAdeudoColegiatura(Long matricula){
+        return api.obtenerAdeudoColegiatura(matricula);
+    }
+
+
+    public List<PrestamoDTOItson> obtenerListaPrestamos(Long matricula){
+        return PrestamoAdaptador.toDtoItson(api.obtenerListaPrestamosBiblioteca(matricula));
+    }
+
+    // caso de uso actividades
     
     public ActividadesDTOItson obtenerActividades(){
-        List<Actividad> actividad= api.solicitarActividades();
+        List<Actividad> actividad= api.soloicitarActividades();
         return ActividadAdaptador.toResponseDTOListaAct(actividad);
-
-        //return api.solicitarActividades();
     }
 
 }

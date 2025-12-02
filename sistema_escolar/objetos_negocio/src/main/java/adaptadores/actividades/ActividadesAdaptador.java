@@ -3,10 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package adaptadores.actividades;
-import dto.itson.ActividadDTOItson;
 import dto.actividades.ActividadDTO;
 import dto.actividades.ActividadesDTO;
-import dto.itson.ActividadesDTOItson;
+import itson.ActividadDTOItson;
+import itson.ActividadesDTOItson;
+
 import java.util.ArrayList;
 import java.util.List;
 

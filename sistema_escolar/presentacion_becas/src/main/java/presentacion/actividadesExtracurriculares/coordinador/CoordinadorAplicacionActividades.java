@@ -8,11 +8,10 @@ import dto.actividades.ActividadesDTO;
 import interfaces.IFachadaActividad;
 import java.util.ArrayList;
 import java.util.List;
+
+import presentacion.CoordinadorAplicacion;
 import presentacion.actividadesExtracurriculares.coordNegocio.CoordinadorNegocioActividades;
 import presentacion.actividadesExtracurriculares.panels.ActividadesExtracurriculares;
-//import presentacion.actividadesExtracurriculares.panels.MainFrameActividades;
-import presentacion.actividadesExtracurriculares.panels.MenuOpciones;
-import presentacion.coordinadorAplicacion.ICoordinadorAplicacion;
 
 /**
  *
@@ -24,11 +23,12 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
   //  private MainFrameActividades mainFrameActividades;
     private ActividadesExtracurriculares actividades;
     private final CoordinadorNegocioActividades coordinadorNegocioActividades;
+    private final CoordinadorAplicacion coordinadorPadre;
     
-     
-    
-    public CoordinadorAplicacionActividades(IFachadaActividad fachadaActividad){
+    public CoordinadorAplicacionActividades(IFachadaActividad fachadaActividad, CoordinadorAplicacion coordinadorAplicacion){
+        this.coordinadorPadre = coordinadorAplicacion;
         coordinadorNegocioActividades= new CoordinadorNegocioActividades(fachadaActividad);
+
     }
     
     public void iniciarGUI(){
@@ -36,6 +36,12 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
             actividades= new ActividadesExtracurriculares(this);
         }
         actividades.setVisible(true);
+    }
+    public void regresarAlMenuPrincipal() {
+        if (actividades != null) {
+            actividades.setVisible(false);
+        }
+        coordinadorPadre.mostrarMainFrame();
     }
     
     

@@ -1,4 +1,5 @@
 package presentacion.solicitarBeca.panels;
+import presentacion.CoordinadorAplicacion;
 import presentacion.solicitarBeca.PanelSolicitarBeca;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.Button;
@@ -17,7 +18,7 @@ public class SubirDocumentosPanel extends PanelSolicitarBeca {
     private Label titulo;
     private Button btnContinuar;
     private final Map<String, File> documentosCargados = new HashMap<>();
-    private final presentacion.coordinadorAplicacion.CoordinadorAplicacion coordinadorAplicacion;
+    private final CoordinadorAplicacion coordinadorAplicacion;
     private final String[] DOCUMENTOS_REQUERIDOS = {"CURP", "INE", "KARDEX", "COMPROBANTE_INSCIRPCION", "COMPROBANTE_INGRESOS"};
     public SubirDocumentosPanel(SolicitarBeca frame, CoordinadorAplicacion coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
@@ -64,8 +65,6 @@ public class SubirDocumentosPanel extends PanelSolicitarBeca {
             }
             try {
                 coordinadorAplicacion.procesarDocumentos(documentosCargados);
-                ResumenFinalPanel pnl = (ResumenFinalPanel) mainFrame.getPanel("resumenFinalPanel");
-                coordinadorAplicacion.mostrarResumen();
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(mainFrame, "Error al procesar la solicitud: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
