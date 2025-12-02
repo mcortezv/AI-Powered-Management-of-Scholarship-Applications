@@ -5,6 +5,7 @@
 package presentacion.actividadesExtracurriculares.panels;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -30,10 +31,15 @@ public class MenuOpciones extends PanelActividades{
          this.southPanel.setVisible(false);
          centralPanel.removeAll();
          centralPanel.setAlignmentY(CENTER_ALIGNMENT);
+         Dimension tamanoBoton = new Dimension(300, 60);
          Button botonInscribir= new Button("inscribir");
          Button botonBaja= new Button("baja");
-         
+         botonInscribir.setPreferredSize(tamanoBoton);
+         botonInscribir.setMaximumSize(tamanoBoton);
          botonInscribir.setAlignmentX(Button.CENTER_ALIGNMENT);
+         
+         botonBaja.setPreferredSize(tamanoBoton);
+         botonBaja.setMaximumSize(tamanoBoton);
          botonBaja.setAlignmentX(Button.CENTER_ALIGNMENT);
          
          centralPanel.add(Box.createVerticalGlue());
