@@ -1,7 +1,10 @@
 package apiItson.interfaces;
-import datos.dominio.HistorialAcademico;
+import datos.dominioItson.HistorialAcademico;
+import datos.dominioItson.pagarAdeudo.Prestamo;
 import itson.LoginDTOItson;
-import datos.dominio.Estudiante;
+import datos.dominioItson.Estudiante;
+
+import java.util.List;
 
 public interface IItsonAPI {
 
@@ -10,4 +13,15 @@ public interface IItsonAPI {
     Estudiante obtenerDatosEstudiante(Long matricula);
 
     HistorialAcademico obtenerHistorialAcademico(Long matricula);
+
+    double obtenerAdeudoBiblioteca(Long matricula);
+
+    double obtenerAdeudoColegiatura(Long matricula);
+
+
+
+    //pagar adeudo
+    List<Prestamo> obtenerListaPrestamosBiblioteca(Long matricula);
+
+
 }
