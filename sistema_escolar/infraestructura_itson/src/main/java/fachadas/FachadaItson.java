@@ -5,6 +5,7 @@ import controles.ControlItson;
 import dto.banco.ClaseDTOI;
 import dto.banco.PrestamoDTOI;
 import dto.banco.SolicitudPagoDTOI;
+import dto.itson.ActividadesDTOItson;
 import dto.itson.LoginDTOItson;
 import interfaces.IFachadaITSON;
 import java.util.List;
@@ -75,4 +76,12 @@ public class FachadaItson implements IFachadaITSON{
     /**
      * AQUI TERMINA CASO DE USO PAGAR ADEUDO
      */
+    
+    /**
+     * ESTO ES DEL CASO ACTIVIDADES 
+     */
+    
+    public ActividadesDTOItson obtenerActividades(){
+        return controlItson.obtenerActividades();
+    }
 }

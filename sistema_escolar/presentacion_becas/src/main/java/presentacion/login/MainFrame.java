@@ -20,7 +20,7 @@ public final class MainFrame extends JFrame {
     private Button btnSolicitarBeca;
     private Button btnApelacion;
     private Button btnPagoAdeudo;
-    private Button btnExtracurriculares;
+    private Button btnActividades;
     private Button btnTutorias;
     private Button btnCarteras;
     private final Map<String, JPanel> panels;
@@ -41,7 +41,7 @@ public final class MainFrame extends JFrame {
         Button btnEvaluarSolicitudes = new Button("Evaluar Solicitudes");
         btnApelacion = new Button("Apelacion");
         btnPagoAdeudo = new Button("Pago Adeudo");
-        btnExtracurriculares = new Button("Extracurriculares");
+        btnActividades = new Button("Actividades");
         btnTutorias = new Button("Tutorias");
         btnCarteras = new Button("Carteras");
 
@@ -50,7 +50,7 @@ public final class MainFrame extends JFrame {
         northPanel.add(btnEvaluarSolicitudes);
         northPanel.add(btnApelacion);
         northPanel.add(btnPagoAdeudo);
-        northPanel.add(btnExtracurriculares);
+        northPanel.add(btnActividades);
         northPanel.add(btnTutorias);
         northPanel.add(btnCarteras);
 
@@ -71,6 +71,10 @@ public final class MainFrame extends JFrame {
         btnPagoAdeudo.addActionListener(e ->{
             coordinadorAplicacion.pagarAdeudo();
         });
+        
+        btnActividades.addActionListener( e->{
+            coordinadorAplicacion.actividades();
+    });
 
 
     }

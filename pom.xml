@@ -11,6 +11,7 @@
         <module>ITSON-API</module>
         <module>sistema_escolar</module>
         <module>sistema_gobierno</module>
+        <module>dto_negocio</module>
     </modules>
     <build>
         <resources>

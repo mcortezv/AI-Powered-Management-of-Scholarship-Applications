@@ -16,6 +16,8 @@ import presentacion.solicitarBeca.panels.ListadoBecasDisponiblesPanel;
 import presentacion.solicitarBeca.panels.ResumenFinalPanel;
 import java.io.File;
 import java.util.Map;
+import presentacion.actividadesExtracurriculares.coordinador.CoordinadorAplicacionActividades;
+import presentacion.actividadesExtracurriculares.panels.ActividadesExtracurriculares;
 
 /**
  *
@@ -35,14 +37,22 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     //pagar adeudo
     private final CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo;
     private PagarAdeudo adeudo;
+    
+    //actividades extracurriculares 
+    private final CoordinadorAplicacionActividades coordinadorAplicacionActividades;
+    private ActividadesExtracurriculares actividades;
 
     // bajar a coordinador negocio
     private dto_gobierno.SolicitudDTO solicitudDTO;
     private dto_gobierno.EstudianteDTO estudianteDTO;
 
-    public CoordinadorAplicacion(IFachadaInicioSesion fachadaInicioSesion, IFachadaSolicitarBeca fachadaSolicitarBeca, CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo) {
+    public CoordinadorAplicacion(IFachadaInicioSesion fachadaInicioSesion, 
+                                IFachadaSolicitarBeca fachadaSolicitarBeca, 
+                                CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo, 
+                                CoordinadorAplicacionActividades coordinadorAplicacionActividades) {
         this.coordinadorNegocio = new CoordinadorNegocio(fachadaInicioSesion, fachadaSolicitarBeca);
         this.coordinadorAplicacionPagarAdeudo = coordinadorAplicacionPagarAdeudo;
+        this.coordinadorAplicacionActividades= coordinadorAplicacionActividades;
         mainFrame = null;
 
     }
@@ -86,6 +96,12 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         adeudo = new PagarAdeudo(coordinadorAplicacionPagarAdeudo);
         adeudo.setVisible(true);
     }
+    
+    public void actividades(){
+        mainFrame.setVisible(false);
+        coordinadorAplicacionActividades.iniciarGUI();
+        
+    }
 
 
     public void main() {
@@ -105,6 +121,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         detallesBeca.cargarBeca(becaSeleccionadaDTO);
         solicitarBeca.showPanel("detalleBecaPanel");
     }
+    
 
     public void mostrarResumen(){
         ResumenFinalPanel resumenFinal= (ResumenFinalPanel) solicitarBeca.getPanel("resumenFinalPanel");

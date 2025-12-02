@@ -4,6 +4,7 @@ import dto.itson.HistorialAcademicoDTOItson;
 import dto.banco.ClaseDTOI;
 import dto.banco.PrestamoDTOI;
 import dto.banco.SolicitudPagoDTOI;
+import dto.itson.ActividadesDTOItson;
 import dto.itson.LoginDTOItson;
 
 import java.util.List;
@@ -25,4 +26,7 @@ public interface IFachadaITSON {
     List<PrestamoDTOI> solicitarListaPrestamso(String matriculaEstudiante);
     List<ClaseDTOI> solicitarListaClases(String matriculaEstudiante);
     boolean notificarLiquidacion(SolicitudPagoDTOI solicitudPagoDTOI);
+    
+    //actividades
+    public ActividadesDTOItson obtenerActividades();
 }

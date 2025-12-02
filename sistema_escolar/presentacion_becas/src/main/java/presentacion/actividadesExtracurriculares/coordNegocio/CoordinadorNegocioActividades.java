@@ -1,0 +1,29 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package presentacion.actividadesExtracurriculares.coordNegocio;
+
+import dto.actividades.ActividadesDTO;
+import interfaces.IFachadaActividad;
+
+/**
+ *
+ * @author janethcristinagalvanquinonez
+ */
+public class CoordinadorNegocioActividades implements ICoordNegocioActividades {
+    
+    private final IFachadaActividad fachadaActividad; 
+    
+    public CoordinadorNegocioActividades(IFachadaActividad fachadaActividad){
+        this.fachadaActividad= fachadaActividad;
+        
+    }
+    
+    public ActividadesDTO obtenerActividades(){
+        return fachadaActividad.obtenerActividades();
+    }
+    
+    
+    
+}

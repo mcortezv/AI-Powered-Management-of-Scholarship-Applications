@@ -42,17 +42,17 @@
         </dependency>
     </dependencies>
     <build>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-
-            <resource>
-                <directory>../src/main/resources</directory>
-                <includes>
-                    <include>mongo.properties</include>
-                </includes>
-            </resource>
-        </resources>
-    </build>
+    <resources>
+        <resource>
+            <directory>src/main/resources</directory>
+        </resource>
+        <resource>
+            <directory>${project.basedir}/..</directory> 
+            <includes>
+                <include>mongo.properties</include>
+            </includes>
+            <targetPath>.</targetPath> 
+        </resource>
+    </resources>
+</build>
 </project>
