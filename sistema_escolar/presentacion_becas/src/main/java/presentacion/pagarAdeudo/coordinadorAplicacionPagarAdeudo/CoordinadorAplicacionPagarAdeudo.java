@@ -5,6 +5,7 @@ import pagarAdeudo.ClaseDTO;
 import pagarAdeudo.PrestamoDTO;
 import pagarAdeudo.SolicitudPagoDTO;
 import interfaces.IFachadaPago;
+import presentacion.CoordinadorAplicacion;
 import presentacion.pagarAdeudo.PagarAdeudo;
 import presentacion.pagarAdeudo.coordinadorNegocioPagarAdeudo.CoordinadorNegocioPagarAdeudo;
 import presentacion.pagarAdeudo.mainFraimePagarAdeudo.MainFramePagarAdeudo;
@@ -15,32 +16,34 @@ import solicitarBeca.dominio.enums.pagarAdeudo.MetodoPago;
 import java.util.List;
 
 public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionPagarAdeudo {
-
+    private final CoordinadorAplicacion coordinadorPadre;
     private MainFramePagarAdeudo mainFrame;
     private final CoordinadorNegocioPagarAdeudo coordinadorNegocioPagarAdeudo;
     private PagarAdeudo pagarAdeudo;
 
-    public CoordinadorAplicacionPagarAdeudo(IFachadaPago fachadaPago) {
+    public CoordinadorAplicacionPagarAdeudo(IFachadaPago fachadaPago, CoordinadorAplicacion coordinadorPadre) {
+        this.coordinadorPadre = coordinadorPadre;
         coordinadorNegocioPagarAdeudo = new CoordinadorNegocioPagarAdeudo(fachadaPago);
         mainFrame = null;
     }
 
-    public void iniciarGUI() {
-        if (mainFrame == null) {
-            mainFrame = new MainFramePagarAdeudo(this);
-        }
-        mainFrame.setVisible(true);
-    }
-
-    public void main() {
-        pagarAdeudo.setVisible(false);
-        mainFrame.setVisible(true);
-    }
-
     public void pagarAdeudo() {
-        mainFrame.setVisible(false);
+        if (mainFrame != null) {
+            mainFrame.setVisible(false);
+        }
         pagarAdeudo = new PagarAdeudo(this);
         pagarAdeudo.setVisible(true);
+    }
+
+    public void regresarAlMenuPrincipal() {
+        if (pagarAdeudo != null) {
+            pagarAdeudo.setVisible(false);
+        }
+        if (mainFrame != null) {
+            mainFrame.setVisible(false);
+        }
+
+        coordinadorPadre.mostrarMainFrame();
     }
 
     @Override

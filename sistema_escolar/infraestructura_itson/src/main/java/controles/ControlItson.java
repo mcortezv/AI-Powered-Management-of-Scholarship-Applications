@@ -1,12 +1,17 @@
 package controles;
 import apiItson.ItsonAPI;
 import apiItson.interfaces.IItsonAPI;
-import datos.adaptadores.HistorialAcademicoAdaptador;
+import datos.adaptadoresItson.HistorialAcademicoAdaptador;
+import datos.adaptadoresItson.pagarAdeudo.PrestamoAdaptador;
 import itson.EstudianteDTOItson;
 import itson.HistorialAcademicoDTOItson;
 import itson.LoginDTOItson;
-import datos.adaptadores.EstudianteAdaptador;
-import datos.dominio.Estudiante;
+import datos.adaptadoresItson.EstudianteAdaptador;
+import datos.dominioItson.Estudiante;
+import itson.pagarAdeudo.PrestamoDTOItson;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ControlItson {
@@ -29,7 +34,21 @@ public class ControlItson {
     }
 
     public HistorialAcademicoDTOItson verificarHistorialAcademico(Long matricula){
-        HistorialAcademicoDTOItson historialAcademicoDTOItson = HistorialAcademicoAdaptador.toDTOItson(api.obtenerHistorialAcademico(matricula));
-        return historialAcademicoDTOItson;
+        return HistorialAcademicoAdaptador.toDTOItson(api.obtenerHistorialAcademico(matricula));
+    }
+
+
+    //Caso de uso Pagar adeudo
+    public double obtenerAdeudoBiblioteca(Long matricula){
+        return api.obtenerAdeudoBiblioteca(matricula);
+    }
+
+    public double obtenerAdeudoColegiatura(Long matricula){
+        return api.obtenerAdeudoColegiatura(matricula);
+    }
+
+
+    public List<PrestamoDTOItson> obtenerListaPrestamos(Long matricula){
+       return PrestamoAdaptador.toDtoItson(api.obtenerListaPrestamosBiblioteca(matricula));
     }
 }

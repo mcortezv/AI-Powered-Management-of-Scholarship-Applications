@@ -2,11 +2,12 @@ package presentacion.pagarAdeudo.panels;
 
 import pagarAdeudo.PrestamoDTO;
 import presentacion.pagarAdeudo.PagarAdeudo;
+import presentacion.pagarAdeudo.PanelPagarAdeudo;
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
 
 import java.util.List;
 
-public class ListaPrestamosBiblioteca extends PanelPagarAdeudo{
+public class ListaPrestamosBiblioteca extends PanelPagarAdeudo {
 
     public ListaPrestamosBiblioteca(PagarAdeudo frame, CoordinadorAplicacionPagarAdeudo coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);

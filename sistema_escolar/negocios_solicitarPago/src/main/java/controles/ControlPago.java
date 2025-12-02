@@ -25,24 +25,28 @@ public class ControlPago {
     }
 
     public double solicitarAdeudoTotalBiblioteca(EstudianteDTO estudianteDTO) {
-        String matriculaString = String.valueOf(estudianteDTO.getMatricula());
-        return iAdeudoBO.obtenerAdeudoBiblioteca(matriculaString);
+        Long matricula = estudianteDTO.getMatricula();
+        return iAdeudoBO.obtenerAdeudoBiblioteca(matricula);
     }
 
     public double solicitarAdeudoTotalColegiatura(EstudianteDTO estudianteDTO){
-        String matriculaString = String.valueOf(estudianteDTO.getMatricula());
-        return iAdeudoBO.obtenerAdeudoColegiatura(matriculaString);
+        Long matricula = estudianteDTO.getMatricula();
+        return iAdeudoBO.obtenerAdeudoColegiatura(matricula);
     }
 
     public List<PrestamoDTO>solicitarListaPrestamos(EstudianteDTO estudianteDTO){
-        String matriculaString = String.valueOf(estudianteDTO.getMatricula());
-        List<PrestamoDTOI> prestamosI = iAdeudoBO.obtenerDetallePrestamo(matriculaString);
+        try{
+
+        }
+
+        Long matricula = estudianteDTO.getMatricula();
+        List<PrestamoDTOI> prestamosI = iAdeudoBO.obtenerDetallePrestamo(matricula);
         return prestamosI.stream().map(PrestamoAdaptador::toDTO).toList();
     }
 
     public List<ClaseDTO> solicitarListaClases(EstudianteDTO estudianteDTO){
-        String matriculaString = String.valueOf(estudianteDTO.getMatricula());
-        List<ClaseDTOI> clasesI = iAdeudoBO.obtenerDetalleClase(matriculaString);
+        Long matricula = estudianteDTO.getMatricula();
+        List<ClaseDTOI> clasesI = iAdeudoBO.obtenerDetalleClase(matricula);
         return clasesI.stream().map(ClaseAdaptador::toDTO).toList();
     }
 

@@ -73,4 +73,6 @@ public final class MainFrame extends JFrame {
     public NorthPanel getNorthPanel() {
         return northPanel;
     }
+
+
 }

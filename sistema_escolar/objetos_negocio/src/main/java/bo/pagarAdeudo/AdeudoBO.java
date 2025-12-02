@@ -9,26 +9,29 @@ import interfaces.pagarAdeudo.IAdeudoBO;
 import java.util.List;
 
 public class AdeudoBO implements IAdeudoBO {
-    private IFachadaITSON iFachadaITSON;
+    private final IFachadaITSON iFachadaITSON;
 
+    public AdeudoBO(IFachadaITSON iFachadaITSON){
+        this.iFachadaITSON = iFachadaITSON;
+    }
     @Override
-    public double obtenerAdeudoBiblioteca(String matriculaEstudiante) {
-        return iFachadaITSON.solicitarAdeudoBiblioteca(matriculaEstudiante);
+    public double obtenerAdeudoBiblioteca(Long matricula) {
+        return iFachadaITSON.solicitarAdeudoBiblioteca(matricula);
     }
 
     @Override
-    public double obtenerAdeudoColegiatura(String matriculaEstudiante) {
-        return iFachadaITSON.solicitarAdeudoColegiatura(matriculaEstudiante);
+    public double obtenerAdeudoColegiatura(Long matricula) {
+        return iFachadaITSON.solicitarAdeudoColegiatura(matricula);
     }
 
     @Override
-    public List<PrestamoDTOI> obtenerDetallePrestamo(String matriculaEstudiante) {
-        return iFachadaITSON.solicitarListaPrestamso(matriculaEstudiante);
+    public List<PrestamoDTOI> obtenerDetallePrestamo(Long matricula) {
+        return iFachadaITSON.solicitarListaPrestamso(matricula);
     }
 
     @Override
-    public List<ClaseDTOI> obtenerDetalleClase(String matriculaEstudiante) {
-        return iFachadaITSON.solicitarListaClases(matriculaEstudiante);
+    public List<ClaseDTOI> obtenerDetalleClase(Long matricula) {
+        return iFachadaITSON.solicitarListaClases(matricula);
     }
 
     @Override

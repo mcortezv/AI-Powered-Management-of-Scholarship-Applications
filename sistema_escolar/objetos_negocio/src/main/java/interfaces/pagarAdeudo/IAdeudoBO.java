@@ -7,9 +7,9 @@ import banco.SolicitudPagoDTOI;
 import java.util.List;
 
 public interface IAdeudoBO {
-    double obtenerAdeudoBiblioteca(String matriculaEstudiante);
-    double obtenerAdeudoColegiatura(String matriculaEstudiante);
-    List<PrestamoDTOI> obtenerDetallePrestamo(String matriculaEstudiante);
-    List<ClaseDTOI> obtenerDetalleClase(String matriculaEstudiante);
+    double obtenerAdeudoBiblioteca(Long matricula);
+    double obtenerAdeudoColegiatura(Long matricula);
+    List<PrestamoDTOI> obtenerDetallePrestamo(Long matricula);
+    List<ClaseDTOI> obtenerDetalleClase(Long matricula);
     boolean enviarSolicitudPago(SolicitudPagoDTOI solicitudPagoDTO);
 }

@@ -30,15 +30,15 @@ public class Main {
         ControlBanco controlBanco = new ControlBanco();
         ControlPayPal controlPayPal = new ControlPayPal();
 
-        //  Caso pagar Adeudo
-        IAdeudoBO adeudoBO = new AdeudoBO();
-
         // creacion de fachadas
         IFachadaBanco fachadaBanco = new FachadaBanco(controlBanco);
         IFachadaPayPal fachadaPayPal = new FachadaPayPal(controlPayPal);
-        IFachadaPago fachadaPago = new FachadaPago(new ControlPago(adeudoBO, fachadaBanco, fachadaPayPal));
         IFachadaITSON fachadaITSON = new FachadaItson(controlItson);
         IFachadaGobierno fachadaGobierno = new FachadaGobierno(controlGobierno);
+        //  Caso pagar Adeudo
+        IAdeudoBO adeudoBO = new AdeudoBO(fachadaITSON);
+        IFachadaPago fachadaPago = new FachadaPago(new ControlPago(adeudoBO, fachadaBanco, fachadaPayPal));
+
 
         // creacion de daos
         ISolicitudDAO solicitudDAO = new SolicitudDAO();
@@ -54,16 +54,18 @@ public class Main {
         ISolicitudBO solicitudBO = new SolicitudBO(fachadaGobierno, solicitudDAO);
         ITutorBO tutorBO = new TutorBO();
 
+
         IFachadaInicioSesion fachadaInicioSesion = new FachadaInicioSesion(new ControlInicioSesion(estudianteBO));
         IFachadaSolicitarBeca fachadaSolicitarBeca = new FachadaSolicitarBeca(new ControlSolicitarBeca(solicitudBO, estudianteBO, tutorBO, becasFiltradasBO, documentoBO, historialAcademicoBO, infoSocioBO));
 
-        // coordinadores de subsistemas
-        CoordinadorAplicacionPagarAdeudo coordAdeudo = new CoordinadorAplicacionPagarAdeudo(fachadaPago);
+        CoordinadorAplicacion coordinadorAplicacion =
+                new CoordinadorAplicacion(fachadaInicioSesion, fachadaSolicitarBeca);
 
-        // Coordinador general
-        CoordinadorAplicacion coordinadorAplicacion = new CoordinadorAplicacion(fachadaInicioSesion, fachadaSolicitarBeca, coordAdeudo);
+        CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo =
+                new CoordinadorAplicacionPagarAdeudo(fachadaPago, coordinadorAplicacion);
 
-        // iniciar la interfaz
+        coordinadorAplicacion.setCoordinadorAplicacionPagarAdeudo(coordinadorAplicacionPagarAdeudo);
+
         coordinadorAplicacion.iniciarGUI();
     }
 }
