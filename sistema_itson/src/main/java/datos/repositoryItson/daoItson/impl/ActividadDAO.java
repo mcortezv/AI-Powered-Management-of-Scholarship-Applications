@@ -2,13 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package itson.org.repository.impl;
+package datos.repositoryItson.daoItson.impl;
 
 import com.mongodb.client.MongoCollection;
-import itson.org.config.MongoClienteProvider;
-import itson.org.domain.Actividad;
-import itson.org.domain.Grupo;
-import itson.org.repository.IActividadDAO;
+import datos.configMongoItson.MongoClienteProvider;
+import datos.dominioItson.Actividad;
+import datos.repositoryItson.daoItson.IActividadDAO;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +15,7 @@ import java.util.List;
  *
  * @author janethcristinagalvanquinonez
  */
-public class ActividadDAO implements IActividadDAO{
+public class ActividadDAO implements IActividadDAO {
     
     private final MongoCollection<Actividad> coleccion;
 

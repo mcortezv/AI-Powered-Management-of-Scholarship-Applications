@@ -1,6 +1,7 @@
 package apiItson;
 import apiItson.controles.ControlItson;
 import apiItson.interfaces.IItsonAPI;
+import datos.dominioItson.Actividad;
 import datos.dominioItson.HistorialAcademico;
 import datos.dominioItson.pagarAdeudo.Prestamo;
 import itson.LoginDTOItson;
@@ -30,10 +31,6 @@ public class ItsonAPI implements IItsonAPI {
         return controlItson.obtenerHistorialAcademico(matricula);
     }
 
-
-
-
-
     // pagar adeudo
     @Override
     public double obtenerAdeudoBiblioteca(Long matricula) {
@@ -43,6 +40,11 @@ public class ItsonAPI implements IItsonAPI {
     @Override
     public double obtenerAdeudoColegiatura(Long matricula) {
         return 0;
+    }
+
+    @Override
+    public List<Actividad> soloicitarActividades() {
+        return controlItson.solicitarActividades();
     }
 
     @Override

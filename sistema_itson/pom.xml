@@ -1,58 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>mcortezv</groupId>
-	<artifactId>ITSON-API</artifactId>
-	<version>1.0</version>
-	<name>ITSON-API</name>
-	<description>ITSON API </description>
-	<url/>
-	<licenses>
-		<license/>
-	</licenses>
-	<developers>
-		<developer/>
-	</developers>
-	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
-	</scm>
-	<properties>
-		<java.version>21</java.version>
-	</properties>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>mcortezv</groupId>
+    <artifactId>sistema_itson</artifactId>
+    <version>1.0</version>
+    <url/>
+    <licenses>
+        <license/>
+    </licenses>
+    <developers>
+        <developer/>
+    </developers>
+    <scm>
+        <connection/>
+        <developerConnection/>
+        <tag/>
+        <url/>
+    </scm>
+    <properties>
+        <java.version>21</java.version>
+    </properties>
     <dependencies>
-    <dependency>
-        <groupId>org.mongodb</groupId>
-        <artifactId>mongodb-driver-sync</artifactId>
-        <version>5.6.1</version>
-    </dependency>
-    <dependency>
-        <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-simple</artifactId>
-        <version>2.0.13</version>
-    </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-sync</artifactId>
+            <version>5.6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.0.13</version>
+        </dependency>
         <dependency>
             <groupId>mcortezv</groupId>
             <artifactId>dto_infraestructura</artifactId>
             <version>1.0</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>mcortezv</groupId>
+            <artifactId>recursos_compartidos</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
-    <build>
-    <resources>
-        <resource>
-            <directory>src/main/resources</directory>
-        </resource>
-        <resource>
-            <directory>${project.basedir}/..</directory> 
-            <includes>
-                <include>mongo.properties</include>
-            </includes>
-            <targetPath>.</targetPath> 
-        </resource>
-    </resources>
-</build>
 </project>

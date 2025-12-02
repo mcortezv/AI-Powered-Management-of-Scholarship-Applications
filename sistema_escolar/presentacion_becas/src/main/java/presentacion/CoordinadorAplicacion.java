@@ -2,8 +2,10 @@ package presentacion.coordinadorAplicacion;
 import dto.*;
 import dto.itson.LoginDTOItson;
 import interfaces.*;
+import presentacion.CoordinadorNegocio;
 import presentacion.coordinadorNegocio.CoordinadorNegocio;
 import presentacion.coordinadorNegocio.ICoordinadorNegocio;
+import presentacion.interfaces.ICoordinadorAplicacion;
 import presentacion.login.MainFrame;
 import presentacion.login.exceptions.ContraseniaInvalidaException;
 import presentacion.login.exceptions.IDInvalidoException;
@@ -18,6 +20,7 @@ import java.io.File;
 import java.util.Map;
 import presentacion.actividadesExtracurriculares.coordinador.CoordinadorAplicacionActividades;
 import presentacion.actividadesExtracurriculares.panels.ActividadesExtracurriculares;
+import solicitarBeca.*;
 
 /**
  *
@@ -43,8 +46,8 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     private ActividadesExtracurriculares actividades;
 
     // bajar a coordinador negocio
-    private dto_gobierno.SolicitudDTO solicitudDTO;
-    private dto_gobierno.EstudianteDTO estudianteDTO;
+    private SolicitudDTO solicitudDTO;
+    private EstudianteDTO estudianteDTO;
 
     public CoordinadorAplicacion(IFachadaInicioSesion fachadaInicioSesion, 
                                 IFachadaSolicitarBeca fachadaSolicitarBeca, 

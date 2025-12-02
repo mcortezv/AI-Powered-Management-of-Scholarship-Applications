@@ -5,7 +5,6 @@
 package presentacion.actividadesExtracurriculares.coordNegocio;
 
 import dto.actividades.ActividadesDTO;
-import interfaces.IFachadaActividad;
 
 /**
  *

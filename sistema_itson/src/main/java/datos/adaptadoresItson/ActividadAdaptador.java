@@ -4,9 +4,10 @@
  */
 package itson.org.adaptadores;
 
-import dto.itson.ActividadDTOItson;
-import dto.itson.ActividadesDTOItson;
-import itson.org.domain.Actividad;
+import datos.dominioItson.Actividad;
+import itson.ActividadDTOItson;
+import itson.ActividadesDTOItson;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -4,7 +4,8 @@
  */
 package interfaces.actividades;
 
-import dto.itson.ActividadesDTOItson;
+
+import itson.ActividadesDTOItson;
 
 /**
  *

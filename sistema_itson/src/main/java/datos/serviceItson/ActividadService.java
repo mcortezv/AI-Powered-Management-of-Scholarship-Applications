@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package itson.org.service;
+package datos.serviceItson;
 
-import itson.org.domain.Actividad;
-import itson.org.repository.impl.ActividadDAO;
+import datos.dominioItson.Actividad;
+import datos.repositoryItson.daoItson.impl.ActividadDAO;
 import java.util.List;
 
 /**

@@ -1,5 +1,4 @@
 package presentacion.solicitarBeca.panels;
-import presentacion.CoordinadorAplicacion;
 import presentacion.solicitarBeca.PanelSolicitarBeca;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.styles.Button;
@@ -18,7 +17,7 @@ public class SubirDocumentosPanel extends PanelSolicitarBeca {
     private Label titulo;
     private Button btnContinuar;
     private final Map<String, File> documentosCargados = new HashMap<>();
-    private final CoordinadorAplicacion coordinadorAplicacion;
+    private final presentacion.coordinadorAplicacion.CoordinadorAplicacion coordinadorAplicacion;
     private final String[] DOCUMENTOS_REQUERIDOS = {"CURP", "INE", "KARDEX", "COMPROBANTE_INSCIRPCION", "COMPROBANTE_INGRESOS"};
     public SubirDocumentosPanel(SolicitarBeca frame, CoordinadorAplicacion coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);

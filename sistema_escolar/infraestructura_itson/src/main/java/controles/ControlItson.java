@@ -1,15 +1,15 @@
 package controles;
-import api_publica.ItsonAPI;
-import api_publica.interfaz.IItsonAPI;
-import dto.itson.ActividadDTOItson;
-import dto.itson.ActividadesDTOItson;
-import dto.itson.EstudianteDTOItson;
-import dto.itson.LoginDTOItson;
-import dto_gobierno.EstudianteDTO;
+
+import apiItson.ItsonAPI;
+import apiItson.interfaces.IItsonAPI;
+import datos.adaptadoresItson.EstudianteAdaptador;
+import datos.dominioItson.Actividad;
+import datos.dominioItson.Estudiante;
+
+import itson.ActividadesDTOItson;
+import itson.EstudianteDTOItson;
+import itson.LoginDTOItson;
 import itson.org.adaptadores.ActividadAdaptador;
-import itson.org.adaptadores.EstudianteAdaptador;
-import itson.org.domain.Actividad;
-import itson.org.domain.Estudiante;
 import java.util.List;
 
 public class ControlItson {
@@ -34,7 +34,7 @@ public class ControlItson {
     public ActividadesDTOItson obtenerActividades(){
         List<Actividad> actividad= api.solicitarActividades();
         return ActividadAdaptador.toResponseDTOListaAct(actividad);
-        
+
         //return api.solicitarActividades();
     }
 

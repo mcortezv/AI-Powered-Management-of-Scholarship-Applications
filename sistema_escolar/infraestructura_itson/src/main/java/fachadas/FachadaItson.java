@@ -1,20 +1,23 @@
 package fachadas;
-import dto.itson.EstudianteDTOItson;
-import dto.itson.HistorialAcademicoDTOItson;
+
+
+import banco.ClaseDTOI;
+import banco.PrestamoDTOI;
+import banco.SolicitudPagoDTOI;
 import controles.ControlItson;
-import dto.banco.ClaseDTOI;
-import dto.banco.PrestamoDTOI;
-import dto.banco.SolicitudPagoDTOI;
-import dto.itson.ActividadesDTOItson;
-import dto.itson.LoginDTOItson;
 import interfaces.IFachadaITSON;
+import itson.ActividadesDTOItson;
+import itson.EstudianteDTOItson;
+import itson.HistorialAcademicoDTOItson;
+import itson.LoginDTOItson;
+
 import java.util.List;
 
 /**
  *
  * @author janethcristinagalvanquinonez
  */
-public class FachadaItson implements IFachadaITSON{
+public class FachadaItson implements IFachadaITSON {
     private final ControlItson controlItson;
 
     public FachadaItson(ControlItson controlItson) {
@@ -70,8 +73,8 @@ public class FachadaItson implements IFachadaITSON{
     @Override
     public boolean notificarLiquidacion(SolicitudPagoDTOI solicitudPagoDTOI) {
         return false;
-//        return controlItson.solicitarLiquidacion(solicitudPagoDTOI);
     }
+
 
     /**
      * AQUI TERMINA CASO DE USO PAGAR ADEUDO

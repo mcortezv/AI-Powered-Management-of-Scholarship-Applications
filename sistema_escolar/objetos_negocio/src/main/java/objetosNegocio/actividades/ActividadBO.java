@@ -4,19 +4,19 @@
  */
 package objetosNegocio.actividades;
 
-import dto.actividades.ActividadesDTO;
-import dto.itson.ActividadesDTOItson;
+
+import datos.repositoryItson.daoItson.IActividadDAO;
 import interfaces.IFachadaITSON;
 import interfaces.actividades.IActividadBO;
-import itson.org.repository.IActividadDAO;
+import itson.ActividadesDTOItson;
 
 /**
  *
  * @author janethcristinagalvanquinonez
  */
-public class ActividadBO implements IActividadBO{
+public class ActividadBO implements IActividadBO {
     
-    private IFachadaITSON fachadaITSON; 
+    private IFachadaITSON fachadaITSON;
     private IActividadDAO actividadDAO;
 
     public ActividadBO(IFachadaITSON fachadaITSON, IActividadDAO actividadDAO) {
