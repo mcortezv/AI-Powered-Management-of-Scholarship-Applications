@@ -2,6 +2,7 @@ package presentacion.pagarAdeudo.panels;
 
 import dtoGobierno.EstudianteDTO;
 import presentacion.pagarAdeudo.PagarAdeudo;
+import presentacion.pagarAdeudo.PanelPagarAdeudo;
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
 import presentacion.styles.Button;
 import presentacion.styles.Style;
@@ -58,7 +59,7 @@ public class ConsultaAdeudoMenu extends PanelPagarAdeudo {
 
         btnBack.addActionListener(e -> {
             System.out.println("btnBack clicked -> coordinadorAplicacion.main()");
-            coordinadorAplicacion.main();
+            coordinadorAplicacion.regresarAlMenuPrincipal();
         });
 
         btnBiblioteca.addActionListener(e -> {

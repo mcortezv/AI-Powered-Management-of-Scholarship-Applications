@@ -57,13 +57,14 @@ public class Main {
         IFachadaInicioSesion fachadaInicioSesion = new FachadaInicioSesion(new ControlInicioSesion(estudianteBO));
         IFachadaSolicitarBeca fachadaSolicitarBeca = new FachadaSolicitarBeca(new ControlSolicitarBeca(solicitudBO, estudianteBO, tutorBO, becasFiltradasBO, documentoBO, historialAcademicoBO, infoSocioBO));
 
-        // coordinadores de subsistemas
-        CoordinadorAplicacionPagarAdeudo coordAdeudo = new CoordinadorAplicacionPagarAdeudo(fachadaPago);
+        CoordinadorAplicacion coordinadorAplicacion =
+                new CoordinadorAplicacion(fachadaInicioSesion, fachadaSolicitarBeca);
 
-        // Coordinador general
-        CoordinadorAplicacion coordinadorAplicacion = new CoordinadorAplicacion(fachadaInicioSesion, fachadaSolicitarBeca, coordAdeudo);
+        CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo =
+                new CoordinadorAplicacionPagarAdeudo(fachadaPago, coordinadorAplicacion);
 
-        // iniciar la interfaz
+        coordinadorAplicacion.setCoordinadorAplicacionPagarAdeudo(coordinadorAplicacionPagarAdeudo);
+
         coordinadorAplicacion.iniciarGUI();
     }
 }

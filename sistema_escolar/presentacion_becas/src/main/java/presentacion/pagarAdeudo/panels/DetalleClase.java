@@ -2,9 +2,10 @@ package presentacion.pagarAdeudo.panels;
 
 import pagarAdeudo.ClaseDTO;
 import presentacion.pagarAdeudo.PagarAdeudo;
+import presentacion.pagarAdeudo.PanelPagarAdeudo;
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
 
-public class DetalleClase extends PanelPagarAdeudo{
+public class DetalleClase extends PanelPagarAdeudo {
     private ClaseDTO claseDTO;
 
     public DetalleClase(PagarAdeudo frame, CoordinadorAplicacionPagarAdeudo coordinadorAplicacion) {

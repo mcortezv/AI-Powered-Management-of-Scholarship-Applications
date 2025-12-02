@@ -1,6 +1,5 @@
-package presentacion.pagarAdeudo.panels;
+package presentacion.pagarAdeudo;
 
-import presentacion.pagarAdeudo.PagarAdeudo;
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
 import presentacion.styles.Button;
 import presentacion.styles.Style;

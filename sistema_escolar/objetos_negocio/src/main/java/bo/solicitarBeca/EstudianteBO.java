@@ -42,18 +42,13 @@ public class EstudianteBO implements IEstudianteBO {
         }
     }
 
-//    @Override
-//    public boolean iniciarSesion(LoginDTOItson solicitudLoginDTO){
-//        try {
-//            return fachadaITSON.verificarLogin(solicitudLoginDTO);
-//        } catch (EstudianteInvalidoException ex) {
-//            throw new EstudianteInvalidoException(ex.getMessage());
-//        }
-//    }
 
     @Override
     public void cerrarSesion() {
+        System.out.println("matricula del estudiante logeado: " + SesionUsuario.getInstance().getEstudianteLogeado().getMatricula());
+        System.out.println("Llamando a cerrar sesión en EstudianteBO");
         SesionUsuario.getInstance().limpiarSesion();
+        System.out.println("Sesión cerrada correctamente");
     }
 
     @Override
