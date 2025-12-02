@@ -2,6 +2,7 @@ package controles;
 import apiItson.ItsonAPI;
 import apiItson.interfaces.IItsonAPI;
 import datos.adaptadoresItson.HistorialAcademicoAdaptador;
+import datos.adaptadoresItson.pagarAdeudo.PrestamoAdaptador;
 import itson.EstudianteDTOItson;
 import itson.HistorialAcademicoDTOItson;
 import itson.LoginDTOItson;
@@ -48,8 +49,6 @@ public class ControlItson {
 
 
     public List<PrestamoDTOItson> obtenerListaPrestamos(Long matricula){
-        List<PrestamoDTOItson> prestamoDTOItsons = new ArrayList<>();
-
-        return api.obtenerListaPrestamosBiblioteca(matricula);
+       return PrestamoAdaptador.toDtoItson(api.obtenerListaPrestamosBiblioteca(matricula));
     }
 }

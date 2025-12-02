@@ -90,8 +90,6 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         this.coordinadorAplicacionPagarAdeudo = c;
     }
 
-
-
     public void main() {
         solicitarBeca.setVisible(false);
         mainFrame.setVisible(true);
@@ -110,10 +108,9 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     }
 
     public void mostrarResumen(){
-        ResumenFinalPanel resumenFinal= (ResumenFinalPanel) solicitarBeca.getPanel("resumenFinalPanel");
+        ResumenFinalPanel resumenFinal = (ResumenFinalPanel) solicitarBeca.getPanel("resumenFinalPanel");
         resumenFinal.cargarResumen(coordinadorNegocio.getSolicitudActual());
         solicitarBeca.showPanel("resumenFinalPanel");
-        
     }
 
     public void iniciarSolicitud(){
@@ -143,12 +140,6 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
-    }
-
-
-
-    public void procesarDocumentosYSolicitud(Map<String, File> documentosCargados) {
-        mostrarResumen();
     }
 
     public void setBecaSeleccionadaDTO(BecaDTO becaDTO) {
