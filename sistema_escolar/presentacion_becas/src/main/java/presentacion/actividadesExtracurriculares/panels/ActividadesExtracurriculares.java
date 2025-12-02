@@ -1,0 +1,82 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package presentacion.actividadesExtracurriculares.panels;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import presentacion.actividadesExtracurriculares.coordinador.CoordinadorAplicacionActividades;
+
+import presentacion.login.panels.NorthPanel;
+
+/**
+ *
+ * @author janethcristinagalvanquinonez
+ */
+public class ActividadesExtracurriculares extends JFrame{
+    private JPanel northPanel;
+    private JPanel centralPanel;
+    private Map<String, JPanel> panels;
+    private CoordinadorAplicacionActividades coordinadorAplicacionActividades;
+    
+    public ActividadesExtracurriculares(CoordinadorAplicacionActividades coordinadorAplicacionActividades){
+        this.coordinadorAplicacionActividades= coordinadorAplicacionActividades;
+        setTitle("Actividades Extracurriculares");
+        setSize(1500,900);
+        setLocationRelativeTo(null);
+        setLayout(new BorderLayout());
+       
+        northPanel= new JPanel();
+        northPanel.setBackground(new Color(50, 100, 200));
+        northPanel.setPreferredSize(new Dimension(1, 80));
+        centralPanel= new JPanel();
+        panels= new HashMap<>();
+         initializePanels();
+        add(northPanel, BorderLayout.NORTH);
+        add(centralPanel, BorderLayout.CENTER);
+      
+        
+        showPanel("MenuOpciones");
+        coordinadorAplicacionActividades.setActividades(this);
+        
+        
+    }
+    
+    private void initializePanels(){
+        
+       PanelActividades panel;
+//       panel= new ListaActividades(this, coordinadorAplicacionActividades);
+//       panel.startComponents();
+//       panels.put("ListaActividades", panel);
+       
+       panel= new MenuOpciones(this, coordinadorAplicacionActividades);
+       panel.startComponents();
+       panels.put("MenuOpciones", panel);
+       
+       panel= new ListaActividades(this, coordinadorAplicacionActividades);
+       panel.startComponents();
+       panels.put("ListaActividades", panel);
+        
+    }
+    
+    public void showPanel(String pantalla){
+        centralPanel.removeAll();
+        centralPanel.add(panels.get(pantalla), BorderLayout.CENTER);
+        centralPanel.revalidate();
+        centralPanel.repaint();   
+    }
+    
+    public JPanel getPanel(String key){
+        return panels.get(key);
+    }
+    
+    
+    
+    
+}

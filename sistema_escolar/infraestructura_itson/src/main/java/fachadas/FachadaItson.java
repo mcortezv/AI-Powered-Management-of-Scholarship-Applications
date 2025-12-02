@@ -1,16 +1,13 @@
 package fachadas;
-import datos.dominioItson.pagarAdeudo.Prestamo;
-import itson.EstudianteDTOItson;
-import itson.HistorialAcademicoDTOItson;
+import dto.itson.EstudianteDTOItson;
+import dto.itson.HistorialAcademicoDTOItson;
 import controles.ControlItson;
-import banco.ClaseDTOI;
-import banco.PrestamoDTOI;
-import banco.SolicitudPagoDTOI;
-import itson.LoginDTOItson;
+import dto.banco.ClaseDTOI;
+import dto.banco.PrestamoDTOI;
+import dto.banco.SolicitudPagoDTOI;
+import dto.itson.ActividadesDTOItson;
+import dto.itson.LoginDTOItson;
 import interfaces.IFachadaITSON;
-import itson.pagarAdeudo.ClaseDTOItson;
-import itson.pagarAdeudo.PrestamoDTOItson;
-
 import java.util.List;
 
 /**
@@ -32,37 +29,40 @@ public class FachadaItson implements IFachadaITSON{
     @Override
     public EstudianteDTOItson verificarEstudiante(Long matricula) {
         return controlItson.verificarEstudiante(matricula);
+//        return controlItson.verificarEstudiante(matricula);
     }
 
     @Override
     public HistorialAcademicoDTOItson verificarHistorialAcademcio(Long matricula) {
-        return controlItson.verificarHistorialAcademico(matricula);
+        return null;
     }
 
     /**
      *  TODO ESTO ES DEL CASO PAGAR ADEUDO
-     * @param matricula
+     * @param matriculaEstudiante
      * // SEBASTIAN ESCALANTE RAMIREZ
      * @return
      */
     @Override
-    public double solicitarAdeudoBiblioteca(Long matricula) {
-        return controlItson.obtenerAdeudoBiblioteca(matricula);
+    public double solicitarAdeudoBiblioteca(String matriculaEstudiante) {
+        return 0.0;
+//        return controlItson.solicitarAdeudoBiblioteca(matriculaEstudiante);
     }
 
     @Override
-    public double solicitarAdeudoColegiatura(Long matricula) {
-        return controlItson.obtenerAdeudoColegiatura(matricula);
+    public double solicitarAdeudoColegiatura(String matriculaEstudiante) {
+        return 0.0;
+//        return controlItson.solicitarAdeudoColegiatura(matriculaEstudiante);
     }
 
     @Override
-    public List<PrestamoDTOI> solicitarListaPrestamso(Long matricula) {
-     return null;
-
+    public List<PrestamoDTOI> solicitarListaPrestamso(String matriculaEstudiante) {
+        return null;
+//        return controlItson.solicitarListaPrestamos(matriculaEstudiante);
     }
 
     @Override
-    public List<ClaseDTOI> solicitarListaClases(Long matricula) {
+    public List<ClaseDTOI> solicitarListaClases(String matriculaEstudiante) {
         return null;
 //        return controlItson.solicitarListaClases(matriculaEstudiante);
     }
@@ -76,4 +76,12 @@ public class FachadaItson implements IFachadaITSON{
     /**
      * AQUI TERMINA CASO DE USO PAGAR ADEUDO
      */
+    
+    /**
+     * ESTO ES DEL CASO ACTIVIDADES 
+     */
+    
+    public ActividadesDTOItson obtenerActividades(){
+        return controlItson.obtenerActividades();
+    }
 }

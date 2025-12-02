@@ -1,18 +1,16 @@
 package controles;
-import apiItson.ItsonAPI;
-import apiItson.interfaces.IItsonAPI;
-import datos.adaptadoresItson.HistorialAcademicoAdaptador;
-import datos.adaptadoresItson.pagarAdeudo.PrestamoAdaptador;
-import itson.EstudianteDTOItson;
-import itson.HistorialAcademicoDTOItson;
-import itson.LoginDTOItson;
-import datos.adaptadoresItson.EstudianteAdaptador;
-import datos.dominioItson.Estudiante;
-import itson.pagarAdeudo.PrestamoDTOItson;
-
-import java.util.ArrayList;
+import api_publica.ItsonAPI;
+import api_publica.interfaz.IItsonAPI;
+import dto.itson.ActividadDTOItson;
+import dto.itson.ActividadesDTOItson;
+import dto.itson.EstudianteDTOItson;
+import dto.itson.LoginDTOItson;
+import dto_gobierno.EstudianteDTO;
+import itson.org.adaptadores.ActividadAdaptador;
+import itson.org.adaptadores.EstudianteAdaptador;
+import itson.org.domain.Actividad;
+import itson.org.domain.Estudiante;
 import java.util.List;
-
 
 public class ControlItson {
     IItsonAPI api;
@@ -32,23 +30,12 @@ public class ControlItson {
         Estudiante estudiante = api.obtenerDatosEstudiante(matricula);
         return EstudianteAdaptador.toResponseDTO(estudiante);
     }
-
-    public HistorialAcademicoDTOItson verificarHistorialAcademico(Long matricula){
-        return HistorialAcademicoAdaptador.toDTOItson(api.obtenerHistorialAcademico(matricula));
+    
+    public ActividadesDTOItson obtenerActividades(){
+        List<Actividad> actividad= api.solicitarActividades();
+        return ActividadAdaptador.toResponseDTOListaAct(actividad);
+        
+        //return api.solicitarActividades();
     }
 
-
-    //Caso de uso Pagar adeudo
-    public double obtenerAdeudoBiblioteca(Long matricula){
-        return api.obtenerAdeudoBiblioteca(matricula);
-    }
-
-    public double obtenerAdeudoColegiatura(Long matricula){
-        return api.obtenerAdeudoColegiatura(matricula);
-    }
-
-
-    public List<PrestamoDTOItson> obtenerListaPrestamos(Long matricula){
-       return PrestamoAdaptador.toDtoItson(api.obtenerListaPrestamosBiblioteca(matricula));
-    }
 }

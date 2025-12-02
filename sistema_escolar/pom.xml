@@ -18,6 +18,7 @@
         <module>presentacion_becas</module>
         <module>persistencia_becas</module>
         <module>dto_infraestructura</module>
+        <module>../../../grafoGithub/THE-METRO-APP/negocios_actividades</module>
     </modules>
     <build>
         <resources>
