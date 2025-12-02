@@ -1,22 +1,30 @@
 package datos.repositoryItson.daoItson.pagarAdeudo.impl;
 
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.model.Filters;
 import datos.configMongoItson.MongoClienteProvider;
 import datos.dominioItson.pagarAdeudo.Clase;
+import datos.excepciones.DaoException;
 import datos.repositoryItson.daoItson.pagarAdeudo.IClaseDAO;
+import datos.repositoryItson.documents.pagarAdeudo.ClaseDocument;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class ClaseDAO implements IClaseDAO {
-    private final MongoCollection<Clase> col;
+    private final MongoCollection<ClaseDocument> col;
 
     public ClaseDAO() {
-        this.col = MongoClienteProvider.INSTANCE.getCollection("clases", Clase.class);
+        this.col = MongoClienteProvider.INSTANCE.getCollection("clases", ClaseDocument.class);
     }
 
     @Override
-    public Optional<List<Clase>> obtenerListaClasesByMatricula(Long matricula){
-        return Optional.empty();
+    public List<ClaseDocument> obtenerListaClasesByMatricula(Long matricula){
+        try{
+          return col.find(Filters.eq("matricula",matricula)).into(new ArrayList<>());
+        }catch (DaoException ex){
+            System.out.println("Error al obtener clases por matricula" +  ex.getMessage());
+            throw new DaoException("Error al obtener clases por matricula" +  ex.getMessage());
+        }
     }
 }

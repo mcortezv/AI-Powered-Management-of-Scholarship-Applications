@@ -1,10 +1,10 @@
 package datos.repositoryItson.daoItson.pagarAdeudo;
 
 import datos.dominioItson.pagarAdeudo.Clase;
+import datos.repositoryItson.documents.pagarAdeudo.ClaseDocument;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface IClaseDAO {
-    Optional<List<Clase>> obtenerListaClasesByMatricula(Long matricula);
+    List<ClaseDocument> obtenerListaClasesByMatricula(Long matricula);
 }

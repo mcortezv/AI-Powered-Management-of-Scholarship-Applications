@@ -1,5 +1,6 @@
 package apiItson.controles;
 import datos.dominioItson.HistorialAcademico;
+import datos.dominioItson.pagarAdeudo.Clase;
 import datos.dominioItson.pagarAdeudo.Prestamo;
 import datos.serviceItson.HistorialService;
 import datos.serviceItson.pagarAdeudo.ClaseService;
@@ -42,8 +43,11 @@ public class ControlItson {
 
 
     // pagar adeudo
-
     public List<Prestamo> obtenerListaPrestamosBiblioteca(Long matricula){
-        return prestamoService.
+        return prestamoService.obtenerListaPrestamos(matricula);
+    }
+
+    public List<Clase> obtenerListaClasesColegiatura(Long matricula){
+        return claseService.obtenerListaClases(matricula);
     }
 }
