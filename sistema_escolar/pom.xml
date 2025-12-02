@@ -15,6 +15,7 @@
         <module>presentacion_becas</module>
         <module>persistencia_becas</module>
         <module>dto_infraestructura</module>
+        <module>persistencia_tutorias</module>
     </modules>
 
     <properties>
