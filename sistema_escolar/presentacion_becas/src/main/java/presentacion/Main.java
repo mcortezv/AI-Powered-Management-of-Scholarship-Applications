@@ -12,6 +12,8 @@ import presentacion.actividadesExtracurriculares.coordinador.CoordinadorAplicaci
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
 import fachadas.FachadaGobierno;
 import interfaces.*;
+import interfaces.actividades.IGrupoBO;
+import objetosNegocio.actividades.GrupoBO;
 import solicitarBeca.repository.dao.interfaces.IDocumentoDAO;
 import solicitarBeca.repository.dao.interfaces.IEstudianteDAO;
 import solicitarBeca.repository.dao.interfaces.ISolicitudDAO;
@@ -32,6 +34,7 @@ public class Main {
         ControlGobierno controlGobierno = new ControlGobierno();
         ControlBanco controlBanco = new ControlBanco();
         ControlPayPal controlPayPal = new ControlPayPal();
+       
 
         // creacion de fachadas
         IFachadaBanco fachadaBanco = new FachadaBanco(controlBanco);
@@ -43,7 +46,9 @@ public class Main {
         IFachadaPago fachadaPago = new FachadaPago(new ControlPago(adeudoBO, fachadaBanco, fachadaPayPal));
         // caso act extra
         IActividadBO actividadBO = new ActividadBO(fachadaITSON);
-        IFachadaActividad fachadaAct = new FachadaActividad(new ControlActividad(actividadBO));
+        IGrupoBO grupoBO= new GrupoBO(fachadaITSON);
+        ControlActividad controlActividad= new ControlActividad(actividadBO, grupoBO);
+        IFachadaActividad fachadaAct = new FachadaActividad(controlActividad);
 
         // creacion de daos
         ISolicitudDAO solicitudDAO = new SolicitudDAO();

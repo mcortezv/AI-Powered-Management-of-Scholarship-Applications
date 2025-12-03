@@ -7,6 +7,7 @@ package datos.serviceItson;
 import datos.dominioItson.Actividad;
 import datos.dominioItson.Grupo;
 import datos.repositoryItson.daoItson.actividades.impl.GrupoDAO;
+import itson.ActividadDTOItson;
 import java.util.List;
 
 /**
@@ -21,7 +22,7 @@ public class GrupoService {
         this.grupoDAO = new GrupoDAO();
     }
     
-    public List<Grupo> obtenerGrupos(Actividad actividad){
+    public List<Grupo> obtenerGrupos(ActividadDTOItson actividad){
         return grupoDAO.obtenerGrupos(actividad);
         
     }

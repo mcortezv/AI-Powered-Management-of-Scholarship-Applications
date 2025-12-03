@@ -2,13 +2,16 @@
 package controles;
 
 import adaptadores.actividades.ActividadesAdaptador;
+import adaptadores.actividades.GruposAdaptador;
 import dto.actividades.ActividadDTO;
 import dto.actividades.ActividadesDTO;
 import dto.actividades.GrupoDTO;
 import dto.actividades.GruposResponseDTO;
 import interfaces.actividades.IActividadBO;
+import interfaces.actividades.IGrupoBO;
 import itson.ActividadDTOItson;
 import itson.ActividadesDTOItson;
+import itson.actividades.GruposResponseDTOItson;
 
 import java.util.Objects;
 
@@ -19,9 +22,12 @@ import java.util.Objects;
 public class ControlActividad {
 
     private final IActividadBO actividadBO;
+    private final IGrupoBO grupoBO;
 
-    public ControlActividad(IActividadBO actividadBO) {
+    public ControlActividad(IActividadBO actividadBO, IGrupoBO grupoBO) {
         this.actividadBO= Objects.requireNonNull(actividadBO);
+        this.grupoBO= Objects.requireNonNull(grupoBO);
+        
     }
 
     public ActividadesDTO obtenerActividades(){
@@ -35,10 +41,9 @@ public class ControlActividad {
     public GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO){
 
         ActividadDTOItson actividadDTOItson= ActividadesAdaptador.toDTOItson(actividadDTO);
-     //   return actividadBO.
-        
-        
-
+        GruposResponseDTOItson gruposResponseDTOItson= grupoBO.obtenerGrupos(actividadDTOItson);
+        GruposResponseDTO gruposResponseDTO= GruposAdaptador.DTOItsonToDTOActividadesLista(gruposResponseDTOItson);
+        return gruposResponseDTO;
         
     }
 

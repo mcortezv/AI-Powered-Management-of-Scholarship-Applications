@@ -7,6 +7,8 @@ import datos.dominioItson.pagarAdeudo.Prestamo;
 import itson.LoginDTOItson;
 import datos.dominioItson.Estudiante;
 import datos.dominioItson.Grupo;
+import itson.ActividadDTOItson;
+import itson.actividades.GruposResponseDTOItson;
 
 import java.util.List;
 
@@ -56,7 +58,11 @@ public class ItsonAPI implements IItsonAPI {
         return controlItson.solicitarActividades();
     }
     
-    public List<Grupo> solicitarGrupos(Actividad actividad){
+//    public List<Grupo> solicitarGrupos(Actividad actividad){
+//        return controlItson.obtenerGrupos(actividad);
+//    }
+
+    public GruposResponseDTOItson solicitarGrupos(ActividadDTOItson actividad) {
         return controlItson.obtenerGrupos(actividad);
     }
 }

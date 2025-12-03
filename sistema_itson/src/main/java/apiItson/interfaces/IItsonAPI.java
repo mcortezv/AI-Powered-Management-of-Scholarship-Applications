@@ -5,6 +5,8 @@ import datos.dominioItson.pagarAdeudo.Prestamo;
 import itson.LoginDTOItson;
 import datos.dominioItson.Estudiante;
 import datos.dominioItson.Grupo;
+import itson.ActividadDTOItson;
+import itson.actividades.GruposResponseDTOItson;
 
 import java.util.List;
 
@@ -29,7 +31,7 @@ public interface IItsonAPI {
     
     //actividades
      List<Actividad> soloicitarActividades();
-    public List<Grupo> solicitarGrupos(Actividad actividad);
+     GruposResponseDTOItson solicitarGrupos(ActividadDTOItson actividad);
 
 
 }

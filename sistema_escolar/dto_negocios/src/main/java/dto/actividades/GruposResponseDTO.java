@@ -18,6 +18,11 @@ public class GruposResponseDTO {
         this.grupos = grupos;
     }
 
+    public GruposResponseDTO() {
+    }
+    
+    
+
     public List<GrupoDTO> getGrupos() {
         return grupos;
     }

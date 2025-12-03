@@ -65,7 +65,9 @@ public class ControlItson {
     }
     
     public GruposResponseDTOItson obtenerGrupos(ActividadDTOItson actividadDTOItson){
-        return 
+    //    Actividad actividad= ActividadAdaptador.
+      //  List<Grupo> grupos= api.solicitarGrupos(actvd)
+      return api.solicitarGrupos(actividadDTOItson);
     }
 
 }
