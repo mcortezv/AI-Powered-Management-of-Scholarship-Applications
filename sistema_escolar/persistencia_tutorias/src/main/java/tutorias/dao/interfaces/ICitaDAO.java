@@ -7,6 +7,7 @@ package tutorias.dao.interfaces;
 import java.time.LocalDate;
 import java.util.List;
 import org.bson.types.ObjectId;
+import tutorias.dominio.enums.EstadoCita;
 import tutorias.excepciones.CitaDAOException;
 import tutorias.repository.documents.CitaDocument;
 
@@ -31,4 +32,9 @@ public interface ICitaDAO {
 
     List<CitaDocument> obtenerFuturasPorAlumno(Long matriculaAlumno)
             throws CitaDAOException;
+    
+    public int contarCitasPorAlumnoYEstadoEnMes(Long matriculaAlumno, EstadoCita estado, int mes, int anio)
+            throws CitaDAOException;
+    
+    public CitaDocument actualizarEstado(ObjectId idCita, EstadoCita nuevoEstado);
 }

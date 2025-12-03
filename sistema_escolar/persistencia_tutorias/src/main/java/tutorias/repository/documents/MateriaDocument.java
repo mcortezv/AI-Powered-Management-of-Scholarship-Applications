@@ -27,7 +27,7 @@ public class MateriaDocument {
         this.creadoEn = creadoEn;
     }
 
-    public ObjectId getId() {
+    public ObjectId get_id() {
         return _id;
     }
 
@@ -43,7 +43,7 @@ public class MateriaDocument {
         return creadoEn;
     }
 
-    public void setId(ObjectId _id) {
+    public void set_id(ObjectId _id) {
         this._id = _id;
     }
 
