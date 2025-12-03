@@ -87,8 +87,5 @@ public class TutorDocument {
 
     public void setCreadoEn(Instant creadoEn) {
         this.creadoEn = creadoEn;
-    }
-    
-    
-    
+    } 
 }

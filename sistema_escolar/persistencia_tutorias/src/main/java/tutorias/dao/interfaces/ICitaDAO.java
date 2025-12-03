@@ -37,4 +37,7 @@ public interface ICitaDAO {
             throws CitaDAOException;
     
     public CitaDocument actualizarEstado(ObjectId idCita, EstadoCita nuevoEstado);
+    
+    List<CitaDocument> obtenerPorTutorYFecha(Long idTutor, LocalDate fecha)
+            throws CitaDAOException;
 }
