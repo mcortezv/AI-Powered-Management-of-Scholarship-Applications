@@ -4,6 +4,7 @@ import datos.dominioItson.HistorialAcademico;
 import datos.dominioItson.pagarAdeudo.Prestamo;
 import itson.LoginDTOItson;
 import datos.dominioItson.Estudiante;
+import datos.dominioItson.Grupo;
 
 import java.util.List;
 
@@ -19,11 +20,16 @@ public interface IItsonAPI {
 
     double obtenerAdeudoColegiatura(Long matricula);
 
-    List<Actividad> soloicitarActividades();
+   
 
 
     //pagar adeudo
     List<Prestamo> obtenerListaPrestamosBiblioteca(Long matricula);
+    
+    
+    //actividades
+     List<Actividad> soloicitarActividades();
+    public List<Grupo> solicitarGrupos(Actividad actividad);
 
 
 }

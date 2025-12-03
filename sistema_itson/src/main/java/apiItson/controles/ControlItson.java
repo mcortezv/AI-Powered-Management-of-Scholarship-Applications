@@ -9,7 +9,9 @@ import datos.serviceItson.pagarAdeudo.ClaseService;
 import datos.serviceItson.pagarAdeudo.PrestamoService;
 import itson.LoginDTOItson;
 import datos.dominioItson.Estudiante;
+import datos.dominioItson.Grupo;
 import datos.serviceItson.EstudianteService;
+import datos.serviceItson.GrupoService;
 
 import java.util.List;
 
@@ -17,17 +19,20 @@ import java.util.List;
 public class ControlItson {
     private final HistorialService historialService;
     private final EstudianteService estudianteService;
-    private final ActividadService actividadService;
     // pagar adeudo
     private final PrestamoService prestamoService;
     private final ClaseService claseService;
+    //actividades
+    private final ActividadService actividadService;
+    private final GrupoService grupoService;
 
     public ControlItson() {
         this.historialService = new HistorialService();
         this.estudianteService = new EstudianteService();
 
-        //act extra
+        //actividades
         this.actividadService = new ActividadService();
+        this.grupoService= new GrupoService();
         //pagar adeudo
         this.prestamoService = new PrestamoService();
         this.claseService = new ClaseService();
@@ -45,9 +50,7 @@ public class ControlItson {
         return historialService.obtenerHistorialAcademico(matricula);
     }
 
-    public List<Actividad> solicitarActividades(){
-        return actividadService.obtenerActividades();
-    }
+
 
 
     // pagar adeudo
@@ -57,5 +60,15 @@ public class ControlItson {
 
     public List<Clase> obtenerListaClasesColegiatura(Long matricula){
         return claseService.obtenerListaClases(matricula);
+    }
+    
+    
+    //actividades
+    public List<Actividad> solicitarActividades(){
+        return actividadService.obtenerActividades();
+    }
+    
+    public List<Grupo> obtenerGrupos(Actividad actividad){
+        return grupoService.
     }
 }

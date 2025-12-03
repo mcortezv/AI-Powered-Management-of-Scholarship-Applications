@@ -2,10 +2,12 @@ package interfaces;
 import banco.ClaseDTOI;
 import banco.PrestamoDTOI;
 import banco.SolicitudPagoDTOI;
+import itson.ActividadDTOItson;
 import itson.ActividadesDTOItson;
 import itson.EstudianteDTOItson;
 import itson.HistorialAcademicoDTOItson;
 import itson.LoginDTOItson;
+import itson.actividades.GruposResponseDTOItson;
 
 import java.util.List;
 
@@ -28,4 +30,5 @@ public interface IFachadaITSON {
     boolean notificarLiquidacion(SolicitudPagoDTOI solicitudPagoDTOI);
     //actividades
     public ActividadesDTOItson obtenerActividades();
+    public GruposResponseDTOItson otenerGrupos(ActividadDTOItson actividadDTO);
 }

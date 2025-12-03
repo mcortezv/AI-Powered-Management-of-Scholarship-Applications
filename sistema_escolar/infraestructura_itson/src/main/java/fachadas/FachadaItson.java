@@ -6,10 +6,12 @@ import banco.PrestamoDTOI;
 import banco.SolicitudPagoDTOI;
 import controles.ControlItson;
 import interfaces.IFachadaITSON;
+import itson.ActividadDTOItson;
 import itson.ActividadesDTOItson;
 import itson.EstudianteDTOItson;
 import itson.HistorialAcademicoDTOItson;
 import itson.LoginDTOItson;
+import itson.actividades.GruposResponseDTOItson;
 
 import java.util.List;
 
@@ -83,5 +85,10 @@ public class FachadaItson implements IFachadaITSON {
     
     public ActividadesDTOItson obtenerActividades(){
         return controlItson.obtenerActividades();
+    }
+
+    @Override
+    public GruposResponseDTOItson otenerGrupos(ActividadDTOItson actividadDTO) {
+        return controlItson.obtenerGrupos(actividadDTO);
     }
 }

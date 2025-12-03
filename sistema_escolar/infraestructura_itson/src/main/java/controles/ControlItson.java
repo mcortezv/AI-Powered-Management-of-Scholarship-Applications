@@ -7,11 +7,13 @@ import datos.adaptadoresItson.HistorialAcademicoAdaptador;
 import datos.adaptadoresItson.pagarAdeudo.PrestamoAdaptador;
 import datos.dominioItson.Actividad;
 import datos.dominioItson.Estudiante;
+import itson.ActividadDTOItson;
 
 import itson.ActividadesDTOItson;
 import itson.EstudianteDTOItson;
 import itson.HistorialAcademicoDTOItson;
 import itson.LoginDTOItson;
+import itson.actividades.GruposResponseDTOItson;
 import itson.org.adaptadores.ActividadAdaptador;
 import itson.pagarAdeudo.PrestamoDTOItson;
 
@@ -60,6 +62,10 @@ public class ControlItson {
     public ActividadesDTOItson obtenerActividades(){
         List<Actividad> actividad= api.soloicitarActividades();
         return ActividadAdaptador.toResponseDTOListaAct(actividad);
+    }
+    
+    public GruposResponseDTOItson obtenerGrupos(ActividadDTOItson actividadDTOItson){
+        return 
     }
 
 }

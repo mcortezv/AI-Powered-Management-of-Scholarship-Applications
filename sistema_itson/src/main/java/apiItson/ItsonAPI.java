@@ -6,6 +6,7 @@ import datos.dominioItson.HistorialAcademico;
 import datos.dominioItson.pagarAdeudo.Prestamo;
 import itson.LoginDTOItson;
 import datos.dominioItson.Estudiante;
+import datos.dominioItson.Grupo;
 
 import java.util.List;
 
@@ -42,13 +43,20 @@ public class ItsonAPI implements IItsonAPI {
         return 0;
     }
 
-    @Override
-    public List<Actividad> soloicitarActividades() {
-        return controlItson.solicitarActividades();
-    }
+
 
     @Override
     public List<Prestamo> obtenerListaPrestamosBiblioteca(Long matricula) {
         return controlItson.obtenerListaPrestamosBiblioteca(matricula);
+    }
+    
+    //actividades
+    @Override
+    public List<Actividad> soloicitarActividades() {
+        return controlItson.solicitarActividades();
+    }
+    
+    public List<Grupo> solicitarGrupos(Actividad actividad){
+        return controlItson.obtenerGrupos(actividad);
     }
 }
