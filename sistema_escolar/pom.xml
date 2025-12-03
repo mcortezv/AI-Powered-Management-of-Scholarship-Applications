@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>mcortezv</groupId>
-    <artifactId>sistema_escolar</artifactId>
+    <artifactId>Managing-School-Applications-and-Scholarships-with-Artificial-Intelligence</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
     <modules>
@@ -10,29 +10,15 @@
         <module>objetos_negocio</module>
         <module>negocios_solicitarBeca</module>
         <module>negocios_login</module>
-        <module>negocios_solicitarPago</module>
-        <module>negocios_actividades</module>
         <module>infraestructura_itson</module>
         <module>infraestructura_gobierno</module>
-        <module>infraestructura_paypal</module>
-        <module>infraestructura_banco</module>
         <module>presentacion_becas</module>
         <module>persistencia_becas</module>
         <module>dto_infraestructura</module>
-
+        <module>persistencia_tutorias</module>
     </modules>
-    <build>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
 
-            <resource>
-                <directory>../src/main/resources</directory>
-                <includes>
-                    <include>mongo.properties</include>
-                </includes>
-            </resource>
-        </resources>
-    </build>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 </project>
