@@ -65,7 +65,4 @@ public class Tutor {
     public void setEnlace(String enlace) {
         this.enlace = enlace;
     }
-    
-    
-    
 }
