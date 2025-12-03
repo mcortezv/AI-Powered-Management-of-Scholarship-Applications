@@ -4,11 +4,49 @@
  */
 package dto.actividades;
 
+import java.util.List;
+
 /**
  *
  * @author janethcristinagalvanquinonez
  */
 public class HorarioDTO {
+    
+    private String horaInicio;
+    private String horaFin;
+    private List<String> dias;
+
+    public HorarioDTO(String horaInicio, String horaFin, List<String> dias) {
+        this.horaInicio = horaInicio;
+        this.horaFin = horaFin;
+        this.dias = dias;
+    }
+
+    public String getHoraInicio() {
+        return horaInicio;
+    }
+
+    public void setHoraInicio(String horaInicio) {
+        this.horaInicio = horaInicio;
+    }
+
+    public String getHoraFin() {
+        return horaFin;
+    }
+
+    public void setHoraFin(String horaFin) {
+        this.horaFin = horaFin;
+    }
+
+    public List<String> getDias() {
+        return dias;
+    }
+
+    public void setDias(List<String> dias) {
+        this.dias = dias;
+    }
+    
+    
     
     
     

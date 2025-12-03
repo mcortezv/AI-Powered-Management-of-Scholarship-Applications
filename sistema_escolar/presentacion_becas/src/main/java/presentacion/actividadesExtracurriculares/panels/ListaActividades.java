@@ -33,6 +33,7 @@ public class ListaActividades extends PanelActividades {
     @Override
     public void startComponents() {
         centralPanel.removeAll();
+        centralPanel.setBackground(new Color(240, 240, 240));
         
         JTextField textField= new JTextField();
         textField.setMaximumSize(new Dimension(400, 50));
@@ -40,7 +41,7 @@ public class ListaActividades extends PanelActividades {
         centralPanel.add(textField);
         centralPanel.add(Box.createVerticalStrut(40));
         panelContenido= new JPanel();
-        panelContenido.setBackground(new Color(179,235,242));
+        panelContenido.setBackground(Color.white);
         panelContenido.setMaximumSize(new Dimension(700,500));
         panelContenido.setPreferredSize(new Dimension(700,500));
         panelContenido.setLayout(new BoxLayout(panelContenido, BoxLayout.Y_AXIS));
@@ -58,12 +59,20 @@ public class ListaActividades extends PanelActividades {
         for(ActividadDTO actividad:actividadesDTO.getActividades()){
             Button boton= new Button(actividad.getNombre());
             boton.setAlignmentX(Component.CENTER_ALIGNMENT);
+            boton.setBackground(new Color(60, 100, 220));
+            boton.setOpaque(true);
+            boton.setForeground(Color.WHITE);
           
-            boton.setPreferredSize(new Dimension(20, 50));
+            boton.setMaximumSize(new Dimension(Integer.MAX_VALUE, 60));
+            boton.setPreferredSize(new Dimension(Integer.MAX_VALUE, 60));
             
             
             panelContenido.add(boton);
             panelContenido.add(Box.createVerticalStrut(10));
+            
+            boton.addActionListener(e->{
+                
+            });
         }
         panelContenido.add(Box.createVerticalGlue());
     }

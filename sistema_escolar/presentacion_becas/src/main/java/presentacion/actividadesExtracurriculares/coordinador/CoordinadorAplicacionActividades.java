@@ -4,7 +4,9 @@
  */
 package presentacion.actividadesExtracurriculares.coordinador;
 
+import dto.actividades.ActividadDTO;
 import dto.actividades.ActividadesDTO;
+import dto.actividades.GrupoDTO;
 import interfaces.IFachadaActividad;
 import java.util.ArrayList;
 import java.util.List;
@@ -61,6 +63,10 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
     //quizas mover esto 
     public ActividadesDTO obtenerActividades(){
         return coordinadorNegocioActividades.obtenerActividades();
+    }
+    
+    public GrupoDTO obtenerGrupos(ActividadDTO actividadDTO){
+       // return coordinadorNegocioActividades
     }
     
     public List<String> cargarInscripciones(){

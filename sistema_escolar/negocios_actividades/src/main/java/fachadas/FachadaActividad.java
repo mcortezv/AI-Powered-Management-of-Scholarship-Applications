@@ -5,7 +5,10 @@
 package fachadas;
 
 import controles.ControlActividad;
+import dto.actividades.ActividadDTO;
 import dto.actividades.ActividadesDTO;
+import dto.actividades.GrupoDTO;
+import dto.actividades.GruposResponseDTO;
 import interfaces.IFachadaActividad;
 import java.util.List;
 
@@ -23,6 +26,10 @@ public class FachadaActividad implements IFachadaActividad{
 
     public ActividadesDTO obtenerActividades(){
         return controlActividad.obtenerActividades();
+    }
+    
+    public GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO){
+        return controlActividad.obtenerGrupos(actividadDTO);
     }
 
 

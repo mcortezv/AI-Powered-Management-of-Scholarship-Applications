@@ -4,7 +4,9 @@
  */
 package presentacion.actividadesExtracurriculares.coordNegocio;
 
+import dto.actividades.ActividadDTO;
 import dto.actividades.ActividadesDTO;
+import dto.actividades.GrupoDTO;
 import interfaces.IFachadaActividad;
 
 /**
@@ -23,6 +25,10 @@ public class CoordinadorNegocioActividades implements ICoordNegocioActividades {
     public ActividadesDTO obtenerActividades(){
         return fachadaActividad.obtenerActividades();
     }
+    
+   public GrupoDTO obtenerGrupos(ActividadDTO actividadDTO){
+       return fachadaActividad.obtenerGrupos(actividadDTO);
+   }
     
     
     

@@ -2,7 +2,10 @@
 package controles;
 
 import adaptadores.actividades.ActividadesAdaptador;
+import dto.actividades.ActividadDTO;
 import dto.actividades.ActividadesDTO;
+import dto.actividades.GrupoDTO;
+import dto.actividades.GruposResponseDTO;
 import interfaces.actividades.IActividadBO;
 import itson.ActividadesDTOItson;
 
@@ -26,6 +29,11 @@ public class ControlActividad {
         ActividadesDTOItson actividadesDTOItson= actividadBO.obtenerActividades();
         return ActividadesAdaptador.toDTO(actividadesDTOItson);
 
+    }
+    
+    public GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO){
+        
+        
     }
 
 
