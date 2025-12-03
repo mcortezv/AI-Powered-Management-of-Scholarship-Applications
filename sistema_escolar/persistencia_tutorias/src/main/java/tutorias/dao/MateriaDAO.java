@@ -8,6 +8,6 @@ package tutorias.dao;
  *
  * @author katia
  */
-public class a {
+public class MateriaDAO {
     
 }

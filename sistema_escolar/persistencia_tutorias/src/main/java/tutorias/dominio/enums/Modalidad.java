@@ -8,6 +8,7 @@ package tutorias.dominio.enums;
  *
  * @author katia
  */
-public enum aaa {
-    
+public enum Modalidad {
+    PRESENCIAL,
+    VIRTUAL;
 }
