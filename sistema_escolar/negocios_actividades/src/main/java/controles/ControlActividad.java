@@ -33,11 +33,12 @@ public class ControlActividad {
     }
     
     public GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO){
+
         ActividadDTOItson actividadDTOItson= ActividadesAdaptador.toDTOItson(actividadDTO);
-        return actividadBO.
+     //   return actividadBO.
         
         
-        
+
         
     }
 

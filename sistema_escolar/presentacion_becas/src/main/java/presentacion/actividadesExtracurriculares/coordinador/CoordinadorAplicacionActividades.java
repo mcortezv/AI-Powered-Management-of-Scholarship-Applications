@@ -66,7 +66,9 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
         return coordinadorNegocioActividades.obtenerActividades();
     }
     
+
     public GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO){
+
         return coordinadorNegocioActividades.obtenerGrupos(actividadDTO);
     }
     

@@ -27,10 +27,13 @@ public class CoordinadorNegocioActividades implements ICoordNegocioActividades {
         return fachadaActividad.obtenerActividades();
     }
     
+
    public GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO){
        return fachadaActividad.obtenerGrupos(actividadDTO);
-   }
+
+
     
     
     
+}
 }
