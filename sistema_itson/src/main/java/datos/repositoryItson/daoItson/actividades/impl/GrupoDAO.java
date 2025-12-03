@@ -10,6 +10,7 @@ import datos.configMongoItson.MongoClienteProvider;
 import datos.dominioItson.Actividad;
 import datos.dominioItson.Grupo;
 import datos.repositoryItson.documents.pagarAdeudo.ClaseDocument;
+import itson.ActividadDTOItson;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,12 +28,13 @@ public class GrupoDAO {
         this.col = MongoClienteProvider.INSTANCE.getCollection("grupos", Grupo.class);
     }
     
-    public List<Grupo> obtenerGrupos(Actividad actividad){
+    public List<Grupo> obtenerGrupos(ActividadDTOItson actividad){
         Bson filtro = Filters.and(
                 Filters.eq("actividad.nombre", actividad.getNombre()),
                 Filters.gt("cupoDisponible", 0),
                 Filters.gte("fechaLimiteInscripcion", new Date())
         );
+      //  Bson filtro = Filters.eq("actividad.nombre", actividad.getNombre());
         return col.find(filtro).into(new ArrayList<>());
         
         

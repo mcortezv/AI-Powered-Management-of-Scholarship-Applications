@@ -37,6 +37,13 @@ public class Actividad {
     public void setCosto(double costo) {
         this.costo = costo;
     }
+
+    @Override
+    public String toString() {
+        return "Actividad{" + "nombre=" + nombre + ", costo=" + costo + '}';
+    }
+    
+    
     
     
     

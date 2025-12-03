@@ -6,6 +6,8 @@ package presentacion.actividadesExtracurriculares.panels;
 
 import dto.actividades.ActividadDTO;
 import dto.actividades.ActividadesDTO;
+import dto.actividades.GrupoDTO;
+import dto.actividades.GruposResponseDTO;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -70,13 +72,18 @@ public class ListaActividades extends PanelActividades {
             panelContenido.add(boton);
             panelContenido.add(Box.createVerticalStrut(10));
             
-            boton.addActionListener(e->{
+//            boton.addActionListener(e->{
+//               GruposResponseDTO gruposResponseDTO= coordinadorAplicacionActividades.obtenerGrupos(actividad);
+//
+//                
+//                }
                 
-            });
+                
+           
         }
-        panelContenido.add(Box.createVerticalGlue());
+       
     }
-    
-    
-    
 }
+    
+    
+    

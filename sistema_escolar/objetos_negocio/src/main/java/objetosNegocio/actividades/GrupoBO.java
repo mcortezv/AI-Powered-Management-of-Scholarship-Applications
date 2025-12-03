@@ -24,7 +24,7 @@ public class GrupoBO implements IGrupoBO{
     }
     
    public GruposResponseDTOItson obtenerGrupos(ActividadDTOItson actividadDTOItson){
-      //return fachadaITSON.
+      return fachadaITSON.otenerGrupos(actividadDTOItson);
    }
     
     

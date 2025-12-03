@@ -108,6 +108,11 @@ public class Grupo {
     public void setResponsable(Responsable responsable) {
         this.responsable = responsable;
     }
+
+    @Override
+    public String toString() {
+        return "Grupo{" + "cupoTotal=" + cupoTotal + ", cupoDisponible=" + cupoDisponible + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", fechaLimiteInscripcion=" + fechaLimiteInscripcion + ", horario=" + horario + ", actividad=" + actividad + ", ubicacion=" + ubicacion + ", responsable=" + responsable + '}';
+    }
     
     
     

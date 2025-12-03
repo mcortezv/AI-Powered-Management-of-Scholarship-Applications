@@ -18,6 +18,11 @@ public class GruposResponseDTOItson {
         this.gruposItson = gruposItson;
     }
 
+    public GruposResponseDTOItson() {
+    }
+    
+    
+
     public List<GrupoResponseDTOItson> getGruposItson() {
         return gruposItson;
     }
