@@ -66,7 +66,7 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
     }
     
     public GrupoDTO obtenerGrupos(ActividadDTO actividadDTO){
-       // return coordinadorNegocioActividades
+        return coordinadorNegocioActividades.obtenerGrupos(actividadDTO);
     }
     
     public List<String> cargarInscripciones(){

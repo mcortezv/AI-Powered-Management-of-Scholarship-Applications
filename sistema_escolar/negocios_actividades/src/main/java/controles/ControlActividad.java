@@ -32,7 +32,7 @@ public class ControlActividad {
     }
     
     public GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO){
-        
+        return null;
         
     }
 

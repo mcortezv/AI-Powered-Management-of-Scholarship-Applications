@@ -27,7 +27,8 @@ public class CoordinadorNegocioActividades implements ICoordNegocioActividades {
     }
     
    public GrupoDTO obtenerGrupos(ActividadDTO actividadDTO){
-       return fachadaActividad.obtenerGrupos(actividadDTO);
+       return null;
+        //return fachadaActividad.obtenerGrupos(actividadDTO);
    }
     
     
