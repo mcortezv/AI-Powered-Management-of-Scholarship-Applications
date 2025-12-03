@@ -158,4 +158,20 @@ public class CitaDAO implements ICitaDAO {
         }
     }
     
+    @Override
+    public List<CitaDocument> obtenerPorTutorYFecha(Long idTutor, LocalDate fecha)
+            throws CitaDAOException {
+        try {
+            return col.find(
+                    and(
+                            eq("idTutor", idTutor),
+                            eq("fecha", fecha)
+                    )
+            ).into(new ArrayList<>());
+        } catch (MongoException ex) {
+            throw new CitaDAOException("Error al consultar citas por tutor y fecha");
+        }
+    }
+
+    
 }

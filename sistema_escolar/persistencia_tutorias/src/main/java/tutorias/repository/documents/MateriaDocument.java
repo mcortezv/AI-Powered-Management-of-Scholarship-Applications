@@ -58,7 +58,4 @@ public class MateriaDocument {
     public void setCreadoEn(Instant creadoEn) {
         this.creadoEn = creadoEn;
     }
-    
-    
-    
 }
