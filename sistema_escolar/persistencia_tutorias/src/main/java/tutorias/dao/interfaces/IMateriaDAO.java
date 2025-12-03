@@ -15,6 +15,5 @@ import tutorias.repository.documents.MateriaDocument;
  */
 public interface IMateriaDAO {
     ObjectId create(MateriaDocument entity) throws MateriaDAOException;
-
     List<MateriaDocument> obtenerMaterias() throws MateriaDAOException;
 }
