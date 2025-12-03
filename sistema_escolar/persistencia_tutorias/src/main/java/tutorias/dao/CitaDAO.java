@@ -10,6 +10,10 @@ import com.mongodb.client.MongoDatabase;
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.Filters.gte;
+import static com.mongodb.client.model.Filters.lte;
+import com.mongodb.client.model.FindOneAndUpdateOptions;
+import com.mongodb.client.model.ReturnDocument;
+import static com.mongodb.client.model.Updates.set;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -18,6 +22,7 @@ import javax.swing.text.Document;
 import org.bson.types.ObjectId;
 import tutorias.config.MongoClientProvider;
 import tutorias.dao.interfaces.ICitaDAO;
+import tutorias.dominio.enums.EstadoCita;
 import tutorias.excepciones.CitaDAOException;
 import tutorias.repository.documents.CitaDocument;
 
@@ -109,6 +114,47 @@ public class CitaDAO implements ICitaDAO {
             ).into(new ArrayList<>());
         } catch (MongoException ex) {
             throw new CitaDAOException("Error al consultar citas futuras del alumno");
+        }
+    }
+
+    @Override
+    public int contarCitasPorAlumnoYEstadoEnMes(Long matriculaAlumno, EstadoCita estado, int mes, int anio) throws CitaDAOException {
+        try {
+            LocalDate inicioMes = LocalDate.of(anio, mes, 1);
+            LocalDate finMes = inicioMes.withDayOfMonth(inicioMes.lengthOfMonth());
+            long count = col.countDocuments(
+                    and(
+                            eq("matriculaAlumno", matriculaAlumno),
+                            eq("estado", estado),
+                            gte("fecha", inicioMes),
+                            lte("fecha", finMes)
+                    )
+            );
+            return (int) count;
+        } catch (MongoException ex) {
+            throw new CitaDAOException("Error al contar citas por alumno y estado en el mes");
+        }
+        
+        
+    }
+
+    @Override
+    public CitaDocument actualizarEstado(ObjectId idCita, EstadoCita nuevoEstado) {
+        try {
+            FindOneAndUpdateOptions options = new FindOneAndUpdateOptions()
+                    .returnDocument(ReturnDocument.AFTER);
+
+            CitaDocument actualizada = col.findOneAndUpdate(
+                    eq("_id", idCita),
+                    set("estado", nuevoEstado),
+                    options
+            );
+            if (actualizada == null) {
+                throw new CitaDAOException("No se encontró la cita con id " + idCita.toHexString());
+            }
+            return actualizada;
+        } catch (MongoException ex) {
+            throw new CitaDAOException("Error al actualizar estado de la cita");
         }
     }
     
