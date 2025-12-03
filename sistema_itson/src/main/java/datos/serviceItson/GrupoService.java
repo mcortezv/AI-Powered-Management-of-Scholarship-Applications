@@ -5,26 +5,27 @@
 package datos.serviceItson;
 
 import datos.dominioItson.Actividad;
-import datos.repositoryItson.daoItson.impl.ActividadDAO;
+import datos.dominioItson.Grupo;
+import datos.repositoryItson.daoItson.actividades.impl.GrupoDAO;
 import java.util.List;
 
 /**
  *
  * @author janethcristinagalvanquinonez
  */
-public class ActividadService {
+public class GrupoService {
     
-    private final ActividadDAO actividadDAO;
+    private final GrupoDAO grupoDAO;
 
-    public ActividadService() {
-        this.actividadDAO = new ActividadDAO();
+    public GrupoService() {
+        this.grupoDAO = new GrupoDAO();
     }
     
-
-    
-    public List<Actividad> obtenerActividades(){
-        return actividadDAO.obtenerActividades();
+    public List<Grupo> obtenerGrupos(Actividad actividad){
+        return grupoDAO.obtenerGrupos(actividad);
+        
     }
+    
     
     
     

@@ -7,6 +7,7 @@ import dto.actividades.ActividadesDTO;
 import dto.actividades.GrupoDTO;
 import dto.actividades.GruposResponseDTO;
 import interfaces.actividades.IActividadBO;
+import itson.ActividadDTOItson;
 import itson.ActividadesDTOItson;
 
 import java.util.Objects;
@@ -32,6 +33,10 @@ public class ControlActividad {
     }
     
     public GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO){
+        ActividadDTOItson actividadDTOItson= ActividadesAdaptador.toDTOItson(actividadDTO);
+        return actividadBO.
+        
+        
         
         
     }
