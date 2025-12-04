@@ -8,9 +8,11 @@ import com.mongodb.MongoException;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import static com.mongodb.client.model.Filters.eq;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.text.Document;
+import org.bson.types.ObjectId;
 import tutorias.config.MongoClientProvider;
 import tutorias.dao.interfaces.ITutorDAO;
 import tutorias.excepciones.TutorDAOException;
@@ -49,6 +51,22 @@ public class TutorDAO implements ITutorDAO{
             return tutor;
         } catch (MongoException ex) {
             throw new TutorDAOException("Error al consultar tutor por id");
+        }
+    }
+
+    @Override
+    public ObjectId create(TutorDocument entity) throws TutorDAOException {
+        try {
+            if (entity.get_id() == null) {
+                entity.set_id(new ObjectId());
+            }
+            if (entity.getCreadoEn() == null) {
+                entity.setCreadoEn(Instant.now());
+            }
+            col.insertOne(entity);
+            return entity.get_id();
+        } catch (MongoException ex) {
+            throw new TutorDAOException("Error al insertar Tutor");
         }
     }
 }
