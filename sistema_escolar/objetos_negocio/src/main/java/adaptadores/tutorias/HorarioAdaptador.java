@@ -17,9 +17,8 @@ import tutorias.repository.documents.HorarioDocument;
  */
 public class HorarioAdaptador {
     public static Horario toEntity(HorarioDTO dto) {
+        if (dto == null) return null;
         try {
-            if (dto == null) return null;
-
             Horario horario = new Horario();
             horario.setId(dto.getId());
             horario.setIdTutor(dto.getIdTutor());
@@ -37,17 +36,18 @@ public class HorarioAdaptador {
     }
 
     public static HorarioDTO toDTO(Horario horario) {
+        if (horario == null) return null;
         try {
-            if (horario == null) return null;
-
             HorarioDTO dto = new HorarioDTO();
             dto.setId(horario.getId());
             dto.setIdTutor(horario.getIdTutor());
             dto.setFecha(horario.getFecha());
             dto.setHora(horario.getHora());
-            if (horario.getEstadoDisponibilidad() != null) {
-                dto.setEstadoDisponibilidad(horario.getEstadoDisponibilidad().toString());
-            }
+            dto.setEstadoDisponibilidad(
+                    horario.getEstadoDisponibilidad() != null
+                        ? horario.getEstadoDisponibilidad().name()
+                        : null
+            );
             return dto;
         } catch (Exception ex) {
             throw new HorarioAdaptadorException("Error al convertir entidad Horario a DTO");
@@ -55,9 +55,8 @@ public class HorarioAdaptador {
     }
 
     public static Horario toEntity(HorarioDocument doc) {
+        if (doc == null) return null;
         try {
-            if (doc == null) return null;
-
             Horario horario = new Horario();
             horario.setId(doc.getId());
             horario.setIdTutor(doc.getIdTutor());
@@ -71,9 +70,8 @@ public class HorarioAdaptador {
     }
 
     public static HorarioDocument toDocument(Horario horario) {
+        if (horario == null) return null;
         try {
-            if (horario == null) return null;
-
             HorarioDocument doc = new HorarioDocument();
             doc.set_id(new ObjectId());
             doc.setId(horario.getId());

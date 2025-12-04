@@ -6,6 +6,7 @@ package adaptadores.tutorias;
 
 import adaptadores.tutorias.excepciones.MateriaAdaptadorException;
 import dto.tutorias.MateriaDTO;
+import org.bson.types.ObjectId;
 import tutorias.dominio.Materia;
 import tutorias.repository.documents.MateriaDocument;
 
@@ -15,9 +16,9 @@ import tutorias.repository.documents.MateriaDocument;
  */
 public class MateriaAdaptador {
     public static Materia toEntity(MateriaDTO dto) {
+        if (dto == null) return null;
+        
         try {
-            if (dto == null) return null;
-
             Materia materia = new Materia();
             materia.setId(dto.getId());
             materia.setNombre(dto.getNombre());
@@ -28,9 +29,8 @@ public class MateriaAdaptador {
     }
 
     public static MateriaDTO toDTO(Materia materia) {
+        if (materia == null) return null;
         try {
-            if (materia == null) return null;
-
             MateriaDTO dto = new MateriaDTO();
             dto.setId(materia.getId());
             dto.setNombre(materia.getNombre());
@@ -41,9 +41,8 @@ public class MateriaAdaptador {
     }
 
     public static Materia toEntity(MateriaDocument doc) {
+        if (doc == null) return null;
         try {
-            if (doc == null) return null;
-
             Materia materia = new Materia();
             materia.setId(doc.getIdMateria());
             materia.setNombre(doc.getNombre());
@@ -52,4 +51,17 @@ public class MateriaAdaptador {
             throw new MateriaAdaptadorException("Error al convertir MateriaDocument a entidad");
         }
     }
+    
+    public static MateriaDocument toDocument(Materia materia) {
+        if (materia == null) return null;
+        try {
+            MateriaDocument doc = new MateriaDocument();
+            doc.set_id(new ObjectId());
+            doc.setIdMateria(materia.getId());
+            doc.setNombre(materia.getNombre());
+            return doc;
+        } catch (Exception ex) {
+            throw new MateriaAdaptadorException("Error al convertir entidad Materia a Document");
+        }
+    }    
 }

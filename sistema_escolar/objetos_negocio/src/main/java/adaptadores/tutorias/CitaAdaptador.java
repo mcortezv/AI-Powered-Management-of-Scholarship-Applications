@@ -42,7 +42,7 @@ public class CitaAdaptador {
                 cita.setEstado(EstadoCita.valueOf(dto.getEstado()));
             }
 
-            if (dto.getIdMateria() != null || dto.getNombreMateria() != null) {
+            if (dto.getIdMateria() != null) {
                 Materia materia = new Materia();
                 materia.setId(dto.getIdMateria());
                 materia.setNombre(dto.getNombreMateria());

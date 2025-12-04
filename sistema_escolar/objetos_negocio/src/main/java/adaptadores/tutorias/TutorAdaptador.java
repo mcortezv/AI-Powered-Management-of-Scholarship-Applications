@@ -6,6 +6,8 @@ package adaptadores.tutorias;
 
 import adaptadores.solicitarBeca.excepciones.TutorAdaptadorException;
 import dto.tutorias.TutorDTO;
+import java.time.Instant;
+import org.bson.types.ObjectId;
 import tutorias.dominio.Tutor;
 import tutorias.repository.documents.TutorDocument;
 
@@ -15,9 +17,8 @@ import tutorias.repository.documents.TutorDocument;
  */
 public class TutorAdaptador {
     public static Tutor toEntity(TutorDTO dto) {
+        if (dto == null) return null;
         try {
-            if (dto == null) return null;
-
             Tutor tutor = new Tutor();
             tutor.setId(dto.getId());
             tutor.setNombre(dto.getNombre());
@@ -31,9 +32,8 @@ public class TutorAdaptador {
     }
 
     public static TutorDTO toDTO(Tutor tutor) {
+        if (tutor == null) return null;
         try {
-            if (tutor == null) return null;
-
             TutorDTO dto = new TutorDTO();
             dto.setId(tutor.getId());
             dto.setNombre(tutor.getNombre());
@@ -47,9 +47,8 @@ public class TutorAdaptador {
     }
 
     public static Tutor toEntity(TutorDocument doc) {
+        if (doc == null) return null;
         try {
-            if (doc == null) return null;
-
             Tutor tutor = new Tutor();
             tutor.setId(doc.getIdTutor());
             tutor.setNombre(doc.getNombre());
@@ -59,6 +58,22 @@ public class TutorAdaptador {
             return tutor;
         } catch (Exception ex) {
             throw new TutorAdaptadorException("Error al convertir TutorDocument a entidad");
+        }
+    }
+    
+    public static TutorDocument toDocument(Tutor tutor) {
+        if (tutor == null) return null;
+        try {
+            TutorDocument doc = new TutorDocument();
+            doc.set_id(new ObjectId());
+            doc.setIdTutor(tutor.getId());
+            doc.setNombre(tutor.getNombre());
+            doc.setCarrera(tutor.getCarrera());
+            doc.setCubiculo(tutor.getCubiculo());
+            doc.setEnlace(tutor.getEnlace());
+            return doc;
+        } catch (Exception ex) {
+            throw new TutorAdaptadorException("Error al convertir entidad Tutor a Document");
         }
     }
 }
