@@ -31,7 +31,7 @@ public enum MongoClientProvider {
             Properties props = new Properties();
             props.load(input);
             this.uri = props.getProperty("mongo.uri");
-            this.dbName = props.getProperty("mongo.dbnameBecas");
+            this.dbName = props.getProperty("mongo.dbnameTutorias");
             client = MongoClients.create(MongoConfig.buildSettings(this.uri));
             Runtime.getRuntime().addShutdownHook(new Thread(() -> {
                 try { client.close(); } catch (Exception ignored) {}
