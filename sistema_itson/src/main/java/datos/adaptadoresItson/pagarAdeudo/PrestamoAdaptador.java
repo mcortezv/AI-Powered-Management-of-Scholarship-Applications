@@ -1,5 +1,6 @@
 package datos.adaptadoresItson.pagarAdeudo;
 
+import banco.PrestamoDTOI;
 import datos.dominioItson.pagarAdeudo.Prestamo;
 import datos.repositoryItson.documents.pagarAdeudo.PrestamoDocument;
 import itson.pagarAdeudo.PrestamoDTOItson;
@@ -19,10 +20,10 @@ public class PrestamoAdaptador {
         prestamo.setDetalles(document.getDetalles());
         return prestamo;
     }
-    public static PrestamoDTOItson toDtoItson(Prestamo prestamo){
-        PrestamoDTOItson dto = new PrestamoDTOItson();
-        dto.setFechaPrestamo(prestamo.getFechaPrestamo());
-        dto.setFechaDevolucionProgramada(prestamo.getFechaDevolucionProgramada());
+    public static PrestamoDTOI toDtoItson(Prestamo prestamo){
+        PrestamoDTOI dto = new PrestamoDTOI();
+        dto.setFechaPrestamo(prestamo.getFechaPrestamo().toString());
+        dto.setFechaDevolucion(prestamo.getFechaDevolucionProgramada().toString());
         dto.setIsbn(prestamo.getIsbn());
         dto.setTitulo(prestamo.getTitulo());
         dto.setCampus(prestamo.getCampus());
@@ -30,8 +31,8 @@ public class PrestamoAdaptador {
         return dto;
     }
 
-    public static List<PrestamoDTOItson> toDtoItson(List<Prestamo> prestamos){
-        List<PrestamoDTOItson> lista = new ArrayList<>();
+    public static List<PrestamoDTOI> toDtoItson(List<Prestamo> prestamos){
+        List<PrestamoDTOI> lista = new ArrayList<>();
         for (Prestamo p : prestamos) {
             lista.add(toDtoItson(p));
         }

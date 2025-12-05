@@ -1,7 +1,11 @@
 package datos.adaptadoresItson.pagarAdeudo;
 
+import banco.ClaseDTOI;
 import datos.dominioItson.pagarAdeudo.Clase;
 import datos.repositoryItson.documents.pagarAdeudo.ClaseDocument;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClaseAdaptador {
 
@@ -9,10 +13,29 @@ public class ClaseAdaptador {
         Clase clase = new Clase();
         clase.setNombre(document.getNombre());
         clase.setHorario(document.getHorario());
-        clase.setProfesor(clase.getProfesor());
-        clase.setAula(clase.getAula());
-        clase.setAula(String.valueOf(document.getCampus()));
+        clase.setProfesor(document.getProfesor());
+        clase.setAula(document.getAula());
+        clase.setCampus(document.getCampus());
         clase.setDetalles(document.getDetalles());
         return clase;
+    }
+
+    public static ClaseDTOI toDtoItson(Clase clase){
+        ClaseDTOI dto = new ClaseDTOI();
+        dto.setNombre(clase.getNombre());
+        dto.setHorario(clase.getHorario());
+        dto.setProfesor(clase.getProfesor());
+        dto.setAula(clase.getAula());
+        dto.setCampus(clase.getCampus("").toString());
+        dto.setDetalles(clase.getDetalles());
+        return dto;
+    }
+
+    public static List<ClaseDTOI> toDtoItson(List<Clase> clases){
+        List<ClaseDTOI> lista = new ArrayList<>();
+        for (Clase c : clases) {
+            lista.add(toDtoItson(c));
+        }
+        return lista;
     }
 }

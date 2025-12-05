@@ -2,20 +2,20 @@ package controles;
 
 import apiItson.ItsonAPI;
 import apiItson.interfaces.IItsonAPI;
+import banco.ClaseDTOI;
+import banco.PrestamoDTOI;
+import banco.SolicitudPagoDTOI;
 import datos.adaptadoresItson.EstudianteAdaptador;
 import datos.adaptadoresItson.HistorialAcademicoAdaptador;
+import datos.adaptadoresItson.pagarAdeudo.ClaseAdaptador;
 import datos.adaptadoresItson.pagarAdeudo.PrestamoAdaptador;
 import datos.dominioItson.Estudiante;
 import itson.ActividadDTOItson;
-
 import itson.ActividadesDTOItson;
 import itson.EstudianteDTOItson;
 import itson.HistorialAcademicoDTOItson;
 import itson.LoginDTOItson;
 import itson.actividades.GruposResponseDTOItson;
-import itson.actividades.InscripcionDTOItson;
-import datos.adaptadoresItson.actividades.ActividadAdaptador;
-import itson.pagarAdeudo.PrestamoDTOItson;
 
 import java.util.List;
 
@@ -52,23 +52,34 @@ public class ControlItson {
         return api.obtenerAdeudoColegiatura(matricula);
     }
 
-    public List<PrestamoDTOItson> obtenerListaPrestamos(Long matricula){
+    public List<PrestamoDTOI> obtenerListaPrestamos(Long matricula){
         return PrestamoAdaptador.toDtoItson(api.obtenerListaPrestamosBiblioteca(matricula));
     }
 
+    public List<ClaseDTOI> obtenerListaClases(Long matricula){
+        return ClaseAdaptador.toDtoItson(api.obtenerListaClaseColegiatura(matricula));
+    }
+
+    public boolean solicitarLiquidacion(SolicitudPagoDTOI solicitudPagoDTOI){
+        return api.notificarLiquidacion(solicitudPagoDTOI);
+    }
+
+
     // caso de uso actividades
     
-    
+
       public ActividadesDTOItson obtenerActividades(){
         return api.soloicitarActividades();
     }
     
     public GruposResponseDTOItson obtenerGrupos(ActividadDTOItson actividadDTOItson){
+    //    Actividad actividad= ActividadAdaptador.
+      //  List<Grupo> grupos= api.solicitarGrupos(actvd)
       return api.solicitarGrupos(actividadDTOItson);
     }
-    
+
 //     public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson){
-//         return 
+//         return
 //     }
 
 }

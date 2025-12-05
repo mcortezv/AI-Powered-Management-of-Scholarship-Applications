@@ -1,7 +1,10 @@
 package apiItson;
 import apiItson.controles.ControlItson;
 import apiItson.interfaces.IItsonAPI;
+import banco.SolicitudPagoDTOI;
+import datos.dominioItson.actividades.Actividad;
 import datos.dominioItson.HistorialAcademico;
+import datos.dominioItson.pagarAdeudo.Clase;
 import datos.dominioItson.pagarAdeudo.Prestamo;
 import itson.LoginDTOItson;
 import datos.dominioItson.Estudiante;
@@ -37,21 +40,32 @@ public class ItsonAPI implements IItsonAPI {
     // pagar adeudo
     @Override
     public double obtenerAdeudoBiblioteca(Long matricula) {
-        return 0;
+        return controlItson.obtenerAdeudoBiblioteca(matricula);
     }
 
     @Override
     public double obtenerAdeudoColegiatura(Long matricula) {
-        return 0;
+        return controlItson.obtenerAdeudoColegiatura(matricula);
     }
-
-
 
     @Override
     public List<Prestamo> obtenerListaPrestamosBiblioteca(Long matricula) {
         return controlItson.obtenerListaPrestamosBiblioteca(matricula);
     }
-    
+
+    @Override
+    public List<Clase> obtenerListaClaseColegiatura(Long matricula) {
+        return controlItson.obtenerListaClasesColegiatura(matricula);
+    }
+
+    @Override
+    public boolean notificarLiquidacion(SolicitudPagoDTOI solicitudPagoDTOI) {
+        return false;
+    }
+
+
+
+
     //actividades
     @Override
     public ActividadesDTOItson soloicitarActividades() {
@@ -62,7 +76,7 @@ public class ItsonAPI implements IItsonAPI {
     public GruposResponseDTOItson solicitarGrupos(ActividadDTOItson actividad) {
         return controlItson.obtenerGrupos(actividad);
     }
-    
+
 //    public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson){
 //        return controlItson.inscribirActividad(inscripcionDTOItson);
 //    }

@@ -60,20 +60,18 @@ public class FachadaItson implements IFachadaITSON {
 
     @Override
     public List<PrestamoDTOI> solicitarListaPrestamso(Long matricula) {
-        return null;
+        return controlItson.obtenerListaPrestamos(matricula);
 
     }
 
     @Override
     public List<ClaseDTOI> solicitarListaClases(Long matricula) {
-        return null;
-//        return controlItson.solicitarListaClases(matriculaEstudiante);
+        return controlItson.obtenerListaClases(matricula);
     }
 
     @Override
     public boolean notificarLiquidacion(SolicitudPagoDTOI solicitudPagoDTOI) {
-        return false;
-//        return controlItson.solicitarLiquidacion(solicitudPagoDTOI);
+        return controlItson.solicitarLiquidacion(solicitudPagoDTOI);
     }
 
     /**

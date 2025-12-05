@@ -1,0 +1,42 @@
+package datos.adaptadoresItson.pagarAdeudo;
+
+import banco.SolicitudPagoDTOI;
+import datos.dominioItson.pagarAdeudo.SolicitudPago;
+import datos.repositoryItson.documents.pagarAdeudo.SolicitudPagoDocument;
+import java.util.ArrayList;
+import java.util.List;
+
+public class SolicitudPagoAdaptador {
+
+    public static SolicitudPagoDocument toDocument(SolicitudPagoDTOI dto){
+        SolicitudPagoDocument document = new SolicitudPagoDocument();
+        document.setIdEstudiante(dto.getIdEstudiante());
+        document.setReferenciaPago(dto.getReferenciaPago());
+        document.setFechaPago(dto.getFechaPago());
+        document.setMontoPagado(dto.getMontoPagado());
+        document.setMetodoPago(dto.getMetodoPago());
+        document.setEstatusPago(dto.getEstatusPago());
+        return document;
+    }
+
+    public static SolicitudPagoDTOI toDtoItson(SolicitudPago solicitud){
+        SolicitudPagoDTOI dto = new SolicitudPagoDTOI();
+        dto.setIdEstudiante(solicitud.getIdEstudiante());
+        dto.setReferenciaPago(solicitud.getReferenciaPago());
+        dto.setFechaPago(solicitud.getFechaPago());
+        dto.setMontoPagado(solicitud.getMontoPagado());
+        dto.setMetodoPago(solicitud.getMetodoPago());
+        dto.setEstatusPago(solicitud.getEstatusPago());
+        return dto;
+    }
+
+    public static List<SolicitudPagoDTOI> toDtoItson(List<SolicitudPago> solicitudes){
+        List<SolicitudPagoDTOI> lista = new ArrayList<>();
+        if (solicitudes != null) {
+            for (SolicitudPago s : solicitudes) {
+                lista.add(toDtoItson(s));
+            }
+        }
+        return lista;
+    }
+}
