@@ -32,7 +32,7 @@ public abstract class PanelPagarAdeudo extends JPanel {
         add(southPanel, BorderLayout.SOUTH);
         southPanel.add(btnBack);
         btnBack.addActionListener(e -> {
-            mainFrame.goBack();
+            coordinadorAplicacion.regresarAlMenuPrincipal();
         });
     }
 

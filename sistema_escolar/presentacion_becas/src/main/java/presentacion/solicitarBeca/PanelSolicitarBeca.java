@@ -39,7 +39,7 @@ public abstract class PanelSolicitarBeca extends JPanel {
         add(southPanel, BorderLayout.SOUTH);
         southPanel.add(btnBack);
         btnBack.addActionListener(e -> {
-            mainFrame.goBack();
+            coordinadorAplicacion.main();
         });
 
     }

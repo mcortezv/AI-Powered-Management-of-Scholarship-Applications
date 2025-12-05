@@ -12,10 +12,10 @@ import java.awt.*;
 
 public class CustomTable extends JTable {
 
-    private PagarAdeudo owner;
-    private PanelCategory category;
+    private final PagarAdeudo owner;
+    private final PanelCategory category;
     private JPanel previous;
-    private CoordinadorAplicacionPagarAdeudo coordinador;
+    private final CoordinadorAplicacionPagarAdeudo coordinador;
 
     public CustomTable(
             TableModel model,
