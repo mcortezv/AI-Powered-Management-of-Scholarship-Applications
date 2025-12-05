@@ -1,5 +1,6 @@
 package presentacion.pagarAdeudo;
 
+import presentacion.CoordinadorAplicacion;
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
 import presentacion.pagarAdeudo.panels.*;
 import presentacion.login.panels.NorthPanel;
@@ -8,15 +9,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Stack;
 
 public final class PagarAdeudo extends JFrame {
 
     private NorthPanel northPanel;
-    private JPanel centralPanel;
-    private Map<String, JPanel> panels;
+    private final JPanel centralPanel;
+    private final Map<String, JPanel> panels;
     private final CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo;
+    private Stack<String> history = new Stack<>();
 
-    public PagarAdeudo(CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo) {
+    public PagarAdeudo(CoordinadorAplicacion coordinadorAplicacion, CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo) {
         setTitle("Pagar Adeudo");
         setResizable(false);
         setSize(1500, 900);
@@ -75,16 +78,30 @@ public final class PagarAdeudo extends JFrame {
     }
 
     public void showPanel(String nuevoPanel) {
-        centralPanel.removeAll();
-        JPanel p = (JPanel) panels.get(nuevoPanel);
-        if (p != null) {
-            centralPanel.add(p, BorderLayout.CENTER);
-        } else {
-            System.out.println("PagarAdeudo.showPanel: panel '" + nuevoPanel + "' no encontrado.");
+        if (centralPanel.getComponentCount() > 0) {
+            String actual = centralPanel.getComponent(0).getName();
+            if (actual != null) history.push(actual);
         }
+
+        centralPanel.removeAll();
+
+        JPanel p = panels.get(nuevoPanel);
+        p.setName(nuevoPanel);
+        centralPanel.add(p, BorderLayout.CENTER);
         centralPanel.revalidate();
         centralPanel.repaint();
     }
+
+    void goBack() {
+        if (!history.isEmpty()) {
+            String prev = history.pop();
+            showPanel(prev);
+        } else {
+            this.dispose();
+            coordinadorAplicacionPagarAdeudo.regresarAlMenuPrincipal();
+        }
+    }
+
 
     public JPanel getPanel(String key) {
         return panels.get(key);

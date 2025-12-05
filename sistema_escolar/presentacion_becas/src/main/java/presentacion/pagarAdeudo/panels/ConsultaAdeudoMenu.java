@@ -19,8 +19,8 @@ public class ConsultaAdeudoMenu extends PanelPagarAdeudo {
 
     @Override
     public void startComponents() {
-
         centralPanel.removeAll();
+
         JPanel titlePanel = new JPanel();
         titlePanel.setBackground(Style.PANEL_COLOR);
         titlePanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0));
@@ -57,24 +57,18 @@ public class ConsultaAdeudoMenu extends PanelPagarAdeudo {
 
         centralPanel.add(contentBox);
 
-        btnBack.addActionListener(e -> {
-            System.out.println("btnBack clicked -> coordinadorAplicacion.main()");
-            coordinadorAplicacion.regresarAlMenuPrincipal();
-        });
-
         btnBiblioteca.addActionListener(e -> {
-            System.out.println("btnBiblioteca clicked");
             EstudianteDTO estudianteDTO = new EstudianteDTO();
             estudianteDTO.setMatricula(1L);
             coordinadorAplicacion.seleccionarAdeudoBiblioteca(estudianteDTO);
         });
 
         btnColegiatura.addActionListener(e -> {
-            System.out.println("btnColegiatura clicked");
             EstudianteDTO estudianteDTO = new EstudianteDTO();
             estudianteDTO.setMatricula(1L);
             coordinadorAplicacion.seleccionarAdeudoColegiatura(estudianteDTO);
         });
+
         revalidate();
         repaint();
     }

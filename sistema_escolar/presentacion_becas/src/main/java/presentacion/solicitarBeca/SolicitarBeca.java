@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Stack;
 
 /**
  *
@@ -14,6 +15,8 @@ import java.util.Map;
  */
 public final class SolicitarBeca extends JFrame {
     private JPanel centralPanel;
+    private Stack<String> history = new Stack<>();
+
     private ImgPanel mainPanel;
     private Map<String, JPanel> panels;
     private CoordinadorAplicacion coordinadorAplicacion;
@@ -79,12 +82,29 @@ public final class SolicitarBeca extends JFrame {
     }
 
     public void showPanel(String nuevoPanel) {
+        if (centralPanel.getComponentCount() > 0) {
+            String actual = centralPanel.getComponent(0).getName();
+            if (actual != null) history.push(actual);
+        }
+
         centralPanel.removeAll();
-        centralPanel.add(panels.get(nuevoPanel), BorderLayout.CENTER);
+
+        JPanel p = panels.get(nuevoPanel);
+        p.setName(nuevoPanel);
+        centralPanel.add(p, BorderLayout.CENTER);
         centralPanel.revalidate();
         centralPanel.repaint();
     }
-    
+
+    void goBack() {
+        if (!history.isEmpty()) {
+            String prev = history.pop();
+            showPanel(prev);
+        }
+    }
+
+
+
     public JPanel getPanel(String key){
         return panels.get(key);
     }
