@@ -34,7 +34,7 @@ public final class MainFrame extends JFrame {
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
         northPanel = new NorthPanel();
-        centralPanel = new JPanel();
+        centralPanel = new JPanel(new BorderLayout());
         this.coordinadorAplicacion = coordinadorAplicacion;
 
         btnSolicitarBeca = new Button("Solicitar Beca");

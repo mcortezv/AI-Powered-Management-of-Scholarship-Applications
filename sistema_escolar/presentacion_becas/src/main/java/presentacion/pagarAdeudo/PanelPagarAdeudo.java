@@ -8,15 +8,14 @@ import javax.swing.*;
 import java.awt.*;
 
 public abstract class PanelPagarAdeudo extends JPanel {
-    protected PagarAdeudo pagarAdeudo;
+    protected PagarAdeudo mainFrame;
     protected JPanel centralPanel;
     protected JPanel southPanel;
     protected Button btnBack;
     protected CoordinadorAplicacionPagarAdeudo coordinadorAplicacion;
 
-
     public PanelPagarAdeudo(PagarAdeudo frame, CoordinadorAplicacionPagarAdeudo coordinadorAplicacion){
-        pagarAdeudo = frame;
+        mainFrame = frame;
         btnBack = new Button("Volver");
         this.coordinadorAplicacion = coordinadorAplicacion;
         setLayout(new BorderLayout());
@@ -33,11 +32,9 @@ public abstract class PanelPagarAdeudo extends JPanel {
         add(southPanel, BorderLayout.SOUTH);
         southPanel.add(btnBack);
         btnBack.addActionListener(e -> {
-
+            mainFrame.goBack();
         });
     }
-
-
 
     public abstract void startComponents();
 }

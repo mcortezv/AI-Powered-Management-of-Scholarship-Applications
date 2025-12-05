@@ -52,7 +52,6 @@ public class ControlItson {
         return api.obtenerAdeudoColegiatura(matricula);
     }
 
-
     public List<PrestamoDTOItson> obtenerListaPrestamos(Long matricula){
         return PrestamoAdaptador.toDtoItson(api.obtenerListaPrestamosBiblioteca(matricula));
     }
