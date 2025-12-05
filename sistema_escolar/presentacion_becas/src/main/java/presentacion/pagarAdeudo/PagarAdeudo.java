@@ -17,7 +17,6 @@ public final class PagarAdeudo extends JFrame {
     private final JPanel centralPanel;
     private final Map<String, JPanel> panels;
     private final CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo;
-    private Stack<String> history = new Stack<>();
 
     public PagarAdeudo(CoordinadorAplicacion coordinadorAplicacion, CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo) {
         setTitle("Pagar Adeudo");
@@ -78,28 +77,15 @@ public final class PagarAdeudo extends JFrame {
     }
 
     public void showPanel(String nuevoPanel) {
-        if (centralPanel.getComponentCount() > 0) {
-            String actual = centralPanel.getComponent(0).getName();
-            if (actual != null) history.push(actual);
-        }
-
         centralPanel.removeAll();
-
-        JPanel p = panels.get(nuevoPanel);
-        p.setName(nuevoPanel);
-        centralPanel.add(p, BorderLayout.CENTER);
+        JPanel p =  panels.get(nuevoPanel);
+        if (p != null) {
+            centralPanel.add(p, BorderLayout.CENTER);
+        } else {
+            System.out.println("PagarAdeudo.showPanel: panel '" + nuevoPanel + "' no encontrado.");
+        }
         centralPanel.revalidate();
         centralPanel.repaint();
-    }
-
-    void goBack() {
-        if (!history.isEmpty()) {
-            String prev = history.pop();
-            showPanel(prev);
-        } else {
-            this.dispose();
-            coordinadorAplicacionPagarAdeudo.regresarAlMenuPrincipal();
-        }
     }
 
 
