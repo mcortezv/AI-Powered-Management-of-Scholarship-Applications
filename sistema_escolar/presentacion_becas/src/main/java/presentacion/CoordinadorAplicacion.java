@@ -38,7 +38,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
 
     // pagar adeudo
     private CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo;
-
+    private PagarAdeudo pagarAdeudo;
     // act extra
     private CoordinadorAplicacionActividades coordinadorAplicacionActividades;
     public CoordinadorAplicacion(IFachadaInicioSesion fachadaInicioSesion, IFachadaSolicitarBeca fachadaSolicitarBeca) {
@@ -87,10 +87,16 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     }
 
     public void pagarAdeudo() {
-        mainFrame.setVisible(false);
-        PagarAdeudo pagarAdeudoFrame = new PagarAdeudo(coordinadorAplicacionPagarAdeudo);
-        pagarAdeudoFrame.setVisible(true);
+        try {
+            if (mainFrame != null) mainFrame.setVisible(false);
+            pagarAdeudo = new PagarAdeudo(this, coordinadorAplicacionPagarAdeudo);
+            pagarAdeudo.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (mainFrame != null) mainFrame.setVisible(true);
+        }
     }
+
 
     public void actividades(){
         mainFrame.setVisible(false);

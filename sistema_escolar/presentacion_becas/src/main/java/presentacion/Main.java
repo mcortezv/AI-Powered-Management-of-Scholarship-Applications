@@ -34,16 +34,17 @@ public class Main {
         ControlGobierno controlGobierno = new ControlGobierno();
         ControlBanco controlBanco = new ControlBanco();
         ControlPayPal controlPayPal = new ControlPayPal();
-       
 
         // creacion de fachadas
         IFachadaBanco fachadaBanco = new FachadaBanco(controlBanco);
         IFachadaPayPal fachadaPayPal = new FachadaPayPal(controlPayPal);
         IFachadaITSON fachadaITSON = new FachadaItson(controlItson);
         IFachadaGobierno fachadaGobierno = new FachadaGobierno(controlGobierno);
+
         //  Caso pagar Adeudo
         IAdeudoBO adeudoBO = new AdeudoBO(fachadaITSON);
         IFachadaPago fachadaPago = new FachadaPago(new ControlPago(adeudoBO, fachadaBanco, fachadaPayPal));
+
         // caso act extra
         IActividadBO actividadBO = new ActividadBO(fachadaITSON);
         IGrupoBO grupoBO= new GrupoBO(fachadaITSON);
@@ -63,7 +64,6 @@ public class Main {
         IInformacionSocioeconomicaBO infoSocioBO = new InformacionSocioeconomicaBO();
         ISolicitudBO solicitudBO = new SolicitudBO(fachadaGobierno, solicitudDAO);
         ITutorBO tutorBO = new TutorBO();
-
 
         IFachadaInicioSesion fachadaInicioSesion = new FachadaInicioSesion(new ControlInicioSesion(estudianteBO));
         IFachadaSolicitarBeca fachadaSolicitarBeca = new FachadaSolicitarBeca(new ControlSolicitarBeca(solicitudBO, estudianteBO, tutorBO, becasFiltradasBO, documentoBO, historialAcademicoBO, infoSocioBO));

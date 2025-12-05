@@ -31,18 +31,14 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
         if (mainFrame != null) {
             mainFrame.setVisible(false);
         }
-        pagarAdeudo = new PagarAdeudo(this);
+        pagarAdeudo = new PagarAdeudo(coordinadorPadre,this);
         pagarAdeudo.setVisible(true);
     }
 
     public void regresarAlMenuPrincipal() {
         if (pagarAdeudo != null) {
-            pagarAdeudo.setVisible(false);
+            pagarAdeudo.dispose();
         }
-        if (mainFrame != null) {
-            mainFrame.setVisible(false);
-        }
-
         coordinadorPadre.mostrarMainFrame();
     }
 
