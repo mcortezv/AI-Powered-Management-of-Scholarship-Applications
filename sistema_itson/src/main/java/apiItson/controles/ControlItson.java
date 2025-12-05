@@ -1,4 +1,5 @@
 package apiItson.controles;
+import banco.SolicitudPagoDTOI;
 import datos.adaptadoresItson.actividades.GrupoAdaptador;
 import datos.dominioItson.Actividad;
 import datos.dominioItson.HistorialAcademico;
@@ -8,6 +9,7 @@ import datos.serviceItson.ActividadService;
 import datos.serviceItson.HistorialService;
 import datos.serviceItson.pagarAdeudo.ClaseService;
 import datos.serviceItson.pagarAdeudo.PrestamoService;
+import datos.serviceItson.pagarAdeudo.SolicitudPagoService;
 import itson.LoginDTOItson;
 import datos.dominioItson.Estudiante;
 import datos.dominioItson.Grupo;
@@ -25,6 +27,7 @@ public class ControlItson {
     // pagar adeudo
     private final PrestamoService prestamoService;
     private final ClaseService claseService;
+    private final SolicitudPagoService solicitudPagoService;
     //actividades
     private final ActividadService actividadService;
     private final GrupoService grupoService;
@@ -39,6 +42,7 @@ public class ControlItson {
         //pagar adeudo
         this.prestamoService = new PrestamoService();
         this.claseService = new ClaseService();
+        this.solicitudPagoService = new SolicitudPagoService();
     }
 
     public boolean verificarLogin(LoginDTOItson dto){
@@ -57,6 +61,15 @@ public class ControlItson {
 
 
     // pagar adeudo
+
+    public double obtenerAdeudoBiblioteca(Long matricula){
+        return 0.0;
+    }
+
+    public double obtenerAdeudoColegiatura(Long matricula){
+        return 0.0;
+    }
+
     public List<Prestamo> obtenerListaPrestamosBiblioteca(Long matricula){
         return prestamoService.obtenerListaPrestamos(matricula);
     }
@@ -64,6 +77,12 @@ public class ControlItson {
     public List<Clase> obtenerListaClasesColegiatura(Long matricula){
         return claseService.obtenerListaClases(matricula);
     }
+
+    public boolean notificarLiquidacion(SolicitudPagoDTOI solicitudPagoDTOI){
+        return solicitudPagoService.notificarLiquidacion(solicitudPagoDTOI);
+    }
+
+
     
     
     //actividades
