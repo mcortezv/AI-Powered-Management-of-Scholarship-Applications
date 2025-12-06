@@ -68,15 +68,10 @@ public class Main {
 
         IFachadaInicioSesion fachadaInicioSesion = new FachadaInicioSesion(new ControlInicioSesion(estudianteBO));
         IFachadaSolicitarBeca fachadaSolicitarBeca = new FachadaSolicitarBeca(new ControlSolicitarBeca(solicitudBO, estudianteBO, tutorBO, becasFiltradasBO, documentoBO, historialAcademicoBO, infoSocioBO));
+        CoordinadorAplicacion coordinadorAplicacion = new CoordinadorAplicacion(fachadaInicioSesion, fachadaSolicitarBeca);
+        CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo = new CoordinadorAplicacionPagarAdeudo(fachadaPago, coordinadorAplicacion);
 
-        CoordinadorAplicacion coordinadorAplicacion =
-                new CoordinadorAplicacion(fachadaInicioSesion, fachadaSolicitarBeca);
-
-        CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo =
-                new CoordinadorAplicacionPagarAdeudo(fachadaPago, coordinadorAplicacion);
-
-        CoordinadorAplicacionActividades coordinadorAplicacionActividades =
-                new CoordinadorAplicacionActividades(fachadaAct, coordinadorAplicacion);
+        CoordinadorAplicacionActividades coordinadorAplicacionActividades = new CoordinadorAplicacionActividades(fachadaAct, coordinadorAplicacion);
         coordinadorAplicacion.setCoordinadorAplicacionPagarAdeudo(coordinadorAplicacionPagarAdeudo);
         coordinadorAplicacion.setCoordinadorAplicacionActividades(coordinadorAplicacionActividades);
         coordinadorAplicacion.iniciarGUI();

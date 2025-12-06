@@ -60,7 +60,7 @@ public class ConsultaAdeudoMenu extends PanelPagarAdeudo {
 
         btnBiblioteca.addActionListener(e -> {
             EstudianteDTO estudianteDTO = new EstudianteDTO();
-            estudianteDTO.setMatricula(SesionUsuario.getInstance().getEstudianteLogeado().getMatricula());
+            estudianteDTO.setMatricula(1L);
             coordinadorAplicacion.seleccionarAdeudoBiblioteca(estudianteDTO);
         });
 
