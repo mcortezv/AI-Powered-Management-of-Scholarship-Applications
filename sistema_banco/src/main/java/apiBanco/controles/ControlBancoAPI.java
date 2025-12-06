@@ -2,6 +2,7 @@ package apiBanco.controles;
 
 import datos.dominioBanco.Cuenta;
 import datos.dtos.DatosTarjetaDTO;
+import datos.excepcionesBanco.BancoException;
 import datos.serviceBanco.CuentaService;
 import datos.serviceBanco.TransaccionService;
 import views.panels.MainFrameBanco;
@@ -37,12 +38,18 @@ public class ControlBancoAPI {
             return false;
         }
         DatosTarjetaDTO datosDTO = ventanaBancaria.obtenerDatos();
+        if(datosDTO == null){
+            return false;
+        }
         return procesarSolicitudPago(datosDTO, monto, concepto);
     }
 
     public boolean procesarSolicitudPago(DatosTarjetaDTO datosTarjeta, double monto, String concepto) {
-        String numeroLimpio = datosTarjeta.getNumeroTarjeta().replace("-", "").replace(" ", "").trim();
         try {
+            if(datosTarjeta == null){
+                return false;
+            }
+            String numeroLimpio = datosTarjeta.getNumeroTarjeta().replace("-", "").replace(" ", "").trim();
             Cuenta cuenta = cuentaService.validarYObtenerCuenta(
                     numeroLimpio,
                     datosTarjeta.getCv(),
@@ -64,7 +71,8 @@ public class ControlBancoAPI {
                 return false;
             }
 
-        } catch (Exception e) {
+        } catch (BancoException e) {
+            String numeroLimpio = datosTarjeta.getNumeroTarjeta().replace("-", "").replace(" ", "").trim();
             transaccionService.registrarFallo(numeroLimpio, monto, concepto, e.getMessage());
             return false;
         }

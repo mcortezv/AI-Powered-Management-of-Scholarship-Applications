@@ -4,12 +4,13 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
-
 import datos.dtos.DatosTarjetaDTO;
+import views.exceptions.BancoViewsException;
 import views.styles.*;
 import views.styles.Button;
 import views.styles.Label;
 import views.styles.TextField;
+import views.validadores.Validador;
 
 public class PanelTarjetaBancaria extends JPanel {
     private TextField campoNumero;
@@ -106,13 +107,30 @@ public class PanelTarjetaBancaria extends JPanel {
     }
 
     public DatosTarjetaDTO getDatos() {
-        DatosTarjetaDTO dto = new DatosTarjetaDTO();
-        dto.setNumeroTarjeta(campoNumero.getText());
-        dto.setFechaVencimiento(campoFecha.getText());
-        dto.setCv(campoCVV.getText());
-        dto.setNombreTitular(campoNombre.getText());
-        dto.setTelefono(campoTelefono.getText());
-        dto.setEmail(campoEmail.getText());
-        return dto;
+        try {
+            String numero = campoNumero.getText();
+            String fecha = campoFecha.getText();
+            String cvv = campoCVV.getText();
+            String nombre = campoNombre.getText();
+            String telefono = campoTelefono.getText();
+            String email = campoEmail.getText();
+            Validador.validarNumeroTarjeta(numero);
+            Validador.validarFechaCaducidad(fecha);
+            Validador.validarCVV(cvv);
+            Validador.validarNombre(nombre);
+            Validador.validarTelefono(telefono);
+            Validador.validarEmail(email);
+            DatosTarjetaDTO dto = new DatosTarjetaDTO();
+            dto.setNumeroTarjeta(numero);
+            dto.setFechaVencimiento(fecha);
+            dto.setCv(cvv);
+            dto.setNombreTitular(nombre);
+            dto.setTelefono(telefono);
+            dto.setEmail(email);
+            return dto;
+        } catch (BancoViewsException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Datos Incorrectos", JOptionPane.WARNING_MESSAGE);
+        }
+        return null;
     }
 }

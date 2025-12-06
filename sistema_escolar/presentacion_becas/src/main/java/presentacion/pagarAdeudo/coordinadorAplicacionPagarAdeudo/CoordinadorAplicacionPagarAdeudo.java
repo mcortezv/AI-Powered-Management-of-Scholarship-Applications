@@ -25,7 +25,6 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
     private final CoordinadorNegocioPagarAdeudo coordinadorNegocioPagarAdeudo;
     private PagarAdeudo pagarAdeudo;
     private String tipoAdeudo;
-
     private List<PrestamoDTO> prestamos;
     private List<ClaseDTO> clases;
     private Double adeudoBibliotecaCache;
@@ -110,11 +109,14 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
         try {
             solicitudPagoDTO.setEstatusPago("Pendiente");
             solicitudPagoDTO.setIdEstudiante(SesionUsuario.getInstance().getEstudianteLogeado().getMatricula());
-            if ("Biblioteca".equals(tipoAdeudo)) solicitudPagoDTO.setMontoPagado(adeudoBibliotecaCache);
-            else if ("Colegiatura".equals(tipoAdeudo)) solicitudPagoDTO.setMontoPagado(adeudoColegiaturaCache);
 
+            if ("Biblioteca".equals(tipoAdeudo)) {
+                solicitudPagoDTO.setMontoPagado(adeudoBibliotecaCache);
+            } else if ("Colegiatura".equals(tipoAdeudo)) {
+                solicitudPagoDTO.setMontoPagado(adeudoColegiaturaCache);
+            }
             SolicitudPagoDTO resultado = coordinadorNegocioPagarAdeudo.realizarPago(solicitudPagoDTO);
-            if (resultado != null) {
+            if (resultado != null && "Pagado".equalsIgnoreCase(resultado.getEstatusPago())) {
                 coordinadorNegocioPagarAdeudo.notificarLiquidacion(resultado);
                 coordinadorNegocioPagarAdeudo.cerrarVentanaBanco();
                 JOptionPane.showMessageDialog(null, "¡Pago realizado con éxito!");
@@ -122,17 +124,15 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
                 regresarAlMenuPrincipal();
             }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Error en el pago: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error en el sistema de pago: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             System.out.println("Error procesando pago: " + ex.getMessage());
         }
     }
-
     private void limpiarCache() {
         this.prestamos = null;
         this.clases = null;
         this.adeudoBibliotecaCache = null;
         this.adeudoColegiaturaCache = null;
-        System.out.println("Pago realizado. Caché limpiada.");
     }
 
     @Override
