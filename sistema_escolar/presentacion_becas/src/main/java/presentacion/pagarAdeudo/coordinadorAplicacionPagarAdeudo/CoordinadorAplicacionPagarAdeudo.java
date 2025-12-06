@@ -13,7 +13,6 @@ import presentacion.pagarAdeudo.mainFraimePagarAdeudo.MainFramePagarAdeudo;
 import presentacion.pagarAdeudo.panels.DetallePrestamo;
 import presentacion.pagarAdeudo.panels.ListaClasesColegiatura;
 import presentacion.pagarAdeudo.panels.ListaPrestamosBiblioteca;
-import solicitarBeca.dominio.enums.pagarAdeudo.MetodoPago;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -22,14 +21,12 @@ import java.util.List;
 
 public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionPagarAdeudo {
     private final CoordinadorAplicacion coordinadorPadre;
-    private final MainFramePagarAdeudo mainFrame; // Nota: A veces usas PagarAdeudo como frame, revisa si este atributo es necesario
+    private final MainFramePagarAdeudo mainFrame;
     private final CoordinadorNegocioPagarAdeudo coordinadorNegocioPagarAdeudo;
     private PagarAdeudo pagarAdeudo;
     private String tipoAdeudo;
-
     private List<PrestamoDTO> prestamos;
     private List<ClaseDTO> clases;
-
     private Double adeudoBibliotecaCache;
     private Double adeudoColegiaturaCache;
     private final SolicitudPagoDTO solicitudPagoDTO;
@@ -106,13 +103,23 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
     }
 
     private void abrirPasarelaBanco() {
-        ActionListener listenerBotonPagarDelBanco = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                procesarPagoBanco();
-            }
-        };
-        coordinadorNegocioPagarAdeudo.mostrarVentanaPago(listenerBotonPagarDelBanco);
+        int respuesta = JOptionPane.showConfirmDialog(
+                null,
+                "Al dar click en continuar será redirigido a un sistema de pago externo, ¿desea continuar?",
+                "Sistema de Pago Externo",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.INFORMATION_MESSAGE
+        );
+
+        if (respuesta == JOptionPane.YES_OPTION) {
+            ActionListener listenerBotonPagarDelBanco = new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    procesarPagoBanco();
+                }
+            };
+            coordinadorNegocioPagarAdeudo.mostrarVentanaPago(listenerBotonPagarDelBanco);
+        }
     }
 
     private void procesarPagoBanco() {
@@ -146,13 +153,9 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
         this.adeudoColegiaturaCache = null;
     }
 
-    @Override
-    public void verDetalle() { }
-
     public void setPagarAdeudo(PagarAdeudo pagarAdeudo) {
         this.pagarAdeudo = pagarAdeudo;
     }
-
     public void setTipoAdeudo(String tipo){
         this.tipoAdeudo = tipo;
     }

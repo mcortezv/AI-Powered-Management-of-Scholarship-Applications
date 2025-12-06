@@ -6,7 +6,6 @@ import datos.excepcionesBanco.BancoException;
 import datos.serviceBanco.CuentaService;
 import datos.serviceBanco.TransaccionService;
 import views.panels.MainFrameBanco;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
