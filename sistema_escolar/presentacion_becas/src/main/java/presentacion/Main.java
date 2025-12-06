@@ -13,7 +13,9 @@ import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorApli
 import fachadas.FachadaGobierno;
 import interfaces.*;
 import interfaces.actividades.IGrupoBO;
+//import interfaces.actividades.IInscripcionBO;
 import objetosNegocio.actividades.GrupoBO;
+//import objetosNegocio.actividades.InscripcionBO;
 import solicitarBeca.repository.dao.interfaces.IDocumentoDAO;
 import solicitarBeca.repository.dao.interfaces.IEstudianteDAO;
 import solicitarBeca.repository.dao.interfaces.ISolicitudDAO;
@@ -49,6 +51,7 @@ public class Main {
         // caso act extra
         IActividadBO actividadBO = new ActividadBO(fachadaITSON);
         IGrupoBO grupoBO= new GrupoBO(fachadaITSON);
+       // IInscripcionBO inscripcionBO= new InscripcionBO(fachadaITSON);
         ControlActividad controlActividad= new ControlActividad(actividadBO, grupoBO);
         IFachadaActividad fachadaAct = new FachadaActividad(controlActividad);
 

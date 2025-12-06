@@ -1,6 +1,6 @@
 package apiItson.controles;
 import datos.adaptadoresItson.actividades.GrupoAdaptador;
-import datos.dominioItson.Actividad;
+
 import datos.dominioItson.HistorialAcademico;
 import datos.dominioItson.pagarAdeudo.Clase;
 import datos.dominioItson.pagarAdeudo.Prestamo;
@@ -10,11 +10,13 @@ import datos.serviceItson.pagarAdeudo.ClaseService;
 import datos.serviceItson.pagarAdeudo.PrestamoService;
 import itson.LoginDTOItson;
 import datos.dominioItson.Estudiante;
-import datos.dominioItson.Grupo;
+
 import datos.serviceItson.EstudianteService;
 import datos.serviceItson.GrupoService;
 import itson.ActividadDTOItson;
+import itson.ActividadesDTOItson;
 import itson.actividades.GruposResponseDTOItson;
+import itson.actividades.InscripcionDTOItson;
 
 import java.util.List;
 
@@ -67,12 +69,15 @@ public class ControlItson {
     
     
     //actividades
-    public List<Actividad> solicitarActividades(){
+    public ActividadesDTOItson solicitarActividades(){
         return actividadService.obtenerActividades();
     }
     
     public GruposResponseDTOItson obtenerGrupos(ActividadDTOItson actividad){
-      //  return grupoService.obtenerGrupos(actividad);
-      return GrupoAdaptador.toDTOLista(grupoService.obtenerGrupos(actividad));
+      return grupoService.obtenerGrupos(actividad);
     }
+    
+//    public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson){
+//        return 
+//    }
 }

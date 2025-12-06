@@ -1,14 +1,14 @@
 package apiItson;
 import apiItson.controles.ControlItson;
 import apiItson.interfaces.IItsonAPI;
-import datos.dominioItson.Actividad;
 import datos.dominioItson.HistorialAcademico;
 import datos.dominioItson.pagarAdeudo.Prestamo;
 import itson.LoginDTOItson;
 import datos.dominioItson.Estudiante;
-import datos.dominioItson.Grupo;
 import itson.ActividadDTOItson;
+import itson.ActividadesDTOItson;
 import itson.actividades.GruposResponseDTOItson;
+import itson.actividades.InscripcionDTOItson;
 
 import java.util.List;
 
@@ -54,15 +54,16 @@ public class ItsonAPI implements IItsonAPI {
     
     //actividades
     @Override
-    public List<Actividad> soloicitarActividades() {
+    public ActividadesDTOItson soloicitarActividades() {
         return controlItson.solicitarActividades();
     }
-    
-//    public List<Grupo> solicitarGrupos(Actividad actividad){
-//        return controlItson.obtenerGrupos(actividad);
-//    }
+
 
     public GruposResponseDTOItson solicitarGrupos(ActividadDTOItson actividad) {
         return controlItson.obtenerGrupos(actividad);
     }
+    
+//    public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson){
+//        return controlItson.inscribirActividad(inscripcionDTOItson);
+//    }
 }

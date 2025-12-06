@@ -5,7 +5,9 @@
 package objetosNegocio.actividades;
 
 
+import adaptadores.actividades.ActividadesAdaptador;
 import datos.repositoryItson.daoItson.IActividadDAO;
+import dto.actividades.ActividadesDTO;
 import interfaces.IFachadaITSON;
 import interfaces.actividades.IActividadBO;
 import itson.ActividadesDTOItson;
@@ -23,8 +25,9 @@ public class ActividadBO implements IActividadBO {
     }
     
     @Override
-    public ActividadesDTOItson obtenerActividades(){
-        return fachadaITSON.obtenerActividades();
+    public ActividadesDTO obtenerActividades(){
+        ActividadesDTOItson actividadesDTOItson= fachadaITSON.obtenerActividades();
+        return ActividadesAdaptador.toDTO(actividadesDTOItson);
     }
     
     

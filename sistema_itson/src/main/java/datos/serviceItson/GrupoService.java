@@ -4,10 +4,14 @@
  */
 package datos.serviceItson;
 
-import datos.dominioItson.Actividad;
-import datos.dominioItson.Grupo;
+import datos.adaptadoresItson.actividades.ActividadAdaptador;
+import datos.adaptadoresItson.actividades.GrupoAdaptador;
+import datos.dominioItson.actividades.Actividad;
+import datos.dominioItson.actividades.Grupo;
+
 import datos.repositoryItson.daoItson.actividades.impl.GrupoDAO;
 import itson.ActividadDTOItson;
+import itson.actividades.GruposResponseDTOItson;
 import java.util.List;
 
 /**
@@ -22,8 +26,10 @@ public class GrupoService {
         this.grupoDAO = new GrupoDAO();
     }
     
-    public List<Grupo> obtenerGrupos(ActividadDTOItson actividad){
-        return grupoDAO.obtenerGrupos(actividad);
+    public GruposResponseDTOItson obtenerGrupos(ActividadDTOItson actividad){
+        Actividad actividadEntity= ActividadAdaptador.toEntity(actividad);
+        List<Grupo> grupos= grupoDAO.obtenerGrupos(actividadEntity);
+        return GrupoAdaptador.toDTOLista(grupos);
         
     }
     

@@ -4,6 +4,7 @@
  */
 package presentacion.actividadesExtracurriculares.panels;
 
+import itson.LoginDTOItson;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -24,6 +25,7 @@ public class ActividadesExtracurriculares extends JFrame{
     private JPanel centralPanel;
     private Map<String, JPanel> panels;
     private CoordinadorAplicacionActividades coordinadorAplicacionActividades;
+    private LoginDTOItson loginDTO;
     
     public ActividadesExtracurriculares(CoordinadorAplicacionActividades coordinadorAplicacionActividades){
         this.coordinadorAplicacionActividades= coordinadorAplicacionActividades;
@@ -43,8 +45,7 @@ public class ActividadesExtracurriculares extends JFrame{
       
         
         showPanel("MenuOpciones");
-        coordinadorAplicacionActividades.setActividades(this);
-        
+        coordinadorAplicacionActividades.setActividades(this);      
         
     }
     
@@ -62,8 +63,18 @@ public class ActividadesExtracurriculares extends JFrame{
        panel= new ListaActividades(this, coordinadorAplicacionActividades);
        panel.startComponents();
        panels.put("ListaActividades", panel);
+       
+       panel= new ResumenClases(this, coordinadorAplicacionActividades);
+       panel.startComponents();
+       panels.put("ResumenClases", panel);     
+       
+       panel= new DetalleGrupo(this, coordinadorAplicacionActividades);
+       panel.startComponents();
+       panels.put("DetalleGrupo", panel);
         
     }
+    
+       
     
     public void showPanel(String pantalla){
         centralPanel.removeAll();
@@ -74,6 +85,11 @@ public class ActividadesExtracurriculares extends JFrame{
     
     public JPanel getPanel(String key){
         return panels.get(key);
+    }
+    
+    public void recuperarLogin(LoginDTOItson loginDTO){
+        this.loginDTO= loginDTO;
+        coordinadorAplicacionActividades.recuperarLogin(loginDTO);
     }
     
     

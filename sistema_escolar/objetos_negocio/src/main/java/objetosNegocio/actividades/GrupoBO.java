@@ -4,6 +4,8 @@
  */
 package objetosNegocio.actividades;
 
+import adaptadores.actividades.ActividadesAdaptador;
+import adaptadores.actividades.GruposAdaptador;
 import dto.actividades.ActividadDTO;
 import dto.actividades.GruposResponseDTO;
 import interfaces.IFachadaITSON;
@@ -23,8 +25,11 @@ public class GrupoBO implements IGrupoBO{
         this.fachadaITSON = fachadaITSON;
     }
     
-   public GruposResponseDTOItson obtenerGrupos(ActividadDTOItson actividadDTOItson){
-      return fachadaITSON.otenerGrupos(actividadDTOItson);
+   public GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO){
+       ActividadDTOItson actividadDTOItson= ActividadesAdaptador.toDTOItson(actividadDTO);
+       GruposResponseDTOItson gruposResponseDTOItson= fachadaITSON.otenerGrupos(actividadDTOItson);
+       GruposResponseDTO gruposResponseDTO= GruposAdaptador.DTOItsonToDTO(gruposResponseDTOItson);
+       return gruposResponseDTO;
    }
     
     

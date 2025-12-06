@@ -97,7 +97,7 @@ public class IniciarSesionPanel extends Panel {
                     txtUsuario.setText("");
                     txtPassword.setText("");
                     Style.DARK_MODE = false;
-
+                    coordinadorAplicacion.guardarInfoEstudiante(loginDTO);
                     mainFrame.showPanel("hubPanel");
                     mainFrame.getNorthPanel().setVisible(true);
                     SwingUtilities.invokeLater(() -> {

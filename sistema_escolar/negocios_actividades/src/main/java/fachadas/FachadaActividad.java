@@ -9,6 +9,7 @@ import dto.actividades.ActividadDTO;
 import dto.actividades.ActividadesDTO;
 import dto.actividades.GrupoDTO;
 import dto.actividades.GruposResponseDTO;
+import dto.actividades.InscripcionDTO;
 import interfaces.IFachadaActividad;
 import java.util.List;
 
@@ -31,6 +32,10 @@ public class FachadaActividad implements IFachadaActividad{
     public GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO){
         return controlActividad.obtenerGrupos(actividadDTO);
     }
+//    
+//     public InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO){
+//         return controlActividad.inscribirActividad(inscripcionDTO);
+//     }
 
 
 }

@@ -8,6 +8,7 @@ import itson.EstudianteDTOItson;
 import itson.HistorialAcademicoDTOItson;
 import itson.LoginDTOItson;
 import itson.actividades.GruposResponseDTOItson;
+import itson.actividades.InscripcionDTOItson;
 
 import java.util.List;
 
@@ -31,4 +32,5 @@ public interface IFachadaITSON {
     //actividades
     public ActividadesDTOItson obtenerActividades();
     public GruposResponseDTOItson otenerGrupos(ActividadDTOItson actividadDTO);
+   // public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson);
 }

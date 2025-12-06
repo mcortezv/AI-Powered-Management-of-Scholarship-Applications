@@ -12,6 +12,7 @@ import itson.EstudianteDTOItson;
 import itson.HistorialAcademicoDTOItson;
 import itson.LoginDTOItson;
 import itson.actividades.GruposResponseDTOItson;
+import itson.actividades.InscripcionDTOItson;
 
 import java.util.List;
 
@@ -91,4 +92,8 @@ public class FachadaItson implements IFachadaITSON {
     public GruposResponseDTOItson otenerGrupos(ActividadDTOItson actividadDTO) {
         return controlItson.obtenerGrupos(actividadDTO);
     }
+    
+//    public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson){
+//        return controlItson.inscribirActividad(inscripcionDTOItson);
+//    }
 }

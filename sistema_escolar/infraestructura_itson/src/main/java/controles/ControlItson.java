@@ -5,7 +5,6 @@ import apiItson.interfaces.IItsonAPI;
 import datos.adaptadoresItson.EstudianteAdaptador;
 import datos.adaptadoresItson.HistorialAcademicoAdaptador;
 import datos.adaptadoresItson.pagarAdeudo.PrestamoAdaptador;
-import datos.dominioItson.Actividad;
 import datos.dominioItson.Estudiante;
 import itson.ActividadDTOItson;
 
@@ -14,7 +13,8 @@ import itson.EstudianteDTOItson;
 import itson.HistorialAcademicoDTOItson;
 import itson.LoginDTOItson;
 import itson.actividades.GruposResponseDTOItson;
-import itson.org.adaptadores.ActividadAdaptador;
+import itson.actividades.InscripcionDTOItson;
+import datos.adaptadoresItson.actividades.ActividadAdaptador;
 import itson.pagarAdeudo.PrestamoDTOItson;
 
 import java.util.List;
@@ -58,15 +58,17 @@ public class ControlItson {
 
     // caso de uso actividades
     
-    public ActividadesDTOItson obtenerActividades(){
-        List<Actividad> actividad= api.soloicitarActividades();
-        return ActividadAdaptador.toResponseDTOListaAct(actividad);
+    
+      public ActividadesDTOItson obtenerActividades(){
+        return api.soloicitarActividades();
     }
     
     public GruposResponseDTOItson obtenerGrupos(ActividadDTOItson actividadDTOItson){
-    //    Actividad actividad= ActividadAdaptador.
-      //  List<Grupo> grupos= api.solicitarGrupos(actvd)
       return api.solicitarGrupos(actividadDTOItson);
     }
+    
+//     public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson){
+//         return 
+//     }
 
 }

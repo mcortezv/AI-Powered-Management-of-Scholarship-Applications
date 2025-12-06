@@ -6,7 +6,7 @@ package datos.repositoryItson.daoItson.impl;
 
 import com.mongodb.client.MongoCollection;
 import datos.configMongoItson.MongoClienteProvider;
-import datos.dominioItson.Actividad;
+import datos.dominioItson.actividades.Actividad;
 import datos.repositoryItson.daoItson.IActividadDAO;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,6 @@ public class ActividadDAO implements IActividadDAO {
     
       public List<Actividad> obtenerActividades() {
           List<Actividad> actividades= coleccion.find().into(new ArrayList<>());
-          System.out.println(actividades);
           return actividades;
           
       }

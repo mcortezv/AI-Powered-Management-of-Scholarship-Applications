@@ -2,22 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package datos.dominioItson;
+package datos.dominioItson.actividades;
 
 /**
  *
  * @author janethcristinagalvanquinonez
  */
-public class Actividad {
+public class Responsable {
+    
     private String nombre;
-    private double costo;
+    private String correo;
 
-    public Actividad() {
+    public Responsable() {
     }
 
-    public Actividad(String nombre, double costo) {
+    public Responsable(String nombre, String correo) {
         this.nombre = nombre;
-        this.costo = costo;
+        this.correo = correo;
     }
 
     public String getNombre() {
@@ -28,23 +29,13 @@ public class Actividad {
         this.nombre = nombre;
     }
 
-
-
-    public double getCosto() {
-        return costo;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setCosto(double costo) {
-        this.costo = costo;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
-
-    @Override
-    public String toString() {
-        return "Actividad{" + "nombre=" + nombre + ", costo=" + costo + '}';
-    }
-    
-    
-    
     
     
 }

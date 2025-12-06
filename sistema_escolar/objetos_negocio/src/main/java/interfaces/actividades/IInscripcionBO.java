@@ -4,16 +4,12 @@
  */
 package interfaces.actividades;
 
-
-import dto.actividades.ActividadesDTO;
-import itson.ActividadesDTOItson;
+import dto.actividades.InscripcionDTO;
 
 /**
  *
  * @author janethcristinagalvanquinonez
  */
-public interface IActividadBO {
-    
-    public ActividadesDTO obtenerActividades();
-    
+public interface IInscripcionBO {
+   // InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO);
 }

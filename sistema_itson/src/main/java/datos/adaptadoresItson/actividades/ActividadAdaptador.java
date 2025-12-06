@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package itson.org.adaptadores;
+package datos.adaptadoresItson.actividades;
 
-import datos.dominioItson.Actividad;
+
+import datos.dominioItson.actividades.Actividad;
 import itson.ActividadDTOItson;
 import itson.ActividadesDTOItson;
 
@@ -34,6 +35,13 @@ public class ActividadAdaptador {
         }
         actividadesDTOItson.setActividades(listaActividadesDTOItson);
         return actividadesDTOItson;
+    }
+    
+    public static Actividad toEntity(ActividadDTOItson actividadDTO){
+        Actividad actividad= new Actividad();
+        actividad.setCosto(actividadDTO.getCosto());
+        actividad.setNombre(actividadDTO.getNombre());
+        return actividad;
     }
     
 }

@@ -35,6 +35,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     private HistorialAcademicoDTO historialAcademicoDTO;
     private TutorDTO tutorDTO;
     private InformacionSocioeconomicaDTO infoSocioeconomicaDTO;
+    private LoginDTOItson estudiante;
 
     // pagar adeudo
     private CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo;
@@ -61,6 +62,10 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
 
     public void cerrarSesion(){
         coordinadorNegocio.solicitarCerrarSesion();
+    }
+    
+    public void guardarInfoEstudiante(LoginDTOItson loginDTOItson){
+        this.estudiante= loginDTOItson;
     }
 
     public void procesarInformacionGeneral(RequisitosDTO requisitosDTO) throws PromedioInvalidoException, IngresoInvalidoException {
@@ -98,9 +103,10 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     }
 
 
-    public void actividades(){
+    public void actividades(){   
         mainFrame.setVisible(false);
         ActividadesExtracurriculares act = new ActividadesExtracurriculares(coordinadorAplicacionActividades);
+        act.recuperarLogin(estudiante);
         act.setVisible(true);
 
     }

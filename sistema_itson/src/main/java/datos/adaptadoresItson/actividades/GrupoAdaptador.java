@@ -4,7 +4,8 @@
  */
 package datos.adaptadoresItson.actividades;
 
-import datos.dominioItson.Grupo;
+
+import datos.dominioItson.actividades.Grupo;
 import itson.actividades.GrupoResponseDTOItson;
 import itson.actividades.GruposResponseDTOItson;
 import java.util.ArrayList;
@@ -51,6 +52,8 @@ public class GrupoAdaptador {
         return grupoResponseDTOItson;
         
     }
+    
+    
     }
     
    

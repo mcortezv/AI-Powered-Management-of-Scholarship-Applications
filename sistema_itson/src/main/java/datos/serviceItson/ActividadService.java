@@ -4,8 +4,11 @@
  */
 package datos.serviceItson;
 
-import datos.dominioItson.Actividad;
+
 import datos.repositoryItson.daoItson.impl.ActividadDAO;
+import itson.ActividadesDTOItson;
+import datos.adaptadoresItson.actividades.ActividadAdaptador;
+import datos.dominioItson.actividades.Actividad;
 import java.util.List;
 
 /**
@@ -22,8 +25,11 @@ public class ActividadService {
     
 
     
-    public List<Actividad> obtenerActividades(){
-        return actividadDAO.obtenerActividades();
+    public ActividadesDTOItson obtenerActividades(){
+        List<Actividad> actividades= actividadDAO.obtenerActividades();
+        return ActividadAdaptador.toResponseDTOListaAct(actividades);
+         
+       // return actividadDAO.obtenerActividades();
     }
     
     

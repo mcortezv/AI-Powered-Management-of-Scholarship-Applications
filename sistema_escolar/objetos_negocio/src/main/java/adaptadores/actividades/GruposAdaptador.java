@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class GruposAdaptador {
     
-    public static GruposResponseDTO DTOItsonToDTOActividadesLista(GruposResponseDTOItson gruposResponseDTOItson){
+    public static GruposResponseDTO DTOItsonToDTO(GruposResponseDTOItson gruposResponseDTOItson){
         GruposResponseDTO gruposResponseDTO= new GruposResponseDTO();
         List<GrupoDTO> gruposDTO= new ArrayList<>();
         for(GrupoResponseDTOItson grupo: gruposResponseDTOItson.getGruposItson()){

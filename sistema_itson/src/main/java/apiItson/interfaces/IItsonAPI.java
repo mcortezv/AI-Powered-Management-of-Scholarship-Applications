@@ -1,12 +1,12 @@
 package apiItson.interfaces;
-import datos.dominioItson.Actividad;
 import datos.dominioItson.HistorialAcademico;
 import datos.dominioItson.pagarAdeudo.Prestamo;
 import itson.LoginDTOItson;
 import datos.dominioItson.Estudiante;
-import datos.dominioItson.Grupo;
 import itson.ActividadDTOItson;
+import itson.ActividadesDTOItson;
 import itson.actividades.GruposResponseDTOItson;
+import itson.actividades.InscripcionDTOItson;
 
 import java.util.List;
 
@@ -30,8 +30,9 @@ public interface IItsonAPI {
     
     
     //actividades
-     List<Actividad> soloicitarActividades();
+     ActividadesDTOItson soloicitarActividades();
      GruposResponseDTOItson solicitarGrupos(ActividadDTOItson actividad);
+  //   InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson);
 
 
 }

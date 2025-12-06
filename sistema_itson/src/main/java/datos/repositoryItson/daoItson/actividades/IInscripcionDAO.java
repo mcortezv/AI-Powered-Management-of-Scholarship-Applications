@@ -2,18 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package interfaces.actividades;
-
-
-import dto.actividades.ActividadesDTO;
-import itson.ActividadesDTOItson;
+package datos.repositoryItson.daoItson.actividades;
 
 /**
  *
  * @author janethcristinagalvanquinonez
  */
-public interface IActividadBO {
-    
-    public ActividadesDTO obtenerActividades();
+public interface IInscripcionDAO {
     
 }

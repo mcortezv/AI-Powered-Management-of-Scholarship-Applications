@@ -4,6 +4,8 @@
  */
 package interfaces.actividades;
 
+import dto.actividades.ActividadDTO;
+import dto.actividades.GruposResponseDTO;
 import itson.ActividadDTOItson;
 import itson.actividades.GruposResponseDTOItson;
 
@@ -13,6 +15,6 @@ import itson.actividades.GruposResponseDTOItson;
  */
 public interface IGrupoBO {
     
-     GruposResponseDTOItson obtenerGrupos(ActividadDTOItson actividadDTOItson);
+     GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO);
     
 }
