@@ -1,5 +1,5 @@
 package apiItson.interfaces;
-import banco.SolicitudPagoDTOI;
+import itson.pagarAdeudo.SolicitudPagoDTOI;
 import datos.dominioItson.HistorialAcademico;
 import datos.dominioItson.pagarAdeudo.Clase;
 import datos.dominioItson.pagarAdeudo.Prestamo;
@@ -18,6 +18,9 @@ public interface IItsonAPI {
     Estudiante obtenerDatosEstudiante(Long matricula);
 
     HistorialAcademico obtenerHistorialAcademico(Long matricula);
+
+
+
 
     //pagar adeudo
     List<Prestamo> obtenerListaPrestamosBiblioteca(Long matricula);

@@ -1,7 +1,7 @@
 package apiItson;
 import apiItson.controles.ControlItson;
 import apiItson.interfaces.IItsonAPI;
-import banco.SolicitudPagoDTOI;
+import itson.pagarAdeudo.SolicitudPagoDTOI;
 import itson.pagarAdeudo.*;
 import datos.dominioItson.HistorialAcademico;
 import datos.dominioItson.pagarAdeudo.Clase;
