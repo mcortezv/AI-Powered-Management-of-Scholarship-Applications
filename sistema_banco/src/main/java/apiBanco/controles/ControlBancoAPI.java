@@ -2,11 +2,13 @@ package apiBanco.controles;
 
 import datos.dominioBanco.Cuenta;
 import datos.dtos.DatosTarjetaDTO;
+import datos.excepcionesBanco.BancoException;
 import datos.serviceBanco.CuentaService;
 import datos.serviceBanco.TransaccionService;
 import views.panels.MainFrameBanco;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class ControlBancoAPI {
@@ -37,12 +39,21 @@ public class ControlBancoAPI {
             return false;
         }
         DatosTarjetaDTO datosDTO = ventanaBancaria.obtenerDatos();
+        if(datosDTO == null){
+            mostrarMensaje("Por favor, ingrese todos los datos de la tarjeta.", "Datos Incompletos", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
         return procesarSolicitudPago(datosDTO, monto, concepto);
     }
 
     public boolean procesarSolicitudPago(DatosTarjetaDTO datosTarjeta, double monto, String concepto) {
-        String numeroLimpio = datosTarjeta.getNumeroTarjeta().replace("-", "").replace(" ", "").trim();
+        String numeroLimpio = "";
         try {
+            if(datosTarjeta == null){
+                return false;
+            }
+            numeroLimpio = datosTarjeta.getNumeroTarjeta().replaceAll("\\D", "");
+
             Cuenta cuenta = cuentaService.validarYObtenerCuenta(
                     numeroLimpio,
                     datosTarjeta.getCv(),
@@ -51,6 +62,7 @@ public class ControlBancoAPI {
 
             if (!cuentaService.verificarFondos(cuenta, monto)) {
                 transaccionService.registrarFallo(numeroLimpio, monto, concepto, "FONDOS INSUFICIENTES");
+                mostrarMensaje("La cuenta no tiene fondos suficientes para realizar esta operación.", "Fondos Insuficientes", JOptionPane.WARNING_MESSAGE);
                 return false;
             }
 
@@ -58,16 +70,26 @@ public class ControlBancoAPI {
 
             if (descuentoExitoso) {
                 transaccionService.registrarExito(cuenta, monto, concepto);
+                mostrarMensaje("Pago realizado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 return true;
             } else {
                 transaccionService.registrarFallo(numeroLimpio, monto, concepto, "ERROR SISTEMA");
+                mostrarMensaje("Ocurrió un error interno al procesar el saldo.", "Error del Sistema", JOptionPane.ERROR_MESSAGE);
                 return false;
             }
 
+        } catch (BancoException e) {
+            mostrarMensaje(e.getMessage(), "Error en la Cuenta", JOptionPane.ERROR_MESSAGE);
+            String numLog = numeroLimpio.isEmpty() ? datosTarjeta.getNumeroTarjeta() : numeroLimpio;
+            transaccionService.registrarFallo(numLog, monto, concepto, e.getMessage());
+            return false;
         } catch (Exception e) {
-            transaccionService.registrarFallo(numeroLimpio, monto, concepto, e.getMessage());
+            mostrarMensaje("Ocurrió un error inesperado: " + e.getMessage(), "Error Crítico", JOptionPane.ERROR_MESSAGE);
             return false;
         }
+    }
+    private void mostrarMensaje(String mensaje, String titulo, int tipoIcono) {
+        JOptionPane.showMessageDialog(null, mensaje, titulo, tipoIcono);
     }
 
 }

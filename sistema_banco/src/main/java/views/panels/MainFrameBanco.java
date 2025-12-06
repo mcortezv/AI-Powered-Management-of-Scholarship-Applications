@@ -2,6 +2,7 @@ package views.panels;
 
 import datos.dtos.DatosTarjetaDTO;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class MainFrameBanco extends JDialog {
@@ -9,7 +10,7 @@ public class MainFrameBanco extends JDialog {
     private final PanelTarjetaBancaria panelTarjeta;
 
     public MainFrameBanco() {
-        super((java.awt.Frame) null, "Pasarela de Pago - Banco", true);
+        super((Frame) null, "Pasarela de Pago - Banco", true);
 
         setSize(600, 750);
         setResizable(false);

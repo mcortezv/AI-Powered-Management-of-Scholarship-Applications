@@ -1,4 +1,4 @@
-package views.exceptions;
+package datos.excepcionesBanco;
 
 public class BancoException extends RuntimeException {
     public BancoException(String message) {

@@ -1,6 +1,7 @@
 package datos.serviceBanco;
 
 import datos.dominioBanco.Cuenta;
+import datos.excepcionesBanco.BancoException;
 import datos.repositoryBanco.dao.CuentaDAO;
 import datos.repositoryBanco.dao.interfaces.ICuentaDAO;
 
@@ -12,19 +13,19 @@ public class CuentaService {
         this.cuentaDAO = new CuentaDAO();
     }
 
-    public Cuenta validarYObtenerCuenta(String numero, String cvv, String fechaVencimiento) throws Exception {
+
+    public Cuenta validarYObtenerCuenta(String numero, String cvv, String fechaVencimiento) throws BancoException {
         Cuenta cuenta = cuentaDAO.buscarPorNumeroTarjeta(numero);
         if (cuenta == null) {
-            throw new Exception("TARJETA INEXISTENTE O NÚMERO INCORRECTO");
+            throw new BancoException("TARJETA INEXISTENTE O NÚMERO INCORRECTO");
         }
         if (!cuenta.getCvv().equals(cvv)) {
-            throw new Exception("CÓDIGO DE SEGURIDAD (CVV) INCORRECTO");
+            throw new BancoException("CÓDIGO DE SEGURIDAD (CVV) INCORRECTO");
         }
 
         if (!cuenta.getFechaVencimiento().equals(fechaVencimiento)) {
-            throw new Exception("FECHA DE VENCIMIENTO INCORRECTA");
+            throw new BancoException("FECHA DE VENCIMIENTO INCORRECTA");
         }
-
         return cuenta;
     }
 
