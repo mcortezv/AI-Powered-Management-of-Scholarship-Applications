@@ -1,13 +1,40 @@
 package controles;
 
+import apiBanco.BancoAPI;
+import apiBanco.interfaces.IBancoAPI;
 import pagarAdeudo.SolicitudPagoDTO;
+
+import javax.swing.*;
+import java.awt.event.ActionListener;
 
 /**
  *  CASO DE USO PAGAR ADEUDO
  * @author Escalante, Sebastian
  */
 public class ControlBanco {
-    public SolicitudPagoDTO ejecutarPago(SolicitudPagoDTO solicitudPagoDTO){
-        return null;
+    IBancoAPI iBancoAPI;
+
+    public ControlBanco(){
+        this.iBancoAPI = new BancoAPI();
+    }
+
+    public void mostrarVentanaPago(ActionListener listener) {
+        iBancoAPI.mostrarVentanaPago(listener);
+    }
+
+    public SolicitudPagoDTO ejecutarPago(SolicitudPagoDTO solicitud) {
+        double monto = solicitud.getMontoPagado();
+        String concepto = "Pago Colegiatura/Libros";
+        boolean exito = iBancoAPI.ejecutarPago(monto, concepto);
+        if (exito) {
+            solicitud.setEstatusPago("Pagado");
+        } else {
+            solicitud.setEstatusPago("Rechazado");
+        }
+        return solicitud;
+    }
+
+    public void cerrarVentana() {
+        iBancoAPI.cerrarVentana();
     }
 }

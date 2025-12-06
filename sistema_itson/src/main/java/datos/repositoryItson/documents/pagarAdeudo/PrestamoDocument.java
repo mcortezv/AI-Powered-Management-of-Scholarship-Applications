@@ -3,6 +3,8 @@ package datos.repositoryItson.documents.pagarAdeudo;
 import java.util.Date;
 
 public class PrestamoDocument {
+    private Long idEstudiante;
+    private double costo;
     private Date fechaPrestamo;
     private Date fechaDevolucionProgramada;
     private String isbn;
@@ -12,6 +14,22 @@ public class PrestamoDocument {
 
 
     public PrestamoDocument(){}
+
+    public double getCosto() {
+        return costo;
+    }
+
+    public void setCosto(double costo) {
+        this.costo = costo;
+    }
+
+    public Long getIdEstudiante(){
+        return this.idEstudiante;
+    }
+
+    public void setIdEstudiante(Long idEstudiante){
+        this.idEstudiante = idEstudiante;
+    }
 
     public Date getFechaPrestamo() {
         return fechaPrestamo;

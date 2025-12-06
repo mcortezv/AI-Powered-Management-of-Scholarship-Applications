@@ -6,14 +6,17 @@ import pagarAdeudo.PrestamoDTO;
 import pagarAdeudo.SolicitudPagoDTO;
 import solicitarBeca.dominio.enums.pagarAdeudo.MetodoPago;
 
+import javax.swing.*;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 public interface ICoordinadorNegocioPagarAdeudo {
-    double obtenerAdeudoBiblioteca(EstudianteDTO estudianteDTO);
-    double obtenerAdeudoColegiatura(EstudianteDTO estudianteDTO);
     List<PrestamoDTO> obtenerListaPrestamos(EstudianteDTO estudianteDTO);
     List<ClaseDTO> obtenerListaClases(EstudianteDTO estudianteDTO);
-    SolicitudPagoDTO realizarPago(SolicitudPagoDTO solicitudPagoDTO, MetodoPago metodoPago) throws Exception;
+    double calcularTotalPrestamos(List<PrestamoDTO> prestamos);
+    double calcularTotalClases(List<ClaseDTO> clases);
+    void mostrarVentanaPago(ActionListener listener);
+    SolicitudPagoDTO realizarPago(SolicitudPagoDTO solicitud) throws Exception;
+    void cerrarVentanaBanco();
     boolean notificarLiquidacion(SolicitudPagoDTO solicitudPagoDTO);
-
 }

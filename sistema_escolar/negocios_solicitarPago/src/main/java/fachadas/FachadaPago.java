@@ -6,10 +6,9 @@ import pagarAdeudo.ClaseDTO;
 import pagarAdeudo.PrestamoDTO;
 import pagarAdeudo.SolicitudPagoDTO;
 import interfaces.IFachadaPago;
-import solicitarBeca.dominio.enums.pagarAdeudo.MetodoPago;
-
+import javax.swing.*;
+import java.awt.event.ActionListener;
 import java.util.List;
-import java.util.Objects;
 
 public class FachadaPago implements IFachadaPago {
     public ControlPago controlPago;
@@ -19,18 +18,8 @@ public class FachadaPago implements IFachadaPago {
     }
 
     @Override
-    public double solicitarAdeudoTotalBiblioteca(EstudianteDTO estudianteDTO) {
-        return controlPago.solicitarAdeudoTotalBiblioteca(estudianteDTO);
-    }
-
-    @Override
     public List<PrestamoDTO> solicitarListaPrestamos(EstudianteDTO estudianteDTO) {
         return controlPago.solicitarListaPrestamos(estudianteDTO);
-    }
-
-    @Override
-    public double solicitarAdeudoTotalColegiatura(EstudianteDTO estudianteDTO) {
-        return controlPago.solicitarAdeudoTotalColegiatura(estudianteDTO);
     }
 
     @Override
@@ -39,16 +28,18 @@ public class FachadaPago implements IFachadaPago {
     }
 
     @Override
-    public SolicitudPagoDTO solicitarRealizarPago(SolicitudPagoDTO solicitudPagoDTO, MetodoPago metodoPago) throws Exception {
-        if(Objects.equals(String.valueOf(metodoPago), "BANCO")){
-            return controlPago.solicitarRealizarPagoBanco(solicitudPagoDTO);
-        }
-        if(Objects.equals(String.valueOf(metodoPago), "PAYPAL")){
-            return controlPago.solicitarRealizarPagoPayPal(solicitudPagoDTO);
-        }else{
-            throw new Exception("Error");
-        }
+    public void solicitarVistaDePago(ActionListener listener) {
+        controlPago.solicitarVistaPago(listener);
+    }
 
+    @Override
+    public SolicitudPagoDTO realizarPago(SolicitudPagoDTO solicitudPagoDTO) {
+        return controlPago.realizarPago(solicitudPagoDTO);
+    }
+
+    @Override
+    public void cerrarVentana() {
+        controlPago.cerrarVentanaBanco();
     }
 
     @Override

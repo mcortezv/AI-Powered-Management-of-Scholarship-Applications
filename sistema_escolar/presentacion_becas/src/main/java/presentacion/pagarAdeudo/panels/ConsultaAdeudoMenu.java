@@ -1,5 +1,6 @@
 package presentacion.pagarAdeudo.panels;
 
+import bo.sesion.SesionUsuario;
 import dtoGobierno.EstudianteDTO;
 import presentacion.pagarAdeudo.PagarAdeudo;
 import presentacion.pagarAdeudo.PanelPagarAdeudo;
@@ -56,16 +57,19 @@ public class ConsultaAdeudoMenu extends PanelPagarAdeudo {
         contentBox.add(btnColegiatura);
 
         centralPanel.add(contentBox);
+        btnBack.addActionListener(e -> {
+            coordinadorAplicacion.regresarAlMenuPrincipal();
+        });
 
         btnBiblioteca.addActionListener(e -> {
             EstudianteDTO estudianteDTO = new EstudianteDTO();
-            estudianteDTO.setMatricula(1L);
+            estudianteDTO.setMatricula(SesionUsuario.getInstance().getEstudianteLogeado().getMatricula());
             coordinadorAplicacion.seleccionarAdeudoBiblioteca(estudianteDTO);
         });
 
         btnColegiatura.addActionListener(e -> {
             EstudianteDTO estudianteDTO = new EstudianteDTO();
-            estudianteDTO.setMatricula(1L);
+            estudianteDTO.setMatricula(SesionUsuario.getInstance().getEstudianteLogeado().getMatricula());
             coordinadorAplicacion.seleccionarAdeudoColegiatura(estudianteDTO);
         });
 

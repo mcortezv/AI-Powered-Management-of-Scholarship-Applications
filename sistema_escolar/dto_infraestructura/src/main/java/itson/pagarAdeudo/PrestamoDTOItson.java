@@ -3,6 +3,7 @@ package itson.pagarAdeudo;
 import java.util.Date;
 
 public class PrestamoDTOItson {
+    private String idEstudiante;
     private Date fechaPrestamo;
     private Date fechaDevolucionProgramada;
     private String isbn;
@@ -12,6 +13,14 @@ public class PrestamoDTOItson {
 
 
     public PrestamoDTOItson(){}
+
+    public String getIdEstudiante() {
+        return idEstudiante;
+    }
+
+    public void setIdEstudiante(String idEstudiante) {
+        this.idEstudiante = idEstudiante;
+    }
 
     public Date getFechaPrestamo() {
         return fechaPrestamo;

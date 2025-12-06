@@ -1,12 +1,14 @@
 package apiItson.interfaces;
+import itson.pagarAdeudo.SolicitudPagoDTOI;
 import datos.dominioItson.HistorialAcademico;
+import datos.dominioItson.pagarAdeudo.Clase;
 import datos.dominioItson.pagarAdeudo.Prestamo;
 import itson.LoginDTOItson;
 import datos.dominioItson.Estudiante;
 import itson.ActividadDTOItson;
 import itson.ActividadesDTOItson;
 import itson.actividades.GruposResponseDTOItson;
-import itson.actividades.InscripcionDTOItson;
+import itson.pagarAdeudo.SolicitudPagoDTOI;
 
 import java.util.List;
 
@@ -18,17 +20,13 @@ public interface IItsonAPI {
 
     HistorialAcademico obtenerHistorialAcademico(Long matricula);
 
-    double obtenerAdeudoBiblioteca(Long matricula);
 
-    double obtenerAdeudoColegiatura(Long matricula);
-
-   
 
 
     //pagar adeudo
     List<Prestamo> obtenerListaPrestamosBiblioteca(Long matricula);
-    
-    
+    List<Clase> obtenerListaClaseColegiatura(Long matricula);
+    boolean notificarLiquidacion(SolicitudPagoDTOI solicitudPagoDTOI);
     //actividades
      ActividadesDTOItson soloicitarActividades();
      GruposResponseDTOItson solicitarGrupos(ActividadDTOItson actividad);

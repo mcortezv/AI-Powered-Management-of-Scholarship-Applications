@@ -21,7 +21,8 @@ public class ClaseDAO implements IClaseDAO {
     @Override
     public List<ClaseDocument> obtenerListaClasesByMatricula(Long matricula){
         try{
-          return col.find(Filters.eq("matricula",matricula)).into(new ArrayList<>());
+            System.out.println(matricula);
+          return col.find(Filters.eq("idEstudiante",matricula)).into(new ArrayList<>());
         }catch (DaoException ex){
             System.out.println("Error al obtener clases por matricula" +  ex.getMessage());
             throw new DaoException("Error al obtener clases por matricula" +  ex.getMessage());

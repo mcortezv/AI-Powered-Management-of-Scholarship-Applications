@@ -1,28 +1,33 @@
 package datos.adaptadoresItson.pagarAdeudo;
 
+import itson.pagarAdeudo.PrestamoDTOI;
 import datos.dominioItson.pagarAdeudo.Prestamo;
 import datos.repositoryItson.documents.pagarAdeudo.PrestamoDocument;
-import itson.pagarAdeudo.PrestamoDTOItson;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PrestamoAdaptador {
 
-    public static Prestamo toEntity(PrestamoDocument document){
+    public static Prestamo toEntity(PrestamoDocument document) {
+        if (document == null) return null;
         Prestamo prestamo = new Prestamo();
-        prestamo.setFechaPrestamo(document.getFechaPrestamo());
-        prestamo.setFechaDevolucionProgramada(document.getFechaDevolucionProgramada());
+        prestamo.setCosto(document.getCosto());
         prestamo.setIsbn(document.getIsbn());
         prestamo.setTitulo(document.getTitulo());
+        prestamo.setFechaPrestamo(document.getFechaPrestamo());
+        prestamo.setFechaDevolucionProgramada(document.getFechaDevolucionProgramada());
         prestamo.setCampus(document.getCampus());
         prestamo.setDetalles(document.getDetalles());
+
         return prestamo;
     }
-    public static PrestamoDTOItson toDtoItson(Prestamo prestamo){
-        PrestamoDTOItson dto = new PrestamoDTOItson();
-        dto.setFechaPrestamo(prestamo.getFechaPrestamo());
-        dto.setFechaDevolucionProgramada(prestamo.getFechaDevolucionProgramada());
+    public static PrestamoDTOI toDtoItson(Prestamo prestamo){
+        PrestamoDTOI dto = new PrestamoDTOI();
+        dto.setCosto(prestamo.getCosto());
+        dto.setIdEstudiante(prestamo.getIdEstudiante());
+        dto.setFechaPrestamo(prestamo.getFechaPrestamo().toString());
+        dto.setFechaDevolucion(prestamo.getFechaDevolucionProgramada().toString());
         dto.setIsbn(prestamo.getIsbn());
         dto.setTitulo(prestamo.getTitulo());
         dto.setCampus(prestamo.getCampus());
@@ -30,8 +35,8 @@ public class PrestamoAdaptador {
         return dto;
     }
 
-    public static List<PrestamoDTOItson> toDtoItson(List<Prestamo> prestamos){
-        List<PrestamoDTOItson> lista = new ArrayList<>();
+    public static List<PrestamoDTOI> toDtoItson(List<Prestamo> prestamos){
+        List<PrestamoDTOI> lista = new ArrayList<>();
         for (Prestamo p : prestamos) {
             lista.add(toDtoItson(p));
         }

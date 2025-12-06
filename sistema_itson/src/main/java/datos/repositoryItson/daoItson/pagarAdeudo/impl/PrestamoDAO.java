@@ -20,7 +20,8 @@ public class PrestamoDAO implements IPrestamoDAO {
     @Override
     public List<PrestamoDocument> obtenerListaPrestamosByMatricula(Long matricula){
         try{
-            return col.find(Filters.eq("matricula", matricula)).into(new ArrayList<>());
+            System.out.println(matricula);
+            return col.find(Filters.eq("idEstudiante", matricula)).into(new ArrayList<>());
         }catch (DaoException ex){
             System.out.println("Error al obtener prestamos por matricula" +  ex.getMessage());
             throw new DaoException("Error al obtener prestamos por matricula" +  ex.getMessage());

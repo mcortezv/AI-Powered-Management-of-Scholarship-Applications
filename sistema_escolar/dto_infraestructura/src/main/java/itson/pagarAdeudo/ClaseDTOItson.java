@@ -1,6 +1,7 @@
 package itson.pagarAdeudo;
 
 public class ClaseDTOItson {
+    private String idEstudiante;
     private String nombre;
     private String horario;
     private String profesor;
@@ -8,6 +9,18 @@ public class ClaseDTOItson {
     private String campus;
     private String detalles;
     public ClaseDTOItson(){}
+
+    public String getIdEstudiante() {
+        return idEstudiante;
+    }
+
+    public void setIdEstudiante(String idEstudiante) {
+        this.idEstudiante = idEstudiante;
+    }
+
+    public String getCampus() {
+        return campus;
+    }
 
     public String getNombre() {
         return nombre;

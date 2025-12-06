@@ -1,24 +1,21 @@
-package banco;
+package datos.repositoryItson.documents.pagarAdeudo;
 
-/**
- * @author Escalante, Sebastian.
- */
-public class SolicitudPagoDTOI {
-    private String idEstudiante;
+public class SolicitudPagoDocument {
+    private Long idEstudiante;
     private String referenciaPago;
     private String fechaPago;
     private double montoPagado;
     private String metodoPago;
     private String estatusPago;
 
-    public SolicitudPagoDTOI() {
+    public SolicitudPagoDocument() {
     }
 
-    public String getIdEstudiante() {
+    public Long getIdEstudiante() {
         return idEstudiante;
     }
 
-    public void setIdEstudiante(String idEstudiante) {
+    public void setIdEstudiante(Long idEstudiante) {
         this.idEstudiante = idEstudiante;
     }
 

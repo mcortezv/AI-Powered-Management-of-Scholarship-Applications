@@ -1,5 +1,6 @@
 package presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo;
 
+import bo.sesion.SesionUsuario;
 import dtoGobierno.EstudianteDTO;
 import pagarAdeudo.ClaseDTO;
 import pagarAdeudo.PrestamoDTO;
@@ -13,18 +14,28 @@ import presentacion.pagarAdeudo.panels.ListaClasesColegiatura;
 import presentacion.pagarAdeudo.panels.ListaPrestamosBiblioteca;
 import solicitarBeca.dominio.enums.pagarAdeudo.MetodoPago;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionPagarAdeudo {
     private final CoordinadorAplicacion coordinadorPadre;
-    private MainFramePagarAdeudo mainFrame;
+    private final MainFramePagarAdeudo mainFrame;
     private final CoordinadorNegocioPagarAdeudo coordinadorNegocioPagarAdeudo;
     private PagarAdeudo pagarAdeudo;
+    private String tipoAdeudo;
 
+    private List<PrestamoDTO> prestamos;
+    private List<ClaseDTO> clases;
+    private Double adeudoBibliotecaCache;
+    private Double adeudoColegiaturaCache;
+    private final SolicitudPagoDTO solicitudPagoDTO;
     public CoordinadorAplicacionPagarAdeudo(IFachadaPago fachadaPago, CoordinadorAplicacion coordinadorPadre) {
         this.coordinadorPadre = coordinadorPadre;
         coordinadorNegocioPagarAdeudo = new CoordinadorNegocioPagarAdeudo(fachadaPago);
         mainFrame = null;
+        solicitudPagoDTO = new SolicitudPagoDTO();
     }
 
     public void pagarAdeudo() {
@@ -39,33 +50,34 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
         if (pagarAdeudo != null) {
             pagarAdeudo.dispose();
         }
+        limpiarCache();
         coordinadorPadre.mostrarMainFrame();
     }
 
     @Override
     public void seleccionarAdeudoBiblioteca(EstudianteDTO estudianteDTO) {
-        double adeudo = coordinadorNegocioPagarAdeudo.obtenerAdeudoBiblioteca(estudianteDTO);
-        List<PrestamoDTO> listaPrestamos = coordinadorNegocioPagarAdeudo.obtenerListaPrestamos(estudianteDTO);
-
+        this.setTipoAdeudo("Biblioteca");
+        if (this.prestamos == null) {
+            System.out.println("Consultando API (Biblioteca)...");
+            this.prestamos = coordinadorNegocioPagarAdeudo.obtenerListaPrestamos(estudianteDTO);
+            this.adeudoBibliotecaCache = coordinadorNegocioPagarAdeudo.calcularTotalPrestamos(this.prestamos);
+        }
         ListaPrestamosBiblioteca panel = (ListaPrestamosBiblioteca) pagarAdeudo.getPanel("listaPrestamosBiblioteca");
-
-        panel.setAdeudo(adeudo);
-        panel.setPrestamos(listaPrestamos);
-
+        panel.setAdeudo(this.adeudoBibliotecaCache);
+        panel.setPrestamos(this.prestamos);
         pagarAdeudo.showPanel("listaPrestamosBiblioteca");
     }
 
     @Override
     public void seleccionarAdeudoColegiatura(EstudianteDTO estudianteDTO) {
-        double adeudo = coordinadorNegocioPagarAdeudo.obtenerAdeudoColegiatura(estudianteDTO);
-        List<ClaseDTO> listaClases = coordinadorNegocioPagarAdeudo.obtenerListaClases(estudianteDTO);
-
-        ListaClasesColegiatura panel =
-                (ListaClasesColegiatura) pagarAdeudo.getPanel("listaClasesColegiatura");
-
-        panel.setAdeudo(adeudo);
-        panel.setClases(listaClases);
-
+        this.setTipoAdeudo("Colegiatura");
+        if (this.clases == null) {
+            this.clases = coordinadorNegocioPagarAdeudo.obtenerListaClases(estudianteDTO);
+            this.adeudoColegiaturaCache = coordinadorNegocioPagarAdeudo.calcularTotalClases(this.clases);
+        }
+        ListaClasesColegiatura panel = (ListaClasesColegiatura) pagarAdeudo.getPanel("listaClasesColegiatura");
+        panel.setAdeudo(this.adeudoColegiaturaCache);
+        panel.setClases(this.clases);
         pagarAdeudo.showPanel("listaClasesColegiatura");
     }
 
@@ -75,18 +87,52 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
     }
 
     @Override
-    public void seleccionarMetodoPago(String metodoPago) throws Exception {
-
-        SolicitudPagoDTO solicitudPagoDTO = new SolicitudPagoDTO();
-        solicitudPagoDTO.setEstatusPago("Pendiente");
-        solicitudPagoDTO.setIdEstudiante("87249L");
-
-        if (metodoPago.equals("BANCO")) {
-            coordinadorNegocioPagarAdeudo.realizarPago(solicitudPagoDTO, MetodoPago.BANCO);
+    public void seleccionarMetodoPago(String metodoPago) {
+        if ("BANCO".equals(metodoPago)) {
+            abrirPasarelaBanco();
         }
-        if (metodoPago.equals("PAYPAL")) {
-            coordinadorNegocioPagarAdeudo.realizarPago(solicitudPagoDTO, MetodoPago.PAYPAL);
+        if ("PAYPAL".equals(metodoPago)){
+            System.out.println("Próximamente PayPal...");
         }
+    }
+
+    private void abrirPasarelaBanco() {
+        ActionListener listenerBotonPagarDelBanco = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                procesarPagoBanco();
+            }
+        };
+        coordinadorNegocioPagarAdeudo.mostrarVentanaPago(listenerBotonPagarDelBanco);
+    }
+
+    private void procesarPagoBanco() {
+        try {
+            solicitudPagoDTO.setEstatusPago("Pendiente");
+            solicitudPagoDTO.setIdEstudiante(SesionUsuario.getInstance().getEstudianteLogeado().getMatricula());
+            if ("Biblioteca".equals(tipoAdeudo)) solicitudPagoDTO.setMontoPagado(adeudoBibliotecaCache);
+            else if ("Colegiatura".equals(tipoAdeudo)) solicitudPagoDTO.setMontoPagado(adeudoColegiaturaCache);
+
+            SolicitudPagoDTO resultado = coordinadorNegocioPagarAdeudo.realizarPago(solicitudPagoDTO);
+            if (resultado != null) {
+                coordinadorNegocioPagarAdeudo.notificarLiquidacion(resultado);
+                coordinadorNegocioPagarAdeudo.cerrarVentanaBanco();
+                JOptionPane.showMessageDialog(null, "¡Pago realizado con éxito!");
+                limpiarCache();
+                regresarAlMenuPrincipal();
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error en el pago: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Error procesando pago: " + ex.getMessage());
+        }
+    }
+
+    private void limpiarCache() {
+        this.prestamos = null;
+        this.clases = null;
+        this.adeudoBibliotecaCache = null;
+        this.adeudoColegiaturaCache = null;
+        System.out.println("Pago realizado. Caché limpiada.");
     }
 
     @Override
@@ -95,5 +141,15 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
     public void setPagarAdeudo(PagarAdeudo pagarAdeudo) {
         this.pagarAdeudo = pagarAdeudo;
     }
+
+    public void setTipoAdeudo(String tipo){
+        this.tipoAdeudo = tipo;
+    }
+    public String getTipoAdeudo(){
+        return tipoAdeudo;
+    }
+
+
+
 
 }

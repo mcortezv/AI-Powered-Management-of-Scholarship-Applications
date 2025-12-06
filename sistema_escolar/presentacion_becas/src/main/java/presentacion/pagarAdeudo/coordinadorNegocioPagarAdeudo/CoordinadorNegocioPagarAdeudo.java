@@ -5,11 +5,11 @@ import pagarAdeudo.ClaseDTO;
 import pagarAdeudo.PrestamoDTO;
 import pagarAdeudo.SolicitudPagoDTO;
 import interfaces.IFachadaPago;
-import solicitarBeca.dominio.enums.pagarAdeudo.MetodoPago;
 
+import java.awt.event.ActionListener;
 import java.util.List;
 
-public class CoordinadorNegocioPagarAdeudo implements ICoordinadorNegocioPagarAdeudo{
+public class CoordinadorNegocioPagarAdeudo implements ICoordinadorNegocioPagarAdeudo {
     private final IFachadaPago fachadaPago;
 
     public CoordinadorNegocioPagarAdeudo(IFachadaPago fachadaPago) {
@@ -17,13 +17,25 @@ public class CoordinadorNegocioPagarAdeudo implements ICoordinadorNegocioPagarAd
     }
 
     @Override
-    public double obtenerAdeudoBiblioteca(EstudianteDTO estudianteDTO) {
-        return fachadaPago.solicitarAdeudoTotalBiblioteca(estudianteDTO);
+    public double calcularTotalPrestamos(List<PrestamoDTO> prestamos) {
+        double total = 0.0;
+        if (prestamos != null) {
+            for (PrestamoDTO p : prestamos) {
+                total += p.getCosto();
+            }
+        }
+        return total;
     }
 
     @Override
-    public double obtenerAdeudoColegiatura(EstudianteDTO estudianteDTO) {
-        return fachadaPago.solicitarAdeudoTotalColegiatura(estudianteDTO);
+    public double calcularTotalClases(List<ClaseDTO> clases) {
+        double total = 0.0;
+        if (clases != null) {
+            for (ClaseDTO c : clases) {
+                total += c.getCosto();
+            }
+        }
+        return total;
     }
 
     @Override
@@ -36,9 +48,20 @@ public class CoordinadorNegocioPagarAdeudo implements ICoordinadorNegocioPagarAd
         return fachadaPago.solicitarListaClases(estudianteDTO);
     }
 
+
     @Override
-    public SolicitudPagoDTO realizarPago(SolicitudPagoDTO solicitudPagoDTO, MetodoPago metodoPago) throws Exception {
-        return fachadaPago.solicitarRealizarPago(solicitudPagoDTO, metodoPago);
+    public void mostrarVentanaPago(ActionListener listenerBotonPagarDelBanco) {
+        fachadaPago.solicitarVistaDePago(listenerBotonPagarDelBanco);
+    }
+
+    @Override
+    public SolicitudPagoDTO realizarPago(SolicitudPagoDTO solicitudPagoDTO) throws Exception {
+        return fachadaPago.realizarPago(solicitudPagoDTO);
+    }
+
+    @Override
+    public void cerrarVentanaBanco() {
+        fachadaPago.cerrarVentana();
     }
 
     @Override
