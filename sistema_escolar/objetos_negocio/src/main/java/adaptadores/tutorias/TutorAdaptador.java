@@ -4,7 +4,7 @@
  */
 package adaptadores.tutorias;
 
-import adaptadores.solicitarBeca.excepciones.TutorAdaptadorException;
+import adaptadores.tutorias.excepciones.TutorAdaptadorException;
 import dto.tutorias.TutorDTO;
 import java.time.Instant;
 import org.bson.types.ObjectId;

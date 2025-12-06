@@ -11,6 +11,10 @@ import tutorias.dao.CitaDAO;
 import tutorias.dao.HorarioDAO;
 import tutorias.dao.MateriaDAO;
 import tutorias.dao.TutorDAO;
+import tutorias.dominio.Cita;
+import tutorias.dominio.Horario;
+import tutorias.dominio.Materia;
+import tutorias.dominio.Tutor;
 import tutorias.dominio.enums.EstadoCita;
 import tutorias.dominio.enums.EstadoDisponibilidad;
 import tutorias.dominio.enums.Modalidad;
@@ -36,39 +40,39 @@ public class Seeder {
 //        
 //        try {
 //            
-//            MateriaDocument matProg = new MateriaDocument();
-//            matProg.setIdMateria(1L);
+//            Materia matProg = new Materia();
+//            matProg.setId(1L);
 //            matProg.setNombre("Programación I");
-//            materiaDAO.create(matProg);
+//            materiaDAO.crear(matProg);
 //
-//            MateriaDocument matCalc = new MateriaDocument();
-//            matCalc.setIdMateria(2L);
+//            Materia matCalc = new Materia();
+//            matCalc.setId(2L);
 //            matCalc.setNombre("Cálculo Diferencial");
-//            materiaDAO.create(matCalc);
+//            materiaDAO.crear(matCalc);
 //
-//            MateriaDocument matBd = new MateriaDocument();
-//            matBd.setIdMateria(3L);
+//            Materia matBd = new Materia();
+//            matBd.setId(3L);
 //            matBd.setNombre("Bases de Datos");
-//            materiaDAO.create(matBd);
+//            materiaDAO.crear(matBd);
 //
 //            System.out.println("Materias insertadas.");
 //
 //            
-//            TutorDocument tutor1 = new TutorDocument();
-//            tutor1.setIdTutor(1L);
+//            Tutor tutor1 = new Tutor();
+//            tutor1.setId(1L);
 //            tutor1.setNombre("Karla López");
 //            tutor1.setCarrera("Ingeniería en Software");
 //            tutor1.setCubiculo("B-201");
 //            tutor1.setEnlace("https://meet.google.com/karla");
-//            tutorDAO.create(tutor1);
+//            tutorDAO.crear(tutor1);
 //
-//            TutorDocument tutor2 = new TutorDocument();
-//            tutor2.setIdTutor(2L);
+//            Tutor tutor2 = new Tutor();
+//            tutor2.setId(2L);
 //            tutor2.setNombre("Pedro Escalante");
 //            tutor2.setCarrera("Matemáticas");
 //            tutor2.setCubiculo("C-305");
 //            tutor2.setEnlace("https://meet.google.com/pedro");
-//            tutorDAO.create(tutor2);
+//            tutorDAO.crear(tutor2);
 //
 //            System.out.println("Tutores insertados.");
 //
@@ -89,57 +93,65 @@ public class Seeder {
 //       
 //            Long matriculaEjemplo = 258835L;
 //
-//            CitaDocument citaPasada = new CitaDocument();
+//            Cita citaPasada = new Cita();
 //            citaPasada.setId(1001L);
 //            citaPasada.setMatriculaAlumno(matriculaEjemplo);
 //            citaPasada.setIdTutor(1L);
-//            citaPasada.setIdMateria(1L); // Programación I
+//            Materia materiaProg = new Materia();
+//            materiaProg.setId(1L);
+//            citaPasada.setMateria(materiaProg);
 //            citaPasada.setTema("Repaso de arreglos");
 //            citaPasada.setModalidad(Modalidad.PRESENCIAL);
 //            citaPasada.setFecha(hoy.minusDays(5));
 //            citaPasada.setHora(LocalTime.of(10, 0));
 //            citaPasada.setUbicacion("B-201");
 //            citaPasada.setEstado(EstadoCita.ATENDIDA);
-//            citaDAO.create(citaPasada);
+//            citaDAO.crear(citaPasada);
 //
-//            CitaDocument citaCancelada1 = new CitaDocument();
+//            Cita citaCancelada1 = new Cita();
 //            citaCancelada1.setId(1002L);
 //            citaCancelada1.setMatriculaAlumno(matriculaEjemplo);
 //            citaCancelada1.setIdTutor(1L);
-//            citaCancelada1.setIdMateria(2L); // Cálculo
+//            Materia materiaCalc = new Materia();
+//            materiaCalc.setId(2L);
+//            citaCancelada1.setMateria(materiaCalc);
 //            citaCancelada1.setTema("Derivadas básicas");
 //            citaCancelada1.setModalidad(Modalidad.VIRTUAL);
 //            citaCancelada1.setFecha(hoy.minusDays(3));
 //            citaCancelada1.setHora(LocalTime.of(11, 0));
 //            citaCancelada1.setUbicacion("https://meet.google.com/karla");
 //            citaCancelada1.setEstado(EstadoCita.CANCELADA);
-//            citaDAO.create(citaCancelada1);
+//            citaDAO.crear(citaCancelada1);
 //
-//            CitaDocument citaCancelada2 = new CitaDocument();
+//            Cita citaCancelada2 = new Cita();
 //            citaCancelada2.setId(1003L);
 //            citaCancelada2.setMatriculaAlumno(matriculaEjemplo);
 //            citaCancelada2.setIdTutor(2L);
-//            citaCancelada2.setIdMateria(3L); // Bases de Datos
+//            Materia materiaBD = new Materia();
+//            materiaBD.setId(3L);
+//            citaCancelada2.setMateria(materiaBD);
 //            citaCancelada2.setTema("Normalización");
 //            citaCancelada2.setModalidad(Modalidad.PRESENCIAL);
 //            citaCancelada2.setFecha(hoy.minusDays(1));
 //            citaCancelada2.setHora(LocalTime.of(9, 0));
 //            citaCancelada2.setUbicacion("C-305");
 //            citaCancelada2.setEstado(EstadoCita.CANCELADA);
-//            citaDAO.create(citaCancelada2);
+//            citaDAO.crear(citaCancelada2);
 //
-//            CitaDocument citaFutura = new CitaDocument();
+//            Cita citaFutura = new Cita();
 //            citaFutura.setId(1004L);
 //            citaFutura.setMatriculaAlumno(matriculaEjemplo);
 //            citaFutura.setIdTutor(1L);
-//            citaFutura.setIdMateria(1L);
+//            Materia materiaProg2 = new Materia();
+//            materiaProg2.setId(1L);
+//            citaFutura.setMateria(materiaProg2);
 //            citaFutura.setTema("Listas enlazadas");
 //            citaFutura.setModalidad(Modalidad.VIRTUAL);
 //            citaFutura.setFecha(maniana);
 //            citaFutura.setHora(LocalTime.of(10, 0));
 //            citaFutura.setUbicacion("https://meet.google.com/karla");
 //            citaFutura.setEstado(EstadoCita.PENDIENTE);
-//            citaDAO.create(citaFutura);
+//            citaDAO.crear(citaFutura);
 //
 //            System.out.println("Citas insertadas.");
 //
@@ -153,23 +165,21 @@ public class Seeder {
 //
 //    
 //    private static void insertarHorario(HorarioDAO horarioDAO,
-//                                        Long idTutor,
-//                                        LocalDate fecha,
-//                                        LocalTime hora,
-//                                        EstadoDisponibilidad estado) {
-//        HorarioDocument h = new HorarioDocument();
-//        h.setId(generarIdHorario());
+//                                    Long idTutor,
+//                                    LocalDate fecha,
+//                                    LocalTime hora,
+//                                    EstadoDisponibilidad estado){
+//        Horario h = new Horario();
 //        h.setIdTutor(idTutor);
 //        h.setFecha(fecha);
 //        h.setHora(hora);
 //        h.setEstadoDisponibilidad(estado);
-//        h.setCreadoEn(Instant.now());
-//        horarioDAO.create(h);
+//        horarioDAO.crear(h);
 //    }
 //
 //    private static long contadorHorario = 1L;
 //
-//    private static synchronized Long generarIdHorario() {
+//    private static synchronized Long generarIdHorario(){
 //        return contadorHorario++;
     }
     

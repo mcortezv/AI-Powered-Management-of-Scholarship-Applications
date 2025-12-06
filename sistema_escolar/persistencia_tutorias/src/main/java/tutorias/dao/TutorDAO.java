@@ -15,6 +15,7 @@ import javax.swing.text.Document;
 import org.bson.types.ObjectId;
 import tutorias.config.MongoClientProvider;
 import tutorias.dao.interfaces.ITutorDAO;
+import tutorias.dominio.Tutor;
 import tutorias.excepciones.TutorDAOException;
 import tutorias.repository.documents.TutorDocument;
 
@@ -24,49 +25,79 @@ import tutorias.repository.documents.TutorDocument;
  */
 public class TutorDAO implements ITutorDAO{
     private final MongoCollection<TutorDocument> col;
-    private final MongoCollection<Document> colDoc;
+    //private final MongoCollection<Document> colDoc;
 
     public TutorDAO() {
         MongoDatabase db = MongoClientProvider.INSTANCE.database();
         this.col = db.getCollection("tutores", TutorDocument.class);
-        this.colDoc = db.getCollection("tutores", Document.class);
+        //this.colDoc = db.getCollection("tutores", Document.class);
     }
 
     @Override
-    public List<TutorDocument> obtenerTutores() throws TutorDAOException {
+    public Tutor crear(Tutor tutor) throws TutorDAOException {
         try {
-            return col.find().into(new ArrayList<>());
-        } catch (MongoException ex) {
-            throw new TutorDAOException("Error al consultar tutores");
-        }
-    }
-
-    @Override
-    public TutorDocument obtenerPorId(Long idTutor) throws TutorDAOException {
-        try {
-            TutorDocument tutor = col.find(eq("idTutor", idTutor)).first();
-            if (tutor == null) {
-                throw new TutorDAOException("No se encontró el tutor con id " + idTutor);
+            TutorDocument doc = entityToDocument(tutor);            
+            if (doc.get_id() == null) {
+                doc.set_id(new ObjectId());
             }
+            if (doc.getCreadoEn() == null) {
+                doc.setCreadoEn(Instant.now());
+            }
+            col.insertOne(doc);
+            tutor.setId(doc.getIdTutor());
             return tutor;
         } catch (MongoException ex) {
-            throw new TutorDAOException("Error al consultar tutor por id");
+            throw new TutorDAOException("Error al insertar Tutor: " + ex.getMessage());
         }
     }
 
     @Override
-    public ObjectId create(TutorDocument entity) throws TutorDAOException {
+    public List<Tutor> obtenerTutores() throws TutorDAOException {
         try {
-            if (entity.get_id() == null) {
-                entity.set_id(new ObjectId());
+            List<TutorDocument> documents = col.find().into(new ArrayList<>());
+            List<Tutor> tutores = new ArrayList<>();
+            for (TutorDocument doc : documents) {
+                tutores.add(documentToEntity(doc));
             }
-            if (entity.getCreadoEn() == null) {
-                entity.setCreadoEn(Instant.now());
-            }
-            col.insertOne(entity);
-            return entity.get_id();
+            return tutores;
         } catch (MongoException ex) {
-            throw new TutorDAOException("Error al insertar Tutor");
+            throw new TutorDAOException("Error al consultar tutores: " + ex.getMessage());
         }
+    }
+
+    @Override
+    public Tutor obtenerPorId(Long idTutor) throws TutorDAOException {
+        try {
+            TutorDocument doc = col.find(eq("idTutor", idTutor)).first();
+            if (doc == null) {
+                throw new TutorDAOException("No se encontró el tutor con id " + idTutor);
+            }
+            return documentToEntity(doc);
+        } catch (MongoException ex) {
+            throw new TutorDAOException("Error al consultar tutor por id: " + ex.getMessage());
+        }
+    }
+    
+    private Tutor documentToEntity(TutorDocument doc) {
+        if (doc == null) return null;
+        Tutor tutor = new Tutor();
+        tutor.setId(doc.getIdTutor());
+        tutor.setNombre(doc.getNombre());
+        tutor.setCarrera(doc.getCarrera());
+        tutor.setCubiculo(doc.getCubiculo());
+        tutor.setEnlace(doc.getEnlace());
+        return tutor;
+    }
+    
+    private TutorDocument entityToDocument(Tutor tutor) {
+        if (tutor == null) return null;
+        TutorDocument doc = new TutorDocument();
+        doc.set_id(new ObjectId());
+        doc.setIdTutor(tutor.getId());
+        doc.setNombre(tutor.getNombre());
+        doc.setCarrera(tutor.getCarrera());
+        doc.setCubiculo(tutor.getCubiculo());
+        doc.setEnlace(tutor.getEnlace());
+        return doc;
     }
 }

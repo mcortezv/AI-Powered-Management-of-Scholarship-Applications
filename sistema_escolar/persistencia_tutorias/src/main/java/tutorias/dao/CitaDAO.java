@@ -22,6 +22,8 @@ import javax.swing.text.Document;
 import org.bson.types.ObjectId;
 import tutorias.config.MongoClientProvider;
 import tutorias.dao.interfaces.ICitaDAO;
+import tutorias.dominio.Cita;
+import tutorias.dominio.Materia;
 import tutorias.dominio.enums.EstadoCita;
 import tutorias.excepciones.CitaDAOException;
 import tutorias.repository.documents.CitaDocument;
@@ -33,145 +35,195 @@ import tutorias.repository.documents.CitaDocument;
 public class CitaDAO implements ICitaDAO {
 
     private final MongoCollection<CitaDocument> col;
-    private final MongoCollection<Document> colDoc;
+    //private final MongoCollection<Document> colDoc;
     
     public CitaDAO() {
         MongoDatabase db = MongoClientProvider.INSTANCE.database();
         this.col = db.getCollection("citas", CitaDocument.class);
-        this.colDoc = db.getCollection("citas", Document.class);
+        //this.colDoc = db.getCollection("citas", Document.class);
     }
     
     @Override
-    public ObjectId create(CitaDocument entity) throws CitaDAOException {
+    public Cita crear(Cita cita) throws CitaDAOException{
         try {
-            if (entity.get_id() == null) {
-                entity.set_id(new ObjectId());
+            CitaDocument doc = entityToDocument(cita);
+            if (doc.get_id() == null) {
+                doc.set_id(new ObjectId());
             }
-            if (entity.getCreadoEn() == null) {
-                entity.setCreadoEn(Instant.now());
+            if (doc.getCreadoEn() == null) {
+                doc.setCreadoEn(Instant.now());
             }
-            col.insertOne(entity);
-            return entity.get_id();
+            col.insertOne(doc);
+            cita.setId(doc.getId());
+            return cita;
         } catch (MongoException ex) {
-            throw new CitaDAOException("Error al insertar Cita");
+            throw new CitaDAOException("Error al insertar Cita: " + ex.getMessage());
         }
     }
 
     @Override
-    public List<CitaDocument> obtenerHistorialPorFecha(Long matriculaAlumno, LocalDate fecha) throws CitaDAOException {
+    public List<Cita> obtenerHistorialCompletoAlumno(Long matriculaAlumno) throws CitaDAOException{
         try {
-            return col.find(
-                    and(eq("matriculaAlumno", matriculaAlumno),
-                        eq("fecha", fecha))
-            ).into(new ArrayList<>());
+            List<CitaDocument> documents = col.find(eq("matriculaAlumno", matriculaAlumno))
+                                              .into(new ArrayList<>());
+            return convertirDocumentsADominio(documents);
         } catch (MongoException ex) {
-            throw new CitaDAOException("Error al consultar historial por fecha");
+            throw new CitaDAOException("Error al consultar historial completo: " + ex.getMessage());
         }
     }
 
     @Override
-    public List<CitaDocument> obtenerHistorialPorMateria(Long matriculaAlumno, Long idMateria) throws CitaDAOException {
+    public List<Cita> obtenerHistorialPorFecha(Long matriculaAlumno, LocalDate fecha) throws CitaDAOException{
         try {
-            return col.find(
-                    and(eq("matriculaAlumno", matriculaAlumno),
-                        eq("idMateria", idMateria))
+            List<CitaDocument> documents = col.find(
+                and(eq("matriculaAlumno", matriculaAlumno),
+                    eq("fecha", fecha))
             ).into(new ArrayList<>());
+            return convertirDocumentsADominio(documents);
         } catch (MongoException ex) {
-            throw new CitaDAOException("Error al consultar historial por materia");
+            throw new CitaDAOException("Error al consultar por fecha: " + ex.getMessage());
         }
     }
 
     @Override
-    public List<CitaDocument> obtenerHistorialPorFechaYMateria(Long matriculaAlumno, LocalDate fecha, Long idMateria) throws CitaDAOException {
+    public List<Cita> obtenerHistorialPorMateria(Long matriculaAlumno, Long idMateria) throws CitaDAOException{
         try {
-            return col.find(
-                    and(eq("matriculaAlumno", matriculaAlumno),
-                        eq("fecha", fecha),
-                        eq("idMateria", idMateria))
+            List<CitaDocument> documents = col.find(
+                and(eq("matriculaAlumno", matriculaAlumno),
+                    eq("idMateria", idMateria))
             ).into(new ArrayList<>());
+            return convertirDocumentsADominio(documents);
         } catch (MongoException ex) {
-            throw new CitaDAOException("Error al consultar historial por fecha y materia");
+            throw new CitaDAOException("Error al consultar por materia: " + ex.getMessage());
         }
     }
 
     @Override
-    public List<CitaDocument> obtenerHistorialCompletoAlumno(Long matriculaAlumno) throws CitaDAOException {
+    public List<Cita> obtenerHistorialPorFechaYMateria(Long matriculaAlumno, LocalDate fecha, Long idMateria) throws CitaDAOException{
         try {
-            return col.find(
-                    eq("matriculaAlumno", matriculaAlumno)
+            List<CitaDocument> documents = col.find(
+                and(eq("matriculaAlumno", matriculaAlumno),
+                    eq("fecha", fecha),
+                    eq("idMateria", idMateria))
             ).into(new ArrayList<>());
+            return convertirDocumentsADominio(documents);
         } catch (MongoException ex) {
-            throw new CitaDAOException("Error al consultar historial completo del alumno");
+            throw new CitaDAOException("Error al consultar por fecha y materia: " + ex.getMessage());
         }
     }
 
     @Override
-    public List<CitaDocument> obtenerFuturasPorAlumno(Long matriculaAlumno) throws CitaDAOException {
+    public List<Cita> obtenerFuturasPorAlumno(Long matriculaAlumno) throws CitaDAOException{
         try {
-            return col.find(
-                    and(eq("matriculaAlumno", matriculaAlumno),
-                        gte("fecha", LocalDate.now()))
+            List<CitaDocument> documents = col.find(
+                and(eq("matriculaAlumno", matriculaAlumno),
+                    gte("fecha", LocalDate.now()))
             ).into(new ArrayList<>());
+            return convertirDocumentsADominio(documents);
         } catch (MongoException ex) {
-            throw new CitaDAOException("Error al consultar citas futuras del alumno");
+            throw new CitaDAOException("Error al consultar citas futuras: " + ex.getMessage());
         }
     }
 
     @Override
-    public int contarCitasPorAlumnoYEstadoEnMes(Long matriculaAlumno, EstadoCita estado, int mes, int anio) throws CitaDAOException {
+    public int contarCitasPorAlumnoYEstadoEnMes(Long matriculaAlumno, EstadoCita estado, int mes, int anio) throws CitaDAOException{
         try {
             LocalDate inicioMes = LocalDate.of(anio, mes, 1);
             LocalDate finMes = inicioMes.withDayOfMonth(inicioMes.lengthOfMonth());
+            
             long count = col.countDocuments(
-                    and(
-                            eq("matriculaAlumno", matriculaAlumno),
-                            eq("estado", estado),
-                            gte("fecha", inicioMes),
-                            lte("fecha", finMes)
-                    )
+                and(
+                    eq("matriculaAlumno", matriculaAlumno),
+                    eq("estado", estado),
+                    gte("fecha", inicioMes),
+                    lte("fecha", finMes)
+                )
             );
             return (int) count;
         } catch (MongoException ex) {
-            throw new CitaDAOException("Error al contar citas por alumno y estado en el mes");
+            throw new CitaDAOException("Error al contar citas: " + ex.getMessage());
         }
-        
-        
     }
 
     @Override
-    public CitaDocument actualizarEstado(ObjectId idCita, EstadoCita nuevoEstado) {
+    public Cita actualizarEstado(Long idCita, EstadoCita nuevoEstado) throws CitaDAOException{
         try {
             FindOneAndUpdateOptions options = new FindOneAndUpdateOptions()
                     .returnDocument(ReturnDocument.AFTER);
-
             CitaDocument actualizada = col.findOneAndUpdate(
-                    eq("_id", idCita),
+                    eq("id", idCita),
                     set("estado", nuevoEstado),
                     options
             );
             if (actualizada == null) {
-                throw new CitaDAOException("No se encontró la cita con id " + idCita.toHexString());
+                throw new CitaDAOException("No se encontró la cita con id " + idCita);
             }
-            return actualizada;
+            return documentToEntity(actualizada);
         } catch (MongoException ex) {
-            throw new CitaDAOException("Error al actualizar estado de la cita");
-        }
-    }
-    
-    @Override
-    public List<CitaDocument> obtenerPorTutorYFecha(Long idTutor, LocalDate fecha)
-            throws CitaDAOException {
-        try {
-            return col.find(
-                    and(
-                            eq("idTutor", idTutor),
-                            eq("fecha", fecha)
-                    )
-            ).into(new ArrayList<>());
-        } catch (MongoException ex) {
-            throw new CitaDAOException("Error al consultar citas por tutor y fecha");
+            throw new CitaDAOException("Error al actualizar estado: " + ex.getMessage());
         }
     }
 
+    @Override
+    public List<Cita> obtenerPorTutorYFecha(Long idTutor, LocalDate fecha) throws CitaDAOException{
+        try {
+            List<CitaDocument> documents = col.find(
+                and(
+                    eq("idTutor", idTutor),
+                    eq("fecha", fecha)
+                )
+            ).into(new ArrayList<>());
+            return convertirDocumentsADominio(documents);
+        } catch (MongoException ex) {
+            throw new CitaDAOException("Error al consultar por tutor y fecha: " + ex.getMessage());
+        }
+    }
+    
+    private Cita documentToEntity(CitaDocument doc){
+        if (doc == null) return null;
+        Cita cita = new Cita();
+        cita.setId(doc.getId());
+        cita.setMatriculaAlumno(doc.getMatriculaAlumno());
+        cita.setIdTutor(doc.getIdTutor());
+        cita.setTema(doc.getTema());
+        cita.setModalidad(doc.getModalidad());
+        cita.setFecha(doc.getFecha());
+        cita.setHora(doc.getHora());
+        cita.setUbicacion(doc.getUbicacion());
+        cita.setEstado(doc.getEstado());
+        if (doc.getIdMateria() != null) {
+            Materia materia = new Materia();
+            materia.setId(doc.getIdMateria());
+            cita.setMateria(materia);
+        }
+        return cita;
+    }
+    
+    private CitaDocument entityToDocument(Cita cita){
+        if (cita == null) return null;
+        CitaDocument doc = new CitaDocument();
+        doc.set_id(new ObjectId());
+        doc.setId(cita.getId());
+        doc.setMatriculaAlumno(cita.getMatriculaAlumno());
+        doc.setIdTutor(cita.getIdTutor());
+        doc.setTema(cita.getTema());
+        doc.setModalidad(cita.getModalidad());
+        doc.setFecha(cita.getFecha());
+        doc.setHora(cita.getHora());
+        doc.setUbicacion(cita.getUbicacion());
+        doc.setEstado(cita.getEstado());
+        if (cita.getMateria() != null) {
+            doc.setIdMateria(cita.getMateria().getId());
+        }
+        return doc;
+    }
+    
+    private List<Cita> convertirDocumentsADominio(List<CitaDocument> documents){
+        List<Cita> resultado = new ArrayList<>();
+        for (CitaDocument doc : documents) {
+            resultado.add(documentToEntity(doc));
+        }
+        return resultado;
+    }
     
 }

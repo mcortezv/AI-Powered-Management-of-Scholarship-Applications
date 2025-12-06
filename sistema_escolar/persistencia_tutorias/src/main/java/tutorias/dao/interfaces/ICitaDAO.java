@@ -7,6 +7,7 @@ package tutorias.dao.interfaces;
 import java.time.LocalDate;
 import java.util.List;
 import org.bson.types.ObjectId;
+import tutorias.dominio.Cita;
 import tutorias.dominio.enums.EstadoCita;
 import tutorias.excepciones.CitaDAOException;
 import tutorias.repository.documents.CitaDocument;
@@ -16,28 +17,13 @@ import tutorias.repository.documents.CitaDocument;
  * @author katia
  */
 public interface ICitaDAO {
-    ObjectId create(CitaDocument entity) throws CitaDAOException;
-
-    List<CitaDocument> obtenerHistorialPorFecha(Long matriculaAlumno, LocalDate fecha)
-            throws CitaDAOException;
-
-    List<CitaDocument> obtenerHistorialPorMateria(Long matriculaAlumno, Long idMateria)
-            throws CitaDAOException;
-
-    List<CitaDocument> obtenerHistorialPorFechaYMateria(Long matriculaAlumno, LocalDate fecha, Long idMateria)
-            throws CitaDAOException;
-
-    List<CitaDocument> obtenerHistorialCompletoAlumno(Long matriculaAlumno)
-            throws CitaDAOException;
-
-    List<CitaDocument> obtenerFuturasPorAlumno(Long matriculaAlumno)
-            throws CitaDAOException;
-    
-    public int contarCitasPorAlumnoYEstadoEnMes(Long matriculaAlumno, EstadoCita estado, int mes, int anio)
-            throws CitaDAOException;
-    
-    public CitaDocument actualizarEstado(ObjectId idCita, EstadoCita nuevoEstado);
-    
-    List<CitaDocument> obtenerPorTutorYFecha(Long idTutor, LocalDate fecha)
-            throws CitaDAOException;
+    Cita crear(Cita cita) throws CitaDAOException;
+    List<Cita> obtenerHistorialCompletoAlumno(Long matriculaAlumno) throws CitaDAOException;
+    List<Cita> obtenerHistorialPorFecha(Long matriculaAlumno, LocalDate fecha) throws CitaDAOException;
+    List<Cita> obtenerHistorialPorMateria(Long matriculaAlumno, Long idMateria) throws CitaDAOException;
+    List<Cita> obtenerHistorialPorFechaYMateria(Long matriculaAlumno, LocalDate fecha, Long idMateria) throws CitaDAOException;
+    List<Cita> obtenerFuturasPorAlumno(Long matriculaAlumno) throws CitaDAOException;
+    int contarCitasPorAlumnoYEstadoEnMes(Long matriculaAlumno, EstadoCita estado, int mes, int anio) throws CitaDAOException;
+    Cita actualizarEstado(Long idCita, EstadoCita nuevoEstado) throws CitaDAOException;
+    List<Cita> obtenerPorTutorYFecha(Long idTutor, LocalDate fecha) throws CitaDAOException;
 }

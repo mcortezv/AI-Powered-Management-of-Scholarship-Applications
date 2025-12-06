@@ -5,6 +5,8 @@
 package bo.tutorias;
 
 import adaptadores.tutorias.CitaAdaptador;
+import adaptadores.tutorias.MateriaAdaptador;
+import adaptadores.tutorias.TutorAdaptador;
 import bo.tutorias.excepciones.HistorialTutoriasException;
 import dto.tutorias.CitaDTO;
 import interfaces.tutorias.IHistorialTutoriasBO;
@@ -12,8 +14,14 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import tutorias.dao.interfaces.ICitaDAO;
+import tutorias.dao.interfaces.IMateriaDAO;
+import tutorias.dao.interfaces.ITutorDAO;
 import tutorias.dominio.Cita;
+import tutorias.dominio.Materia;
+import tutorias.dominio.Tutor;
 import tutorias.repository.documents.CitaDocument;
+import tutorias.repository.documents.MateriaDocument;
+import tutorias.repository.documents.TutorDocument;
 
 /**
  *
@@ -21,9 +29,13 @@ import tutorias.repository.documents.CitaDocument;
  */
 public class HistorialTutoriasBO implements IHistorialTutoriasBO{
     private final ICitaDAO citaDAO;
+    private final ITutorDAO tutorDAO;
+    private final IMateriaDAO materiaDAO;
 
-    public HistorialTutoriasBO(ICitaDAO citaDAO) {
+    public HistorialTutoriasBO(ICitaDAO citaDAO, ITutorDAO tutorDAO, IMateriaDAO materiaDAO) {
         this.citaDAO = citaDAO;
+        this.tutorDAO = tutorDAO;
+        this.materiaDAO = materiaDAO;
     }
 
     @Override
@@ -98,9 +110,26 @@ public class HistorialTutoriasBO implements IHistorialTutoriasBO{
             return resultado;
         }
         for (CitaDocument doc : documentos) {
-            Cita cita = CitaAdaptador.toEntity(doc);
-            CitaDTO dto = CitaAdaptador.toDTO(cita);
-            resultado.add(dto);
+            try{
+                Cita cita = CitaAdaptador.toEntity(doc);
+                CitaDTO dto = CitaAdaptador.toDTO(cita);
+                
+                if (doc.getIdTutor() != null){
+                    TutorDocument tutorDoc = tutorDAO.obtenerPorId(doc.getIdTutor());
+                    Tutor tutor = TutorAdaptador.toEntity(tutorDoc);
+                    dto.setNombreTutor(tutor.getNombre());
+                }
+                if (doc.getIdMateria() != null){
+                    MateriaDocument materiaDoc = materiaDAO.obtenerPorId(doc.getIdMateria());
+                    Materia materia = MateriaAdaptador.toEntity(materiaDoc);
+                    dto.setNombreMateria(materia.getNombre());
+                }
+                
+                resultado.add(dto);
+            } catch (Exception e){
+                throw new HistorialTutoriasException("Error al convertir ListaDocument a DTO.");
+            }
+            
         }
         return resultado;
     }

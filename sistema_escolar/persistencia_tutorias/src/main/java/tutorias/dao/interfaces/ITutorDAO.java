@@ -6,6 +6,7 @@ package tutorias.dao.interfaces;
 
 import java.util.List;
 import org.bson.types.ObjectId;
+import tutorias.dominio.Tutor;
 import tutorias.excepciones.TutorDAOException;
 import tutorias.repository.documents.TutorDocument;
 
@@ -14,7 +15,7 @@ import tutorias.repository.documents.TutorDocument;
  * @author katia
  */
 public interface ITutorDAO {
-    ObjectId create(TutorDocument entity) throws TutorDAOException;
-    List<TutorDocument> obtenerTutores() throws TutorDAOException;
-    TutorDocument obtenerPorId(Long idTutor) throws TutorDAOException;
+    Tutor crear(Tutor tutor) throws TutorDAOException;
+    List<Tutor> obtenerTutores() throws TutorDAOException;
+    Tutor obtenerPorId(Long idTutor) throws TutorDAOException;
 }

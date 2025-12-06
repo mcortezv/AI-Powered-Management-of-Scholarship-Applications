@@ -30,18 +30,29 @@ public class CitaAdaptador {
             cita.setIdTutor(dto.getIdTutor());
             cita.setTema(dto.getTema());
 
-            if (dto.getModalidad() != null) {
-                cita.setModalidad(Modalidad.valueOf(dto.getModalidad()));
+            if (dto.getModalidad() != null && !dto.getModalidad().trim().isEmpty()) {
+                try{
+                    cita.setModalidad(Modalidad.valueOf(dto.getModalidad().toUpperCase()));
+                } catch(IllegalArgumentException e){
+                    throw new CitaAdaptadorException("Modalidad inválida");
+                }
+                
             }
-
             cita.setFecha(dto.getFecha());
             cita.setHora(dto.getHora());
             cita.setUbicacion(dto.getUbicacion());
 
-            if (dto.getEstado() != null) {
-                cita.setEstado(EstadoCita.valueOf(dto.getEstado()));
+            if (dto.getEstado() != null && !dto.getEstado().trim().isEmpty()) {
+                try {
+                    cita.setEstado(EstadoCita.valueOf(dto.getEstado().toUpperCase()));
+                } catch (IllegalArgumentException e) {
+                    throw new CitaAdaptadorException(
+                        "Estado inválido: " + dto.getEstado() + 
+                        ". Valores permitidos: PENDIENTE, ATENDIDA, CANCELADA"
+                    );
+                }
             }
-
+    
             if (dto.getIdMateria() != null) {
                 Materia materia = new Materia();
                 materia.setId(dto.getIdMateria());
@@ -67,7 +78,7 @@ public class CitaAdaptador {
             dto.setTema(cita.getTema());
 
             if (cita.getModalidad() != null) {
-                dto.setModalidad(cita.getModalidad().toString());
+                dto.setModalidad(cita.getModalidad().name());
             }
 
             dto.setFecha(cita.getFecha());
@@ -75,7 +86,7 @@ public class CitaAdaptador {
             dto.setUbicacion(cita.getUbicacion());
 
             if (cita.getEstado() != null) {
-                dto.setEstado(cita.getEstado().toString());
+                dto.setEstado(cita.getEstado().name());
             }
 
             if (cita.getMateria() != null) {
