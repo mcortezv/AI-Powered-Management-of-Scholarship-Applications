@@ -16,6 +16,7 @@ import tutorias.dominio.enums.Modalidad;
 public class Cita {
     private Long id;
     private Long matriculaAlumno;
+    private Long idHorario;
     private Long idTutor;
     private Materia materia;
     private String tema;
@@ -28,9 +29,10 @@ public class Cita {
     public Cita() {
     }
 
-    public Cita(Long id, Long matriculaAlumno, Long idTutor, Materia materia, String tema, Modalidad modalidad, LocalDate fecha, LocalTime hora, String ubicacion, EstadoCita estado) {
+    public Cita(Long id, Long matriculaAlumno, Long idHorario, Long idTutor, Materia materia, String tema, Modalidad modalidad, LocalDate fecha, LocalTime hora, String ubicacion, EstadoCita estado) {
         this.id = id;
         this.matriculaAlumno = matriculaAlumno;
+        this.idHorario = idHorario;
         this.idTutor = idTutor;
         this.materia = materia;
         this.tema = tema;
@@ -119,6 +121,14 @@ public class Cita {
 
     public void setEstado(EstadoCita estado) {
         this.estado = estado;
+    }
+
+    public Long getIdHorario() {
+        return idHorario;
+    }
+
+    public void setIdHorario(Long idHorario) {
+        this.idHorario = idHorario;
     }
     
     

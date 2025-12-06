@@ -185,6 +185,7 @@ public class CitaDAO implements ICitaDAO {
         cita.setId(doc.getId());
         cita.setMatriculaAlumno(doc.getMatriculaAlumno());
         cita.setIdTutor(doc.getIdTutor());
+        cita.setIdHorario(doc.getIdHorario());
         cita.setTema(doc.getTema());
         cita.setModalidad(doc.getModalidad());
         cita.setFecha(doc.getFecha());
@@ -206,6 +207,7 @@ public class CitaDAO implements ICitaDAO {
         doc.setId(cita.getId());
         doc.setMatriculaAlumno(cita.getMatriculaAlumno());
         doc.setIdTutor(cita.getIdTutor());
+        doc.setIdHorario(cita.getIdHorario());
         doc.setTema(cita.getTema());
         doc.setModalidad(cita.getModalidad());
         doc.setFecha(cita.getFecha());

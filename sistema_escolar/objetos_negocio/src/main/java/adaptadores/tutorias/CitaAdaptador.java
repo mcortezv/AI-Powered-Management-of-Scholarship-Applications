@@ -19,7 +19,6 @@ import tutorias.repository.documents.CitaDocument;
  */
 public class CitaAdaptador {
     
-    // dto a entidad de dominio
     public static Cita toEntity(CitaDTO dto) {
         try {
             if (dto == null) return null;
@@ -28,6 +27,7 @@ public class CitaAdaptador {
             cita.setId(dto.getId());
             cita.setMatriculaAlumno(dto.getMatriculaAlumno());
             cita.setIdTutor(dto.getIdTutor());
+            cita.setIdHorario(dto.getIdHorario());
             cita.setTema(dto.getTema());
 
             if (dto.getModalidad() != null && !dto.getModalidad().trim().isEmpty()) {
@@ -66,7 +66,6 @@ public class CitaAdaptador {
         }
     }
 
-    // dominio a DTO
     public static CitaDTO toDTO(Cita cita) {
         try {
             if (cita == null) return null;
@@ -75,6 +74,7 @@ public class CitaAdaptador {
             dto.setId(cita.getId());
             dto.setMatriculaAlumno(cita.getMatriculaAlumno());
             dto.setIdTutor(cita.getIdTutor());
+            dto.setIdHorario(cita.getIdHorario());
             dto.setTema(cita.getTema());
 
             if (cita.getModalidad() != null) {
@@ -100,64 +100,64 @@ public class CitaAdaptador {
         }
     }
 
-    // Document a Dominio
-    public static Cita toEntity(CitaDocument doc) {
-        try {
-            if (doc == null) return null;
-
-            Cita cita = new Cita();
-            cita.setId(doc.getId());
-            cita.setMatriculaAlumno(doc.getMatriculaAlumno());
-            cita.setIdTutor(doc.getIdTutor());
-            cita.setTema(doc.getTema());
-            cita.setFecha(doc.getFecha());
-            cita.setHora(doc.getHora());
-            cita.setUbicacion(doc.getUbicacion());
-
-            if (doc.getModalidad() != null) {
-                cita.setModalidad(doc.getModalidad());
-            }
-            if (doc.getEstado() != null) {
-                cita.setEstado(doc.getEstado());
-            }
-
-            if (doc.getIdMateria() != null) {
-                Materia materia = new Materia();
-                materia.setId(doc.getIdMateria());
-                cita.setMateria(materia);
-            }
-
-            return cita;
-        } catch (Exception ex) {
-            throw new CitaAdaptadorException("Error al convertir CitaDocument a entidad Cita");
-        }
-    }
-
-    // Dominio a Document
-    public static CitaDocument toDocument(Cita cita) {
-        try {
-            if (cita == null) return null;
-
-            CitaDocument doc = new CitaDocument();
-            doc.set_id(new ObjectId());
-            doc.setId(cita.getId());
-            doc.setMatriculaAlumno(cita.getMatriculaAlumno());
-            doc.setIdTutor(cita.getIdTutor());
-            doc.setTema(cita.getTema());
-            doc.setFecha(cita.getFecha());
-            doc.setHora(cita.getHora());
-            doc.setUbicacion(cita.getUbicacion());
-            doc.setModalidad(cita.getModalidad());
-            doc.setEstado(cita.getEstado());
-
-            if (cita.getMateria() != null) {
-                doc.setIdMateria(cita.getMateria().getId());
-            }
-
-            return doc;
-        } catch (Exception ex) {
-            throw new CitaAdaptadorException("Error al convertir entidad Cita a CitaDocument");
-        }
-    }
+//    // Document a Dominio
+//    public static Cita toEntity(CitaDocument doc) {
+//        try {
+//            if (doc == null) return null;
+//
+//            Cita cita = new Cita();
+//            cita.setId(doc.getId());
+//            cita.setMatriculaAlumno(doc.getMatriculaAlumno());
+//            cita.setIdTutor(doc.getIdTutor());
+//            cita.setTema(doc.getTema());
+//            cita.setFecha(doc.getFecha());
+//            cita.setHora(doc.getHora());
+//            cita.setUbicacion(doc.getUbicacion());
+//
+//            if (doc.getModalidad() != null) {
+//                cita.setModalidad(doc.getModalidad());
+//            }
+//            if (doc.getEstado() != null) {
+//                cita.setEstado(doc.getEstado());
+//            }
+//
+//            if (doc.getIdMateria() != null) {
+//                Materia materia = new Materia();
+//                materia.setId(doc.getIdMateria());
+//                cita.setMateria(materia);
+//            }
+//
+//            return cita;
+//        } catch (Exception ex) {
+//            throw new CitaAdaptadorException("Error al convertir CitaDocument a entidad Cita");
+//        }
+//    }
+//
+//    // Dominio a Document
+//    public static CitaDocument toDocument(Cita cita) {
+//        try {
+//            if (cita == null) return null;
+//
+//            CitaDocument doc = new CitaDocument();
+//            doc.set_id(new ObjectId());
+//            doc.setId(cita.getId());
+//            doc.setMatriculaAlumno(cita.getMatriculaAlumno());
+//            doc.setIdTutor(cita.getIdTutor());
+//            doc.setTema(cita.getTema());
+//            doc.setFecha(cita.getFecha());
+//            doc.setHora(cita.getHora());
+//            doc.setUbicacion(cita.getUbicacion());
+//            doc.setModalidad(cita.getModalidad());
+//            doc.setEstado(cita.getEstado());
+//
+//            if (cita.getMateria() != null) {
+//                doc.setIdMateria(cita.getMateria().getId());
+//            }
+//
+//            return doc;
+//        } catch (Exception ex) {
+//            throw new CitaAdaptadorException("Error al convertir entidad Cita a CitaDocument");
+//        }
+//    }
     
 }
