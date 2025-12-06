@@ -14,6 +14,9 @@ import presentacion.pagarAdeudo.panels.ListaClasesColegiatura;
 import presentacion.pagarAdeudo.panels.ListaPrestamosBiblioteca;
 import solicitarBeca.dominio.enums.pagarAdeudo.MetodoPago;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionPagarAdeudo {
@@ -84,20 +87,43 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
     }
 
     @Override
-    public void seleccionarMetodoPago(String metodoPago) throws Exception {
-        solicitudPagoDTO.setEstatusPago("Pendiente");
-        solicitudPagoDTO.setIdEstudiante(SesionUsuario.getInstance().getEstudianteLogeado().getMatricula());
-        boolean pagoExitoso = false;
-        if (metodoPago.equals("BANCO")) {
-            coordinadorNegocioPagarAdeudo.realizarPago(solicitudPagoDTO, MetodoPago.BANCO);
-            pagoExitoso = true;
+    public void seleccionarMetodoPago(String metodoPago) {
+        if ("BANCO".equals(metodoPago)) {
+            abrirPasarelaBanco();
         }
-        if (metodoPago.equals("PAYPAL")) {
-            coordinadorNegocioPagarAdeudo.realizarPago(solicitudPagoDTO, MetodoPago.PAYPAL);
-            pagoExitoso = true;
+        if ("PAYPAL".equals(metodoPago)){
+            System.out.println("Próximamente PayPal...");
         }
-        if (pagoExitoso) {
-            limpiarCache();
+    }
+
+    private void abrirPasarelaBanco() {
+        ActionListener listenerBotonPagarDelBanco = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                procesarPagoBanco();
+            }
+        };
+        coordinadorNegocioPagarAdeudo.mostrarVentanaPago(listenerBotonPagarDelBanco);
+    }
+
+    private void procesarPagoBanco() {
+        try {
+            solicitudPagoDTO.setEstatusPago("Pendiente");
+            solicitudPagoDTO.setIdEstudiante(SesionUsuario.getInstance().getEstudianteLogeado().getMatricula());
+            if ("Biblioteca".equals(tipoAdeudo)) solicitudPagoDTO.setMontoPagado(adeudoBibliotecaCache);
+            else if ("Colegiatura".equals(tipoAdeudo)) solicitudPagoDTO.setMontoPagado(adeudoColegiaturaCache);
+
+            SolicitudPagoDTO resultado = coordinadorNegocioPagarAdeudo.realizarPago(solicitudPagoDTO);
+            if (resultado != null) {
+                coordinadorNegocioPagarAdeudo.notificarLiquidacion(resultado);
+                coordinadorNegocioPagarAdeudo.cerrarVentanaBanco();
+                JOptionPane.showMessageDialog(null, "¡Pago realizado con éxito!");
+                limpiarCache();
+                regresarAlMenuPrincipal();
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error en el pago: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Error procesando pago: " + ex.getMessage());
         }
     }
 

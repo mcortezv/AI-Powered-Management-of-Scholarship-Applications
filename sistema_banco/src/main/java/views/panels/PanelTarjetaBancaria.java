@@ -1,0 +1,118 @@
+package views.panels;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
+import java.awt.event.ActionListener;
+
+import datos.dtos.DatosTarjetaDTO;
+import views.styles.*;
+import views.styles.Button;
+import views.styles.Label;
+import views.styles.TextField;
+
+public class PanelTarjetaBancaria extends JPanel {
+    private TextField campoNumero;
+    private TextField campoFecha;
+    private TextField campoCVV;
+    private TextField campoNombre;
+    private TextField campoTelefono;
+    private TextField campoEmail;
+    private Button btnAgregar;
+
+    public PanelTarjetaBancaria() {
+        startComponents();
+    }
+
+    private void startComponents() {
+        this.setLayout(new GridBagLayout());
+        this.setBackground(Style.PANEL_COLOR != null ? Style.PANEL_COLOR : new Color(245, 245, 245));
+
+        JPanel cardPanel = new JPanel();
+        cardPanel.setLayout(new BoxLayout(cardPanel, BoxLayout.Y_AXIS));
+        cardPanel.setBackground(new Color(235, 235, 235));
+        cardPanel.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(new Color(220, 220, 220), 1),
+                new EmptyBorder(30, 40, 30, 40)
+        ));
+
+        Label lblTitulo = new Label("Tarjeta Bancaria");
+        lblTitulo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        lblTitulo.setFont(Style.TITLE_FONT);
+        cardPanel.add(lblTitulo);
+        cardPanel.add(Box.createVerticalStrut(30));
+
+
+        campoNumero = new TextField(20);
+        cardPanel.add(crearBloqueInput("Número de tarjeta", campoNumero));
+        cardPanel.add(Box.createVerticalStrut(15));
+
+        JPanel rowPanel = new JPanel();
+        rowPanel.setLayout(new BoxLayout(rowPanel, BoxLayout.X_AXIS));
+        rowPanel.setBackground(new Color(235, 235, 235));
+        rowPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        campoFecha = new TextField(8);
+        campoFecha.setMaximumSize(new Dimension(150, 50));
+
+        campoCVV = new TextField(4);
+        campoCVV.setMaximumSize(new Dimension(80, 50));
+
+        rowPanel.add(crearBloqueInput("Vencimiento (MM/YY)", campoFecha));
+        rowPanel.add(Box.createHorizontalStrut(20));
+        rowPanel.add(crearBloqueInput("CVV", campoCVV));
+        rowPanel.add(Box.createHorizontalGlue());
+
+        cardPanel.add(rowPanel);
+        cardPanel.add(Box.createVerticalStrut(15));
+
+        campoNombre = new TextField(20);
+        cardPanel.add(crearBloqueInput("Nombre del titular", campoNombre));
+        cardPanel.add(Box.createVerticalStrut(15));
+
+        campoTelefono = new TextField(15);
+        cardPanel.add(crearBloqueInput("Teléfono", campoTelefono));
+        cardPanel.add(Box.createVerticalStrut(15));
+
+        campoEmail = new TextField(20);
+        cardPanel.add(crearBloqueInput("Email de contacto", campoEmail));
+        cardPanel.add(Box.createVerticalStrut(30));
+
+        btnAgregar = new Button("Pagar");
+        btnAgregar.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnAgregar.setMaximumSize(new Dimension(200, 50));
+        cardPanel.add(btnAgregar);
+        this.add(cardPanel);
+    }
+
+    private JPanel crearBloqueInput(String texto, TextField campo) {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setBackground(Color.black);
+        panel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        Label lbl = new Label(texto);
+        lbl.setAlignmentX(Component.LEFT_ALIGNMENT);
+        campo.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        panel.add(lbl);
+        panel.add(Box.createVerticalStrut(5));
+        panel.add(campo);
+        return panel;
+    }
+
+    public void addAgregarListener(ActionListener listener) {
+        btnAgregar.addActionListener(listener);
+    }
+
+    public DatosTarjetaDTO getDatos() {
+        DatosTarjetaDTO dto = new DatosTarjetaDTO();
+        dto.setNumeroTarjeta(campoNumero.getText());
+        dto.setFechaVencimiento(campoFecha.getText());
+        dto.setCv(campoCVV.getText());
+        dto.setNombreTitular(campoNombre.getText());
+        dto.setTelefono(campoTelefono.getText());
+        dto.setEmail(campoEmail.getText());
+        return dto;
+    }
+}

@@ -74,6 +74,8 @@ public final class PagarAdeudo extends JFrame {
         panel = new ConfirmacionPago(this, coordinadorAplicacionPagarAdeudo);
         panel.startComponents();
         panels.put("confirmacionPago", panel);
+
+
     }
 
     public void showPanel(String nuevoPanel) {
@@ -86,6 +88,12 @@ public final class PagarAdeudo extends JFrame {
         }
         centralPanel.revalidate();
         centralPanel.repaint();
+    }
+
+    public void agregarPanelDinamico(String nombre, JPanel panel) {
+        this.centralPanel.add(panel, nombre);
+        this.centralPanel.revalidate();
+        this.centralPanel.repaint();
     }
 
 
