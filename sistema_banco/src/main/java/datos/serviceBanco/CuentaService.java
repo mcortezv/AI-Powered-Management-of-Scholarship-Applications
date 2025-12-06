@@ -13,6 +13,7 @@ public class CuentaService {
         this.cuentaDAO = new CuentaDAO();
     }
 
+
     public Cuenta validarYObtenerCuenta(String numero, String cvv, String fechaVencimiento) throws BancoException {
         Cuenta cuenta = cuentaDAO.buscarPorNumeroTarjeta(numero);
         if (cuenta == null) {
@@ -25,7 +26,6 @@ public class CuentaService {
         if (!cuenta.getFechaVencimiento().equals(fechaVencimiento)) {
             throw new BancoException("FECHA DE VENCIMIENTO INCORRECTA");
         }
-
         return cuenta;
     }
 

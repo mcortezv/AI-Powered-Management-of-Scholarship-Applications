@@ -5,6 +5,7 @@ import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 import datos.configMongoBanco.MongoClienteProvider;
 import datos.dominioBanco.Cuenta;
+import datos.excepcionesBanco.BancoException;
 import datos.repositoryBanco.dao.interfaces.ICuentaDAO;
 
 public class CuentaDAO implements ICuentaDAO {
@@ -18,10 +19,16 @@ public class CuentaDAO implements ICuentaDAO {
     @Override
     public Cuenta buscarPorNumeroTarjeta(String numeroTarjeta) {
         try {
-            return col.find(Filters.eq("numeroTarjeta", numeroTarjeta)).first();
+            System.out.println("Buscando en Mongo tarjeta: '" + numeroTarjeta + "' (Longitud: " + numeroTarjeta.length() + ")");
+
+            Cuenta c = col.find(Filters.eq("numeroTarjeta", numeroTarjeta)).first();
+
+            System.out.println("Resultado encontrado: " + (c != null ? c.getNombreTitular() : "NULL"));
+
+            return c;
         } catch (Exception e) {
-            System.err.println("Error al buscar cuenta: " + e.getMessage());
-            return null;
+            e.printStackTrace();
+            throw new BancoException("Error al recuperar la cuenta");
         }
     }
 
