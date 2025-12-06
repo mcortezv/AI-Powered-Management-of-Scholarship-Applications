@@ -72,11 +72,11 @@ public class MetodosDePago extends PanelPagarAdeudo {
         });
 
         btnTarjeta.addActionListener(e -> {
-            JOptionPane.showMessageDialog(this,"Ekisde");
+            coordinadorAplicacion.seleccionarMetodoPago("BANCO");
         });
 
         btnPayPal.addActionListener(e -> {
-            JOptionPane.showMessageDialog(this,"Ekisde");
+            coordinadorAplicacion.seleccionarMetodoPago("PAYPAL");
         });
 
         revalidate();

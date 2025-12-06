@@ -1,4 +1,5 @@
 package controles;
+import java.awt.event.ActionListener;
 import java.util.List;
 import adaptadores.pagarAdeudo.ClaseAdaptador;
 import adaptadores.pagarAdeudo.PrestamoAdaptador;
@@ -13,10 +14,12 @@ import pagarAdeudo.ClaseDTO;
 import pagarAdeudo.PrestamoDTO;
 import pagarAdeudo.SolicitudPagoDTO;
 
+import javax.swing.*;
+
 public class ControlPago {
    private final IAdeudoBO iAdeudoBO;
    private final IFachadaBanco iFachadaBanco;
-    private final IFachadaPayPal iFachadaPayPal;
+   private final IFachadaPayPal iFachadaPayPal;
 
     public ControlPago(IAdeudoBO adeudoBO, IFachadaBanco iFachadaBanco, IFachadaPayPal fachadaPayPal){
         this.iAdeudoBO = adeudoBO;
@@ -36,13 +39,18 @@ public class ControlPago {
         return clasesI.stream().map(ClaseAdaptador::toDTO).toList();
     }
 
-    public SolicitudPagoDTO solicitarRealizarPagoBanco(SolicitudPagoDTO solicitudPagoDTO){
+    public void solicitarVistaPago(ActionListener listenerBotonPagar) {
+        iFachadaBanco.mostrarPantallaPago(listenerBotonPagar);
+    }
+
+    public SolicitudPagoDTO realizarPago(SolicitudPagoDTO solicitudPagoDTO){
         return iFachadaBanco.ejecutarPago(solicitudPagoDTO);
     }
 
-    public SolicitudPagoDTO solicitarRealizarPagoPayPal(SolicitudPagoDTO solicitudPagoDTO){
-        return iFachadaPayPal.ejecutarPago(solicitudPagoDTO);
+    public void cerrarVentanaBanco() {
+        iFachadaBanco.cerrarVentana();
     }
+
 
     public boolean notificarLiquidacion(SolicitudPagoDTO solicitudPagoDTO){
         SolicitudPagoDTOI solicitudPagoDTOI = SolicitudPagoAdaptador.toDTOI(solicitudPagoDTO);
