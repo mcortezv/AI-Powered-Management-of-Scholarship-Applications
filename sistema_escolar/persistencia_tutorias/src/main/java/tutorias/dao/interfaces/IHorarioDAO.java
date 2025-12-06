@@ -7,6 +7,7 @@ package tutorias.dao.interfaces;
 import java.time.LocalDate;
 import java.util.List;
 import org.bson.types.ObjectId;
+import tutorias.dominio.Horario;
 import tutorias.dominio.enums.EstadoDisponibilidad;
 import tutorias.excepciones.HorarioDAOException;
 import tutorias.repository.documents.HorarioDocument;
@@ -16,7 +17,7 @@ import tutorias.repository.documents.HorarioDocument;
  * @author katia
  */
 public interface IHorarioDAO {
-    ObjectId create(HorarioDocument entity) throws HorarioDAOException;
-    List<HorarioDocument> obtenerDisponiblesPorTutorYFecha(Long idTutor, LocalDate fecha) throws HorarioDAOException;
-    HorarioDocument actualizarEstado(ObjectId idHorario, EstadoDisponibilidad nuevoEstado) throws HorarioDAOException;
+    Horario crear(Horario horario) throws HorarioDAOException;
+    List<Horario> obtenerDisponiblesPorTutorYFecha(Long idTutor, LocalDate fecha) throws HorarioDAOException;
+    Horario actualizarEstado(Long idHorario, EstadoDisponibilidad nuevoEstado) throws HorarioDAOException;
 }
