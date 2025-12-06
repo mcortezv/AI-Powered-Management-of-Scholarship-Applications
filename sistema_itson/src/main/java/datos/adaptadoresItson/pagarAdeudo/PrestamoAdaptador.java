@@ -9,21 +9,22 @@ import java.util.List;
 
 public class PrestamoAdaptador {
 
-    public static Prestamo toEntity(PrestamoDocument document){
+    public static Prestamo toEntity(PrestamoDocument document) {
+        if (document == null) return null;
         Prestamo prestamo = new Prestamo();
-        prestamo.setCosto(prestamo.getCosto());
-        prestamo.setIdEstudiante(document.getIdEstudiante());
-        prestamo.setFechaPrestamo(document.getFechaPrestamo());
-        prestamo.setFechaDevolucionProgramada(document.getFechaDevolucionProgramada());
+        prestamo.setCosto(document.getCosto());
         prestamo.setIsbn(document.getIsbn());
         prestamo.setTitulo(document.getTitulo());
+        prestamo.setFechaPrestamo(document.getFechaPrestamo());
+        prestamo.setFechaDevolucionProgramada(document.getFechaDevolucionProgramada());
         prestamo.setCampus(document.getCampus());
         prestamo.setDetalles(document.getDetalles());
+
         return prestamo;
     }
     public static PrestamoDTOI toDtoItson(Prestamo prestamo){
         PrestamoDTOI dto = new PrestamoDTOI();
-        dto.setCosto(dto.getCosto());
+        dto.setCosto(prestamo.getCosto());
         dto.setIdEstudiante(prestamo.getIdEstudiante());
         dto.setFechaPrestamo(prestamo.getFechaPrestamo().toString());
         dto.setFechaDevolucion(prestamo.getFechaDevolucionProgramada().toString());
