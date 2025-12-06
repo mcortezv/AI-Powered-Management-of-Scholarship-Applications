@@ -24,13 +24,38 @@ public class ControlBancoAPI {
 
     public void abrirVentanaPago(ActionListener listenerBotonPagar) {
         this.ventanaBancaria = new MainFrameBanco();
-        this.ventanaBancaria.setAccionPagar(listenerBotonPagar);
+        this.ventanaBancaria.setAccionPagar(e -> {
+            int respuesta = JOptionPane.showConfirmDialog(
+                    null,
+                    "¿Estás seguro de que deseas realizar el pago?",
+                    "Confirmar Pago",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE
+            );
+            if (respuesta == JOptionPane.YES_OPTION) {
+                listenerBotonPagar.actionPerformed(e);
+            }
+        });
+        this.ventanaBancaria.setAccionCancelar(e -> {
+            int respuesta = JOptionPane.showConfirmDialog(
+                    null,
+                    "¿Estás seguro de que deseas cancelar?\nSe perderán los datos de la transacción.",
+                    "Cancelar Transacción",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE
+            );
+            if (respuesta == JOptionPane.YES_OPTION) {
+                cerrarVentana();
+            }
+        });
+
         this.ventanaBancaria.mostrar();
     }
 
     public void cerrarVentana() {
         if (this.ventanaBancaria != null) {
             this.ventanaBancaria.cerrar();
+            this.ventanaBancaria = null;
         }
     }
 
@@ -40,7 +65,6 @@ public class ControlBancoAPI {
         }
         DatosTarjetaDTO datosDTO = ventanaBancaria.obtenerDatos();
         if(datosDTO == null){
-            mostrarMensaje("Por favor, ingrese todos los datos de la tarjeta.", "Datos Incompletos", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         return procesarSolicitudPago(datosDTO, monto, concepto);
@@ -71,6 +95,7 @@ public class ControlBancoAPI {
             if (descuentoExitoso) {
                 transaccionService.registrarExito(cuenta, monto, concepto);
                 mostrarMensaje("Pago realizado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                cerrarVentana();
                 return true;
             } else {
                 transaccionService.registrarFallo(numeroLimpio, monto, concepto, "ERROR SISTEMA");

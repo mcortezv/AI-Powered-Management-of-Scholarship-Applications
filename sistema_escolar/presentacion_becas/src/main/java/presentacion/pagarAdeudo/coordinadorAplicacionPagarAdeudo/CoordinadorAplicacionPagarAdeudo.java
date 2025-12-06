@@ -10,6 +10,7 @@ import presentacion.CoordinadorAplicacion;
 import presentacion.pagarAdeudo.PagarAdeudo;
 import presentacion.pagarAdeudo.coordinadorNegocioPagarAdeudo.CoordinadorNegocioPagarAdeudo;
 import presentacion.pagarAdeudo.mainFraimePagarAdeudo.MainFramePagarAdeudo;
+import presentacion.pagarAdeudo.panels.DetallePrestamo;
 import presentacion.pagarAdeudo.panels.ListaClasesColegiatura;
 import presentacion.pagarAdeudo.panels.ListaPrestamosBiblioteca;
 import solicitarBeca.dominio.enums.pagarAdeudo.MetodoPago;
@@ -21,27 +22,30 @@ import java.util.List;
 
 public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionPagarAdeudo {
     private final CoordinadorAplicacion coordinadorPadre;
-    private final MainFramePagarAdeudo mainFrame;
+    private final MainFramePagarAdeudo mainFrame; // Nota: A veces usas PagarAdeudo como frame, revisa si este atributo es necesario
     private final CoordinadorNegocioPagarAdeudo coordinadorNegocioPagarAdeudo;
     private PagarAdeudo pagarAdeudo;
     private String tipoAdeudo;
+
     private List<PrestamoDTO> prestamos;
     private List<ClaseDTO> clases;
+
     private Double adeudoBibliotecaCache;
     private Double adeudoColegiaturaCache;
     private final SolicitudPagoDTO solicitudPagoDTO;
+
     public CoordinadorAplicacionPagarAdeudo(IFachadaPago fachadaPago, CoordinadorAplicacion coordinadorPadre) {
         this.coordinadorPadre = coordinadorPadre;
-        coordinadorNegocioPagarAdeudo = new CoordinadorNegocioPagarAdeudo(fachadaPago);
-        mainFrame = null;
-        solicitudPagoDTO = new SolicitudPagoDTO();
+        this.coordinadorNegocioPagarAdeudo = new CoordinadorNegocioPagarAdeudo(fachadaPago);
+        this.mainFrame = null;
+        this.solicitudPagoDTO = new SolicitudPagoDTO();
     }
 
     public void pagarAdeudo() {
         if (mainFrame != null) {
             mainFrame.setVisible(false);
         }
-        pagarAdeudo = new PagarAdeudo(coordinadorPadre,this);
+        pagarAdeudo = new PagarAdeudo(coordinadorPadre, this);
         pagarAdeudo.setVisible(true);
     }
 
@@ -80,6 +84,12 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
         pagarAdeudo.showPanel("listaClasesColegiatura");
     }
 
+    public void irADetallePrestamo(PrestamoDTO prestamoSeleccionado) {
+        DetallePrestamo panel = (DetallePrestamo) pagarAdeudo.getPanel("detallePrestamo");
+        panel.setPrestamo(prestamoSeleccionado);
+        pagarAdeudo.showPanel("detallePrestamo");
+    }
+
     @Override
     public void seleccionarRealizarPago() {
         pagarAdeudo.showPanel("metodosDePago");
@@ -91,7 +101,7 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
             abrirPasarelaBanco();
         }
         if ("PAYPAL".equals(metodoPago)){
-            System.out.println("Próximamente PayPal...");
+            System.out.println("Próximamente PayPal");
         }
     }
 
@@ -128,6 +138,7 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
             System.out.println("Error procesando pago: " + ex.getMessage());
         }
     }
+
     private void limpiarCache() {
         this.prestamos = null;
         this.clases = null;
@@ -148,8 +159,4 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
     public String getTipoAdeudo(){
         return tipoAdeudo;
     }
-
-
-
-
 }

@@ -20,6 +20,7 @@ public class PanelTarjetaBancaria extends JPanel {
     private TextField campoTelefono;
     private TextField campoEmail;
     private Button btnAgregar;
+    private Button btnCancelar;
 
     public PanelTarjetaBancaria() {
         startComponents();
@@ -28,7 +29,6 @@ public class PanelTarjetaBancaria extends JPanel {
     private void startComponents() {
         this.setLayout(new GridBagLayout());
         this.setBackground(Style.PANEL_COLOR != null ? Style.PANEL_COLOR : new Color(245, 245, 245));
-
         JPanel cardPanel = new JPanel();
         cardPanel.setLayout(new BoxLayout(cardPanel, BoxLayout.Y_AXIS));
         cardPanel.setBackground(new Color(235, 235, 235));
@@ -39,10 +39,10 @@ public class PanelTarjetaBancaria extends JPanel {
 
         Label lblTitulo = new Label("Tarjeta Bancaria");
         lblTitulo.setAlignmentX(Component.CENTER_ALIGNMENT);
-        lblTitulo.setFont(Style.TITLE_FONT);
+        lblTitulo.setFont(Style.SUBTITLE_FONT);
+        lblTitulo.setForeground(Color.BLACK);
         cardPanel.add(lblTitulo);
         cardPanel.add(Box.createVerticalStrut(30));
-
 
         campoNumero = new TextField(20);
         cardPanel.add(crearBloqueInput("Número de tarjeta", campoNumero));
@@ -79,22 +79,39 @@ public class PanelTarjetaBancaria extends JPanel {
         cardPanel.add(crearBloqueInput("Email de contacto", campoEmail));
         cardPanel.add(Box.createVerticalStrut(30));
 
+        JPanel buttonsPanel = new JPanel();
+        buttonsPanel.setLayout(new BoxLayout(buttonsPanel, BoxLayout.X_AXIS));
+        buttonsPanel.setBackground(new Color(235, 235, 235));
+        buttonsPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        btnCancelar = new Button("Cancelar");
+        btnCancelar.setMaximumSize(new Dimension(150, 50));
+        btnCancelar.setBackground(new Color(200, 60, 60));
+        btnCancelar.setForeground(Color.BLACK);
+
         btnAgregar = new Button("Pagar");
-        btnAgregar.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnAgregar.setMaximumSize(new Dimension(200, 50));
-        cardPanel.add(btnAgregar);
+        btnAgregar.setMaximumSize(new Dimension(150, 50));
+
+        buttonsPanel.add(btnCancelar);
+        buttonsPanel.add(Box.createHorizontalStrut(20));
+        buttonsPanel.add(btnAgregar);
+        cardPanel.add(buttonsPanel);
         this.add(cardPanel);
     }
 
     private JPanel crearBloqueInput(String texto, TextField campo) {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        panel.setBackground(Color.black);
+        panel.setBackground(new Color(235, 235, 235));
         panel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         Label lbl = new Label(texto);
         lbl.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        lbl.setForeground(Color.BLACK);
         campo.setAlignmentX(Component.LEFT_ALIGNMENT);
+        campo.setBackground(new Color(250, 250, 245));
+        campo.setForeground(Color.BLACK);
 
         panel.add(lbl);
         panel.add(Box.createVerticalStrut(5));
@@ -104,6 +121,10 @@ public class PanelTarjetaBancaria extends JPanel {
 
     public void addAgregarListener(ActionListener listener) {
         btnAgregar.addActionListener(listener);
+    }
+
+    public void addCancelarListener(ActionListener listener) {
+        btnCancelar.addActionListener(listener);
     }
 
     public DatosTarjetaDTO getDatos() {

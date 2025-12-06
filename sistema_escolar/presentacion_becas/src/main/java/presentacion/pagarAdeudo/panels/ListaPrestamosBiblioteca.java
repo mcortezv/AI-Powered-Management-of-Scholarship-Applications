@@ -6,9 +6,7 @@ import presentacion.pagarAdeudo.PanelPagarAdeudo;
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
 import presentacion.styles.Button;
 import presentacion.styles.CustomTable;
-import presentacion.styles.Style;
 import presentacion.styles.enums.PanelCategory;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -18,7 +16,7 @@ public class ListaPrestamosBiblioteca extends PanelPagarAdeudo {
 
     private JLabel lblMontoTotal;
     private DefaultTableModel tableModel;
-    private CustomTable table;
+    private List<PrestamoDTO> prestamosCache;
 
     public ListaPrestamosBiblioteca(PagarAdeudo frame, CoordinadorAplicacionPagarAdeudo coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
@@ -31,7 +29,6 @@ public class ListaPrestamosBiblioteca extends PanelPagarAdeudo {
         centralPanel.setBackground(new Color(30, 30, 30));
 
         GridBagConstraints gbc = new GridBagConstraints();
-
         JPanel leftPanel = new JPanel();
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
         leftPanel.setOpaque(false);
@@ -39,7 +36,7 @@ public class ListaPrestamosBiblioteca extends PanelPagarAdeudo {
         JPanel headerBiblioteca = new RoundedPanel(20, new Color(235, 235, 235));
         headerBiblioteca.setPreferredSize(new Dimension(250, 50));
         headerBiblioteca.setMaximumSize(new Dimension(250, 50));
-        headerBiblioteca.setLayout(new GridBagLayout()); // Para centrar el texto
+        headerBiblioteca.setLayout(new GridBagLayout());
         JLabel lblTituloIzq = new JLabel("Biblioteca");
         lblTituloIzq.setFont(new Font("SansSerif", Font.PLAIN, 20));
         headerBiblioteca.add(lblTituloIzq);
@@ -67,6 +64,7 @@ public class ListaPrestamosBiblioteca extends PanelPagarAdeudo {
         btnRealizarPago.setForeground(Color.BLACK);
         btnRealizarPago.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnRealizarPago.setMaximumSize(new Dimension(200, 40));
+        btnRealizarPago.addActionListener(e -> coordinadorAplicacion.seleccionarRealizarPago());
 
         leftPanel.add(headerBiblioteca);
         leftPanel.add(Box.createVerticalStrut(30));
@@ -105,9 +103,38 @@ public class ListaPrestamosBiblioteca extends PanelPagarAdeudo {
             }
         };
 
+        CustomTable table = new CustomTable(tableModel, mainFrame, PanelCategory.LISTA_PRESTAMOS, this, coordinadorAplicacion);
+        table.setRowHeight(30);
 
-        table = new CustomTable(tableModel, mainFrame, PanelCategory.LISTA_PRESTAMOS, this, coordinadorAplicacion);
-        table.addColumnButton();
+        table.getColumnModel().getColumn(4).setCellEditor(new DefaultCellEditor(new JCheckBox()) {
+            private final Button button = new Button("...");
+            private int currentRow;
+
+            {
+                button.setOpaque(true);
+                button.setFont(new Font("SansSerif", Font.BOLD, 14));
+                button.addActionListener(e -> {
+                    fireEditingStopped();
+                    if (prestamosCache != null && currentRow >= 0 && currentRow < prestamosCache.size()) {
+                        PrestamoDTO seleccionado = prestamosCache.get(currentRow);
+                        coordinadorAplicacion.irADetallePrestamo(seleccionado);
+                    }
+                });
+            }
+
+            @Override
+            public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+                this.currentRow = row;
+                return button;
+            }
+        });
+
+        table.getColumnModel().getColumn(4).setCellRenderer((table1, value, isSelected, hasFocus, row, column) -> {
+            Button btn = new Button("...");
+            btn.setFont(new Font("SansSerif", Font.BOLD, 14));
+            btn.setBackground(Color.WHITE);
+            return btn;
+        });
 
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBorder(BorderFactory.createEmptyBorder());
@@ -125,27 +152,23 @@ public class ListaPrestamosBiblioteca extends PanelPagarAdeudo {
         gbc.insets = new Insets(20, 20, 20, 20);
         centralPanel.add(leftPanel, gbc);
 
-        gbc.gridx = 1;
-        JLabel arrow = new JLabel("←");
-        arrow.setFont(new Font("SansSerif", Font.BOLD, 24));
-        arrow.setForeground(Color.WHITE);
+        btnBack.addActionListener(e-> mainFrame.showPanel("consultaAdeudoMenu"));
 
+        gbc.gridx = 1;
+        JLabel arrow = new JLabel("");
         gbc.gridx = 2;
         gbc.weightx = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
         centralPanel.add(rightPanel, gbc);
-        btnBack.addActionListener(e-> mainFrame.showPanel("consultaAdeudoMenu"));
-        btnRealizarPago.addActionListener(e -> {
-            coordinadorAplicacion.seleccionarRealizarPago();
-        });
 
         centralPanel.revalidate();
         centralPanel.repaint();
     }
 
     public void setPrestamos(List<PrestamoDTO> prestamos) {
-        if (tableModel == null) return;
+        this.prestamosCache = prestamos;
 
+        if (tableModel == null) return;
         tableModel.setRowCount(0);
 
         for (PrestamoDTO p : prestamos) {
@@ -153,7 +176,8 @@ public class ListaPrestamosBiblioteca extends PanelPagarAdeudo {
                     p.getIsbn(),
                     p.getTitulo(),
                     p.getFechaPrestamo(),
-                    p.getFechaDevolucion()
+                    p.getFechaDevolucion(),
+                    "..."
             };
             tableModel.addRow(row);
         }
@@ -167,7 +191,7 @@ public class ListaPrestamosBiblioteca extends PanelPagarAdeudo {
 
     static class RoundedPanel extends JPanel {
         private int cornerRadius = 15;
-        private Color backgroundColor;
+        private final Color backgroundColor;
 
         public RoundedPanel(int radius, Color bgColor) {
             super();
