@@ -11,7 +11,7 @@ public class MainFrameBanco extends JDialog {
 
     public MainFrameBanco() {
         super((Frame) null, "Pasarela de Pago - Banco", true);
-
+        setUndecorated(true);
         setSize(600, 750);
         setResizable(false);
         setLocationRelativeTo(null);
@@ -31,6 +31,10 @@ public class MainFrameBanco extends JDialog {
 
     public void setAccionPagar(ActionListener listener) {
         panelTarjeta.addAgregarListener(listener);
+    }
+
+    public void setAccionCancelar(ActionListener listener) {
+        this.panelTarjeta.addCancelarListener(listener);
     }
 
     public DatosTarjetaDTO obtenerDatos() {
