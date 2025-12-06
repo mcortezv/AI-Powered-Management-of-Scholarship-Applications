@@ -1,0 +1,19 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
+ */
+package interfaces.tutorias;
+
+import dto.tutorias.CitaDTO;
+import java.util.List;
+
+/**
+ *
+ * @author katia
+ */
+public interface ICitaBO {
+    CitaDTO agendarCita(CitaDTO citaDTO);
+    boolean cancelarCita(Long idCita, Long matriculaAlumno);
+    boolean puedeAgendarCita(Long matriculaAlumno);
+    List<CitaDTO> obtenerCitasActivas(Long matriculaAlumno);
+}

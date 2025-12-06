@@ -26,7 +26,7 @@ public class HorarioAdaptador {
             horario.setHora(dto.getHora());
             if (dto.getEstadoDisponibilidad() != null) {
                 horario.setEstadoDisponibilidad(
-                        EstadoDisponibilidad.valueOf(dto.getEstadoDisponibilidad())
+                        EstadoDisponibilidad.valueOf(dto.getEstadoDisponibilidad().toUpperCase())
                 );
             }
             return horario;

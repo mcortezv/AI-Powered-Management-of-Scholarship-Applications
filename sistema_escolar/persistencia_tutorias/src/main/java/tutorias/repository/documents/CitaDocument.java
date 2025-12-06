@@ -16,6 +16,7 @@ public class CitaDocument {
     private Long id;               
     private Long matriculaAlumno;
     private Long idTutor;
+    private Long idHorario;
     private Long idMateria;
     private String tema;
     private Modalidad modalidad;
@@ -28,11 +29,12 @@ public class CitaDocument {
     public CitaDocument() {
     }
 
-    public CitaDocument(ObjectId _id, Long id, Long matriculaAlumno, Long idTutor, Long idMateria, String tema, Modalidad modalidad, LocalDate fecha, LocalTime hora, String ubicacion, EstadoCita estado, Instant creadoEn) {
+    public CitaDocument(ObjectId _id, Long id, Long matriculaAlumno, Long idTutor, Long idHorario, Long idMateria, String tema, Modalidad modalidad, LocalDate fecha, LocalTime hora, String ubicacion, EstadoCita estado, Instant creadoEn) {
         this._id = _id;
         this.id = id;
         this.matriculaAlumno = matriculaAlumno;
         this.idTutor = idTutor;
+        this.idHorario = idHorario;
         this.idMateria = idMateria;
         this.tema = tema;
         this.modalidad = modalidad;
@@ -137,5 +139,13 @@ public class CitaDocument {
 
     public void setCreadoEn(Instant creadoEn) {
         this.creadoEn = creadoEn;
+    }
+
+    public Long getIdHorario() {
+        return idHorario;
+    }
+
+    public void setIdHorario(Long idHorario) {
+        this.idHorario = idHorario;
     }
 }

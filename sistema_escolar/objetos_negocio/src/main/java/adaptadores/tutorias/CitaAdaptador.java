@@ -27,6 +27,7 @@ public class CitaAdaptador {
             cita.setId(dto.getId());
             cita.setMatriculaAlumno(dto.getMatriculaAlumno());
             cita.setIdTutor(dto.getIdTutor());
+            cita.setIdHorario(dto.getIdHorario());
             cita.setTema(dto.getTema());
 
             if (dto.getModalidad() != null && !dto.getModalidad().trim().isEmpty()) {
@@ -73,6 +74,7 @@ public class CitaAdaptador {
             dto.setId(cita.getId());
             dto.setMatriculaAlumno(cita.getMatriculaAlumno());
             dto.setIdTutor(cita.getIdTutor());
+            dto.setIdHorario(cita.getIdHorario());
             dto.setTema(cita.getTema());
 
             if (cita.getModalidad() != null) {

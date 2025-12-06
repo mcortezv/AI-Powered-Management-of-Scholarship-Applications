@@ -78,15 +78,20 @@ public class Seeder {
 //
 //            
 //            LocalDate hoy = LocalDate.now();
-//            LocalDate maniana = hoy.plusDays(1);
+//            LocalDate manana = hoy.plusDays(1);
 //            LocalDate pasado = hoy.plusDays(2);
+//            LocalDate ayer = hoy.minusDays(5);
 //
-//            insertarHorario(horarioDAO, 1L, maniana, LocalTime.of(10, 0), EstadoDisponibilidad.DISPONIBLE);
-//            insertarHorario(horarioDAO, 1L, maniana, LocalTime.of(11, 0), EstadoDisponibilidad.DISPONIBLE);
-//            insertarHorario(horarioDAO, 1L, maniana, LocalTime.of(12, 0), EstadoDisponibilidad.OCUPADO);
+//            Horario horario1 = insertarHorario(horarioDAO, 101L, 1L, manana, LocalTime.of(10, 0), EstadoDisponibilidad.OCUPADO); 
+//            Horario horario2 = insertarHorario(horarioDAO, 102L, 1L, manana, LocalTime.of(11, 0), EstadoDisponibilidad.DISPONIBLE);
+//            Horario horario3 = insertarHorario(horarioDAO, 103L, 1L, manana, LocalTime.of(12, 0), EstadoDisponibilidad.DISPONIBLE);
 //
-//            insertarHorario(horarioDAO, 2L, pasado, LocalTime.of(9, 0), EstadoDisponibilidad.DISPONIBLE);
-//            insertarHorario(horarioDAO, 2L, pasado, LocalTime.of(10, 0), EstadoDisponibilidad.DISPONIBLE);
+//            Horario horario4 = insertarHorario(horarioDAO, 104L, 2L, pasado, LocalTime.of(9, 0), EstadoDisponibilidad.DISPONIBLE);
+//            Horario horario5 = insertarHorario(horarioDAO, 105L, 2L, pasado, LocalTime.of(10, 0), EstadoDisponibilidad.DISPONIBLE);
+//
+//            Horario horario6 = insertarHorario(horarioDAO, 106L, 1L, ayer, LocalTime.of(10, 0), EstadoDisponibilidad.DISPONIBLE); 
+//            Horario horario7 = insertarHorario(horarioDAO, 107L, 1L, hoy.minusDays(3), LocalTime.of(11, 0), EstadoDisponibilidad.DISPONIBLE); 
+//            Horario horario8 = insertarHorario(horarioDAO, 108L, 2L, hoy.minusDays(1), LocalTime.of(9, 0), EstadoDisponibilidad.DISPONIBLE); 
 //
 //            System.out.println("Horarios insertados.");
 //
@@ -97,6 +102,7 @@ public class Seeder {
 //            citaPasada.setId(1001L);
 //            citaPasada.setMatriculaAlumno(matriculaEjemplo);
 //            citaPasada.setIdTutor(1L);
+//            citaPasada.setIdHorario(106L);
 //            Materia materiaProg = new Materia();
 //            materiaProg.setId(1L);
 //            citaPasada.setMateria(materiaProg);
@@ -107,11 +113,13 @@ public class Seeder {
 //            citaPasada.setUbicacion("B-201");
 //            citaPasada.setEstado(EstadoCita.ATENDIDA);
 //            citaDAO.crear(citaPasada);
+//            System.out.println("Cita 1001 atendida. Horario 106");
 //
 //            Cita citaCancelada1 = new Cita();
 //            citaCancelada1.setId(1002L);
 //            citaCancelada1.setMatriculaAlumno(matriculaEjemplo);
 //            citaCancelada1.setIdTutor(1L);
+//            citaCancelada1.setIdHorario(107L);
 //            Materia materiaCalc = new Materia();
 //            materiaCalc.setId(2L);
 //            citaCancelada1.setMateria(materiaCalc);
@@ -122,11 +130,13 @@ public class Seeder {
 //            citaCancelada1.setUbicacion("https://meet.google.com/karla");
 //            citaCancelada1.setEstado(EstadoCita.CANCELADA);
 //            citaDAO.crear(citaCancelada1);
+//            System.out.println("Cita 1002 cancelada. Horario 107");
 //
 //            Cita citaCancelada2 = new Cita();
 //            citaCancelada2.setId(1003L);
 //            citaCancelada2.setMatriculaAlumno(matriculaEjemplo);
 //            citaCancelada2.setIdTutor(2L);
+//            citaCancelada2.setIdHorario(108L);
 //            Materia materiaBD = new Materia();
 //            materiaBD.setId(3L);
 //            citaCancelada2.setMateria(materiaBD);
@@ -137,21 +147,24 @@ public class Seeder {
 //            citaCancelada2.setUbicacion("C-305");
 //            citaCancelada2.setEstado(EstadoCita.CANCELADA);
 //            citaDAO.crear(citaCancelada2);
+//            System.out.println("Cita 1003 cancelada. Horario 108");
 //
 //            Cita citaFutura = new Cita();
 //            citaFutura.setId(1004L);
 //            citaFutura.setMatriculaAlumno(matriculaEjemplo);
 //            citaFutura.setIdTutor(1L);
+//            citaFutura.setIdHorario(101L);
 //            Materia materiaProg2 = new Materia();
 //            materiaProg2.setId(1L);
 //            citaFutura.setMateria(materiaProg2);
 //            citaFutura.setTema("Listas enlazadas");
 //            citaFutura.setModalidad(Modalidad.VIRTUAL);
-//            citaFutura.setFecha(maniana);
+//            citaFutura.setFecha(manana);
 //            citaFutura.setHora(LocalTime.of(10, 0));
 //            citaFutura.setUbicacion("https://meet.google.com/karla");
 //            citaFutura.setEstado(EstadoCita.PENDIENTE);
 //            citaDAO.crear(citaFutura);
+//            System.out.println("Cita 1004 pendiente. Horario 101 ocupado");
 //
 //            System.out.println("Citas insertadas.");
 //
@@ -164,17 +177,27 @@ public class Seeder {
 //    }
 //
 //    
-//    private static void insertarHorario(HorarioDAO horarioDAO,
+//    private static Horario insertarHorario(HorarioDAO horarioDAO,
+//                                    Long id,
 //                                    Long idTutor,
 //                                    LocalDate fecha,
 //                                    LocalTime hora,
 //                                    EstadoDisponibilidad estado){
 //        Horario h = new Horario();
+//        h.setId(id);
 //        h.setIdTutor(idTutor);
 //        h.setFecha(fecha);
 //        h.setHora(hora);
 //        h.setEstadoDisponibilidad(estado);
-//        horarioDAO.crear(h);
+//        
+//        Horario creado = horarioDAO.crear(h);
+//        String estadoStr = estado == EstadoDisponibilidad.DISPONIBLE ? "DISPONIBLE" : "OCUPADO";
+//        System.out.println("  " + estadoStr + " - Horario " + id + 
+//                           ": Tutor " + idTutor + 
+//                           " | " + fecha + 
+//                           " | " + hora);
+//        
+//        return creado;
 //    }
 //
 //    private static long contadorHorario = 1L;

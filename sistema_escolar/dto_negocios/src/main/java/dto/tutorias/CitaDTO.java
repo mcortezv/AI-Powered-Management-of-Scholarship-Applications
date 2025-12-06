@@ -11,6 +11,7 @@ public class CitaDTO {
     private Long id;
     private Long matriculaAlumno;
     private Long idTutor;
+    private Long idHorario;
     private Long idMateria;
     
     //para historial, pantallas
@@ -27,10 +28,11 @@ public class CitaDTO {
     public CitaDTO() {
     }
 
-    public CitaDTO(Long id, Long matriculaAlumno, Long idTutor, Long idMateria, String nombreTutor, String nombreMateria, String tema, String modalidad, LocalDate fecha, LocalTime hora, String ubicacion, String estado) {
+    public CitaDTO(Long id, Long matriculaAlumno, Long idTutor, Long idHorario, Long idMateria, String nombreTutor, String nombreMateria, String tema, String modalidad, LocalDate fecha, LocalTime hora, String ubicacion, String estado) {
         this.id = id;
         this.matriculaAlumno = matriculaAlumno;
         this.idTutor = idTutor;
+        this.idHorario = idHorario;
         this.idMateria = idMateria;
         this.nombreTutor = nombreTutor;
         this.nombreMateria = nombreMateria;
@@ -40,6 +42,14 @@ public class CitaDTO {
         this.hora = hora;
         this.ubicacion = ubicacion;
         this.estado = estado;
+    }
+
+    public Long getIdHorario() {
+        return idHorario;
+    }
+
+    public void setIdHorario(Long idHorario) {
+        this.idHorario = idHorario;
     }
 
     public Long getId() {
