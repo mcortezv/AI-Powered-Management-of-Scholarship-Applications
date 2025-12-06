@@ -1,9 +1,11 @@
-package banco;
+package itson.pagarAdeudo;
 
 /**
  * @author Escalante, Sebastian.
  */
 public class PrestamoDTOI {
+    private Long idEstudiante;
+    private double costo;
     private String fechaPrestamo;
     private String fechaDevolucion;
     private String isbn;
@@ -12,6 +14,22 @@ public class PrestamoDTOI {
     private String detalles;
 
     public PrestamoDTOI() {
+    }
+
+    public Long getIdEstudiante() {
+        return idEstudiante;
+    }
+
+    public void setIdEstudiante(Long idEstudiante) {
+        this.idEstudiante = idEstudiante;
+    }
+
+    public double getCosto() {
+        return costo;
+    }
+
+    public void setCosto(double costo) {
+        this.costo = costo;
     }
 
     public String getFechaPrestamo() {

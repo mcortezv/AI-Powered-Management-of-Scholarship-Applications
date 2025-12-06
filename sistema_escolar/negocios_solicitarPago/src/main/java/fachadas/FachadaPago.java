@@ -19,18 +19,8 @@ public class FachadaPago implements IFachadaPago {
     }
 
     @Override
-    public double solicitarAdeudoTotalBiblioteca(EstudianteDTO estudianteDTO) {
-        return controlPago.solicitarAdeudoTotalBiblioteca(estudianteDTO);
-    }
-
-    @Override
     public List<PrestamoDTO> solicitarListaPrestamos(EstudianteDTO estudianteDTO) {
         return controlPago.solicitarListaPrestamos(estudianteDTO);
-    }
-
-    @Override
-    public double solicitarAdeudoTotalColegiatura(EstudianteDTO estudianteDTO) {
-        return controlPago.solicitarAdeudoTotalColegiatura(estudianteDTO);
     }
 
     @Override

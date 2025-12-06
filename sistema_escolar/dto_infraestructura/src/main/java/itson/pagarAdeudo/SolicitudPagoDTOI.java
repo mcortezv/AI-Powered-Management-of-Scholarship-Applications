@@ -1,10 +1,10 @@
-package banco;
+package itson.pagarAdeudo;
 
 /**
  * @author Escalante, Sebastian.
  */
 public class SolicitudPagoDTOI {
-    private String idEstudiante;
+    private Long idEstudiante;
     private String referenciaPago;
     private String fechaPago;
     private double montoPagado;
@@ -14,11 +14,11 @@ public class SolicitudPagoDTOI {
     public SolicitudPagoDTOI() {
     }
 
-    public String getIdEstudiante() {
+    public Long getIdEstudiante() {
         return idEstudiante;
     }
 
-    public void setIdEstudiante(String idEstudiante) {
+    public void setIdEstudiante(Long idEstudiante) {
         this.idEstudiante = idEstudiante;
     }
 

@@ -2,9 +2,9 @@ package controles;
 
 import apiItson.ItsonAPI;
 import apiItson.interfaces.IItsonAPI;
-import banco.ClaseDTOI;
-import banco.PrestamoDTOI;
-import banco.SolicitudPagoDTOI;
+import itson.pagarAdeudo.ClaseDTOI;
+import itson.pagarAdeudo.PrestamoDTOI;
+import itson.pagarAdeudo.SolicitudPagoDTOI;
 import datos.adaptadoresItson.EstudianteAdaptador;
 import datos.adaptadoresItson.HistorialAcademicoAdaptador;
 import datos.adaptadoresItson.pagarAdeudo.ClaseAdaptador;
@@ -46,14 +46,6 @@ public class ControlItson {
 
 
     //Caso de uso Pagar adeudo
-    public double obtenerAdeudoBiblioteca(Long matricula){
-        return api.obtenerAdeudoBiblioteca(matricula);
-    }
-
-    public double obtenerAdeudoColegiatura(Long matricula){
-        return api.obtenerAdeudoColegiatura(matricula);
-    }
-
     public List<PrestamoDTOI> obtenerListaPrestamos(Long matricula){
         return PrestamoAdaptador.toDtoItson(api.obtenerListaPrestamosBiblioteca(matricula));
     }

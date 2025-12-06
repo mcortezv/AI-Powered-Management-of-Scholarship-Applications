@@ -2,7 +2,7 @@ package pagarAdeudo;
 
 public class SolicitudPagoDTO {
 
-    private String idEstudiante;
+    private Long idEstudiante;
     private String referenciaPago;
     private String fechaPago;
     private double montoPagado;
@@ -12,11 +12,11 @@ public class SolicitudPagoDTO {
     public SolicitudPagoDTO() {
     }
 
-    public String getIdEstudiante() {
+    public Long getIdEstudiante() {
         return idEstudiante;
     }
 
-    public void setIdEstudiante(String idEstudiante) {
+    public void setIdEstudiante(Long idEstudiante) {
         this.idEstudiante = idEstudiante;
     }
 

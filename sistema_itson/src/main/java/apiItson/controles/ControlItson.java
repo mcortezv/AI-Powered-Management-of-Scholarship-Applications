@@ -1,5 +1,5 @@
 package apiItson.controles;
-import banco.SolicitudPagoDTOI;
+import itson.pagarAdeudo.SolicitudPagoDTOI;
 import datos.adaptadoresItson.actividades.GrupoAdaptador;
 import datos.dominioItson.Actividad;
 import datos.dominioItson.HistorialAcademico;
@@ -12,7 +12,6 @@ import datos.serviceItson.pagarAdeudo.PrestamoService;
 import datos.serviceItson.pagarAdeudo.SolicitudPagoService;
 import itson.LoginDTOItson;
 import datos.dominioItson.Estudiante;
-import datos.dominioItson.Grupo;
 import datos.serviceItson.EstudianteService;
 import datos.serviceItson.GrupoService;
 import itson.ActividadDTOItson;
@@ -60,16 +59,7 @@ public class ControlItson {
 
 
 
-    // pagar adeudo
-
-    public double obtenerAdeudoBiblioteca(Long matricula){
-        return 0.0;
-    }
-
-    public double obtenerAdeudoColegiatura(Long matricula){
-        return 0.0;
-    }
-
+    //pagar adeudo
     public List<Prestamo> obtenerListaPrestamosBiblioteca(Long matricula){
         return prestamoService.obtenerListaPrestamos(matricula);
     }

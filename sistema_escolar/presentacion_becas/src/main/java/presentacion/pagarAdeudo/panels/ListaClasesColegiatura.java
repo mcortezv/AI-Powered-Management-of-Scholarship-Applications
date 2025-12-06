@@ -126,7 +126,7 @@ public class ListaClasesColegiatura extends PanelPagarAdeudo {
         gbc.weightx = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
         centralPanel.add(rightPanel, gbc);
-
+        btnBack.addActionListener(e-> mainFrame.showPanel("consultaAdeudoMenu"));
         btnRealizarPago.addActionListener(e -> {
             coordinadorAplicacion.seleccionarRealizarPago();
         });

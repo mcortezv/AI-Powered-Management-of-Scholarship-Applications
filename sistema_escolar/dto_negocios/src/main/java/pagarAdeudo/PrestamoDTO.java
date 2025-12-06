@@ -3,6 +3,7 @@ package pagarAdeudo;
 public class PrestamoDTO {
 
     private String fechaPrestamo;
+    private double costo;
     private String fechaDevolucion;
     private String isbn;
     private String titulo;
@@ -10,6 +11,14 @@ public class PrestamoDTO {
     private String detalles;
 
     public PrestamoDTO() {
+    }
+
+    public double getCosto() {
+        return costo;
+    }
+
+    public void setCosto(double costo) {
+        this.costo = costo;
     }
 
     public String getFechaPrestamo() {

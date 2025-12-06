@@ -10,6 +10,7 @@ import presentacion.styles.Style;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
 public class MetodosDePago extends PanelPagarAdeudo {
 
@@ -57,12 +58,25 @@ public class MetodosDePago extends PanelPagarAdeudo {
 
         centralPanel.add(contentBox);
 
-        btnTarjeta.addActionListener(e -> {
+        for (java.awt.event.ActionListener al : btnBack.getActionListeners()) {
+            btnBack.removeActionListener(al);
+        }
 
+        btnBack.addActionListener(e -> {
+            String tipo = coordinadorAplicacion.getTipoAdeudo();
+            if (Objects.equals(tipo, "Biblioteca")) {
+                mainFrame.showPanel("listaPrestamosBiblioteca");
+            } else if (Objects.equals(tipo, "Colegiatura")) {
+                mainFrame.showPanel("listaClasesColegiatura");
+            }
+        });
+
+        btnTarjeta.addActionListener(e -> {
+            JOptionPane.showMessageDialog(this,"Ekisde");
         });
 
         btnPayPal.addActionListener(e -> {
-
+            JOptionPane.showMessageDialog(this,"Ekisde");
         });
 
         revalidate();

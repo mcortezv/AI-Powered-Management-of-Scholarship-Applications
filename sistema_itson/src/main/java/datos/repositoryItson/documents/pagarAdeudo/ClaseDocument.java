@@ -3,6 +3,8 @@ package datos.repositoryItson.documents.pagarAdeudo;
 import datos.dominioItson.pagarAdeudo.enums.Campus;
 
 public class ClaseDocument {
+    private Long idEstudiante;
+    private double costo;
     private String nombre;
     private String horario;
     private String profesor;
@@ -11,6 +13,22 @@ public class ClaseDocument {
     private String detalles;
 
     public ClaseDocument(){}
+
+    public double getCosto() {
+        return costo;
+    }
+
+    public void setCosto(double costo) {
+        this.costo = costo;
+    }
+
+    public Long getIdEstudiante() {
+        return idEstudiante;
+    }
+
+    public void setIdEstudiante(Long idEstudiante){
+        this.idEstudiante = idEstudiante;
+    }
 
     public String getNombre() {
         return nombre;

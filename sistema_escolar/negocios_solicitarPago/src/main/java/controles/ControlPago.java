@@ -3,9 +3,9 @@ import java.util.List;
 import adaptadores.pagarAdeudo.ClaseAdaptador;
 import adaptadores.pagarAdeudo.PrestamoAdaptador;
 import adaptadores.pagarAdeudo.SolicitudPagoAdaptador;
-import banco.ClaseDTOI;
-import banco.PrestamoDTOI;
-import banco.SolicitudPagoDTOI;
+import itson.pagarAdeudo.ClaseDTOI;
+import itson.pagarAdeudo.PrestamoDTOI;
+import itson.pagarAdeudo.SolicitudPagoDTOI;
 import dtoGobierno.EstudianteDTO;
 import interfaces.*;
 import interfaces.pagarAdeudo.IAdeudoBO;
@@ -22,16 +22,6 @@ public class ControlPago {
         this.iAdeudoBO = adeudoBO;
         this.iFachadaPayPal = fachadaPayPal;
         this.iFachadaBanco = iFachadaBanco;
-    }
-
-    public double solicitarAdeudoTotalBiblioteca(EstudianteDTO estudianteDTO) {
-        Long matricula = estudianteDTO.getMatricula();
-        return iAdeudoBO.obtenerAdeudoBiblioteca(matricula);
-    }
-
-    public double solicitarAdeudoTotalColegiatura(EstudianteDTO estudianteDTO){
-        Long matricula = estudianteDTO.getMatricula();
-        return iAdeudoBO.obtenerAdeudoColegiatura(matricula);
     }
 
     public List<PrestamoDTO>solicitarListaPrestamos(EstudianteDTO estudianteDTO){

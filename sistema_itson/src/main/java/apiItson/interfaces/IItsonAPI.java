@@ -1,12 +1,11 @@
 package apiItson.interfaces;
-import banco.SolicitudPagoDTOI;
+import itson.pagarAdeudo.SolicitudPagoDTOI;
 import datos.dominioItson.Actividad;
 import datos.dominioItson.HistorialAcademico;
 import datos.dominioItson.pagarAdeudo.Clase;
 import datos.dominioItson.pagarAdeudo.Prestamo;
 import itson.LoginDTOItson;
 import datos.dominioItson.Estudiante;
-import datos.dominioItson.Grupo;
 import itson.ActividadDTOItson;
 import itson.actividades.GruposResponseDTOItson;
 
@@ -24,8 +23,6 @@ public interface IItsonAPI {
 
 
     //pagar adeudo
-    double obtenerAdeudoBiblioteca(Long matricula);
-    double obtenerAdeudoColegiatura(Long matricula);
     List<Prestamo> obtenerListaPrestamosBiblioteca(Long matricula);
     List<Clase> obtenerListaClaseColegiatura(Long matricula);
     boolean notificarLiquidacion(SolicitudPagoDTOI solicitudPagoDTOI);

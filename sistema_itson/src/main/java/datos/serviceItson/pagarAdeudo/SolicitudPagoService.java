@@ -1,6 +1,6 @@
 package datos.serviceItson.pagarAdeudo;
 
-import banco.SolicitudPagoDTOI;
+import itson.pagarAdeudo.SolicitudPagoDTOI;
 import datos.adaptadoresItson.pagarAdeudo.SolicitudPagoAdaptador;
 import datos.repositoryItson.daoItson.pagarAdeudo.impl.SolicitudPagoDAO;
 import datos.repositoryItson.documents.pagarAdeudo.SolicitudPagoDocument;

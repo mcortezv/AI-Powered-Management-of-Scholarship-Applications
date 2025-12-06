@@ -1,14 +1,13 @@
 package apiItson;
 import apiItson.controles.ControlItson;
 import apiItson.interfaces.IItsonAPI;
-import banco.SolicitudPagoDTOI;
+import itson.pagarAdeudo.SolicitudPagoDTOI;
 import datos.dominioItson.Actividad;
 import datos.dominioItson.HistorialAcademico;
 import datos.dominioItson.pagarAdeudo.Clase;
 import datos.dominioItson.pagarAdeudo.Prestamo;
 import itson.LoginDTOItson;
 import datos.dominioItson.Estudiante;
-import datos.dominioItson.Grupo;
 import itson.ActividadDTOItson;
 import itson.actividades.GruposResponseDTOItson;
 
@@ -37,16 +36,6 @@ public class ItsonAPI implements IItsonAPI {
     }
 
     // pagar adeudo
-    @Override
-    public double obtenerAdeudoBiblioteca(Long matricula) {
-        return controlItson.obtenerAdeudoBiblioteca(matricula);
-    }
-
-    @Override
-    public double obtenerAdeudoColegiatura(Long matricula) {
-        return controlItson.obtenerAdeudoColegiatura(matricula);
-    }
-
     @Override
     public List<Prestamo> obtenerListaPrestamosBiblioteca(Long matricula) {
         return controlItson.obtenerListaPrestamosBiblioteca(matricula);

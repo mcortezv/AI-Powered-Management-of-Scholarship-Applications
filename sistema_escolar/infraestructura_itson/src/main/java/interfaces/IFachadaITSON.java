@@ -1,7 +1,7 @@
 package interfaces;
-import banco.ClaseDTOI;
-import banco.PrestamoDTOI;
-import banco.SolicitudPagoDTOI;
+import itson.pagarAdeudo.ClaseDTOI;
+import itson.pagarAdeudo.PrestamoDTOI;
+import itson.pagarAdeudo.SolicitudPagoDTOI;
 import itson.ActividadDTOItson;
 import itson.ActividadesDTOItson;
 import itson.EstudianteDTOItson;
@@ -23,8 +23,6 @@ public interface IFachadaITSON {
     HistorialAcademicoDTOItson verificarHistorialAcademcio(Long matricula);
 
     //pagar adeudo
-    double solicitarAdeudoBiblioteca(Long matricula);
-    double solicitarAdeudoColegiatura(Long matricula);
     List<PrestamoDTOI> solicitarListaPrestamso(Long matricula);
     List<ClaseDTOI> solicitarListaClases(Long matricula);
     boolean notificarLiquidacion(SolicitudPagoDTOI solicitudPagoDTOI);

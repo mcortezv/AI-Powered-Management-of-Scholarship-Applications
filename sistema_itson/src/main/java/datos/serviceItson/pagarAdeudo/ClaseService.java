@@ -22,7 +22,10 @@ public class ClaseService {
         List<Clase> clases = new ArrayList<>();
         for(ClaseDocument claseDocument : clasesDocument){
             clases.add(ClaseAdaptador.toEntity(claseDocument));
+            System.out.println("clase service\n");
+            System.out.println(claseDocument.getCosto());
         }
+
         return clases;
     }
 

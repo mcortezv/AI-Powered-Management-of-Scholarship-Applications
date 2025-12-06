@@ -1,7 +1,7 @@
 package datos.repositoryItson.documents.pagarAdeudo;
 
 public class SolicitudPagoDocument {
-    private String idEstudiante;
+    private Long idEstudiante;
     private String referenciaPago;
     private String fechaPago;
     private double montoPagado;
@@ -11,11 +11,11 @@ public class SolicitudPagoDocument {
     public SolicitudPagoDocument() {
     }
 
-    public String getIdEstudiante() {
+    public Long getIdEstudiante() {
         return idEstudiante;
     }
 
-    public void setIdEstudiante(String idEstudiante) {
+    public void setIdEstudiante(Long idEstudiante) {
         this.idEstudiante = idEstudiante;
     }
 

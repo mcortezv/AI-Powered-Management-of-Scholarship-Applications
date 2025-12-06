@@ -2,6 +2,7 @@ package pagarAdeudo;
 
 public class ClaseDTO {
     private String nombre;
+    private double costo;
     private String horario;
     private String profesor;
     private String aula;
@@ -13,6 +14,14 @@ public class ClaseDTO {
 
     public String getNombre() {
         return nombre;
+    }
+
+    public double getCosto() {
+        return costo;
+    }
+
+    public void setCosto(double costo) {
+        this.costo = costo;
     }
 
     public void setNombre(String nombre) {

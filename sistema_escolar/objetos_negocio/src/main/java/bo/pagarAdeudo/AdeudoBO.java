@@ -1,8 +1,8 @@
 package bo.pagarAdeudo;
 
-import banco.ClaseDTOI;
-import banco.PrestamoDTOI;
-import banco.SolicitudPagoDTOI;
+import itson.pagarAdeudo.ClaseDTOI;
+import itson.pagarAdeudo.PrestamoDTOI;
+import itson.pagarAdeudo.SolicitudPagoDTOI;
 import interfaces.IFachadaITSON;
 import interfaces.pagarAdeudo.IAdeudoBO;
 
@@ -13,15 +13,6 @@ public class AdeudoBO implements IAdeudoBO {
 
     public AdeudoBO(IFachadaITSON iFachadaITSON){
         this.iFachadaITSON = iFachadaITSON;
-    }
-    @Override
-    public double obtenerAdeudoBiblioteca(Long matricula) {
-        return iFachadaITSON.solicitarAdeudoBiblioteca(matricula);
-    }
-
-    @Override
-    public double obtenerAdeudoColegiatura(Long matricula) {
-        return iFachadaITSON.solicitarAdeudoColegiatura(matricula);
     }
 
     @Override

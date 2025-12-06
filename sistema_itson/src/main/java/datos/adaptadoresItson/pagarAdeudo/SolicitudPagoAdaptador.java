@@ -1,6 +1,6 @@
 package datos.adaptadoresItson.pagarAdeudo;
 
-import banco.SolicitudPagoDTOI;
+import itson.pagarAdeudo.SolicitudPagoDTOI;
 import datos.dominioItson.pagarAdeudo.SolicitudPago;
 import datos.repositoryItson.documents.pagarAdeudo.SolicitudPagoDocument;
 import java.util.ArrayList;
