@@ -19,9 +19,6 @@ public interface IItsonAPI {
 
     HistorialAcademico obtenerHistorialAcademico(Long matricula);
 
-
-
-
     //pagar adeudo
     List<Prestamo> obtenerListaPrestamosBiblioteca(Long matricula);
     List<Clase> obtenerListaClaseColegiatura(Long matricula);

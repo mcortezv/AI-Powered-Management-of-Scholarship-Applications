@@ -76,8 +76,6 @@ public class ControlItson {
         return solicitudPagoService.notificarLiquidacion(solicitudPagoDTOI);
     }
 
-
-    
     
     //actividades
     public ActividadesDTOItson solicitarActividades(){
