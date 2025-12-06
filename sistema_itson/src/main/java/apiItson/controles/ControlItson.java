@@ -1,5 +1,4 @@
 package apiItson.controles;
-import banco.SolicitudPagoDTOI;
 import itson.pagarAdeudo.*;
 import datos.adaptadoresItson.actividades.GrupoAdaptador;
 

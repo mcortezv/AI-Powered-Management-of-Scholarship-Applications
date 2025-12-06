@@ -8,6 +8,7 @@ import datos.dominioItson.Estudiante;
 import itson.ActividadDTOItson;
 import itson.ActividadesDTOItson;
 import itson.actividades.GruposResponseDTOItson;
+import itson.pagarAdeudo.SolicitudPagoDTOI;
 
 import java.util.List;
 
