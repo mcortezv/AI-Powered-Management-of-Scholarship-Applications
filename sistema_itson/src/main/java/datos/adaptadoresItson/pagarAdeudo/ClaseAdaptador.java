@@ -1,6 +1,6 @@
 package datos.adaptadoresItson.pagarAdeudo;
 
-import banco.ClaseDTOI;
+import itson.pagarAdeudo.ClaseDTOI;
 import datos.dominioItson.pagarAdeudo.Clase;
 import datos.repositoryItson.documents.pagarAdeudo.ClaseDocument;
 
@@ -11,6 +11,8 @@ public class ClaseAdaptador {
 
     public static Clase toEntity(ClaseDocument document){
         Clase clase = new Clase();
+        clase.setCosto(document.getCosto());
+        clase.setIdEstudiante(document.getIdEstudiante());
         clase.setNombre(document.getNombre());
         clase.setHorario(document.getHorario());
         clase.setProfesor(document.getProfesor());
@@ -22,6 +24,8 @@ public class ClaseAdaptador {
 
     public static ClaseDTOI toDtoItson(Clase clase){
         ClaseDTOI dto = new ClaseDTOI();
+        dto.setCosto(clase.getCosto());
+        dto.setIdEstudiante(clase.getIdEstudiante());
         dto.setNombre(clase.getNombre());
         dto.setHorario(clase.getHorario());
         dto.setProfesor(clase.getProfesor());

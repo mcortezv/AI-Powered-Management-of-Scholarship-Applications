@@ -122,11 +122,11 @@ public class ListaPrestamosBiblioteca extends PanelPagarAdeudo {
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.NORTH;
-        gbc.insets = new Insets(20, 20, 20, 20); // Márgenes
+        gbc.insets = new Insets(20, 20, 20, 20);
         centralPanel.add(leftPanel, gbc);
 
         gbc.gridx = 1;
-        JLabel arrow = new JLabel("←"); // Simulación simple o ícono
+        JLabel arrow = new JLabel("←");
         arrow.setFont(new Font("SansSerif", Font.BOLD, 24));
         arrow.setForeground(Color.WHITE);
 
@@ -134,7 +134,7 @@ public class ListaPrestamosBiblioteca extends PanelPagarAdeudo {
         gbc.weightx = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
         centralPanel.add(rightPanel, gbc);
-
+        btnBack.addActionListener(e-> mainFrame.showPanel("consultaAdeudoMenu"));
         btnRealizarPago.addActionListener(e -> {
             coordinadorAplicacion.seleccionarRealizarPago();
         });

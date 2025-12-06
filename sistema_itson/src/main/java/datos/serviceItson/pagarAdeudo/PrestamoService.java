@@ -19,6 +19,8 @@ public class PrestamoService {
         List<Prestamo> prestamos = new ArrayList<>();
         for(PrestamoDocument prestamoDocument : prestamoDocuments){
             prestamos.add(PrestamoAdaptador.toEntity(prestamoDocument));
+            System.out.println("Prestamos service\n");
+            System.out.println(prestamoDocument.getCosto());
         }
         return prestamos;
     }

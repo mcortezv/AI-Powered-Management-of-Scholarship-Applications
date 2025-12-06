@@ -1,9 +1,9 @@
 package fachadas;
 
 
-import banco.ClaseDTOI;
-import banco.PrestamoDTOI;
-import banco.SolicitudPagoDTOI;
+import itson.pagarAdeudo.ClaseDTOI;
+import itson.pagarAdeudo.PrestamoDTOI;
+import itson.pagarAdeudo.SolicitudPagoDTOI;
 import controles.ControlItson;
 import interfaces.IFachadaITSON;
 import itson.ActividadDTOItson;
@@ -49,21 +49,10 @@ public class FachadaItson implements IFachadaITSON {
      * @return
      */
     @Override
-    public double solicitarAdeudoBiblioteca(Long matricula) {
-        return controlItson.obtenerAdeudoBiblioteca(matricula);
-    }
-
-    @Override
-    public double solicitarAdeudoColegiatura(Long matricula) {
-        return controlItson.obtenerAdeudoColegiatura(matricula);
-    }
-
-    @Override
     public List<PrestamoDTOI> solicitarListaPrestamso(Long matricula) {
         return controlItson.obtenerListaPrestamos(matricula);
 
     }
-
     @Override
     public List<ClaseDTOI> solicitarListaClases(Long matricula) {
         return controlItson.obtenerListaClases(matricula);

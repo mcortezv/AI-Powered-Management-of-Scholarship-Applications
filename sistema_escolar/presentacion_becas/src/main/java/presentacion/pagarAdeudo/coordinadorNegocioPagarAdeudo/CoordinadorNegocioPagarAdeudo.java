@@ -16,14 +16,27 @@ public class CoordinadorNegocioPagarAdeudo implements ICoordinadorNegocioPagarAd
         this.fachadaPago = fachadaPago;
     }
 
-    @Override
-    public double obtenerAdeudoBiblioteca(EstudianteDTO estudianteDTO) {
-        return fachadaPago.solicitarAdeudoTotalBiblioteca(estudianteDTO);
+    public double calcularTotalPrestamos(List<PrestamoDTO> prestamos) {
+        double total = 0.0;
+        if (prestamos != null) {
+            for (PrestamoDTO p : prestamos) {
+                total += p.getCosto();
+            }
+        }
+
+        System.out.println(total);
+        return total;
     }
 
-    @Override
-    public double obtenerAdeudoColegiatura(EstudianteDTO estudianteDTO) {
-        return fachadaPago.solicitarAdeudoTotalColegiatura(estudianteDTO);
+    public double calcularTotalClases(List<ClaseDTO> clases) {
+        double total = 0.0;
+        if (clases != null) {
+            for (ClaseDTO c : clases) {
+                total += c.getCosto();
+            }
+        }
+        System.out.println(total);
+        return total;
     }
 
     @Override

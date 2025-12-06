@@ -31,9 +31,6 @@ public abstract class PanelPagarAdeudo extends JPanel {
         add(centralPanel, BorderLayout.CENTER);
         add(southPanel, BorderLayout.SOUTH);
         southPanel.add(btnBack);
-        btnBack.addActionListener(e -> {
-            coordinadorAplicacion.regresarAlMenuPrincipal();
-        });
     }
 
     public abstract void startComponents();

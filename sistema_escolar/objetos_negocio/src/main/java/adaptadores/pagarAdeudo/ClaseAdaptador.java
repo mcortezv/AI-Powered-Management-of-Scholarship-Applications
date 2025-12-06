@@ -1,7 +1,7 @@
 package adaptadores.pagarAdeudo;
 
 import pagarAdeudo.ClaseDTO;
-import banco.ClaseDTOI;
+import itson.pagarAdeudo.ClaseDTOI;
 
 public class ClaseAdaptador {
 
@@ -9,7 +9,7 @@ public class ClaseAdaptador {
         if (dtoI == null) return null;
 
         ClaseDTO dto = new ClaseDTO();
-
+        dtoI.setCosto(dtoI.getCosto());
         dto.setNombre(dtoI.getNombre());
         dto.setHorario(dtoI.getHorario());
         dto.setProfesor(dtoI.getProfesor());
@@ -24,7 +24,7 @@ public class ClaseAdaptador {
         if (dto == null) return null;
 
         ClaseDTOI dtoI = new ClaseDTOI();
-
+        dto.setCosto(dto.getCosto());
         dtoI.setNombre(dto.getNombre());
         dtoI.setHorario(dto.getHorario());
         dtoI.setProfesor(dto.getProfesor());
