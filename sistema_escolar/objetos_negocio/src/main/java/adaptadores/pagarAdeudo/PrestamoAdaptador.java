@@ -9,7 +9,7 @@ public class PrestamoAdaptador {
         if (dtoI == null) return null;
         System.out.println("Adaptador recibiendo costo: " + dtoI.getCosto());
         PrestamoDTO dto = new PrestamoDTO();
-        dto.setCosto(dto.getCosto());
+        dto.setCosto(dtoI.getCosto());
         dto.setFechaPrestamo(dtoI.getFechaPrestamo());
         dto.setFechaDevolucion(dtoI.getFechaDevolucion());
         dto.setIsbn(dtoI.getIsbn());
@@ -23,7 +23,7 @@ public class PrestamoAdaptador {
         if (dto == null) return null;
 
         PrestamoDTOI dtoI = new PrestamoDTOI();
-        dto.setCosto(dto.getCosto());
+        dtoI.setCosto(dto.getCosto());
         dtoI.setFechaPrestamo(dto.getFechaPrestamo());
         dtoI.setFechaDevolucion(dto.getFechaDevolucion());
         dtoI.setIsbn(dto.getIsbn());

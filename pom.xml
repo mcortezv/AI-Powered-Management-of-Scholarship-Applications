@@ -12,6 +12,8 @@
         <module>sistema_escolar</module>
         <module>sistema_gobierno</module>
         <module>recursos_compartidos</module>
+        <module>sistema_banco</module>
+        <module>sistema_paypal</module>
     </modules>
     <build>
         <resources>
